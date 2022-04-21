@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
   
-  export default function HomeComponent({user}) {
+  export default function HomeComponent({user, Postss}) {
     const router = useRouter()
     const classes = useStyles();
 
@@ -46,7 +46,7 @@ import useStyles from "./styles";
                   Cotizaciones 
                 </Typography>
               </Paper>
-              <Posts/>
+              <Posts Postss={Postss}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               {/* <Form/> */}

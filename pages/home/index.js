@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 // import { LOGOUT } from "../../Reducers/Types";
 import { useRouter } from "next/router";
 import HomeComponent from "../../components/Home/Home";
+import DBConnect from "../../libs/dbConnect";
+import postModel from '../../models/postModel'
 
-export default function Home() {
+
+export default function Home({Postss}) {
   const [user, setUser] = useState();
   const router = useRouter();
   const [token, setToken] = useState(null)
@@ -33,8 +36,28 @@ export default function Home() {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent user={user}  />
+        <HomeComponent user={user} Postss={Postss}/>
       </Layout>
     </>
   );
+}
+export async function getServerSideProps() {
+  try {
+    await DBConnect();
+    const res = await postModel.find({});
+    const Postss = res.map((el) => {
+      const Post = el.toObject();
+
+      Post._id = Post._id.toString();
+      Post.creator = Post.creator.toString();
+      Post.cotizaciones = Post.cotizaciones.toString();
+      Post.date = Post.date.toString();
+      return Post;
+    });
+    return {
+      props: { Postss },
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }

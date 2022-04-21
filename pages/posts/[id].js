@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 import PostCo from "../../components/Posts/Post/Post";
 import DBConnect from "../../libs/dbConnect";
 import postModel from "../../models/postModel";

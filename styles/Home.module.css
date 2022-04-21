@@ -1,32 +1,7 @@
-.container {
-  padding: 0 2rem;
-}
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
+
 
 .title a {
   color: #0070f3;
@@ -48,13 +23,24 @@
 .title,
 .description {
   text-align: center;
+  font-size: 1.5rem;
+
+}
+.description1{
+  font-size: 60px;
+  color: white;
+  line-height: 70px;
+  margin:0;
+  margin-bottom: 20px;
+}
+.description2{
+  font-size: 28px;
+  color: white;
+  margin:0
+  
 }
 
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
+
 
 .code {
   background: #fafafa;
@@ -70,7 +56,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1300px;
 }
 
 .card {
@@ -78,18 +64,72 @@
   padding: 1.5rem;
   text-align: left;
   color: inherit;
+  justify-content: center;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 1px solid #ffffff;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 500px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+
+}
+.card {
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+
+}
+.containerButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap:10px
+}
+.containerText{
+  padding-right: 20px;
+  padding-left: 20px;
+
+}
+.card1 {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: auto;
+  padding-right: auto;
+  justify-content: center;
+  text-align: center;
+  color: inherit;
+  background-color: #1b333d;
+  text-decoration: none;
+  border: 2px solid #1b333d;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 1000px;
+  min-height: 250px;
+box-shadow: 0 0 30px rgb(255, 255, 255);
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #1a4354;
+  border-color: #1b333d;
+  
+}
+.card1:hover,
+.card1:focus,
+.card1:active {
+  border: 2px solid #ffffff;
 }
 
 .card h2 {
@@ -107,10 +147,43 @@
   height: 1em;
   margin-left: 0.5rem;
 }
-
-@media (max-width: 600px) {
+.button{
+  width: 250px;
+  margin-top:20px
+}
+.btn{
+  margin-right: 10px;
+}
+@media(max-width: 400px) {
   .grid {
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:15px
+  }
+  .card{
+    justify-content: center;
+    align-items: center;
+  }
+  .card1{
+    justify-content: center;
+    align-items: center;
+
+
+  }
+  .description1{
+    font-size: 30px;
+    color: white;
+    line-height: 70px;
+    margin:0
+  }
+  .description2{
+    font-size: 20px;
+  }
+  .containerButtons{
     flex-direction: column;
   }
+  
+  
+  
 }

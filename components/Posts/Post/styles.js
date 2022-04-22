@@ -50,6 +50,24 @@ export default makeStyles((theme)=>({
     margin:'0'
 
   },
+  subheader:{
+    fontFamily: ' -apple-system, Segoe UI,',
+    fontWeight:'500',
+    color:'black',
+    padding:0
+  },
+  typography:{
+    fontWeight:'600',
+    fontFamily: ' -apple-system, Segoe UI,',
+
+  },
+
+  title:{
+    fontFamily: ' -apple-system, Segoe UI,',
+    fontWeight:'600',
+    padding:0,
+    fontSize:'20px'
+  },
   overlay: {
     color: 'black',
     display: 'flex',
@@ -71,9 +89,7 @@ export default makeStyles((theme)=>({
     justifyContent: 'space-between',
     margin: '20px',
   },
-  title: {
-    padding: '0 16px',
-  },
+ 
   cardActions: {
     padding: '0 16px 8px 16px',
     display: 'inline-flex',
@@ -83,9 +99,9 @@ export default makeStyles((theme)=>({
   header:{
     backgroundColor:'gray',
     color:'#f1f1f1',
-    fontFamily:"-apple-system, Segoe UI",
-    fontSize:'35px',
-    padding:"0px"
+    fontFamily:"--apple-system, Segoe UI",
+    padding:'2px'
+
   },
   typography:{
     padding: '0',

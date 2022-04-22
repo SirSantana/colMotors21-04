@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import {
   Card,
   CardActions,
@@ -14,13 +15,16 @@ import {
 import Share from "@material-ui/icons/Share";
 import Delete from "@material-ui/icons/Delete";
 import Favorite from "@material-ui/icons/Favorite";
-import { FavoriteBorder } from "@material-ui/icons/";
+import { FavoriteBorder } from "@material-ui/icons";
+import DirectionsCar from "@material-ui/icons/DirectionsCar";
+import Build from "@material-ui/icons/Build";
+import Person from "@material-ui/icons/Person";
+
 import { useEffect, useState } from "react";
 import moment from "moment";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
-import logoChevrolet from '../../../public/images/LOGO_CHEVROLET.png'
-
+import logoChevrolet from "../../../public/images/LOGO_CHEVROLET.png";
 
 export default function PostCo({ Post }) {
   const classes = useStyles();
@@ -83,17 +87,42 @@ export default function PostCo({ Post }) {
         <CardHeader
           className={classes.header}
           avatar={
-            <Avatar src={'/images/LOGO_CHEVROLET.png'} className={classes.purple} alt={Post?.marca}>
+            <Avatar
+              src={"/images/LOGO_CHEVROLET.png"}
+              className={classes.purple}
+              alt={Post?.marca}
+            >
               {nombreCreador?.substr(0, 1)}
             </Avatar>
           }
           title={marca}
+          classes={{ subheader: classes.subheader, title: classes.title }}
+          subheaderTypographyProps={{ variant: "body1" }}
           subheader={moment(date).fromNow()}
         />
         <Divider></Divider>
 
-        <CardContent>
-          <Typography variant="body2">{repuesto}</Typography>
+        <CardContent style={{ padding: "12px" }}>
+          <div style={{ display: "flex", flexDirecction: "row" }}>
+            <Person />
+            <Typography
+              style={{ marginLeft: "5px" }}
+              variant="h6"
+              className={classes.typography}
+            >
+              {nombreCreador}
+            </Typography>
+          </div>
+          <div style={{ display: "flex", flexDirecction: "row" }}>
+            <Build />
+            <Typography
+              style={{ marginLeft: "5px" }}
+              variant="h6"
+              className={classes.typography}
+            >
+              {repuesto}
+            </Typography>
+          </div>
           {selectedFile ? (
             <Button
               className={classes.button}

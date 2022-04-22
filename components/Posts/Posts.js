@@ -10,7 +10,7 @@ export default function Posts({ Postss }) {
     <>
         <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
             {Postss?.map((Post)=>(
-                <Grid key={Post._id} item xs={12} sm={12} lg={3} md={6}>
+                <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
                     <PostCo Post={Post} />
                     
                 </Grid>

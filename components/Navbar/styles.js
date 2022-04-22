@@ -24,8 +24,8 @@ export default makeStyles((theme) => ({
   img:{
     maxWidth:'70px',
     maxHeight: '60px',
-    minHeight:'20px',
-    minWidth:'20px'
+    minHeight:'30px',
+    minWidth:'35px'
   },
   heading: {
     marginLeft:'15px',

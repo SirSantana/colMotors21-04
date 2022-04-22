@@ -4,7 +4,6 @@ import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   container: {
-    borderRadius: 15,
     display: 'flex',
     flexDirection: 'row-reverse',
     flexWrap: 'wrap-reverse',
@@ -60,6 +59,7 @@ export default makeStyles((theme) => ({
       justifyContent: 'flex-end',
       width: '160px',
     },
+    
   },
 
   actionDiv: {

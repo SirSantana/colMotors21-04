@@ -23,16 +23,21 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: '15px',
+    borderRadius: '5px',
     height: '60px',
-    columns: "5, 320px",
     maxWidth: '512px',
     backgroundColor: " #1b333d",
     color: 'white',
     content: 'fit-content',
-    marginLeft:'20px',
-    marginBottom:"20px"
-
+    marginBottom:"20px",
+  },
+  gridContainer: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+    margin:0,
+    padding:0,
+    width:"100vw"
+    },
   },
  
   typography:{

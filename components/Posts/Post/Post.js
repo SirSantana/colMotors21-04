@@ -140,7 +140,7 @@ export default function PostCo({ Post }) {
           ) : null}
           
         </CardContent>
-        <CardActions style={{width:'90%', paddingLeft:'16px', paddingBottom:'0px'}}>
+        <CardActions style={{width:'90%', paddingLeft:'16px', paddingBottom:'5px'}}>
           <div style={{ display: "flex", flexDirecction: "row" }}>
             <Place style={{color: '#1b333d'}}/>
             <Typography

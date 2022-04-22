@@ -8,7 +8,7 @@ import {
   } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-  // import Form from "../Form/Form";
+import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
   
@@ -49,7 +49,7 @@ import useStyles from "./styles";
               <Posts Postss={Postss}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              {/* <Form/> */}
+              <Form/>
             </Grid>
           </Grid>
         </Container>

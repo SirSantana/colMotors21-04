@@ -19,6 +19,8 @@ import { FavoriteBorder } from "@material-ui/icons";
 import DirectionsCar from "@material-ui/icons/DirectionsCar";
 import Build from "@material-ui/icons/Build";
 import Person from "@material-ui/icons/Person";
+import Place from "@material-ui/icons/Place";
+import styles from '../../../styles/Button.module.css'
 
 import { useEffect, useState } from "react";
 import moment from "moment";
@@ -97,28 +99,26 @@ export default function PostCo({ Post }) {
           }
           title={marca}
           classes={{ subheader: classes.subheader, title: classes.title }}
-          subheaderTypographyProps={{ variant: "body1" }}
+          subheaderTypographyProps={{ variant: "body2" }}
           subheader={moment(date).fromNow()}
         />
         <Divider></Divider>
 
-        <CardContent style={{ padding: "12px" }}>
+        <CardContent style={{ width:'90%', display:'flex', flexDirection:'column',gap:'10px' }}>
           <div style={{ display: "flex", flexDirecction: "row" }}>
-            <Person />
+            <Person style={{color: '#1b333d'}}/>
             <Typography
               style={{ marginLeft: "5px" }}
-              variant="h6"
               className={classes.typography}
             >
               {nombreCreador}
             </Typography>
           </div>
           <div style={{ display: "flex", flexDirecction: "row" }}>
-            <Build />
+            <Build style={{color: '#1b333d'}}/>
             <Typography
               style={{ marginLeft: "5px" }}
-              variant="h6"
-              className={classes.typography}
+              className={classes.typography1}
             >
               {repuesto}
             </Typography>
@@ -138,8 +138,18 @@ export default function PostCo({ Post }) {
               <CardMedia className={classes.media} image={Post.selectedFile} />
             </>
           ) : null}
+          
         </CardContent>
-        <CardActions disableSpacing>
+        <CardActions style={{width:'90%', paddingLeft:'16px', paddingBottom:'0px'}}>
+          <div style={{ display: "flex", flexDirecction: "row" }}>
+            <Place style={{color: '#1b333d'}}/>
+            <Typography
+              style={{ marginLeft: "5px" }}
+              variant="body1"
+            >
+              Bogotá.Co
+            </Typography>
+          </div>
           <Button
             size="small"
             disabled={!user?.result}
@@ -147,9 +157,9 @@ export default function PostCo({ Post }) {
           >
             {/* <Likes /> */}
           </Button>
-          <IconButton aria-label="share">
+          {/* <IconButton aria-label="share">
             <Share />
-          </IconButton>
+          </IconButton> */}
 
           {user?.result?._id === idCreator && (
             <Button size="small" onClick={handleDelete}>
@@ -163,7 +173,6 @@ export default function PostCo({ Post }) {
             color="primary"
             variant="contained"
             className={classes.cotizar}
-            fullWidth
             onClick={handleCotizar}
           >
             Mira las Cotizaciones
@@ -173,6 +182,8 @@ export default function PostCo({ Post }) {
             color="secondary"
             variant="contained"
             fullWidth
+            className={classes.cotizar}
+
             onClick={handleCotizar}
           >
             Cotiza Ya!

@@ -18,24 +18,13 @@ export default makeStyles((theme)=>({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    borderRadius: '15px',
+    borderRadius: '5px',
     height: '100%',
     padding: '0',
     position: 'relative',
+    minWidth: '230px'
   },
-  card1: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadiusTop: '15px',
-    height: '5px',
-    columns: "5, 320px",
-    fontFamily:'-apple-system',
-    backgroundColor: "#1b333d",
-    color: 'white',
-    white: '100%'
-  },
+  
   purple: {
     color: 'black',
     height:'80px',
@@ -59,14 +48,14 @@ export default makeStyles((theme)=>({
   typography:{
     fontWeight:'600',
     fontFamily: ' -apple-system, Segoe UI,',
-
+    letterSpacing:'2px'
   },
 
   title:{
     fontFamily: ' -apple-system, Segoe UI,',
     fontWeight:'600',
     padding:0,
-    fontSize:'20px'
+    fontSize:'22px'
   },
   overlay: {
     color: 'black',
@@ -97,17 +86,24 @@ export default makeStyles((theme)=>({
 
   },
   header:{
-    backgroundColor:'gray',
-    color:'#f1f1f1',
+    color:'#1b333d',
     fontFamily:"--apple-system, Segoe UI",
-    padding:'2px'
+    padding:'2px',
 
   },
   typography:{
     padding: '0',
     margin:'0',
-    fontSize: '19px',
+    fontSize: '18px',
+    fontWeight:'500'
 
+  },
+  typography1:{
+    paddingTop: '4px',
+    margin:'0',
+    fontSize: '16px',
+    lineHeight:'1rem',
+    fontWeight:'400'
   },
   button:{
     alignItems:'bottom',
@@ -117,7 +113,10 @@ export default makeStyles((theme)=>({
     marginTop:'15px'
   },
   cotizar:{
-    backgroundColor: "#2f7c9c"
+    width:'90%',
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginBottom: '15px'
   },
   
 }));

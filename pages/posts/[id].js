@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import PostCo from "../../components/Posts/Post/Post";
 import DBConnect from "../../libs/dbConnect";
@@ -9,23 +9,30 @@ export default function PostPage({Post}) {
  
   const router = useRouter();
   const [message, setMessage] = useState('')
+  const [deletee, setDelete] = useState(false)
   const { id } = router.query;
+  // const user = JSON.parse(localStorage.getItem('profile'))
 
   
-
   const handleDelete=()=>{
     deletePost(id)
   }
 
-  async function deletePost(id){
+  useEffect(()=>{
+    if(deletee === true){
+     handleDelete()
+    }
+  },[])
+
+  async function deletePost(ID){
     try {
-      const res = await fetch(`/api/posts/${id}`,{
+      const res = await fetch(`/api/posts/${ID}`,{
         method:'DELETE',
         headers:{'Content-type': 'application/json'},
         // body: JSON.stringify(id)
       })
        if(res){
-        router.push("/posts")
+        router.push("/home")
         setMessage('Eliminado correctamente')
        }
         
@@ -34,8 +41,8 @@ export default function PostPage({Post}) {
     }
   }
   return (
-    <Layout>
-      <PostCo Post={Post} handleDelete={handleDelete}/>
+    <Layout title={'Post | colMotors'}>
+      <PostCo Post={Post}  setDelete={setDelete}/>
     </Layout>
   );
 }

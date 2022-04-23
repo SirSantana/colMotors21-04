@@ -47,7 +47,7 @@ export default function Form() {
               onChange={handleChange}
               multiline
               required
-              rows={2}
+              minRows={2}
               className={classes.card}
             />
             <TextField
@@ -57,7 +57,7 @@ export default function Form() {
               required
               fullWidth
               multiline
-              rows={4}
+              minRows={4}
               value={postData.repuesto}
               onChange={handleChange}
               className={classes.card}

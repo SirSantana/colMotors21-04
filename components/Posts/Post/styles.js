@@ -24,6 +24,18 @@ export default makeStyles((theme)=>({
     position: 'relative',
     minWidth: '230px'
   },
+  card1: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    borderRadius: '5px',
+    height: '100%',
+    marginBottom:'10px',
+    padding: '10px',
+    position: 'relative',
+    minWidth: '230px',
+    width:'80%',
+  },
   
   purple: {
     color: 'black',

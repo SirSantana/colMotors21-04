@@ -9,40 +9,11 @@ export default function PostPage({Post}) {
  
   const router = useRouter();
   const [message, setMessage] = useState('')
-  const [deletee, setDelete] = useState(false)
-  const { id } = router.query;
   // const user = JSON.parse(localStorage.getItem('profile'))
 
-  
-  const handleDelete=()=>{
-    deletePost(id)
-  }
-
-  useEffect(()=>{
-    if(deletee === true){
-     handleDelete()
-    }
-  },[])
-
-  async function deletePost(ID){
-    try {
-      const res = await fetch(`/api/posts/${ID}`,{
-        method:'DELETE',
-        headers:{'Content-type': 'application/json'},
-        // body: JSON.stringify(id)
-      })
-       if(res){
-        router.push("/home")
-        setMessage('Eliminado correctamente')
-       }
-        
-    } catch (error) {
-      console.log(error);
-    }
-  }
   return (
     <Layout title={'Post | colMotors'}>
-      <PostCo Post={Post}  setDelete={setDelete}/>
+      <PostCo Post={Post}  />
     </Layout>
   );
 }

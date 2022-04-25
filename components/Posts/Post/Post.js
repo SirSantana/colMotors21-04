@@ -29,19 +29,39 @@ import { useRouter } from "next/router";
 import logoChevrolet from "../../../public/images/LOGO_CHEVROLET.png";
 import { DELETE } from "../../../reducers/types";
 
-export default function PostCo({ Post, setDelete}) {
+export default function PostCo({ Post}) {
   const classes = useStyles();
   const { marca, repuesto, selectedFile, date, likes } = Post;
   const [user, setUser] = useState(null);
   const [imagen, setImagen] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false)
-
+  const [message, setMessage] = useState(null)
 
   // const dispatch = useDispatch();
   const router = useRouter();
   const idCreator = Post?.creator[0];
   const nombreCreador = Post?.nombreCreador.toString();
 
+  const handleDelete=()=>{
+    deletePost(Post._id)
+  }
+
+  async function deletePost(id){
+    try {
+      const res = await fetch(`/api/posts/${id}`,{
+        method:'DELETE',
+        headers:{'Content-type': 'application/json'},
+        // body: JSON.stringify(id)
+      })
+       if(res){
+        router.push("/home")
+        setMessage('Eliminado correctamente')
+       }
+        
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const handleFavorite = (e) => {
     // dispatch(favoritePost(Post._id));
   };
@@ -94,14 +114,16 @@ export default function PostCo({ Post, setDelete}) {
     <Card sx={{ maxWidth: "320px" }}  className={classes.card1} elevation={2}>
     <Typography variant="body1">Esta seguro que quiere eliminar esta cotizacion?</Typography>
       <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-      <Button variant="contained" color='secondary' onClick={()=> setDelete(true)}>Si</Button>
+      <Button variant="contained" color='secondary' onClick={handleDelete}>Si</Button>
       <Button variant="contained" color='primary' onClick={()=> setVisibleDelete(false)}>Cancelar</Button>
       </div>
     </Card>
       
       </>
        }
-      <Card sx={{ maxWidth: 345 }} className={classes.card} elevation={2}>
+       {/* <Link href={`/posts/${Post._id}`}> */}
+       {/* <a> */}
+       <Card sx={{ maxWidth: 345 }} className={classes.card} elevation={2}>
         <CardHeader
           className={classes.header}
           avatar={
@@ -122,13 +144,26 @@ export default function PostCo({ Post, setDelete}) {
 
         <CardContent style={{ width:'90%', display:'flex', flexDirection:'column',gap:'10px' }}>
           <div style={{ display: "flex", flexDirecction: "row",alignItems:'center', }}>
-            <Person style={{color: '#1b333d'}}/>
+            {/* <Person style={{color: '#1b333d'}}/>
             <Typography
               style={{ marginLeft: "5px" }}
               className={classes.typography}
             >
               {nombreCreador}
-            </Typography>
+            </Typography> */}
+            <Avatar
+             className={classes.purple2}
+             alt={Post?.creador}
+             >
+              {nombreCreador?.substr(0, 1)}
+
+            </Avatar>
+            <Typography
+              style={{ marginLeft: "5px" }}
+              className={classes.typography}
+            >
+              {nombreCreador}
+            </Typography> 
           </div>
           <div style={{ display: "flex", flexDirecction: "row", alignItems:'center',  }}>
             <Build style={{color: '#1b333d'}}/>
@@ -210,6 +245,10 @@ export default function PostCo({ Post, setDelete}) {
           </Button>
         )}
       </Card>
+
+       {/* </a> */}
+       {/* </Link> */}
+      
     </>
   );
 }

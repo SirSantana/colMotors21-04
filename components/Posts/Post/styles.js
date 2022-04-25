@@ -22,7 +22,10 @@ export default makeStyles((theme)=>({
     height: '100%',
     padding: '0',
     position: 'relative',
-    minWidth: '230px'
+    minWidth: '280px',
+    [theme.breakpoints.down('sm')]: {
+      width:'85vw'
+    }
   },
   card1: {
     display: 'flex',
@@ -43,6 +46,16 @@ export default makeStyles((theme)=>({
     width:'80px',
     padding:0,
     margin:0
+
+  },
+   purple2: {
+    color: 'black',
+    height:'30px',
+    width:'30px',
+    padding:0,
+    margin:0,
+    backgroundColor:'#f50057',
+    color:'white'
 
   },
   typography1:{

@@ -141,7 +141,7 @@ export default function MenuLogos({marca, setMarca}) {
         </MenuItem>
         </ButtonBase>
         
-        <ButtonBase  onClick={() => {setMarca(logoVolkswagen),    setMarcaAuto("logoVolkswagen")}}>
+        <ButtonBase  onClick={() => {setMarca("logoVolkswagen"),    setMarcaAuto("logoVolkswagen")}}>
         <MenuItem
           style={{ alignItems: "center", justifyContent: "center" }}
           onClick={handleClose}

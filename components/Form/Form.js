@@ -26,7 +26,26 @@ export default function Form() {
   const handleChange=(e)=>{
     setPostData({...postData, [e.target.name]: e.target.value})
   }
+  const handleChangeBase64=async(e)=>{
+    const file = e.target.files[0] 
+    const base64 = await convertFile(file)
+    setPostData({...postData, selectedFile: base64})   
+    console.log(postData);
+  }
+  const convertFile=(file)=>{
+    return new Promise((resolve, reject)=>{
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
 
+      fileReader.onload = ()=>{
+        resolve(fileReader.result)
+      }
+
+      fileReader.onerror=()=>{
+        reject((err)=> console.log(err))
+      }
+    })
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     createPosts({...postData,marca: marcaa})
@@ -90,13 +109,18 @@ export default function Form() {
 
           />
 
-              <FileBase
+              {/* <FileBase
+              style={{color:'black'}}
               type="file"
               multiply={false}
               onDone={({ base64 }) =>
                 setPostData({ ...postData, selectedFile: base64 })
               }
-            />
+            /> */}
+            <input
+             type='file'
+             onChange={(e)=>handleChangeBase64(e)}
+             />
         </div>
         <Button
           type="submit"

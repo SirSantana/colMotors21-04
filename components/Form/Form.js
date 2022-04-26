@@ -1,8 +1,8 @@
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import FileBase from "react-file-base64";
 import MenuLogos from "../MenuLogos/MenuLogos";
+import FileBase from 'react-file-base64'
 import useStyles from "./styles";
 // import {useDispatch} from 'react-redux'
 // import { createPost } from "../../Reducers/Actions/postActions";
@@ -66,7 +66,7 @@ export default function Form() {
           
           <TextField
             name="referencia"
-            label="MARCA. (Por Ejemplo: Chevrolet Corsa 1.4 2002"
+            label="Referencia/Cilindraje/Modelo. (Corsa 1.4 2002)"
             variant="outlined"
             fullWidth
             value={postData.referencia}
@@ -90,13 +90,13 @@ export default function Form() {
 
           />
 
-          <FileBase
-            type="file"
-            multiply={false}
-            onDone={({ base64 }) =>
-              setPostData({ ...postData, selectedFile: base64 })
-            }
-          />
+              <FileBase
+              type="file"
+              multiply={false}
+              onDone={({ base64 }) =>
+                setPostData({ ...postData, selectedFile: base64 })
+              }
+            />
         </div>
         <Button
           type="submit"

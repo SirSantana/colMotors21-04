@@ -8,6 +8,7 @@ import useStyles from "./styles";
 // import { createPost } from "../../Reducers/Actions/postActions";
 const initial = {
   marca: "",
+  referencia:"",
   repuesto: "",
   selectedFile: "",
 };
@@ -17,7 +18,10 @@ export default function Form() {
   // const dispatch = useDispatch()
   const [postData, setPostData] = useState(initial);
   const [message, setMessage] = useState(null)
+  const [marcaa, setMarca] = useState(null)
   const router = useRouter()
+
+  console.log(marcaa)
 
   const handleChange=(e)=>{
     setPostData({...postData, [e.target.name]: e.target.value})
@@ -25,7 +29,7 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createPosts(postData)
+    createPosts({...postData,marca: marcaa})
     setPostData(initial)
   };
   const createPosts = async (postData) => {
@@ -52,19 +56,20 @@ export default function Form() {
 
       </Paper>
       <div className={classes.paper} >
-        <MenuLogos/>
+        <MenuLogos marca={marcaa} setMarca={setMarca} />
       <form
         autoComplete="off"
         noValidate
         className={`${classes.root} ${classes.form}`}
       >
         <div className={classes.fileInput}>
+          
           <TextField
-            name="marca"
+            name="referencia"
             label="MARCA. (Por Ejemplo: Chevrolet Corsa 1.4 2002"
             variant="outlined"
             fullWidth
-            value={postData.marca}
+            value={postData.referencia}
             onChange={handleChange}
             multiline
             required

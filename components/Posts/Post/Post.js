@@ -31,7 +31,7 @@ import { DELETE } from "../../../reducers/types";
 
 export default function PostCo({ Post}) {
   const classes = useStyles();
-  const { marca, repuesto, selectedFile, date, likes } = Post;
+  const { marca, repuesto, selectedFile, date, likes, referencia } = Post;
   const [user, setUser] = useState(null);
   const [imagen, setImagen] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false)
@@ -128,14 +128,14 @@ export default function PostCo({ Post}) {
           className={classes.header}
           avatar={
             <Avatar
-              src={"/images/LOGO_CHEVROLET.png"}
+              src={`/images/${marca}.png`}
               className={classes.purple}
               alt={Post?.marca}
             >
               {nombreCreador?.substr(0, 1)}
             </Avatar>
           }
-          title={marca}
+          title={referencia}
           classes={{ subheader: classes.subheader, title: classes.title }}
           subheaderTypographyProps={{ variant: "body2" }}
           subheader={moment(date).fromNow()}

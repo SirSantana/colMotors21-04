@@ -10,7 +10,8 @@ const postModel = new mongoose.Schema({
     ],
     nombreCreador: {type:[String], default:[]},
     repuesto: {type: String, required: true},
-    marca: {type: String, required: true},
+    marca: {type: String},
+    referencia: {type: String, required: true},
     selectedFile:String,
     title:String,
     cotizaciones: [

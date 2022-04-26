@@ -4,10 +4,13 @@ import { deepPurple } from '@material-ui/core/colors';
 export default makeStyles((theme) => ({
   purple: {
     color: theme.palette.getContrastText(deepPurple[900]),
-    backgroundColor: deepPurple[600],
-    marginLeft: '10px'
+    marginRight: '5px',
   },
   menu:{
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    width:'100%'
+  },
+  menuChoose:{
+    width:'220px'
   }
 }));

@@ -11,6 +11,6 @@ export default makeStyles((theme) => ({
     width:'100%'
   },
   menuChoose:{
-    width:'220px'
+    width:'145px',
   }
 }));

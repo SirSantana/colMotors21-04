@@ -5,7 +5,6 @@ import Layout from "../../components/Layout/Layout";
 import Posts from "../../components/Posts/Posts";
 import DBConnect from "../../libs/dbConnect";
 import postModel from "../../models/postModel";
-import Contador from "../../utils/contador";
 
 
 export default function Prueba({ Postss }) {

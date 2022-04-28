@@ -2,7 +2,6 @@ import * as api from '../Api/index'
 import { AUTH, GETUSER, GETUSERS } from '../type'
 
 export const signin = (form, router)=> async(dispatch)=>{
-    console.log(form);
     try {
         const {data} = await api.signin(form)
         dispatch({type: AUTH, data})

@@ -15,7 +15,7 @@ import {useRouter } from 'next/router'
 import Input from "./Input";
 import useStyles from "./styles";
 import valid from "../../libs/valid";
-import { signin, signup } from "../../Reducers/Actions/authActions";
+import { signin, signup } from "../../reducers/Actions/authActions";
 import { useDispatch } from "react-redux";
 
 const initialState = {

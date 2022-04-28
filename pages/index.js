@@ -1,12 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Layout from '../components/Layout/Layout'
 import {useRouter} from 'next/router'
 import { Button } from"@material-ui/core";
-import { LOGOUT } from '../Reducers/type'
+import { LOGOUT } from '../reducers/type'
 import { useDispatch } from 'react-redux'
 
 export default function Home() {

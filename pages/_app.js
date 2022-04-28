@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Provider } from 'react-redux';
-import store from '../Reducers/store'
+import store from '../reducers/store';
 
 const theme = createTheme({ 
   palette: {

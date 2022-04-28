@@ -1,5 +1,7 @@
 import '../styles/globals.css'
 import { createTheme, ThemeProvider } from "@material-ui/core";
+import { Provider } from 'react-redux';
+import store from '../Reducers/store'
 
 const theme = createTheme({ 
   palette: {
@@ -23,7 +25,11 @@ const theme = createTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
+      <Provider store={store}>
+
   <Component {...pageProps} />
+  </Provider>
+
     </ThemeProvider>
   )
   

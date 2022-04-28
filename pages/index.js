@@ -6,21 +6,23 @@ import Link from 'next/link'
 import Layout from '../components/Layout/Layout'
 import {useRouter} from 'next/router'
 import { Button } from"@material-ui/core";
+import { LOGOUT } from '../Reducers/type'
+import { useDispatch } from 'react-redux'
 
 export default function Home() {
   const [user, setUser] = useState(null);
+  const dispatch = useDispatch()
   const router = useRouter()
   const logout = () => {
-    // dispatch({ type: LOGOUT });
+    dispatch({ type: LOGOUT });
     router.push("/");
     setUser(null);
   };
 
-  // console.log(ress);
 
-  // useEffect(()=>{
-  //   setRess(data?.find(ele=> ele.id=== 1))
-  // },[])
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [router,dispatch]);
   
   return (
     <Layout title="Lobby | colMotors">

@@ -1,4 +1,4 @@
-import Form from "../../components/Form";
+import SignUp from "../../components/Auth";
 import Layout from "../../components/Layout/Layout";
 
 
@@ -6,8 +6,8 @@ import Layout from "../../components/Layout/Layout";
 export default function Login(){
     return(
         <>
-        <Layout>
-        <Form/>
+        <Layout title={'Auth | colMotors'}>
+        <SignUp/>
         </Layout>
         </>
     )

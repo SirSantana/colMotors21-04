@@ -26,8 +26,7 @@ import { useEffect, useState } from "react";
 import moment from "moment";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
-import logoChevrolet from "../../../public/images/LOGO_CHEVROLET.png";
-import { DELETE } from "../../../reducers/types";
+
 
 export default function PostCo({ Post}) {
   const classes = useStyles();

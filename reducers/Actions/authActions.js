@@ -8,7 +8,7 @@ export const signin = (form, router)=> async(dispatch)=>{
         router.push("/home")
 
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
     }
 }
 export const signup = (form, router)=> async(dispatch)=>{
@@ -19,7 +19,7 @@ export const signup = (form, router)=> async(dispatch)=>{
         router.push("/home")
 
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
     }
 }
 

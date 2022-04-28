@@ -28,7 +28,7 @@ import useStyles from "./styles";
 import { useRouter } from "next/router";
 
 
-export default function PostCo({ Post}) {
+export default function PostCo({Post}) {
   const classes = useStyles();
   const { marca, repuesto, selectedFile, date, likes, referencia } = Post;
   const [user, setUser] = useState(null);

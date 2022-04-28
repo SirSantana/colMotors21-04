@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'http://localhost:3000/' || 'https://col-motors21-04.vercel.app/' });
+const API = axios.create({ baseURL: 'https://col-motors21-04.vercel.app/' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -13,7 +13,7 @@ API.interceptors.request.use((req) => {
 export const getAllPosts =()=> API.get("api/posts")
 export const createPost = (post)=> API.post("api/posts", post)
 //  export const favoritePost = (id)=> API.patch(`/api/posts/${id}/favoritePost`)
-export const deletePost = (id)=> API.delete(`/api/posts/${id}`)
+export const deletePost = (id)=> API.delete(`api/posts/${id}`)
 
 export const signin = (form)=> API.post("api/auth/login", form)
 export const signup = (form)=> API.post("api/auth/register", form)

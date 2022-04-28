@@ -36,8 +36,6 @@ export default function PostCo({ Post}) {
   const [visibleDelete, setVisibleDelete] = useState(false)
   const [message, setMessage] = useState(null)
 
-  console.log(user);
-  console.log(Post);
   // const dispatch = useDispatch();
   const router = useRouter();
   const idCreator = Post?.creator[0];

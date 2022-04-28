@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import userModel from "../../../models/userModel";
-import { createAccessToken } from "../../../components/libs/createToken";
+import { createAccessToken } from "../../../libs/createToken";
 import DBConnect from '../../../libs/dbConnect';
 
 DBConnect()

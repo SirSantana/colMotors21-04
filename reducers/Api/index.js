@@ -15,8 +15,8 @@ export const createPost = (post)=> API.post("api/posts", post)
 //  export const favoritePost = (id)=> API.patch(`/api/posts/${id}/favoritePost`)
 export const deletePost = (id)=> API.delete(`api/posts/${id}`)
 
-export const signin = (form)=> API.post("api/auth/login", form)
-export const signup = (form)=> API.post("api/auth/register", form)
+export const signin = (form)=> API.post("api/auth/login", form,{headers:{"Content-Type" : "application/json"}})
+export const signup = (form)=> API.post("api/auth/register", form,{headers:{"Content-Type" : "application/json"}})
 export const getAllUsers =()=> API.get("api/users")
 export const getUser = (id)=> API.get(`api/users/${id}`)
 

@@ -14,6 +14,7 @@ export default async (req, res) => {
 }
 
 export const login=async(req, res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     const {email, password} = req.body
     try {
         const userExist = await userModel.findOne({email})

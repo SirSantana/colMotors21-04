@@ -9,6 +9,7 @@ import DBConnect from "../../../libs/dbConnect";
 DBConnect();
 
 export default async function handler(req, res) {
+  res.set('Access-Control-Allow-Origin', '*');
   const { method } = req;
 
   switch (method) {

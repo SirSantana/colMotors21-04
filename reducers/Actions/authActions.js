@@ -35,7 +35,6 @@ export const getUsers = ()=> async(dispatch)=>{
 export const getUser = (userId)=> async(dispatch)=>{
     try {
         const {data} = await api.getUser(userId)
-        console.log(userId);
         dispatch({type: GETUSER, payload: data})
     } catch (error) {
         console.log(error);

@@ -53,7 +53,6 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (isSignup) {
       dispatch(signup(form, router));
     } else {
@@ -62,9 +61,9 @@ const SignUp = () => {
     }
   };
 
-  useEffect(()=>{
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  },[])
+  // useEffect(()=>{
+  //   setUser(JSON.parse(localStorage.getItem("profile")));
+  // },[])
   
 
   return (

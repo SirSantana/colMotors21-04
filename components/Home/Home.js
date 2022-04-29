@@ -8,18 +8,19 @@ import {
   } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getPosts } from "../../reducers/Actions/postActions";
 import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
   
-  export default function HomeComponent({Postss}) {
-    const router = useRouter()
+  export default function HomeComponent() {
     const classes = useStyles();
+    const dispatch = useDispatch()
 
-    
-    
-   
-    
+    useEffect(()=>{
+      dispatch(getPosts())
+    },[dispatch]) 
   
     return (
       <>
@@ -46,7 +47,7 @@ import useStyles from "./styles";
                   Cotizaciones 
                 </Typography>
               </Paper>
-              <Posts Posts={Postss}/>
+              <Posts/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form/>

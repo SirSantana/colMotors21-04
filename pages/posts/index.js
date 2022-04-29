@@ -5,9 +5,12 @@ import Layout from "../../components/Layout/Layout";
 import Posts from "../../components/Posts/Posts";
 import DBConnect from "../../libs/dbConnect";
 import postModel from "../../models/postModel";
-
+import { useDispatch } from "react-redux";
+import { getPosts } from "../../reducers/Actions/postActions";
 
 export default function Prueba() {
+  
+  
 
   return (
     <>

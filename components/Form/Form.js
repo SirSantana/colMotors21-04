@@ -2,6 +2,8 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import FileBase64 from "react-file-base64";
+import { useDispatch } from "react-redux";
+import { createPost } from "../../reducers/Actions/postActions";
 import MenuLogos from "../MenuLogos/MenuLogos";
 import useStyles from "./styles";
 // import {useDispatch} from 'react-redux'
@@ -15,6 +17,7 @@ const initial = {
 
 export default function Form() {
   const classes = useStyles();
+  const dispatch = useDispatch()
   // const dispatch = useDispatch()
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
@@ -26,24 +29,25 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createPosts({ ...postData, marca: marcaa });
+    dispatch(createPost({ ...postData, marca: marcaa }, router))
+    // createPosts({ ...postData, marca: marcaa });
     setPostData(initial);
   };
-  const createPosts = async (postData) => {
-    try {
-      const res = await fetch("/api/posts", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(postData),
-      });
-      const data = await res.json();
-      if (data) {
-        router.push("/home");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const createPosts = async (postData) => {
+  //   try {
+  //     const res = await fetch("/api/posts", {
+  //       method: "POST",
+  //       headers: { "Content-type": "application/json" },
+  //       body: JSON.stringify(postData),
+  //     });
+  //     const data = await res.json();
+  //     if (data) {
+  //       router.push("/home");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>

@@ -5,11 +5,15 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import HomeComponent from "../../components/Home/Home";
 import DBConnect from "../../libs/dbConnect";
-import postModel from '../../models/postModel'
+import { getPosts } from "../../reducers/Actions/postActions";
+import { useDispatch } from "react-redux";
+
+// import postModel from "../../models/postModel";
 
 
-export default function Home({Postss}) {
+export default function Home() {
   const [user, setUser] = useState();
+
   const router = useRouter();
   const [token, setToken] = useState(null)
 
@@ -20,6 +24,9 @@ export default function Home({Postss}) {
     setUser(null);
   };
 
+   
+    
+  
  
   // useEffect(() => {
   //   setToken(user?.token);
@@ -36,28 +43,28 @@ export default function Home({Postss}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent Postss={Postss}/>
+        <HomeComponent />
       </Layout>
     </>
   );
 }
-export async function getServerSideProps() {
-  try {
-    await DBConnect();
-    const res = await postModel.find({});
-    const Postss = res.map((el) => {
-      const Post = el.toObject();
+// export async function getServerSideProps() {
+//   try {
+//     await DBConnect();
+    // const res = await postModel.find({});
+//     const Postss = res.map((el) => {
+//       const Post = el.toObject();
 
-      Post._id = Post._id.toString();
-      Post.creator = Post.creator.toString();
-      Post.cotizaciones = Post.cotizaciones.toString();
-      Post.date = Post.date.toString();
-      return Post;
-    });
-    return {
-      props: { Postss },
-    };
-  } catch (error) {
-    console.log(error);
-  }
-}
+//       Post._id = Post._id.toString();
+//       Post.creator = Post.creator.toString();
+//       Post.cotizaciones = Post.cotizaciones.toString();
+//       Post.date = Post.date.toString();
+//       return Post;
+//     });
+//     return {
+//       props: { Postss },
+//     };
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }

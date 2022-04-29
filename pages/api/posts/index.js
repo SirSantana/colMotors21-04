@@ -8,38 +8,35 @@ DBConnect()
 
 export default async function handler(req, res){
     switch (req.method) {
+        case 'GET':
+            await getPosts(req,res)
         case 'POST':
             await createPost(req, res)
-            break;
     
         default:
             res.status(403).json({success:false, error: 'Ha ocurrido un error'})
     }
 }
-
+export const getPosts = async (req, res) => {
+      try {
+        const posts = await postModel.find();
+        console.log(posts);
+        res.status(200).json(posts);
+      } catch (error) {
+        res.status(403).json(error);
+      }
+    };
 export const createPost=async(req, res)=>{
+    const {body} = req;
 
-    console.log(req.userId);
     try {
-        const {body, userId} = req;
+        const newPost = new postModel(body)
+        await newPost.save()
 
-    const newPost = new postModel(body)
-    const creator = await userModel.findById(userId)
-
-    await newPost.creator.push(creator)
-    await newPost.save()
-
-    await newPost.nombreCreador.push(creator?.name);
-    await newPost.save();
-
-    await creator.posts.push(newPost);
-    await creator.save();
-
-    res.status(200).json(newPost);
+        res.status(200).json({success: true, newPost})
         
     } catch (error) {
-        res.status(200).json({success: false, error})
-        
+        res.status(200).json({success: false, error}) 
     }
 }
 export const config = {

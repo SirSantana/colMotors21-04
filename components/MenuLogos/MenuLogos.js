@@ -26,7 +26,6 @@ export default function MenuLogos({ marca, setMarca }) {
 
   const handleClose = () => {
     setAnchorEl(null);
-    console.log("Hola");
   };
 
   return (
@@ -53,7 +52,7 @@ export default function MenuLogos({ marca, setMarca }) {
           }}
         >
           <Avatar
-            src={`/images/${marcaAuto}.png` || "/images/logoChevrolet.png"}
+            src={ marcaAuto ?`/images/${marcaAuto}.png` : '/images/logoChevrolet.png'}
             className={classes.purple}
             alt={"Hola"}
           >

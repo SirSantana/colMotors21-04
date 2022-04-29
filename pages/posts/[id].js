@@ -11,9 +11,10 @@ export default function PostPage({Post}) {
   const [message, setMessage] = useState('')
   // const user = JSON.parse(localStorage.getItem('profile'))
 
+  
   return (
     <Layout title={'Post | colMotors'}>
-      <PostCo Post={Post}  />
+      <PostCo  Post={Post}/>
     </Layout>
   );
 }

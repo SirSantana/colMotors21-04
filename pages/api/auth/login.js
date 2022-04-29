@@ -15,6 +15,7 @@ export default async (req, res) => {
 
 export const login=async(req, res)=>{
     const {email, password} = req.body
+    console.log(req.body);
     try {
         const userExist = await userModel.findOne({email})
 

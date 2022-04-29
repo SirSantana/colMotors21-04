@@ -1,13 +1,15 @@
 import * as api from "../Api/index";
 import {
   CREATE_POST,
-  DELETE_POST,
+  // CREATE_POST,
+  // DELETE_POST,
   END_LOADING,
 //   FAVORITE_POST,
   GET_ALL,
   GET_ONE_POST,
+  // GET_ONE_POST,
   START_LOADING,
-} from "../Types";
+} from "../type";
 
 export const getPost = (id) => async (dispatch) => {
   try {
@@ -29,14 +31,12 @@ export const getPosts = () => async (dispatch) => {
     console.log(error);
   }
 };
-export const createPost = (post) => async (dispatch) => {
-  console.log(post);
+export const createPost = (post, router) => async (dispatch) => {
 
   try {
     dispatch({ type: START_LOADING });
 
     const { data } = await api.createPost(post);
-    console.log(data);
     dispatch({ type: CREATE_POST, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {
@@ -51,11 +51,11 @@ export const createPost = (post) => async (dispatch) => {
 //     console.log(error);
 //   }
 // };
-export const deletePost = (id) => async (dispatch) => {
-  try {
-    await api.deletePost(id);
-    dispatch({ type: DELETE_POST, payload: id });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const deletePost = (id) => async (dispatch) => {
+//   try {
+//     await api.deletePost(id);
+//     dispatch({ type: DELETE_POST, payload: id });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

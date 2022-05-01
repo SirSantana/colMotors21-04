@@ -12,7 +12,7 @@ API.interceptors.request.use((req) => {
   }
   return req;
 });
-//  export const getOnePost = (id)=> API.get(`api/posts/${id}`)
+ export const getOnePost = (id)=> API.get(`api/posts/${id}`)
 
 export const getAllPosts =()=> API.get("api/posts",  )
 export const createPost = (post)=> API.post("api/posts", post)

@@ -8,7 +8,6 @@ import {
 //   FAVORITE_POST,
   GET_ALL,
   GET_ONE_POST,
-  // GET_ONE_POST,
   START_LOADING,
 } from "../type";
 

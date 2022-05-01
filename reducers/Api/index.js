@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL:  'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
+const API = axios.create({ baseURL: 
+  'http://localhost:3000/'|| 
+  'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
     'Access-Control-Allow-Origin': '*'
   } });
 

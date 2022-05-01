@@ -28,9 +28,9 @@ import useStyles from "./styles";
 import { useRouter } from "next/router";
 
 
-export default function PostCo({Post}) {
+export default function PostCo({OnePost}) {
   const classes = useStyles();
-  const { marca, repuesto, selectedFile, date, likes, referencia } = Post;
+  const { marca, repuesto, selectedFile, date, likes, referencia } = OnePost;
   const [user, setUser] = useState(null);
   const [imagen, setImagen] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false)
@@ -38,11 +38,11 @@ export default function PostCo({Post}) {
 
   // const dispatch = useDispatch();
   const router = useRouter();
-  const idCreator = Post?.creator[0];
-  const nombreCreador = Post?.nombreCreador?.toString();
+  const idCreator = OnePost?.creator[0];
+  const nombreCreador = OnePost?.nombreCreador?.toString();
 
   const handleDelete=()=>{
-    deletePost(Post._id)
+    deletePost(OnePost._id)
   }
 
   async function deletePost(id){
@@ -129,7 +129,7 @@ export default function PostCo({Post}) {
             <Avatar
               src={`/images/${marca}.png`}
               className={classes.purple}
-              alt={Post?.marca}
+              alt={OnePost?.marca}
             >
               {nombreCreador?.substr(0, 1)}
             </Avatar>
@@ -152,7 +152,7 @@ export default function PostCo({Post}) {
             </Typography> */}
             <Avatar
              className={classes.purple2}
-             alt={Post?.creador}
+             alt={OnePost?.creador}
              >
               {nombreCreador?.substr(0, 1)}
 
@@ -212,7 +212,7 @@ export default function PostCo({Post}) {
           </IconButton> */}
 
           {user?.result?._id === idCreator && (
-            <Link href={`/posts/${Post._id}`}>
+            <Link href={`/posts/${OnePost._id}`}>
             <a>
             <Button size="small" onClick={()=> setVisibleDelete(true)}>
               <Delete fontSize="small" />

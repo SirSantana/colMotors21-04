@@ -1,20 +1,27 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout/Layout";
 import PostCo from "../../components/Posts/Post/Post";
 import DBConnect from "../../libs/dbConnect";
 import postModel from "../../models/postModel";
+import { getPost } from "../../reducers/Actions/postActions";
 export default function PostPage() {
- 
+  const dispatch = useDispatch()
   const router = useRouter();
   const [message, setMessage] = useState('')
   // const user = JSON.parse(localStorage.getItem('profile'))
+  const {post} = useSelector(state=> state.posts)
 
-  
+
+  useEffect(()=>{
+    dispatch(getPost(id))
+  },[dispatch])
+
   return (
     <Layout title={'Post | colMotors'}>
-      <PostCo />
+      <PostCo OnePost={post}/>
     </Layout>
   );
 }

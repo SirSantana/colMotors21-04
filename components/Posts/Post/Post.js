@@ -26,15 +26,16 @@ import { useEffect, useState } from "react";
 import moment from "moment";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 
 export default function PostCo({OnePost}) {
   const classes = useStyles();
-  const { marca, repuesto, selectedFile, date, likes, referencia } = OnePost;
   const [user, setUser] = useState(null);
   const [imagen, setImagen] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false)
   const [message, setMessage] = useState(null)
+
 
   // const dispatch = useDispatch();
   const router = useRouter();
@@ -127,17 +128,17 @@ export default function PostCo({OnePost}) {
           className={classes.header}
           avatar={
             <Avatar
-              src={`/images/${marca}.png`}
+              src={`/images/${OnePost?.marca}.png`}
               className={classes.purple}
               alt={OnePost?.marca}
             >
               {nombreCreador?.substr(0, 1)}
             </Avatar>
           }
-          title={referencia}
+          title={OnePost?.referencia}
           classes={{ subheader: classes.subheader, title: classes.title }}
           subheaderTypographyProps={{ variant: "body2" }}
-          subheader={moment(date).fromNow()}
+          subheader={moment(OnePost?.date).fromNow()}
         />
         <Divider></Divider>
 
@@ -170,10 +171,10 @@ export default function PostCo({OnePost}) {
               style={{ marginLeft: "5px" }}
               className={classes.typography1}
             >
-              {repuesto}
+              {OnePost?.repuesto}
             </Typography>
           </div>
-          {selectedFile ? (
+          {OnePost?.selectedFile ? (
             <Button
               className={classes.button}
               color={imagen ? "secondary" : "primary"}
@@ -185,7 +186,7 @@ export default function PostCo({OnePost}) {
           ) : null}
           {imagen ? (
             <>
-              <CardMedia className={classes.media} image={Post.selectedFile} />
+              <CardMedia className={classes.media} image={OnePost?.selectedFile} />
             </>
           ) : null}
           
@@ -212,7 +213,7 @@ export default function PostCo({OnePost}) {
           </IconButton> */}
 
           {user?.result?._id === idCreator && (
-            <Link href={`/posts/${OnePost._id}`}>
+            <Link href={`/posts/${OnePost?._id}`}>
             <a>
             <Button size="small" onClick={()=> setVisibleDelete(true)}>
               <Delete fontSize="small" />

@@ -4,11 +4,12 @@ import useStyles from "./styles";
 import {CircularProgress, Grid} from "@material-ui/core"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { getPost } from "../../reducers/Actions/postActions";
 
 export default function Posts() {
   const {posts, isLoading} = useSelector(state=> state.posts)
   const classes = useStyles();
-
+  
   return (
       isLoading ? <CircularProgress/>:
         <Grid className={classes.container} container  alignItems='stretch' spacing={3} >

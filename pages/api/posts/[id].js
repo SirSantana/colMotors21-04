@@ -1,7 +1,9 @@
 import DBConnect from "../../../libs/dbConnect";
 import postModel from '../../../models/postModel'
 
+
 DBConnect()
+
 
 export default async function handler(req, res){
     switch (req.method) {

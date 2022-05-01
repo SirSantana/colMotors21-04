@@ -17,8 +17,8 @@ export default (state={ isLoading: true, posts:[],}, action) => {
         return {...state, posts: [...state.posts, action.payload]}
     //     case FAVORITE_POST:
     //         return {...state, posts:  state.posts.map(post=> post._id === action.payload._id ? action.payload: post)}
-        case DELETE_POST:
-        return {...state, posts: state.posts.filter((post) => post._id !== action.payload)}
+        // case DELETE_POST:
+        // return   {...state, posts: state.posts.filter((post) => post._id !== action.payload)}
       default:
         return state;
     }

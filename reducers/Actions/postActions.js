@@ -1,6 +1,7 @@
 import * as api from "../Api/index";
 import {
   CREATE_POST,
+  DELETE_POST,
   // CREATE_POST,
   // DELETE_POST,
   END_LOADING,

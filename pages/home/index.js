@@ -19,6 +19,22 @@ export default function Home({Postss}) {
   const [token, setToken] = useState(null)
 
 
+  const createPosts = async (postData) => {
+    try {
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(postData),
+      });
+      const data = await res.json();
+      if (data) {
+        router.push("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const logout = () => {
     // dispatch({ type: LOGOUT });
     router.push("/");
@@ -44,7 +60,7 @@ export default function Home({Postss}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent Postss={Postss}/>
+        <HomeComponent Postss={Postss} createPosts={createPosts}/>
       </Layout>
     </>
   );

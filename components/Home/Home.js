@@ -14,7 +14,7 @@ import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
   
-  export default function HomeComponent({Postss}) {
+  export default function HomeComponent({Postss,createPosts}) {
     const classes = useStyles();
     // const dispatch = useDispatch()
 
@@ -50,7 +50,7 @@ import useStyles from "./styles";
               <Posts Postss={Postss}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Form/>
+              <Form createPosts={createPosts}/>
             </Grid>
           </Grid>
         </Container>

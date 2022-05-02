@@ -13,8 +13,8 @@ export default (state={ isLoading: true, posts:[],}, action) => {
         return {...state, post: action.payload.post}
     //   case GET_BY_SEARCH:
     //     return {...state, posts: action.payload.data}
-      case CREATE_POST:
-        return {...state, posts: [...state.posts, action.payload]}
+      // case CREATE_POST:
+      //   return {...state, posts: [...state.posts, action.payload]}
     //     case FAVORITE_POST:
     //         return {...state, posts:  state.posts.map(post=> post._id === action.payload._id ? action.payload: post)}
         // case DELETE_POST:

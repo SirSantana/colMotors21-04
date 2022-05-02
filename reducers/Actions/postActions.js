@@ -31,18 +31,18 @@ export const getPost = (id) => async (dispatch) => {
 //     console.log(error);
 //   }
 // };
-export const createPost = (post, router) => async (dispatch) => {
+// export const createPost = (post, router) => async (dispatch) => {
 
-  try {
-    dispatch({ type: START_LOADING });
+//   try {
+//     dispatch({ type: START_LOADING });
 
-    const { data } = await api.createPost(post);
-    dispatch({ type: CREATE_POST, payload: data });
-    dispatch({ type: END_LOADING });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+//     const { data } = await api.createPost(post);
+//     dispatch({ type: CREATE_POST, payload: data });
+//     dispatch({ type: END_LOADING });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 // export const favoritePost = (id) => async (dispatch) => {
 //   try {
 //     const { data } = await api.favoritePost(id);

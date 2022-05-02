@@ -15,7 +15,7 @@ const initial = {
   selectedFile: "",
 };
 
-export default function Form() {
+export default function Form({createPosts}) {
   const classes = useStyles();
   const dispatch = useDispatch()
   // const dispatch = useDispatch()
@@ -29,25 +29,11 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost({ ...postData, marca: marcaa }, router))
-    // createPosts({ ...postData, marca: marcaa });
+    // dispatch(createPost({ ...postData, marca: marcaa }, router))
+    createPosts({ ...postData, marca: marcaa });
     setPostData(initial);
   };
-  // const createPosts = async (postData) => {
-  //   try {
-  //     const res = await fetch("/api/posts", {
-  //       method: "POST",
-  //       headers: { "Content-type": "application/json" },
-  //       body: JSON.stringify(postData),
-  //     });
-  //     const data = await res.json();
-  //     if (data) {
-  //       router.push("/home");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  
 
   return (
     <>

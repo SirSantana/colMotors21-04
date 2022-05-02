@@ -6,14 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPost } from "../../reducers/Actions/postActions";
 
-export default function Posts() {
-  const {posts, isLoading} = useSelector(state=> state.posts)
+export default function Posts({Postss}) {
+  // const {posts, isLoading} = useSelector(state=> state.posts)
   const classes = useStyles();
   
   return (
-      isLoading ? <CircularProgress/>:
+      // isLoading ? <CircularProgress/>:
         <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
-            {posts?.map((Post)=>(
+            {Postss?.map((Post)=>(
                 <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
                     <PostCo OnePost={Post} />
                     

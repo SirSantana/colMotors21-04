@@ -7,11 +7,12 @@ import HomeComponent from "../../components/Home/Home";
 import DBConnect from "../../libs/dbConnect";
 import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch } from "react-redux";
+import postModel from "../../models/postModel";
 
 // import postModel from "../../models/postModel";
 
 
-export default function Home() {
+export default function Home({Postss}) {
   const [user, setUser] = useState();
 
   const router = useRouter();
@@ -43,28 +44,28 @@ export default function Home() {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent />
+        <HomeComponent Postss={Postss}/>
       </Layout>
     </>
   );
 }
-// export async function getServerSideProps() {
-//   try {
-//     await DBConnect();
-    // const res = await postModel.find({});
-//     const Postss = res.map((el) => {
-//       const Post = el.toObject();
+export async function getServerSideProps() {
+  try {
+    await DBConnect();
+    const res = await postModel.find({});
+    const Postss = res.map((el) => {
+      const Post = el.toObject();
 
-//       Post._id = Post._id.toString();
-//       Post.creator = Post.creator.toString();
-//       Post.cotizaciones = Post.cotizaciones.toString();
-//       Post.date = Post.date.toString();
-//       return Post;
-//     });
-//     return {
-//       props: { Postss },
-//     };
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+      Post._id = Post._id.toString();
+      Post.creator = Post.creator.toString();
+      Post.cotizaciones = Post.cotizaciones.toString();
+      Post.date = Post.date.toString();
+      return Post;
+    });
+    return {
+      props: { Postss },
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}

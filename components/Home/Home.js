@@ -14,13 +14,13 @@ import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
   
-  export default function HomeComponent() {
+  export default function HomeComponent({Postss}) {
     const classes = useStyles();
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    useEffect(()=>{
-      dispatch(getPosts())
-    },[dispatch]) 
+    // useEffect(()=>{
+    //   dispatch(getPosts())
+    // },[dispatch]) 
   
     return (
       <>
@@ -47,7 +47,7 @@ import useStyles from "./styles";
                   Cotizaciones 
                 </Typography>
               </Paper>
-              <Posts/>
+              <Posts Postss={Postss}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form/>

@@ -21,16 +21,16 @@ export const getPost = (id) => async (dispatch) => {
     console.log({ message: error.message });
   }
 };
-export const getPosts = () => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
-    const { data } = await api.getAllPosts();
-    dispatch({ type: GET_ALL, payload: data });
-    dispatch({ type: END_LOADING });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const getPosts = () => async (dispatch) => {
+//   try {
+//     dispatch({ type: START_LOADING });
+//     const { data } = await api.getAllPosts();
+//     dispatch({ type: GET_ALL, payload: data });
+//     dispatch({ type: END_LOADING });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 export const createPost = (post, router) => async (dispatch) => {
 
   try {

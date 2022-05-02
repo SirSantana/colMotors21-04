@@ -21,12 +21,12 @@ export default function Home({Postss}) {
 
   const createPosts = async (postData) => {
     try {
-      const res = await fetch("/api/posts", {
+      const res = await fetch("https://col-motors21-04.vercel.app/api/posts", {
         method: "POST",
-        headers: { "Content-type": "application/json" },
+        headers: {"Content-type": "application/json"},
         body: JSON.stringify(postData),
       });
-      const data = await res.json();
+      const data = res;
       if (data) {
         router.push("/home");
       }
@@ -68,7 +68,7 @@ export default function Home({Postss}) {
 export async function getServerSideProps() {
   try {
     await DBConnect();
-    const res = await postModel.find({});
+    const res = await postModel.find();
     const Postss = res.map((el) => {
       const Post = el.toObject();
 

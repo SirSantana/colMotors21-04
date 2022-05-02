@@ -10,7 +10,6 @@ import { getPosts } from "../../reducers/Actions/postActions";
 
 export default function Prueba({Postss}) {
   
-  console.log(Postss);
 
   return (
     <>

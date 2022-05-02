@@ -19,8 +19,8 @@ export default async function handler(req, res){
 }
 export const getPosts = async (req, res) => {
       try {
-        const posts = await postModel.find();
-        res.status(200).json(posts);
+        const posts = await postModel.find({});
+        res.status(200).json({posts});
       } catch (error) {
         res.status(403).json(error);
       }
@@ -28,7 +28,6 @@ export const getPosts = async (req, res) => {
 export const createPost=async(req, res)=>{
     const {body} = req;
     try {
-      
         const newPost = new postModel(body)
         await newPost.save()
         res.status(200).json({success: true, newPost})

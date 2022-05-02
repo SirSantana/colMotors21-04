@@ -11,6 +11,14 @@ const nextConfig = {
     ACCESS_TOKEN_SECRET: "test",
         REFRESH_TOKEN_SECRET: "test",
   },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/api/posts',
+  //       destination: 'http://localhost:3000/posts',
+  //     },
+  //   ]
+  // },
 }
 
 module.exports = nextConfig

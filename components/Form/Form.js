@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { createPost } from "../../reducers/Actions/postActions";
 import MenuLogos from "../MenuLogos/MenuLogos";
 import useStyles from "./styles";
+import Link from 'next/link'
 // import {useDispatch} from 'react-redux'
 // import { createPost } from "../../Reducers/Actions/postActions";
 const initial = {
@@ -15,23 +16,23 @@ const initial = {
   selectedFile: "",
 };
 
-export default function Form({createPosts}) {
+export default function Form({createPosts, user}) {
   const classes = useStyles();
   const dispatch = useDispatch()
   // const dispatch = useDispatch()
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
   const router = useRouter();
-
+  console.log(user);
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(createPost({ ...postData, marca: marcaa }, router))
-    createPosts({ ...postData, marca: marcaa });
-    setPostData(initial);
+      // dispatch(createPost({ ...postData, marca: marcaa }, router))
+      createPosts({ ...postData, marca: marcaa });
+      setPostData(initial);    
   };
   
 
@@ -98,7 +99,7 @@ export default function Form({createPosts}) {
             disabled={
               marcaa !== null &&
               postData.referencia !== initial.referencia &&
-              postData.repuesto !== initial.repuesto
+              postData.repuesto !== initial.repuesto && user!==null
                 ? false
                 : true
             }
@@ -106,6 +107,16 @@ export default function Form({createPosts}) {
             {" "}
             Cotiza
           </Button>
+        
+          {user === null && 
+          <>
+          <Typography color="secondary" style={{fontSize:'14px'}}>¡Inicia Sesion o Registrate para poder cotizar!</Typography>
+          <Link href="/auth">
+          <a>
+          <Button color='secondary' variant='contained'>Inicia Sesion</Button>
+          </a>
+          </Link>
+          </>}
         </form>
       </div>
     </>

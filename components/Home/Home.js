@@ -8,9 +8,7 @@ import {
   } from "@material-ui/core";
 import { Refresh } from "@material-ui/icons";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getPosts } from "../../reducers/Actions/postActions";
+import { useEffect, useState } from "react";
 import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
@@ -19,12 +17,12 @@ import Link from 'next/link'
 
   export default function HomeComponent({Postss,createPosts}) {
     const classes = useStyles();
+    const [user, setUser] = useState(null)
     // const dispatch = useDispatch()
 
-    // useEffect(()=>{
-    //   dispatch(getPosts())
-    // },[dispatch]) 
-  
+    useEffect(()=>{
+      setUser(JSON.parse(localStorage.getItem('profile')))
+    },[])
     return (
       <>
         {/* {user? */}
@@ -56,10 +54,10 @@ import Link from 'next/link'
                 </Link>
 
               </Paper>
-              <Posts Postss={Postss}/>
+              <Posts Postss={Postss} user={user}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Form createPosts={createPosts}/>
+              <Form createPosts={createPosts} user={user}/>
             </Grid>
           </Grid>
         </Container>

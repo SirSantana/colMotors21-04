@@ -20,8 +20,8 @@ export default makeStyles((theme) => ({
  
   card1: {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: '5px',
     height: '60px',
@@ -30,6 +30,7 @@ export default makeStyles((theme) => ({
     color: 'white',
     content: 'fit-content',
     marginBottom:"20px",
+    paddingRight:'20px',
   },
   gridContainer: {
     [theme.breakpoints.down('xs')]: {

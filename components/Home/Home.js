@@ -6,6 +6,7 @@ import {
     Paper,
     AppBar,
   } from "@material-ui/core";
+import { Refresh } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -13,7 +14,9 @@ import { getPosts } from "../../reducers/Actions/postActions";
 import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
-  
+import Link from 'next/link'
+
+
   export default function HomeComponent({Postss,createPosts}) {
     const classes = useStyles();
     // const dispatch = useDispatch()
@@ -42,10 +45,16 @@ import useStyles from "./styles";
               >
                 
               </AppBar>     */}
-              <Paper  raised="true" elevation={6} className={classes.card1}>
+              <Paper raised="true" elevation={6} className={classes.card1}>
                 <Typography className={classes.typography}>
                   Cotizaciones 
                 </Typography>
+                <Link href={'/home'}>
+                <a>
+                <Refresh fontSize="medium"/>
+                </a>
+                </Link>
+
               </Paper>
               <Posts Postss={Postss}/>
             </Grid>

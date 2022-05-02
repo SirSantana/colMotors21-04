@@ -1,0 +1,83 @@
+import {
+    Avatar,
+    Menu,
+    IconButton,
+    MenuItem,
+    Divider
+  } from "@material-ui/core";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import Link from "next/link";
+import useStyles from './styles'
+import {useEffect} from 'react'
+import { getPosts } from "../../Reducers/Actions/postActions";
+import { useRouter } from "next/router";
+
+export default function MenuPerfil({setUser, user, logout}){
+    const [anchorEl, setAnchorEl] = useState(null);
+    const classes = useStyles()
+    const dispatch = useDispatch()
+    const router = useRouter()    
+  const User = user?.result?._id
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+    
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
+
+      const handleLogout=(e)=>{
+        logout()
+      }
+      useEffect(() => {
+        dispatch(getPosts());
+      }, [ dispatch, router]);
+    return(
+        <>
+        <IconButton
+                size="medium"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+                className={classes.menu}
+              >
+                <Avatar src={user?.result.imageUrl} className={classes.purple} alt={user?.result.name}>
+              {user?.result?.name?.charAt(0)}
+            </Avatar>
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <Link href={`/users/${User}`}>
+                <a>
+                <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                </a>
+                </Link>
+                <Link href={`/users/micuenta/${User}`}>
+                <a>
+                <MenuItem onClick={handleClose}>Mis Preguntas</MenuItem>
+
+                </a>
+                </Link>
+                <Divider></Divider>
+                <MenuItem onClick={handleLogout}>Cerrar Sesion</MenuItem>
+              </Menu>
+        </>
+    )
+}

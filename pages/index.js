@@ -69,6 +69,11 @@ export default function Home() {
             <>
               <div>
                 <h2>1. Registrate o Inicia Sesion &rarr;</h2>
+                <Link href={"/home"}>
+                <a>
+                  <button>Ver Posts</button>
+                </a>
+                </Link>
               </div>
               <div className={styles.containerButtons}>
                 <Link href={"/auth"}>

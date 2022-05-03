@@ -14,6 +14,8 @@ const initial = {
   referencia: "",
   repuesto: "",
   selectedFile: "",
+  nombreCreador: '',
+  creator: ''
 };
 
 export default function Form({createPosts, user}) {
@@ -31,7 +33,7 @@ export default function Form({createPosts, user}) {
   const handleSubmit = (e) => {
     e.preventDefault();
       // dispatch(createPost({ ...postData, marca: marcaa }, router))
-      createPosts({ ...postData, marca: marcaa });
+      createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id });
       setPostData(initial);    
   };
   
@@ -39,7 +41,7 @@ export default function Form({createPosts, user}) {
   return (
     <>
       <Paper className={classes.paper1} raised="true" elevation={6}>
-        <Typography className={classes.typo}>Cotiza tus repuestos</Typography>
+        <Typography className={classes.typo}>Cotiza tus repuestos </Typography>
       </Paper>
       <div className={classes.paper}>
         <MenuLogos marca={marcaa} setMarca={setMarca} />

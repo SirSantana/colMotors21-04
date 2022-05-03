@@ -5,22 +5,20 @@ export default makeStyles({
     card: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems:'center',
-        borderRadius: '15px',
+        borderRadius: '5px',
         height: '100%',
         columns: "5, 320px",
         maxWidth: "600px",
+        padding:'0',
+        width:'300px',
+        margin:0,
         fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI"
       },
-      container:{
-          marginRight: 'auto',
-          marginLeft: 'auto'
-      },
+      
       typography:{
         color: 'white',
         fontSize: '25px',
-        fontWeight:'500'
+        fontWeight:'600'
 
       },
       card1: {
@@ -28,13 +26,13 @@ export default makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems:'center',
-        borderRadius: '15px',
+        borderRadius: '5px',
         padding:0,
         height: '100%',
         marginRight: 'auto',
         marginLeft: 'auto',
         maxWidth: "600px",
-        width:'200px',
+        width:'300px',
         backgroundColor: "#1b333d",
         marginBottom: '10px'
       },

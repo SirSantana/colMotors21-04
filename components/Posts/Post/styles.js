@@ -54,7 +54,7 @@ export default makeStyles((theme)=>({
     width:'25px',
     padding:'5px',
     margin:0,
-    backgroundColor:'#1b333d',
+    backgroundColor:'gray',
     color:'white'
 
   },

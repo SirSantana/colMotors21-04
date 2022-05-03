@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -10,7 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
 import { useEffect, useState } from "react";
-import { getUser } from "../../../Reducers/Actions/authActions";
+import { getUser } from "../../../reducers/Actions/authActions";
 import {useRouter} from 'next/router'
 import Link from 'next/link'
 
@@ -35,7 +34,6 @@ export default function Perfil({userr}) {
           <Card raised={true} elevation={6} className={classes.card1}>
             <Typography className={classes.typography}>Mi Perfil</Typography>
           </Card>
-          <div className={classes.container}>
             <Card raised={true} elevation={6} className={classes.card}>
               <CardContent>
                 <Typography variant="body1" component="h2">
@@ -61,20 +59,30 @@ export default function Perfil({userr}) {
                  <b> Ventas: ...</b>
                 </Typography>
                 <Divider style={{ margin: "20px 0" }} />
-                <Link href="/">
+                <Link href="/home">
                 <a>
                 <Button
-                  color="primary"
+                  color="secondary"
                   variant="contained"
                 >
                   Regresar
                 </Button>
                 </a>
                 </Link>
+                <Link href="/home">
+                <a>
+                <Button 
+                  style={{marginLeft:'10px'}}
+                  color="primary"
+                  variant="contained"
+                >
+                  Editar Perfil
+                </Button>
+                </a>
+                </Link>
                 
               </CardContent>
             </Card>
-          </div>
         </>
       ) : (
         <>

@@ -11,6 +11,7 @@ export default function Home() {
   const [user, setUser] = useState(null);
   const dispatch = useDispatch()
   const router = useRouter()
+  
   const logout = () => {
     dispatch({ type: LOGOUT });
     router.push("/");

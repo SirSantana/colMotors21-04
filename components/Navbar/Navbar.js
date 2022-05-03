@@ -2,11 +2,11 @@ import Link from "next/link";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import Image from "next/image";
 import useStyles from "./styles";
-// import MenuPerfil from "../MenuPerfil/Menuperfil";
 import { useRouter } from "next/router";
 // import { useDispatch } from "react-redux";
-// import { LOGOUT } from "../../Reducers/Types";
 import { useEffect, useState } from "react";
+import MenuPerfil from "../MenuPerfil/Menuperfil";
+import { LOGOUT } from "../../reducers/type";
 // import decode from "jwt-decode";
 
 export default function Navbar() {
@@ -15,22 +15,22 @@ export default function Navbar() {
   const router = useRouter();
   // const dispatch = useDispatch();
 
-  // const logout = () => {
-  //   dispatch({ type: LOGOUT });
-  //   router.push("/");
-  //   setUser(null);
-  // };
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+    router.push("/");
+    setUser(null);
+  };
 
-  // useEffect(() => {
-  //   const token = user?.token;
+  useEffect(() => {
+    const token = user?.token;
 
-  //   if (token) {
-  //     const decodedToken = decode(token);
+    if (token) {
+      const decodedToken = decode(token);
 
-  //     if (decodedToken.exp * 1000 < new Date().getTime()) logout();
-  //   }
-  //   setUser(JSON.parse(localStorage.getItem("profile")));
-  // }, []);
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, []);
   return (
     <>
       <AppBar position="static" className={classes.appBar}>
@@ -53,15 +53,15 @@ export default function Navbar() {
           </a>
         </Link>
 
-        {/* {user?.result && (
+        {user?.result && (
           <Toolbar className={classes.toolbar}>
             <div className={classes.profile}>
               <div>
-                <MenuPerfil setUser={setUser} user={user} logout={logout} />
+                <MenuPerfil user={user} logout={logout} />
               </div>
             </div>
           </Toolbar>
-        )} */}
+        )}
       </AppBar>
     </>
   );

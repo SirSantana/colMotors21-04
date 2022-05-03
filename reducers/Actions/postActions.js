@@ -1,12 +1,12 @@
 import * as api from "../Api/index";
 import {
-  CREATE_POST,
-  DELETE_POST,
+  // CREATE_POST,
+  // DELETE_POST,
   // CREATE_POST,
   // DELETE_POST,
   END_LOADING,
 //   FAVORITE_POST,
-  GET_ALL,
+  // GET_ALL,
   GET_ONE_POST,
   START_LOADING,
 } from "../type";

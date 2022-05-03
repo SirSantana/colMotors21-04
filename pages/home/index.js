@@ -1,7 +1,6 @@
 import Layout from "../../components/Layout/Layout";
 import { useState, useEffect } from "react";
 // import decode from "jwt-decode";
-// import { LOGOUT } from "../../Reducers/Types";
 import { useRouter } from "next/router";
 import HomeComponent from "../../components/Home/Home";
 import DBConnect from "../../libs/dbConnect";
@@ -21,7 +20,8 @@ export default function Home({Postss}) {
 
   const createPosts = async (postData) => {
     try {
-      const res = await fetch("https://col-motors21-04.vercel.app/api/posts"
+      const res = await fetch("/api/posts" 
+      // https://col-motors21-04.vercel.app/api/posts",
       , {
         method: "POST",
         headers: {"Content-type": "application/json"},

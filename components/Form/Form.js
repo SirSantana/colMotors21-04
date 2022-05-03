@@ -8,7 +8,6 @@ import MenuLogos from "../MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import Link from 'next/link'
 // import {useDispatch} from 'react-redux'
-// import { createPost } from "../../Reducers/Actions/postActions";
 const initial = {
   marca: "",
   referencia: "",
@@ -25,7 +24,6 @@ export default function Form({createPosts, user}) {
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
   const router = useRouter();
-  console.log(user);
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
   };

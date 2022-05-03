@@ -10,10 +10,9 @@ import { useDispatch } from "react-redux";
 import Link from "next/link";
 import useStyles from './styles'
 import {useEffect} from 'react'
-import { getPosts } from "../../Reducers/Actions/postActions";
 import { useRouter } from "next/router";
 
-export default function MenuPerfil({setUser, user, logout}){
+export default function MenuPerfil({user, logout}){
     const [anchorEl, setAnchorEl] = useState(null);
     const classes = useStyles()
     const dispatch = useDispatch()
@@ -31,9 +30,9 @@ export default function MenuPerfil({setUser, user, logout}){
       const handleLogout=(e)=>{
         logout()
       }
-      useEffect(() => {
-        dispatch(getPosts());
-      }, [ dispatch, router]);
+      // useEffect(() => {
+      //   dispatch(getPosts());
+      // }, [ dispatch, router]);
     return(
         <>
         <IconButton

@@ -9,21 +9,19 @@ import {
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useStyles from "./styles";
-import PostPreguntas from '../MiCuenta/PostPreguntas'
+import PostPreguntas from './PostPreguntas'
 
-export default function MiCuenta() {
-  const {posts} = useSelector(state=> state.posts)
+export default function MiCuenta({ Posts}) {
   const classes = useStyles();
   const [user, setUser] = useState(null)
-  const userId = user?.result?._id ;
-  const findPosts = posts?.filter((post) => post.creator[0] === userId);
+  const userId = user?.result?._id;
+  const findPosts = Posts?.filter((post) => post.creator === userId);
+  console.log(userId);
+  console.log(findPosts);
 
-  
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[])
-  console.log(user);
-  console.log(findPosts);
   return (
     <>
         <Paper className={classes.section} >
@@ -40,7 +38,7 @@ export default function MiCuenta() {
             <Grid item xs>
                <Grid className={classes.grid} >
               {findPosts.map((post) => (
-                <PostPreguntas post={post} key={post._id} />
+                <PostPreguntas post={post} />
               ))}
             </Grid> 
         </Grid>
@@ -60,17 +58,3 @@ export default function MiCuenta() {
 }
 
 
-// export async function getServerSideProps({params}){
-//   console.log(params);
-//   try {
-//     await DBConnect();
-//     const res = await userModel.findById(params.id);
-//     const quest = res.toObject();
-//     quest._id = quest._id.toString();
-//     return {
-//       props: { quest },
-//     };
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }

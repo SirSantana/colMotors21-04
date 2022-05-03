@@ -36,10 +36,11 @@ export default function PostCo({OnePost}) {
   const [visibleDelete, setVisibleDelete] = useState(false)
   const [message, setMessage] = useState(null)
 
+  console.log(OnePost);
 
   // const dispatch = useDispatch();
   const router = useRouter();
-  const idCreator = OnePost?.creator[0];
+  const idCreator = OnePost?.creator;
   const nombreCreador = OnePost?.nombreCreador?.toString();
 
   const handleDelete=()=>{

@@ -50,11 +50,11 @@ export default makeStyles((theme)=>({
   },
    purple2: {
     color: 'black',
-    height:'30px',
-    width:'30px',
-    padding:0,
+    height:'25px',
+    width:'25px',
+    padding:'5px',
     margin:0,
-    backgroundColor:'#f50057',
+    backgroundColor:'#1b333d',
     color:'white'
 
   },
@@ -80,7 +80,8 @@ export default makeStyles((theme)=>({
     fontFamily: ' -apple-system, Segoe UI,',
     fontWeight:'600',
     padding:0,
-    fontSize:'22px'
+    fontSize:'22px',
+    lineHeight:'20px'
   },
   overlay: {
     color: 'black',

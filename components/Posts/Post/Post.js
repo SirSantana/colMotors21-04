@@ -72,7 +72,7 @@ export default function PostCo({OnePost}) {
   // };
   const handleCotizar = (e) => {
     if (user?.result) {
-      router.push(`/posts/${Post._id}`);
+      router.push(`/posts/${OnePost._id}`);
     } else {
       router.push("/auth");
     }

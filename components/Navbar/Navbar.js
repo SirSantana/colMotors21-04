@@ -3,17 +3,17 @@ import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import Image from "next/image";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
-// import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import MenuPerfil from "../MenuPerfil/Menuperfil";
 import { LOGOUT } from "../../reducers/type";
+import { useDispatch } from "react-redux";
 // import decode from "jwt-decode";
 
 export default function Navbar() {
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const router = useRouter();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const logout = () => {
     dispatch({ type: LOGOUT });
@@ -22,13 +22,13 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const token = user?.token;
+    // const token = user?.token;
 
-    if (token) {
-      const decodedToken = decode(token);
+    // if (token) {
+    //   const decodedToken = decode(token);
 
-      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
-    }
+    //   if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    // }
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, []);
   return (

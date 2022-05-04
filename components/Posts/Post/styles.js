@@ -42,10 +42,10 @@ export default makeStyles((theme)=>({
   
   purple: {
     color: 'black',
-    height:'80px',
-    width:'80px',
+    height:'60px',
+    width:'60px',
     padding:0,
-    margin:0
+    marginRight:'0'
 
   },
    purple2: {
@@ -79,9 +79,9 @@ export default makeStyles((theme)=>({
   title:{
     fontFamily: ' -apple-system, Segoe UI,',
     fontWeight:'600',
-    padding:0,
-    fontSize:'22px',
-    lineHeight:'20px'
+    paddingRight:'10px',
+    fontSize:'20px',
+    lineHeight:'20px',
   },
   overlay: {
     color: 'black',
@@ -114,7 +114,9 @@ export default makeStyles((theme)=>({
   header:{
     color:'#1b333d',
     fontFamily:"--apple-system, Segoe UI",
-    padding:'2px',
+    padding:'4px',
+    paddingTop:'8px',
+    margin:0
 
   },
   typography:{

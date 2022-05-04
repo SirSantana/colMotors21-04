@@ -49,7 +49,7 @@ export default function PostPreguntas({post}){
         <strong>Fecha:</strong> {post?.date}
         </Typography>
         </div>
-        <div>
+        <div style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
         <Link href={`/posts/${post?._id}`}>
         <a>
             <Button style={{marginRight:"10px", marginTop:'10px'}} color='primary' variant='contained'>Ver Cotizacion</Button>

@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 
 
-export default makeStyles({
+export default makeStyles((theme)=>({
     card: {
         display: 'flex',
         flexDirection: 'column',
@@ -12,7 +12,11 @@ export default makeStyles({
         padding:'0',
         width:'300px',
         margin:0,
-        fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI"
+        fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI",
+        [theme.breakpoints.down("sm")]: {
+          margin:0,
+          width: "95%",
+        },
       },
       
       typography:{
@@ -27,7 +31,7 @@ export default makeStyles({
         justifyContent: 'center',
         alignItems:'center',
         borderRadius: '5px',
-        padding:0,
+        padding:'5px',
         height: '100%',
         marginRight: 'auto',
         marginLeft: 'auto',
@@ -35,5 +39,5 @@ export default makeStyles({
         width:'300px',
         backgroundColor: "#1b333d",
         marginBottom: '10px'
-      },
-})
+},
+}))

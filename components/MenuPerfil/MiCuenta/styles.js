@@ -11,10 +11,6 @@ export default makeStyles((theme) => ({
    maxWidth: '200px'
   },
   
-  grid:{
-    marginLeft:'30px',
-    marginTop: '20px',
-  },
   card: {
     display: "flex",
     width: "100%",
@@ -27,13 +23,14 @@ export default makeStyles((theme) => ({
     },
   },
   section: {
-    width:'230px',
+    width:'300px',
+    maxWidth:'600px',
     display:'flex',
     alignItems:'center',
     justifyContent:'center',
     background:"#1b333d",
     marginBottom:'10px',
-    borderRadius: 10,
+    borderRadius: 5,
 
   },
   imageSection: {
@@ -52,17 +49,19 @@ export default makeStyles((theme) => ({
   navbar: {
     background: "#1b333d",
     color: "white",
-    padding: "10px",
-    fontWeight:'600'
+    padding: "5px",
+    fontWeight:'600',
+
 
   },
   container: {
-    borderRadius: 15,
+    borderRadius: 5,
     display: 'flex',
     width: '600px',
+    padding:'20px',
     [theme.breakpoints.down("sm")]: {
-      marginLeft: 0,
-      width: "300px",
+      margin:0,
+      width: "75%",
     },
   },
 

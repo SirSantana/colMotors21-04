@@ -20,7 +20,8 @@ export default function Home({Postss}) {
 
   const createPosts = async (postData) => {
     try {
-      const res = await fetch("https://col-motors21-04.vercel.app/api/posts"
+      const res = await fetch(
+      "https://col-motors21-04.vercel.app/api/posts"
       , {
         method: "POST",
         headers: {"Content-type": "application/json"},

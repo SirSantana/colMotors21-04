@@ -10,5 +10,12 @@ export default makeStyles((theme)=>({
     height: '100%',
     padding: '0',
   },
+  buttons:{
+    display:'flex', flexDirection:'row',
+    [theme.breakpoints.down("sm")]: {
+      margin:0,
+      justifyContent:'center'
+    },
+  }
   
 }));

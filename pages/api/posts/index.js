@@ -1,8 +1,11 @@
 
 
+import jwt from "jsonwebtoken";
 
 import DBConnect from "../../../libs/dbConnect";
 import postModel from '../../../models/postModel'
+import userModel from '../../../models/userModel'
+const secret = 'test';
 
 DBConnect()
 
@@ -29,6 +32,9 @@ export const createPost=async(req, res)=>{
     const {body} = req;
     try {
         const newPost = new postModel(body)
+        const user = await userModel.findById(body.creator)
+        await user.posts.push(newPost)
+        await user.save()
         await newPost.save()
         res.status(200).json({success: true, newPost})
         

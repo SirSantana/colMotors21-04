@@ -31,11 +31,11 @@ export default function Form({createPosts, user}) {
   const handleSubmit = (e) => {
     e.preventDefault();
       // dispatch(createPost({ ...postData, marca: marcaa }, router))
-      createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id });
+      createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id } );
       setPostData(initial);    
   };
   
-
+  
   return (
     <>
       <Paper className={classes.paper1} raised="true" elevation={6}>

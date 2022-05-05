@@ -2,6 +2,7 @@ import { Button,Divider,Typography } from "@material-ui/core";
 import {ShareIcon} from '@material-ui/icons';
 import useStyles from './stylesPost'
 import {useDispatch} from 'react-redux'
+import Image from 'next/image'
 import { useEffect } from "react";
 import {useRouter} from 'next/router'
 import Link from 'next/link'
@@ -9,6 +10,7 @@ import Link from 'next/link'
 export default function PostPreguntas({post}){
     const router = useRouter()
     const dispatch = useDispatch()
+    const classes = useStyles()
     const handleDelete=()=>{
         deletePost(post?._id)
         router.push("/home")
@@ -44,12 +46,22 @@ export default function PostPreguntas({post}){
         </Typography>
         </div>
         
+        {
+          post?.selectedFile &&
+          <div>
+          <Image 
+          src={post?.selectedFile}
+          width='100px'
+          height='100px'
+          />
+        </div>
+        }
         <div>
         <Typography variant="body1" color="secondary">
         <strong>Fecha:</strong> {post?.date}
         </Typography>
         </div>
-        <div style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
+        <div  className={classes.buttons}>
         <Link href={`/posts/${post?._id}`}>
         <a>
             <Button style={{marginRight:"10px", marginTop:'10px'}} color='primary' variant='contained'>Ver Cotizacion</Button>

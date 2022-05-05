@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: "http://localhost:3000/" ||
+const API = axios.create({ baseURL: 
   'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
     'Access-Control-Allow-Origin': '*'
   } });
@@ -10,7 +10,7 @@ API.interceptors.request.use((req) => {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
   }
   return req;
-}); 
+});
  export const getOnePost = (id)=> API.get(`api/posts/${id}`)
 
 // export const getAllPosts =()=> API.get("api/posts"  )

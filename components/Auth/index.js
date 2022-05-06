@@ -45,7 +45,6 @@ const SignUp = () => {
     setForm(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
-  console.log(isSignup);
 
   };
   const handleChange = (e) =>
@@ -147,7 +146,7 @@ const SignUp = () => {
 
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Button onClick={switchMode}>
+              <Button onClick={switchMode} color='secondary' variant="outlined">
                 {isSignup
                   ? "Ya tienes una cuenta, Ingresa aquí"
                   : "No tienes una cuenta? Registrate aquí"}

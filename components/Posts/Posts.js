@@ -9,7 +9,6 @@ import { getPost } from "../../reducers/Actions/postActions";
 export default function Posts({Postss, user}) {
   // const {posts, isLoading} = useSelector(state=> state.posts)
   const classes = useStyles();
-  console.log(user);
   return (
       // isLoading ? <CircularProgress/>:
         <Grid className={classes.container} container  alignItems='stretch' spacing={3} >

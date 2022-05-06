@@ -16,8 +16,6 @@ export default function MiCuenta({ Posts}) {
   const [user, setUser] = useState(null)
   const userId = user?.result?._id;
   const findPosts = Posts?.filter((post) => post.creator === userId);
-  console.log(userId);
-  console.log(findPosts);
 
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))

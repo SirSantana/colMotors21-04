@@ -38,6 +38,23 @@ export default makeStyles((theme) => ({
       },
 
   },
+  paper2: {
+    padding: theme.spacing(2),
+    background:"#f50057",
+    color: 'white',
+    fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
+    justifyContent: 'center',
+    marginBottom:'10px',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    width:'100%',
+    [theme.breakpoints.down('xs')]: {
+      width:'90%',
+  
+      },
+
+  },
   btnFileBase:{
     margin:'10px',
     padding:'10px',

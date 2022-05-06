@@ -36,7 +36,6 @@ export default function PostCo({OnePost}) {
   const [visibleDelete, setVisibleDelete] = useState(false)
   const [message, setMessage] = useState(null)
 
-  console.log(OnePost);
 
   // const dispatch = useDispatch();
   const router = useRouter();
@@ -49,7 +48,8 @@ export default function PostCo({OnePost}) {
 
   async function deletePost(id){
     try {
-      const res = await fetch(`/api/posts/${id}`,{
+      const res = await fetch(`/api/posts/${id}`,
+      {
         method:'DELETE',
         headers:{'Content-type': 'application/json'},
         // body: JSON.stringify(id)

@@ -39,8 +39,18 @@ export default function Form({createPosts, user}) {
   return (
     <>
       <Paper className={classes.paper1} raised="true" elevation={6}>
-        <Typography className={classes.typo}>Cotiza tus repuestos </Typography>
+        <Typography className={classes.typo} >Cotiza tus repuestos </Typography>
       </Paper>
+      {user === null &&
+      <Paper className={classes.paper2} elevation={9}>
+      <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>Inicia Sesion o Registrate para poder Cotizar!</Typography>
+      <br/>
+      <Link href="/auth">
+          <a>
+          <Button  variant='contained' style={{fontSize:'15px', lineHeight:'18px', color:'black' ,backgroundColor:'white'}}>Aquí</Button>
+          </a>
+          </Link>
+      </Paper>}
       <div className={classes.paper}>
         <MenuLogos marca={marcaa} setMarca={setMarca} />
         <form
@@ -77,7 +87,7 @@ export default function Form({createPosts, user}) {
             postData.referencia !== initial.referencia &&
             postData.repuesto !== initial.repuesto ? null : (
               <Typography color="secondary" variant="body2">
-                Recuerda llenar todos los campos, la foto es opcional
+                *Recuerda llenar todos los campos, la foto es opcional
               </Typography>
             )}
 
@@ -93,7 +103,7 @@ export default function Form({createPosts, user}) {
             type="submit"
             className={classes.buttonSubmit}
             variant="contained"
-            color="secondary"
+            color="primary"
             size="medium"
             fullWidth
             disabled={
@@ -108,15 +118,11 @@ export default function Form({createPosts, user}) {
             Cotiza
           </Button>
         
-          {user === null && 
+          {/* {user === null && 
           <>
           <Typography color="secondary" style={{fontSize:'14px'}}>¡Inicia Sesion o Registrate para poder cotizar!</Typography>
-          <Link href="/auth">
-          <a>
-          <Button color='secondary' variant='contained'>Inicia Sesion</Button>
-          </a>
-          </Link>
-          </>}
+          
+          </>} */}
         </form>
       </div>
     </>

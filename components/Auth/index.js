@@ -139,8 +139,9 @@ const SignUp = () => {
               />
             )}
           </Grid>
+                {isSignup && 
           <Typography color='secondary' variant='body2'>Solo tenemos funcionamiento en Colombia, pronto llegaremos a tu país</Typography>
-
+        }
           <Button
             type="submit"
             fullWidth

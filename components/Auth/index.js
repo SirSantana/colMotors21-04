@@ -84,6 +84,7 @@ const SignUp = () => {
                 <Input
                   name="firstName"
                   label="Nombre"
+                  placeholder='James'
                   handleChange={handleChange}
                   autoFocus
                   half
@@ -91,21 +92,24 @@ const SignUp = () => {
                 <Input
                   name="lastName"
                   label="Apellido"
+                  placeholder='Rodriguez'
                   handleChange={handleChange}
                   half
                 />
                 <Input
               name="marca"
               label="Marca de Auto"
+              placeholder='Chevrolet Captiva'
               handleChange={handleChange}
               half
             />
             <Input
+            variant="outlined"
               name="pais"
-              label="País"
+              label="Ciudad y País"
+              placeholder='Bogota, Colombia'
               handleChange={handleChange}
               half
-
             />
               </>
             )}
@@ -113,6 +117,7 @@ const SignUp = () => {
             <Input
               name="email"
               label="Correo"
+              placeholder='james10@gmail.com'
               handleChange={handleChange}
               type="email"
             />
@@ -134,6 +139,8 @@ const SignUp = () => {
               />
             )}
           </Grid>
+          <Typography color='secondary' variant='body2'>Solo tenemos funcionamiento en Colombia, pronto llegaremos a tu país</Typography>
+
           <Button
             type="submit"
             fullWidth
@@ -146,6 +153,7 @@ const SignUp = () => {
 
           <Grid container justifyContent="flex-end">
             <Grid item>
+
               <Button onClick={switchMode} color='secondary' variant="outlined">
                 {isSignup
                   ? "Ya tienes una cuenta, Ingresa aquí"

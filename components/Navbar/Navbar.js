@@ -33,7 +33,7 @@ export default function Navbar() {
   }, []);
   return (
     <>
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="sticky" className={classes.appBar}>
         <Link href={"/"} className={classes.brandContainer}>
           <a className={classes.a}>
             <Image

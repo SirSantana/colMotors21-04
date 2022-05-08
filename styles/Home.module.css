@@ -87,6 +87,16 @@
   box-shadow: 0 0 10px rgb(255, 255, 255);
 
 }
+.card2 {
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  justify-content: center;
+  text-decoration: none;
+  max-width: 500px;
+
+}
 .containerButtons{
   display: flex;
   justify-content: center;

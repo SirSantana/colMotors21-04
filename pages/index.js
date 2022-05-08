@@ -6,6 +6,7 @@ import {useRouter} from 'next/router'
 import { Button } from"@material-ui/core";
 import { LOGOUT } from '../reducers/type'
 import { useDispatch } from 'react-redux'
+import Image from 'next/image'
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -100,9 +101,17 @@ export default function Home() {
           )}
         </section>
 
-        <a href="https://nextjs.org/learn" className={styles.card}>
-          <h2>Learn &rarr;</h2>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
+
+        
+        <a href="/home" className={styles.card2}>
+        <h2>2. Sigue estos pasos para cotizar &rarr;</h2>
+        <p></p>
+          
+        <Image
+          src={'/images/BocetoPasosCotizar2.png'}
+          width='600px'
+          height='500px'
+          />
         </a>
 
         <a

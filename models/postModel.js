@@ -14,6 +14,7 @@ const postModel = new mongoose.Schema({
     referencia: {type: String, required: true},
     selectedFile:String,
     title:String,
+    lugar:String,
     cotizaciones: [
         {
             type: mongoose.Schema.Types.ObjectId,

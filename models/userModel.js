@@ -11,6 +11,7 @@ const UserModel = new mongoose.Schema({
         ciudad: String,
         avatar:String
     },
+    pais:{type:String},
     marca:{type:String, required:true},
     id: {type: String},
     posts:[{

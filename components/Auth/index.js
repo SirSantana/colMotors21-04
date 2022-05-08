@@ -104,7 +104,6 @@ const SignUp = () => {
               half
             />
             <Input
-            variant="outlined"
               name="pais"
               label="Ciudad y País"
               placeholder='Bogota, Colombia'

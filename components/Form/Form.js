@@ -14,7 +14,8 @@ const initial = {
   repuesto: "",
   selectedFile: "",
   nombreCreador: '',
-  creator: ''
+  creator: '',
+  lugar:''
 };
 
 export default function Form({createPosts, user}) {
@@ -31,7 +32,7 @@ export default function Form({createPosts, user}) {
   const handleSubmit = (e) => {
     e.preventDefault();
       // dispatch(createPost({ ...postData, marca: marcaa }, router))
-      createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id } );
+      createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais } );
       setPostData(initial);    
   };
   

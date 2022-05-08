@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 }
 
 async function register(req, res) {
-  const { email, password, role, marca, firstName, lastName, confirmPassword } =
+  const { email, password, role, marca, firstName, lastName, confirmPassword, pais } =
     req.body;
   try {
     const errMsg = valid(email, password, confirmPassword);
@@ -38,6 +38,7 @@ async function register(req, res) {
       name: `${firstName} ${lastName}`,
       marca,
       role,
+      pais
     });
     if (!role) result.role.push("Cliente");
     await result.save();

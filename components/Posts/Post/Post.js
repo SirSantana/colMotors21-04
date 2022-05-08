@@ -36,7 +36,6 @@ export default function PostCo({OnePost}) {
   const [visibleDelete, setVisibleDelete] = useState(false)
   const [message, setMessage] = useState(null)
 
-
   // const dispatch = useDispatch();
   const router = useRouter();
   const idCreator = OnePost?.creator;
@@ -199,16 +198,16 @@ export default function PostCo({OnePost}) {
               style={{ marginLeft: "5px" }}
               variant="body1"
             >
-              Bogotá.Co
+              {OnePost?.lugar}
             </Typography>
           </div>
-          <Button
+          {/* <Button
             size="small"
             disabled={!user?.result}
             onClick={handleFavorite}
-          >
+          > */}
             {/* <Likes /> */}
-          </Button>
+          {/* </Button> */}
           {/* <IconButton aria-label="share">
             <Share />
           </IconButton> */}

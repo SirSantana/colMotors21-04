@@ -35,6 +35,7 @@ export default function PostCo({OnePost}) {
   const [imagen, setImagen] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false)
   const [message, setMessage] = useState(null)
+  const [cotizar, setCotizar] = useState(false)
 
   // const dispatch = useDispatch();
   const router = useRouter();
@@ -70,11 +71,12 @@ export default function PostCo({OnePost}) {
   //   router.push("/postEliminado");
   // };
   const handleCotizar = (e) => {
-    if (user?.result) {
-      router.push(`/posts/${OnePost._id}`);
-    } else {
-      router.push("/auth");
-    }
+    setCotizar(cotizar ? false: true)
+    // if (user?.result) {
+    //   router.push(`/posts/${OnePost._id}`);
+    // } else {
+    //   router.push("/auth");
+    // }
   };
 
   // const Likes = () => {
@@ -244,8 +246,13 @@ export default function PostCo({OnePost}) {
             Cotiza Ya!
           </Button>
         )}
+        {cotizar &&
+      <h2>Aqui puedes cotizar</h2>
+      }
+
       </Card>
 
+      
        {/* </a> */}
        {/* </Link> */}
       

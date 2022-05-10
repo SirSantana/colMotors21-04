@@ -15,8 +15,9 @@ export default function Home() {
   
   const logout = () => {
     dispatch({ type: LOGOUT });
-    router.push("/");
     setUser(null);
+
+    router.push("/");
   };
 
 
@@ -109,8 +110,8 @@ export default function Home() {
           
         <Image
           src={'/images/BocetoPasosCotizar2.png'}
-          width='600px'
-          height='500px'
+          width='700px'
+          height='600px'
           />
         </a>
 

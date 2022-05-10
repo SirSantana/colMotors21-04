@@ -1,46 +1,24 @@
-import Link from "next/link";
-
-import {
-  Card,
-  CardActions,
-  CardMedia,
-  CardContent,
-  Button,
-  Typography,
-  Divider,
-  IconButton,
-  Avatar,
-  CardHeader,
-} from "@material-ui/core";
-import Share from "@material-ui/icons/Share";
-import Delete from "@material-ui/icons/Delete";
-import Favorite from "@material-ui/icons/Favorite";
-import { FavoriteBorder } from "@material-ui/icons";
-import DirectionsCar from "@material-ui/icons/DirectionsCar";
-import Build from "@material-ui/icons/Build";
-import Person from "@material-ui/icons/Person";
-import Place from "@material-ui/icons/Place";
-import styles from '../../../styles/Button.module.css'
-
+import {Card,Button,Typography,Divider} from "@material-ui/core";
 import { useEffect, useState } from "react";
-import moment from "moment";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import FormCotizacion from "../../FormCotizacion/FormCotizacion";
+import PostHeader from "./PostHeader";
+import PostContent from "./PostContent";
+import PostActions from "./PostActions";
 
 
 export default function PostCo({OnePost}) {
   const classes = useStyles();
   const [user, setUser] = useState(null);
-  const [imagen, setImagen] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false)
   const [message, setMessage] = useState(null)
   const [cotizar, setCotizar] = useState(false)
-
-  // const dispatch = useDispatch();
   const router = useRouter();
+
+  const {id} = router.query
+  // const dispatch = useDispatch();
   const idCreator = OnePost?.creator;
-  const nombreCreador = OnePost?.nombreCreador?.toString();
 
   const handleDelete=()=>{
     deletePost(OnePost._id)
@@ -72,11 +50,11 @@ export default function PostCo({OnePost}) {
   // };
   const handleCotizar = (e) => {
     setCotizar(cotizar ? false: true)
-    // if (user?.result) {
-    //   router.push(`/posts/${OnePost._id}`);
-    // } else {
-    //   router.push("/auth");
-    // }
+    if (user?.result) {
+      router.push(`/posts/${OnePost._id}`);
+    } else {
+      router.push("/auth");
+    }
   };
 
   // const Likes = () => {
@@ -113,7 +91,7 @@ export default function PostCo({OnePost}) {
     <>
     {visibleDelete === true &&
     <>
-    <Card sx={{ maxWidth: "320px" }}  className={classes.card1} elevation={2}>
+    <Card sx={{ maxWidth: "300px" }}  className={classes.card1} elevation={2}>
     <Typography variant="body1">Esta seguro que quiere eliminar esta cotizacion?</Typography>
       <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
       <Button variant="contained" color='secondary' onClick={handleDelete}>Si</Button>
@@ -121,109 +99,21 @@ export default function PostCo({OnePost}) {
       </div>
     </Card>
       
-      </>
-       }
+      </>}
+
+      <div style={{display:'flex', flexDirection:'row'}}>
+        
        {/* <Link href={`/posts/${Post._id}`}> */}
        {/* <a> */}
-       <Card sx={{ maxWidth: 345 }} className={classes.card} elevation={2}>
-        <CardHeader
-          className={classes.header}
-          avatar={
-            <Avatar
-              src={`/images/${OnePost?.marca}.png`}
-              className={classes.purple}
-              alt={OnePost?.marca}
-            >
-              {nombreCreador?.substr(0, 1)}
-            </Avatar>
-          }
-          title={OnePost?.referencia}
-          classes={{ subheader: classes.subheader, title: classes.title }}
-          subheaderTypographyProps={{ variant: "body2" }}
-          subheader={moment(OnePost?.date).fromNow()}
-        />
-        <Divider></Divider>
+       <Card sx={{ width: '345px' }} className={classes.card} elevation={2}>
 
-        <CardContent style={{ width:'90%', display:'flex', flexDirection:'column',gap:'10px' }}>
-          <div style={{ display: "flex", flexDirecction: "row",alignItems:'center', }}>
-            {/* <Person style={{color: '#1b333d'}}/>
-            <Typography
-              style={{ marginLeft: "5px" }}
-              className={classes.typography}
-            >
-              {nombreCreador}
-            </Typography> */}
-            <Avatar
-             className={classes.purple2}
-             alt={OnePost?.creador}
-             >
-              {nombreCreador?.substr(0, 1)}
+          <PostHeader OnePost={OnePost}/>
+        
+          <Divider></Divider>
 
-            </Avatar>
-            <Typography
-              style={{ marginLeft: "5px" }}
-              className={classes.typography}
-            >
-              {nombreCreador}
-            </Typography> 
-          </div>
-          <div style={{ display: "flex", flexDirecction: "row", alignItems:'center',  }}>
-            <Build style={{color: '#1b333d'}}/>
-            <Typography
-              style={{ marginLeft: "5px" }}
-              className={classes.typography1}
-            >
-              {OnePost?.repuesto}
-            </Typography>
-          </div>
-          {OnePost?.selectedFile ? (
-            <Button
-              className={classes.button}
-              color={imagen ? "secondary" : "primary"}
-              variant="contained"
-              onClick={() => (imagen ? setImagen(false) : setImagen(true))}
-            >
-              {imagen ? "X" : "Revisa la foto"}
-            </Button>
-          ) : null}
-          {imagen ? (
-            <>
-              <CardMedia className={classes.media} image={OnePost?.selectedFile} />
-            </>
-          ) : null}
-          
-        </CardContent>
-        <CardActions style={{width:'90%', paddingLeft:'16px', paddingBottom:'5px'}}>
-          <div style={{ display: "flex", flexDirecction: "row",alignItems:'center',}}>
-            <Place style={{color: '#1b333d'}}/>
-            <Typography
-              style={{ marginLeft: "5px" }}
-              variant="body1"
-            >
-              {OnePost?.lugar}
-            </Typography>
-          </div>
-          {/* <Button
-            size="small"
-            disabled={!user?.result}
-            onClick={handleFavorite}
-          > */}
-            {/* <Likes /> */}
-          {/* </Button> */}
-          {/* <IconButton aria-label="share">
-            <Share />
-          </IconButton> */}
+          <PostContent OnePost={OnePost}/>
 
-          {user?.result?._id === idCreator && (
-            <Link href={`/posts/${OnePost?._id}`}>
-            <a>
-            <Button size="small" onClick={()=> setVisibleDelete(true)}>
-              <Delete fontSize="small" />
-            </Button>
-            </a>
-            </Link>
-          )}
-        </CardActions>
+          <PostActions user={user} OnePost={OnePost}/>
 
         {user?.result._id === idCreator ? (
           <Button
@@ -246,13 +136,16 @@ export default function PostCo({OnePost}) {
             Cotiza Ya!
           </Button>
         )}
-        {cotizar &&
-      <h2>Aqui puedes cotizar</h2>
-      }
+        
 
       </Card>
+          <div>
+      {cotizar && id !== undefined &&  <FormCotizacion user={user} OnePost={OnePost} />}
 
-      
+          </div>
+
+      </div>
+
        {/* </a> */}
        {/* </Link> */}
       

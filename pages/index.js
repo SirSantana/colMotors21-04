@@ -16,7 +16,6 @@ export default function Home() {
   const logout = () => {
     dispatch({ type: LOGOUT });
     setUser(null);
-
     router.push("/");
   };
 

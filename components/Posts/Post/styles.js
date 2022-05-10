@@ -37,7 +37,6 @@ export default makeStyles((theme)=>({
     padding: '10px',
     position: 'relative',
     minWidth: '230px',
-    width:'80%',
   },
   
   purple: {

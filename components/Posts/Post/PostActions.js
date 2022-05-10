@@ -6,7 +6,7 @@ import Link from "next/link";
 
 
 
-export default function PostActions({OnePost, user}){
+export default function PostActions({OnePost, user, setVisibleDelete}){
   const classes = useStyles();
   const idCreator = OnePost?.creator;
 

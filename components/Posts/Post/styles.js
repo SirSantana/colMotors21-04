@@ -14,6 +14,38 @@ export default makeStyles((theme)=>({
   fullHeightCard: {
     height: '90%',
   },
+  typo:{
+    fontSize: '20px',
+    fontFamily: 'Helvetica',
+    paddingRight:'20px',
+      margin:0
+
+},
+  header1:{
+    display:'flex',
+     color:'white',
+      marginBottom:'10px',
+      padding:'10px 20px',
+      alignItems:'center',
+      flexDirection:'row', 
+      justifyContent:'center', 
+      backgroundColor:"#1b333d"}
+  ,
+  container:{
+    display: 'flex',
+    flexDirection: 'row',
+    borderRadius: '5px',
+    height: '100%',
+    padding: '0',
+    justifyContent: 'center',
+    margin:0,
+    position: 'relative',
+    [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+
+      width:'84vw'
+    }
+  },
   card: {
     display: 'flex',
     flexDirection: 'column',
@@ -22,10 +54,13 @@ export default makeStyles((theme)=>({
     height: '100%',
     padding: '0',
     position: 'relative',
-    minWidth: '280px',
+    width:'100%',
+    maxWidth:'350px',
     [theme.breakpoints.down('sm')]: {
-      width:'85vw'
-    }
+  
+        width:'84vw'
+      }
+    
   },
   card1: {
     display: 'flex',
@@ -132,6 +167,16 @@ export default makeStyles((theme)=>({
     lineHeight:'1rem',
     fontWeight:'400'
   },
+  cotizarr:{
+    marginLeft:'20px',
+    minWidth:'300px',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft:'0',
+      minWidth:'250px',
+  
+    }
+  }
+  ,
   button:{
     alignItems:'bottom',
     width:'fit-content',
@@ -144,6 +189,6 @@ export default makeStyles((theme)=>({
     marginLeft:'auto',
     marginRight:'auto',
     marginBottom: '15px'
-  },
+  }
   
 }));

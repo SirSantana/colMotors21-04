@@ -9,23 +9,31 @@ export default makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     backgroundColor: "#255,255,255",
-    maxWidth: '350px'
+    margin:0,
+    width:'90%',
+    [theme.breakpoints.down('sm')]: {
+  
+        width:'90%'
+      }
   },
   header:{
     display:'flex',
      color:'white',
-      marginTop:'20px', 
       marginBottom:'10px',
       padding:'10px 20px',
       alignItems:'center',
-      flexDirection:'row', 
-      justifyContent:'space-between', 
-      backgroundColor:"#1b333d"}
-  ,
+      justifyContent:'center', 
+      backgroundColor:"#1b333d",
+      [theme.breakpoints.down('sm')]: {
+  
+        marginTop:'20px'
+      }
+  },
   typo:{
       fontSize: '20px',
       fontFamily: 'Helvetica',
-      paddingRight:'20px'
+      paddingRight:'20px',
+      margin:0
   },
   marca:{
     marginTop: '10px'

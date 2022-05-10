@@ -13,7 +13,7 @@ export default function Posts({Postss, user}) {
       // isLoading ? <CircularProgress/>:
         <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
             {Postss?.map((Post)=>(
-                <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
+                <Grid key={Post._id} item xs={12} sm={12} lg={4} md={9}>
                     <PostCo OnePost={Post} />
                     
                 </Grid>

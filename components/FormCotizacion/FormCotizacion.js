@@ -44,28 +44,15 @@ import { Build } from "@material-ui/icons";
     return (
       <>
   
-        <div style={{width:'350px'}}>
         <div className={classes.header}>
             <Typography gutterBottom className={classes.typo}>
-              <b>Cotización</b> 
+              <b>Tu Cotización</b> 
               
             </Typography>
-            <Image
-              src={`/images/${OnePost?.marca}.png`}
-              width='40'
-              height='40'
-              />
         </div>
         <Paper className={classes.paper} raised elevation={6}>
           <form onSubmit={handleSubmit}>
-            <Typography gutterBottom className={classes.typo}>
-                <b>Auto:</b>{OnePost?.referencia}
-            </Typography>
-
-            <Typography gutterBottom className={classes.typo}>
-            <Build style={{color: '#1b333d', marginRight:'5px'}}/>
-                {OnePost?.repuesto}
-            </Typography>
+            
             <TextField
               name="marca"
               label="Envia valor unitario, marcas/origen de los productos"
@@ -107,7 +94,6 @@ import { Build } from "@material-ui/icons";
             </Button>
           </form>
         </Paper>
-        </div>
       </>
     );
   }

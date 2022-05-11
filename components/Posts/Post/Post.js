@@ -42,6 +42,7 @@ export default function PostCo({ OnePost }) {
   const handleFavorite = (e) => {
     // dispatch(favoritePost(Post._id));
   };
+  
   // const handleDelete = () => {
   //   dispatch({type: DELETE});
   //   router.push("/postEliminado");

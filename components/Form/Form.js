@@ -21,27 +21,33 @@ const initial = {
 export default function Form({createPosts, user}) {
   const classes = useStyles();
   const dispatch = useDispatch()
+  const [change, setChange] = useState(false)
   // const dispatch = useDispatch()
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
   const router = useRouter();
+
+
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setChange(change ? false: true)
       // dispatch(createPost({ ...postData, marca: marcaa }, router))
-      createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais } );
-      setPostData(initial);    
+      createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
+      router.push(`/users/micuenta/${user?.result?._id}`)
+      setPostData(initial);
   };
-  
-  
   return (
     <>
       <Paper className={classes.paper1} raised="true" elevation={6}>
         <Typography className={classes.typo} >Cotiza tus repuestos </Typography>
       </Paper>
+
+
+      {change && <h2>Espera un momento...</h2>}
       {user === null &&
       <Paper className={classes.paper2} elevation={9}>
       <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>Inicia Sesion o Registrate para poder Cotizar!</Typography>

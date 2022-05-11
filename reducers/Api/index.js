@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({ baseURL:
-  'https://col-motors.vercel/' , mode:'cors',headers: {
+  'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
     'Access-Control-Allow-Origin': '*'
   } });
 

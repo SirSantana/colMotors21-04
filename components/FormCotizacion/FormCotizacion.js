@@ -65,28 +65,20 @@ import { Build } from "@material-ui/icons";
               rows={3}
               value={form.marca}
             />
-            <div className={classes.div}>
-              <TextField
-                name="garantia"
-                label="Garantía Meses"
-                required
-                className={classes.garantia1}
-                onChange={handleChange}
-                value={form.garantia}
-              />
+              
               <TextField
                 name="precio"
                 label="Valor Total"
                 onChange={handleChange}
                 className={classes.garantia}
                 required
+              variant="outlined"
                 value={form.precio}
               />
-            </div>
             
             <Button
               className={classes.button}
-              color="primary"
+              color="secondary"
               variant="contained"
               type="submit"
             >

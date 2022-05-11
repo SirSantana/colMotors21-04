@@ -57,7 +57,7 @@ export default function PostPreguntas({post}){
         </div>
         }
         <div>
-        <Typography variant="body1" color="secondary">
+        <Typography variant="body1" color="black">
         <strong>Fecha:</strong> {post?.date}
         </Typography>
         </div>

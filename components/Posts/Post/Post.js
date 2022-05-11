@@ -9,6 +9,7 @@ import PostActions from "./PostActions";
 import Image from "next/image";
 
 export default function PostCo({ OnePost }) {
+  console.log(OnePost);
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const [visibleDelete, setVisibleDelete] = useState(false);
@@ -23,6 +24,7 @@ export default function PostCo({ OnePost }) {
   const handleDelete = () => {
     deletePost(OnePost._id);
   };
+  console.log("Render");
 
   async function deletePost(id) {
     try {
@@ -125,12 +127,12 @@ export default function PostCo({ OnePost }) {
       )}
 
       <div className={classes.container}>
-        
         <div className={classes.card}>
           {id !== undefined && (
             <div className={classes.header1}>
               <Typography gutterBottom className={classes.typo}>
-                <b>Cotización Cliente</b>
+                {user?.result._id === idCreator ? <b>Tu Cotización</b> : <b>Cotización Cliente</b>}
+                
               </Typography>
             </div>
           )}
@@ -142,7 +144,11 @@ export default function PostCo({ OnePost }) {
 
             <PostContent OnePost={OnePost} />
 
-            <PostActions user={user} OnePost={OnePost} setVisibleDelete={setVisibleDelete} />
+            <PostActions
+              user={user}
+              OnePost={OnePost}
+              setVisibleDelete={setVisibleDelete}
+            />
 
             {user?.result._id === idCreator ? (
               <Button
@@ -153,6 +159,15 @@ export default function PostCo({ OnePost }) {
               >
                 Mira las Cotizaciones
               </Button>
+            ) : id !== undefined ? (
+              <Button
+                color="primary"
+                variant="contained"
+                fullWidth
+                className={classes.cotizar}
+              >
+                3 Vendedores ya cotizaron
+              </Button>
             ) : (
               <Button
                 color="secondary"
@@ -161,24 +176,27 @@ export default function PostCo({ OnePost }) {
                 className={classes.cotizar}
                 onClick={handleCotizar}
               >
-                Cotiza Ya!
+                Cotiza ya!
               </Button>
             )}
           </Card>
         </div>
 
-        {id !== undefined ?
-        <div className={classes.cotizarr}>
-        { id !== undefined && (
-          <FormCotizacion user={user} OnePost={OnePost} />
-        )}
-      </div>:
-      <div >
-      { id !== undefined && (
-        <FormCotizacion user={user} OnePost={OnePost} />
-      )}
-    </div>  
-      }
+        {user?.result._id !== OnePost.creator ? id !== undefined ? (
+          <div className={classes.cotizarr}>
+            {id !== undefined && (
+              <FormCotizacion user={user} OnePost={OnePost} />
+            )}
+          </div>
+        ) : (
+          <div>
+            {id !== undefined && (
+              <FormCotizacion user={user} OnePost={OnePost} />
+            )}
+          </div>
+        )
+        : null
+        }
       </div>
 
       {/* </a> */}

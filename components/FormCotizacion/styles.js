@@ -41,7 +41,8 @@ export default makeStyles((theme) => ({
   },
   garantia:{
     maxWidth: '150px',
-    minWidth: '50px'
+    minWidth: '50px',
+    marginTop:'20px'
   },
   button:{
     display: 'flex',

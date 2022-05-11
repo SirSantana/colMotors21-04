@@ -6,12 +6,14 @@ import Layout from "../../components/Layout/Layout";
 import PostCo from "../../components/Posts/Post/Post";
 import DBConnect from "../../libs/dbConnect";
 import postModel from "../../models/postModel";
+
+
+
 export default function PostPage({Post}) {
   const dispatch = useDispatch()
   const router = useRouter();
   const [message, setMessage] = useState('')
   // const user = JSON.parse(localStorage.getItem('profile'))
-
 
   
 

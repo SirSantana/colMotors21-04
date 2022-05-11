@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     USER: process.env.USER,
-    PASSWORD: process.env.PASSWORD,
+    PASSWORD: "C1Dgz8ycXDQVpHiB",
     BASE_URL:'http://localhost:3000',
     DBNAME: process.env.DBNAME,
     ACCESS_TOKEN_SECRET: "test",

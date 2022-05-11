@@ -9,7 +9,6 @@ import PostActions from "./PostActions";
 import Image from "next/image";
 
 export default function PostCo({ OnePost }) {
-  console.log(OnePost);
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const [visibleDelete, setVisibleDelete] = useState(false);
@@ -24,7 +23,6 @@ export default function PostCo({ OnePost }) {
   const handleDelete = () => {
     deletePost(OnePost._id);
   };
-  console.log("Render");
 
   async function deletePost(id) {
     try {

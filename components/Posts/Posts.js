@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPost } from "../../reducers/Actions/postActions";
 
-export default function Posts({Postss, user}) {
+export default function Posts({Postss}) {
   // const {posts, isLoading} = useSelector(state=> state.posts)
   const classes = useStyles();
   return (

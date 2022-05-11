@@ -166,7 +166,7 @@ export default function PostCo({ OnePost }) {
                 fullWidth
                 className={classes.cotizar}
               >
-                3 Vendedores ya cotizaron
+                3 Vendedores ya cotizaron!
               </Button>
             ) : (
               <Button

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const URL = `mongodb+srv://${process.env.USER}:${C1Dgz8ycXDQVpHiB}@cluster0.exgvi.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
+const URL = `mongodb+srv://${process.env.USER}:C1Dgz8ycXDQVpHiB@cluster0.exgvi.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 const DB = URL
 
 async function DBConnect(){

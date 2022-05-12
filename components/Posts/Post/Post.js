@@ -1,4 +1,4 @@
-import { Card, Button, Typography, Divider } from "@material-ui/core";
+import { Card, Button, Typography, Divider, CardHeader, Avatar } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
 import PostActions from "./PostActions";
 import Image from "next/image";
+import moment from "moment";
 
 export default function PostCo({ OnePost }) {
   const classes = useStyles();
@@ -15,6 +16,7 @@ export default function PostCo({ OnePost }) {
   const [message, setMessage] = useState(null);
   const [cotizar, setCotizar] = useState(false);
   const router = useRouter();
+  const nombreCreador = OnePost?.nombreCreador?.toString();
 
   const { id } = router.query;
   // const dispatch = useDispatch();
@@ -42,7 +44,7 @@ export default function PostCo({ OnePost }) {
   const handleFavorite = (e) => {
     // dispatch(favoritePost(Post._id));
   };
-  
+
   // const handleDelete = () => {
   //   dispatch({type: DELETE});
   //   router.push("/postEliminado");
@@ -137,8 +139,23 @@ export default function PostCo({ OnePost }) {
           )}
 
           <Card sx={{ width: "345px" }} className={classes.card} elevation={2}>
-            <PostHeader OnePost={OnePost} />
-
+            {/* <PostHeader OnePost={OnePost} /> */}
+            <CardHeader
+          className={classes.header}
+          avatar={
+            <Avatar
+              src={`/images/${OnePost?.marca}.png`}
+              className={classes.purple}
+              alt={OnePost?.marca}
+            >
+              {nombreCreador?.substr(0, 1)}
+            </Avatar>
+          }
+          title={OnePost?.referencia}
+          classes={{ subheader: classes.subheader, title: classes.title }}
+          subheaderTypographyProps={{ variant: "body2" }}
+          subheader={moment(OnePost?.date).fromNow()}
+        />
             <Divider></Divider>
 
             <PostContent OnePost={OnePost} />

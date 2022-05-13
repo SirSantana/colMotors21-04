@@ -2,7 +2,7 @@ import { Avatar, Button, CardContent, CardMedia, Typography } from "@material-ui
 import useStyles from "./styles";
 import Build from "@material-ui/icons/Build";
 import { useState } from "react";
-
+import Image from "next/image";
 
 
 export default function PostContent({OnePost}){
@@ -24,14 +24,18 @@ export default function PostContent({OnePost}){
 
             </Avatar>
             <Typography
-              style={{ marginLeft: "5px" }}
+              style={{ marginLeft: "5px", fontSize:'18px' }}
               className={classes.typography}
             >
               {nombreCreador}
             </Typography> 
           </div>
           <div style={{ display: "flex", flexDirecction: "row", alignItems:'center',  }}>
-            <Build style={{color: '#1b333d'}}/>
+            <Image
+            src={'/images/repuestosIcon.png'}
+            width={'30px'}
+            height={'30px'}
+            />
             <Typography
               style={{ marginLeft: "5px" }}
               className={classes.typography1}

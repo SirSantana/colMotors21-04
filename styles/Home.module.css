@@ -163,6 +163,7 @@ box-shadow: 0 0 30px rgb(255, 255, 255);
 }
 .btn{
   margin-right: 10px;
+
 }
 @media(max-width: 400px) {
   .grid {

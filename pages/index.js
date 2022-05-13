@@ -62,7 +62,7 @@ export default function Home() {
                     </Button>
                   </a>
                 </Link>
-                <Button onClick={logout} variant="contained" color="secondary">
+                <Button onClick={logout} variant="outlined" color="secondary">
                   Cerrar Sesion
                 </Button>
               </div>

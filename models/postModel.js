@@ -20,7 +20,7 @@ const postModel = new mongoose.Schema({
         idVendedor:String,
         precio:String,
         repuestos:String,
-    }]},
+    }], default:[]},
     likes:{
         type:[String],
         default:[]

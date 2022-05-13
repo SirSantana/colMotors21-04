@@ -117,8 +117,8 @@ export default makeStyles((theme)=>({
     fontFamily: ' -apple-system, Segoe UI,',
     fontWeight:'600',
     paddingRight:'10px',
-    fontSize:'20px',
-    lineHeight:'20px',
+    fontSize:'18px',
+    lineHeight:'18px',
   },
   overlay: {
     color: 'black',

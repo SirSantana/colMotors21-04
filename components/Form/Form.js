@@ -1,4 +1,4 @@
-import { TextField, Button, Typography, Paper } from "@material-ui/core";
+import { TextField, Button, Typography, Paper, ButtonBase } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import FileBase64 from "react-file-base64";
@@ -7,6 +7,7 @@ import { createPost } from "../../reducers/Actions/postActions";
 import MenuLogos from "../MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import Link from 'next/link'
+import Image from 'next/image'
 // import {useDispatch} from 'react-redux'
 const initial = {
   marca: "",
@@ -37,7 +38,6 @@ export default function Form({createPosts, user}) {
     setChange(change ? false: true)
       // dispatch(createPost({ ...postData, marca: marcaa }, router))
       createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
-      router.push(`/users/micuenta/${user?.result?._id}`)
       setPostData(initial);
   };
   return (
@@ -59,6 +59,8 @@ export default function Form({createPosts, user}) {
           </Link>
       </Paper>}
       <div className={classes.paper}>
+
+    
         <MenuLogos marca={marcaa} setMarca={setMarca} />
         <form
           autoComplete="off"
@@ -90,13 +92,7 @@ export default function Form({createPosts, user}) {
               className={classes.card}
             />
 
-            {marcaa !== null &&
-            postData.referencia !== initial.referencia &&
-            postData.repuesto !== initial.repuesto ? null : (
-              <Typography color="secondary" variant="body2">
-                *Recuerda llenar todos los campos, la foto es opcional
-              </Typography>
-            )}
+            
 
             <FileBase64
               type="file"
@@ -110,7 +106,7 @@ export default function Form({createPosts, user}) {
             type="submit"
             className={classes.buttonSubmit}
             variant="contained"
-            color="primary"
+            color="secondary"
             size="medium"
             fullWidth
             disabled={
@@ -124,7 +120,13 @@ export default function Form({createPosts, user}) {
             {" "}
             Cotiza
           </Button>
-        
+          {marcaa !== null &&
+            postData.referencia !== initial.referencia &&
+            postData.repuesto !== initial.repuesto ? null : (
+              <Typography color="secondary" variant="body2">
+                *Recuerda llenar todos los campos, la foto es opcional
+              </Typography>
+            )}
           {/* {user === null && 
           <>
           <Typography color="secondary" style={{fontSize:'14px'}}>¡Inicia Sesion o Registrate para poder cotizar!</Typography>

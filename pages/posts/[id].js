@@ -13,10 +13,9 @@ export default function PostPage({Post}) {
   const dispatch = useDispatch()
   const router = useRouter();
   const [message, setMessage] = useState('')
-  // const user = JSON.parse(localStorage.getItem('profile'))
+
 
   const createCotizacion=async(postData, id)=>{
-    console.log(postData, id);
     try {
       const res = await fetch(`/api/posts/${id}`,{
         method:'POST',
@@ -27,6 +26,7 @@ export default function PostPage({Post}) {
       console.log(error);
     }
   }
+  
 
   return (
     <Layout title={'Post | colMotors'}>

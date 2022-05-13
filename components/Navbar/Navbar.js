@@ -48,7 +48,7 @@ export default function Navbar() {
               align="center"
               outlined="none"
             >
-              colMotors
+              quarks
             </Typography>
           </a>
         </Link>

@@ -8,18 +8,21 @@ import PostContent from "./PostContent";
 import PostActions from "./PostActions";
 import Image from "next/image";
 import moment from "moment";
-
+import { useDispatch } from "react-redux";
+import iconCar from '../../../public/images/favicon.ico.png'
 export default function PostCo({ OnePost, createCotizacion }) {
   const classes = useStyles();
-  const [user, setUser] = useState(null);
   const [visibleDelete, setVisibleDelete] = useState(false);
   const [message, setMessage] = useState(null);
   const [cotizar, setCotizar] = useState(false);
   const router = useRouter();
   const nombreCreador = OnePost?.nombreCreador?.toString();
+  const [user, setUser]= useState(null)
+  const dispatch = useDispatch()
+
+
 
   const { id } = router.query;
-  // const dispatch = useDispatch();
   const idCreator = OnePost?.creator;
 
   const handleDelete = () => {
@@ -41,14 +44,7 @@ export default function PostCo({ OnePost, createCotizacion }) {
       console.log(error);
     }
   }
-  const handleFavorite = (e) => {
-    // dispatch(favoritePost(Post._id));
-  };
-
-  // const handleDelete = () => {
-  //   dispatch({type: DELETE});
-  //   router.push("/postEliminado");
-  // };
+  
   const handleCotizar = (e) => {
     setCotizar(cotizar ? false : true);
     if (user?.result) {
@@ -57,37 +53,11 @@ export default function PostCo({ OnePost, createCotizacion }) {
       router.push("/auth");
     }
   };
-
-  // const Likes = () => {
-  //   if (Post.favorites.length > 0) {
-  //     return Post.favorites.find(
-  //       (favorite) => favorite === user?.result?._id
-  //     ) ? (
-  //       <>
-  //         <FavoriteIcon fontSize="small" />
-  //         &nbsp;
-  //         {Post.favorites.length > 2
-  //           ? `Tu y  ${Post.favorites.length - 1} mas`
-  //           : `${Post.favorites.length} ${Post.favorites.length > 1 ? "" : ""}`}
-  //       </>
-  //     ) : (
-  //       <>
-  //         <FavoriteBorderIcon fontSize="small" />
-  //         &nbsp;{Post.favorites.length} {Post.favorites.length === 1 ? "" : ""}
-  //       </>
-  //     );
-  //   }
-
-  //   return (
-  //     <>
-  //       <FavoriteBorderIcon fontSize="small" />
-  //       &nbsp;
-  //     </>
-  //   );
-  // };
   useEffect(() => {
+
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+  }, [OnePost]);
+  
   return (
     <>
       {visibleDelete === true && (
@@ -144,18 +114,23 @@ export default function PostCo({ OnePost, createCotizacion }) {
           className={classes.header}
           avatar={
             <Avatar
-              src={`/images/${OnePost?.marca}.png`}
-              className={classes.purple}
-              alt={OnePost?.marca}
+            src={`/images/${OnePost?.marca}.png`}
+            className={classes.purple}
+            alt={OnePost?.marca}
             >
               {nombreCreador?.substr(0, 1)}
             </Avatar>
+            
           }
           title={OnePost?.referencia}
           classes={{ subheader: classes.subheader, title: classes.title }}
           subheaderTypographyProps={{ variant: "body2" }}
           subheader={moment(OnePost?.date).fromNow()}
+        
+          
         />
+        
+        
             <Divider></Divider>
 
             <PostContent OnePost={OnePost} />
@@ -166,7 +141,7 @@ export default function PostCo({ OnePost, createCotizacion }) {
               setVisibleDelete={setVisibleDelete}
             />
 
-            {user?.result._id === idCreator ? (
+            {user?.result?._id === idCreator ? (
               <Button
                 color="primary"
                 variant="contained"
@@ -198,7 +173,7 @@ export default function PostCo({ OnePost, createCotizacion }) {
           </Card>
         </div>
 
-        {user?.result._id !== OnePost.creator ? id !== undefined ? (
+        {/* {user?.result._id !== OnePost.creator ? id !== undefined ? (
           <div className={classes.cotizarr}>
             {id !== undefined && (
               <FormCotizacion user={user} OnePost={OnePost}  createCotizacion={createCotizacion}/>
@@ -211,6 +186,18 @@ export default function PostCo({ OnePost, createCotizacion }) {
             )}
           </div>
         )
+        : null
+        } */}
+
+        {user?.result._id !== OnePost.creator 
+        ? id !== undefined ?
+          OnePost ?
+          <h2>Ya cotizaste</h2>
+          :
+          <div className={classes.cotizarr}>
+              <FormCotizacion user={user} OnePost={OnePost}  createCotizacion={createCotizacion}/>
+          </div>
+          :null
         : null
         }
       </div>

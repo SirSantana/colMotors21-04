@@ -1,6 +1,6 @@
 import DBConnect from "../../../libs/dbConnect";
 import postModel from '../../../models/postModel'
-
+import userModel from '../../../models/userModel'
 
 DBConnect()
 
@@ -40,12 +40,18 @@ export const deletePost = async(req, res)=>{
 
 export const createCotizacion = async(req, res)=>{
     const {query:{id}} = req;
+    const {body} = req;
     try {
        const post = await postModel.findById(id)
-        await post.cotizaciones.push(req.body)
-        await post.save()
-        res.status(200).json({success: true, post})
+        await post.cotizaciones.push(body)
+        const user = await userModel.findById(body.idVendedor)
+        await user.cotizaciones.push(post._id)
+        await user.save()
 
+        await post.save()
+        await localStorage.setItem("profile", JSON.stringify(user))
+        res.status(200).json({success: true, post, user})
+        
     } catch (error) {
         res.status(200).json({success: false, error})
         

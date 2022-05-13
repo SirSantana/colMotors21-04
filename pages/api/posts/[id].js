@@ -11,6 +11,8 @@ export default async function handler(req, res){
             await deletePost(req, res)
         case 'GET':
             await getPost(req, res)
+        case 'POST':
+            await createCotizacion(req, res)
         default:
             break;
     }
@@ -30,6 +32,20 @@ export const deletePost = async(req, res)=>{
         await postModel.findByIdAndDelete(id)
         res.status(200).json({success: true, data:'Eliminado Correctamente'})
         
+    } catch (error) {
+        res.status(200).json({success: false, error})
+        
+    }
+}
+
+export const createCotizacion = async(req, res)=>{
+    const {query:{id}} = req;
+    try {
+       const post = await postModel.findById(id)
+        await post.cotizaciones.push(req.body)
+        await post.save()
+        res.status(200).json({success: true, post})
+
     } catch (error) {
         res.status(200).json({success: false, error})
         

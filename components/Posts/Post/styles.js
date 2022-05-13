@@ -29,7 +29,10 @@ export default makeStyles((theme)=>({
       alignItems:'center',
       flexDirection:'row', 
       justifyContent:'center', 
-      backgroundColor:"#1b333d"}
+      backgroundColor:"#1b333d",
+    borderRadius: "5px",
+
+    }
   ,
   container:{
     display: 'flex',

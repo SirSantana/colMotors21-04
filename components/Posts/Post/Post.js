@@ -9,7 +9,7 @@ import PostActions from "./PostActions";
 import Image from "next/image";
 import moment from "moment";
 
-export default function PostCo({ OnePost }) {
+export default function PostCo({ OnePost, createCotizacion }) {
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const [visibleDelete, setVisibleDelete] = useState(false);
@@ -201,13 +201,13 @@ export default function PostCo({ OnePost }) {
         {user?.result._id !== OnePost.creator ? id !== undefined ? (
           <div className={classes.cotizarr}>
             {id !== undefined && (
-              <FormCotizacion user={user} OnePost={OnePost} />
+              <FormCotizacion user={user} OnePost={OnePost}  createCotizacion={createCotizacion}/>
             )}
           </div>
         ) : (
           <div>
             {id !== undefined && (
-              <FormCotizacion user={user} OnePost={OnePost} />
+              <FormCotizacion user={user} OnePost={OnePost} createCotizacion={createCotizacion}/>
             )}
           </div>
         )

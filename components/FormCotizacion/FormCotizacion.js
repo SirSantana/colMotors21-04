@@ -13,18 +13,14 @@ import {
 import { Build } from "@material-ui/icons";
   
   const initial = {
-    marca: "",
+    repuestos: "",
     precio: "",
-    garantia: "",
     vendedor: "",
     idVendedor: "",
-    comentarios: [],
-    cliente:""
   };
-  export default function FormCotizacion({ OnePost,  user }) {
+  export default function FormCotizacion({ OnePost,  user, createCotizacion }) {
     const classes = useStyles();
     const [form, setForm] = useState(initial);
-    const dispatch = useDispatch();
     
   
     const handleChange = (e) => {
@@ -37,7 +33,7 @@ import { Build } from "@material-ui/icons";
   
     const handleSubmit = (e) => {
       e.preventDefault();
-    //   dispatch(postCotizacion(form, id));
+      createCotizacion({...form, vendedor:user?.result.name, idVendedor:user?.result._id}, OnePost._id)
       setForm(initial);
     //   setVisibleCotizacion(false);
     };
@@ -54,23 +50,23 @@ import { Build } from "@material-ui/icons";
           <form onSubmit={handleSubmit}>
             
             <TextField
-              name="marca"
+              name="repuestos"
               label="Envia valor unitario, marcas/origen de los productos"
               variant="outlined"
               fullWidth
               onChange={handleChange}
               multiline
-              className={classes.marca}
+              className={classes.repuestos}
               required
-              rows={3}
-              value={form.marca}
+              minRows={3}
+              value={form.repuestos}
             />
               
               <TextField
                 name="precio"
                 label="Valor Total"
                 onChange={handleChange}
-                className={classes.garantia}
+                className={classes.precio}
                 required
               variant="outlined"
                 value={form.precio}

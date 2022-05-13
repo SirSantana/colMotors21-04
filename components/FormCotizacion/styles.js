@@ -19,6 +19,7 @@ export default makeStyles((theme) => ({
   header:{
     display:'flex',
      color:'white',
+     borderRadius:'5px',
       marginBottom:'10px',
       padding:'10px 20px',
       alignItems:'center',

@@ -25,7 +25,7 @@ export const signup = (form, router,setMessage, setMessageError, setMessageLoad)
         router.push("/home")
 
     } catch (error) {
-        console.log(error.response);
+        console.log(error);
         setMessageLoad(null)
         setMessageError(error.response.data)
 

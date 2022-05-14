@@ -42,8 +42,8 @@ export default function PostCo({ OnePost }) {
         // body: JSON.stringify(id)
       });
       if (res) {
+        setMessage('Se ha eliminado correctamente')
         router.push("/home");
-        setMessage("Eliminado correctamente");
       }
     } catch (error) {
       console.log(error);
@@ -68,10 +68,15 @@ export default function PostCo({ OnePost }) {
 
           <Paper className={classes.paper2} elevation={3}>
           <Error style={{paddingRight:'10px'}}/>
-        <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Esta seguro que quiere eliminar esta cotizacion?</Typography>
+         <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>{message ? message :"Esta seguro que quiere eliminar esta cotizacion?" } </Typography>
+        
        <br/>
+       {message ? null:
+       <>
        <Button variant='contained' style={{marginRight:'10px'}} onClick={() => setVisibleDelete(false)}><Close fontSize='medium'/></Button>
         <Button variant='outlined'  color='primary' onClick={handleDelete}><Check fontSize='medium' /></Button>
+       </>
+       }
 
     </Paper>
           

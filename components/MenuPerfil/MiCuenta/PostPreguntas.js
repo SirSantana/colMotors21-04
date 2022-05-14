@@ -11,6 +11,7 @@ export default function PostPreguntas({post}){
     const router = useRouter()
     const dispatch = useDispatch()
     const classes = useStyles()
+    
     const handleDelete=()=>{
         deletePost(post?._id)
         router.push("/home")

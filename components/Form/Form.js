@@ -51,7 +51,7 @@ export default function Form({createPosts, user}) {
       {change && 
       <Paper className={classes.paper2} elevation={3} >
       <Check style={{paddingRight:'10px'}}/>
-    <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>La cotizacion se esta creando...</Typography>
+    <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>Cotizando...</Typography>
     </Paper>}
 
       {user === null &&

@@ -22,14 +22,16 @@ async function register(req, res) {
   const { email, password, role, marca, firstName, lastName, confirmPassword, pais } =
     req.body;
   try {
-    const errMsg = valid(email, password, confirmPassword);
-    if (errMsg) return res.status(400).json({ err: errMsg });
+    // const errMsg = valid(email, password, confirmPassword);
+    // if (errMsg) return res.status(400).json({ err: errMsg });
 
     const userExist = await userModel.findOne({ email });
 
-    if (userExist) return res.status(403).json("Ya existe una cuenta con ese correo");
+    if (userExist) return res.status(403).json("Datos invalidos o Email ya registrado");
+    if (password !== confirmPassword) return res.status(403).json("Datos invalidos");
 
     const pass = await bcrypt.hash(password, 10);
+
     const result = await userModel.create({
       email,
       password: pass,

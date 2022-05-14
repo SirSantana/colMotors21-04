@@ -8,6 +8,7 @@ import MenuLogos from "../MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import Link from 'next/link'
 import Image from 'next/image'
+import { Check } from "@material-ui/icons";
 // import {useDispatch} from 'react-redux'
 const initial = {
   marca: "",
@@ -43,13 +44,18 @@ export default function Form({createPosts, user}) {
   return (
     <>
       <Paper className={classes.paper1} raised="true" elevation={6}>
-        <Typography className={classes.typo} >Cotiza tus repuestos </Typography>
+        <Typography className={classes.typo}>Cotiza tus repuestos </Typography>
       </Paper>
 
 
-      {change && <h2>Espera un momento...</h2>}
+      {change && 
+      <Paper className={classes.paper2} elevation={3} >
+      <Check style={{paddingRight:'10px'}}/>
+    <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>La cotizacion se esta creando...</Typography>
+    </Paper>}
+
       {user === null &&
-      <Paper className={classes.paper2} elevation={9}>
+      <Paper className={classes.paper2} elevation={3}>
       <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>Inicia Sesion o Registrate para poder Cotizar!</Typography>
       <br/>
       <Link href="/auth">

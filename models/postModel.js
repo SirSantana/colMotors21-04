@@ -15,12 +15,12 @@ const postModel = new mongoose.Schema({
     selectedFile:String,
     title:String,
     lugar:String,
-    cotizaciones: {type:[{
-        vendedor:String,
-        idVendedor:String,
-        precio:String,
-        repuestos:String,
-    }], default:[]},
+    cotizaciones: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Cotizacion'
+        }
+    ],
     likes:{
         type:[String],
         default:[]

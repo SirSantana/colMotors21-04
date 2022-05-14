@@ -18,7 +18,7 @@ const UserModel = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref:'postModel'
   }],
-  cotizaciones: {type:Array},
+  cotizaciones: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cotizacion'}],
   calificacion: String,
   role: [String],
 

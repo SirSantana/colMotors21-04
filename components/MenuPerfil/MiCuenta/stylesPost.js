@@ -11,7 +11,7 @@ export default makeStyles((theme)=>({
     padding: '0',
   },
   buttons:{
-    display:'flex', flexDirection:'row',
+    display:'flex', flexDirection:'row', marginLeft:'20px',
     [theme.breakpoints.down("sm")]: {
       margin:0,
       justifyContent:'center'

@@ -1,25 +1,34 @@
 import * as api from '../Api/index'
 import { AUTH, GETUSER, GETUSERS } from '../type'
 
-export const signin = (form, router)=> async(dispatch)=>{
+export const signin = (form, router, setMessage, setMessageError, setMessageLoad)=> async(dispatch)=>{
+    
     try {
+        setMessageLoad('Espera un momento...')
         const {data} = await api.signin(form)
         dispatch({type: AUTH, data})
+        setMessage('Ingresaste Correctamente')
         router.push("/home")
 
     } catch (error) {
         console.log(error.response);
+        setMessageLoad(null)
+        setMessageError(error.response.data)
     }
 }
-export const signup = (form, router)=> async(dispatch)=>{
+export const signup = (form, router,setMessage, setMessageError, setMessageLoad)=> async(dispatch)=>{
     try {
-        
+        setMessageLoad('Espera un momento...')
         const {data} = await api.signup(form)
         dispatch({type: AUTH, data})
+        setMessage('Registro Correcto')
         router.push("/home")
 
     } catch (error) {
         console.log(error.response);
+        setMessageLoad(null)
+        setMessageError(error.response.data)
+
     }
 }
 

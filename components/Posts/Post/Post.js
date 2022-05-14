@@ -1,4 +1,4 @@
-import { Card, Button, Typography, Divider, CardHeader, Avatar } from "@material-ui/core";
+import { Card, Button, Typography, Divider, CardHeader, Avatar, Paper, ButtonBase } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
@@ -9,21 +9,26 @@ import PostActions from "./PostActions";
 import Image from "next/image";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import iconCar from '../../../public/images/favicon.ico.png'
-export default function PostCo({ OnePost, createCotizacion }) {
+import { Check, Close, Error } from "@material-ui/icons";
+
+
+
+export default function PostCo({ OnePost }) {
   const classes = useStyles();
   const [visibleDelete, setVisibleDelete] = useState(false);
   const [message, setMessage] = useState(null);
   const [cotizar, setCotizar] = useState(false);
   const router = useRouter();
+  const [user, setUser] = useState(null)
   const nombreCreador = OnePost?.nombreCreador?.toString();
-  const [user, setUser]= useState(null)
   const dispatch = useDispatch()
 
 
 
   const { id } = router.query;
   const idCreator = OnePost?.creator;
+  console.log(idCreator);
+  console.log(user);
 
   const handleDelete = () => {
     deletePost(OnePost._id);
@@ -53,47 +58,23 @@ export default function PostCo({ OnePost, createCotizacion }) {
       router.push("/auth");
     }
   };
-  useEffect(() => {
-
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [OnePost]);
-  
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  },[])
   return (
     <>
       {visibleDelete === true && (
         <>
-          <Card
-            sx={{ maxWidth: "300px" }}
-            className={classes.card1}
-            elevation={2}
-          >
-            <Typography variant="body1">
-              Esta seguro que quiere eliminar esta cotizacion?
-            </Typography>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={handleDelete}
-              >
-                Si
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => setVisibleDelete(false)}
-              >
-                Cancelar
-              </Button>
-            </div>
-          </Card>
+
+          <Paper className={classes.paper2} elevation={3}>
+          <Error style={{paddingRight:'10px'}}/>
+        <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Esta seguro que quiere eliminar esta cotizacion?</Typography>
+       <br/>
+       <Button variant='contained' style={{marginRight:'10px'}} onClick={() => setVisibleDelete(false)}><Close fontSize='medium'/></Button>
+        <Button variant='outlined'  color='primary' onClick={handleDelete}><Check fontSize='medium' /></Button>
+
+    </Paper>
+          
         </>
       )}
 
@@ -176,13 +157,13 @@ export default function PostCo({ OnePost, createCotizacion }) {
         {/* {user?.result._id !== OnePost.creator ? id !== undefined ? (
           <div className={classes.cotizarr}>
             {id !== undefined && (
-              <FormCotizacion user={user} OnePost={OnePost}  createCotizacion={createCotizacion}/>
+              <FormCotizacion user={user} OnePost={OnePost} />
             )}
           </div>
         ) : (
           <div>
             {id !== undefined && (
-              <FormCotizacion user={user} OnePost={OnePost} createCotizacion={createCotizacion}/>
+              <FormCotizacion user={user} OnePost={OnePost} />
             )}
           </div>
         )
@@ -195,7 +176,7 @@ export default function PostCo({ OnePost, createCotizacion }) {
           <h2>Ya cotizaste</h2>
           :
           <div className={classes.cotizarr}>
-              <FormCotizacion user={user} OnePost={OnePost}  createCotizacion={createCotizacion}/>
+              <FormCotizacion user={user} OnePost={OnePost}/>
           </div>
           :null
         : null

@@ -15,22 +15,22 @@ export default function PostPage({Post}) {
   const [message, setMessage] = useState('')
 
 
-  const createCotizacion=async(postData, id)=>{
-    try {
-      const res = await fetch(`/api/posts/${id}`,{
-        method:'POST',
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify(postData),
-      })
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const createCotizacion=async(postData, id)=>{
+  //   try {
+  //     const res = await fetch(`/api/posts/${id}`,{
+  //       method:'POST',
+  //       headers: {"Content-type": "application/json"},
+  //       body: JSON.stringify(postData),
+  //     })
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   
 
   return (
     <Layout title={'Post | colMotors'}>
-      <PostCo OnePost={Post} createCotizacion={createCotizacion}/>
+      <PostCo OnePost={Post}/>
     </Layout>
   );
 }

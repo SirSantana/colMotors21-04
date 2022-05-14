@@ -11,8 +11,8 @@ export default async function handler(req, res){
             await deletePost(req, res)
         case 'GET':
             await getPost(req, res)
-        case 'POST':
-            await createCotizacion(req, res)
+        // case 'POST':
+        //     await createCotizacion(req, res)
         default:
             break;
     }
@@ -38,22 +38,22 @@ export const deletePost = async(req, res)=>{
     }
 }
 
-export const createCotizacion = async(req, res)=>{
-    const {query:{id}} = req;
-    const {body} = req;
-    try {
-       const post = await postModel.findById(id)
-        await post.cotizaciones.push(body)
-        const user = await userModel.findById(body.idVendedor)
-        await user.cotizaciones.push(post._id)
-        await user.save()
+// export const createCotizacion = async(req, res)=>{
+//     const {query:{id}} = req;
+//     const {body} = req;
+//     try {
+//        const post = await postModel.findById(id)
+//         await post.cotizaciones.push(body)
+//         const user = await userModel.findById(body.idVendedor)
+//         await user.cotizaciones.push(post._id)
+//         await user.save()
 
-        await post.save()
-        await localStorage.setItem("profile", JSON.stringify(user))
-        res.status(200).json({success: true, post, user})
+//         await post.save()
+//         await localStorage.setItem("profile", JSON.stringify(user))
+//         res.status(200).json({success: true, post, user})
         
-    } catch (error) {
-        res.status(200).json({success: false, error})
+//     } catch (error) {
+//         res.status(200).json({success: false, error})
         
-    }
-}
+//     }
+// }

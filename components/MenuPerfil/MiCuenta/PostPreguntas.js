@@ -1,5 +1,5 @@
 import { Button,Divider,Typography } from "@material-ui/core";
-import {ShareIcon} from '@material-ui/icons';
+import {Build, ShareIcon} from '@material-ui/icons';
 import useStyles from './stylesPost'
 import {useDispatch} from 'react-redux'
 import Image from 'next/image'
@@ -35,14 +35,19 @@ export default function PostPreguntas({post}){
 
     return(
         <>
-        <div>
-        <Typography gutterBottom variant="h6" component="div">
-            <strong>Auto:</strong> {post?.marca}
+        <div style={{display:'flex', flexDirection:'row',alignItems:'center'}}>
+        <Image src={`/images/${post?.marca}.png`} width="60px" height="60px" />
+        
+        <Typography gutterBottom variant="h6" component="div" style={{fontWeight:'700'}}>
+             {post?.referencia}
         </Typography>
         </div>
-        <div>
+        <Divider  />
+
+        <div style={{display:'flex', flexDirection:'row',alignItems:'center', marginLeft:'20px'}}>
+          <Build fontSize='medium' style={{marginRight:'18px'}}/>
         <Typography variant="h6" gutterBottom>
-        <strong>Descripcion:</strong> {post?.repuesto}
+         {post?.repuesto}
         </Typography>
         </div>
         
@@ -56,7 +61,7 @@ export default function PostPreguntas({post}){
           />
         </div>
         }
-        <div>
+        <div style={{ marginLeft:'20px'}}>
         <Typography variant="body1" color="black">
         <strong>Fecha:</strong> {post?.date}
         </Typography>
@@ -72,7 +77,6 @@ export default function PostPreguntas({post}){
             Eliminar
         </Button>
         </div>
-        <Divider style={{ margin: "20px 0" }} />
         
         </>
     )

@@ -31,11 +31,12 @@ export default function PostContent({OnePost}){
             </Typography> 
           </div>
           <div style={{ display: "flex", flexDirecction: "row", alignItems:'center',  }}>
-            <Image
+            {/* <Image
             src={'/images/repuestosIcon.png'}
             width={'30px'}
             height={'30px'}
-            />
+            /> */}
+            <Build/>
             <Typography
               style={{ marginLeft: "5px" }}
               className={classes.typography1}

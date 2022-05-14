@@ -29,7 +29,7 @@ async function register(req, res) {
 
     const userExist = await userModel.findOne({ email });
 
-    if (userExist) return res.status(403).json("El usuario ya existe");
+    if (userExist) return res.status(403).json("Ya existe una cuenta con ese correo");
 
     const pass = await bcrypt.hash(password, 10);
     const result = await userModel.create({

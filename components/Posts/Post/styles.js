@@ -49,6 +49,23 @@ export default makeStyles((theme)=>({
       width:'84vw'
     }
   },
+  paper2: {
+    padding: theme.spacing(2),
+    background:"#f50057",
+    color: 'white',
+    fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
+    justifyContent: 'center',
+    marginBottom:'10px',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    width:'400px',
+    [theme.breakpoints.down('xs')]: {
+      width:'300px',
+      
+      },
+
+  },
   card: {
     display: 'flex',
     flexDirection: 'column',

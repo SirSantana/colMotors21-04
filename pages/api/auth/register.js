@@ -14,9 +14,7 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       await register(req, res);
-
-    default:
-      res.status(404).json({ success: false, error: error });
+    break;
   }
 }
 
@@ -52,6 +50,6 @@ async function register(req, res) {
 
     localStorage.setItem("profile", JSON.stringify({ ...result, token }));
   } catch (error) {
-    res.status(404).json({ success: false, error: error });
+    console.log(error);
   }
 }

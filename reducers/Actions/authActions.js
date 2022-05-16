@@ -7,7 +7,7 @@ export const signin = (form, router, setMessage, setMessageError, setMessageLoad
         setMessageLoad('Espera un momento...')
         const {data} = await api.signin(form)
         dispatch({type: AUTH, data})
-        setMessage('Ingresaste Correctamente')
+        setMessage('Ingresando Correctamente...')
         router.push("/home")
 
     } catch (error) {

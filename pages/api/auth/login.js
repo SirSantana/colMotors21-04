@@ -22,7 +22,7 @@ export const login=async(req, res)=>{
         
         const pass = await bcrypt.compare(password, userExist.password)
 
-        if(!pass) return res.status(403).json('Credenciales mal')
+        if(!pass) return res.status(403).json('Contraseña incorrecta')
 
         const token = jwt.sign({
             id:userExist._id

@@ -9,7 +9,6 @@ import {
 } from "../type";
 
 export const postCotizacion = (cotizacion) => async (dispatch) => {
-    console.log(cotizacion);
   try {
     // dispatch({ type: START_LOADING });
 

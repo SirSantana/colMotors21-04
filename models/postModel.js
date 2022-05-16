@@ -15,12 +15,7 @@ const postModel = new mongoose.Schema({
     selectedFile:String,
     title:String,
     lugar:String,
-    cotizaciones: [
-        {
-            type: mongoose.Schema.ObjectId,
-            ref: 'Cotizacion'
-        }
-    ],
+    cotizaciones: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cotizacion'}],
     likes:{
         type:[String],
         default:[]
@@ -38,12 +33,5 @@ const postModel = new mongoose.Schema({
     comentarios:{type: [String], default:[]}
 }, {versionKey: false})
 
-postModel.pre('remove', function(next) {
-    // 'this' is the client being removed. Provide callbacks here if you want
-    // to be notified of the calls' result.
-    creator.remove({ _id: { $in: this.creator }}).exec();
-    next();
-  });
-  
 
 export default mongoose.models.postModel || mongoose.model('postModel', postModel)

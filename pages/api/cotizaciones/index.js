@@ -2,6 +2,17 @@ import cotizacionModel from "../../../models/cotizacionModel";
 import userModel from "../../../models/userModel";
 import postModel from '../../../models/postModel'
 
+export default async  (req, res)=>{
+    switch (req.method) {
+        case 'POST':
+            await createCotizacion(req, res)
+            break;
+    
+        default:
+            break;
+    }
+}
+
 
 // export const getCotizaciones=async(req, res)=>{
 //     try {
@@ -13,9 +24,7 @@ import postModel from '../../../models/postModel'
 // }
 export const createCotizacion= async(req, res)=>{
     const body = req.body
-    const {query:{id}} =req
 
-    console.log(body);
     try {
         const cotizacion = await cotizacionModel.create(body)
 
@@ -24,14 +33,17 @@ export const createCotizacion= async(req, res)=>{
         await userCreator.cotizaciones.push(cotizacion)
         userCreator.save()
         
-        await cotizacion.creator.push(userCreator)
-        cotizacion.save()
-
-        const post = await postModel.findById(id)
+        const post = await postModel.findById(body.idPost)
 
         await post.cotizaciones.push(cotizacion)
         post.save()
-        res.status(200).json(cotizacion)
+
+        await cotizacion.creator.push(userCreator)
+        cotizacion.save()
+
+        
+        
+        res.status(200).json({success:true, cotizacion})
     } catch (error) {
         res.status(403).json(error)
     }

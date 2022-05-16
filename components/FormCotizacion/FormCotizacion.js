@@ -11,7 +11,7 @@ import {
   import Image from 'next/image'
   import useStyles from "./styles";
 import { Build } from "@material-ui/icons";
-// import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
+import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   
   const initial = {
     repuestos: "",
@@ -34,9 +34,9 @@ import { Build } from "@material-ui/icons";
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      // dispatch(postCotizacion({...form, vendedor:user?.result.name, idVendedor:user?.result._id}, OnePost._id))
+      dispatch(postCotizacion({...form, vendedor:user?.result.name, idVendedor:user?.result._id}, OnePost._id))
       setForm(initial);
-    //   setVisibleCotizacion(false);
+      // setVisibleCotizacion(false);
     };
     return (
       <>

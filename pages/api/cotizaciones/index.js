@@ -14,6 +14,8 @@ import postModel from '../../../models/postModel'
 export const createCotizacion= async(req, res)=>{
     const body = req.body
     const {query:{id}} =req
+
+    console.log(body);
     try {
         const cotizacion = await cotizacionModel.create(body)
 

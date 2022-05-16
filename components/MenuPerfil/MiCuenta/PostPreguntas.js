@@ -26,7 +26,7 @@ export default function PostPreguntas({post}){
           })
            if(res){
             router.push("/home")
-            setMessage('Eliminado correctamente')
+            // setMessage('Eliminado correctamente')
            }
             
         } catch (error) {

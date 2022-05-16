@@ -2,12 +2,12 @@ import mongoose from 'mongoose'
 
 
 const postModel = new mongoose.Schema({
-    creator: [
+    creator: 
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
         }
-    ],
+    ,
     nombreCreador: {type:[String], default:[]},
     repuesto: {type: String, required: true},
     marca: {type: String},
@@ -17,7 +17,7 @@ const postModel = new mongoose.Schema({
     lugar:String,
     cotizaciones: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.ObjectId,
             ref: 'Cotizacion'
         }
     ],
@@ -37,5 +37,13 @@ const postModel = new mongoose.Schema({
     },
     comentarios:{type: [String], default:[]}
 }, {versionKey: false})
+
+postModel.pre('remove', function(next) {
+    // 'this' is the client being removed. Provide callbacks here if you want
+    // to be notified of the calls' result.
+    creator.remove({ _id: { $in: this.creator }}).exec();
+    next();
+  });
+  
 
 export default mongoose.models.postModel || mongoose.model('postModel', postModel)

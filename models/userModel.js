@@ -25,4 +25,5 @@ const UserModel = new mongoose.Schema({
 
 },{versionKey:false})
 
+
 export default mongoose.models.User || mongoose.model('User', UserModel)

@@ -54,7 +54,7 @@ import Link from 'next/link'
                 </Link>
 
               </Paper>
-              <Posts Postss={Postss} user={user}/>
+              <Posts Postss={Postss}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form createPosts={createPosts} user={user}/>

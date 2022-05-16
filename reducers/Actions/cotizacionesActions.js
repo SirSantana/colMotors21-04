@@ -1,25 +1,27 @@
-// import * as api from "../Api/index";
-// import {
-//   CREATE_COTIZACION,
-//   END_LOADING,
-//   GET_COTIZACION,
-//   GET_COTIZACIONES,
-//   START_LOADING,
-//   DELETE_COTIZACION
-// } from "../type";
+import * as api from "../Api/index";
+import {
+  CREATE_COTIZACION,
+  END_LOADING,
+  GET_COTIZACION,
+  GET_COTIZACIONES,
+  START_LOADING,
+  DELETE_COTIZACION
+} from "../type";
 
-// export const postCotizacion = (cotizacion) => async (dispatch) => {
-//   try {
-//     dispatch({ type: START_LOADING });
+export const postCotizacion = (cotizacion) => async (dispatch) => {
+    console.log(cotizacion);
+  try {
+    // dispatch({ type: START_LOADING });
 
-//     const { data } = await api.createCotizacion(cotizacion);
-//     dispatch({ type: CREATE_COTIZACION, payload: data });
-//     dispatch({ type: END_LOADING });
+    const { data } = await api.createCotizacion(cotizacion);
+    console.log(data);
+    dispatch({ type: CREATE_COTIZACION, payload: data });
+    // dispatch({ type: END_LOADING });
 
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+  } catch (error) {
+    console.log(error.response);
+  }
+};
 // export const getCotizacion = (id) => async (dispatch) => {
 //   try {
 //     dispatch({ type: START_LOADING });

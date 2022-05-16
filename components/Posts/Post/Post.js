@@ -27,8 +27,6 @@ export default function PostCo({ OnePost }) {
 
   const { id } = router.query;
   const idCreator = OnePost?.creator;
-  console.log(idCreator);
-  console.log(user);
 
   const handleDelete = () => {
     deletePost(OnePost._id);
@@ -159,7 +157,7 @@ export default function PostCo({ OnePost }) {
           </Card>
         </div>
 
-        {/* {user?.result._id !== OnePost.creator ? id !== undefined ? (
+        {user?.result._id !== OnePost.creator ? id !== undefined ? (
           <div className={classes.cotizarr}>
             {id !== undefined && (
               <FormCotizacion user={user} OnePost={OnePost} />
@@ -173,9 +171,9 @@ export default function PostCo({ OnePost }) {
           </div>
         )
         : null
-        } */}
+        }
 
-        {user?.result._id !== OnePost.creator 
+        {/* {user?.result._id !== OnePost.creator 
         ? id !== undefined ?
           OnePost ?
           <h2>Ya cotizaste</h2>
@@ -185,7 +183,7 @@ export default function PostCo({ OnePost }) {
           </div>
           :null
         : null
-        }
+        } */}
       </div>
 
       {/* </a> */}

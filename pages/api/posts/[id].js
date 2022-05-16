@@ -21,6 +21,7 @@ export const getPost = async (req, res) => {
     const { id } = req.query;
     try {
       const post = await postModel.findById(id);
+
       res.status(200).json(post);
     } catch (error) {
       res.status(403).json(error);
@@ -29,11 +30,22 @@ export const getPost = async (req, res) => {
 export const deletePost = async(req, res)=>{
     const {query:{id}} = req;
     try {
-        await postModel.findByIdAndDelete(id)
+            const post = await postModel.findByIdAndDelete(id);
+            console.log('post', post);
+
+            const user = await userModel.findById(post.creator);
+            console.log('user', user);
+
+            const index = user.posts.indexOf(id);
+            user.posts.splice(index, 1);
+           
+            await user.save();
+        
+
         res.status(200).json({success: true, data:'Eliminado Correctamente'})
         
     } catch (error) {
-        res.status(200).json({success: false, error})
+        res.status(200).json(error)
         
     }
 }

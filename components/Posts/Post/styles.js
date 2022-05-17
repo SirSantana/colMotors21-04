@@ -169,7 +169,6 @@ export default makeStyles((theme)=>({
     color:'#1b333d',
     fontFamily:"--apple-system, Segoe UI",
     padding:'4px',
-    paddingTop:'8px',
     margin:0
 
   },

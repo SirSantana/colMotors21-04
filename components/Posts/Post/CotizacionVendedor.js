@@ -15,38 +15,38 @@ import { getCotizacion } from "../../../reducers/Actions/cotizacionesActions";
 import PostContent from "./PostContent";
 import useStyles from "./styles";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const { cotizacion } = useSelector((state) => state.cotizaciones);
-
-  // const letterFirst = cotizacion?.nombreVendedor[0].toString();
-
-  let name = cotizacion?.nombreVendedor[0].toString();
-  let indice;
-  let two;
-  if(name !== undefined){
-    for (let letter in name) {
-      if (name[letter] === " ") {
-        indice = letter + name[letter];
-      }
-    }
-    let secondLetter = name?.slice(indice, parseInt(indice) + 2);
-    let twoLetters = name[0] + secondLetter
-     two = twoLetters.replace(/ /g, "")
-  }
+  const router = useRouter()
+  console.log(cotizacionCreada);
+    // let name = cotizacion?.nombreVendedor[0].toString();
+  // let indice;
+  // let two;
+  //   for (let letter in name) {
+  //     if (name[letter] === " ") {
+  //       indice = letter + name[letter];
+  //     }
+  //   let secondLetter = name?.slice(indice, parseInt(indice) + 2);
+  //   let twoLetters = name[0] + secondLetter
+  //    two = twoLetters.replace(/ /g, "")
+  // }
 
 
   useEffect(() => {
-    dispatch(getCotizacion(cotizacionCreada[0]));
+    dispatch(getCotizacion(cotizacionCreada));
   }, [dispatch]);
   return (
     <>
       <div className={classes.card}>
         <div className={classes.header1}>
           <Typography gutterBottom className={classes.typo}>
-            <b>Tu Cotización</b>
+            {user?.result._id === OnePost?.creator
+            ? <b>Cotización Vendedor</b>
+          : <b>Tu Cotización</b>}
           </Typography>
         </div>
         <Card sx={{ width: "345px" }} className={classes.card1} elevation={2}>
@@ -65,7 +65,7 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
                 className={classes.purple2}
                   alt={cotizacion?.nombreVendedor[0]}
                 >
-                  {two}
+                  {/* {two} */}
                 </Avatar>
               }
               title={cotizacion?.nombreVendedor[0]}

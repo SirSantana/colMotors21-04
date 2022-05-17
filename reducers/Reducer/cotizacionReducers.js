@@ -14,8 +14,8 @@ export default (state = { isLoading: true, cotizaciones: [] }, action) => {
     //   return { ...state, isLoading: true };
     // case END_LOADING:
     //   return { ...state, isLoading: false };
-    // case GET_COTIZACIONES:
-    //   return { ...state, cotizaciones: action.payload };
+    case GET_COTIZACIONES:
+      return { ...state, cotizaciones: action.payload };
     case CREATE_COTIZACION:
      const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -25,7 +25,7 @@ export default (state = { isLoading: true, cotizaciones: [] }, action) => {
           ...user,
           result: {
             ...user.result,
-            cotizaciones: [...user.result.cotizaciones, action.payload],
+            cotizaciones: [...user.result.cotizaciones, action.payload._id],
           },
         })
       );

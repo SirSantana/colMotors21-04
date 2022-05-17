@@ -12,7 +12,7 @@ import {
   import useStyles from "./styles";
 import { Build } from "@material-ui/icons";
 import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
-  
+  import {useRouter} from 'next/router'
   const initial = {
     repuestos: "",
     precio: "",
@@ -24,7 +24,7 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
     const classes = useStyles();
     const [form, setForm] = useState(initial);
     const dispatch = useDispatch()
-  
+    const router = useRouter()
     const handleChange = (e) => {
       setForm({
         ...form,
@@ -35,7 +35,7 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(postCotizacion({...form, nombreVendedor:user?.result.name, idVendedor:user?.result._id, idPost:OnePost._id} ))
+      dispatch(postCotizacion({...form, nombreVendedor:user?.result.name, idVendedor:user?.result._id, idPost:OnePost._id}, router ))
       setForm(initial);
       // setVisibleCotizacion(false);
     };

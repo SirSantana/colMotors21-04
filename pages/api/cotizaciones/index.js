@@ -7,8 +7,7 @@ export default async  (req, res)=>{
         case 'POST':
             await createCotizacion(req, res)
         case 'GET':
-            await getCotizacion(req, res)
-            break;
+            await getCotizaciones(req, res)
     
         default:
             break;
@@ -16,14 +15,15 @@ export default async  (req, res)=>{
 }
 
 
-// export const getCotizaciones=async(req, res)=>{
-//     try {
-//         const cotizaciones = await cotizacionModel.find();
-//         res.status(200).json(cotizaciones);
-//       } catch (error) {
-//         res.status(403).json(error);
-//       }
-// }
+
+export const getCotizaciones=async(req, res)=>{
+    try {
+        const cotizaciones = await cotizacionModel.find();
+        res.status(200).json(cotizaciones);
+      } catch (error) {
+        res.status(403).json(error);
+      }
+}
 export const createCotizacion= async(req, res)=>{
     const body = req.body
 
@@ -45,7 +45,7 @@ export const createCotizacion= async(req, res)=>{
 
         
         
-        res.status(200).json( cotizacion)
+        res.status(200).json(cotizacion)
     } catch (error) {
         res.status(403).json(error)
     }

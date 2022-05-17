@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 
+const API = axios.create({ baseURL: "http://localhost:3000/" ||
   'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
     'Access-Control-Allow-Origin': '*'
   } });
@@ -26,5 +26,5 @@ export const getUser = (id)=> API.get(`api/users/${id}`)
 
 export const createCotizacion=(cotizacion)=> API.post('api/cotizaciones', cotizacion)
 export const getCotizacion=(id)=> API.get(`api/cotizaciones/${id}`)
-// export const getCotizaciones=()=> API.get('/posts/cotizacion/all')
+export const getCotizaciones=()=> API.get('api/cotizaciones')
 // export const deleteCotizacion= (id)=> API.delete(`/posts/cotizacion/${id}`)

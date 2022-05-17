@@ -27,8 +27,8 @@ export default function PostCo({ OnePost }) {
   const dispatch = useDispatch()
   const { id } = router.query;
   const idCreator = OnePost?.creator;
+
   // const [cotizacion, setCotizacion] = useState(false)
-  const {cotizacion} = useSelector(state=> state.cotizaciones)
 
   const handleDelete = () => {
     deletePost(OnePost._id);
@@ -61,13 +61,10 @@ export default function PostCo({ OnePost }) {
   
 
   
-  
-  
   let cotizacionCreada;
   if(OnePost.cotizaciones.length > 0){
-   cotizacionCreada = user?.result?.cotizaciones?.filter(el=> el._id || el === OnePost?.cotizaciones)  
-}
-
+   cotizacionCreada = user?.result?.cotizaciones?.find(el=> el._id ||el === OnePost?.cotizaciones)  
+    }
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[])
@@ -187,7 +184,7 @@ export default function PostCo({ OnePost }) {
 
         {cotizacionCreada && id !== undefined ?
           <div className={classes.cotizarr}>
-          <CotizacionVendedor user={user} OnePost={OnePost} cotizacionCreada={cotizacionCreada}/>
+          <CotizacionVendedor user={user} OnePost={OnePost} cotizacionCreada={cotizacionCreada?._id? cotizacionCreada?._id: cotizacionCreada}/>
           </div>
           :
           null

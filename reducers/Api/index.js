@@ -25,6 +25,6 @@ export const getUser = (id)=> API.get(`api/users/${id}`)
 
 
 export const createCotizacion=(cotizacion)=> API.post('api/cotizaciones', cotizacion)
-// export const getCotizacion=(id)=> API.get(`/posts/cotizacion/${id}`)
+export const getCotizacion=(id)=> API.get(`api/cotizaciones/${id}`)
 // export const getCotizaciones=()=> API.get('/posts/cotizacion/all')
 // export const deleteCotizacion= (id)=> API.delete(`/posts/cotizacion/${id}`)

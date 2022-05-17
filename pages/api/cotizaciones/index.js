@@ -6,6 +6,8 @@ export default async  (req, res)=>{
     switch (req.method) {
         case 'POST':
             await createCotizacion(req, res)
+        case 'GET':
+            await getCotizacion(req, res)
             break;
     
         default:
@@ -43,11 +45,12 @@ export const createCotizacion= async(req, res)=>{
 
         
         
-        res.status(200).json({success:true, cotizacion})
+        res.status(200).json( cotizacion)
     } catch (error) {
         res.status(403).json(error)
     }
 }
+
 // export const getCotizacion=async(req, res)=>{
 //     const {id} = req.params
 

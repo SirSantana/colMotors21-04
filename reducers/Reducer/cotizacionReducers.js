@@ -9,7 +9,6 @@ import {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = { isLoading: true, cotizaciones: [] }, action) => {
-  // const user = JSON.parse(localStorage.getItem("profile"));
   switch (action.type) {
     // case START_LOADING:
     //   return { ...state, isLoading: true };
@@ -18,17 +17,24 @@ export default (state = { isLoading: true, cotizaciones: [] }, action) => {
     // case GET_COTIZACIONES:
     //   return { ...state, cotizaciones: action.payload };
     case CREATE_COTIZACION:
+     const user = JSON.parse(localStorage.getItem("profile"));
+
       localStorage.setItem(
         "profile",
-        JSON.stringify({...user.result,cotizaciones: [...user.result.cotizaciones, action.payload],          
+        JSON.stringify({
+          ...user,
+          result: {
+            ...user.result,
+            cotizaciones: [...user.result.cotizaciones, action.payload],
+          },
         })
       );
       return {
         ...state,
         cotizaciones: [...state.cotizaciones, action.payload],
       };
-    // case GET_COTIZACION:
-    //   return { ...state, cotizacion: action.payload.cotizacion };
+    case GET_COTIZACION:
+      return { ...state, cotizacion: action.payload.cotizacion };
     // case DELETE_COTIZACION:
       // localStorage.setItem(
       //   "profile",

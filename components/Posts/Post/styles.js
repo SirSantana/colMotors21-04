@@ -189,7 +189,7 @@ export default makeStyles((theme)=>({
   },
   cotizarr:{
     marginLeft:'20px',
-    minWidth:'300px',
+    minWidth:'280px',
     [theme.breakpoints.down('sm')]: {
       marginLeft:'0',
       minWidth:'250px',

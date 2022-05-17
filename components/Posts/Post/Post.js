@@ -8,8 +8,11 @@ import PostContent from "./PostContent";
 import PostActions from "./PostActions";
 import Image from "next/image";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Check, Close, Error } from "@material-ui/icons";
+import { getCotizacion } from "../../../reducers/Actions/cotizacionesActions";
+import CotizacionVendedor from "./CotizacionVendedor";
+import CotizacionComprador from "./CotizacionComprador";
 
 
 
@@ -22,11 +25,10 @@ export default function PostCo({ OnePost }) {
   const [user, setUser] = useState(null)
   const nombreCreador = OnePost?.nombreCreador?.toString();
   const dispatch = useDispatch()
-
-
-
   const { id } = router.query;
   const idCreator = OnePost?.creator;
+  // const [cotizacion, setCotizacion] = useState(false)
+  const {cotizacion} = useSelector(state=> state.cotizaciones)
 
   const handleDelete = () => {
     deletePost(OnePost._id);
@@ -56,6 +58,17 @@ export default function PostCo({ OnePost }) {
       router.push("/auth");
     }
   };
+  
+
+  
+    console.log(OnePost);
+  
+  
+  let cotizacionCreada;
+  if(OnePost.cotizaciones.length > 0){
+   cotizacionCreada = user?.result?.cotizaciones?.filter(el=> el._id || el === OnePost?.cotizaciones)  
+}
+
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[])
@@ -141,7 +154,7 @@ export default function PostCo({ OnePost }) {
                 fullWidth
                 className={classes.cotizar}
               >
-                3 Vendedores ya cotizaron!
+                {OnePost.cotizaciones.length}
               </Button>
             ) : (
               <Button
@@ -151,13 +164,13 @@ export default function PostCo({ OnePost }) {
                 className={classes.cotizar}
                 onClick={handleCotizar}
               >
-                Cotiza ya!
+                {cotizacionCreada?'Ya Cotizaste' :'Cotiza ya!'}
               </Button>
             )}
           </Card>
         </div>
 
-        {user?.result._id !== OnePost.creator ? id !== undefined ? (
+        {user?.result._id !== OnePost.creator && !cotizacionCreada ? id !== undefined ? (
           <div className={classes.cotizarr}>
             {id !== undefined && (
               <FormCotizacion user={user} OnePost={OnePost} />
@@ -173,6 +186,18 @@ export default function PostCo({ OnePost }) {
         : null
         }
 
+        {cotizacionCreada && id !== undefined ?
+          <div className={classes.cotizarr}>
+          <CotizacionVendedor user={user} OnePost={OnePost} cotizacionCreada={cotizacionCreada}/>
+          </div>
+          :
+          null
+           }
+          {/* {OnePost.cotizaciones && id !== undefined && !cotizacionCreada? 
+          <CotizacionComprador/>
+          :null  
+        } */}
+        
         {/* {user?.result._id !== OnePost.creator 
         ? id !== undefined ?
           OnePost ?

@@ -30,7 +30,7 @@ export default function PostContent({OnePost}){
               {nombreCreador}
             </Typography> 
           </div>
-          <div style={{ display: "flex", flexDirecction: "row", alignItems:'center',  }}>
+          <div style={{ display: "flex", flexDirection: "row", alignItems:'center',  }}>
             {/* <Image
             src={'/images/repuestosIcon.png'}
             width={'30px'}

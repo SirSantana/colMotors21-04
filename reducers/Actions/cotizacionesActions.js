@@ -13,7 +13,6 @@ export const postCotizacion = (cotizacion) => async (dispatch) => {
     // dispatch({ type: START_LOADING });
 
     const { data } = await api.createCotizacion(cotizacion);
-    console.log(data);
     dispatch({ type: CREATE_COTIZACION, payload: data });
     // dispatch({ type: END_LOADING });
 
@@ -21,17 +20,17 @@ export const postCotizacion = (cotizacion) => async (dispatch) => {
     console.log(error.response);
   }
 };
-// export const getCotizacion = (id) => async (dispatch) => {
-//   try {
-//     dispatch({ type: START_LOADING });
+export const getCotizacion = (id) => async (dispatch) => {
+  try {
+    // dispatch({ type: START_LOADING });
 
-//     const { data } = await api.getCotizacion(id);
-//     dispatch({ type: GET_COTIZACION, payload: { cotizacion: data } });
-//     dispatch({ type: END_LOADING });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+    const { data } = await api.getCotizacion(id);
+    dispatch({ type: GET_COTIZACION, payload: { cotizacion: data } });
+    // dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error);
+  }
+};
 // export const getCotizaciones = () => async (dispatch) => {
 //   try {
 //     dispatch({ type: START_LOADING });

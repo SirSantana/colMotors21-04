@@ -31,6 +31,10 @@ export default makeStyles((theme)=>({
       justifyContent:'center', 
       backgroundColor:"#1b333d",
     borderRadius: "5px",
+    [theme.breakpoints.down('sm')]: {
+      marginTop:'20px',
+
+      }
 
     }
   ,
@@ -77,7 +81,6 @@ export default makeStyles((theme)=>({
     width:'100%',
     maxWidth:'350px',
     [theme.breakpoints.down('sm')]: {
-  
         width:'84vw'
       }
     
@@ -103,13 +106,10 @@ export default makeStyles((theme)=>({
 
   },
    purple2: {
-    color: 'black',
-    height:'25px',
-    width:'25px',
-    padding:'5px',
     margin:0,
-    backgroundColor:'gray',
-    color:'white'
+    backgroundColor: deepPurple[600],
+    color:'white',
+    fontSize:'16px'
 
   },
   typography1:{
@@ -193,7 +193,7 @@ export default makeStyles((theme)=>({
     [theme.breakpoints.down('sm')]: {
       marginLeft:'0',
       minWidth:'250px',
-  
+
     }
   }
   ,

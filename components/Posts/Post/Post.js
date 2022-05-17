@@ -61,7 +61,6 @@ export default function PostCo({ OnePost }) {
   
 
   
-    console.log(OnePost);
   
   
   let cotizacionCreada;

@@ -23,12 +23,12 @@ export const postCotizacion = (cotizacion) => async (dispatch) => {
 export const getCotizacion = (id) => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
-
-    const { data } = await api.getCotizacion(id);
-    dispatch({ type: GET_COTIZACION, payload: { cotizacion: data } });
+      const { data } = await api.getCotizacion(id);
+      dispatch({ type: GET_COTIZACION, payload: { cotizacion: data } });
+    
     // dispatch({ type: END_LOADING });
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
   }
 };
 // export const getCotizaciones = () => async (dispatch) => {

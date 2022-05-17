@@ -16,15 +16,31 @@ import PostContent from "./PostContent";
 import useStyles from "./styles";
 import Link from "next/link";
 
-export default function CotizacionVendedor({ user, OnePost, cotizacionCreada }) {
+export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const {cotizacion} = useSelector(state=> state.cotizaciones)
+  const { cotizacion } = useSelector((state) => state.cotizaciones);
 
-  const letterFirst = cotizacion?.nombreVendedor[0].toString();
-  useEffect(()=>{
-    dispatch(getCotizacion(cotizacionCreada[0]))
-  },[dispatch])
+  // const letterFirst = cotizacion?.nombreVendedor[0].toString();
+
+  let name = cotizacion?.nombreVendedor[0].toString();
+  let indice;
+  let two;
+  if(name !== undefined){
+    for (let letter in name) {
+      if (name[letter] === " ") {
+        indice = letter + name[letter];
+      }
+    }
+    let secondLetter = name?.slice(indice, parseInt(indice) + 2);
+    let twoLetters = name[0] + secondLetter
+     two = twoLetters.replace(/ /g, "")
+  }
+
+
+  useEffect(() => {
+    dispatch(getCotizacion(cotizacionCreada[0]));
+  }, [dispatch]);
   return (
     <>
       <div className={classes.card}>
@@ -34,23 +50,38 @@ export default function CotizacionVendedor({ user, OnePost, cotizacionCreada }) 
           </Typography>
         </div>
         <Card sx={{ width: "345px" }} className={classes.card1} elevation={2}>
-          <div style={{display:"flex", flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-          <CardHeader
-            className={classes.header}
-            avatar={
-              <Avatar className={classes.purple2} alt={cotizacion?.nombreVendedor}>
-                {letterFirst?.substr(0, 1)}
-              </Avatar>
-            }
-            title={cotizacion?.nombreVendedor[0]}
-            classes={{ subheader: classes.subheader, title: classes.title }}
-            subheaderTypographyProps={{ variant: "body2" }}
-              subheader='Vendedor'
-          />
-          <section style={{marginRight:'10px', justifyContent:'center', alignItems:'center'}}>
-          <Menu/>
-          </section>
-
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <CardHeader
+              className={classes.header}
+              avatar={
+                <Avatar
+                className={classes.purple2}
+                  alt={cotizacion?.nombreVendedor[0]}
+                >
+                  {two}
+                </Avatar>
+              }
+              title={cotizacion?.nombreVendedor[0]}
+              classes={{ subheader: classes.subheader, title: classes.title }}
+              subheaderTypographyProps={{ variant: "body2" }}
+              subheader="Vendedor"
+            />
+            <section
+              style={{
+                marginRight: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Menu />
+            </section>
           </div>
 
           <Divider></Divider>
@@ -61,22 +92,32 @@ export default function CotizacionVendedor({ user, OnePost, cotizacionCreada }) 
               display: "flex",
               flexDirection: "column",
               gap: "10px",
-              padding:'8px',
-              paddingLeft:'4px'
+              padding: "8px",
+              paddingLeft: "4px",
             }}
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
-              
-              <div style={{ display: "flex", flexDirection: "row", alignItems:'center', marginBottom:'8px'  }}>
-                <AttachMoney fontSize="large"/>
-                <Typography
-                  className={classes.title}
-                >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginBottom: "8px",
+                }}
+              >
+                <AttachMoney fontSize="large" />
+                <Typography className={classes.title}>
                   {cotizacion?.precio}
                 </Typography>
               </div>
-              <div style={{ display: "flex", flexDirection: "row", marginLeft:'5px' }}>
-                <Build  fontSize="medium"/>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  marginLeft: "5px",
+                }}
+              >
+                <Build fontSize="medium" />
                 <Typography
                   style={{ marginLeft: "5px" }}
                   className={classes.typography1}
@@ -87,7 +128,6 @@ export default function CotizacionVendedor({ user, OnePost, cotizacionCreada }) 
             </div>
           </CardContent>
 
-         
           <CardActions
             style={{ width: "90%", paddingLeft: "8px", paddingBottom: "0" }}
           >
@@ -105,25 +145,25 @@ export default function CotizacionVendedor({ user, OnePost, cotizacionCreada }) 
                 {cotizacion?.creator[0].pais}
               </Typography>
             </div>
-
-            
           </CardActions>
           {user?.result?._id === OnePost.creator ? (
             <>
-            <Button
-              color="primary"
-              variant="contained"
-              fullWidth
-              className={classes.cotizar}
-            >
-              Ver Pefil Vendedor
-            </Button>
-            <Button color="secondary"
-              variant="contained"
-              fullWidth
-              className={classes.cotizar}>
-             Enviale un Mensaje
-            </Button>
+              <Button
+                color="primary"
+                variant="contained"
+                fullWidth
+                className={classes.cotizar}
+              >
+                Ver Pefil Vendedor
+              </Button>
+              <Button
+                color="secondary"
+                variant="contained"
+                fullWidth
+                className={classes.cotizar}
+              >
+                Enviale un Mensaje
+              </Button>
             </>
           ) : (
             <Button
@@ -134,7 +174,6 @@ export default function CotizacionVendedor({ user, OnePost, cotizacionCreada }) 
             >
               Eliminar cotizacion
             </Button>
-            
           )}
         </Card>
       </div>

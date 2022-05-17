@@ -55,7 +55,6 @@ const SignUp = () => {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-    console.log(message);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {

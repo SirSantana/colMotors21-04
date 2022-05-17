@@ -11,6 +11,17 @@ export default function PostContent({OnePost}){
 
 
   const nombreCreador = OnePost?.nombreCreador?.toString();
+  
+  let name = OnePost?.nombreCreador?.toString();
+  let indice;
+  for (let letter in name) {
+    if (name[letter] === " ") {
+      indice = letter + name[letter];
+    }
+  }
+  let secondLetter = name.slice(indice, parseInt(indice) + 2);
+  let twoLetters = name[0] + secondLetter
+  let two = twoLetters.replace(/ /g, "")
 
     return(
         <>
@@ -20,7 +31,7 @@ export default function PostContent({OnePost}){
              className={classes.purple2}
              alt={OnePost?.creador}
              >
-              {nombreCreador?.substr(0, 1)}
+              {two}
 
             </Avatar>
             <Typography

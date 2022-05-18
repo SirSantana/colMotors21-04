@@ -22,7 +22,7 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
   const classes = useStyles();
   const { cotizacion } = useSelector((state) => state.cotizaciones);
   const router = useRouter()
-  console.log(cotizacionCreada);
+  console.log(cotizacion);
     // let name = cotizacion?.nombreVendedor[0].toString();
   // let indice;
   // let two;
@@ -38,7 +38,7 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
 
   useEffect(() => {
     dispatch(getCotizacion(cotizacionCreada));
-  }, [dispatch]);
+  }, [dispatch,user]);
   return (
     <>
       <div className={classes.card}>
@@ -142,7 +142,7 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
                 style={{ color: "#1b333d", width: "30px", height: "30px" }}
               />
               <Typography style={{ marginLeft: "5px" }} variant="body1">
-                {cotizacion?.creator[0].pais}
+                {cotizacion?.creator.pais}
               </Typography>
             </div>
           </CardActions>

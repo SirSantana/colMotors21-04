@@ -7,8 +7,13 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row-reverse',
     flexWrap: 'wrap-reverse',
-    justifyContent: 'flex-end'
-  },
+    justifyContent: 'flex-end',
+    maxWidth: '1000px',
+    [theme.breakpoints.down('xs')]: {
+      maxWidth:'100vw',
+      alignItems:'center',
+
+    }},
   heading: {
     color: 'rgba(0,183,255, 1)',
     textDecoration: 'none',

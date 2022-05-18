@@ -13,7 +13,7 @@ export default function Prueba({Postss}) {
 
   return (
     <>
-      <Layout>
+      <Layout title={'Posts | colMotors'}>
         <Posts Postss={Postss} />
       </Layout>
     </>

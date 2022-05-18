@@ -35,7 +35,8 @@ import Link from 'next/link'
             spacing={8}
             className={classes.gridContainer}
           >
-            <Grid item xs={12} sm={6} md={9} >
+    
+            <Grid item xs={12} sm={6} md={9}  >
               {/* <AppBar
                 className={classes.appBarSearch}
                 position="static"

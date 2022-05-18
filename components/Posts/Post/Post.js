@@ -10,7 +10,7 @@ import Image from "next/image";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Check, Close, Error } from "@material-ui/icons";
-import { getCotizacion } from "../../../reducers/Actions/cotizacionesActions";
+import { getCotizacion, getCotizaciones } from "../../../reducers/Actions/cotizacionesActions";
 import CotizacionVendedor from "./CotizacionVendedor";
 import CotizacionComprador from "./CotizacionComprador";
 
@@ -27,8 +27,10 @@ export default function PostCo({ OnePost }) {
   const dispatch = useDispatch()
   const { id } = router.query;
   const idCreator = OnePost?.creator;
+  const {cotizacion, cotizaciones} = useSelector(state=> state.cotizaciones)
 
-  // const [cotizacion, setCotizacion] = useState(false)
+  const cotis = cotizaciones?.filter(ele=> ele._id === OnePost?.cotizaciones)
+
 
   const handleDelete = () => {
     deletePost(OnePost._id);
@@ -65,9 +67,16 @@ export default function PostCo({ OnePost }) {
   if(OnePost.cotizaciones.length > 0){
    cotizacionCreada = user?.result?.cotizaciones?.find(el=> el._id ||el === OnePost?.cotizaciones)  
     }
-  useEffect(()=>{
+
+    
+
+    useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
-  },[])
+      dispatch(getCotizaciones())
+      if(cotizacionCreada){
+        dispatch(getCotizacion(cotizacionCreada));
+      }
+  },[dispatch])
   return (
     <>
       {visibleDelete === true && (
@@ -184,7 +193,7 @@ export default function PostCo({ OnePost }) {
 
         {cotizacionCreada && id !== undefined ?
           <div className={classes.cotizarr}>
-          <CotizacionVendedor user={user} OnePost={OnePost} cotizacionCreada={cotizacionCreada?._id? cotizacionCreada?._id: cotizacionCreada}/>
+          {cotis.map(el=> <CotizacionVendedor user={user} OnePost={OnePost} el={el}/>)}
           </div>
           :
           null

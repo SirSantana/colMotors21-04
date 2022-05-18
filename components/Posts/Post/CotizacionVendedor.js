@@ -18,12 +18,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { LOGOUT } from "../../../reducers/type";
 
-export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
+export default function CotizacionVendedor({user,OnePost, el}) {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const { cotizacion } = useSelector((state) => state.cotizaciones);
-  // let cotizacion;
   const router = useRouter()
+  console.log(el);
+  
+  
+  // let cotizacion;
     // let name = cotizacion?.nombreVendedor[0].toString();
   // let indice;
   // let two;
@@ -35,16 +37,14 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
   //   let twoLetters = name[0] + secondLetter
   //    two = twoLetters.replace(/ /g, "")
   // }
-  setTimeout(()=>{
-    if(!cotizacion){
-      dispatch({ type: LOGOUT });
-    return router.push('/auth')
-  }
-  },3000)
+  // setTimeout(()=>{
+  //   if(!cotizacion){
+  //     dispatch({ type: LOGOUT });
+  //   return router.push('/auth')
+  // }
+  // },5000)
 
-  useEffect(() => {
-    dispatch(getCotizacion(cotizacionCreada));
-  }, [dispatch]);
+  
   return (
     <>
       <div className={classes.card}>
@@ -69,12 +69,12 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
               avatar={
                 <Avatar
                 className={classes.purple2}
-                  alt={cotizacion?.nombreVendedor[0]}
+                  alt={el?.nombreVendedor[0]}
                 >
                   {/* {two} */}
                 </Avatar>
               }
-              title={cotizacion?.nombreVendedor[0]}
+              title={el?.nombreVendedor[0]}
               classes={{ subheader: classes.subheader, title: classes.title }}
               subheaderTypographyProps={{ variant: "body2" }}
               subheader="Vendedor"
@@ -113,7 +113,7 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
               >
                 <AttachMoney fontSize="large" />
                 <Typography className={classes.title}>
-                  {cotizacion?.precio}
+                  {el?.precio}
                 </Typography>
               </div>
               <div
@@ -128,7 +128,7 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
                   style={{ marginLeft: "5px" }}
                   className={classes.typography1}
                 >
-                  {cotizacion?.repuestos}
+                  {el?.repuestos}
                 </Typography>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function CotizacionVendedor({user,OnePost,cotizacionCreada}) {
                 style={{ color: "#1b333d", width: "30px", height: "30px" }}
               />
               <Typography style={{ marginLeft: "5px" }} variant="body1">
-                {cotizacion?.creator.pais}
+                {el?.creator.pais}
               </Typography>
             </div>
           </CardActions>

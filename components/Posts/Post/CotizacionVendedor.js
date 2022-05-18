@@ -11,7 +11,7 @@ import {
 import { AttachMoney, Build, Delete, Menu, Place } from "@material-ui/icons";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCotizacion } from "../../../reducers/Actions/cotizacionesActions";
+import { getCotizacion, getCotizaciones } from "../../../reducers/Actions/cotizacionesActions";
 import PostContent from "./PostContent";
 import useStyles from "./styles";
 import Link from "next/link";
@@ -22,7 +22,15 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter()
-  console.log(el);
+  const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
+  
+  // console.log(el);
+  
+  
+
+  
+  // const cotis = cotizaciones?.filter(ele=> ele._id === el)
+  console.log(cotizacion);
   
   
   // let cotizacion;
@@ -43,7 +51,12 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   //   return router.push('/auth')
   // }
   // },5000)
-
+  useEffect(()=>{
+    dispatch(getCotizaciones());
+    if (el) {
+      dispatch(getCotizacion(el));
+    }
+  },[dispatch])
   
   return (
     <>
@@ -69,12 +82,12 @@ export default function CotizacionVendedor({user,OnePost, el}) {
               avatar={
                 <Avatar
                 className={classes.purple2}
-                  alt={el?.nombreVendedor[0]}
+                  alt={cotizacion?.nombreVendedor[0]}
                 >
                   {/* {two} */}
                 </Avatar>
               }
-              title={el?.nombreVendedor[0]}
+              title={cotizacion?.nombreVendedor[0]}
               classes={{ subheader: classes.subheader, title: classes.title }}
               subheaderTypographyProps={{ variant: "body2" }}
               subheader="Vendedor"
@@ -113,7 +126,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
               >
                 <AttachMoney fontSize="large" />
                 <Typography className={classes.title}>
-                  {el?.precio}
+                  {cotizacion?.precio}
                 </Typography>
               </div>
               <div
@@ -128,7 +141,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
                   style={{ marginLeft: "5px" }}
                   className={classes.typography1}
                 >
-                  {el?.repuestos}
+                  {cotizacion?.repuestos}
                 </Typography>
               </div>
             </div>
@@ -148,7 +161,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
                 style={{ color: "#1b333d", width: "30px", height: "30px" }}
               />
               <Typography style={{ marginLeft: "5px" }} variant="body1">
-                {el?.creator.pais}
+                {cotizacion?.creator.pais}
               </Typography>
             </div>
           </CardActions>

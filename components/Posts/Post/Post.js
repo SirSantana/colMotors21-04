@@ -81,6 +81,9 @@ export default function PostCo({ OnePost }) {
   }
  }
  console.log('OnePost', OnePost);
+ console.log('user', user);
+ console.log('cotizacionCreada', cotizacionCreada);
+ console.log('arrayCotizaciones', arrayCotizaciones);
  pasarAArrayId()
 
 
@@ -92,7 +95,7 @@ export default function PostCo({ OnePost }) {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  },[OnePost, router]);
+  },[]);
 
   return (
     <>

@@ -84,7 +84,7 @@ export default function PostCo({ OnePost }) {
 
 
   // if(OnePost.cotizaciones.length > 0){
-
+  // VERIFICAR COTIZACIONES EN POST USER Y ONEPOST
   // }
 
 

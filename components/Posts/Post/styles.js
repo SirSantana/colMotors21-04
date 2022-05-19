@@ -79,7 +79,7 @@ export default makeStyles((theme)=>({
     height: '100%',
     padding: '0',
     position: 'relative',
-    width:'100%',
+    minWidth:'280px',
     maxWidth:'350px',
     [theme.breakpoints.down('sm')]: {
         width:'84vw'
@@ -205,7 +205,7 @@ export default makeStyles((theme)=>({
     fontWeight:'400'
   },
   cotizarr:{
-    marginLeft:'20px',
+    marginLeft:'90px',
     minWidth:'280px',
     [theme.breakpoints.down('sm')]: {
       marginLeft:'0',

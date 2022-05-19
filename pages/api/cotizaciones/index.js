@@ -24,7 +24,7 @@ export const getCotizaciones=async(req, res)=>{
         console.log('correcto2.2', cotizaciones);
         res.status(200).json(cotizaciones);
       } catch (error) {
-        res.status(403).json(error);
+        res.status(403).json(error.result);
       }
 }
 export const createCotizacion= async(req, res)=>{

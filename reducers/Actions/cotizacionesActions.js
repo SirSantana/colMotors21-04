@@ -32,7 +32,7 @@ export const getCotizacion = (id) => async (dispatch) => {
     console.log(error.response);
   }
 };
-export const getCotizaciones = () => async (dispatch) => {
+export const getCotizaciones = (router) => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
     console.log('correcto1');
@@ -42,6 +42,8 @@ export const getCotizaciones = () => async (dispatch) => {
     // dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
+    localStorage.clear()
+    router.push("/auth")
   }
 };
 

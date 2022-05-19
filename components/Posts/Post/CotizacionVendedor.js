@@ -15,10 +15,6 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   const router = useRouter()
   const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
   
-
-  
-
-  
   const cotis = cotizaciones?.filter(ele=> ele._id === el)
   
 
@@ -27,7 +23,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   console.log('cotis',cotis);
 
   useEffect(()=>{    
-    dispatch(getCotizaciones())
+    dispatch(getCotizaciones(router))
   },[dispatch])
   
   return (

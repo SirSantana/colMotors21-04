@@ -15,8 +15,10 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   const router = useRouter()
   const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
   
-  const cotis = cotizaciones?.filter(ele=> ele._id === el)
-  
+  let cotis;
+  if(cotizaciones){
+   cotis = cotizaciones?.filter(ele=> ele._id === el)
+  }
 
   console.log('el',el);
   console.log('cotizaciones', cotizaciones);

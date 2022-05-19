@@ -1,0 +1,2 @@
+
+GET http://localhost:3001/users/620e8d00fff685705365fade

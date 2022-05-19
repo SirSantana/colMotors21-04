@@ -21,7 +21,7 @@ export const postCotizacion = (cotizacion, router) => async (dispatch) => {
     console.log(error.response);
   }
 };
-export const getCotizacion = (id) => async (dispatch) => {
+export const getCotizacion = (id, router) => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
       const { data } = await api.getCotizacion(id);
@@ -30,6 +30,9 @@ export const getCotizacion = (id) => async (dispatch) => {
     // dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.response);
+    router.push("/auth")
+    localStorage.clear()
+
   }
 };
 export const getCotizaciones = () => async (dispatch) => {

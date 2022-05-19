@@ -28,9 +28,9 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   useEffect(()=>{    
     // dispatch(getCotizaciones())
     if(el){
-      dispatch(getCotizacion(el))
+      dispatch(getCotizacion(el, router))
     }
-  },[cotizacion, dispatch])
+  },[])
   
   return (
     <>

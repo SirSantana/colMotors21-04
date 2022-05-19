@@ -25,11 +25,11 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   // console.log('cotis',cotis);
 
   useEffect(()=>{    
-    dispatch(getCotizaciones())
+    // dispatch(getCotizaciones())
     if(el){
       dispatch(getCotizacion(el))
     }
-  },[dispatch])
+  },[dispatch, el])
   
   return (
     <>

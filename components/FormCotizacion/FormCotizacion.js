@@ -18,7 +18,8 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
     precio: "",
     vendedor: "",
     idVendedor: "",
-    idPost:''
+    idPost:'',
+    ciudad:''
   };
   export default function FormCotizacion({ OnePost,  user, createCotizacion }) {
     const classes = useStyles();
@@ -35,7 +36,7 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(postCotizacion({...form, nombreVendedor:user?.result.name, idVendedor:user?.result._id, idPost:OnePost._id}, router ))
+      dispatch(postCotizacion({...form, nombreVendedor:user?.result.name, idVendedor:user?.result._id, idPost:OnePost._id, pais:user?.result.pais}, router ))
       setForm(initial);
       // setVisibleCotizacion(false);
     };

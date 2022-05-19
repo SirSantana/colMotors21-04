@@ -24,7 +24,6 @@ import {
   getCotizaciones,
 } from "../../../reducers/Actions/cotizacionesActions";
 import CotizacionVendedor from "./CotizacionVendedor";
-import CotizacionComprador from "./CotizacionComprador";
 
 export default function PostCo({ OnePost }) {
   const classes = useStyles();
@@ -37,6 +36,7 @@ export default function PostCo({ OnePost }) {
   const dispatch = useDispatch();
   const { id } = router.query;
   const idCreator = OnePost?.creator;
+
 
   async function deletePost(id) {
     try {
@@ -67,32 +67,25 @@ export default function PostCo({ OnePost }) {
     }
   };
 
-  // const cotis = cotizaciones?.filter(ele=> ele._id === OnePost?.cotizaciones)
-
-  
-  // let cotizacionCreada1;
-  // if(OnePost.cotizaciones.length > 0){
-  //  cotizacionCreada1 = user?.result?.cotizaciones?.find(el=> el === OnePost?.cotizaciones)  
-  //   }
-  //   console.log('user',user);
-  //   console.log('post', OnePost);
-  //   console.log(cotizacionCreada);
-
   let cotiza = OnePost.cotizaciones;
   let arrayCotizaciones = [];
+  let cotizacionCreada;
+
+ function pasarAArrayId(){
   arrayCotizaciones.push(cotiza.split(","));
 
-  console.log(OnePost);
-  let cotizacionCreada;
   if (OnePost.cotizaciones.length > 0) {
     cotizacionCreada = user?.result?.cotizaciones?.find(
       (ele) => ele === arrayCotizaciones[0]?.find((item) => item === ele)
     );
   }
+ }
+ pasarAArrayId()
+
+
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-
-    
   },[]);
 
   return (
@@ -178,7 +171,7 @@ export default function PostCo({ OnePost }) {
 
             {user?.result?._id === idCreator ? (
               <Button
-                color="secondary"
+                color="primary"
                 variant="contained"
                 className={classes.cotizar}
                 onClick={handleCotizar}

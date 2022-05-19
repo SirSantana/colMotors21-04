@@ -7,6 +7,7 @@ const CotizacionSchema = new mongoose.Schema({
     comentarios: {type: [String], default:[]},
     date: {type: Date, default: Date.now},
     repuestos: {type: String, required: true},
+    pais:{type: String, required: true},
     // post:[{type: mongoose.Schema.Types.ObjectId, ref: 'postModel'}],
     idPost:{type: String, required: true}
 },{versionKey: false})

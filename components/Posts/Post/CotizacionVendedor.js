@@ -28,7 +28,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
 
   useEffect(()=>{    
     dispatch(getCotizaciones())
-  },[])
+  },[dispatch])
   
   return (
     <>

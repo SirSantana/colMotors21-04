@@ -91,7 +91,7 @@ export default function PostCo({ OnePost }) {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  },[]);
+  },[OnePost, router]);
 
   return (
     <>

@@ -21,11 +21,16 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
     idPost:'',
     ciudad:''
   };
-  export default function FormCotizacion({ OnePost,  user, createCotizacion }) {
+  export default function FormCotizacion({ OnePost,  user }) {
     const classes = useStyles();
     const [form, setForm] = useState(initial);
     const dispatch = useDispatch()
     const router = useRouter()
+    const [message, setMessage] = useState(null);
+    const [messageError, setMessageError] = useState(null);
+    const [messageLoad, setMessageLoad] = useState(null);
+
+
     const handleChange = (e) => {
       setForm({
         ...form,

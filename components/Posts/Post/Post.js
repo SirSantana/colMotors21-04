@@ -78,13 +78,6 @@ export default function PostCo({ OnePost }) {
     );
   }
  
-
- console.log('OnePost', OnePost);
- console.log('user', user);
- console.log('cotizacionCreada', cotizacionCreada);
- console.log('arrayCotizaciones', arrayCotizaciones);
-
-
   // if(OnePost.cotizaciones.length > 0){
   // VERIFICAR COTIZACIONES EN POST USER Y ONEPOST
   // }

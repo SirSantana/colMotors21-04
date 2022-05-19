@@ -16,7 +16,7 @@ export default async (req,res)=>{
 
 export  const getUsers= async(req, res)=>{
     try {
-        const oldUsers = await userModel.find().populate('cotizaciones')
+        const oldUsers = await userModel.find()
         res.status(200).json(oldUsers)
     } catch (error) {
         res.status(403).json(error)

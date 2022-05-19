@@ -38,7 +38,6 @@ export const getCotizaciones = () => async (dispatch) => {
     console.log('correcto1');
     const { data } = await api.getCotizaciones();
     console.log('correcto2', data);
-
     dispatch({ type: GET_COTIZACIONES, payload: data });
     // dispatch({ type: END_LOADING });
   } catch (error) {

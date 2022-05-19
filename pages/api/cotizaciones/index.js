@@ -4,10 +4,11 @@ import postModel from '../../../models/postModel'
 
 export default async  (req, res)=>{
     switch (req.method) {
-        case 'POST':
-            await createCotizacion(req, res)
         case 'GET':
             await getCotizaciones(req, res)
+        case 'POST':
+            await createCotizacion(req, res)
+        
     
         default:
             break;

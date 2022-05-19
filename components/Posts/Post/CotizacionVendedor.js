@@ -25,7 +25,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   // console.log('cotis',cotis);
 
   useEffect(()=>{    
-    dispatch(getCotizaciones(router))
+    dispatch(getCotizaciones())
     if(el){
       dispatch(getCotizacion(el))
     }
@@ -33,7 +33,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   
   return (
     <>
-      <CotizacionVista cotizacion={cotizacion} user={user} OnePost={OnePost}/>
+      {cotizacion &&  <CotizacionVista cotizacion={cotizacion} user={user} OnePost={OnePost}/>}
     </>
   );
 }

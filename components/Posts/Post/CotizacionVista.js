@@ -14,6 +14,7 @@ import {
 export default function CotizacionVista({user, OnePost, cotizacion}){
   const classes = useStyles();
     
+  
 
     return(
         <>

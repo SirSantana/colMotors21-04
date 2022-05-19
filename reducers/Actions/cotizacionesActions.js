@@ -32,7 +32,7 @@ export const getCotizacion = (id) => async (dispatch) => {
     console.log(error.response);
   }
 };
-export const getCotizaciones = (router) => async (dispatch) => {
+export const getCotizaciones = () => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
     console.log('correcto1');

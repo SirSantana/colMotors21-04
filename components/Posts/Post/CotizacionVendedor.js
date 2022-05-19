@@ -30,7 +30,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
     if(el){
       dispatch(getCotizacion(el))
     }
-  },[el])
+  },[cotizacion, dispatch])
   
   return (
     <>

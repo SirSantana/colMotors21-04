@@ -80,6 +80,7 @@ export default function PostCo({ OnePost }) {
     );
   }
  }
+ console.log('OnePost', OnePost);
  pasarAArrayId()
 
 

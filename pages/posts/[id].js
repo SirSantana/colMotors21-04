@@ -34,7 +34,7 @@ export default function PostPage({Post}) {
     </Layout>
   );
 }
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, router }) {
   try {
     await DBConnect();
     const res = await postModel.findById(params.id);

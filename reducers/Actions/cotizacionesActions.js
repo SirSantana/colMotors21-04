@@ -25,7 +25,6 @@ export const getCotizacion = (id) => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
       const { data } = await api.getCotizacion(id);
-
       dispatch({ type: GET_COTIZACION, payload: { cotizacion: data } });
 
     // dispatch({ type: END_LOADING });

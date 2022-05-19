@@ -86,7 +86,7 @@ export default function PostCo({ OnePost }) {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  },[cotizacionCreada]);
+  },[]);
 
   return (
     <>

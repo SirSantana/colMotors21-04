@@ -19,21 +19,22 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   // if(cotizaciones){
   //  cotis = cotizaciones?.filter(ele=> ele._id === el)
   // }
+  // console.log(el);
 
-  // console.log('el',el);
+  console.log('el',el);
   // console.log('cotizaciones', cotizaciones);
-  // console.log('cotis',cotis);
+  console.log('cotizacion',cotizacion);
 
   useEffect(()=>{    
     // dispatch(getCotizaciones())
     if(el){
       dispatch(getCotizacion(el))
     }
-  },[dispatch, el])
+  },[])
   
   return (
     <>
-      {cotizacion &&  <CotizacionVista cotizacion={cotizacion} user={user} OnePost={OnePost}/>}
+      <CotizacionVista cotizacion={cotizacion} user={user} OnePost={OnePost}/>
     </>
   );
 }

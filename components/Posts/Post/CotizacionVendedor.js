@@ -13,7 +13,7 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter()
-  const { cotizaciones } = useSelector((state) => state.cotizaciones);
+  const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
   
 
   
@@ -25,10 +25,10 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   console.log('el',el);
   console.log('cotizaciones', cotizaciones);
   console.log('cotis',cotis);
-  
+
   useEffect(()=>{    
     dispatch(getCotizaciones())
-  },[dispatch])
+  },[])
   
   return (
     <>

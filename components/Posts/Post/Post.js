@@ -82,7 +82,7 @@ export default function PostCo({ OnePost }) {
   // VERIFICAR COTIZACIONES EN POST USER Y ONEPOST
   // }
 
-
+  console.log(OnePost);
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));

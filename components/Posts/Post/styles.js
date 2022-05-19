@@ -33,11 +33,12 @@ export default makeStyles((theme)=>({
     borderRadius: "5px",
     [theme.breakpoints.down('sm')]: {
       marginTop:'20px',
-
       }
-
     }
   ,
+  
+  
+  
   container:{
     display: 'flex',
     flexDirection: 'row',
@@ -95,6 +96,8 @@ export default makeStyles((theme)=>({
     padding: '10px',
     position: 'relative',
     minWidth: '230px',
+    color:'white',
+    backgroundColor:'#464646',
   },
   
   purple: {
@@ -107,7 +110,7 @@ export default makeStyles((theme)=>({
   },
    purple2: {
     margin:0,
-    backgroundColor: deepPurple[600],
+    backgroundColor: '#949494',
     color:'white',
     fontSize:'16px'
 
@@ -121,8 +124,14 @@ export default makeStyles((theme)=>({
   subheader:{
     fontFamily: ' -apple-system, Segoe UI,',
     fontWeight:'500',
+    color:'white',
+    padding:0,
+  },
+  subheader2:{
+    fontFamily: ' -apple-system, Segoe UI,',
+    fontWeight:'500',
     color:'black',
-    padding:0
+    padding:0,
   },
   typography:{
     fontWeight:'600',
@@ -136,6 +145,15 @@ export default makeStyles((theme)=>({
     paddingRight:'10px',
     fontSize:'18px',
     lineHeight:'18px',
+    color:'white'
+  },
+  title2:{
+    fontFamily: ' -apple-system, Segoe UI,',
+    fontWeight:'600',
+    paddingRight:'10px',
+    fontSize:'18px',
+    lineHeight:'18px',
+    color:'black'
   },
   overlay: {
     color: 'black',
@@ -207,7 +225,7 @@ export default makeStyles((theme)=>({
     width:'90%',
     marginLeft:'auto',
     marginRight:'auto',
-    marginBottom: '15px'
+    marginBottom: '15px',
   }
   
 }));

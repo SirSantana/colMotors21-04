@@ -83,6 +83,11 @@ export default function PostCo({ OnePost }) {
  pasarAArrayId()
 
 
+  // if(OnePost.cotizaciones.length > 0){
+
+  // }
+
+
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
@@ -154,7 +159,7 @@ export default function PostCo({ OnePost }) {
                 </Avatar>
               }
               title={OnePost?.referencia}
-              classes={{ subheader: classes.subheader, title: classes.title }}
+              classes={{ subheader: classes.subheader2, title: classes.title2 }}
               subheaderTypographyProps={{ variant: "body2" }}
               subheader={moment(OnePost?.date).fromNow()}
             />
@@ -185,7 +190,7 @@ export default function PostCo({ OnePost }) {
                 fullWidth
                 className={classes.cotizar}
               >
-                {OnePost.cotizaciones.length}
+                {Math.round(OnePost.cotizaciones.length / 24)+ ' Cotizaciones'}
               </Button>
             ) : (
               <Button
@@ -222,22 +227,8 @@ export default function PostCo({ OnePost }) {
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
           </div>
         ) : null}
-        {/* {OnePost.cotizaciones && id !== undefined && !cotizacionCreada? 
-          <CotizacionComprador/>
-          :null  
-        } */}
 
-        {/* {user?.result._id !== OnePost.creator 
-        ? id !== undefined ?
-          OnePost ?
-          <h2>Ya cotizaste</h2>
-          :
-          <div className={classes.cotizarr}>
-              <FormCotizacion user={user} OnePost={OnePost}/>
-          </div>
-          :null
-        : null
-        } */}
+
       </div>
 
       {/* </a> */}

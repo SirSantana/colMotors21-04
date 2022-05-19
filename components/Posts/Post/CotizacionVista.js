@@ -25,7 +25,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
           : <b>Tu Cotización</b>}
           </Typography>
         </div>
-        <Card sx={{ width: "345px" }} className={classes.card1} elevation={2}>
+        <Card sx={{ width: "345px" }} className={classes.card1} elevation={8}>
           <div
             style={{
               display: "flex",
@@ -60,7 +60,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
             </section>
           </div>
 
-          <Divider></Divider>
+          <Divider style={{backgroundColor:'white', marginRight:'12px', marginLeft:'12px'}}></Divider>
 
           <CardContent
             style={{
@@ -81,7 +81,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
                   marginBottom: "8px",
                 }}
               >
-                <AttachMoney fontSize="large" />
+                <AttachMoney fontSize="large" style={{color:'#949494'}} />
                 <Typography className={classes.title}>
                   {cotizacion?.precio}
                 </Typography>
@@ -93,7 +93,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
                   marginLeft: "5px",
                 }}
               >
-                <Build fontSize="medium" />
+                <Build fontSize="medium" style={{color:'#949494'}}/>
                 <Typography
                   style={{ marginLeft: "5px" }}
                   className={classes.typography1}
@@ -115,7 +115,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
               }}
             >
               <Place
-                style={{ color: "#1b333d", width: "30px", height: "30px" }}
+                style={{ color: '#949494', width: "30px", height: "30px" }}
               />
               <Typography style={{ marginLeft: "5px" }} variant="body1">
                 {cotizacion?.pais}

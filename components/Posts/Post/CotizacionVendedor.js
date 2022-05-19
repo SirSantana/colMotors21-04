@@ -13,22 +13,20 @@ export default function CotizacionVendedor({user,OnePost, el}) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter()
-  const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
+  const { cotizaciones } = useSelector((state) => state.cotizaciones);
   
   
   
 
   
-  // const cotis = cotizaciones?.filter(ele=> ele._id === el)
+  const cotis = cotizaciones?.filter(ele=> ele._id === el)
   useEffect(()=>{    
-    if (el) {
-      dispatch(getCotizacion(el));
-    }
+    dispatch(getCotizaciones())
   },[dispatch])
   
   return (
     <>
-      <CotizacionVista cotizacion={cotizacion} user={user} OnePost={OnePost}/>
+      {cotis.map(cotizacion=> <CotizacionVista cotizacion={cotizacion} user={user} OnePost={OnePost}/>)}
     </>
   );
 }

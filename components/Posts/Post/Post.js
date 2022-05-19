@@ -227,7 +227,7 @@ export default function PostCo({ OnePost }) {
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
           </div>
         ) : null}
-
+          {/* <Button variant="contained" color='secondary' onClick={()=> router.push("/home")}>Regresa</Button> */}
 
       </div>
 

@@ -1,5 +1,5 @@
 
-POST http://localhost:3001/posts/620e7c874b34ad8b23150c5a/cotizacion/620e7c874b34ad8b23150c5a
+POST https://col-motors21-04.vercel.app/
 Content-Type: application/json
 Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU4ZDAwZmZmNjg1NzA1MzY1ZmFkZSIsImlhdCI6MTY0NTEyNzU5NCwiZXhwIjoxNjQ1MTMxMTk0fQ.dsqE5MPvqK1kdvp90Cbp1MlqkXTU9eqnO4eZtA8ASjc
 

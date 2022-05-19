@@ -1,2 +1,2 @@
 
-DELETE http://localhost:3001/posts/cotizacion/62199a01ab1eac8d95afe483
+DELETE https://col-motors21-04.vercel.app/

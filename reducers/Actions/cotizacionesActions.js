@@ -41,9 +41,7 @@ export const getCotizaciones = (router) => async (dispatch) => {
     dispatch({ type: GET_COTIZACIONES, payload: data });
     // dispatch({ type: END_LOADING });
   } catch (error) {
-    console.log(error);
-    localStorage.clear()
-    router.push("/auth")
+    console.log(error.response);
   }
 };
 

@@ -70,21 +70,19 @@ export default function PostCo({ OnePost }) {
   let cotiza = OnePost.cotizaciones;
   let arrayCotizaciones = [];
   let cotizacionCreada;
-
- function pasarAArrayId(){
   arrayCotizaciones.push(cotiza.split(","));
 
   if (OnePost.cotizaciones.length > 0) {
     cotizacionCreada = user?.result?.cotizaciones?.find(
-      (ele) => ele === arrayCotizaciones[0]?.find((item) => item === ele)
+      (ele) => ele == arrayCotizaciones[0]?.find((item) => item == ele)
     );
   }
- }
+ 
+
  console.log('OnePost', OnePost);
  console.log('user', user);
  console.log('cotizacionCreada', cotizacionCreada);
  console.log('arrayCotizaciones', arrayCotizaciones);
- pasarAArrayId()
 
 
   // if(OnePost.cotizaciones.length > 0){

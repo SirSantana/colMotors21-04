@@ -165,6 +165,7 @@ const SignUp = () => {
           <Typography color='secondary' variant='body2'>Solo tenemos funcionamiento en Colombia, pronto llegaremos a tu país</Typography>
         }
           <Button
+            id='test-button-form'
             type="submit"
             fullWidth
             variant="contained"

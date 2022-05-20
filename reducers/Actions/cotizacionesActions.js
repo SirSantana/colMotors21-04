@@ -38,9 +38,7 @@ export const getCotizacion = (id, router) => async (dispatch) => {
 export const getCotizaciones = () => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
-    console.log('correcto1');
     const { data } = await api.getCotizaciones();
-    console.log('correcto2', data);
     dispatch({ type: GET_COTIZACIONES, payload: data });
     // dispatch({ type: END_LOADING });
   } catch (error) {

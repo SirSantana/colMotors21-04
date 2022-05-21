@@ -86,6 +86,18 @@ if(cotiza){
   }
   console.log(arrayCotizaciones);
 
+const handleIr=()=>{
+    if(arrayCotizaciones.length >=1){
+      router.push(
+        {
+          pathname: `/posts/cotizaciones/${arrayCotizaciones[0]}`,
+          query:{
+            idd:OnePost._id,
+          }
+        })
+    }
+  }
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   },[]);
@@ -219,17 +231,21 @@ if(cotiza){
           )
         ) : null}
 
-        {cotizacionCreada && id !== undefined ? (
+{cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
           </div>
         ) : null}
-          {/* <Button variant="contained" color='secondary' onClick={()=> router.push("/home")}>Regresa</Button> */}
         {user?.result._id === OnePost.creator && id !== undefined ?
         <div>
-            <CotizacionVendedor user={user} OnePost={OnePost} arrayCotizaciones={arrayCotizaciones}/>
+            {/* <CotizacionVendedor user={user} OnePost={OnePost} arrayCotizaciones={arrayCotizaciones}/> */}
+            {OnePost.cotizaciones.length>=1 ?
+            <Button onClick={handleIr} variant='contained'>Ver Cotizaciones</Button>
+            : <Button  variant='contained'>Aun no has recibido Cotizaciones</Button>  
+          }
         </div>
         :null}
+       
       </div>
 
       {/* </a> */}

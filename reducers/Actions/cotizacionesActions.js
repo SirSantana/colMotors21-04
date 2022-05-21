@@ -30,8 +30,8 @@ export const getCotizacion = (id, router) => async (dispatch) => {
     // dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.response);
-    router.push("/auth")
-    localStorage.clear()
+    // router.push("/auth")
+    // localStorage.clear()
 
   }
 };

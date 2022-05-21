@@ -8,6 +8,5 @@ describe('Navigation', ()=>{
         cy.get('input').last().type('123123')
 
         cy.get('button').contains('Iniciar Sesion').click()
-        cy.contains('Mira las Cotizaciones').click()   
     })
 })

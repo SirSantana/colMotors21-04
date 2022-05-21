@@ -14,7 +14,6 @@ export default function Prubea(){
     const {query} = router
   console.log(otroId);
     let cotizacion1 = [];
-  console.log(cotizacion);
     if(cotizaciones && otroId?.length >1){
         cotizacion1.push(cotizaciones?.filter((ele) => ele._id === otroId[0].toString()))
         cotizacion1.unshift(cotizaciones?.filter((ele) => ele._id === otroId[1].toString()))
@@ -25,8 +24,8 @@ export default function Prubea(){
         }else if(otroId?.length <=1){
             dispatch(getCotizacion(otroId[0], router))
         }
+    },[dispatch])
 
-    },[])
     const cotizacionesVarias = cotizacion1.flat()
     return(
         <>

@@ -65,7 +65,7 @@ export default function MenuLogos({ marca, setMarca }) {
         </div>
       </IconButton>
       <Menu
-        id="menu-appbar"
+        name="menu-appbar"
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "top",
@@ -86,6 +86,8 @@ export default function MenuLogos({ marca, setMarca }) {
           }}
         >
           <MenuItem
+              id='prueba-test'
+
             style={{
               alignItems: "center",
               justifyContent: "center",

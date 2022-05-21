@@ -70,18 +70,21 @@ export default function PostCo({ OnePost }) {
   let cotiza = OnePost.cotizaciones;
   let arrayCotizaciones = [];
   let cotizacionCreada;
+if(cotiza){
   arrayCotizaciones.push(cotiza.split(","));
 
+}
   if (OnePost.cotizaciones.length > 0) {
     cotizacionCreada = user?.result?.cotizaciones?.find(
       (ele) => ele == arrayCotizaciones[0]?.find((item) => item == ele)
     );
   }
  
-  // if(OnePost.cotizaciones.length > 0){
-  // VERIFICAR COTIZACIONES EN POST USER Y ONEPOST
-  // }
-
+  let cotizacionesCliente;
+  if(OnePost.cotizaciones.length > 0  ){
+    // cotizacionesCliente = One
+  }
+  console.log(arrayCotizaciones);
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
@@ -222,7 +225,11 @@ export default function PostCo({ OnePost }) {
           </div>
         ) : null}
           {/* <Button variant="contained" color='secondary' onClick={()=> router.push("/home")}>Regresa</Button> */}
-
+        {user?.result._id === OnePost.creator && id !== undefined ?
+        <div>
+            <CotizacionVendedor user={user} OnePost={OnePost} arrayCotizaciones={arrayCotizaciones}/>
+        </div>
+        :null}
       </div>
 
       {/* </a> */}

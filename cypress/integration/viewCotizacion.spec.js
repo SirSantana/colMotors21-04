@@ -1,6 +1,6 @@
-describe('Navigation', ()=>{
-    it('Login with email and password', ()=>{
-
+describe('Navigation',()=>{
+    it('View Cotizaciones Cliente',()=>{
+        
         cy.visit('https://col-motors21-04.vercel.app/')
 
         // cy.get('a[href*="auth"]').click({multiple:true})
@@ -9,6 +9,6 @@ describe('Navigation', ()=>{
         cy.get('input').last().type('123123')
 
         cy.get('button').contains('Iniciar Sesion').click()
-
+        cy.contains('Ya Cotizaste').click()
     })
 })

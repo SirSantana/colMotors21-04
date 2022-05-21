@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Prueba from './Pruebas'
 import {useRouter} from 'next/router'
 import { getCotizacion, getCotizaciones } from '../../../reducers/Actions/cotizacionesActions'
-export default function PruebaCotizacion({cotizacionesVarias}){
+export default function PruebaCotizacion({cotizacionesVarias, cotizacion, cotizaciones}){
     
-    const {cotizacion, cotizaciones} = useSelector(state=> state.cotizaciones)
     console.log('cotizacion1', cotizacionesVarias);
     console.log('renderizadoFuera');
  

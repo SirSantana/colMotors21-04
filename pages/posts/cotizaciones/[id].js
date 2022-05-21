@@ -35,7 +35,7 @@ export default function Prubea(){
     return(
         <>
         <Layout title={"Cotizacion | colMotors"}>
-        <PruebaCotizacion cotizacionesVarias={cotizacionesVarias}/>        
+        {cotizacionesVarias&& <PruebaCotizacion cotizacionesVarias={cotizacionesVarias} cotizacion={cotizacion} cotizaciones={cotizaciones}/>  }      
         {/* {cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>

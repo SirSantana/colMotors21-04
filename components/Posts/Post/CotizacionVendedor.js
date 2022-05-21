@@ -36,7 +36,6 @@ export default function CotizacionVendedor({
     cotis1.push(cotizaciones?.filter((ele) => ele._id === cot1?.toString()));
     cotis1.unshift(cotizaciones?.filter((ele) => ele._id === cot2?.toString()));
   }
-console.log(cotizaciones);
 
 
 

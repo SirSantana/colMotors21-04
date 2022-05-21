@@ -48,7 +48,7 @@ console.log();
     if (el && !arrayCotizaciones) {
       dispatch(getCotizacion(el, router));
     }
-  }, []);
+  }, [router]);
 
   return (
     <>

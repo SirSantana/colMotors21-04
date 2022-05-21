@@ -12,7 +12,6 @@ export default function Prubea(){
     const dispatch = useDispatch()
     const otroId = id?.split(",")
     const {query} = router
-  console.log(otroId);
     let cotizacion1 = [];
     if(cotizaciones && otroId?.length >1){
         cotizacion1.push(cotizaciones?.filter((ele) => ele._id === otroId[0].toString()))
@@ -21,14 +20,15 @@ export default function Prubea(){
     const cotizacionesVarias = cotizacion1.flat()
 
     console.log('cotizacion1', cotizacion1);
-    
+
     useEffect(()=>{
         if(otroId?.length >1){
+          console.log('cotis');
         dispatch(getCotizaciones())
         }else if(otroId?.length <=1){
             dispatch(getCotizacion(otroId[0], router))
         }
-    },[dispatch])
+    },[dispatch, otroId])
 
     return(
         <>

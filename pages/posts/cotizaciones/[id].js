@@ -18,6 +18,10 @@ export default function Prubea(){
         cotizacion1.push(cotizaciones?.filter((ele) => ele._id === otroId[0].toString()))
         cotizacion1.unshift(cotizaciones?.filter((ele) => ele._id === otroId[1].toString()))
     }
+    const cotizacionesVarias = cotizacion1.flat()
+
+    console.log('cotizacion1', cotizacion1);
+    
     useEffect(()=>{
         if(otroId?.length >1){
         dispatch(getCotizaciones())
@@ -26,7 +30,6 @@ export default function Prubea(){
         }
     },[dispatch])
 
-    const cotizacionesVarias = cotizacion1.flat()
     return(
         <>
         <Layout title={"Cotizacion | colMotors"}>

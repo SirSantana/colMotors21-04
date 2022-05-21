@@ -1,7 +1,7 @@
 
 
 export default function PruebaCotizacion({el}){
-    console.log(el);
+    console.log("el",el);
     return(
         <>
         {el &&

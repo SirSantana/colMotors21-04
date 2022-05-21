@@ -20,9 +20,12 @@ export default function PruebaCotizacion(){
     const cotizacionesVarias = cotizacion1.flat()
     console.log(otroId);
     console.log('cotizacion1', cotizacionesVarias);
+    console.log('renderizadoFuera');
 
     useEffect(()=>{
         if(otroId?.length >1){
+      console.log('renderizadoUseEffect');
+
         dispatch(getCotizaciones())
         }else if(otroId?.length <=1){
             dispatch(getCotizacion(otroId[0], router))

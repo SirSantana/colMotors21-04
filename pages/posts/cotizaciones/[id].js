@@ -14,7 +14,10 @@ export default function Prubea(){
   const dispatch = useDispatch()
   console.log(otroId);
 
+  const {cotizacion, cotizaciones} = useSelector(state=> state.cotizaciones)
 
+  console.log("cotizacionId",cotizacion);
+  console.log("cotizacionesId",cotizaciones);
 
   useEffect(()=>{
     dispatch(getCotizaciones())
@@ -26,7 +29,7 @@ export default function Prubea(){
     return(
         <>
         <Layout title={"Cotizacion | colMotors"}>
-        <PruebaCotizacion />     
+        {cotizacion || cotizaciones ? <PruebaCotizacion cotizacion={cotizacion} cotizaciones={cotizaciones}/>:null}     
         {/* {cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>

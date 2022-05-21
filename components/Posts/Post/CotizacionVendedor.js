@@ -37,12 +37,13 @@ export default function CotizacionVendedor({
     cotis1.unshift(cotizaciones?.filter((ele) => ele._id === cot2?.toString()));
   }
 console.log(cotizaciones);
-console.log();
+console.log('renderizadoFuera');
 
 
 
   useEffect(() => {
     if (arrayCotizaciones && !el) {
+      console.log('renderizadoUseEffect');
       dispatch(getCotizaciones());
     }
     if (el && !arrayCotizaciones) {

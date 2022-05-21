@@ -27,7 +27,7 @@ export default function PruebaCotizacion(){
         }else if(otroId?.length <=1){
             dispatch(getCotizacion(otroId[0], router))
         }
-    },[router])
+    },[router, dispatch])
     return(
         <>
          {cotizacionesVarias && cotizacionesVarias.map(el=> <Prueba el={el}/>)}

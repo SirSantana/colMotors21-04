@@ -100,7 +100,7 @@ const handleIr=()=>{
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  },[router]);
+  },[]);
 
   return (
     <>

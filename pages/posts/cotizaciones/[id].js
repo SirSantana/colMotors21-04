@@ -12,19 +12,21 @@ export default function Prubea(){
   
   const otroId = id?.split(",")
   const dispatch = useDispatch()
-  
+  console.log(otroId);
 
 
 
   useEffect(()=>{
     dispatch(getCotizaciones())
+    if(otroId){
     dispatch(getCotizacion(otroId[0], router))
-},[router, dispatch])
+    }
+  },[router, dispatch])
 
     return(
         <>
         <Layout title={"Cotizacion | colMotors"}>
-        <PruebaCotizacion otroId={otroId} />     
+        <PruebaCotizacion />     
         {/* {cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>

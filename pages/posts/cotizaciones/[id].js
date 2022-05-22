@@ -11,25 +11,11 @@ export default function Prubea(){
   const { id } = router.query
   
   const otroId = id?.split(",")
-  const dispatch = useDispatch()
   console.log(otroId);
-
-  const {cotizacion, cotizaciones} = useSelector(state=> state.cotizaciones)
-
-  console.log("cotizacionId",cotizacion);
-  console.log("cotizacionesId",cotizaciones);
-
-  useEffect(()=>{
-    dispatch(getCotizaciones())
-    if(otroId){
-    dispatch(getCotizacion(otroId[0], router))
-    }
-  },[router, dispatch])
-
     return(
         <>
         <Layout title={"Cotizacion | colMotors"}>
-        {cotizacion || cotizaciones ? <PruebaCotizacion cotizacion={cotizacion} cotizaciones={cotizaciones}/>:null}     
+        <PruebaCotizacion/>    
         {/* {cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>

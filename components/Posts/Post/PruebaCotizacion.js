@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import Prueba from './Pruebas'
 import {useRouter} from 'next/router'
 import { getCotizacion, getCotizaciones } from '../../../reducers/Actions/cotizacionesActions'
-export default function PruebaCotizacion({cotizacion, cotizaciones}){
+export default function PruebaCotizacion({}){
     const router = useRouter()
+    const dispatch = useDispatch()
     const { id } = router.query
+    const {cotizacion, cotizaciones} = useSelector(state=> state.cotizaciones)
     
     const otroId = id?.split(",")
     console.log("cotizacion",cotizacion);
@@ -21,7 +23,14 @@ export default function PruebaCotizacion({cotizacion, cotizaciones}){
     
     console.log("cotizaciones", cotizaciones);
     console.log("cotizacion", cotizacion);
-    console.log(otroId);
+    console.log(cotizacionesVarias);
+
+    useEffect(()=>{
+        dispatch(getCotizaciones())
+        if(otroId){
+            dispatch(getCotizacion(otroId[0]))
+        }
+      },[router, dispatch])
 
     return(
         <>

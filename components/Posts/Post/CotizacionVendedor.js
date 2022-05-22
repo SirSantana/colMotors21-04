@@ -28,16 +28,18 @@ export default function CotizacionVendedor({
   let cotis1 = [];
   let cot1;
   let cot2;
-
-  if (arrayCotizaciones) {
+    function cotizacionesId(){
+      
+    if (arrayCotizaciones) {
     cot1 = arrayCotizaciones?.map((el) => el[0]);
     cot2 = arrayCotizaciones?.map((el) => el[1]);
 
     cotis1.push(cotizaciones?.filter((ele) => ele._id === cot1?.toString()));
     cotis1.unshift(cotizaciones?.filter((ele) => ele._id === cot2?.toString()));
-  }
+    }
 
-
+    }
+    cotizacionesId()
 
   useEffect(() => {
     if (arrayCotizaciones && !el) {

@@ -4,18 +4,20 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Layout from '../../../components/Layout/Layout'
 import PruebaCotizacion from '../../../components/Posts/Post/PruebaCotizacion'
+import DBConnect from '../../../libs/dbConnect'
+import postModel from '../../../models/postModel'
+
 import { getCotizacion, getCotizaciones } from '../../../reducers/Actions/cotizacionesActions'
 
-export default function Prubea(){
+export default function Prubea({Post}){
   const router = useRouter()
   const { id } = router.query
   
   const otroId = id?.split(",")
-  console.log(otroId);
     return(
         <>
         <Layout title={"Cotizacion | colMotors"}>
-        <PruebaCotizacion/>    
+        <PruebaCotizacion Post={Post} otroId={otroId}/>    
         {/* {cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
@@ -31,4 +33,20 @@ export default function Prubea(){
         </Layout>
         </>
     )
+}
+export async function getServerSideProps({ params, query }) {
+  try {
+    await DBConnect();
+    const res = await postModel.findById(query.idd);
+    const Post = res.toObject();
+    Post._id = Post._id.toString();
+    Post.creator = Post.creator.toString();
+    Post.cotizaciones = Post.cotizaciones.toString();
+    Post.date = Post.date.toString();
+    return {
+      props: { Post },
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }

@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import Prueba from './Pruebas'
 import {useRouter} from 'next/router'
 import { getCotizacion, getCotizaciones } from '../../../reducers/Actions/cotizacionesActions'
-export default function PruebaCotizacion({}){
+import PostCo from './Post'
+export default function PruebaCotizacion({Post, otroId}){
     const router = useRouter()
     const dispatch = useDispatch()
-    const { id } = router.query
     const {cotizacion, cotizaciones} = useSelector(state=> state.cotizaciones)
     
-    const otroId = id?.split(",")
     console.log("cotizacion",cotizacion);
     console.log("cotizaciones",cotizaciones);
 
@@ -19,7 +18,7 @@ export default function PruebaCotizacion({}){
         cotizacion1.push(cotizaciones?.filter((ele) => ele._id === otroId[0].toString()))
         cotizacion1.unshift(cotizaciones?.filter((ele) => ele._id === otroId[1].toString()))
     }
-    const cotizacionesVarias = cotizacion1.flat()
+    const cotizacionesVarias = cotizacion1?.flat()
     
     console.log("cotizaciones", cotizaciones);
     console.log("cotizacion", cotizacion);
@@ -36,7 +35,7 @@ export default function PruebaCotizacion({}){
         <>
          {cotizacionesVarias ? cotizacionesVarias.map(el=> <Prueba el={el}/>): null}
         {cotizacion ? cotizacionesVarias.length === 0 && <Prueba el={cotizacion}/>: null}
-
+        <PostCo OnePost={Post}/>
         </>
     )
 }

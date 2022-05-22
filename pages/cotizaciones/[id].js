@@ -2,15 +2,15 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Layout from "../../../components/Layout/Layout";
-import PruebaCotizacion from "../../../components/Posts/Post/PruebaCotizacion";
-import DBConnect from "../../../libs/dbConnect";
-import postModel from "../../../models/postModel";
+import Layout from "../../components/Layout/Layout";
+import PruebaCotizacion from "../../components/Posts/Post/PruebaCotizacion";
+import DBConnect from "../../libs/dbConnect";
+import postModel from "../../models/postModel";
 
 import {
   getCotizacion,
   getCotizaciones,
-} from "../../../reducers/Actions/cotizacionesActions";
+} from "../../reducers/Actions/cotizacionesActions";
 
 export default function Prubea({ Post }) {
   const router = useRouter();

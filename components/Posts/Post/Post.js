@@ -90,7 +90,7 @@ const handleIr=()=>{
     if(arrayCotizaciones.length >=1){
       router.push(
         {
-          pathname: `/posts/cotizaciones/${arrayCotizaciones[0]}`,
+          pathname: `/cotizaciones/${arrayCotizaciones[0]}`,
           query:{
             idd:OnePost._id,
           }
@@ -231,11 +231,11 @@ const handleIr=()=>{
           )
         ) : null}
 
-{/* {cotizacionCreada && id !== undefined ? (
+{cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
           </div>
-        ) : null} */}
+        ) : null}
 
         
         {user?.result._id === OnePost.creator && id !== undefined ?

@@ -231,11 +231,13 @@ const handleIr=()=>{
           )
         ) : null}
 
-{cotizacionCreada && id !== undefined ? (
+{/* {cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
           </div>
-        ) : null}
+        ) : null} */}
+
+        
         {user?.result._id === OnePost.creator && id !== undefined ?
         <div>
             {/* <CotizacionVendedor user={user} OnePost={OnePost} arrayCotizaciones={arrayCotizaciones}/> */}

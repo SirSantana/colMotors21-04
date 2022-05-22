@@ -10,7 +10,7 @@ export default function UserPerfil(){
     useEffect(()=>{
         setUserr(JSON.parse(localStorage.getItem("profile")));
 
-    },[router])
+    },[])
     return(
         <Layout title={'Mi perfil | colMotors'}>
         <Perfil userr={userr}/>

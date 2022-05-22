@@ -26,15 +26,15 @@ export default function PruebaCotizacion({Post, otroId}){
 
     useEffect(()=>{
         dispatch(getCotizaciones())
-        if(otroId){
-            dispatch(getCotizacion(otroId[0]))
-        }
+        // if(otroId){
+        //     dispatch(getCotizacion(otroId[0]))
+        // }
       },[router, dispatch])
 
     return(
         <>
-         {cotizacionesVarias ? cotizacionesVarias.map(el=> <Prueba el={el}/>): null}
-        {cotizacion ? cotizacionesVarias.length === 0 && <Prueba el={cotizacion}/>: null}
+         {cotizacionesVarias ? cotizacionesVarias?.map(ele=> <Prueba el={ele}/>): null}
+        {cotizacion ? cotizacionesVarias?.length === 0 && <Prueba el={cotizacion}/>: null}
         <PostCo OnePost={Post}/>
         </>
     )

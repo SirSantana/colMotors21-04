@@ -6,43 +6,42 @@ import Layout from "../../components/Layout/Layout";
 import PruebaCotizacion from "../../components/Posts/Post/PruebaCotizacion";
 import DBConnect from "../../libs/dbConnect";
 import postModel from "../../models/postModel";
+import cotizacionModel from "../../models/cotizacionModel";
 
 import {
   getCotizacion,
   getCotizaciones,
 } from "../../reducers/Actions/cotizacionesActions";
 
-export default function Prubea({ Post }) {
+export default function Prubea({ Post, Cotizacion }) {
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useDispatch()
-  console.log(id);
 
-  const otroId = id?.split(",");
-  let cotizacion1 = [];
+  // let cotizacion1 = [];
   const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
 
-  if (cotizaciones && otroId?.length > 1) {
-    cotizacion1.push(
-      cotizaciones?.filter((ele) => ele._id === otroId[0].toString())
-    );
-    cotizacion1.unshift(
-      cotizaciones?.filter((ele) => ele._id === otroId[1].toString())
-    );
-  }
+  // if (cotizaciones && otroId?.length > 1) {
+  //   cotizacion1.push(
+  //     cotizaciones?.filter((ele) => ele._id === otroId[0].toString())
+  //   );
+  //   cotizacion1.unshift(
+  //     cotizaciones?.filter((ele) => ele._id === otroId[1].toString())
+  //   );
+  // }
   
-  console.log("cotizaciones", cotizaciones);
-  console.log("cotizacion", cotizacion);
-  useEffect(() => {
-    dispatch(getCotizaciones());
-    if(otroId){
-        dispatch(getCotizacion(otroId[0]))
-    }
-  }, [router, dispatch]);
+  // console.log("cotizaciones", cotizaciones);
+  // console.log("cotizacion", cotizacion);
+  // useEffect(() => {
+  //   dispatch(getCotizaciones());
+  //   if(otroId){
+  //       dispatch(getCotizacion(otroId[0]))
+  //   }
+  // }, []);
   return (
     <>
       <Layout title={"Cotizacion | colMotors"}>
-        <PruebaCotizacion Post={Post} otroId={otroId} cotizacion1={cotizacion1}/>
+        <PruebaCotizacion Post={Post} Cotizacion={Cotizacion}/>
         {/* {cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
             <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
@@ -59,6 +58,8 @@ export default function Prubea({ Post }) {
   );
 }
 export async function getServerSideProps({ params, query }) {
+  const otroId = query?.id?.split(",");
+
   try {
     await DBConnect();
     const res = await postModel.findById(query.idd);
@@ -67,10 +68,32 @@ export async function getServerSideProps({ params, query }) {
     Post.creator = Post.creator.toString();
     Post.cotizaciones = Post.cotizaciones.toString();
     Post.date = Post.date.toString();
+
+    const data = await cotizacionModel.findById(otroId);
+    const Cotizacion = data.toObject();
+    Cotizacion._id = Cotizacion._id.toString();
+    // Cotizacion.repuestos = Cotizacion.creator.toString();
+    // Cotizacion.precio = Cotizacion.cotizaciones.toString();
+    Cotizacion.creator = Cotizacion.creator[0].toString()
+    Cotizacion.date = Cotizacion.date.toString();
+
     return {
-      props: { Post },
+      props: { Post, Cotizacion },
     };
   } catch (error) {
     console.log(error);
   }
 }
+// export async function getServerSideProps({ params, query }) {
+
+//   try {
+//     await DBConnect();
+    
+//     // Cotizacion.date = Cotizacion.date.toString();
+//     return {
+//       props: { Cotizacion },
+//     };
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }

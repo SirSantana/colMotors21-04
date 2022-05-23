@@ -26,8 +26,6 @@ export default function Posts({Postss}) {
       }, 1000);
       });
     }
-    console.log(Postss.reverse());
-    console.log(Postss);
 
     const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
   return (

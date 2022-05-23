@@ -8,12 +8,12 @@ import clsx from "clsx";
 
 
 const NUM_PER_PAGE = 6;
-const TOTAL_PAGES = 3;
+const TOTAL_PAGES = 5;
 export default function Posts({Postss}) {
  
   // const {posts, isLoading} = useSelector(state=> state.posts)
   const classes = useStyles();
-  const [veces,setVeces] = useState(1)
+  const [veces,setVeces] = useState(0)
   const triggerRef = useRef(null);
   const onGrabData = (currentPage) => {
       // This would be where you'll call your API
@@ -26,7 +26,6 @@ export default function Posts({Postss}) {
       }, 1000);
       });
     }
-
     const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
   return (
       // isLoading ? <CircularProgress/>:

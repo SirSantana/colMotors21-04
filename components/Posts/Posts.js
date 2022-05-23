@@ -42,7 +42,7 @@ export default function Posts({Postss}) {
                 
               })}
             </Grid>
-            {veces <= Math.round(Postss.length / 6) ?<div ref={triggerRef} className={clsx("trigger", { visible: loading })}>
+            {veces <= Math.round(Postss?.length / 6) ?<div ref={triggerRef} className={clsx("trigger", { visible: loading })}>
             <h2>Cargando ...</h2>
         </div>:null }
         </>

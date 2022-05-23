@@ -19,6 +19,7 @@ export const getPost = (id) => async (dispatch) => {
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log({ message: error.message });
+    
   }
 };
 // export const getPosts = () => async (dispatch) => {

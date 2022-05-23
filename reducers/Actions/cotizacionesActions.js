@@ -8,17 +8,22 @@ import {
   DELETE_COTIZACION
 } from "../type";
 
-export const postCotizacion = (cotizacion, router) => async (dispatch) => {
+export const postCotizacion = (cotizacion, router,setMessage, setMessageError, setMessageLoad) => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
+    setMessageLoad('Enviando Cotizacion...')
 
     const { data } = await api.createCotizacion(cotizacion);
-    router.push('/home')
     dispatch({ type: CREATE_COTIZACION, payload: data });
+    setMessage('¡Cotizacion realizada!...')
+    router.push('/home')
+
     // dispatch({ type: END_LOADING });
 
   } catch (error) {
     console.log(error.response);
+    setMessageLoad(null)
+    setMessageError(error.response)
   }
 };
 export const getCotizacion = (id) => async (dispatch) => {

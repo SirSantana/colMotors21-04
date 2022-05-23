@@ -234,9 +234,16 @@ const handleIr=()=>{
           )
         ) :
         cotizacionCreada && id !== undefined ? (
-          <div className={classes.cotizarr}>
-             <Button onClick={handleIr}   variant='contained'>Ver tu Cotizacion</Button>
-          </div>
+        <Paper className={classes.paper3} elevation={3}>
+      <Check fontSize="large" style={{paddingRight:'10px', color:'#f50057', }}/>
+      <Typography className={classes.typo} style={{fontSize:'18px', color:'white',marginBottom:'20px'}}>¡Ya Cotizaste!</Typography>
+
+        <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Espera a que el vendedor te escriba</Typography>
+        <br/>
+             <Button onClick={handleIr} color='secondary' style={{width:'98%'}}  variant='contained'>Ver tu Cotizacion</Button>
+        </Paper>   
+
+          
         ) : null}
 
 

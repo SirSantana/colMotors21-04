@@ -71,6 +71,33 @@ export default makeStyles((theme)=>({
       },
 
   },
+  typo:{
+    fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
+    fontWeight:'600',
+    justifyContent:'center',
+    alignItems:'center',
+    textAlign:'center'
+  },
+  paper3: {
+    padding: theme.spacing(2),
+    background:"#464646",
+    color: 'white',
+    fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI,',
+    justifyContent: 'center',
+    marginBottom:'10px',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    width:'200px',
+    flexDirection:'column',
+    marginLeft:'40px',
+    height:'180px',
+    [theme.breakpoints.down('xs')]: {
+      width:'90%',
+      marginLeft:0
+      },
+
+  },
   card: {
     display: 'flex',
     flexDirection: 'column',

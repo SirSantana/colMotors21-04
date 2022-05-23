@@ -5,12 +5,13 @@ import {
     Paper,
     Divider,
     Button,
+    ButtonBase,
   } from "@material-ui/core";
   import { useState } from "react";
   import { useDispatch } from "react-redux";
   import Image from 'next/image'
   import useStyles from "./styles";
-import { Build } from "@material-ui/icons";
+import { Build, Check } from "@material-ui/icons";
 import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   import {useRouter} from 'next/router'
   const initial = {
@@ -41,13 +42,31 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(postCotizacion({...form, nombreVendedor:user?.result.name, idVendedor:user?.result._id, idPost:OnePost._id, pais:user?.result.pais}, router ))
+      dispatch(postCotizacion({...form, nombreVendedor:user?.result.name, idVendedor:user?.result._id, idPost:OnePost._id, pais:user?.result.pais}, router,setMessage, setMessageError, setMessageLoad ))
       setForm(initial);
       // setVisibleCotizacion(false);
     };
     return (
       <>
-  
+  {messageError !== null && 
+    <Paper className={classes.paper2} elevation={3}>
+      <Error style={{paddingRight:'10px'}}/>
+    <Typography className={classes.typo2} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>{messageError}</Typography>
+      <ButtonBase onClick={()=>setMessageError(messageError? null: true)}><Close/></ButtonBase>
+    </Paper> }
+
+    {message !== null && 
+    <Paper className={classes.paper2} style={{backgroundColor:'#1b333d'}} elevation={3}>
+      <Check style={{paddingRight:'10px'}}/>
+    <Typography className={classes.typo2} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>{message}</Typography>
+    </Paper> }
+
+    {messageLoad !== null && 
+    <Paper className={classes.paper2} style={{backgroundColor:'#1b333d'}} elevation={3}>
+      <Check style={{paddingRight:'10px'}}/>
+    <Typography className={classes.typo2} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>{messageLoad}</Typography>
+    </Paper> }
+
         <div className={classes.header}>
             <Typography gutterBottom className={classes.typo}>
               <b>Tu Cotización</b> 

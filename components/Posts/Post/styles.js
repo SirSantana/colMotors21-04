@@ -94,7 +94,8 @@ export default makeStyles((theme)=>({
     height:'180px',
     [theme.breakpoints.down('xs')]: {
       width:'90%',
-      marginLeft:0
+      marginLeft:0,
+      marginTop:'20px'
       },
 
   },

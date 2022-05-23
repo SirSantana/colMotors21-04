@@ -46,8 +46,8 @@ export default function Home({Postss}) {
     
   
  
-  useEffect(() => {
-    setToken(user?.token);
+  // useEffect(() => {
+  //   setToken(user?.token);
 
     // if (token) {
     //   const decodedToken = decode(token);
@@ -55,7 +55,7 @@ export default function Home({Postss}) {
     //   if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     // }
     // setUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+  // }, []);
 
   return (
     <>

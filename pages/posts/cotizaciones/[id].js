@@ -2,17 +2,12 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Layout from "../../components/Layout/Layout";
-import PruebaCotizacion from "../../components/Posts/Post/PruebaCotizacion";
-import DBConnect from "../../libs/dbConnect";
-import postModel from "../../models/postModel";
-import cotizacionModel from "../../models/cotizacionModel";
-
-import {
-  getCotizacion,
-  getCotizaciones,
-} from "../../reducers/Actions/cotizacionesActions";
-import CotizacionVista from "../../components/Posts/Post/CotizacionVista";
+import Layout from "../../../components/Layout/Layout";
+import DBConnect from "../../../libs/dbConnect";
+import postModel from "../../../models/postModel"
+import cotizacionModel from "../../../models/cotizacionModel";
+import PruebaCotizacion from '../../../components/Posts/Post/PruebaCotizacion'
+import CotizacionVista from "../../../components/Posts/Post/CotizacionVista";
 
 export default function Prubea({ Post, Cotizacion }) {
   const router = useRouter();

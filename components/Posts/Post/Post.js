@@ -6,24 +6,17 @@ import {
   CardHeader,
   Avatar,
   Paper,
-  ButtonBase,
 } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
 import FormCotizacion from "../../FormCotizacion/FormCotizacion";
-import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
 import PostActions from "./PostActions";
-import Image from "next/image";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Check, Close, Error } from "@material-ui/icons";
-import {
-  getCotizacion,
-  getCotizaciones,
-} from "../../../reducers/Actions/cotizacionesActions";
-import CotizacionVendedor from "./CotizacionVendedor";
+
 
 export default function PostCo({ OnePost }) {
   const classes = useStyles();
@@ -84,16 +77,26 @@ if(cotiza){
   if(OnePost.cotizaciones.length > 0  ){
     // cotizacionesCliente = One
   }
-  console.log(arrayCotizaciones);
+
 
 const handleIr=()=>{
-    if(arrayCotizaciones.length >=1){
+    if(arrayCotizaciones.length >=1 && cotizacionCreada=== undefined){
       router.push(
         {
           pathname: `/cotizaciones/${arrayCotizaciones[0]}`,
           query:{
             idd:OnePost._id,
           }
+        })
+    }else{
+      router.push(
+        {
+          pathname: `/cotizaciones/${cotizacionCreada}`,
+          query:{
+            idd:OnePost._id,
+            cliente:'vendedor'
+          },
+          
         })
     }
   }
@@ -229,18 +232,18 @@ const handleIr=()=>{
               )}
             </div>
           )
-        ) : null}
-
-{cotizacionCreada && id !== undefined ? (
+        ) :
+        cotizacionCreada && id !== undefined ? (
           <div className={classes.cotizarr}>
-            <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
+             <Button onClick={handleIr}   variant='contained'>Ver tu Cotizacion</Button>
           </div>
         ) : null}
+
+
 
         
         {user?.result._id === OnePost.creator && id !== undefined ?
         <div>
-            {/* <CotizacionVendedor user={user} OnePost={OnePost} arrayCotizaciones={arrayCotizaciones}/> */}
             {OnePost.cotizaciones.length>=1 ?
             <Button onClick={handleIr} variant='contained'>Ver Cotizaciones</Button>
             : <Button  variant='contained'>Aun no has recibido Cotizaciones</Button>  

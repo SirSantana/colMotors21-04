@@ -9,19 +9,22 @@ import {
     Typography,
   } from "@material-ui/core";
   import { AttachMoney, Build, Delete, Menu, Place } from "@material-ui/icons";
+import OnePost from "./OnePost";
   import useStyles from "./styles";
 
-export default function CotizacionVista({user, OnePost, cotizacion}){
+export default function CotizacionVista({Cotizacion, Post, user}){
   const classes = useStyles();
 
     return(
         <>
+      <div className={classes.container} style={{gap:'30px'}}>
+
+        <OnePost Post={Post} user={user}/>
+
         <div className={classes.card}>
         <div className={classes.header1}>
           <Typography gutterBottom className={classes.typo}>
-            {user?.result._id === OnePost?.creator
-            ? <b>Cotización Vendedor</b>
-          : <b>Tu Cotización</b>}
+           <b>Tu Cotización</b>
           </Typography>
         </div>
         <Card sx={{ width: "345px" }} className={classes.card1} elevation={8}>
@@ -38,12 +41,12 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
               avatar={
                 <Avatar
                 className={classes.purple2}
-                  alt={cotizacion?.nombreVendedor[0]}
+                  alt={Cotizacion?.nombreVendedor[0]}
                 >
                   {/* {two} */}
                 </Avatar>
               }
-              title={cotizacion?.nombreVendedor[0]}
+              title={Cotizacion?.nombreVendedor[0]}
               classes={{ subheader: classes.subheader, title: classes.title }}
               subheaderTypographyProps={{ variant: "body2" }}
               subheader="Vendedor"
@@ -82,7 +85,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
               >
                 <AttachMoney fontSize="large" style={{color:'#949494'}} />
                 <Typography className={classes.title}>
-                  {cotizacion?.precio}
+                  {Cotizacion?.precio}
                 </Typography>
               </div>
               <div
@@ -97,7 +100,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
                   style={{ marginLeft: "5px" }}
                   className={classes.typography1}
                 >
-                  {cotizacion?.repuestos}
+                  {Cotizacion?.repuestos}
                 </Typography>
               </div>
             </div>
@@ -117,7 +120,7 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
                 style={{ color: '#949494', width: "30px", height: "30px" }}
               />
               <Typography style={{ marginLeft: "5px" }} variant="body1">
-                {cotizacion?.pais}
+                {Cotizacion?.pais}
               </Typography>
             </div>
           </CardActions>
@@ -152,6 +155,8 @@ export default function CotizacionVista({user, OnePost, cotizacion}){
           )}
         </Card>
       </div>
+      </div>
+
         </>
     )
 }

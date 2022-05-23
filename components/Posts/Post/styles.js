@@ -50,7 +50,7 @@ export default makeStyles((theme)=>({
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-
+      gap:'15px',
       width:'84vw'
     }
   },

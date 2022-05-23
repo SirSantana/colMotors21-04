@@ -23,6 +23,7 @@ export default makeStyles((theme) => ({
       marginBottom:'10px',
       padding:'10px 20px',
       alignItems:'center',
+      width:'88%',
       justifyContent:'center', 
       backgroundColor:"#1b333d",
       [theme.breakpoints.down('sm')]: {

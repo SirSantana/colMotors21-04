@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Layout from "../../components/Layout/Layout";
@@ -12,47 +12,23 @@ import {
   getCotizacion,
   getCotizaciones,
 } from "../../reducers/Actions/cotizacionesActions";
+import CotizacionVista from "../../components/Posts/Post/CotizacionVista";
 
 export default function Prubea({ Post, Cotizacion }) {
   const router = useRouter();
   const { id } = router.query;
+  console.log(router);
   const dispatch = useDispatch()
+  const [user, setUser] = useState(null)
 
-  // let cotizacion1 = [];
-  const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
-
-  // if (cotizaciones && otroId?.length > 1) {
-  //   cotizacion1.push(
-  //     cotizaciones?.filter((ele) => ele._id === otroId[0].toString())
-  //   );
-  //   cotizacion1.unshift(
-  //     cotizaciones?.filter((ele) => ele._id === otroId[1].toString())
-  //   );
-  // }
-  
-  // console.log("cotizaciones", cotizaciones);
-  // console.log("cotizacion", cotizacion);
-  // useEffect(() => {
-  //   dispatch(getCotizaciones());
-  //   if(otroId){
-  //       dispatch(getCotizacion(otroId[0]))
-  //   }
-  // }, []);
+  useEffect(() => {
+   setUser(JSON.parse(localStorage.getItem('profile')))
+  }, []);
   return (
     <>
       <Layout title={"Cotizacion | colMotors"}>
-        <PruebaCotizacion Post={Post} Cotizacion={Cotizacion}/>
-        {/* {cotizacionCreada && id !== undefined ? (
-          <div className={classes.cotizarr}>
-            <CotizacionVendedor user={user} OnePost={OnePost} el={cotizacionCreada}/>
-          </div>
-        ) : null} */}
-        {/* <Button variant="contained" color='secondary' onClick={()=> router.push("/home")}>Regresa</Button> */}
-        {/* {user?.result._id === OnePost.creator && id !== undefined ?
-        <div>
-            <CotizacionVendedor user={user} OnePost={OnePost} arrayCotizaciones={arrayCotizaciones}/>
-        </div>
-        :null} */}
+        
+        {router.query.cliente ? <CotizacionVista Post={Post} user={user} Cotizacion={Cotizacion}/>: <PruebaCotizacion Post={Post} user={user} Cotizacion={Cotizacion}/>}
       </Layout>
     </>
   );

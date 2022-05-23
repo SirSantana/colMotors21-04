@@ -5,7 +5,7 @@ import Prueba from './Pruebas'
 import {useRouter} from 'next/router'
 import { getCotizacion, getCotizaciones } from '../../../reducers/Actions/cotizacionesActions'
 import PostCo from './Post'
-export default function PruebaCotizacion({Post, Cotizacion}){
+export default function PruebaCotizacion({Post, Cotizacion, user}){
 //   const { cotizacion, cotizaciones } = useSelector((state) => state.cotizaciones);
 
     const router = useRouter()
@@ -22,7 +22,7 @@ export default function PruebaCotizacion({Post, Cotizacion}){
         <>
         <PostCo OnePost={Post}/>
          {/* {cotizacionesVarias ? cotizacionesVarias?.map(ele=> <Prueba el={ele}/>): null} */}
-        {Cotizacion ? <Prueba el={Cotizacion}/>: null}
+        {Cotizacion ? <Prueba el={Cotizacion} />: null}
         </>
     )
 }

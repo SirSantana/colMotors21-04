@@ -12,7 +12,7 @@ import postModel from "../../models/postModel";
 
 
 export default function Home({Postss}) {
-  const [user, setUser] = useState();
+    const [user, setUser] = useState();
 
   const router = useRouter();
   const [token, setToken] = useState(null)

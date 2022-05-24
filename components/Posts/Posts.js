@@ -5,7 +5,7 @@ import {CircularProgress, Grid} from "@material-ui/core"
 import useLazyLoad from "../../utils/useLazyLoad";
 import { useRef, useState } from "react";
 import clsx from "clsx";
-
+import styles from './loader.module.css'
 
 const NUM_PER_PAGE = 6;
 const TOTAL_PAGES = 5;
@@ -26,6 +26,9 @@ export default function Posts({Postss}) {
       }, 1000);
       });
     }
+    console.log(Postss?.reverse());
+    console.log(Postss);
+
     const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
   return (
       // isLoading ? <CircularProgress/>:
@@ -42,7 +45,7 @@ export default function Posts({Postss}) {
               })}
             </Grid>
             {veces <= Math.round(Postss?.length / 6) ?<div ref={triggerRef} className={clsx("trigger", { visible: loading })}>
-            <h2>Cargando ...</h2>
+            <div className={styles.ldsellipsis}><div></div><div></div><div></div><div></div></div>
         </div>:null }
         </>
 

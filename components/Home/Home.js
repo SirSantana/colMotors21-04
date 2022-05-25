@@ -13,16 +13,19 @@ import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
 import Link from 'next/link'
+import { getPosts } from "../../reducers/Actions/postActions";
+import { useDispatch } from "react-redux";
 
 
-  export default function HomeComponent({Postss,createPosts}) {
+  export default function HomeComponent({createPosts}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     useEffect(()=>{
       setUser(JSON.parse(localStorage.getItem('profile')))
-    },[])
+      dispatch(getPosts())
+    },[dispatch])
     return (
       <>
         {/* {user? */}
@@ -55,7 +58,7 @@ import Link from 'next/link'
                 </Link>
                 
               </Paper>
-              <Posts Postss={Postss}/>
+              <Posts/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form createPosts={createPosts} user={user}/>
@@ -69,3 +72,5 @@ import Link from 'next/link'
       </>
     );
   }
+
+  

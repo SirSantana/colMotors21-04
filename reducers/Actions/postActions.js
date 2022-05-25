@@ -6,7 +6,7 @@ import {
   // DELETE_POST,
   END_LOADING,
 //   FAVORITE_POST,
-  // GET_ALL,
+  GET_ALL,
   GET_ONE_POST,
   START_LOADING,
 } from "../type";
@@ -22,16 +22,17 @@ export const getPost = (id) => async (dispatch) => {
     
   }
 };
-// export const getPosts = () => async (dispatch) => {
-//   try {
-//     dispatch({ type: START_LOADING });
-//     const { data } = await api.getAllPosts();
-//     dispatch({ type: GET_ALL, payload: data });
-//     dispatch({ type: END_LOADING });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const getPosts = () => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    console.log('Hola1');
+    const { data } = await api.getAllPosts();
+    dispatch({ type: GET_ALL, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error);
+  }
+};
 // export const createPost = (post, router) => async (dispatch) => {
 
 //   try {

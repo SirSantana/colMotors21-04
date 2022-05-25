@@ -7,8 +7,8 @@ export default (state={ isLoading: true, posts:[],}, action) => {
         return { ...state, isLoading: true };
       case END_LOADING:
         return { ...state, isLoading: false };
-      // case GET_ALL:
-      //   return {...state, posts: action.payload};
+      case GET_ALL:
+        return {...state, posts: action.payload};
       case GET_ONE_POST:
         return {...state, post: action.payload.post}
     //   case GET_BY_SEARCH:

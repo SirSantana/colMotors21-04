@@ -52,16 +52,3 @@ export async function getServerSideProps({ params, query }) {
     console.log(error.response);
   }
 }
-// export async function getServerSideProps({ params, query }) {
-
-//   try {
-//     await DBConnect();
-    
-//     // Cotizacion.date = Cotizacion.date.toString();
-//     return {
-//       props: { Cotizacion },
-//     };
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }

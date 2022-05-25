@@ -13,8 +13,7 @@ export default function PostPage({Post}) {
   const dispatch = useDispatch()
   const router = useRouter();
   const [message, setMessage] = useState('')
-
-
+  console.log(Post);
   // const createCotizacion=async(postData, id)=>{
   //   try {
   //     const res = await fetch(`/api/posts/${id}`,{
@@ -38,11 +37,14 @@ export async function getServerSideProps({ params, router }) {
   try {
     await DBConnect();
     const res = await postModel.findById(params.id);
+    
     const Post = res.toObject();
     Post._id = Post._id.toString();
     Post.creator = Post.creator.toString();
     Post.cotizaciones = Post.cotizaciones.toString();
     Post.date = Post.date.toString();
+
+
     return {
       props: { Post },
     };

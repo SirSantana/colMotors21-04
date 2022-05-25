@@ -29,6 +29,8 @@ export default function PostCo({ OnePost }) {
   const dispatch = useDispatch();
   const { id } = router.query;
   const idCreator = OnePost?.creator;
+  console.log(OnePost);
+
 
 
   async function deletePost(id) {
@@ -60,23 +62,24 @@ export default function PostCo({ OnePost }) {
     }
   };
 
-  let cotiza = OnePost.cotizaciones;
+  let cotiza = OnePost?.cotizaciones;
   let arrayCotizaciones = [];
   let cotizacionCreada;
-if(cotiza){
-  arrayCotizaciones.push(cotiza.split(","));
+  console.log(cotiza);
+  // if(cotiza.length>0){
+  // arrayCotizaciones.push(cotiza?.split(","));
 
-}
-  if (OnePost.cotizaciones.length > 0) {
-    cotizacionCreada = user?.result?.cotizaciones?.find(
-      (ele) => ele == arrayCotizaciones[0]?.find((item) => item == ele)
-    );
-  }
+  // }
+  // if (OnePost.cotizaciones.length > 0) {
+  //   cotizacionCreada = user?.result?.cotizaciones?.find(
+  //     (ele) => ele == arrayCotizaciones[0]?.find((item) => item == ele)
+  //   );
+  // }
  
-  let cotizacionesCliente;
-  if(OnePost.cotizaciones.length > 0  ){
+  // let cotizacionesCliente;
+  // if(OnePost.cotizaciones.length > 0  ){
     // cotizacionesCliente = One
-  }
+  // }
 
 
 const handleIr=()=>{
@@ -238,7 +241,7 @@ const handleIr=()=>{
       <Check fontSize="large" style={{paddingRight:'10px', color:'#f50057', }}/>
       <Typography className={classes.typo} style={{fontSize:'18px', color:'white',marginBottom:'20px'}}>¡Ya Cotizaste!</Typography>
 
-        <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Espera a que el vendedor te escriba</Typography>
+        <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Espera a que el cliente te escriba</Typography>
         <br/>
              <Button onClick={handleIr} color='secondary' style={{width:'98%'}}  variant='contained'>Ver tu Cotizacion</Button>
         </Paper>   

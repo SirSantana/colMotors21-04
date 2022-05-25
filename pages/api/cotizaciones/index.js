@@ -19,9 +19,8 @@ export default async  (req, res)=>{
 
 export const getCotizaciones=async(req, res)=>{
     try {
-        console.log('Saludo');
         const cotizaciones = await cotizacionModel.find({});
-        res.status(200).json(cotizaciones);
+        res.status(200).json(data);
       } catch (error) {
         res.status(403).json(error.result);
       }

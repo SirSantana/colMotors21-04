@@ -14,6 +14,7 @@ export default function Home() {
     const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
+  const {posts, isLoading} = useSelector(state=> state.posts)
 
   const createPosts = async (postData) => {
     try {
@@ -50,7 +51,7 @@ export default function Home() {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent  createPosts={createPosts}/>
+        <HomeComponent  createPosts={createPosts} posts={posts} isLoading={isLoading}/>
       </Layout>
     </>
   );

@@ -17,7 +17,7 @@ import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
 
 
-  export default function HomeComponent({createPosts}) {
+  export default function HomeComponent({createPosts, posts, isLoading}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
@@ -58,7 +58,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </Link>
                 
               </Paper>
-              <Posts/>
+              <Posts posts={posts} isLoading={isLoading}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form createPosts={createPosts} user={user}/>

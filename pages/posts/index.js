@@ -8,11 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../reducers/Actions/postActions";
 
 export default function Prueba() {
-  const {posts, isLoading} = useSelector(state=>state.posts)
   return (
     <>
       <Layout title={'Posts | colMotors'}>
-        <Posts posts={posts} isLoading={isLoading} />
+        <Posts />
       </Layout>
     </>
   );

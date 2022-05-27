@@ -11,12 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 const NUM_PER_PAGE = 6;
 const TOTAL_PAGES = 5;
-export default function Posts() {
+export default function Posts({posts, isLoading}) {
   const dispatch = useDispatch()
   const classes = useStyles();
   const [veces,setVeces] = useState(0)
   const triggerRef = useRef(null);
-  const {posts, isLoading} = useSelector(state=> state.posts)
 
   console.log(posts);
   // const onGrabData = (currentPage) => {

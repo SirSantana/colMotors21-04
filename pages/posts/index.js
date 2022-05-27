@@ -5,13 +5,14 @@ import Layout from "../../components/Layout/Layout";
 import Posts from "../../components/Posts/Posts";
 import DBConnect from "../../libs/dbConnect";
 import { useDispatch } from "react-redux";
+import { getPosts } from "../../reducers/Actions/postActions";
 
 export default function Prueba() {
-
+  const {posts, isLoading} = useSelector(state=>state.posts)
   return (
     <>
       <Layout title={'Posts | colMotors'}>
-        <Posts />
+        <Posts posts={posts} isLoading={isLoading} />
       </Layout>
     </>
   );

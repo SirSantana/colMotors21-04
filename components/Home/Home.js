@@ -21,7 +21,6 @@ import { useDispatch, useSelector } from "react-redux";
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
-    const {posts, isLoading} = useSelector(state=> state.posts)
 
 
     useEffect(()=>{
@@ -59,7 +58,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </Link>
                 
               </Paper>
-              <Posts posts={posts} isLoading={isLoading}/>
+              <Posts/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form createPosts={createPosts} user={user}/>

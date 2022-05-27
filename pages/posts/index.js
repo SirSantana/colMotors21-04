@@ -4,7 +4,7 @@ import Layout from "../../components/Layout/Layout";
 // import FormPost from "../../components/FormPost";
 import Posts from "../../components/Posts/Posts";
 import DBConnect from "../../libs/dbConnect";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../reducers/Actions/postActions";
 
 export default function Prueba() {

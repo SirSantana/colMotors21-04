@@ -4,14 +4,17 @@ import decode from "jwt-decode";
 import { useRouter } from "next/router";
 import HomeComponent from "../../components/Home/Home";
 import DBConnect from "../../libs/dbConnect";
+import { getPosts } from "../../reducers/Actions/postActions";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 export default function Home() {
     const [user, setUser] = useState();
-
+    const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
+  const {posts, isLoading} = useSelector(state=> state.posts)
 
   const createPosts = async (postData) => {
     try {
@@ -41,12 +44,14 @@ export default function Home() {
     setUser(null);
   };
 
-
+  useEffect(()=>{
+    dispatch(getPosts())
+  },[dispatch])
 
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent  createPosts={createPosts}/>
+        <HomeComponent  createPosts={createPosts} posts={posts} isLoading={isLoading}/>
       </Layout>
     </>
   );

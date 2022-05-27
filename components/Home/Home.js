@@ -14,14 +14,16 @@ import Posts from "../Posts/Posts";
 import useStyles from "./styles";
 import Link from 'next/link'
 import { getPosts } from "../../reducers/Actions/postActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
   export default function HomeComponent({createPosts}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
+    const {posts, isLoading} = useSelector(state=> state.posts)
 
+    
     useEffect(()=>{
       setUser(JSON.parse(localStorage.getItem('profile')))
       dispatch(getPosts())
@@ -58,7 +60,7 @@ import { useDispatch } from "react-redux";
                 </Link>
                 
               </Paper>
-              <Posts/>
+              <Posts posts={posts} isLoading={isLoading}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form createPosts={createPosts} user={user}/>

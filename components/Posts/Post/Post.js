@@ -29,7 +29,6 @@ export default function PostCo({ OnePost }) {
   const dispatch = useDispatch();
   const { id } = router.query;
   const idCreator = OnePost?.creator;
-  console.log(OnePost);
 
 
 
@@ -65,7 +64,6 @@ export default function PostCo({ OnePost }) {
   let cotiza = OnePost?.cotizaciones;
   let arrayCotizaciones = [];
   let cotizacionCreada;
-  console.log(cotiza);
   // if(cotiza.length>0){
   // arrayCotizaciones.push(cotiza?.split(","));
 

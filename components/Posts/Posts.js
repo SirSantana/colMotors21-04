@@ -31,7 +31,7 @@ export default function Posts({posts, isLoading}) {
   //   const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
   return (
     <>
-      {/* {isLoading ? <div className={styles.ldsellipsis}><div></div><div></div><div></div><div></div></div>: */}
+      {isLoading ? <div className={styles.ldsellipsis}><div></div><div></div><div></div><div></div></div>:
             <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
               {posts?.data?.map((Post)=>(
                   <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
@@ -44,7 +44,7 @@ export default function Posts({posts, isLoading}) {
         </Grid>
 
         
-          {/* } */}
+          }
         </>
 
   );

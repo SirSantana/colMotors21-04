@@ -17,10 +17,11 @@ import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
 
 
-  export default function HomeComponent({createPosts, posts, isLoading}) {
+  export default function HomeComponent({createPosts}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
+    const {posts, isLoading} = useSelector(state=> state.posts)
 
 
     useEffect(()=>{

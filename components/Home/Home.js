@@ -17,7 +17,7 @@ import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
 
 
-  export default function HomeComponent({createPosts, posts, isLoading}) {
+  export default function HomeComponent({createPosts}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 
     useEffect(()=>{
       setUser(JSON.parse(localStorage.getItem('profile')))
+      dispatch(getPosts())
     },[])
     return (
       <>
@@ -58,7 +59,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </Link>
                 
               </Paper>
-              <Posts posts={posts} isLoading={isLoading}/>
+              <Posts />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form createPosts={createPosts} user={user}/>

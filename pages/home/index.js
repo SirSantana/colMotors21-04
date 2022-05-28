@@ -15,8 +15,7 @@ export default function Home({posts}) {
     const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
-
-
+  console.log(posts);
   const createPosts = async (postData) => {
     try {
       const res = await fetch("/api/posts/" 
@@ -49,13 +48,13 @@ export default function Home({posts}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent  createPosts={createPosts} posts={posts}/>
+        <HomeComponent  createPosts={createPosts} />
       </Layout>
     </>
   );
 }
 export const getServerSideProps = async () => {
-  const { data } = await axios.get('https://col-motors21-04.vercel.app/api/posts');
+  const { data } = await axios.get(`https://jsonplaceholder.typicode.com/api/posts`);
 
   if (!data) {
     return {

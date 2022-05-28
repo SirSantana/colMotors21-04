@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import styles from './loader.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import axios, { Axios } from "axios";
 
 
 const NUM_PER_PAGE = 6;
@@ -17,34 +16,38 @@ export default function Posts({posts}) {
   const classes = useStyles();
   const [veces,setVeces] = useState(0)
   const triggerRef = useRef(null);
-  console.log(posts);
-  // const onGrabData = (currentPage) => {
-  //     // This would be where you'll call your API
-  //     return new Promise((resolve) => {
-  //     setTimeout(() => {
-  //         const data = posts?.data
-  //         resolve(data);
-  //         setVeces(prev=> prev + 1)
-  //     }, 10);
-  //     });
-  //   }
 
-  //   const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
+  const onGrabData = (currentPage) => {
+      // This would be where you'll call your API
+      return new Promise((resolve) => {
+      setTimeout(() => {
+          const data = posts
+          resolve(data);
+          setVeces(prev=> prev + 1)
+      }, 10);
+      });
+    }
+
+    const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
+
+
   return (
     <>
-      {/* {isLoading ? <div className={styles.ldsellipsis}><div></div><div></div><div></div><div></div></div>: */}
+      {loading ? <div className={styles.ldsellipsis}><div></div><div></div><div></div><div></div></div>:
             <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
-              {posts?.data?.map((Post)=>(
+              {posts?.map((Post)=>(
                   <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
                 <PostCo OnePost={Post}/>
                 </Grid>
               )
           )}
+          <div style={{marginRight:'auto', marginLeft:'auto', marginTop:'20px'}}>
           <Button variant="contained" color="secondary">Ver mas cotizaciones</Button>
+          </div>
         </Grid>
 
         
-          {/* } */}
+            }  
         </>
 
   );

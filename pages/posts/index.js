@@ -5,12 +5,12 @@ import Layout from "../../components/Layout/Layout";
 import Posts from "../../components/Posts/Posts";
 
 
-export default function Prueba() {
+export default function Prueba({posts}) {
 
   return (
     <>
       <Layout title={'Posts | colMotors'}>
-        <Posts />
+        <Posts posts={posts}/>
       </Layout>
     </>
   );

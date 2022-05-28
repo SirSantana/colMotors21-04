@@ -3,10 +3,8 @@ import { useState, useEffect } from "react";
 import decode from "jwt-decode";
 import { useRouter } from "next/router";
 import HomeComponent from "../../components/Home/Home";
-import DBConnect from "../../libs/dbConnect";
-import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 
 
@@ -48,7 +46,7 @@ export default function Home({posts}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent  createPosts={createPosts} posts={posts} />
+        <HomeComponent createPosts={createPosts} posts={posts} />
       </Layout>
     </>
   );

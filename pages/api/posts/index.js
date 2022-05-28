@@ -22,7 +22,7 @@ export default async function handler(req, res){
 }
 export const getPosts = async (req, res) => {
       try {
-        const posts = await postModel.find({}).limit(6)
+        const posts = await postModel.find({}).limit(4)
         const data = posts
         res.status(200).json({data});
       } catch (error) {

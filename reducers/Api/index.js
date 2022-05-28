@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 
+const API = axios.create({ baseURL:
   'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
     'Access-Control-Allow-Origin': '*'
   } });
@@ -13,7 +13,7 @@ API.interceptors.request.use((req) => {
 });
  export const getOnePost = (id)=> API.get(`api/posts/${id}`)
 
-export const getAllPosts =()=> API.get("api/posts", {params:{_limit:4}})
+// export const getAllPosts =()=> API.get("api/posts",)
 // export const createPost = (post)=> API.post("api/posts", post)
 //  export const favoritePost = (id)=> API.patch(`/api/posts/${id}/favoritePost`)
 // export const deletePost = (id)=> API.delete(`api/posts/${id}`)

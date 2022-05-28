@@ -54,7 +54,7 @@ export default function Home({posts}) {
   );
 }
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`https://jsonplaceholder.typicode.com/api/posts`);
+  const { data } = await axios.get(`https://col-motors21-04.vercel.app/api/posts`);
 
   if (!data) {
     return {

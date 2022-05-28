@@ -23,6 +23,7 @@ import { Axios } from "axios";
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
 
+      console.log(posts);
     useEffect(()=>{
       setUser(JSON.parse(localStorage.getItem('profile')))
     },[])

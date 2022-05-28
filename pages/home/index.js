@@ -48,7 +48,7 @@ export default function Home({posts}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent  createPosts={createPosts} />
+        <HomeComponent  createPosts={createPosts} posts={posts} />
       </Layout>
     </>
   );

@@ -15,17 +15,16 @@ import useStyles from "./styles";
 import Link from 'next/link'
 import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
+import { Axios } from "axios";
 
 
-  export default function HomeComponent({createPosts}) {
+  export default function HomeComponent({createPosts,posts}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
 
-
     useEffect(()=>{
       setUser(JSON.parse(localStorage.getItem('profile')))
-      dispatch(getPosts())
     },[])
     return (
       <>
@@ -59,7 +58,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </Link>
                 
               </Paper>
-              <Posts />
+              <Posts posts={posts} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Form createPosts={createPosts} user={user}/>

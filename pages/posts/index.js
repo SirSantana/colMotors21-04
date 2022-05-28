@@ -3,17 +3,16 @@ import { useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 // import FormPost from "../../components/FormPost";
 import Posts from "../../components/Posts/Posts";
-import DBConnect from "../../libs/dbConnect";
-import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../../reducers/Actions/postActions";
 
-export default function Prueba() {
+import axios, { Axios } from "axios";
+
+export default function Prueba({posts}) {
+
   return (
     <>
       <Layout title={'Posts | colMotors'}>
-        <Posts />
+        <Posts posts={posts}/>
       </Layout>
     </>
   );
 }
-

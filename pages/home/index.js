@@ -6,15 +6,16 @@ import HomeComponent from "../../components/Home/Home";
 import DBConnect from "../../libs/dbConnect";
 import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
+import axios, { Axios } from "axios";
 
 
 
-export default function Home() {
+export default function Home({posts}) {
     const [user, setUser] = useState();
     const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
-  const {posts, isLoading} = useSelector(state=> state.posts)
+
 
   const createPosts = async (postData) => {
     try {
@@ -44,18 +45,31 @@ export default function Home() {
     setUser(null);
   };
 
-  useEffect(()=>{
-    dispatch(getPosts())
-  },[dispatch])
 
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent  createPosts={createPosts} posts={posts} isLoading={isLoading}/>
+        <HomeComponent  createPosts={createPosts} posts={posts}/>
       </Layout>
     </>
   );
 }
+export const getServerSideProps = async () => {
+  const { data } = await axios.get('https://col-motors21-04.vercel.app/api/posts');
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const posts = data;
+  return {
+    props: {
+      posts,
+    },
+  };
+};
 // export async function getServerSideProps() {
 //   try {
 //     await DBConnect();

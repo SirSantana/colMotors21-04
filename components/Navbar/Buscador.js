@@ -6,11 +6,13 @@ export default function Buscador() {
   return (
     <div id={styles.searchBox}>
       <form action="/search" id={styles.searchForm} method="get" target="_top">
-        <input
+        <TextField
           id={styles.searchText}
           name="q"
           placeholder="Buscar..."
           type="text"
+          variant="outlined"
+          fullWidth
         />
         <button id={styles.searchButton} type="submit">
           <Search/>

@@ -44,7 +44,6 @@ export default function Form({createPosts, user}) {
   };
   return (
     <>
-    <Buscador/>
       <Paper className={classes.paper1} raised="true" elevation={6}>
         <Typography className={classes.typo}>Cotiza tus repuestos </Typography>
       </Paper>

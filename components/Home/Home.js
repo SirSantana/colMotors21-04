@@ -15,6 +15,7 @@ import useStyles from "./styles";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
 import { Axios } from "axios";
+import Buscador from "../Navbar/Buscador";
 
 
   export default function HomeComponent({createPosts, posts}) {

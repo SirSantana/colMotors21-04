@@ -10,22 +10,20 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '10px 30px',
+    padding: '10px 10px',
     background:" #1b333d",
     maxWidth:'800px',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       justifyContent: 'space-between',
       padding:'10px, 20px',
-    width:'270px',
+    width:'85%',
 
     }
   },
   img:{
-    maxWidth:'70px',
-    maxHeight: '60px',
-    minHeight:'30px',
-    minWidth:'35px'
+    height:'30px',
+    width:'35px'
   },
   heading: {
     marginLeft:'15px',

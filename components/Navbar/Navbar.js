@@ -37,14 +37,15 @@ export default function Navbar() {
   return (
     <>
       <AppBar position="static" className={classes.appBar}>
+        <div style={{display:'flex', flexDirection:'row'}}>
         <Link href={"/"} className={classes.brandContainer}>
           <a className={classes.a}>
             <Image
               className={classes.img}
               src={"/images/logo_colmotors.jpg"}
               alt="icon"
-              height={"60"}
-              width={"70"}
+              height={"40"}
+              width={"60"}
             />
             <Typography
               className={classes.heading}
@@ -55,16 +56,18 @@ export default function Navbar() {
             </Typography>
           </a>
         </Link>
-
         {user?.result && (
-          <Toolbar className={classes.toolbar}>
-            <div className={classes.profile}>
-              <div>
+              <div style={{display:'flex', flexDirection:'row', justifyContent:'center',}}>
                 <MenuPerfil user={user} logout={logout} />
               </div>
-            </div>
-          </Toolbar>
         )}
+        </div>
+
+              <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', marginLeft:'0px', marginRight:0}}>
+              <Buscador/>
+              </div>
+
+        
         
       </AppBar>
     </>

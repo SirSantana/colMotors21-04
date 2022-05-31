@@ -30,7 +30,7 @@ export default function Perfil({userr}) {
   return (
     <>
       {userr?.result?._id === user?._id ? (
-        <>
+        <div style={{width:'100%', maxWidth:'800px'}}>
           <Card raised={true} elevation={6} className={classes.card1}>
             <Typography className={classes.typography}>Mi Perfil</Typography>
           </Card>
@@ -83,7 +83,7 @@ export default function Perfil({userr}) {
                 
               </CardContent>
             </Card>
-        </>
+        </div>
       ) : (
         <>
         <Card raised="true" elevation={6} className={classes.card1}>

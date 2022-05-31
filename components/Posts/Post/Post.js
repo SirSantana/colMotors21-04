@@ -79,7 +79,7 @@ export default function PostCo({ OnePost }) {
   //   cotizacionesCliente = One
   // }
 
-
+console.log(arrayCotizaciones);
 const handleIr=()=>{
     if(arrayCotizaciones.length >=1 && cotizacionCreada=== undefined){
       router.push(

@@ -3,7 +3,7 @@ import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
-    fontFamily: ' -apple-system, Segoe UI,',
+    fontFamily: '-apple-system, Segoe UI,',
     borderRadius: 5,
     margin: '30px 0',
     display: 'flex',
@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
       flexDirection: 'column',
       justifyContent: 'space-between',
       padding:'10px, 20px',
-    width:'85%',
+      width:'85vw',
 
     }
   },

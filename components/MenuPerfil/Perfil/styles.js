@@ -7,15 +7,13 @@ export default makeStyles((theme)=>({
         flexDirection: 'column',
         borderRadius: '5px',
         height: '100%',
-        columns: "5, 320px",
         maxWidth: "600px",
         padding:'0',
-        width:'300px',
-        margin:0,
+        marginRight: 'auto',
+        marginLeft: 'auto',
         fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI",
         [theme.breakpoints.down("sm")]: {
           margin:0,
-          width: "95%",
         },
       },
       
@@ -36,8 +34,7 @@ export default makeStyles((theme)=>({
         marginRight: 'auto',
         marginLeft: 'auto',
         maxWidth: "600px",
-        width:'300px',
         backgroundColor: "#1b333d",
-        marginBottom: '10px'
+        marginBottom: '10px',
 },
 }))

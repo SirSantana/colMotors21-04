@@ -7,13 +7,13 @@ import {useRouter} from 'next/router'
 export default function UserPerfil(){
     const [userr, setUserr] = useState(null)
     const router = useRouter()
+
     useEffect(()=>{
         setUserr(JSON.parse(localStorage.getItem("profile")));
-
     },[])
     return(
         <Layout title={'Mi perfil | colMotors'}>
-        <Perfil userr={userr}/>
+            <Perfil userr={userr}/>
         </Layout>
 
     )

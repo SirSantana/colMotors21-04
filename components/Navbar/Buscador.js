@@ -13,7 +13,7 @@ export default function Buscador() {
           type="text"
         />
         <button id={styles.searchButton} type="submit">
-          <Search/>
+          <Search style={{marginLeft:'1px'}}/>
         </button>
       </form>
     </div>

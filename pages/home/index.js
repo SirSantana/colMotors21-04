@@ -15,7 +15,7 @@ export default function Home({Postss}) {
   const router = useRouter();
   const [token, setToken] = useState(null)
 
-  
+
   const createPosts = async (postData) => {
     try {
       const res = await fetch("/api/posts/" 
@@ -48,7 +48,7 @@ export default function Home({Postss}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent createPosts={createPosts} posts={Postss} />
+        <HomeComponent createPosts={createPosts} posts={Postss}/>
       </Layout>
     </>
   );

@@ -9,6 +9,7 @@ import useStyles from "./styles";
 import Link from 'next/link'
 import Image from 'next/image'
 import { Check } from "@material-ui/icons";
+import Buscador from "../Navbar/Buscador";
 // import {useDispatch} from 'react-redux'
 const initial = {
   marca: "",
@@ -43,6 +44,7 @@ export default function Form({createPosts, user}) {
   };
   return (
     <>
+    <Buscador/>
       <Paper className={classes.paper1} raised="true" elevation={6}>
         <Typography className={classes.typo}>Cotiza tus repuestos </Typography>
       </Paper>
@@ -77,7 +79,7 @@ export default function Form({createPosts, user}) {
           <div className={classes.fileInput}>
             <TextField
               name="referencia"
-              label="Referencia/Modelo.(Corsa 1.3 Modelo 96)"
+              label="Coloca aquí la Referencia/Modelo.(Corsa 1.3 Modelo 96)"
               variant="outlined"
               fullWidth
               value={postData.referencia}
@@ -88,7 +90,7 @@ export default function Form({createPosts, user}) {
             />
             <TextField
               name="repuesto"
-              label="Repuesto.(Kit de Clutch, ...)"
+              label="Coloca aquí el Repuesto.(Kit de Clutch, ...)"
               variant="outlined"
               fullWidth
               multiline

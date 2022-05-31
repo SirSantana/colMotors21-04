@@ -64,19 +64,19 @@ export default function PostCo({ OnePost }) {
   let cotiza = OnePost?.cotizaciones;
   let arrayCotizaciones = [];
   let cotizacionCreada;
-  // if(cotiza.length>0){
-  // arrayCotizaciones.push(cotiza?.split(","));
+  if(cotiza.length>0){
+  arrayCotizaciones.push(cotiza?.split(","));
 
-  // }
-  // if (OnePost.cotizaciones.length > 0) {
-  //   cotizacionCreada = user?.result?.cotizaciones?.find(
-  //     (ele) => ele == arrayCotizaciones[0]?.find((item) => item == ele)
-  //   );
-  // }
+  }
+  if (OnePost.cotizaciones.length > 0) {
+    cotizacionCreada = user?.result?.cotizaciones?.find(
+      (ele) => ele == arrayCotizaciones[0]?.find((item) => item == ele)
+    );
+  }
  
   // let cotizacionesCliente;
   // if(OnePost.cotizaciones.length > 0  ){
-    // cotizacionesCliente = One
+  //   cotizacionesCliente = One
   // }
 
 

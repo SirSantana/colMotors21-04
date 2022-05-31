@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import Image from "next/image";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
@@ -7,7 +7,9 @@ import { useEffect, useState } from "react";
 import MenuPerfil from "../MenuPerfil/Menuperfil";
 import { LOGOUT } from "../../reducers/type";
 import { useDispatch } from "react-redux";
+import Buscador from "./Buscador";
 // import decode from "jwt-decode";
+
 
 export default function Navbar() {
   const classes = useStyles();
@@ -20,6 +22,7 @@ export default function Navbar() {
     router.push("/");
     setUser(null);
   };
+  
 
   useEffect(() => {
     // const token = user?.token;
@@ -62,6 +65,7 @@ export default function Navbar() {
             </div>
           </Toolbar>
         )}
+        
       </AppBar>
     </>
   );

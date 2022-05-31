@@ -33,6 +33,11 @@ export default makeStyles((theme) => ({
     paddingRight:'20px',
 
   },
+  gridCotizacion:{
+    [theme.breakpoints.down('xs')]: {
+      paddingTop:'10px',
+    }
+  },
   gridContainer: {
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column-reverse',

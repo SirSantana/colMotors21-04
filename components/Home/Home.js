@@ -13,12 +13,11 @@ import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import useStyles from "./styles";
 import Link from 'next/link'
-import { getPosts } from "../../reducers/Actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Axios } from "axios";
 
 
-  export default function HomeComponent({createPosts,posts}) {
+  export default function HomeComponent({createPosts, posts}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
@@ -61,7 +60,7 @@ import { Axios } from "axios";
               </Paper>
               <Posts posts={posts} />
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3} style={{paddingTop:'10px'}}>
               <Form createPosts={createPosts} user={user}/>
             </Grid>
           </Grid>

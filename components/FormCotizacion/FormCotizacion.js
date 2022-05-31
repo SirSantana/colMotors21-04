@@ -83,17 +83,16 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
               fullWidth
               onChange={handleChange}
               multiline
-              className={classes.repuestos}
               required
               minRows={3}
               value={form.repuestos}
+              style={{marginBottom:'10px'}}
             />
               
               <TextField
                 name="precio"
                 label="Valor Total"
                 onChange={handleChange}
-                className={classes.precio}
                 required
               variant="outlined"
                 value={form.precio}

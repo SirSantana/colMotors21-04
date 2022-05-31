@@ -17,23 +17,23 @@ export default function Posts({posts}) {
   const [veces,setVeces] = useState(0)
   const triggerRef = useRef(null);
 
-  const onGrabData = (currentPage) => {
-      // This would be where you'll call your API
-      return new Promise((resolve) => {
-      setTimeout(() => {
-          const data = posts
-          resolve(data);
-          setVeces(prev=> prev + 1)
-      }, 10);
-      });
-    }
+  // const onGrabData = (currentPage) => {
+  //     // This would be where you'll call your API
+  //     return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //         const data = posts
+  //         resolve(data);
+  //         setVeces(prev=> prev + 1)
+  //     }, 10);
+  //     });
+  //   }
 
-    const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
+  //   const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
 
 
   return (
     <>
-      {loading ? <div className={styles.ldsellipsis}><div></div><div></div><div></div><div></div></div>:
+      {/* {loading ? <div className={styles.ldsellipsis}><div></div><div></div><div></div><div></div></div>: */}
             <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
               {posts?.map((Post)=>(
                   <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
@@ -47,7 +47,7 @@ export default function Posts({posts}) {
         </Grid>
 
         
-            }  
+            {/* }   */}
         </>
 
   );

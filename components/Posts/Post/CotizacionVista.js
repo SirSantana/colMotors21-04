@@ -15,16 +15,19 @@ import OnePost from "./OnePost";
 export default function CotizacionVista({Cotizacion, Post, user}){
   const classes = useStyles();
 
+  console.log(user);
+  console.log(Post);
     return(
         <>
       <div className={classes.container} style={{gap:'30px'}}>
 
         <OnePost Post={Post} user={user}/>
+        
 
         <div className={classes.card}>
         <div className={classes.header1}>
           <Typography gutterBottom className={classes.typo}>
-           <b>Tu Cotización</b>
+           {user?.result._id === Post.creator ?<b>Cotizacion Vendedor</b> :<b>Tu Cotización</b>}
           </Typography>
         </div>
         <Card sx={{ width: "345px" }} className={classes.card1} elevation={8}>
@@ -124,7 +127,7 @@ export default function CotizacionVista({Cotizacion, Post, user}){
               </Typography>
             </div>
           </CardActions>
-          {user?.result?._id === OnePost.creator ? (
+          {user?.result?._id === Post.creator ? (
             <>
               <Button
                 color="primary"

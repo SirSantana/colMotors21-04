@@ -15,14 +15,16 @@ export default function Prubea({ Post, Cotizacion }) {
   const dispatch = useDispatch()
   const [user, setUser] = useState(null)
 
-
   useEffect(() => {
    setUser(JSON.parse(localStorage.getItem('profile')))
   },[]);
+  console.log(Post);
   return (
     <>
       <Layout title={"Cotizacion | colMotors"}>
-        {router?.query?.cliente ? <CotizacionVista Post={Post} user={user} Cotizacion={Cotizacion}/>: <PruebaCotizacion Post={Post} user={user} Cotizacion={Cotizacion}/>}
+        {router?.query?.cliente 
+        ? <CotizacionVista Post={Post} user={user} Cotizacion={Cotizacion}/>
+        : <CotizacionVista Post={Post} user={user} Cotizacion={Cotizacion}/>}
       </Layout>
     </>
   );

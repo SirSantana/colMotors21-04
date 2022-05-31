@@ -16,7 +16,7 @@ export default function PruebaCotizacion({Post, Cotizacion, user}){
     
     // console.log(cotizacionesVarias);
 
-  
+    console.log(Cotizacion);
 
     return(
         <>

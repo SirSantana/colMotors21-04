@@ -87,6 +87,7 @@ const handleIr=()=>{
           pathname: `/cotizaciones/${arrayCotizaciones[0]}`,
           query:{
             idd:OnePost._id,
+            
           }
         })
     }else{

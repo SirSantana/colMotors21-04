@@ -13,7 +13,6 @@ export default function PostPage({Post}) {
   const dispatch = useDispatch()
   const router = useRouter();
   const [message, setMessage] = useState('')
-  console.log(Post);
   // const createCotizacion=async(postData, id)=>{
   //   try {
   //     const res = await fetch(`/api/posts/${id}`,{

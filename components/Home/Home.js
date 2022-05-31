@@ -23,7 +23,6 @@ import Buscador from "../Navbar/Buscador";
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
 
-      console.log(posts);
     useEffect(()=>{
       setUser(JSON.parse(localStorage.getItem('profile')))
     },[])

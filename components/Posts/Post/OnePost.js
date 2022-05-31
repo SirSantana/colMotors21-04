@@ -10,7 +10,6 @@ export default function OnePost({Post, user}){
     const classes = useStyles();
 
   const nombreCreador = Post?.nombreCreador?.toString();
-    console.log(Post);
     return(
         <>
         <div className={classes.card}>

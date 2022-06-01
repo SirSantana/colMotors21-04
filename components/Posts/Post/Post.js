@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Check, Close, Error } from "@material-ui/icons";
 
 
-export default function PostCo({ OnePost }) {
+export default function PostCo({ OnePost, visibleCoti}) {
   const classes = useStyles();
   const [visibleDelete, setVisibleDelete] = useState(false);
   const [message, setMessage] = useState(null);
@@ -29,7 +29,7 @@ export default function PostCo({ OnePost }) {
   const dispatch = useDispatch();
   const { id } = router.query;
   const idCreator = OnePost?.creator;
-
+  const [visiCoti, setVisiCoti] = useState(true)
 
 
   async function deletePost(id) {
@@ -80,6 +80,7 @@ export default function PostCo({ OnePost }) {
   // }
 
 const handleIr=()=>{
+  setVisiCoti(false)
     if(arrayCotizaciones.length >=1 && cotizacionCreada=== undefined){
       router.push(
         {
@@ -250,7 +251,7 @@ const handleIr=()=>{
 
 
         
-        {user?.result._id === OnePost.creator && id !== undefined ?
+        {visibleCoti !== false && user?.result._id === OnePost.creator && id !== undefined ?
         <div>
             {OnePost.cotizaciones.length>=1 ?
             <Button onClick={handleIr} variant='contained'>Ver Cotizaciones</Button>

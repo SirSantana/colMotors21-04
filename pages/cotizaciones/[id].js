@@ -22,10 +22,12 @@ export default function Prubea({ Post, Cotizacion, Cotizaciones }) {
   return (
     <>
       <Layout title={"Cotizacion | colMotors"}>
+      <div style={{display:"flex", flexDirection:'row', maxWidth:'1200px', gap:'20px', alignContent:'space-around', flexWrap:'wrap', marginLeft:'30px'}}>
       {Cotizacion?.creator === user?.result._id ? 
       <CotizacionVista Post={Post} user={user} Cotizacion={Cotizacion} />
          : <PruebaCotizacion Post={Post} user={user} Cotizacion={Cotizacion} Cotizaciones={Cotizaciones}/>
          }
+      </div>
       </Layout>
     </>
   );

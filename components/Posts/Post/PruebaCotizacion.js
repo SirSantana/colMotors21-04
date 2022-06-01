@@ -21,7 +21,7 @@ export default function PruebaCotizacion({Post, Cotizacion, user, Cotizaciones})
 
     return(
         <>
-        <PostCo OnePost={Post}/>
+        <PostCo OnePost={Post} visibleCoti={false}/>
          {/* {cotizacionesVarias ? cotizacionesVarias?.map(ele=> <Prueba el={ele}/>): null} */}
         {Cotizaciones.length > 1 
         ? Cotizaciones.map(el=> <CotizacionVista Cotizacion={el} Post={Post} user={user}/>)

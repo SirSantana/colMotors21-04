@@ -254,6 +254,15 @@ export default makeStyles((theme)=>({
     marginLeft:'auto',
     marginRight:'auto',
     marginBottom: '15px',
+  },
+  cotizar1:{
+    width:'90%',
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginBottom: '15px',
+    backgroundColor: "#949494",
+    color:'white',
+    marginTop:'10px'
   }
   
 }));

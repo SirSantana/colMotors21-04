@@ -15,14 +15,9 @@ import OnePost from "./OnePost";
 export default function CotizacionVista({Cotizacion, Post, user}){
   const classes = useStyles();
 
-  console.log(user);
-  console.log(Post);
     return(
         <>
       <div className={classes.container} style={{gap:'30px'}}>
-
-        <OnePost Post={Post} user={user}/>
-        
 
         <div className={classes.card}>
         <div className={classes.header1}>
@@ -130,10 +125,9 @@ export default function CotizacionVista({Cotizacion, Post, user}){
           {user?.result?._id === Post.creator ? (
             <>
               <Button
-                color="primary"
                 variant="contained"
                 fullWidth
-                className={classes.cotizar}
+                className={classes.cotizar1}
               >
                 Ver Pefil Vendedor
               </Button>

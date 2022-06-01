@@ -11,7 +11,7 @@ import {
   } from "@material-ui/core";
   import { AttachMoney, Build, Delete, Menu, Place } from "@material-ui/icons";
 
-export default function Prueba({ el }) {
+export default function Prueba({ el, user }) {
   const classes = useStyles();
 
   return (

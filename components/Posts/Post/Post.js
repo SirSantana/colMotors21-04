@@ -16,7 +16,8 @@ import PostActions from "./PostActions";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Check, Close, Error } from "@material-ui/icons";
-
+import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentVerySatisfied from '@material-ui/icons/SentimentVerySatisfied';
 
 export default function PostCo({ OnePost, visibleCoti}) {
   const classes = useStyles();
@@ -254,8 +255,23 @@ const handleIr=()=>{
         {visibleCoti !== false && user?.result._id === OnePost.creator && id !== undefined ?
         <div>
             {OnePost.cotizaciones.length>=1 ?
-            <Button onClick={handleIr} variant='contained'>Ver Cotizaciones</Button>
-            : <Button  variant='contained'>Aun no has recibido Cotizaciones</Button>  
+            <Paper className={classes.paper3} elevation={3}>
+              <SentimentVerySatisfied fontSize="large" style={{paddingRight:'10px', color:'#f50057', }} />
+            <Typography className={classes.typo} style={{fontSize:'18px', color:'white',marginBottom:'20px', marginRight:'8px'}}>¡Genial!</Typography>
+      
+              <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Recibiste {arrayCotizaciones[0].length} Cotizaciones!</Typography>
+              <br/>
+                   <Button onClick={handleIr} color='secondary' style={{width:'98%'}}  variant='contained'>Miralas Ahora!</Button>
+              </Paper>  
+            : 
+            <Paper className={classes.paper3} elevation={3}>
+              <SentimentVeryDissatisfied fontSize="large" style={{paddingRight:'10px', color:'#f50057', }}/>
+            <Typography className={classes.typo} style={{fontSize:'18px', color:'white',marginBottom:'20px'}}>¡Espera!</Typography>
+      
+              <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Aún no has recibido Cotizaciones!</Typography>
+              <br/>
+                   <Button  color='secondary' style={{width:'98%'}}  variant='contained'>Vuelve Pronto</Button>
+              </Paper>  
           }
         </div>
         :null}

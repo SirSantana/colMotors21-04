@@ -65,10 +65,10 @@ import PrevPosts from "../Posts/Post/PrevPosts";
                 </Link>
                 
               </Paper>
-              {id ? <PrevPosts posts={posts}/>:<Posts posts={posts} />}
+              {id ? <PrevPosts posts={posts}/>:<Posts posts={posts} user={user}/>}
               
               {id &&
-              <Button variant="contained" color="secondary" style={{marginTop:'20px'}}>
+              <Button variant="contained" color="secondary" style={{marginTop:'20px'}} onClick={()=> router.push("/home")}>
                 Mira las cotizaciones de la comunidad
               </Button>
              }

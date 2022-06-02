@@ -7,16 +7,16 @@ import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import styles from './loader.module.css'
 import { useDispatch, useSelector } from "react-redux";
-
+import { useRouter } from "next/router";
 
 const NUM_PER_PAGE = 6;
 const TOTAL_PAGES = 5;
-export default function Posts({posts}) {
+export default function Posts({posts, user}) {
   const dispatch = useDispatch()
   const classes = useStyles();
   const [veces,setVeces] = useState(0)
   const triggerRef = useRef(null);
-
+  const router = useRouter()
   // const onGrabData = (currentPage) => {
   //     // This would be where you'll call your API
   //     return new Promise((resolve) => {
@@ -41,8 +41,10 @@ export default function Posts({posts}) {
                 </Grid>
               )
           )}
-          <div style={{marginRight:'auto', marginLeft:'auto', marginTop:'20px'}}>
-          <Button variant="contained" color="secondary">Ver mas cotizaciones</Button>
+          <div style={{marginRight:'auto', marginLeft:'auto', marginTop:'20px', }}>
+          <Button variant="contained" color="secondary" style={{marginRight:"20px"}}>Ver mas cotizaciones</Button>
+          {user && <Button variant="contained" color="secondary" onClick={()=> router.push(`/home/${user?.result._id}`)}>Ver mis cotizaciones</Button>}
+
           </div>
         </Grid>
 

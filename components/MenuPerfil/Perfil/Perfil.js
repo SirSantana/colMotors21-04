@@ -14,8 +14,8 @@ import {useRouter} from 'next/router'
 import Link from 'next/link'
 import { Stars,} from "@material-ui/icons";
 
-export default function Perfil({userr}) {
-  const { users , user }= useSelector((state) => state.users);
+export default function Perfil({user}) {
+  // const { users , user }= useSelector((state) => state.users);
   const router = useRouter()
   const classes = useStyles();
   const { id } = router.query;
@@ -23,14 +23,14 @@ export default function Perfil({userr}) {
 
 
 
-  useEffect(() => {
-    dispatch(getUser(id));
+  // useEffect(() => {
+  //   dispatch(getUser(id));
 
-  }, [id]);
+  // }, [id]);
 
   return (
     <>
-      {userr?.result?._id === user?._id ? (
+      {/* {userr?.result?._id === user?._id ? (
         <div style={{width:'100%', maxWidth:'800px'}}>
           <Card raised={true} elevation={6} className={classes.card1}>
             <Typography className={classes.typography}>Mi Perfil</Typography>
@@ -85,7 +85,7 @@ export default function Perfil({userr}) {
               </CardContent>
             </Card>
         </div>
-      ) : (
+      ) : ( */}
         <>
         <Card raised="true" elevation={6} className={classes.card1}>
           <div style={{display:'flex', flexDirection:'row'}}>
@@ -116,7 +116,7 @@ export default function Perfil({userr}) {
               </CardContent>
             </Card>
           </div></>
-      )}
+      {/* )} */}
     </>
   );
 }

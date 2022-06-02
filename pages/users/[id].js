@@ -6,15 +6,14 @@ import DBConnect from "../../libs/dbConnect";
 import userModel from "../../models/userModel";
 
 export default function UserPerfil({ user }) {
-  const [userr, setUserr] = useState(null);
+//   const [userr, setUserr] = useState(null);
   const router = useRouter();
-  console.log(user);
-  useEffect(() => {
-    setUserr(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+//   useEffect(() => {
+//     setUserr(JSON.parse(localStorage.getItem("profile")));
+//   }, []);
   return (
     <Layout title={"Mi perfil | colMotors"}>
-      <Perfil userr={user} />
+      <Perfil user={user} />
     </Layout>
   );
 }

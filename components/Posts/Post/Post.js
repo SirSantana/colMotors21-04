@@ -147,7 +147,7 @@ const handleIr=()=>{
       )}
 
       <div className={classes.container}>
-        <div className={classes.card}>
+        <div className={classes.card} >
           {id !== undefined && (
             <div className={classes.header1}>
               <Typography gutterBottom className={classes.typo}>

@@ -51,7 +51,7 @@ export default makeStyles((theme)=>({
     [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
       gap:'15px',
-      width:'84vw'
+      width:'84vw',
     }
   },
   paper2: {
@@ -117,7 +117,6 @@ export default makeStyles((theme)=>({
     maxWidth:'350px',
     [theme.breakpoints.down('sm')]: {
         width:'84vw',
-        gap:'20px'
       }
     
   },

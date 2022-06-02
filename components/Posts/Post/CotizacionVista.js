@@ -11,10 +11,11 @@ import {
   import { AttachMoney, Build, Delete, Menu, Place } from "@material-ui/icons";
 import OnePost from "./OnePost";
   import useStyles from "./styles";
-
+import { useRouter } from "next/router";
 export default function CotizacionVista({Cotizacion, Post, user}){
   const classes = useStyles();
-
+  console.log(Cotizacion);
+  const router = useRouter()
     return(
         <>
       <div className={classes.container} style={{gap:'30px'}}>
@@ -128,6 +129,7 @@ export default function CotizacionVista({Cotizacion, Post, user}){
                 variant="contained"
                 fullWidth
                 className={classes.cotizar1}
+                onClick={()=> router.push(`/users/${Cotizacion.creator}`)}
               >
                 Ver Pefil Vendedor
               </Button>

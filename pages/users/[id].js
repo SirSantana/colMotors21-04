@@ -1,20 +1,35 @@
 import { useEffect, useState } from "react";
 import Perfil from "../../components/MenuPerfil/Perfil/Perfil";
 import Layout from "../../components/Layout/Layout";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
+import DBConnect from "../../libs/dbConnect";
+import userModel from "../../models/userModel";
 
+export default function UserPerfil({ user }) {
+  const [userr, setUserr] = useState(null);
+  const router = useRouter();
+  console.log(user);
+  useEffect(() => {
+    setUserr(JSON.parse(localStorage.getItem("profile")));
+  }, []);
+  return (
+    <Layout title={"Mi perfil | colMotors"}>
+      <Perfil userr={user} />
+    </Layout>
+  );
+}
 
-export default function UserPerfil(){
-    const [userr, setUserr] = useState(null)
-    const router = useRouter()
+export async function getServerSideProps({ params }) {
+  try {
+    await DBConnect();
 
-    useEffect(()=>{
-        setUserr(JSON.parse(localStorage.getItem("profile")));
-    },[])
-    return(
-        <Layout title={'Mi perfil | colMotors'}>
-            <Perfil userr={userr}/>
-        </Layout>
-
-    )
+    const res = await userModel.findById(params.id);
+    const user = res.toObject();
+    user._id = user._id.toString()
+    user.posts = null
+    user.cotizaciones = null
+    return {
+      props: {user},
+    };
+  } catch (error) {}
 }

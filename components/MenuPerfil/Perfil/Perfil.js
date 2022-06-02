@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "../../../reducers/Actions/authActions";
 import {useRouter} from 'next/router'
 import Link from 'next/link'
+import { Stars,} from "@material-ui/icons";
 
 export default function Perfil({userr}) {
   const { users , user }= useSelector((state) => state.users);
@@ -87,11 +88,18 @@ export default function Perfil({userr}) {
       ) : (
         <>
         <Card raised="true" elevation={6} className={classes.card1}>
-            <Typography className={classes.typography}>Perfil:{user?.name}</Typography>
+          <div style={{display:'flex', flexDirection:'row'}}>
+          <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars className={classes.iconStar}/> <Stars style={{color:'white'}} />
+          </div>
+            <Typography className={classes.typography}><b>Vendedor </b> {user?.name}</Typography>
           </Card>
           <div className={classes.container}>
             <Card raised="true" elevation={6} className={classes.card}>
               <CardContent>
+              <Typography variant="body1" component="h2">
+                  Calificacion: <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars />
+                </Typography>
+                <Divider style={{ margin: "20px 0" }} />
                 <Typography variant="body1" component="h2">
                   Compras: ...
                 </Typography>
@@ -101,7 +109,10 @@ export default function Perfil({userr}) {
                   Ventas: ...
                 </Typography>
                 <Divider style={{ margin: "20px 0" }} />
-                
+                <Typography variant="body1" component="h2">
+                  Ubicacion: {user?.pais}
+                </Typography>
+                <Divider style={{ margin: "20px 0" }} />
               </CardContent>
             </Card>
           </div></>

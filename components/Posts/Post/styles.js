@@ -71,6 +71,12 @@ export default makeStyles((theme)=>({
       },
 
   },
+  divPrevPosts:{
+    [theme.breakpoints.down('xs')]: {
+        gap:'20px'      
+      },
+
+  },
   typo:{
     fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
     fontWeight:'600',
@@ -110,7 +116,8 @@ export default makeStyles((theme)=>({
     minWidth:'280px',
     maxWidth:'350px',
     [theme.breakpoints.down('sm')]: {
-        width:'84vw'
+        width:'84vw',
+        gap:'20px'
       }
     
   },

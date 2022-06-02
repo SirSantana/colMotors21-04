@@ -8,7 +8,7 @@ export default function PrevPosts({ posts }) {
 
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+      <div className={classes.divPrevPosts} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {posts?.map((Post) => (
           <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
             <PostCreador OnePost={Post} />

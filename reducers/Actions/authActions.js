@@ -8,7 +8,7 @@ export const signin = (form, router, setMessage, setMessageError, setMessageLoad
         const {data} = await api.signin(form)
         dispatch({type: AUTH, data})
         setMessage('Ingresando Correctamente...')
-        router.push("/home")
+        router.push(`/home`)
 
     } catch (error) {
         console.log(error.response);

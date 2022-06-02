@@ -44,51 +44,36 @@ export default function Home({Postss}) {
     setUser(null);
   };
 
+  console.log(Postss);
 
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent createPosts={createPosts} posts={Postss} postsCreator={null}/>
+        <HomeComponent createPosts={createPosts} posts={Postss}/>
       </Layout>
     </>
   );
 }
-// export const getServerSideProps = async () => {
-//   const { data } = await axios.get(`https://col-motors21-04.vercel.app/api/posts`);
-
-//   if (!data) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   const posts = data;
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// };
-export async function getServerSideProps() {
-  try {
-    await DBConnect();
-    const res = await postModel.find().sort([['date', -1]]).limit(6);
-    const Postss = res.map((el) => {
-      const Post = el.toObject();
-
-      Post._id = Post._id.toString();
-      Post.creator = Post.creator.toString();
-      Post.cotizaciones = Post.cotizaciones.toString();
-      Post.date = Post.date.toString();
-
-      return Post;
-    });
-    return {
-      props: { Postss,
-        
-      }
-    };
-  } catch (error) {
-    console.log(error);
+export async function getServerSideProps({params}) {
+    try {
+      await DBConnect();
+      const res = await postModel.find({creator: params.id}).sort([['date', -1]]).limit(3);
+      const Postss = res.map((el) => {
+        const Post = el.toObject();
+  
+        Post._id = Post._id.toString();
+        Post.creator = Post.creator.toString();
+        Post.cotizaciones = Post.cotizaciones.toString();
+        Post.date = Post.date.toString();
+  
+        return Post;
+      });
+      return {
+        props: { Postss,
+          
+        }
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
-}

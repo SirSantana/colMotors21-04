@@ -5,6 +5,7 @@ import {
     Grid,
     Paper,
     AppBar,
+    Button,
   } from "@material-ui/core";
 import { Refresh } from "@material-ui/icons";
 import { useRouter } from "next/router";
@@ -16,15 +17,21 @@ import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
 import { Axios } from "axios";
 import Buscador from "../Navbar/Buscador";
+import PrevPosts from "../Posts/Post/PrevPosts";
 
 
   export default function HomeComponent({createPosts, posts}) {
     const classes = useStyles();
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
+    const router = useRouter()
+    const {id} = router.query
+
+    
 
     useEffect(()=>{
       setUser(JSON.parse(localStorage.getItem('profile')))
+
     },[])
     return (
       <>
@@ -49,7 +56,7 @@ import Buscador from "../Navbar/Buscador";
               </AppBar>     */}
               <Paper raised="true" elevation={6} className={classes.card1}>
                 <Typography className={classes.typography}>
-                  Cotizaciones 
+                  {id ? 'Tus Cotizaciones': 'Cotizaciones de la comunidad'} 
                 </Typography>
                 <Link href={'/home'}>
                 <a>
@@ -58,7 +65,13 @@ import Buscador from "../Navbar/Buscador";
                 </Link>
                 
               </Paper>
-              <Posts posts={posts} />
+              {id ? <PrevPosts posts={posts}/>:<Posts posts={posts} />}
+              
+              {id &&
+              <Button variant="contained" color="secondary" style={{marginTop:'20px'}}>
+                Mira las cotizaciones de la comunidad
+              </Button>
+             }
             </Grid>
             <Grid item xs={12} sm={6} md={3} style={{paddingTop:'10px'}}>
               <Form createPosts={createPosts} user={user}/>
@@ -72,5 +85,3 @@ import Buscador from "../Navbar/Buscador";
       </>
     );
   }
-
-  

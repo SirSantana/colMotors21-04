@@ -33,7 +33,7 @@ export default function Home() {
               Cotiza los repuestos de tu auto en{" "}
             </h4>
             <h1 className={styles.description1}>30 Minutos</h1>
-            <Link href={'/home'}>
+            <Link href={user ? `/home/${user?.result._id}`: '/home'}>
               <a>
                 <Button
                   className={styles.button}
@@ -51,7 +51,7 @@ export default function Home() {
           {user ? (
             <>
               <div className={styles.containerButtons}>
-                <Link href={"/home"}>
+                <Link href={user ? `/home/${user?.result._id}`: '/home'}>
                   <a>
                     <Button
                       className={styles.btn}

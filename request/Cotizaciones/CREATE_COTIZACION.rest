@@ -1,0 +1,10 @@
+
+POST https://col-motors21-04.vercel.app/
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU4ZDAwZmZmNjg1NzA1MzY1ZmFkZSIsImlhdCI6MTY0NTEyNzU5NCwiZXhwIjoxNjQ1MTMxMTk0fQ.dsqE5MPvqK1kdvp90Cbp1MlqkXTU9eqnO4eZtA8ASjc
+
+{
+    "marca": "General Motors",
+    "precio": "100.000",
+    "garantia": "6"
+}

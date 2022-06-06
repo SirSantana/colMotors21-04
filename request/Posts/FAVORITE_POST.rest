@@ -1,0 +1,4 @@
+
+
+PATCH  https://col-motors21-04.vercel.app/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVmNjNlYzlmMmJiNWU3MWMzMDljNyIsImlhdCI6MTY0NTE1OTMzMiwiZXhwIjoxNjQ1MTYyOTMyfQ.IFq11J3EZRO1A37056OIB709-uyF1NMZuy1BlajP-lQ

@@ -23,19 +23,11 @@ export default function HomeComponent({ createPosts, posts }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const { id } = router.query;
-  const [visible, setVisible] = useState(false)
-
-  let vis;
-  // setTimeout(()=>{
-  //   clearTimeout(vis)
-  //   setVisible(false)
-  // },10000)
+  
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-    // setTimeout(() => {
-    //  vis =  setVisible(true)
-    // },1000);
+   
   }, []);
 
   
@@ -92,7 +84,6 @@ export default function HomeComponent({ createPosts, posts }) {
               <Form createPosts={createPosts} user={user} />
             </Grid>
           </Grid>
-          <div>
             {/* {visible && <div id="myModal" className={classes.modal}>
               <div className={classes.modalContent}>
                 <span className={classes.close}>&times;</span>
@@ -109,7 +100,6 @@ export default function HomeComponent({ createPosts, posts }) {
 
               <br />
             </Paper> */}
-          </div>
         </Container>
       </Grow>
       {/* :

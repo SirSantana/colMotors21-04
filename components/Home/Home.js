@@ -33,9 +33,9 @@ export default function HomeComponent({ createPosts, posts }) {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-    setTimeout(() => {
-     vis =  setVisible(true)
-    },1000);
+    // setTimeout(() => {
+    //  vis =  setVisible(true)
+    // },1000);
   }, []);
 
   
@@ -93,12 +93,12 @@ export default function HomeComponent({ createPosts, posts }) {
             </Grid>
           </Grid>
           <div>
-            {visible && <div id="myModal" className={classes.modal}>
+            {/* {visible && <div id="myModal" className={classes.modal}>
               <div className={classes.modalContent}>
                 <span className={classes.close}>&times;</span>
-                <p>Some text in the Modal..</p>
+                <p>Bievenido a colMotors, aqui podras cotizar tus repuestos </p>
               </div>
-            </div>}
+            </div>} */}
             {/* <Paper className={classes.paper2} elevation={3}>
               <Typography
                 className={classes.typo}

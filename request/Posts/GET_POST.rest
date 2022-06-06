@@ -1,2 +1,2 @@
-GET https://col-motors21-04.vercel.app/api/posts
+GET http://localhost:3000/api/posts
 Content-Type: application/json

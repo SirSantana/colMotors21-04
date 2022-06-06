@@ -72,13 +72,26 @@ export default makeStyles((theme) => ({
     margin: "15% auto", /* 15% from the top and centered */
     padding: "20px",
     border: "1px solid #888",
-    width: "80%", /* Could be more or less, depending on screen size */
+    width: "30%", /* Could be more or less, depending on screen size */
     [theme.breakpoints.down('xs')]: {
       margin: "45% auto",
-      
+      width:'70%'
     },
   }
   ,
+  modalContent2: {
+    backgroundColor: "#fefefe",
+    margin: "10% 40%", /* 15% from the top and centered */
+    padding: "20px",
+    border: "1px solid #888",
+    width: "30%", /* Could be more or less, depending on screen size */
+    [theme.breakpoints.down('xs')]: {
+      margin: "45% auto",
+      width:'70%'
+      
+    },
+  }
+  , 
 
   /* The Close Button */
   close: {

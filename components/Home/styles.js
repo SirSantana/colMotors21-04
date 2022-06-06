@@ -55,7 +55,7 @@ export default makeStyles((theme) => ({
     marginLeft: '20px',
   },
   modal: {
-    display: "block", /* Hidden by default */
+  display: "block", /* Hidden by default */
   position: "fixed", /* Stay in place */
   zIndex: "1000", /* Sit on top */
   left: 0,
@@ -65,7 +65,7 @@ export default makeStyles((theme) => ({
   overflow: "auto", /* Enable scroll if needed */
   backgroundColor: "rgb(0,0,0)", /* Fallback color */
   backgroundColor: "rgba(0,0,0,0.4)", /* Black w/ opacity */
-
+  
   },
   modalContent: {
     backgroundColor: "#fefefe",
@@ -73,8 +73,13 @@ export default makeStyles((theme) => ({
     padding: "20px",
     border: "1px solid #888",
     width: "80%", /* Could be more or less, depending on screen size */
+    [theme.breakpoints.down('xs')]: {
+      margin: "45% auto",
+      
+    },
   }
   ,
+
   /* The Close Button */
   close: {
     color: "#aaa",

@@ -26,10 +26,10 @@ export default function HomeComponent({ createPosts, posts }) {
   const [visible, setVisible] = useState(false)
 
   let vis;
-  setTimeout(()=>{
-    clearTimeout(vis)
-    setVisible(false)
-  },10000)
+  // setTimeout(()=>{
+  //   clearTimeout(vis)
+  //   setVisible(false)
+  // },10000)
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));

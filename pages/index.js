@@ -7,6 +7,10 @@ import { Button } from"@material-ui/core";
 import { LOGOUT } from '../reducers/type'
 import { useDispatch } from 'react-redux'
 import Image from 'next/image'
+import io from 'Socket.IO-client'
+
+
+let socket;
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -19,13 +23,38 @@ export default function Home() {
     router.push("/");
   };
 
+  const [input, setInput] = useState('')
 
+  useEffect(() => socketInitializer(), [])
+
+  const socketInitializer = async () => {
+    await fetch('/api/socket');
+    socket = io()
+
+    socket.on('connect', () => {
+      console.log('connected')
+    })
+
+    socket.on('update-input', msg => {
+      setInput(msg)
+    })
+  }
+
+  const onChangeHandler = (e) => {
+    setInput(e.target.value)
+    socket.emit('input-change', e.target.value)
+  }
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [router,dispatch]);
   
   return (
     <Layout title="Lobby | colMotors">
+      <input
+    placeholder="Type something"
+    value={input}
+    onChange={onChangeHandler}
+  />
       <div className={styles.grid}>
         <section className={styles.card1}>
           <div className={styles.containerText}>

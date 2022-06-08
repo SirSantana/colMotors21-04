@@ -44,9 +44,9 @@ export default function HomeComponent({ createPosts, posts }) {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-    setTimeout(() => {
-     vis = setVisible(true)
-    },1000);
+      setTimeout(() => {
+        vis = setVisible(true)
+       },1000);
   }, []);
 
   
@@ -103,47 +103,48 @@ export default function HomeComponent({ createPosts, posts }) {
               <Form createPosts={createPosts} user={user} />
             </Grid>
           </Grid>
+          {user &&
           <div>
-            {visible && <div id="myModal" className={classes.modal}>
-              <div className={classes.modalContent}>
-                <span className={classes.close}>&times;</span>
-                <p>Bievenido a colMotors, aqui podras cotizar tus repuestos.</p>
-                <h4>Te ensañare como hacerlo, sigue los pasos</h4>
-                <Button onClick={handleChangeModal} variant="contained" color="primary">Siguiente</Button>
-              </div>
-            </div>}
-         
-            {
-              visibleMo2 ?
-              <div div id="myModal" className={classes.modal}>
-            <div className={classes.modalContent2}>
-                <span className={classes.close}>&times;</span>
-                <h2>Llena el formulario &rarr;</h2>
-                <p>Hecha un vistazo a la derecha, ahi tienes el formulario, recuerda llenar todos los campos y ser lo mas especifico posible</p>
-                <p>Y por ultimo dale click al Boton de 'Cotiza'</p>
-                <Button onClick={()=> {setVisibleMo2(false), setVisibleMo3(true)}} variant="contained" color="primary">Siguiente</Button>
-              </div>
-            </div>
-            :null
-            }
-             {
-              visibleMo3 ?
-              <div div id="myModal" className={classes.modal}>
+          {visible && <div id="myModal" className={classes.modal}>
             <div className={classes.modalContent}>
-                <span className={classes.close}>&times;</span>
-                <h2>La comunidad </h2>
-                <p>Si te preguntas, qué son las cotizaciones de abajo.
-                  Son las mas recientes cotizaciones de la comunidad, podras comentar o charlar
-                  con esa persona 
-                </p>
-                <p></p>
-                <Button variant="contained" onClick={()=> setVisibleMo3(false)} color="primary">Siguiente</Button>
-              </div>
+              <span onClick={()=> setVisible(false)} className={classes.close}>&times;</span>
+              <p>Bievenido a colMotors, aqui podras cotizar tus repuestos.</p>
+              <h4>Te ensañare como hacerlo, sigue los pasos</h4>
+              <Button onClick={handleChangeModal} variant="contained" color="primary">Siguiente</Button>
             </div>
-            :null
-            }
+          </div>}
+       
+          {
+            visibleMo2 ?
+            <div div id="myModal" className={classes.modal}>
+          <div className={classes.modalContent2}>
+              <span className={classes.close}>&times;</span>
+              <h2>Llena el formulario &rarr;</h2>
+              <p>Hecha un vistazo a la derecha (o abajo, si estas un movil), ahi tienes el formulario, recuerda llenar todos los campos y ser lo mas especifico posible</p>
+              <p>Y por ultimo dale click al Boton de 'Cotiza'</p>
+              <Button onClick={()=> {setVisibleMo2(false), setVisibleMo3(true)}} variant="contained" color="primary">Siguiente</Button>
+            </div>
           </div>
-
+          :null
+          }
+           {
+            visibleMo3 ?
+            <div div id="myModal" className={classes.modal}>
+          <div className={classes.modalContent}>
+              <span className={classes.close}>&times;</span>
+              <h2>La comunidad </h2>
+              <p>Si te preguntas, qué son las cotizaciones de abajo.
+                Son las mas recientes cotizaciones de la comunidad, podras comentar o charlar
+                con esa persona 
+              </p>
+              <p></p>
+              <Button variant="contained" onClick={()=> setVisibleMo3(false)} color="primary">Siguiente</Button>
+            </div>
+          </div>
+          :null
+          }
+        </div>
+}
             {/* <Paper className={classes.paper2} elevation={3}>
               <Typography
                 className={classes.typo}

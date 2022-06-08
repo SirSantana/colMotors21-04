@@ -99,6 +99,7 @@ export default makeStyles((theme) => ({
     float: "right",
     fontSize: "28px",
     fontWeight: "bold",
+    cursor:'pointer'
   },
   
  

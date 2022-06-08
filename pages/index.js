@@ -27,11 +27,7 @@ export default function Home() {
   
   return (
     <Layout title="Lobby | colMotors">
-      <input
-    placeholder="Type something"
-    value={input}
-    onChange={onChangeHandler}
-  />
+      
       <div className={styles.grid}>
         <section className={styles.card1}>
           <div className={styles.containerText}>

@@ -7,7 +7,7 @@ import { Button } from"@material-ui/core";
 import { LOGOUT } from '../reducers/type'
 import { useDispatch } from 'react-redux'
 import Image from 'next/image'
-import io from 'Socket.IO-client'
+import io from 'socket.io-client'
 
 
 let socket;

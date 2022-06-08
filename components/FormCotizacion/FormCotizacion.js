@@ -73,7 +73,7 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
               
             </Typography>
         </div>
-        <Paper className={classes.paper} raised elevation={6}>
+        <Paper className={classes.paper} raised='true' elevation={6}>
           <form onSubmit={handleSubmit}>
             
             <TextField

@@ -269,6 +269,36 @@ export default makeStyles((theme)=>({
     backgroundColor: "#949494",
     color:'white',
     marginTop:'10px'
-  }
+  },
+  comentarios:{
+    width:'90%',
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginBottom: '15px',
+    backgroundColor: "#949494",
+    color:'white',
+    marginTop:'10px'
+  },
+  containerComents:{
+    width:"90%", 
+    background:'#949494', 
+    display:'flex', 
+    justifyContent:'center', 
+    alignItems:'center', 
+    marginLeft:'auto', 
+    marginRight:'auto', 
+    marginTop:'10px',
+    flexDirection:'column'
+  },
+  card2: {
+    width:'97%',
+    margin: "0",
+    textAlign: "left",
+    color: "#f1f1f1",
+    justifyContent: "center",
+    textDecoration: "none",
+    borderRadius: "10px",
+    backgroundColor:'#f1f1f1',
+  },
   
 }));

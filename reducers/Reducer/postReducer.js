@@ -1,4 +1,4 @@
-import { CREATE_POST, DELETE_POST, END_LOADING, GET_ALL, GET_ONE_POST, START_LOADING } from "../type";
+import { CREATE_COMMENT, CREATE_POST, DELETE_POST, END_LOADING, GET_ALL, GET_ONE_POST, START_LOADING } from "../type";
 
 
 export default (state={ isLoading: true, posts:[],}, action) => {
@@ -11,6 +11,8 @@ export default (state={ isLoading: true, posts:[],}, action) => {
         return {...state, posts: action.payload};
       case GET_ONE_POST:
         return {...state, post: action.payload.post}
+      // case CREATE_COMMENT:
+      //   return {...state, post:}
     //   case GET_BY_SEARCH:
     //     return {...state, posts: action.payload.data}
       // case CREATE_POST:

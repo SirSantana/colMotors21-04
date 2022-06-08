@@ -3,6 +3,7 @@ export const CREATE_POST = "CREATE_POST"
 export const DELETE_POST = "DELETE_POST"
 export const GET_ONE_POST = 'GET_ONE_POST'
 export const FAVORITE_POST = 'FAVORITE_POST'
+export const CREATE_COMMENT = 'CREATE_COMMENT'
 
 export const AUTH = 'AUTH'
 export const LOGOUT = 'LOGOUT'

@@ -1,11 +1,12 @@
 import * as api from "../Api/index";
 import {
+  CREATE_COMMENT,
   // CREATE_POST,
   // DELETE_POST,
   // CREATE_POST,
   // DELETE_POST,
   END_LOADING,
-//   FAVORITE_POST,
+  //   FAVORITE_POST,
   GET_ALL,
   GET_ONE_POST,
   START_LOADING,
@@ -19,18 +20,26 @@ export const getPost = (id) => async (dispatch) => {
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log({ message: error.message });
-    
   }
 };
 export const getPosts = () => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-    console.log('Hola1');
+    console.log("Hola1");
     const { data } = await api.getAllPosts();
     dispatch({ type: GET_ALL, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
+  }
+};
+export const createComment = (body, id) => async (dispatch) => {
+  try {
+    const { data } = await api.createComment(body, id);
+
+    dispatch({ type: CREATE_COMMENT, payload: data});
+  } catch (error) {
+    console.log(error.response);
   }
 };
 // export const createPost = (post, router) => async (dispatch) => {

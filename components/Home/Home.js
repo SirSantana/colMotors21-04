@@ -118,7 +118,7 @@ export default function HomeComponent({ createPosts, posts }) {
             visibleMo2 ?
             <div div id="myModal" className={classes.modal}>
           <div className={classes.modalContent2}>
-              <span className={classes.close}>&times;</span>
+              <span onClick={()=> setVisibleMo2(false)} className={classes.close}>&times;</span>
               <h2>Llena el formulario &rarr;</h2>
               <p>Hecha un vistazo a la derecha (o abajo, si estas un movil), ahi tienes el formulario, recuerda llenar todos los campos y ser lo mas especifico posible</p>
               <p>Y por ultimo dale click al Boton de 'Cotiza'</p>
@@ -131,7 +131,7 @@ export default function HomeComponent({ createPosts, posts }) {
             visibleMo3 ?
             <div div id="myModal" className={classes.modal}>
           <div className={classes.modalContent}>
-              <span className={classes.close}>&times;</span>
+              <span onClick={()=> setVisibleMo3(false)} className={classes.close}>&times;</span>
               <h2>La comunidad </h2>
               <p>Si te preguntas, qué son las cotizaciones de abajo.
                 Son las mas recientes cotizaciones de la comunidad, podras comentar o charlar

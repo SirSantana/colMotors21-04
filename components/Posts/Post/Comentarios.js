@@ -25,10 +25,9 @@ export default function Comentarios({user, post, Cotizacion}) {
        const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id ))
        setComentarios(newComentarios)
         setMessage(messageInitial)
+        router.reload()
   };
-  useEffect(()=>{
-
-  },[dispatch])
+ 
   return (
     <>
         {error !== null && <h2>{error}</h2>}

@@ -15,20 +15,16 @@ export default function Comentarios({user, post, Cotizacion}) {
   const dispatch = useDispatch()
   const [comentarios, setComentarios] = useState(Cotizacion?.comentarios)
   const [error, setError] = useState(null)
-    const router = useRouter()
+  const router = useRouter()
 
 
   const handleComment =async (e) => {
     if(user.result._id !== Cotizacion.creator && user.result._id !== post.creator ){
        return setError('No puedes cotizar')
     }
-    if(user && message?.message !== messageInitial.message){
        const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id ))
-        setComentarios(newComentarios)
-    }else{
-        console.log('Debes tener un usuario para cotizar')
-    }
-    setMessage(messageInitial)
+       setComentarios(newComentarios)
+        setMessage(messageInitial)
   };
 
   return (
@@ -37,23 +33,25 @@ export default function Comentarios({user, post, Cotizacion}) {
       {user?.result._id === post?.creator || user?.result._id === Cotizacion.creator ?
       <Paper className={classes.comentarios} elevation={3}>
       <div className={classes.containerComents}>
-        {comentarios?.map((el) => (
-          <>
-            <Typography
-            key={el._id}
-              className={classes.typo}
-              style={{
-                fontSize: "14px",
-                color: "white",
-                textAlign: "left",
-                width: "100%",
-                marginBottom: "5px",
-              }}
-            >
-              {el}
-            </Typography>
-          </>
-        ))}
+        {comentarios.length >0 && (
+            comentarios?.map((el) => (
+                <>
+                  <Typography
+                  key={el._id}
+                    className={classes.typo}
+                    style={{
+                      fontSize: "14px",
+                      color: "white",
+                      textAlign: "left",
+                      width: "100%",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    {el}
+                  </Typography>
+                </>
+              ))
+        )}
 
         <br />
       </div>
@@ -80,7 +78,7 @@ export default function Comentarios({user, post, Cotizacion}) {
           name="message"
         />
 
-        <span onClick={handleComment}>
+        <span  onClick={handleComment}>
           <Send style={{ cursor: "pointer" }}  fontSize="medium" />
         </span>
         

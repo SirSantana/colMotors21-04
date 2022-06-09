@@ -12,6 +12,7 @@ export default function CotizacionVista({ Cotizacion, Post, user }) {
 
   return (
     <>
+    {user?.result._id === Cotizacion.creator || user?.result._id === Post.creator ?
       <div className={classes.container} style={{ gap: "30px" }}>
         <div className={classes.card}>
           <div className={classes.header1}>
@@ -133,17 +134,10 @@ export default function CotizacionVista({ Cotizacion, Post, user }) {
                   fullWidth
                   className={classes.cotizar1}
                   onClick={() => router.push(`/users/${Cotizacion.creator}`)}
+                  color="secondary"
+                  
                 >
                   Ver Pefil Vendedor
-                </Button>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  fullWidth
-                  className={classes.cotizar}
-                  onClick={()=> visibleComentario ? setVisibleComentario(false): setVisibleComentario(true)}
-                >
-                  Enviale un Mensaje
                 </Button>
               </>
             ) : (
@@ -156,7 +150,11 @@ export default function CotizacionVista({ Cotizacion, Post, user }) {
                 Eliminar cotizacion
               </Button>
             )}
-            <Button
+
+                <Comentarios  post={Post} Cotizacion={Cotizacion}/>
+             
+
+            {/* <Button
                   color="secondary"
                   variant="contained"
                   fullWidth
@@ -165,11 +163,13 @@ export default function CotizacionVista({ Cotizacion, Post, user }) {
                 >
                   Enviale un Mensaje
                 </Button>
-            {visibleComentario &&<Comentarios user={user} post={Post} Cotizacion={Cotizacion}/>  }
+            {visibleComentario &&<Comentarios user={user} post={Post} Cotizacion={Cotizacion}/>  } */}
             
           </Card>
         </div>
       </div>
+      :null
+      }
     </>
   );
 }

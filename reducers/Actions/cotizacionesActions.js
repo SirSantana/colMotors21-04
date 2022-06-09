@@ -55,9 +55,11 @@ export const createComment = (body, id, setCarga, setCargado) => async (dispatch
   try {
   setCarga('Enviando...')
     const { data } = await api.createComment(body, id);
-    setCarga(null)
-    setCargado('Mensaje Enviado!')
+    
     dispatch({ type: CREATE_COMMENT, payload: data});
+    setCargado('Mensaje Enviado!')
+    setCarga(null)
+
     return data.upCotizacion.comentarios
   } catch (error) {
     console.log(error.response);

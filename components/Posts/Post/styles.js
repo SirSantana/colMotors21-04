@@ -280,6 +280,8 @@ export default makeStyles((theme)=>({
   },
   containerComents:{
     width:"90%", 
+    maxHeight: '200px',
+    overflowY: 'auto',
     background:'#949494', 
     display:'flex', 
     justifyContent:'center', 

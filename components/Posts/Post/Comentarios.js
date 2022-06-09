@@ -16,16 +16,17 @@ export default function Comentarios({user, post, Cotizacion}) {
   const [comentarios, setComentarios] = useState(Cotizacion?.comentarios)
   const [error, setError] = useState(null)
   const router = useRouter()
-
+  const comentarioRef = useRef()
 
   const handleComment =async (e) => {
     if(user.result._id !== Cotizacion.creator && user.result._id !== post.creator ){
        return setError('No puedes cotizar')
     }
        const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id ))
+    //    router.reload()
        setComentarios(newComentarios)
         setMessage(messageInitial)
-        router.reload()
+        comentarioRef.current.scrollIntoView({behavior:'smooth'})
   };
  
   return (
@@ -34,7 +35,10 @@ export default function Comentarios({user, post, Cotizacion}) {
       {user?.result._id === post?.creator || user?.result._id === Cotizacion.creator ?
       <Paper className={classes.comentarios} elevation={3}>
       <div className={classes.containerComents}>
+      <div ref={comentarioRef}/>
+      
         {comentarios?.length >0 && (
+            
             comentarios?.map((el) => (
                 <>
                   <Typography
@@ -53,6 +57,7 @@ export default function Comentarios({user, post, Cotizacion}) {
                 </>
               ))
         )}
+        
 
         <br />
       </div>

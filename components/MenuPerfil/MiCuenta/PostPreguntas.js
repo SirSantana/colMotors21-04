@@ -63,7 +63,7 @@ export default function PostPreguntas({post}){
         </div>
         }
         <div style={{ marginLeft:'20px'}}>
-        <Typography variant="body1" color="black">
+        <Typography variant="body1" style={{color:'black'}}>
         <strong>Fecha:</strong> {post?.date}
         </Typography>
         </div>

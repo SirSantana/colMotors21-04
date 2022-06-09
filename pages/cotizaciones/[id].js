@@ -4,16 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import postModel from '../../models/postModel'
 import cotizacionModel from '../../models/cotizacionModel'
 import Layout from "../../components/Layout/Layout";
-import PruebaCotizacion from '../../components/Posts/Post/PruebaCotizacion'
-import CotizacionVista from "../../components/Posts/Post/CotizacionVista";
+import PruebaCotizacion from '../../components/Posts/Cotizaciones/PruebaCotizacion'
+import CotizacionVista from "../../components/Posts/Cotizaciones/CotizacionVista";
 import DBConnect from "../../libs/dbConnect";
-import Prueba from "../../components/Posts/Post/Pruebas";
 
 export default function Prubea({ Post, Cotizacion, Cotizaciones }) {
   const router = useRouter();
-  const { id } = router.query;
-  console.log(Cotizaciones);
-  const dispatch = useDispatch()
   const [user, setUser] = useState(null)
 
   useEffect(() => {

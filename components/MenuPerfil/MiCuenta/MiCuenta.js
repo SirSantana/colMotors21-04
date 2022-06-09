@@ -35,7 +35,7 @@ export default function MiCuenta({ Posts}) {
         
             <Grid item xs>
               {findPosts.map((post) => (
-                <PostPreguntas post={post} />
+                <PostPreguntas post={post} key={post._id} />
               ))}
         </Grid>
       </Grid>

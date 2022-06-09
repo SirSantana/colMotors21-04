@@ -1,7 +1,7 @@
 import {Avatar,Button,Card,CardActions,CardContent,CardHeader,Divider,Typography,} from "@material-ui/core";
 import { AttachMoney, Build, Delete, Menu, Place } from "@material-ui/icons";
-import OnePost from "./OnePost";
-import useStyles from "./styles";
+import OnePost from "../Post/OnePost";
+import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Comentarios from "./Comentarios";

@@ -2,7 +2,7 @@ import { Button, Paper, TextField, Typography } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import useStyles from "./styles";
+import useStyles from "../Post/styles";
 import {useRouter} from 'next/router'
 import { createComment } from "../../../reducers/Actions/cotizacionesActions";
 

@@ -1,12 +1,4 @@
-import {
-  Card,
-  Button,
-  Typography,
-  Divider,
-  CardHeader,
-  Avatar,
-  Paper,
-} from "@material-ui/core";
+import {Card,Button,Typography,Divider,CardHeader,Avatar,Paper,} from "@material-ui/core";
 import { useEffect, useState } from "react";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
@@ -18,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Check, Close, Error } from "@material-ui/icons";
 import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfied from '@material-ui/icons/SentimentVerySatisfied';
+import deletePost from "../../../utils/deletePost";
 
 export default function PostCo({ OnePost, visibleCoti}) {
   const classes = useStyles();
@@ -33,24 +26,9 @@ export default function PostCo({ OnePost, visibleCoti}) {
   const [visiCoti, setVisiCoti] = useState(true)
 
 
-  async function deletePost(id) {
-    try {
-      const res = await fetch(`/api/posts/${id}`, {
-        method: "DELETE",
-        headers: { "Content-type": "application/json" },
-        // body: JSON.stringify(id)
-      });
-      if (res) {
-        setMessage("Se ha eliminado correctamente");
-        router.push("/home");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   const handleDelete = () => {
-    deletePost(OnePost._id);
+    deletePost(OnePost._id, router, setMessage);
   };
 
   const handleCotizar = (e) => {
@@ -75,10 +53,6 @@ export default function PostCo({ OnePost, visibleCoti}) {
     );
   }
  
-  // let cotizacionesCliente;
-  // if(OnePost.cotizaciones.length > 0  ){
-  //   cotizacionesCliente = One
-  // }
 
 const handleIr=()=>{
   setVisiCoti(false)

@@ -26,7 +26,9 @@ export default function Comentarios({user, post, Cotizacion}) {
        setComentarios(newComentarios)
         setMessage(messageInitial)
   };
+  useEffect(()=>{
 
+  },[dispatch])
   return (
     <>
         {error !== null && <h2>{error}</h2>}

@@ -33,7 +33,7 @@ export default function Comentarios({user, post, Cotizacion}) {
       {user?.result._id === post?.creator || user?.result._id === Cotizacion.creator ?
       <Paper className={classes.comentarios} elevation={3}>
       <div className={classes.containerComents}>
-        {comentarios.length >0 && (
+        {comentarios?.length >0 && (
             comentarios?.map((el) => (
                 <>
                   <Typography

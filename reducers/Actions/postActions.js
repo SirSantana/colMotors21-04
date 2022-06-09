@@ -33,15 +33,7 @@ export const getPosts = () => async (dispatch) => {
     console.log(error);
   }
 };
-export const createComment = (body, id) => async (dispatch) => {
-  try {
-    const { data } = await api.createComment(body, id);
 
-    dispatch({ type: CREATE_COMMENT, payload: data});
-  } catch (error) {
-    console.log(error.response);
-  }
-};
 // export const createPost = (post, router) => async (dispatch) => {
 
 //   try {

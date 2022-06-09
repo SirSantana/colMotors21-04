@@ -1,4 +1,5 @@
 import {
+  CREATE_COMMENT,
   CREATE_COTIZACION,
   DELETE_COTIZACION,
   END_LOADING,
@@ -35,6 +36,16 @@ export default (state = { isLoading: true, cotizaciones: [] }, action) => {
       };
     case GET_COTIZACION:
       return { ...state, cotizacion: action.payload.cotizacion };
+      case CREATE_COMMENT:
+        return {
+          ...state,
+          cotizaciones: state.cotizaciones.map((cotizacion) => {
+            if (cotizacion._id == +action.payload._id) {
+              return action.payload;
+            }
+            return cotizacion;
+          }),
+        };
     // case DELETE_COTIZACION:
       // localStorage.setItem(
       //   "profile",

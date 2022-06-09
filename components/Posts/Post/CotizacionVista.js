@@ -151,7 +151,7 @@ export default function CotizacionVista({ Cotizacion, Post, user }) {
               </Button>
             )}
 
-                <Comentarios  post={Post} Cotizacion={Cotizacion}/>
+                <Comentarios user={user} post={Post} Cotizacion={Cotizacion}/>
              
 
             {/* <Button

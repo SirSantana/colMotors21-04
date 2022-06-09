@@ -5,7 +5,8 @@ import {
   GET_COTIZACION,
   GET_COTIZACIONES,
   START_LOADING,
-  DELETE_COTIZACION
+  DELETE_COTIZACION,
+  CREATE_COMMENT
 } from "../type";
 
 export const postCotizacion = (cotizacion, router,setMessage, setMessageError, setMessageLoad) => async (dispatch) => {
@@ -46,6 +47,16 @@ export const getCotizaciones = () => async (dispatch) => {
     const { data } = await api.getCotizaciones();
     dispatch({ type: GET_COTIZACIONES, payload: data });
     // dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.response);
+  }
+};
+export const createComment = (body, id) => async (dispatch) => {
+  try {
+    const { data } = await api.createComment(body, id);
+    console.log(data.upCotizacion.comentarios);
+    dispatch({ type: CREATE_COMMENT, payload: data});
+    return data.upCotizacion.comentarios
   } catch (error) {
     console.log(error.response);
   }

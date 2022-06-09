@@ -38,13 +38,6 @@ export default function Home({Postss}) {
     }
   };
 
-  const logout = () => {
-    // dispatch({ type: LOGOUT });
-    router.push("/");
-    setUser(null);
-  };
-
-
   return (
     <>
       <Layout title={"Home | colMotors"}>

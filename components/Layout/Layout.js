@@ -15,14 +15,14 @@ export default function Layout({children, title, description}){
         <main className={styles.main}><Navbar/>{children}</main>
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by colMotors
-          {/* <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span> */}
+          colMotors | Colombia
+          <span className={styles.logo}>
+            <Image src="/images/logo_colmotors.jpg" alt="colMotors Logo" width={62} height={66} />
+          </span>
         </a>
       </footer>
         </>

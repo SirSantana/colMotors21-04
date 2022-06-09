@@ -9,11 +9,11 @@ import {
   } from "@material-ui/core";
   import { useState } from "react";
   import { useDispatch } from "react-redux";
-  import Image from 'next/image'
   import useStyles from "./styles";
 import { Build, Check } from "@material-ui/icons";
 import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   import {useRouter} from 'next/router'
+
   const initial = {
     repuestos: "",
     precio: "",

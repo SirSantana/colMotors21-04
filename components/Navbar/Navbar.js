@@ -8,6 +8,7 @@ import MenuPerfil from "../MenuPerfil/Menuperfil";
 import { LOGOUT } from "../../reducers/type";
 import { useDispatch } from "react-redux";
 import Buscador from "./Buscador";
+import { handleLogout } from "../../utils/handleLogout";
 // import decode from "jwt-decode";
 
 
@@ -17,11 +18,7 @@ export default function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const logout = () => {
-    dispatch({ type: LOGOUT });
-    router.push("/");
-    setUser(null);
-  };
+  
   
 
   useEffect(() => {
@@ -58,7 +55,7 @@ export default function Navbar() {
         </Link>
         {user?.result && (
               <div style={{display:'flex', flexDirection:'row', justifyContent:'center',}}>
-                <MenuPerfil user={user} logout={logout} />
+                <MenuPerfil user={user} logout={()=>handleLogout(setUser, router, dispatch)} />
               </div>
         )}
         </div>

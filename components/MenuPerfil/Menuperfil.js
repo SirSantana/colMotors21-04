@@ -17,7 +17,7 @@ export default function MenuPerfil({user, logout}){
     const classes = useStyles()
     const dispatch = useDispatch()
     const router = useRouter()    
-  const User = user?.result?._id
+    const User = user?.result?._id
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -27,12 +27,6 @@ export default function MenuPerfil({user, logout}){
         setAnchorEl(null);
       };
 
-      const handleLogout=(e)=>{
-        logout()
-      }
-      // useEffect(() => {
-      //   dispatch(getPosts());
-      // }, [ dispatch, router]);
     return(
         <>
         <IconButton
@@ -75,7 +69,7 @@ export default function MenuPerfil({user, logout}){
                 </a>
                 </Link>
                 <Divider></Divider>
-                <MenuItem onClick={handleLogout}>Cerrar Sesion</MenuItem>
+                <MenuItem onClick={()=>logout()}>Cerrar Sesion</MenuItem>
               </Menu>
         </>
     )

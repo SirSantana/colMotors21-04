@@ -284,11 +284,9 @@ export default makeStyles((theme)=>({
     overflowY: 'auto',
     background:'#949494', 
     display:'flex', 
-    justifyContent:'center', 
-    alignItems:'center', 
     marginLeft:'auto', 
     marginRight:'auto', 
-    marginTop:'10px',
+    marginTop:'5px',
     flexDirection:'column'
   },
   card2: {

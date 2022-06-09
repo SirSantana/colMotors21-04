@@ -17,13 +17,15 @@ export default function Comentarios({user, post, Cotizacion}) {
   const [error, setError] = useState(null)
   const router = useRouter()
   const comentarioRef = useRef()
+  const [carga, setCarga] = useState(null)
+  const [cargado, setCargado] = useState('')
 
   const handleComment =async (e) => {
     if(user.result._id !== Cotizacion.creator && user.result._id !== post.creator ){
        return setError('No puedes cotizar')
     }
-       const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id ))
-    //    router.reload()
+       const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id, setCarga, setCargado ))
+       router.reload()
        setComentarios(newComentarios)
         setMessage(messageInitial)
         comentarioRef.current.scrollIntoView({behavior:'smooth'})
@@ -36,7 +38,7 @@ export default function Comentarios({user, post, Cotizacion}) {
       <Paper className={classes.comentarios} elevation={3}>
       <div className={classes.containerComents}>
       <div ref={comentarioRef}/>
-      
+        
         {comentarios?.length >0 && (
             
             comentarios?.map((el) => (
@@ -54,9 +56,16 @@ export default function Comentarios({user, post, Cotizacion}) {
                   >
                     {el}
                   </Typography>
+                  
                 </>
+                
               ))
         )}
+        <div style={{margin:0, padding:0}}>
+        <p style={{margin:0, padding:0}}>{carga}</p>
+        <p style={{margin:0, padding:0}}>{cargado}</p>
+        </div>
+
         
 
         <br />

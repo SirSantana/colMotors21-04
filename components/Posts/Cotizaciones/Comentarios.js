@@ -40,7 +40,9 @@ export default function Comentarios({user, post, Cotizacion}) {
 
   console.log(commentsCache);
   
- 
+  useEffect(()=>{
+
+  },[commentsCache])
   return (
     <>
         {error !== null && <h2>{error}</h2>}

@@ -19,7 +19,7 @@ export default function Comentarios({user, post, Cotizacion}) {
   const comentarioRef = useRef()
   const [carga, setCarga] = useState(null)
   const [cargado, setCargado] = useState('')
-  const [commentsCache, setCommentsCache] = useState(Cotizacion?.comentarios)
+  const [commentsCache, setCommentsCache] = useState([])
 
   const coments = Cotizacion?.comentarios
 
@@ -34,15 +34,12 @@ export default function Comentarios({user, post, Cotizacion}) {
       //  router.reload()
        setComentarios(newComentarios)
        setMessage(messageInitial)
-       setCommentsCache({...commentsCache, [Object.keys(commentsCache).length]:`${user?.result.name}:${message.toString()}`})
+       setCommentsCache(`${user?.result.name}:${message.toString()}`)
 
   };
 
   console.log(commentsCache);
   
-  useEffect(()=>{
-
-  },[commentsCache])
   return (
     <>
         {error !== null && <h2>{error}</h2>}
@@ -71,9 +68,9 @@ export default function Comentarios({user, post, Cotizacion}) {
                 </>
                 
               
-        ))):commentsCache?.map(el=> <h2>{el}</h2>)
-        }
-                {/* <Typography
+        ))): coments?.map(el=> <h5>{el}</h5>)
+                  }
+                <Typography
                     className={classes.typo}
                     style={{
                       fontSize: "14px",
@@ -83,8 +80,8 @@ export default function Comentarios({user, post, Cotizacion}) {
                       marginBottom: "5px",
                     }}
                   >
-                    {commentsCache[Object.keys(commentsCache)[Object.keys(commentsCache).length - 1]]   }
-                  </Typography> */}
+                    {commentsCache}
+                  </Typography>
 
         <div style={{margin:0, padding:0}}>
         <p style={{margin:0, padding:0}}>{carga}</p>
@@ -116,7 +113,7 @@ export default function Comentarios({user, post, Cotizacion}) {
           variant="outlined"
           label="Escribele"
           name="message"
-          // disabled={commentsCache.length >0 }
+          disabled={commentsCache.length >0 }
         />
 
         <span  onClick={handleComment}>

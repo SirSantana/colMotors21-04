@@ -68,7 +68,23 @@ export default function Comentarios({user, post, Cotizacion}) {
                 </>
                 
               
-        ))): coments?.map(el=> <h5>{el}</h5>)
+        ))): coments?.map((el) => (
+          <>
+          {/* <div ref={comentarioRef}/> */}
+            <Typography
+            key={el._id}
+              className={classes.typo}
+              style={{
+                fontSize: "14px",
+                color: "white",
+                textAlign: "left",
+                width: "100%",
+                marginBottom: "5px",
+              }}
+            >
+              {el}
+            </Typography>
+          </>))
                   }
                 <Typography
                     className={classes.typo}

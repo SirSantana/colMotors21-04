@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
+import { maxWidth } from '@material-ui/system';
 export default makeStyles((theme)=>({
   media: {
     height: 0,
@@ -276,7 +277,8 @@ export default makeStyles((theme)=>({
     marginBottom: '15px',
     backgroundColor: "#949494",
     color:'white',
-    marginTop:'10px'
+    marginTop:'10px',
+    maxWidth:'300px'
   },
   containerComents:{
     width:"90%", 

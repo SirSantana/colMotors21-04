@@ -39,8 +39,9 @@ export default function Comentarios({ user, post, Cotizacion }) {
     //  comentarioRef.current.scrollIntoView({behavior:'smooth'})
 
     //  router.reload()
-    setComentarios(newComentarios);
     setMessage(messageInitial);
+    setComentarios(newComentarios);
+    
     setError(null)
     setCommentsCache(`${user?.result.name}:${message.toString()}`);
   };
@@ -124,7 +125,7 @@ export default function Comentarios({ user, post, Cotizacion }) {
             }}
           >
             
-            <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+            <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center',width:"95%"}}>
             <TextField
               value={message.message}
               onChange={(e) => setMessage(e.target.value)}
@@ -134,6 +135,8 @@ export default function Comentarios({ user, post, Cotizacion }) {
               label="Escribele"
               name="message"
               disabled={commentsCache.length > 0}
+              multiline
+              minRows={3}
             />
 
             {message?.message?.length === 0 ? (
@@ -148,7 +151,7 @@ export default function Comentarios({ user, post, Cotizacion }) {
             </div>
             <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', height:'30px', lineHeight:'15px'}}>
             <AddAlert fontSize="small" style={{color:'#1b333d'}}/>
-            <p style={{margin:0, marginLeft:'5px', width:"200px"}}>Solo puedes enviar un mensaje, se concreto</p>
+            <p style={{margin:0, marginLeft:'5px', width:"85%"}}>Solo puedes enviar un mensaje, se concreto</p>
             </div>
           </div>
         </Paper>

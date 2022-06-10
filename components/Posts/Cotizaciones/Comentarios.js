@@ -19,7 +19,7 @@ export default function Comentarios({user, post, Cotizacion}) {
   const comentarioRef = useRef()
   const [carga, setCarga] = useState(null)
   const [cargado, setCargado] = useState('')
-  const [commentsCache, setCommentsCache] = useState({...Cotizacion.comentarios})
+  const [commentsCache, setCommentsCache] = useState(Cotizacion?.comentarios)
 
   const coments = Cotizacion?.comentarios
 
@@ -39,6 +39,7 @@ export default function Comentarios({user, post, Cotizacion}) {
   };
 
   console.log(commentsCache);
+  
  
   return (
     <>
@@ -65,31 +66,12 @@ export default function Comentarios({user, post, Cotizacion}) {
                   >
                     {el}
                   </Typography>
-                    
-                  
                 </>
                 
-              ))
-        ): 
-        coments?.map((el) => (
-          <>
-            <Typography
-            key={el._id}
-              className={classes.typo}
-              style={{
-                fontSize: "14px",
-                color: "white",
-                textAlign: "left",
-                width: "100%",
-                marginBottom: "5px",
-              }}
-            >
-              {el}
-            </Typography>
               
-            
-          </>)) }
-                <Typography
+        ))):commentsCache?.map(el=> <h2>{el}</h2>)
+        }
+                {/* <Typography
                     className={classes.typo}
                     style={{
                       fontSize: "14px",
@@ -99,8 +81,8 @@ export default function Comentarios({user, post, Cotizacion}) {
                       marginBottom: "5px",
                     }}
                   >
-                    {commentsCache?.message}
-                  </Typography>
+                    {commentsCache[Object.keys(commentsCache)[Object.keys(commentsCache).length - 1]]   }
+                  </Typography> */}
 
         <div style={{margin:0, padding:0}}>
         <p style={{margin:0, padding:0}}>{carga}</p>
@@ -132,7 +114,7 @@ export default function Comentarios({user, post, Cotizacion}) {
           variant="outlined"
           label="Escribele"
           name="message"
-          disabled={commentsCache.length >0 }
+          // disabled={commentsCache.length >0 }
         />
 
         <span  onClick={handleComment}>

@@ -25,8 +25,8 @@ export const login=async(req, res)=>{
         if(!pass) return res.status(403).json('Contraseña incorrecta')
 
         const token = jwt.sign({
-            id:userExist._id
-        }, 'test')
+            id:userExist._id,
+        }, 'test',{expiresIn:'120s'})
 
         res.status(200).json({result: userExist, token})
 

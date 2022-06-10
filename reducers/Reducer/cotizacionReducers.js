@@ -36,7 +36,7 @@ export default (state = { isLoading: true, cotizaciones: [] }, action) => {
       };
     case GET_COTIZACION:
       return { ...state, cotizacion: action.payload.cotizacion };
-      case CREATE_COMMENT:
+    case CREATE_COMMENT:
         return {
           ...state,
           cotizaciones: state.cotizaciones.map((cotizacion) => {

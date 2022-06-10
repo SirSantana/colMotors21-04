@@ -22,27 +22,24 @@ export default function Comentarios({user, post, Cotizacion}) {
   const [commentsCache, setCommentsCache] = useState({...Cotizacion.comentarios})
 
   const coments = Cotizacion?.comentarios
-  let newComentarios = null
 
+  
   const handleComment =async (e) => {
     if(user.result._id !== Cotizacion.creator && user.result._id !== post.creator ){
        return setError('No puedes cotizar')
     }
-       newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id, setCarga, setCargado, ))
+       const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id, setCarga, setCargado, ))
        //  comentarioRef.current.scrollIntoView({behavior:'smooth'})
        
       //  router.reload()
        setComentarios(newComentarios)
        setMessage(messageInitial)
-       setCommentsCache({...message, message:`${user?.result.name}:${message.toString()}`})
+       setCommentsCache({...commentsCache, [Object.keys(commentsCache).length]:`${user?.result.name}:${message.toString()}`})
 
   };
 
   console.log(commentsCache);
  
-  useEffect(()=>{
-
-  },[newComentarios])
   return (
     <>
         {error !== null && <h2>{error}</h2>}
@@ -135,6 +132,7 @@ export default function Comentarios({user, post, Cotizacion}) {
           variant="outlined"
           label="Escribele"
           name="message"
+          disabled={commentsCache.length >0 }
         />
 
         <span  onClick={handleComment}>

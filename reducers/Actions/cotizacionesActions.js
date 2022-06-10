@@ -60,6 +60,7 @@ export const createComment = (body, id, setCarga, setCargado) => async (dispatch
     setCargado('Mensaje Enviado!')
     setCarga(null)
 
+    setCargado('')
     return data.upCotizacion.comentarios
   } catch (error) {
     console.log(error.response);

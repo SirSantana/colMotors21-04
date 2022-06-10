@@ -19,20 +19,22 @@ export default function Comentarios({user, post, Cotizacion}) {
   const comentarioRef = useRef()
   const [carga, setCarga] = useState(null)
   const [cargado, setCargado] = useState('')
-  const [commentsCache, setCommentsCache] = useState([])
+  const [commentsCache, setCommentsCache] = useState({...Cotizacion.comentarios})
 
+  const coments = Cotizacion?.comentarios
 
   const handleComment =async (e) => {
     if(user.result._id !== Cotizacion.creator && user.result._id !== post.creator ){
        return setError('No puedes cotizar')
     }
-        setCommentsCache({...message, message:`${user?.result.name}:${message.toString()}`})
        const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id, setCarga, setCargado, ))
        //  comentarioRef.current.scrollIntoView({behavior:'smooth'})
        
       //  router.reload()
        setComentarios(newComentarios)
-        setMessage(messageInitial)
+       setMessage(messageInitial)
+       setCommentsCache({...message, message:`${user?.result.name}:${message.toString()}`})
+
   };
 
   console.log(commentsCache);
@@ -45,7 +47,7 @@ export default function Comentarios({user, post, Cotizacion}) {
       <Paper className={classes.comentarios} elevation={3}>
       <div className={classes.containerComents}>
         
-        {comentarios?.length >0 && (
+        {comentarios?.length >0 ? (
             
             comentarios?.map((el) => (
                 <>
@@ -68,7 +70,25 @@ export default function Comentarios({user, post, Cotizacion}) {
                 </>
                 
               ))
-        )}
+        ): 
+        coments?.map((el) => (
+          <>
+            <Typography
+            key={el._id}
+              className={classes.typo}
+              style={{
+                fontSize: "14px",
+                color: "white",
+                textAlign: "left",
+                width: "100%",
+                marginBottom: "5px",
+              }}
+            >
+              {el}
+            </Typography>
+              
+            
+          </>)) }
                 <Typography
                     className={classes.typo}
                     style={{

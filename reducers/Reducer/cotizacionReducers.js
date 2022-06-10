@@ -40,7 +40,7 @@ export default (state = { isLoading: true, cotizaciones: [] }, action) => {
         return {
           ...state,
           cotizaciones: state.cotizaciones.map((cotizacion) => {
-            if (cotizacion._id == +action.payload._id) {
+            if (cotizacion._id === action.payload._id) {
               return action.payload;
             }
             return cotizacion;

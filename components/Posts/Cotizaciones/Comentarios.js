@@ -1,5 +1,5 @@
 import { Button, Paper, TextField, Typography } from "@material-ui/core";
-import { Send } from "@material-ui/icons";
+import { AddAlert, Send } from "@material-ui/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "../Post/styles";
@@ -120,8 +120,11 @@ export default function Comentarios({ user, post, Cotizacion }) {
               flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
+              flexDirection:'column'
             }}
           >
+            
+            <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
             <TextField
               value={message.message}
               onChange={(e) => setMessage(e.target.value)}
@@ -142,7 +145,11 @@ export default function Comentarios({ user, post, Cotizacion }) {
                 <Send style={{ cursor: "pointer" }} fontSize="medium" />
               </span>
             )}
-            
+            </div>
+            <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', height:'30px', lineHeight:'15px'}}>
+            <AddAlert fontSize="small" style={{color:'#1b333d'}}/>
+            <p style={{margin:0, marginLeft:'5px', width:"200px"}}>Solo puedes enviar un mensaje, se concreto</p>
+            </div>
           </div>
         </Paper>
       ) : null}

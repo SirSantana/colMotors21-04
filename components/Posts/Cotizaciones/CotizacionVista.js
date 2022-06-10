@@ -5,7 +5,7 @@ import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Comentarios from "./Comentarios";
-export default function CotizacionVista({ Cotizacion, Post, user }) {
+export default function CotizacionVista({ Cotizacion, Post, user, setRecarga }) {
   const classes = useStyles();
   const router = useRouter();
   const [visibleComentario, setVisibleComentario] = useState(false)
@@ -151,7 +151,7 @@ export default function CotizacionVista({ Cotizacion, Post, user }) {
               </Button>
             )}
 
-                <Comentarios user={user} post={Post} Cotizacion={Cotizacion}/>
+                <Comentarios user={user} post={Post} Cotizacion={Cotizacion} />
              
 
             {/* <Button

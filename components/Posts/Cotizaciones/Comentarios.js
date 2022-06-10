@@ -19,19 +19,25 @@ export default function Comentarios({user, post, Cotizacion}) {
   const comentarioRef = useRef()
   const [carga, setCarga] = useState(null)
   const [cargado, setCargado] = useState('')
+  const [commentsCache, setCommentsCache] = useState([])
+
 
   const handleComment =async (e) => {
     if(user.result._id !== Cotizacion.creator && user.result._id !== post.creator ){
        return setError('No puedes cotizar')
     }
-       const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id, setCarga, setCargado ))
-       comentarioRef.current.scrollIntoView({behavior:'smooth'})
+        setCommentsCache({...message, message:`${user?.result.name}:${message.toString()}`})
+       const newComentarios = await dispatch(createComment({...message, message:`${user?.result.name}:${message.toString()}`}, Cotizacion?._id, setCarga, setCargado, ))
+       //  comentarioRef.current.scrollIntoView({behavior:'smooth'})
        
-       router.reload()
+      //  router.reload()
        setComentarios(newComentarios)
         setMessage(messageInitial)
   };
+
+  console.log(commentsCache);
  
+  
   return (
     <>
         {error !== null && <h2>{error}</h2>}
@@ -43,6 +49,7 @@ export default function Comentarios({user, post, Cotizacion}) {
             
             comentarios?.map((el) => (
                 <>
+                {/* <div ref={comentarioRef}/> */}
                   <Typography
                   key={el._id}
                     className={classes.typo}
@@ -56,12 +63,25 @@ export default function Comentarios({user, post, Cotizacion}) {
                   >
                     {el}
                   </Typography>
-      <div ref={comentarioRef}/>
+                    
                   
                 </>
                 
               ))
         )}
+                <Typography
+                    className={classes.typo}
+                    style={{
+                      fontSize: "14px",
+                      color: "white",
+                      textAlign: "left",
+                      width: "100%",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    {commentsCache?.message}
+                  </Typography>
+
         <div style={{margin:0, padding:0}}>
         <p style={{margin:0, padding:0}}>{carga}</p>
         <p style={{margin:0, padding:0}}>{cargado}</p>

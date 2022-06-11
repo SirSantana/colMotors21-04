@@ -1,10 +1,11 @@
 import { Button, Paper, TextField, Typography } from "@material-ui/core";
-import { AddAlert, Send } from "@material-ui/icons";
+import { AddAlert, Refresh, Send } from "@material-ui/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { createComment } from "../../../reducers/Actions/cotizacionesActions";
+import Link from 'next/link'
 
 const messageInitial = {
   message: "",
@@ -52,7 +53,14 @@ export default function Comentarios({ user, post, Cotizacion }) {
       {user?.result._id === post?.creator ||
       user?.result._id === Cotizacion.creator ? (
         <Paper className={classes.comentarios} elevation={3}>
+          <section style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center',width:"100%", backgroundColor:'#1b333d'}}>
+                  <p style={{marginTop:'10px'}}>Recarga para nuevos mensajes</p>
+                  <a onClick={()=> router.reload()}>
+                    <Refresh fontSize="medium" />
+                  </a>
+                </section>
           <div className={classes.containerComents}>
+                
             {comentarios?.length > 0
               ? comentarios?.map((el) => (
                   <>
@@ -142,10 +150,12 @@ export default function Comentarios({ user, post, Cotizacion }) {
             {message?.message?.length === 0 ? (
               <span onClick={() => setError("Mensaje Vacio")}>
                 <Send style={{ cursor: "pointer" }} fontSize="medium" />
+                
               </span>
             ) : (
               <span onClick={handleComment}>
                 <Send style={{ cursor: "pointer" }} fontSize="medium" />
+                
               </span>
             )}
             </div>

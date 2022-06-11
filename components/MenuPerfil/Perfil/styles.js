@@ -8,7 +8,7 @@ export default makeStyles((theme)=>({
         flexDirection: 'column',
         borderRadius: '5px',
         height: '100%',
-        width: "20%",
+        width: "30%",
         justifyContent: 'center',
         padding:'0',
         marginRight: 'auto',
@@ -39,8 +39,8 @@ export default makeStyles((theme)=>({
       },
       typography:{
         color: 'black',
-        fontSize: '20px',
-        fontWeight:'300',
+        fontSize: '16px',
+        fontWeight:'500',
 
 
       },
@@ -49,7 +49,7 @@ export default makeStyles((theme)=>({
         height:'25px',
         color:'black',
         marginTop:'8px',
-        marginRight:'10px'
+        marginRight:'20px'
       },
       iconStar:{
         color:"#EABE3F"
@@ -61,12 +61,16 @@ export default makeStyles((theme)=>({
         margin:0,
         display:'flex',
         flexDirection:'column',
-        backgroundColor:'#1b333d'
+        backgroundColor:'#464646'
     
       },
+      transparent :{
+        backgroundColor:" #f1f1f1",
+    },
+    
       title2:{
         fontFamily: ' -apple-system, Segoe UI,',
-        fontWeight:'400',
+        fontWeight:'600',
         paddingRight:'10px',
         fontSize:'25px',
         lineHeight:'18px',

@@ -46,22 +46,6 @@ export default function Home({Postss}) {
     </>
   );
 }
-// export const getServerSideProps = async () => {
-//   const { data } = await axios.get(`https://col-motors21-04.vercel.app/api/posts`);
-
-//   if (!data) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   const posts = data;
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// };
 export async function getServerSideProps() {
   try {
     await DBConnect();

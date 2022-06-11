@@ -55,6 +55,7 @@ export default makeStyles((theme)=>({
       width:'84vw',
     }
   },
+  
   paper2: {
     padding: theme.spacing(2),
     background:"#f50057",
@@ -121,6 +122,7 @@ export default makeStyles((theme)=>({
       }
     
   },
+  
   card1: {
     display: 'flex',
     flexDirection: 'column',

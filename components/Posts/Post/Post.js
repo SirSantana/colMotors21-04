@@ -135,7 +135,6 @@ const handleIr=()=>{
           )}
 
           <Card sx={{ width: "345px" }} className={classes.card} elevation={2}>
-            {/* <PostHeader OnePost={OnePost} /> */}
             <CardHeader
             style={{padding:'4px'}}
               className={classes.header}

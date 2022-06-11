@@ -70,12 +70,13 @@ console.log(user);
                   Estadisticas.
                 </Typography>
                 </section>
-                <section style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+                <section style={{display:'flex', flexDirection:'row', alignItems:'center',marginTop:'20px'}}>
                 <Person fontSize="large"/>
                 <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars className={classes.iconStar}/> <Stars style={{color:'gray'}} />
                 </section>
                 
-                <section style={{marginTop:'10px',display:'flex',justifyContent:'center', backgroundColor:'#f1f1f1', alignItems:'center'}}>
+                <section style={{display:'flex',display:'flex', marginLeft:'5px'}}>
+                <img src={"/images/iconCAR.png"} className={classes.img}/> 
                 
                 <Image src={"/images/mazdaLogo.png"} width="40px" height="40px" />
                 <Image src={"/images/logoKia.png"} width="40px" height="40px" />

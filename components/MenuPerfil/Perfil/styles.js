@@ -44,6 +44,13 @@ export default makeStyles((theme)=>({
 
 
       },
+      img:{
+        width:'30px',
+        height:'25px',
+        color:'black',
+        marginTop:'8px',
+        marginRight:'10px'
+      },
       iconStar:{
         color:"#EABE3F"
       },

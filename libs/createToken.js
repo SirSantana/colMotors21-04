@@ -3,7 +3,7 @@
 import jwt from 'jsonwebtoken'
 
 export const createAccessToken = (payload) => {
-    return jwt.sign({data:payload} , process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
+    return jwt.sign({data:payload} , process.env.NEXT_PUBLIC_ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
 }
 
 // export const createRefreshToken = (payload) => {
@@ -11,7 +11,7 @@ export const createAccessToken = (payload) => {
 // }
 export const getToken = (token)=>{
     let data = null;
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET,(err, decoded)=>{
+    jwt.verify(token, process.env.NEXT_PUBLIC_ACCESS_TOKEN_SECRET,(err, decoded)=>{
         if(err){
             return console.log('Error al obtener token')
         }else{

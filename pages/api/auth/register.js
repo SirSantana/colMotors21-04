@@ -51,7 +51,6 @@ async function register(req, res) {
 
     const template = getTemplate(result.name, token)
 
-    console.log(template);
     let mailOptions = {
       from: "salazarmiguelito23@gmail.com",
       to: result.email,
@@ -59,6 +58,7 @@ async function register(req, res) {
       text: 'Acepta para ser miembro de colMotors',
       htmL:null
     };
+    console.log(mailOptions);
 
     await sendMail(mailOptions, template)
 

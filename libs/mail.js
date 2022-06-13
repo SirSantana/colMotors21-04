@@ -26,11 +26,11 @@ let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       type: 'OAuth2',
-      user: "salazarmiguelito23@gmail.com",
-      pass: "Litoylita23!",
-      clientId: "556211535045-2d4c5imq8h55innrcfcpsoit7s94khmu.apps.googleusercontent.com",
-      clientSecret: "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",
-      refreshToken: "1//04fYxOM93fKfJCgYIARAAGAQSNwF-L9IrlPji_znx9dm-eFz4oAOMKvrf5Yo8s20DCO7yJ39guMupVh8QmsSbLhaWMjm_ju6ey9A"
+      user:process.env.MAIL_USERNAME,
+      pass:process.env.MAIL_PASSWORD,
+      clientId:process.env.OAUTH_CLIENTID,
+      clientSecret:process.env.OAUTH_CLIENT_SECRET,
+      refreshToken:process.env.OAUTH_REFRESH_TOKEN
     }
   });
 

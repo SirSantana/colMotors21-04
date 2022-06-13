@@ -56,7 +56,7 @@ export default function Comentarios({ user, post, Cotizacion }) {
           <section style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center',width:"100%", backgroundColor:'#1b333d'}}>
                   <p style={{marginTop:'10px'}}>Recarga para nuevos mensajes</p>
                   <a onClick={()=> router.reload()}>
-                    <Refresh fontSize="medium" />
+                    <Refresh fontSize="medium" style={{cursor:'pointer', marginLeft:'8px', marginTop:'3px'}} />
                   </a>
                 </section>
           <div className={classes.containerComents}>

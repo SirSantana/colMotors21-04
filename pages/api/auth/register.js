@@ -3,7 +3,9 @@ import userModel from "../../../models/userModel";
 import jwt from "jsonwebtoken";
 import valid from "../../../libs/valid";
 import DBConnect from "../../../libs/dbConnect";
-
+import { createAccessToken, getToken } from "../../../libs/createToken";
+import sendMail, { getTemplate } from "../../../libs/mail";
+import { v4 as uuidv4 } from 'uuid';
 
 
 DBConnect();
@@ -41,11 +43,26 @@ async function register(req, res) {
       pais
     });
     if (!role) result.role.push("Cliente");
-    await result.save();
 
-    const token = jwt.sign({
-      id: result._id
-  }, 'test', {expiresIn: '1h'})
+
+    const code = uuidv4()
+
+    const token = createAccessToken({result,code})
+
+    const template = getTemplate(result.name, token)
+
+    console.log(template);
+    let mailOptions = {
+      from: "salazarmiguelito23@gmail.com",
+      to: result.email,
+      subject:'Quarks',
+      text: 'Acepta para ser miembro de colMotors',
+      htmL:null
+    };
+
+    await sendMail(mailOptions, template)
+
+    await result.save();
 
   res.status(200).json({result, token})
 

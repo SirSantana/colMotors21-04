@@ -48,6 +48,10 @@ export default async function sendMail(mailOptions, template) {
     mailOptions.html = template
     
     transporter.sendMail(mailOptions,(err, data)=>{
+        console.log("data",data);
+        console.log("err",err);
+        console.log("mailOpts",mailOptions);
+        
         if (err) {
             console.log("Error " + err);
           } else {

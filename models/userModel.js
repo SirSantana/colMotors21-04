@@ -23,8 +23,8 @@ const UserModel = new mongoose.Schema({
   cotizaciones: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cotizacion'}],
   calificacion: String,
   role: [String],
-  status:[String]
-
+  status:{type: String},
+  code: { type: String, required: true }
 
 },{versionKey:false})
 

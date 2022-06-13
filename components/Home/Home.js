@@ -16,6 +16,7 @@ import useStyles from "./styles";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import PrevPosts from "../Posts/Post/PrevPosts";
+import { handleLogout } from "../../utils/handleLogout";
 
 export default function HomeComponent({ createPosts, posts }) {
   const classes = useStyles();
@@ -40,6 +41,11 @@ export default function HomeComponent({ createPosts, posts }) {
   return (
     <>
       {/* {user? */}
+      {user?.result?.status === undefined && 
+      <>
+      <h2>Ingresa a tu correo y valida tu cuenta</h2>
+      <Button variant="contained" color='secondary' onClick={()=> handleLogout(setUser, router,dispatch)}>Ya la valide</Button>
+      </>}
       <Grow in>
         <Container className={classes.container} maxWidth="lg">
           <Grid

@@ -8,11 +8,11 @@ export function getTemplate(name, token) {
   </head>
   
   <div id="email___content">
-      <img src="https://i.imgur.com/eboNR82.png" alt="">
+      <img src="/images/logo_colmotors.png" alt="">
       <h2>Bienvenido a colMotors ${name}</h2>
       <p>Para confirmar tu cuenta, ingresa al siguiente enlace</p>
       <a
-          href="http://localhost:3000/api/auth/confirm/${token}"
+          href="https://col-motors21-04.vercel.app/auth/confirm/${token}"
           target="_blank"
       >Confirmar Cuenta</a>
   </div>
@@ -66,5 +66,8 @@ export default async function sendMail(mailOptions, template) {
             }
         });
     });
+    
+   
+
 }
 

@@ -16,6 +16,7 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       await register(req, res);
+    
     break;
   }
 }
@@ -34,18 +35,17 @@ async function register(req, res) {
 
     const pass = await bcrypt.hash(password, 10);
 
+    const code = uuidv4()
     const result = await userModel.create({
       email,
       password: pass,
       name: `${firstName} ${lastName}`,
       marca,
       role,
-      pais
+      pais,
+      code
     });
     if (!role) result.role.push("Cliente");
-
-
-    const code = uuidv4()
 
     const token = createAccessToken({result,code})
 
@@ -58,9 +58,9 @@ async function register(req, res) {
       text: 'Acepta para ser miembro de colMotors',
       htmL:null
     };
-    console.log(mailOptions);
 
     await sendMail(mailOptions, template)
+
 
     await result.save();
 
@@ -72,3 +72,4 @@ async function register(req, res) {
     console.log(error);
   }
 }
+

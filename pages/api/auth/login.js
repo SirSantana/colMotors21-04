@@ -16,6 +16,9 @@ export default async (req, res) => {
 export const login=async(req, res)=>{
     const {email, password} = req.body
     try {
+        const users = await userModel.find()
+        console.log(users);
+
         const userExist = await userModel.findOne({email})
 
         if(!userExist) return res.status(403).json('Usuario o contraseña invalidos')
@@ -26,7 +29,7 @@ export const login=async(req, res)=>{
 
         const token = jwt.sign({
             id:userExist._id,
-        }, 'test',{expiresIn:'120s'})
+        }, 'test', {expiresIn:'120s'})
 
         res.status(200).json({result: userExist, token})
 

@@ -7,7 +7,7 @@ import {
   AppBar,
   Button,
 } from "@material-ui/core";
-import { Refresh } from "@material-ui/icons";
+import { Refresh, Error } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Form from "../Form/Form";
@@ -43,8 +43,22 @@ export default function HomeComponent({ createPosts, posts }) {
       {/* {user? */}
       {user?.result?.status === undefined && 
       <>
-      <h2>Ingresa a tu correo y valida tu cuenta</h2>
-      <Button variant="contained" color='secondary' onClick={()=> handleLogout(setUser, router,dispatch)}>Ya la valide</Button>
+      <Paper style={{display:'flex', width:'300px',flexDirection:'column', height:'fit-content', justifyContent:'center', alignItems:'center', padding:'10px', marginBottom:'10px'}} elevation={3}>
+          <div style={{display:'flex', width:'300px',flexDirection:'row',justifyContent:'center', alignItems:'center'}}>
+          <Error style={{ paddingRight: "10px", color:'#f50057' }} />
+          <Typography
+            className={classes.typo}
+            style={{ fontSize: "16px", color: "black", marginRight: "8px" }}
+          >
+            Ingresa a tu correo y valida la cuenta
+          </Typography>
+
+          </div>
+          <Button variant="contained" color='secondary' onClick={()=> handleLogout(setUser, router,dispatch)}>
+            Ya la valide
+          </Button>
+        </Paper>
+      
       </>}
       <Grow in>
         <Container className={classes.container} maxWidth="lg">

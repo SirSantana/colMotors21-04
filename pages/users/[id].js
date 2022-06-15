@@ -8,6 +8,7 @@ import userModel from "../../models/userModel";
 export default function UserPerfil({ user }) {
 //   const [userr, setUserr] = useState(null);
   const router = useRouter();
+  
 //   useEffect(() => {
 //     setUserr(JSON.parse(localStorage.getItem("profile")));
 //   }, []);

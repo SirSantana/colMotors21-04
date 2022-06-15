@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
     // justifyContent: 'flex-end',
     maxWidth: '1000px',
     [theme.breakpoints.down('xs')]: {
-      maxWidth:'100vw',
+      maxWidth:'90vw',
       alignItems:'center',
 
     }},

@@ -10,9 +10,8 @@ export default makeStyles((theme) => ({
     // justifyContent: 'flex-end',
     maxWidth: '1000px',
     [theme.breakpoints.down('xs')]: {
-      maxWidth:'90vw',
+      maxWidth:'100vw',
       alignItems:'center',
-      padding:0
     }},
   heading: {
     color: 'rgba(0,183,255, 1)',

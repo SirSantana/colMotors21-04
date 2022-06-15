@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       maxWidth:'90vw',
       alignItems:'center',
-
+      padding:0
     }},
   heading: {
     color: 'rgba(0,183,255, 1)',

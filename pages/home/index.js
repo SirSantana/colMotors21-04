@@ -1,10 +1,8 @@
 import Layout from "../../components/Layout/Layout";
 import { useState, useEffect } from "react";
-import decode from "jwt-decode";
 import { useRouter } from "next/router";
 import HomeComponent from "../../components/Home/Home";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import postModel from '../../models/postModel'
 import DBConnect from "../../libs/dbConnect";
 
@@ -14,7 +12,6 @@ export default function Home({Postss}) {
     const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
-
 
   const createPosts = async (postData) => {
     try {
@@ -41,7 +38,7 @@ export default function Home({Postss}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent createPosts={createPosts} posts={Postss} postsCreator={null}/>
+        <HomeComponent createPosts={createPosts} posts={Postss} />
       </Layout>
     </>
   );

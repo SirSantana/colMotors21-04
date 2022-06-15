@@ -120,8 +120,10 @@ export default function Home() {
           href="https://github.com/vercel/next.js/tree/canary/examples"
           className={styles.card}
         >
-          <h2>Examples &rarr;</h2>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
+          <h2>¿Eres Vendedor? &rarr;</h2>
+          <p>Si quieres ser parte del grupo de vendedores, y empezar a vender mucho mas, escribenos al 
+            siguiente correo...
+          </p>
         </a>
 
         <a

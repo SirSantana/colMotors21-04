@@ -11,36 +11,6 @@ console.log(user);
   return (
     <>
       <>
-        {/* <Card raised="true" elevation={6} className={classes.card1}>
-          <div style={{display:'flex', flexDirection:'row'}}>
-          <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars className={classes.iconStar}/> <Stars style={{color:'white'}} />
-          </div>
-            <Typography className={classes.typography}><b>Vendedor </b> {user?.name}</Typography>
-          </Card>
-          <div className={classes.container}>
-            <Card raised="true" elevation={6} className={classes.card}>
-              <CardContent>
-              <Typography variant="body1" component="h2">
-                  Calificacion: <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars />
-                </Typography>
-                <Divider style={{ margin: "20px 0" }} />
-                <Typography variant="body1" component="h2">
-                  Compras: ...
-                </Typography>
-                <Divider style={{ margin: "20px 0" }} />
-
-                <Typography variant="body1" component="h2">
-                  Ventas: ...
-                </Typography>
-                <Divider style={{ margin: "20px 0" }} />
-                <Typography variant="body1" component="h2">
-                  Ubicacion: {user?.pais}
-                </Typography>
-                <Divider style={{ margin: "20px 0" }} />
-              </CardContent>
-            </Card>
-          </div> */}
-
           <div className={classes.container}>
           <Card sx={{ width: "345px" }} className={classes.card} elevation={8}>
                 <section  style={{display:'flex', flexDirection:'row', alignItems:'center', backgroundColor:'#464646', padding:'10px', paddingBottom:0}}>

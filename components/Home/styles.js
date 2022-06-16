@@ -42,7 +42,7 @@ export default makeStyles((theme) => ({
       flexDirection: 'column-reverse',
       margin:0,
     padding:0,
-    width:"100%",
+    width:"100vw",
     },
   },
  
@@ -106,6 +106,8 @@ export default makeStyles((theme) => ({
     margin:0,
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column-reverse',
+    margin:0,
+    padding:0
     },
   }
   

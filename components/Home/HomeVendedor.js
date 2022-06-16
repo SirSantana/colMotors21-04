@@ -31,7 +31,10 @@ export default function HomeVendedor({posts}){
 
           </div>
         </Paper>
+        <div style={{display:'flex', width:'84vw',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
         <Posts posts={posts} user={user}/>
+
+        </div>
 
         </>
     )

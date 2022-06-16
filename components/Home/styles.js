@@ -37,6 +37,14 @@ export default makeStyles((theme) => ({
       paddingTop:'10px',
     }
   },
+  gridContainer: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      margin:0,
+    padding:0,
+    width:"100vw"
+    },
+  },
  
   typography:{
     color: 'white',
@@ -93,22 +101,10 @@ export default makeStyles((theme) => ({
     cursor:'pointer'
   },
   
- 
-
-  gridContainer: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-
-    margin:0,
-    padding:0,
-    width:"100vw"
-    },
-  },
   container:{
     [theme.breakpoints.down('xs')]: {
-    flexDirection: 'column-reverse',
-    marginRight:"auto",
-    marginLeft:'auto',
+      flexDirection: 'column-reverse',
+    margin:0,
     padding:0
     },
   }

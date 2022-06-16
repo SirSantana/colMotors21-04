@@ -26,7 +26,7 @@ export default function HomeVendedor({posts}){
             className={classes.typo}
             style={{ fontSize: "16px", color: "black", marginRight: "8px" }}
           >
-            Bienvenido {user?.result?.name}, te tenemos nuevos clientes, cotiza y empieza a ganar!
+            Bienvenido {user?.result?.name}, te tenemos nuevos clientes, cotiza y comienza a vender!
           </Typography>
 
           </div>

@@ -24,7 +24,6 @@ export default function HomeCliente({user, posts, createPosts}){
     return(
         <>
          {user?.result?.role?.length===1 &&
-         <Grow in>
          <Container className={classes.container} maxWidth="lg">
            <Grid
              container
@@ -66,7 +65,6 @@ export default function HomeCliente({user, posts, createPosts}){
              </Grid>
            </Grid>
          </Container>
-       </Grow>
          }
         </>
     )

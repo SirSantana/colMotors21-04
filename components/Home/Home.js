@@ -43,10 +43,8 @@ export default function HomeComponent({ createPosts, posts }) {
      </Button>
    </Paper>  
     : null}
-    <div style={{margin:0, padding:0}}>
     <HomeCliente user={user} posts={posts} createPosts={createPosts}/>
 
-    </div>
         
       </>}
 

@@ -29,21 +29,13 @@ export default makeStyles((theme) => ({
     color: 'white',
     content: 'fit-content',
     marginBottom:"20px",
-    paddingRight:'20px',
+    paddingRight:'10px',
 
   },
   gridCotizacion:{
     [theme.breakpoints.down('xs')]: {
       paddingTop:'10px',
     }
-  },
-  gridContainer: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-      margin:0,
-    padding:0,
-    width:"100vw"
-    },
   },
  
   typography:{
@@ -114,8 +106,9 @@ export default makeStyles((theme) => ({
   },
   container:{
     [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-    margin:0,
+    flexDirection: 'column-reverse',
+    marginRight:"auto",
+    marginLeft:'auto',
     padding:0
     },
   }

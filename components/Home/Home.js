@@ -43,7 +43,7 @@ export default function HomeComponent({ createPosts, posts }) {
      </Button>
    </Paper>  
     : null}
-    <div style={{display:'flex', width:'100vw',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+    <div style={{display:'flex', width:'95%',flexDirection:'column'}}>
     <HomeCliente user={user} posts={posts} createPosts={createPosts}/>
 
     </div>

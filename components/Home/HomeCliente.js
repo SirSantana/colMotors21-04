@@ -34,7 +34,7 @@ export default function HomeCliente({user, posts, createPosts}){
            >
              <Grid item xs={12} sm={6} md={9}>
                <Paper raised="true" elevation={6} className={classes.card1}>
-                 <Typography className={classes.typography}>
+                 <Typography className={classes.typography} style={{lineHeight:'20px'}}>
                    {id ? "Tus Cotizaciones" : "Cotizaciones de la comunidad"}
                  </Typography>
                  <Link href={"/home"}>

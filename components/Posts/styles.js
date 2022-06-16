@@ -8,10 +8,8 @@ export default makeStyles((theme) => ({
     // flexDirection: 'row-reverse',
     // flexWrap: 'wrap-reverse',
     // justifyContent: 'flex-end',
-    
     maxWidth: '1000px',
     [theme.breakpoints.down('xs')]: {
-      
     }},
   heading: {
     color: 'rgba(0,183,255, 1)',

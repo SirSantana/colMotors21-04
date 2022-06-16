@@ -12,9 +12,6 @@ export default function PerfilCliente({user}){
         <>
         <div className={classes.container}>
           <Card sx={{ width: "345px" }} className={classes.card} elevation={8}>
-                <section  style={{display:'flex', flexDirection:'row', alignItems:'center', backgroundColor:'#464646', padding:'10px', paddingBottom:0}}>
-                <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars className={classes.iconStar}/> <Stars style={{color:'white'}} />
-                </section>
           <CardHeader
               style={{padding:'4px'}}
               className={classes.header}

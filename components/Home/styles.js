@@ -15,7 +15,9 @@ export default makeStyles((theme) => ({
   container:{
     margin:0,
     padding:0,
-    width:'100%'
+    [theme.breakpoints.down('xs')]: {
+      paddingTop:'100%',
+    }
   },
  
   card1: {
@@ -39,12 +41,11 @@ export default makeStyles((theme) => ({
     }
   },
   gridContainer: {
-    width:"100%",
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column-reverse',
       margin:0,
     padding:0,
-    width:"100%",
+    width:"100%"
     },
   },
  
@@ -104,8 +105,6 @@ export default makeStyles((theme) => ({
   },
   
   container:{
-    padding:0,
-    margin:0,
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column-reverse',
     margin:0,

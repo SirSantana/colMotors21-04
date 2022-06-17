@@ -92,8 +92,8 @@ export default makeStyles((theme)=>({
         color:'white', 
         cursor:'pointer',
         [theme.breakpoints.down("sm")]: {
-          top:'215px', 
-          marginLeft:'285px',
+          top:'28%', 
+          marginLeft:'70%',
         }
       },
       card1: {

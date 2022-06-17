@@ -8,7 +8,6 @@ import DBConnect from "../../libs/dbConnect";
 
 
 export default function Home({Postss}) {
-    const [user, setUser] = useState();
     const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
@@ -28,17 +27,18 @@ export default function Home({Postss}) {
       }
       const data = res;
       if (data) {
-        router.push(`/users/micuenta/${user?.result?._id}`);
+        router.reload();
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+  
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent createPosts={createPosts} posts={Postss} />
+        <HomeComponent createPosts={createPosts} posts={Postss}/>
       </Layout>
     </>
   );

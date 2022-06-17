@@ -9,7 +9,6 @@ export default function PostContent({OnePost}){
     const classes = useStyles();
     const [imagen, setImagen] = useState(false);
 
-  console.log(OnePost);
   const nombreCreador = OnePost?.nombreCreador?.toString();
   
   let name = OnePost?.nombreCreador?.toString();

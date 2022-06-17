@@ -8,20 +8,23 @@ import { handleLogout } from "../../utils/handleLogout";
 import HomeVendedor from "./HomeVendedor";
 import HomeCliente from "./HomeCliente";
 
-export default function HomeComponent({ createPosts, posts }) {
+export default function HomeComponent({ createPosts, posts}) {
   const classes = useStyles();
-  const [user, setUser] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
+  const [user, setUser] = useState();
 
-  
+  console.log(user);
   if(user?.result.role.length >1){
     router.push("/home/vendedor")
   }
+
+
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-    
   }, []);
+  
   return (
     <>
       {user?.result.role.length === 1 &&
@@ -43,14 +46,14 @@ export default function HomeComponent({ createPosts, posts }) {
      </Button>
    </Paper>  
     : null}
-    <div style={{display:'flex', width:'95%',flexDirection:'column'}}>
-    <HomeCliente user={user} posts={posts} createPosts={createPosts}/>
-
-    </div>
+    
 
         
       </>}
+      <div style={{display:'flex', width:'95%',flexDirection:'column'}}>
+    <HomeCliente user={user} posts={posts} createPosts={createPosts}/>
 
+    </div>
     </>
   );
 }

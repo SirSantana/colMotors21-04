@@ -5,7 +5,7 @@ import useStyles from "./styles";
 
 export default function PrevPosts({ posts }) {
   const classes = useStyles();
-
+console.log(posts);
   return (
     <>
       <div className={classes.divPrevPosts} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>

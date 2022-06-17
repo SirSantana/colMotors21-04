@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import HomeVendedor from "../../components/Home/HomeVendedor";
 import Layout from "../../components/Layout/Layout";
 import DBConnect from "../../libs/dbConnect";
@@ -6,11 +7,17 @@ import postModel from "../../models/postModel";
 
 export default function HomeSeller({Postss}){
 
+  const [user, setUser] = useState();
 
-
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  },[])
+  // console.log(user);
+  const data =  Postss.filter(el=> el.marca === user?.result.marcasComercializadas.find(ele=> ele === el.marca))
+  console.log(Postss);
     return(
         <Layout title={"Home Vendedor | colMotors"}>
-         <HomeVendedor posts={Postss} />
+         <HomeVendedor posts={data} />
         </Layout>
     )
 }
@@ -18,11 +25,10 @@ export default function HomeSeller({Postss}){
 export async function getServerSideProps() {
     try {
       await DBConnect();
-      const res = await postModel.find().sort([['date', -1]]).limit(10);
+      const res = await postModel.find().sort([['date', -1]]);
 
-     const data =  res.filter(el=> el.marca === 'logoRenault' || el.marca=== 'logoFord1')
 
-      const Postss = data.map((el) => {
+      const Postss = res.map((el) => {
         const Post = el.toObject();
   
         Post._id = Post._id.toString();

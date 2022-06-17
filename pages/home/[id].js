@@ -14,7 +14,7 @@ export default function Home({Postss}) {
     const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
-
+  console.log(Postss);
 
   const createPosts = async (postData) => {
     try {
@@ -38,13 +38,6 @@ export default function Home({Postss}) {
     }
   };
 
-  const logout = () => {
-    // dispatch({ type: LOGOUT });
-    router.push("/");
-    setUser(null);
-  };
-
-  console.log(Postss);
 
   return (
     <>

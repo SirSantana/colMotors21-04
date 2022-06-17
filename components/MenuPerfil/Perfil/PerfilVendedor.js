@@ -48,7 +48,7 @@ export default function PerfilVendedor({user}){
                 
                 <section style={{display:'flex',display:'flex', }}>
 
-                {marcas?.map(el=> <Image src={`/images/${el}`} width="40px" height="40px" />)}
+                {marcas?.map(el=> <Image src={`/images/${el}.png`} width="40px" height="40px" />)}
                 </section>
                 </div>
                 <section style={{display:'flex',flexDirection:'column', marginTop:'10px',backgroundColor:'lightgray',borderRadius:'5px'}}>

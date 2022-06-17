@@ -196,7 +196,7 @@ const handleIr=()=>{
               fullWidth
               variant="outlined"
               className={classes.cotizar}
-              onClick={handleCotizar}
+              // onClick={handleCotizar}
             >
               Crea tu cotizacion
             </Button>

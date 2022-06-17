@@ -92,7 +92,7 @@ export default makeStyles((theme)=>({
         color:'white', 
         cursor:'pointer',
         [theme.breakpoints.down("sm")]: {
-          top:'28%', 
+          top:'35%', 
           marginLeft:'70%',
         }
       },

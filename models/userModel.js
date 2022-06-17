@@ -22,11 +22,14 @@ const UserModel = new mongoose.Schema({
   marcasComercializadas:[String],
   cotizaciones: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cotizacion'}],
   calificacion: String,
-  numeroCotizaciones: {type:Number},
+  numeroCotizaciones: {
+    type: Number,
+    default: 0,
+},
   role: [String],
   status:{type: String},
-  code: { type: String, required: true }
-
+  code: { type: String, required: true },
+  amigos:[String]
 },{versionKey:false})
 
 

@@ -35,7 +35,9 @@ export const createPost=async(req, res)=>{
         const newPost = new postModel(body)
         const user = await userModel.findById(body.creator)
         await user.posts.push(newPost)
-        await user.save()
+        user.save()
+        const userUp = await userModel.findByIdAndUpdate(body.creator, {numeroCotizaciones: user.numeroCotizaciones + 1}, {new:true})
+        userUp.save()
         await newPost.save()
         res.status(200).json({success: true, newPost})
         

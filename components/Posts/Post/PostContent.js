@@ -3,13 +3,13 @@ import useStyles from "./styles";
 import Build from "@material-ui/icons/Build";
 import { useState } from "react";
 import Image from "next/image";
-
+import Link from "next/link";
 
 export default function PostContent({OnePost}){
     const classes = useStyles();
     const [imagen, setImagen] = useState(false);
 
-
+  console.log(OnePost);
   const nombreCreador = OnePost?.nombreCreador?.toString();
   
   let name = OnePost?.nombreCreador?.toString();
@@ -26,7 +26,10 @@ export default function PostContent({OnePost}){
     return(
         <>
         <CardContent style={{ width:'90%', display:'flex', flexDirection:'column',gap:'10px' }}>
+        <Link href={`/users/${OnePost.creator}`} >
+            <a>
           <div style={{ display: "flex", flexDirecction: "row",alignItems:'center', }}>
+            
             <Avatar
              className={classes.purple2}
              alt={OnePost?.creador}
@@ -40,7 +43,10 @@ export default function PostContent({OnePost}){
             >
               {nombreCreador}
             </Typography> 
+            
           </div>
+          </a>
+            </Link>
           <div style={{ display: "flex", flexDirection: "row", alignItems:'center',  }}>
             {/* <Image
             src={'/images/repuestosIcon.png'}

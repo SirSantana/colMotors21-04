@@ -15,6 +15,7 @@ export const postCotizacion = (cotizacion, router,setMessage, setMessageError, s
     setMessageLoad('Enviando Cotizacion...')
 
     const { data } = await api.createCotizacion(cotizacion);
+    console.log('data', data);
     dispatch({ type: CREATE_COTIZACION, payload: data });
     setMessage('¡Cotizacion realizada!...')
     router.push('/home')
@@ -22,9 +23,9 @@ export const postCotizacion = (cotizacion, router,setMessage, setMessageError, s
     // dispatch({ type: END_LOADING });
 
   } catch (error) {
-    console.log(error.response);
+    console.log(error);
     setMessageLoad(null)
-    setMessageError(error.response)
+    setMessageError(error)
   }
 };
 export const getCotizacion = (id) => async (dispatch) => {

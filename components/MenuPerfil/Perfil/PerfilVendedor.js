@@ -52,9 +52,9 @@ export default function PerfilVendedor({user}){
                 </section>
                 </div>
                 <section style={{display:'flex',flexDirection:'column', marginTop:'10px',backgroundColor:'lightgray',borderRadius:'5px'}}>
-                <h4 style={{margin:'5px', fontSize:'18px'}}>Cotizaciones Realizadas</h4>
+                <h4 style={{margin:'5px', fontSize:'18px'}}>Cotizaciones Respondidas</h4>
                 <Typography className={classes.typography} style={{marginLeft:'5px'}}>
-                  50 Cotizaciones
+                  {user?.numeroCotizaciones} Cotizaciones Respondidas
                 </Typography>
                 </section>
                 <section style={{display:'flex',flexDirection:'column', marginTop:'10px',backgroundColor:'lightgray',borderRadius:'5px'}}>

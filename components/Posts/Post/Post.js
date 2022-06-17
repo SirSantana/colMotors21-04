@@ -26,7 +26,6 @@ export default function PostCo({ OnePost, visibleCoti}) {
   const [visiCoti, setVisiCoti] = useState(true)
 
 
-
   const handleDelete = () => {
     deletePost(OnePost._id, router, setMessage);
   };
@@ -182,15 +181,25 @@ const handleIr=()=>{
                 {Math.round(OnePost.cotizaciones.length / 24)+ ' Cotizaciones'}
               </Button>
             ) : (
-              <Button
-                color={cotizacionCreada ? 'primary': 'secondary'}
-                variant="contained"
-                fullWidth
-                className={classes.cotizar}
-                onClick={handleCotizar}
-              >
-                {cotizacionCreada ? "Ya Cotizaste" : "Cotiza ya!"}
-              </Button>
+              user?.result.role.length >1 ? <Button
+              color={cotizacionCreada ? 'primary': 'secondary'}
+              variant="contained"
+              fullWidth
+              className={classes.cotizar}
+              onClick={handleCotizar}
+            >
+              {cotizacionCreada ? "Ya Cotizaste" : "Cotiza ya!"}
+            </Button>
+            :
+            <Button
+              color={cotizacionCreada ? 'primary': 'secondary'}
+              fullWidth
+              variant="outlined"
+              className={classes.cotizar}
+              onClick={handleCotizar}
+            >
+              Crea tu cotizacion
+            </Button>
             )}
           </Card>
         </div>

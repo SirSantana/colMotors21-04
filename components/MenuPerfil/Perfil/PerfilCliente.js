@@ -1,15 +1,36 @@
-import { Avatar, Card, CardContent, CardHeader, Divider, Typography,} from "@material-ui/core";
+import { Avatar, Button, Card, CardContent, CardHeader, Divider, Paper, Typography,} from "@material-ui/core";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
-import { BarChart, Person, RateReview, Stars } from "@material-ui/icons";
+import { Add, BarChart, Check, Person, RateReview, Stars } from "@material-ui/icons";
 import Image from 'next/image'
+import { useEffect, useState } from "react";
 
 
 export default function PerfilCliente({user}){
   const classes = useStyles();
+  const [userNow, setUserNow] = useState(null)
+  const [messageAdd, setMessageAdd] = useState('')
+  const [visible, setVisible] = useState(true)
 
+
+  const handleAdd =()=>{
+    setVisible(false)
+    setMessageAdd('Solicitud de amistad Enviada')
+    
+  }
+
+  useEffect(()=>{
+    setUserNow(JSON.parse(localStorage.getItem('profile')))
+  },[])
     return(
         <>
+         {messageAdd &&
+         <Paper style={{backgroundColor:'#f50057',padding:'10px', display:'flex', flexDirection:'row', alignItems:'center', height:'40px', marginBottom:'20px'}} elevation={3} >
+         <Check style={{paddingRight:'10px', color:'white'}}/>
+         <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>{messageAdd}</Typography>
+        </Paper>
+        }
+        
         <div className={classes.container}>
           <Card sx={{ width: "345px" }} className={classes.card} elevation={8}>
           <CardHeader
@@ -26,9 +47,13 @@ export default function PerfilCliente({user}){
               }
               title={user?.name}
               subheader={'Cliente'}
+              
               classes={{ subheader: classes.subheader2, title: classes.title2 }}
               subheaderTypographyProps={{ variant: "body1", color:'#f1f1f1', textAlign:'center' }}
             />
+            <span onClick={handleAdd}>
+            {visible && <Add className={classes.iconAdd} fontSize="large"/>}
+            </span>
             <Divider style={{width:'90%', marginLeft:'auto', marginRight:'auto'}}/>
             <CardContent style={{ width:'100%', display:'flex', flexDirection:'column',padding:'0px',  }}>
               <div className={classes.transparent} style={{padding:'10px'}}>
@@ -45,25 +70,26 @@ export default function PerfilCliente({user}){
                 <section style={{display:'flex',display:'flex', flexDirection:'column'}}>
                 <div style={{display:'flex',display:'flex', gap:'10px'}} >
                 <Image src={'/images/52120.png'} width='30px' height={"35px"}/>
-                {user?.role.length <=1 && user?.marca}
+                {user?.marca}
                 </div>
                 <div style={{display:'flex',display:'flex', gap:'10px'}}>
                 <Image src={'/images/27176.png'} width='30px' height={"35px"}/>
-                {'Yamaha MT-09'}
-                
+                {userNow?.result._id === user._id && 
+                <Button variant="outlined" color='secondary'>Agregar otro vehiculo</Button>
+                }
                 </div>
                 </section>
                 </div>
                 <section style={{display:'flex',flexDirection:'column', marginTop:'10px',backgroundColor:'lightgray',borderRadius:'5px'}}>
                 <h4 style={{margin:'5px', fontSize:'18px'}}>Cotizaciones Realizadas</h4>
                 <Typography className={classes.typography} style={{marginLeft:'5px'}}>
-                  50 Cotizaciones
+                  {user.numeroCotizaciones} Cotizaciones
                 </Typography>
                 </section>
                 <section style={{display:'flex',flexDirection:'column', marginTop:'10px',backgroundColor:'lightgray',borderRadius:'5px'}}>
-                <h4 style={{margin:'5px', fontSize:'18px'}}>Ventas Realizadas</h4>
+                <h4 style={{margin:'5px', fontSize:'18px'}}>Compras Realizadas</h4>
                 <Typography className={classes.typography} style={{marginLeft:'5px'}}>
-                  30 Ventas
+                  30 Compras
                 </Typography>
                 </section>
                 <section style={{display:'flex',flexDirection:'column', marginTop:'10px',backgroundColor:'lightgray',borderRadius:'5px'}}>

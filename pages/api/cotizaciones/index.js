@@ -30,14 +30,15 @@ export const createCotizacion= async(req, res)=>{
 
     try {
         const cotizacion = await cotizacionModel.create(body)
-
         const userCreator = await userModel.findById(req.body.idVendedor)
         const upPost = await postModel.findById(req.body.idPost)
-        
+
+
         await userCreator.cotizaciones.push(cotizacion)
         userCreator.save()
+        const userUp =  await userModel.findByIdAndUpdate(req.body.idVendedor, {numeroCotizaciones: userCreator.numeroCotizaciones + 1}, {new:true})
+        userUp.save()
         
-
         await upPost.cotizaciones.push(cotizacion)
         upPost.save()
 

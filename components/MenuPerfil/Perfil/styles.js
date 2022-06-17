@@ -85,6 +85,17 @@ export default makeStyles((theme)=>({
         margin:'10px'
     
       },
+      iconAdd:{
+        position:'absolute', 
+        top:'165px', 
+        marginLeft:'270px', 
+        color:'white', 
+        cursor:'pointer',
+        [theme.breakpoints.down("sm")]: {
+          top:'215px', 
+          marginLeft:'285px',
+        }
+      },
       card1: {
         display: 'flex',
         flexDirection: 'column',

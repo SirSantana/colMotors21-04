@@ -119,7 +119,7 @@ export default function Form({createPosts, user}) {
             disabled={
               marcaa !== null &&
               postData.referencia !== initial.referencia &&
-               user?.result.status === undefined && user?.result.role.length >1 &&
+               user?.result.status === 'VERIFIED' && user?.result.role.length ===1 &&
               postData.repuesto !== initial.repuesto && user!==null
                 ? false
                 : true

@@ -10,7 +10,7 @@ import {
   import { useState } from "react";
   import { useDispatch } from "react-redux";
   import useStyles from "./styles";
-import { Build, Check } from "@material-ui/icons";
+import { Build, Check, Close } from "@material-ui/icons";
 import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   import {useRouter} from 'next/router'
 

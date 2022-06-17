@@ -24,7 +24,7 @@ export default function PostCo({ OnePost, visibleCoti}) {
   const { id } = router.query;
   const idCreator = OnePost?.creator;
   const [visiCoti, setVisiCoti] = useState(true)
-
+  const [messageCotizar, setMessageCotizar] = useState(null)
 
   const handleDelete = () => {
     deletePost(OnePost._id, router, setMessage);
@@ -61,7 +61,6 @@ const handleIr=()=>{
           pathname: `/cotizaciones/${arrayCotizaciones[0]}`,
           query:{
             idd:OnePost._id,
-            
           }
         })
     }else{
@@ -72,7 +71,6 @@ const handleIr=()=>{
             idd:OnePost._id,
             cliente:'vendedor'
           },
-          
         })
     }
   }
@@ -118,7 +116,8 @@ const handleIr=()=>{
           </Paper>
         </>
       )}
-
+      
+      
       <div className={classes.container}>
         <div className={classes.card} >
           {id !== undefined && (
@@ -161,7 +160,16 @@ const handleIr=()=>{
               OnePost={OnePost}
               setVisibleDelete={setVisibleDelete}
             />
-
+          {messageCotizar!== null &&
+            <Paper className={classes.paper2} style={{width:'250px'}} elevation={3}>
+            <Typography
+            className={classes.typo}
+            style={{ fontSize: "14px", color: "white" }}
+              >
+              {messageCotizar}
+            </Typography>
+            </Paper>
+            }
             {user?.result?._id === idCreator ? (
               <Button
                 color="primary"
@@ -196,7 +204,7 @@ const handleIr=()=>{
               fullWidth
               variant="outlined"
               className={classes.cotizar}
-              // onClick={handleCotizar}
+              onClick={()=>setMessageCotizar('Si estas en Movil, en la parte superior encontraras el formulario, si estas en computador, al lado derecho superior')}
             >
               Crea tu cotizacion
             </Button>

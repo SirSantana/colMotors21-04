@@ -73,6 +73,7 @@ export default makeStyles((theme)=>({
       },
 
   },
+  
   divPrevPosts:{
     [theme.breakpoints.down('xs')]: {
         gap:'20px'      

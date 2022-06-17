@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
+import { width } from '@material-ui/system';
 
 export default makeStyles((theme) => ({
   appBarSearch: {
@@ -108,7 +109,8 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column-reverse',
     margin:0,
-    padding:0
+    padding:0,
+    width:'100vw'
     },
   }
   

@@ -19,6 +19,24 @@ export function getTemplate(name, token) {
       `;
   }
 
+  export function getTemplate2() {
+    return `
+      <head>
+      <link rel="stylesheet" href="./style.css">
+  </head>
+  
+  <div id="email___content">
+      <img src="/images/logo_colmotors.png" alt="">
+      <h2>colMotors</h2>
+      <p>Aqui podras cambiar tu contraseña</p>
+      <a
+          href="http://localhost:3000/auth/editForgotPassword"
+          target="_blank"
+      >Ir a cambiar contraseña</a>
+  </div>
+      `;
+  }
+
 
 export default async function sendMail(mailOptions, template) {
 

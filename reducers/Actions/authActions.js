@@ -1,5 +1,5 @@
 import * as api from '../Api/index'
-import { AUTH, GETUSER, GETUSERS } from '../type'
+import { AUTH, FORGOTPASSWORD, GETUSER, GETUSERS } from '../type'
 
 export const signin = (form, router, setMessage, setMessageError, setMessageLoad)=> async(dispatch)=>{
     
@@ -29,6 +29,17 @@ export const signup = (form, router,setMessage, setMessageError, setMessageLoad)
         console.log(error);
         setMessageLoad(null)
         setMessageError(error.response.data)
+
+    }
+}
+
+export const forgotPassword=(form)=> async(dispatch)=>{
+    try {
+        const {data} = await api.forgotPassword(form)
+        dispatch({type:FORGOTPASSWORD, data})
+
+    } catch (error) {
+        console.log(error);
 
     }
 }

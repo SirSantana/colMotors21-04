@@ -1,25 +1,15 @@
-import {
-  Paper,
-  Typography,
-  Grid,
-  Container,
-  Avatar,
-  Button,
-  TextField,
-  ButtonBase,
-} from "@material-ui/core";
+import {Paper,Typography,Grid,Container,Avatar,Button,ButtonBase,} from "@material-ui/core";
 import { Check, Close, LockOutlined } from "@material-ui/icons";
 import { useContext, useEffect, useState } from "react";
-import Layout from "../Layout/Layout";
-import Navbar from "../Navbar/Navbar";
 import { useRouter } from "next/router";
 import Input from "./Input";
 import useStyles from "./styles";
-import valid from "../../libs/valid";
 import { signin, signup } from "../../reducers/Actions/authActions";
 import { useDispatch } from "react-redux";
 import { Error } from "@material-ui/icons";
 import { handleLogout } from "../../utils/handleLogout";
+import Link from 'next/link'
+
 const initialState = {
   firstName: "",
   lastName: "",
@@ -53,8 +43,8 @@ const SignUp = () => {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  
-console.log('form', form);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
@@ -154,28 +144,28 @@ console.log('form', form);
                         placeholder="James"
                         handleChange={handleChange}
                         autoFocus
-                        half
+                        half='true'
                       />
                       <Input
                         name="lastName"
                         label="Apellido"
                         placeholder="Rodriguez"
                         handleChange={handleChange}
-                        half
+                        half='true'
                       />
                       <Input
                         name="marca"
                         label="Marca de Auto"
                         placeholder="Chevrolet Captiva"
                         handleChange={handleChange}
-                        half
+                        half='true'
                       />
                       <Input
                         name="pais"
                         label="Ciudad y País"
                         placeholder="Bogota, Colombia"
                         handleChange={handleChange}
-                        half
+                        half='true'
                       />
                     </>
                   )}
@@ -233,6 +223,12 @@ console.log('form', form);
                         : "No tienes una cuenta? Registrate aquí"}
                     </Button>
                   </Grid>
+                  <Link href={'/auth/forgotPassword'}>
+                  <a>
+                  <p style={{cursor:'pointer', color:'red'}}>Olvistaste tu contraseña?</p>
+                  </a>
+                  </Link>
+
                 </Grid>
               </form>
             </>

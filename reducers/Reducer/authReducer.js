@@ -1,4 +1,4 @@
-import { AUTH, GETUSER, GETUSERS, LOGOUT } from "../type";
+import { AUTH, FORGOTPASSWORD, GETUSER, GETUSERS, LOGOUT } from "../type";
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -14,6 +14,8 @@ export default (state={authData: null ,users:[]}, action)=>{
             return {...state, users: action.payload}
         case GETUSER:
             return {...state, user: action.payload}
+        case FORGOTPASSWORD:
+            localStorage.setItem('email', JSON.stringify({...action?.data}))
         default:
          return state
     }

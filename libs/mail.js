@@ -30,7 +30,7 @@ export function getTemplate(name, token) {
       <h2>colMotors</h2>
       <p>Aqui podras cambiar tu contraseña</p>
       <a
-          href="http://localhost:3000/auth/editForgotPassword"
+          href="https://col-motors21-04.vercel.app/auth/editForgotPassword"
           target="_blank"
       >Ir a cambiar contraseña</a>
   </div>

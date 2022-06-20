@@ -225,7 +225,7 @@ const SignUp = () => {
                   </Grid>
                   <Link href={'/auth/forgotPassword'}>
                   <a>
-                  <p style={{cursor:'pointer', color:'red'}}>Olvistaste tu contraseña?</p>
+                  <p style={{cursor:'pointer', color:'#f50057'}}>Olvistaste tu contraseña?</p>
                   </a>
                   </Link>
 

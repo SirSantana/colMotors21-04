@@ -1,5 +1,5 @@
 import * as api from '../Api/index'
-import { AUTH, FORGOTPASSWORD, GETUSER, GETUSERS } from '../type'
+import { AUTH, FORGOTPASSWORD, GETUSER, GETUSERS, UPDATEPASSWORD } from '../type'
 
 export const signin = (form, router, setMessage, setMessageError, setMessageLoad)=> async(dispatch)=>{
     
@@ -41,6 +41,20 @@ export const forgotPassword=(form)=> async(dispatch)=>{
     } catch (error) {
         console.log(error);
 
+    }
+}
+
+export const updatePassword =(form, email, setMessage, setError, router)=> async(dispatch)=>{
+    try {
+        console.log(email);
+        const {data} = await api.updatePassword(form, email)
+            setMessage('Contraseña actualizada')
+        dispatch({type:UPDATEPASSWORD, payload:data})
+        router.push('/auth')
+        
+    } catch (error) {
+        setError('Datos erroneos')
+        console.log(error);
     }
 }
 

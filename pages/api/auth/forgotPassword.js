@@ -26,7 +26,6 @@ export const sendMessagePassword = async (req, res) => {
       text: "Restaurar contraseña",
       htmL: null,
     };
-
     await sendMail(mailOptions, template);
     res.status(200).json({result: email})
   } catch (error) {

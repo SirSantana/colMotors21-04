@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL:
+const API = axios.create({ baseURL: 'http://localhost:3000/' ||
   'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
     'Access-Control-Allow-Origin': '*'
   } });
@@ -24,7 +24,7 @@ export const signup = (form)=> API.post("api/auth/register", form,)
 export const getAllUsers =()=> API.get("api/users")
 export const getUser = (id)=> API.get(`api/users/${id}`)
 export const forgotPassword = (form) => API.post(`api/auth/forgotPassword`, form)
-
+export const updatePassword = (form, email)=> API.patch('api/auth/updatePassword', {form, email})
 
 export const getCotizaciones=()=> API.get('api/cotizaciones')
 export const createCotizacion=(cotizacion)=> API.post('api/cotizaciones', cotizacion)

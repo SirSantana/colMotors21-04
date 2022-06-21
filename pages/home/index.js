@@ -11,6 +11,7 @@ export default function Home({Postss}) {
     const dispatch = useDispatch()
   const router = useRouter();
   const [token, setToken] = useState(null)
+  const [user, setUser] = useState(null)
 
   const createPosts = async (postData) => {
     try {
@@ -26,14 +27,17 @@ export default function Home({Postss}) {
         throw new Error("HTTP error " + res.status);
       }
       const data = res;
-      if (data) {
-        router.push("/home");
+      console.log(data);
+      if (data.ok) {
+        router.push(`/users/micuenta/${user?.result?._id}`);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  },[])
   
   return (
     <>

@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import valid from "../../../libs/valid";
 import DBConnect from "../../../libs/dbConnect";
 import { createAccessToken, getToken } from "../../../libs/createToken";
-import sendMail, { getTemplate } from "../../../libs/mail";
+import { getTemplate } from "../../../libs/mail";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -73,3 +73,54 @@ async function register(req, res) {
   }
 }
 
+async function sendMail(mailOptions, template) {
+
+  mailOptions.html = template
+
+  console.log('template',template);
+
+  let transporter = nodemailer.createTransport({
+      tls: {
+          rejectUnauthorized: false
+      },
+      secure: false, // true for 465, false for other ports
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user:process.env.NEXT_PUBLIC_MAIL_USERNAME,
+        pass:process.env.NEXT_PUBLIC_MAIL_PASSWORD,
+        clientId:process.env.NEXT_PUBLIC_OAUTH_CLIENTID,
+        clientSecret:process.env.NEXT_PUBLIC_OAUTH_CLIENT_SECRET,
+        refreshToken:process.env.NEXT_PUBLIC_OAUTH_REFRESH_TOKEN
+      }
+    });
+    await new Promise((resolve, reject) => {
+      // verify connection configuration
+      transporter.verify(function (error, success) {
+          if (error) {
+              console.log(error);
+              reject(error);
+          } else {
+              console.log("Server is ready to take our messages");
+              resolve(success);
+          }
+      });
+  });
+
+  
+  await new Promise((resolve, reject) => {
+      console.log('reject', reject);
+      // send mail
+      transporter.sendMail(mailOptions, (err, info) => {
+          if (err) {
+              console.error(err);
+              reject(err);
+          } else {
+              console.log(info);
+              resolve(info);
+          }
+      });
+  });
+  
+
+}

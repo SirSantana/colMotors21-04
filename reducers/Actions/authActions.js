@@ -75,3 +75,4 @@ export const getUser = (userId)=> async(dispatch)=>{
         console.log(error);
     }
 }
+

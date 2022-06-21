@@ -42,8 +42,6 @@ export default async function sendMail(mailOptions, template) {
 
     mailOptions.html = template
 
-    console.log('mailOp', mail);
-    console.log('template',template);
 
     let transporter = nodemailer.createTransport({
         tls: {
@@ -88,7 +86,6 @@ export default async function sendMail(mailOptions, template) {
         });
     });
     
-   
 
 }
 

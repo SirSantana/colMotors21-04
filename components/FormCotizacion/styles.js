@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
     margin:0,
     width:'90%',
     [theme.breakpoints.down('sm')]: {
-  
+        paddingLeft:'8px',
         width:'90%'
       }
   },
@@ -72,7 +72,7 @@ export default makeStyles((theme) => ({
   button:{
     display: 'flex',
     marginLeft: 'auto',
-    marginRight: '20px',
+    marginRight: 'auto',
     marginTop: '20px'
   },
   garantia1:{

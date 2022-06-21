@@ -1,19 +1,17 @@
 import {
-    Card,
     TextField,
     Typography,
     Paper,
-    Divider,
     Button,
     ButtonBase,
   } from "@material-ui/core";
   import { useState } from "react";
   import { useDispatch } from "react-redux";
   import useStyles from "./styles";
-import { Build, Check, Close } from "@material-ui/icons";
+import { BrandingWatermark, Build, Check, Close } from "@material-ui/icons";
 import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   import {useRouter} from 'next/router'
-
+import Image from "next/image";
   const initial = {
     repuestos: "",
     precio: "",
@@ -74,29 +72,75 @@ import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
             </Typography>
         </div>
         <Paper className={classes.paper} raised='true' elevation={6}>
-          <form onSubmit={handleSubmit}>
-            
+        
+          <form onSubmit={handleSubmit} style={{maxWidth:'500px'}}>
+          <section style={{display:'flex', margin:'0',flexDirection:'row', alignItems:'center'}}>
+          {/* <Image
+            src={'/images/iconoPiston.png'}
+            alt={'/images/iconoPiston.png'}
+            width={40}
+            height={40}
+            /> */}
+            <Image
+            src={'/images/Papel.png'}
+            alt={'/images/Papel.png'}
+            width={40}
+            height={40}
+            />
             <TextField
               name="repuestos"
               label="Envia valor unitario, marcas/origen de los productos"
-              variant="outlined"
               fullWidth
               onChange={handleChange}
               multiline
               required
+              variant="outlined"
+
               minRows={3}
               value={form.repuestos}
-              style={{marginBottom:'10px'}}
+              style={{marginBottom:'10px', marginLeft:'10px', paddingTop:'10px'}}
             />
-              
+          </section>
+          <section style={{display:'flex', margin:'0',flexDirection:'row', alignItems:'center'}}>
+
+          <Image
+            src={'/images/marcas.png'}
+            alt={'/images/marcas.png'}
+            width={40}
+            height={40}
+            />
+              <TextField
+                name="marca"
+                label="Marca"
+                onChange={handleChange}
+                required
+                fullWidth
+                variant="outlined"
+
+                value={form.precio}
+                style={{ marginBottom:'10px',marginLeft:'10px'}}
+              />
+          </section>
+          <section style={{display:'flex', margin:'0',flexDirection:'row', alignItems:'center'}}>
+
+              <Image
+            src={'/images/precio.png'}
+            alt={'/images/precio.png'}
+            width={40}
+            height={40}
+            />
               <TextField
                 name="precio"
                 label="Valor Total"
                 onChange={handleChange}
+                fullWidth
+                variant="outlined"
+                style={{marginLeft:'10px'}}
                 required
-              variant="outlined"
                 value={form.precio}
               />
+          </section>
+              
             
             <Button
               className={classes.button}

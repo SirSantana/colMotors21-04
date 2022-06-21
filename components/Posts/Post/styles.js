@@ -156,7 +156,7 @@ export default makeStyles((theme)=>({
   typography1:{
     height: '50px',
     padding: '0',
-    margin:'0'
+    margin:'0',
 
   },
   subheader:{
@@ -189,7 +189,7 @@ export default makeStyles((theme)=>({
     fontFamily: ' -apple-system, Segoe UI,',
     fontWeight:'600',
     paddingRight:'10px',
-    fontSize:'18px',
+    fontSize:'20px',
     lineHeight:'18px',
     color:'black'
   },

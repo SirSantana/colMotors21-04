@@ -4,6 +4,7 @@ import Build from "@material-ui/icons/Build";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Person, PersonOutline, PersonOutlined, PersonSharp } from "@material-ui/icons";
 
 export default function PostContent({OnePost}){
     const classes = useStyles();
@@ -28,16 +29,10 @@ export default function PostContent({OnePost}){
         <Link href={`/users/${OnePost.creator}`} >
             <a>
           <div style={{ display: "flex", flexDirecction: "row",alignItems:'center', }}>
+            <PersonSharp fontSize='large' style={{color:'gray', marginLeft:'3px'}}/>
             
-            <Avatar
-             className={classes.purple2}
-             alt={OnePost?.creador}
-             >
-              {two}
-
-            </Avatar>
             <Typography
-              style={{ marginLeft: "5px", fontSize:'18px' }}
+              style={{ marginLeft: "5px", fontSize:'18px', fontWeight:'600' }}
               className={classes.typography}
             >
               {nombreCreador}
@@ -52,9 +47,15 @@ export default function PostContent({OnePost}){
             width={'30px'}
             height={'30px'}
             /> */}
-            <Build/>
+            {/* <Build/> */}
+            <Image
+            src={'/images/iconoPiston.png'}
+            alt={'/images/iconoPiston.png'}
+            width={40}
+            height={40}
+            />
             <Typography
-              style={{ marginLeft: "5px" }}
+              style={{ marginLeft: "5px", fontSize:'20px' }}
               className={classes.typography1}
             >
               {OnePost?.repuesto}

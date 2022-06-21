@@ -105,16 +105,76 @@ export default function Home() {
 
 
         
-        <a href="/home" className={styles.card2}>
-        <h2>2. Sigue estos pasos para cotizar &rarr;</h2>
+        <div className={styles.card}>
+        <h2 style={{marginLeft:'8px'}}>Marcas</h2>
         <p></p>
-          
-        <Image
-          src={'/images/BocetoPasosCotizar2.png'}
-          width='700px'
-          height='600px'
+          <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
+          <section className={styles.card} style={{ margin:'10px',idth:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+          <Image
+          src={"/images/logoChevrolet.png"}
+          width='60px'
+          height='60px'
           />
-        </a>
+          </section>
+          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+
+          <Image
+          src={"/images/mazdaLogo.png"}
+          width='60px'
+          height='60px'
+          />
+          </section>
+          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+
+          <Image
+          src={"/images/logoRenault.png"}
+          width='60px'
+          height='60px'
+          />
+          </section>
+          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+
+          <Image
+          src={"/images/logoKia.png"}
+          width='60px'
+          height='60px'
+          />
+          </section>
+          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+
+          <Image
+          src={"/images/logoNissan.png"}
+          width='60px'
+          height='60px'
+          />
+          </section>
+
+          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+          <Image
+          src={"/images/logoFord1.png"}
+          width='60px'
+          height='60px'
+          />
+          </section>
+          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+
+          <Image
+          src={"/images/logoVolkswagen1.png"}
+          width='60px'
+          height='60px'
+          />
+          </section>
+
+          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+          <Image
+          src={"/images/logoToyota1.png"}
+          width='60px'
+          height='60px'
+          />
+          </section>
+
+          </div>
+        </div>
 
         <a
           href="https://github.com/vercel/next.js/tree/canary/examples"

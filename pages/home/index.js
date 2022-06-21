@@ -22,15 +22,16 @@ export default function Home({Postss}) {
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(postData),
         
-      });
-      if(!res.ok){
-        throw new Error("HTTP error " + res.status);
-      }
-      const data = res;
-      console.log(data);
-      if (data.ok) {
-        router.push(`/users/micuenta/${user?.result?._id}`);
-      }
+      }).then((res)=>{
+        if (res?.ok) {
+          router.push(`/users/micuenta/${user?.result?._id}`);
+        }
+      }).catch((err)=>{
+        if(err){
+          throw new Error("HTTP error " + res.status);
+        }
+      })
+      
     } catch (error) {
       console.log(error);
     }

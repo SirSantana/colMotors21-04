@@ -9,7 +9,7 @@ const initial = {
     email: "",
   };
 
-export default function ForgotPasswordComponent() {
+export default function ForgotPasswordComponent({sendMessage}) {
   const [form, setForm] = useState(initial);
   const classes = useStyles();
   const dispatch = useDispatch()
@@ -23,11 +23,11 @@ export default function ForgotPasswordComponent() {
   }
   const handleSubmit=(e)=>{
       e.preventDefault()
-      dispatch(forgotPassword({...form, setError, setMessage}))
+      // dispatch(forgotPassword({...form, setError, setMessage}))
+     
+      sendMessage({...form, setError, setMessage})
       setForm(initial)
       setMessage('Mensaje Enviado')
-
-
     }
    
   return (

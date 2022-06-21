@@ -27,7 +27,7 @@ export default function Home({Postss}) {
       }
       const data = res;
       if (data) {
-        router.reload();
+        router.push("/home");
       }
     } catch (error) {
       console.log(error);

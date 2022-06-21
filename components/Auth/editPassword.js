@@ -18,9 +18,10 @@ export default function EditPassword() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState(null)
   const [error, setError] = useState(null)
-    const router = useRouter()
+  const router = useRouter()
   const dispatch = useDispatch()
-console.log(user?.result);
+
+  
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };

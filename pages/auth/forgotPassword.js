@@ -9,8 +9,8 @@ export default function ForgotPassword(){
     const dispatch = useDispatch()
 
 
-    const sendMessage=(form, setError, setMessage)=>{
-        dispatch(forgotPassword({...form, setError, setMessage}))
+    const sendMessage=(form)=>{
+        dispatch(forgotPassword(form))
     }
    
     

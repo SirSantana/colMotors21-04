@@ -25,7 +25,7 @@ export default function ForgotPasswordComponent({sendMessage}) {
       e.preventDefault()
       // dispatch(forgotPassword({...form, setError, setMessage}))
      
-      sendMessage({...form, setError, setMessage})
+      sendMessage(form)
       setForm(initial)
       setMessage('Mensaje Enviado')
     }

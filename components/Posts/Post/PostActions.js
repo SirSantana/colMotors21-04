@@ -16,7 +16,7 @@ export default function PostActions({OnePost, user, setVisibleDelete}){
         <>
         <CardActions style={{width:'90%', paddingLeft:'16px', paddingBottom:'5px'}}>
           <div style={{ display: "flex", flexDirecction: "row",alignItems:'center',}}>
-            <Place style={{color: 'gray', width:'30px', height:'30px', marginLeft:'7px'}}/>
+            <Place style={{color: 'gray', width:'30px', height:'30px'}}/>
             <Typography
               style={{ marginLeft: "5px" }}
               variant="body1"

@@ -25,7 +25,7 @@ export default function PostContent({OnePost}){
 
     return(
         <>
-        <CardContent style={{ width:'90%', display:'flex', flexDirection:'column',gap:'10px' }}>
+        <CardContent style={{ width:'90%', display:'flex',paddingLeft:'10px', flexDirection:'column',gap:'10px' }}>
         <Link href={`/users/${OnePost.creator}`} >
             <a>
           <div style={{ display: "flex", flexDirecction: "row",alignItems:'center', }}>

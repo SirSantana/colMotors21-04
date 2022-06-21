@@ -120,6 +120,7 @@ export default makeStyles((theme)=>({
     maxWidth:'350px',
     [theme.breakpoints.down('sm')]: {
         width:'84vw',
+        
       }
     
   },
@@ -127,7 +128,7 @@ export default makeStyles((theme)=>({
   card1: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     borderRadius: '5px',
     height: '100%',
     marginBottom:'10px',
@@ -136,6 +137,7 @@ export default makeStyles((theme)=>({
     minWidth: '230px',
     color:'white',
     backgroundColor:'#464646',
+   
   },
   
   purple: {

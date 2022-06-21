@@ -27,9 +27,7 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
               </Typography>
             </div>
             <Card
-              sx={{ width: "345px" }}
               className={classes.card1}
-              elevation={8}
             >
               <div
                 style={{

@@ -35,7 +35,6 @@ export const signup = (form, router,setMessage, setMessageError, setMessageLoad)
 
 export const forgotPassword=(form)=> async(dispatch)=>{
     try {
-        console.log('form',form);
         const {data} = await api.forgotPassword(form)
         dispatch({type:FORGOTPASSWORD, data})
 

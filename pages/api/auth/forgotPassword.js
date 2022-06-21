@@ -1,19 +1,17 @@
 import DBConnect from "../../../libs/dbConnect";
 import sendMail, { getTemplate2 } from "../../../libs/mail";
 import userModel from "../../../models/userModel";
+DBConnect();
 
 export default async (req, res) => {
-  DBConnect();
   switch (req.method) {
     case "POST":
       await sendMessagePassword(req, res);
-
-    default:
       break;
   }
 };
 
-export const sendMessagePassword = async (req, res) => {
+async function sendMessagePassword (req, res) {
     const {email} = req.body
   try {
 
@@ -26,6 +24,7 @@ export const sendMessagePassword = async (req, res) => {
       text: "Restaurar contraseña",
       htmL: null,
     };
+    console.log('mail', mailOptions);
     await sendMail(mailOptions, template);
     res.status(200).json({result: email})
   } catch (error) {

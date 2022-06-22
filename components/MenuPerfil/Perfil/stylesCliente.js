@@ -33,7 +33,7 @@ export default makeStyles((theme) => ({
     padding:'10px', 
     textAlign:'center',flexDirection:'row',
     [theme.breakpoints.down("sm")]: {
-        marginLeft:'20px',
+        marginLeft:'10px',
       }
   },
   img:{

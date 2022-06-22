@@ -26,7 +26,7 @@ export default function PerfilCliente({user}){
         <>
         <div className={classes.container1}>
           <div className={classes.container2}>
-            <div style={{marginLeft:'20px' }}>
+            <div style={{marginLeft:'10px' }}>
             <Avatar src={user?.name?.charAt(0)}
                 className={classes.avatar}
                 alt={user?.name?.charAt(0)}/>

@@ -51,8 +51,10 @@ export default function HomeComponent({ createPosts, posts}) {
 
         
       </>}
+      <div className={classes.contenedor}>
     <HomeCliente user={user} posts={posts} createPosts={createPosts}/>
 
+    </div>
     </>
   );
 }

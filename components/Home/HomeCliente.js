@@ -60,7 +60,7 @@ export default function HomeCliente({user, posts, createPosts}){
                  </Button>
                )}
              </Grid>
-             <Grid item xs={12} sm={6} md={9} style={{ paddingTop: "10px" }}>
+             <Grid item xs={12} sm={6} md={3} style={{ paddingTop: "10px" }}>
                <Form createPosts={createPosts} user={user} />
              </Grid>
            </Grid>

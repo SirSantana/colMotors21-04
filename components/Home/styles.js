@@ -52,6 +52,11 @@ export default makeStyles((theme) => ({
     width:"100%"
     },
   },
+  contenedor:{
+    [theme.breakpoints.down('xs')]: {
+    display:'flex', width:'100vw',flexDirection:'column'
+    }
+  },
  
   typography:{
     color: 'white',

@@ -72,7 +72,7 @@ export default function Home() {
           ) : (
             <>
               <div>
-                <h2>1. Registrate o Inicia Sesion &rarr;</h2>
+                <h2> Registrate o Inicia Sesion &rarr;</h2>
                 <Link href={"/home"}>
                 <a>
                   <button>Ver Posts</button>

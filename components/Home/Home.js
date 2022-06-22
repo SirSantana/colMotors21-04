@@ -14,12 +14,13 @@ export default function HomeComponent({ createPosts, posts}) {
   const router = useRouter();
   const [user, setUser] = useState();
 
-  console.log(user);
   if(user?.result.role.length >1){
     router.push("/home/vendedor")
   }
 
-
+  if(user=== null){
+    router.replace('/auth')
+  }
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));

@@ -60,6 +60,7 @@ export default function PostContent({OnePost}){
             >
               {OnePost?.repuesto}
             </Typography>
+            
           </div>
           {OnePost?.selectedFile ? (
             <Button

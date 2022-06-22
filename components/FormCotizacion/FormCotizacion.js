@@ -1,10 +1,4 @@
-import {
-    TextField,
-    Typography,
-    Paper,
-    Button,
-    ButtonBase,
-  } from "@material-ui/core";
+import {TextField,Typography,Paper,Button,ButtonBase,Select,MenuItem,InputLabel,FormControl, } from "@material-ui/core";
   import { useState } from "react";
   import { useDispatch } from "react-redux";
   import useStyles from "./styles";
@@ -12,13 +6,16 @@ import { BrandingWatermark, Build, Check, Close } from "@material-ui/icons";
 import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
   import {useRouter} from 'next/router'
 import Image from "next/image";
+
   const initial = {
     repuestos: "",
     precio: "",
     vendedor: "",
     idVendedor: "",
     idPost:'',
-    ciudad:''
+    ciudad:'',
+    marca:'',
+    estado:''
   };
   export default function FormCotizacion({ OnePost,  user }) {
     const classes = useStyles();
@@ -38,6 +35,7 @@ import Image from "next/image";
       });
     };
   
+    console.log(form);
     const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(postCotizacion({...form, nombreVendedor:user?.result.name, idVendedor:user?.result._id, idPost:OnePost._id, pais:user?.result.pais}, router,setMessage, setMessageError, setMessageLoad ))
@@ -89,7 +87,7 @@ import Image from "next/image";
             />
             <TextField
               name="repuestos"
-              label="Envia valor unitario, marcas/origen de los productos"
+              label="Descripcion de los productos"
               fullWidth
               onChange={handleChange}
               multiline
@@ -111,16 +109,40 @@ import Image from "next/image";
             />
               <TextField
                 name="marca"
-                label="Marca"
+                label="Marca u Origen"
                 onChange={handleChange}
                 required
                 fullWidth
                 variant="outlined"
 
-                value={form.precio}
+                value={form.marca}
                 style={{ marginBottom:'10px',marginLeft:'10px'}}
               />
+              
           </section>
+          <Image
+            src={'/images/quality.png'}
+            alt={'/images/quality.png'}
+            width={40}
+            height={40}
+            style={{ marginRight:'3px'}}
+            />
+          <FormControl style={{width:'83%',backgroundColor:'white',marginLeft:'4px',marginBottom:'10px'}} variant='outlined'>
+          
+          <InputLabel  id="demo-simple-select-label">Estado del Producto</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={form.estado}
+                  label="Estado"
+                  onChange={handleChange}
+                  name='estado'
+                >
+                  <MenuItem value={'Nuevo'}>Nuevo</MenuItem>
+                  <MenuItem value={'Segunda'}>De Segunda</MenuItem>
+                  <MenuItem value={'Restaurado'}>Restaurado</MenuItem>
+                </Select>
+                </FormControl>
           <section style={{display:'flex', margin:'0',flexDirection:'row', alignItems:'center'}}>
 
               <Image

@@ -5,6 +5,9 @@ import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Comentarios from "./Comentarios";
+import Image from "next/image";
+
+
 export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
   const classes = useStyles();
   const router = useRouter();
@@ -62,7 +65,12 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
                     alignItems: "center",
                   }}
                 >
-                  <Menu />
+                  <Typography
+                      style={{ marginBottom:'10px', backgroundColor:'#f50057', padding:'10px' }}
+                      className={classes.typography1}
+                    >
+                      {Cotizacion?.estado}
+                    </Typography>
                 </section>
               </div>
 
@@ -92,29 +100,42 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
                       alignItems: "center",
                       marginBottom: "8px",
                     }}
-                  >
-                    <AttachMoney
-                      fontSize="large"
-                      style={{ color: "#949494" }}
-                    />
+                  ><Image
+                  src={'/images/precio.png'}
+                  alt={'/images/precio.png'}
+                  width={40}
+                  height={40}
+                  style={{color:'white'}}
+                 />
+    
                     <Typography className={classes.title}>
                       {Cotizacion?.precio}
                     </Typography>
+
                   </div>
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: "5px",
                     }}
                   >
-                    <Build fontSize="medium" style={{ color: "#949494" }} />
+                    <Image
+                     src={'/images/iconoPiston.png'}
+                     alt={'/images/iconoPiston.png'}
+                     width={40}
+                     height={40}
+                    />
                     <Typography
-                      style={{ marginLeft: "5px" }}
+                      style={{ marginTop:'10px' }}
                       className={classes.typography1}
                     >
                       {Cotizacion?.repuestos}
+                      <Typography className={classes.typography1}>
+                      Marca: {Cotizacion?.marca}
+                      </Typography>
                     </Typography>
+                    
+                    
                   </div>
                 </div>
               </CardContent>
@@ -127,10 +148,12 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
                     display: "flex",
                     flexDirecction: "row",
                     alignItems: "center",
+                    marginLeft:'3px',
+                    marginBottom:'5px'
                   }}
                 >
                   <Place
-                    style={{ color: "#949494", width: "30px", height: "30px" }}
+                    style={{color:'gray', width: "30px", height: "30px" }}
                   />
                   <Typography style={{ marginLeft: "5px" }} variant="body1">
                     {Cotizacion?.pais}

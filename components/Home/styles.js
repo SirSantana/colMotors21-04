@@ -22,7 +22,14 @@ export default makeStyles((theme) => ({
       paddingTop:'100%',
     }
   },
-  
+  container2:{
+    margin:0,
+    padding:0,
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    
+  },
  
   card1: {
     display: 'flex',
@@ -50,7 +57,7 @@ export default makeStyles((theme) => ({
       marginLeft:'auto',
       marginRight:'auto',
     padding:0,
-    width:"100%"
+    width:"100vw"
     },
   },
   contenedor:{
@@ -114,6 +121,5 @@ export default makeStyles((theme) => ({
     cursor:'pointer'
   },
   
-
   
 }));

@@ -24,7 +24,7 @@ export default function HomeCliente({user, posts, createPosts}){
     return(
         <>
          {user?.result?.role?.length===1 &&
-         <Container className={classes.container} maxWidth="lg">
+         <Container className={classes.container2} maxWidth="lg">
            <Grid
              container
              justifyContent="space-between"

@@ -68,7 +68,7 @@ export default function PerfilCliente({user}){
                 <h4 style={{margin:'5px', fontSize:'18px'}}>{'Vehiculos'}</h4>
                 
                 <section style={{display:'flex',display:'flex', flexDirection:'column'}}>
-                <img src={'/images/aveo.jpg'} alt='/images/aveo.jpg' style={{borderRadius:'10px'}}/>
+                <img src={'/images/aveo.jpg'} alt='/images/aveo.jpg' style={{borderRadius:'10px', height:'200px', width:'100%'}}/>
 
                 <div style={{display:'flex',display:'flex', gap:'10px'}} >
                 <Image src={'/images/52120.png'} width='30px' height={"35px"}/>

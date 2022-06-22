@@ -22,6 +22,7 @@ export default makeStyles((theme) => ({
       paddingTop:'100%',
     }
   },
+  
  
   card1: {
     display: 'flex',
@@ -113,13 +114,6 @@ export default makeStyles((theme) => ({
     cursor:'pointer'
   },
   
-  container:{
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-    margin:0,
-    padding:0,
-    width:'100vwlogo'
-    },
-  }
+
   
 }));

@@ -61,7 +61,7 @@ export default makeStyles((theme)=>({
         margin:0,
         display:'flex',
         flexDirection:'column',
-        backgroundColor: "gray"
+        backgroundColor: "gray"  
       },
       transparent :{
         backgroundColor:" #f1f1f1",
@@ -81,7 +81,8 @@ export default makeStyles((theme)=>({
         height:'50px',
         width:'50px',
         padding:0,
-        margin:'10px'
+        margin:'30px',
+        marginLeft:'20px'
     
       },
       iconAdd:{

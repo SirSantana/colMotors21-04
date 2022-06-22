@@ -48,11 +48,10 @@ export default makeStyles((theme)=>({
     padding: '0',
     justifyContent: 'center',
     margin:0,
-    position: 'relative',
     [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-      gap:'15px',
-      width:'84vw',
+    marginBottom:'20px',
+      width:'100%',
     }
   },
   

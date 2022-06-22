@@ -51,10 +51,8 @@ export default function HomeComponent({ createPosts, posts}) {
 
         
       </>}
-      <div style={{display:'flex', width:'100%',flexDirection:'column'}}>
     <HomeCliente user={user} posts={posts} createPosts={createPosts}/>
 
-    </div>
     </>
   );
 }

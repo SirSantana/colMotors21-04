@@ -26,10 +26,8 @@ export default function HomeCliente({user, posts, createPosts}){
          {user?.result?.role?.length===1 &&
          <Container className={classes.container2} maxWidth="lg">
            <Grid
+           spacing={2}
              container
-             justifyContent="space-between"
-             alignItems="stretch"
-             spacing={8}
              className={classes.gridContainer}
            >
              <Grid item xs={12} sm={6} md={9}>

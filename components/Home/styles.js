@@ -57,12 +57,12 @@ export default makeStyles((theme) => ({
       marginLeft:'auto',
       marginRight:'auto',
     padding:0,
-    width:"100vw"
+    width:"90%"
     },
   },
   contenedor:{
     [theme.breakpoints.down('xs')]: {
-    display:'flex', width:'100vw',flexDirection:'column'
+    display:'flex', width:'100%',flexDirection:'column'
     }
   },
  

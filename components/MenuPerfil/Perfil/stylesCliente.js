@@ -22,7 +22,7 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     backgroundColor: "#f1f1f1",
     borderRadius: "10px",
-    padding: "15px 10px 10px 10px",
+    padding: "10px",
     marginTop: "10px",
   },
   container4:{

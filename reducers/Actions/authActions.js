@@ -43,7 +43,13 @@ export const forgotPassword=(form)=> async(dispatch)=>{
 
     }
 }
-
+export const calificacionUser=(id)=> async(dispatch)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
 export const updatePassword =(form, email, setMessage, setError, router)=> async(dispatch)=>{
     try {
         console.log(email);

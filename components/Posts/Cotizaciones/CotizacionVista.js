@@ -1,4 +1,4 @@
-import {Avatar,Button,Card,CardActions,CardContent,CardHeader,Divider,Typography,} from "@material-ui/core";
+import {Avatar,Button,Card,CardActions,CardContent,CardHeader,Dialog,DialogActions,DialogContentText,DialogTitle,Divider,FormControl,FormHelperText,InputLabel,MenuItem,Select,Typography,} from "@material-ui/core";
 import { AttachMoney, Build, Delete, Menu, Money, Place } from "@material-ui/icons";
 import OnePost from "../Post/OnePost";
 import useStyles from "../Post/styles";
@@ -6,13 +6,15 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Comentarios from "./Comentarios";
 import Image from "next/image";
+import Modal from "./Modal";
 
 
 export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
   const classes = useStyles();
   const router = useRouter();
-  const [visibleComentario, setVisibleComentario] = useState(false);
+  const [visibleCalificacion, setVisibleCalificacion] = useState(false);
 
+  
   return (
     <>
       
@@ -186,17 +188,11 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
               )}
 
               <Comentarios user={user} post={Post} Cotizacion={Cotizacion} />
-
-              {/* <Button
-                  color="secondary"
-                  variant="contained"
-                  fullWidth
-                  className={classes.cotizar}
-                  onClick={()=> visibleComentario ? setVisibleComentario(false): setVisibleComentario(true)}
-                >
-                  Enviale un Mensaje
-                </Button>
-            {visibleComentario &&<Comentarios user={user} post={Post} Cotizacion={Cotizacion}/>  } */}
+              
+              {Cotizacion.comentarios.length > 0&& <Modal user={user}/>}
+              
+                
+              
             </Card>
           </div>
         </div>

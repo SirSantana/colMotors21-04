@@ -61,7 +61,8 @@ export default makeStyles((theme)=>({
         margin:0,
         display:'flex',
         flexDirection:'column',
-        backgroundColor:'#464646'
+        background: "rgb(94,94,94)",
+background: "linear-gradient(180deg, #464646 8%, rgba(162,162,162,1) 81%, gray 100%)"
     
       },
       transparent :{

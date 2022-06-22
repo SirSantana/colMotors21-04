@@ -51,9 +51,9 @@ export default function PerfilCliente({user}){
               classes={{ subheader: classes.subheader2, title: classes.title2 }}
               subheaderTypographyProps={{ variant: "body1", color:'#f1f1f1', textAlign:'center' }}
             />
-            <span onClick={handleAdd}>
+            {/* <span onClick={handleAdd}>
             {visible && <Add className={classes.iconAdd} fontSize="large"/>}
-            </span>
+            </span> */}
             <Divider style={{width:'90%', marginLeft:'auto', marginRight:'auto'}}/>
             <CardContent style={{ width:'100%', display:'flex', flexDirection:'column',padding:'0px',  }}>
               <div className={classes.transparent} style={{padding:'10px'}}>
@@ -68,6 +68,8 @@ export default function PerfilCliente({user}){
                 <h4 style={{margin:'5px', fontSize:'18px'}}>{'Vehiculos'}</h4>
                 
                 <section style={{display:'flex',display:'flex', flexDirection:'column'}}>
+                <img src={'/images/aveo.jpg'} alt='/images/aveo.jpg' style={{borderRadius:'10px'}}/>
+
                 <div style={{display:'flex',display:'flex', gap:'10px'}} >
                 <Image src={'/images/52120.png'} width='30px' height={"35px"}/>
                 {user?.marca}
@@ -75,9 +77,10 @@ export default function PerfilCliente({user}){
                 <div style={{display:'flex',display:'flex', gap:'10px'}}>
                 <Image src={'/images/27176.png'} width='30px' height={"35px"}/>
                 {userNow?.result._id === user._id && 
-                <Button variant="outlined" color='secondary'>Agregar otro vehiculo</Button>
+                <Button variant="outlined" color='secondary' >Agregar tu Vehiculo</Button>
                 }
                 </div>
+
                 </section>
                 </div>
                 <section style={{display:'flex',flexDirection:'column', marginTop:'10px',backgroundColor:'lightgray',borderRadius:'5px'}}>

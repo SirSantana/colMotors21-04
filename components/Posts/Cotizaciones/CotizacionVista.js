@@ -1,5 +1,5 @@
 import {Avatar,Button,Card,CardActions,CardContent,CardHeader,Divider,Typography,} from "@material-ui/core";
-import { AttachMoney, Build, Delete, Menu, Place } from "@material-ui/icons";
+import { AttachMoney, Build, Delete, Menu, Money, Place } from "@material-ui/icons";
 import OnePost from "../Post/OnePost";
 import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
@@ -100,13 +100,15 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
                       alignItems: "center",
                       marginBottom: "8px",
                     }}
-                  ><Image
+                  >
+                    {/* <Image
                   src={'/images/precio.png'}
                   alt={'/images/precio.png'}
                   width={40}
                   height={40}
                   style={{color:'white'}}
-                 />
+                 /> */}
+                 <AttachMoney fontSize="large" style={{color:'gray', marginLeft:'3px'}}/>
     
                     <Typography className={classes.title}>
                       {Cotizacion?.precio}
@@ -126,7 +128,7 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
                      height={40}
                     />
                     <Typography
-                      style={{ marginTop:'10px' }}
+                      style={{ marginTop:'10px',  }}
                       className={classes.typography1}
                     >
                       {Cotizacion?.repuestos}

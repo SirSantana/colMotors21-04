@@ -57,7 +57,7 @@ export default makeStyles((theme) => ({
       marginLeft:'auto',
       marginRight:'auto',
     padding:0,
-    width:"90%"
+    width:"95%"
     },
   },
   contenedor:{

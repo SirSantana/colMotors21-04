@@ -16,6 +16,8 @@ export default makeStyles((theme) => ({
   container:{
     margin:0,
     padding:0,
+    justifyContent:'center',
+    alignItems:'center',
     [theme.breakpoints.down('xs')]: {
       paddingTop:'100%',
     }
@@ -44,7 +46,8 @@ export default makeStyles((theme) => ({
   gridContainer: {
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column-reverse',
-      margin:0,
+      marginLeft:'auto',
+      marginRight:'auto',
     padding:0,
     width:"100%"
     },

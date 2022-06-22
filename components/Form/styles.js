@@ -5,6 +5,7 @@ export default makeStyles((theme) => ({
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
+      width:'100%'
     },
   },
   
@@ -68,6 +69,8 @@ export default makeStyles((theme) => ({
   form: {
     display: "flex",
     flexWrap: "wrap",
+    width:'100%',
+
     justifyContent: "center",
     fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
   },

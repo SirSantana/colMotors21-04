@@ -18,9 +18,10 @@ const initial={
     calificacion:''
 }
 
-export default function Modal({creator}) {
+export default function Modal({creator, cotizacionId}) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState(initial)
+  const [calificado, setCalificado] = useState(false)
   const dispatch = useDispatch()
 
   const handleClickOpen = () => {
@@ -36,13 +37,18 @@ export default function Modal({creator}) {
 
   const handleSubmit=(e)=>{
       e.preventDefault()
-      dispatch(calificacionUser(creator, form))
+      setOpen(false);
+      setCalificado(true)
+      dispatch(calificacionUser(creator, form, cotizacionId))
+      
+
   }
   return (
     <>
       <div style={{marginLeft:'auto', marginRight:'auto'}}> 
-        <Button  variant="outlined" color='secondary' onClick={handleClickOpen}>
-          Califica al Vendedor
+        <Button  variant="outlined" color='secondary' disabled={calificado} onClick={handleClickOpen}>
+          {calificado ? 'Calificado!':"Califica al Vendedor" }
+          
         </Button>
         <Dialog
           open={open}

@@ -10,7 +10,7 @@ const CotizacionSchema = new mongoose.Schema({
     pais:{type: String, required: true},
     marca:{type: String, required: true},
     estado:{type: String, required: true},
-
+    calificado:{type:Boolean},
     // post:[{type: mongoose.Schema.Types.ObjectId, ref: 'postModel'}],
     idPost:{type: String, required: true}
 },{versionKey: false})

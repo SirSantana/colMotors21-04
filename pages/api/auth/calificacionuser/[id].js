@@ -1,4 +1,5 @@
 import DBConnect from "../../../../libs/dbConnect";
+import cotizacionModel from "../../../../models/cotizacionModel";
 import userModel from "../../../../models/userModel";
 
 
@@ -14,12 +15,14 @@ export default async function handler(req, res) {
 
   async function calificacion(req, res){
     const {id} = req.query
-    const {calificacion} = req.body
+    const {form, cotizacionId} = req.body
     try {
         const user = await userModel.findById(id)
-        user.calificacion.push(calificacion)
+        user.calificacion.push(form.calificacion)
         await user.save()
-        console.log(user);
+        const cotizacion = await cotizacionModel.findById(cotizacionId)
+        cotizacion.calificado = true
+        await cotizacion.save()
         res.status(200).json(user)
     } catch (error) {
         res.status(403).json(error)

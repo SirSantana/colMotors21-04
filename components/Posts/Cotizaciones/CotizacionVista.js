@@ -9,12 +9,10 @@ import Image from "next/image";
 import Modal from "./Modal";
 
 
-export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
+export default function CotizacionVista({Cotizacion,Post,user}) {
   const classes = useStyles();
   const router = useRouter();
-  const [visibleCalificacion, setVisibleCalificacion] = useState(false);
-
-  
+  console.log(Cotizacion);
   return (
     <>
       
@@ -189,7 +187,7 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
 
               <Comentarios user={user} post={Post} Cotizacion={Cotizacion} />
               
-              {Cotizacion.comentarios.length > 0&& <Modal creator={Cotizacion.creator}/>}
+              {Cotizacion.comentarios.length > 0&& Cotizacion?.calificado !== true &&<Modal creator={Cotizacion.creator} cotizacionId={Cotizacion._id}/>}
               
                 
               

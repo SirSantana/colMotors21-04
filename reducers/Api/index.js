@@ -25,7 +25,7 @@ export const getAllUsers =()=> API.get("api/users")
 export const getUser = (id)=> API.get(`api/users/${id}`)
 export const forgotPassword = (form) => API.post(`api/auth/forgotPassword`, form)
 export const updatePassword = (form, email)=> API.patch('api/auth/updatePassword', {form, email})
-export const calificacionUser =(id, form)=> API.patch(`api/auth/calificacionuser/${id}`, form)
+export const calificacionUser =(id, form, cotizacionId)=> API.patch(`api/auth/calificacionuser/${id}`, {form, cotizacionId})
 
 export const getCotizaciones=()=> API.get('api/cotizaciones')
 export const createCotizacion=(cotizacion)=> API.post('api/cotizaciones', cotizacion)

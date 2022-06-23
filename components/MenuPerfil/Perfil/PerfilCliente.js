@@ -47,7 +47,7 @@ export default function PerfilCliente({user}){
             </div>
             </div>
           </div>
-            <h2 className={classes.texto1}>Vehiculos</h2>
+            {/* <h2 className={classes.texto1}>Vehiculos</h2> */}
               <a onClick={()=> visibleCar ? setVisibleCar(false): setVisibleCar(true)}>
               <div className={classes.container3}>
                 <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/>

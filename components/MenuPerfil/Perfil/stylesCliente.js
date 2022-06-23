@@ -14,14 +14,13 @@ export default makeStyles((theme) => ({
     }
   },
   container2: {
-    backgroundColor: "gray",
     width: "100%",
-    maxWidth: "400px",
+    maxWidth: "600px",
     height: "100px",
     display:'flex',
     alignItems:'center',
+    justifyContent:'center',
     borderRadius: "10px",
-    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
     [theme.breakpoints.down("sm")]: {
       borderRadius: "0px",
 
@@ -81,7 +80,8 @@ export default makeStyles((theme) => ({
   avatar: {
     textAlign:'center',
     marginLeft:'auto',
-    marginRight:'auto'
+    marginRight:'auto',
+    background:'gray'
   },
   texto1: {
     borderRadius: "10px",
@@ -103,14 +103,14 @@ export default makeStyles((theme) => ({
     margin:'5px 10px', color:'gray'
   },
   nombre1:{
-    margin:'0px 10px 0px 10px', color:'#f1f1f1', fontSize:'18px', fontWeight:'600'
+    margin:'0px 10px 0px 10px', color:'#black', fontSize:'18px', fontWeight:'600'
   },
   texto5:{
     margin:0,marginLeft:'10px', color:'#f1f1f1', fontSize:'12px', 
 
   },
   texto6:{
-    margin:0, color:'#f1f1f1', fontSize:'12px', textAlign:'center'
+    margin:0, color:'gray', fontSize:'12px', textAlign:'center'
 
   }
 }));

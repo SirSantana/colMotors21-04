@@ -12,12 +12,13 @@ import {
 } from "@material-ui/core";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { calificacionUser } from "../../../reducers/Actions/authActions";
 
 const initial={
     calificacion:''
 }
 
-export default function Modal({user}) {
+export default function Modal({creator}) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState(initial)
   const dispatch = useDispatch()
@@ -25,7 +26,7 @@ export default function Modal({user}) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  console.log(creator);
   const handleClose = () => {
     setOpen(false);
   };
@@ -35,7 +36,7 @@ export default function Modal({user}) {
 
   const handleSubmit=(e)=>{
       e.preventDefault()
-      dispatch(calificacionUser(user?.result._id))
+      dispatch(calificacionUser(creator, form))
   }
   return (
     <>
@@ -90,6 +91,7 @@ export default function Modal({user}) {
                 variant="contained"
                 color="secondary"
                 onClick={handleSubmit}
+                disabled={form.calificacion.length <=0}
               >
                 Enviar Calificacion
               </Button>

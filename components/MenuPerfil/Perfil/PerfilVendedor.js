@@ -8,13 +8,25 @@ import Image from 'next/image'
 export default function PerfilVendedor({user}){
   const classes = useStyles();
   const marcas = user?.marcasComercializadas
+  const calif = user?.calificacion
 
+  let data=0
+  for(let numero of calif){
+  data += parseInt(numero)
+  }
+  const result = Math.round(data/calif.length)
     return(
         <>
         <div className={classes.container}>
           <Card sx={{ width: "345px" }} className={classes.card} elevation={8}>
-                <section  style={{display:'flex', flexDirection:'row', alignItems:'center', backgroundColor:'#464646', padding:'10px', paddingBottom:0}}>
-                <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars className={classes.iconStar}/> <Stars style={{color:'white'}} />
+                <section  style={{display:'flex', flexDirection:'row', alignItems:'center', backgroundColor:'gray', padding:'10px', paddingBottom:0}}>
+                {result === 1 &&  <><Stars className={classes.iconStar}/>  <Stars style={{color:'white'}}/>  <Stars style={{color:'white'}}/><Stars style={{color:'white'}}/> <Stars style={{color:'white'}} /></>}
+                {result === 2 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/>   <Stars style={{color:'white'}}/><Stars style={{color:'white'}}/> <Stars style={{color:'white'}} /></>}
+                {result === 3 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars style={{color:'white'}}/> <Stars style={{color:'white'}} /></>}
+                {result === 4 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars className={classes.iconStar}/> <Stars style={{color:'white'}} /></>}
+                {result === 5 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/></>}
+                
+                
                 </section>
           <CardHeader
               style={{padding:'4px'}}

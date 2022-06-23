@@ -116,6 +116,7 @@ export default makeStyles((theme)=>({
     padding: '0',
     position: 'relative',
     minWidth:'280px',
+
     [theme.breakpoints.down('sm')]: {
         width:'84vw',
         marginLeft:'auto',

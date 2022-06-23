@@ -189,7 +189,7 @@ export default function CotizacionVista({Cotizacion,Post,user,setRecarga,}) {
 
               <Comentarios user={user} post={Post} Cotizacion={Cotizacion} />
               
-              {Cotizacion.comentarios.length > 0&& <Modal user={user}/>}
+              {Cotizacion.comentarios.length > 0&& <Modal creator={Cotizacion.creator}/>}
               
                 
               

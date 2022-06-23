@@ -1,5 +1,5 @@
 import * as api from '../Api/index'
-import { AUTH, FORGOTPASSWORD, GETUSER, GETUSERS, UPDATEPASSWORD } from '../type'
+import { AUTH, CALIFICACIONUSER, FORGOTPASSWORD, GETUSER, GETUSERS, UPDATEPASSWORD } from '../type'
 
 export const signin = (form, router, setMessage, setMessageError, setMessageLoad)=> async(dispatch)=>{
     
@@ -43,11 +43,15 @@ export const forgotPassword=(form)=> async(dispatch)=>{
 
     }
 }
-export const calificacionUser=(id)=> async(dispatch)=>{
+export const calificacionUser=(id, form)=> async(dispatch)=>{
     try {
-        
+        const {data} = await api.calificacionUser(id, form)
+        console.log(data);
+
+        dispatch({type:CALIFICACIONUSER, payload:data})
+
     } catch (error) {
-        
+        console.log(error);
     }
 }
 export const updatePassword =(form, email, setMessage, setError, router)=> async(dispatch)=>{

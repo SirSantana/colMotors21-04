@@ -21,7 +21,7 @@ const UserModel = new mongoose.Schema({
   }],
   marcasComercializadas:[String],
   cotizaciones: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cotizacion'}],
-  calificacion: String,
+  calificacion: [String],
   numeroCotizaciones: {
     type: Number,
     default: 0,

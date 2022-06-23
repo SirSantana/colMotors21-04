@@ -7,7 +7,9 @@ export default makeStyles((theme) => ({
     marginTop:'50px',
     [theme.breakpoints.down("sm")]: {
       width: "100vw",
+      margin:0,
       marginTop:'20px',
+      boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
 
     }
   },
@@ -19,7 +21,12 @@ export default makeStyles((theme) => ({
     display:'flex',
     alignItems:'center',
     borderRadius: "10px",
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
+    [theme.breakpoints.down("sm")]: {
+      borderRadius: "0px",
 
+
+    }
   },
   
   container3: {
@@ -30,6 +37,8 @@ export default makeStyles((theme) => ({
     borderRadius: "10px",
     padding: "10px",
     marginTop: "10px",
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px"
+
   },
   container4:{
     backgroundColor:'#464646',
@@ -38,6 +47,8 @@ export default makeStyles((theme) => ({
     display:'flex',
     padding:'10px', 
     textAlign:'center',flexDirection:'row',
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
+
     [theme.breakpoints.down("sm")]: {
         marginLeft:'10px',
       }

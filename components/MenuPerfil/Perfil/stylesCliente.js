@@ -4,6 +4,12 @@ export default makeStyles((theme) => ({
   container1: {
     width: "100%",
     maxWidth: "400px",
+    marginTop:'50px',
+    [theme.breakpoints.down("sm")]: {
+      width: "100vw",
+      marginTop:'20px',
+
+    }
   },
   container2: {
     backgroundColor: "gray",
@@ -36,8 +42,22 @@ export default makeStyles((theme) => ({
         marginLeft:'10px',
       }
   },
+  container6:{
+    display:'flex',
+    flexDirection:'column',
+    backgroundColor:'#f1f1f1',
+    borderRadius:'30px',
+    marginTop:'20px',
+    height:'fit-content',
+    width:'90%',
+    marginLeft:'auto', marginRight:'auto'
+  },
   img:{
     borderRadius:'10px', height:'80px', width:'100px'
+  },
+  img2:{
+    borderRadius:'30px', height:'40vh', width:'100%', marginLeft:'auto', marginRight:'auto'
+
   },
   avatar: {
     textAlign:'center',

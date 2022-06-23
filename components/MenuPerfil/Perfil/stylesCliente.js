@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 export default makeStyles((theme) => ({
   container1: {
     width: "100%",
-    maxWidth: "400px",
+    maxWidth: "500px",
     marginTop:'20px',
     [theme.breakpoints.down("sm")]: {
       width: "100vw",
@@ -36,6 +36,7 @@ export default makeStyles((theme) => ({
     backgroundColor: "#f1f1f1",
     borderRadius: "10px",
     padding: "10px",
+    maxWidth:'300px',
     marginTop: "10px",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
     [theme.breakpoints.down("sm")]: {

@@ -12,6 +12,7 @@ export default function PerfilCliente({user}){
   const [messageAdd, setMessageAdd] = useState('')
   const [visible, setVisible] = useState(true)
 
+  const [visibleCar, setVisibleCar] = useState(false)
 
   const handleAdd =()=>{
     setVisible(false)
@@ -47,8 +48,8 @@ export default function PerfilCliente({user}){
             </div>
           </div>
             <h2 className={classes.texto1}>Vehiculos</h2>
-        <Link href="#">
-              <a>
+        <Link href="#" >
+              <a onClick={()=> visibleCar ? setVisibleCar(false): setVisibleCar(true)}>
               <div className={classes.container3}>
                 <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/>
                 <div style={{marginLeft:'10px'}}>
@@ -63,16 +64,19 @@ export default function PerfilCliente({user}){
               <Link href="#">
               <a>
               
-                <div className={classes.container6}>
-                <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/>
-                <div style={{marginLeft:'10px'}}>
-                <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/>
-                  <h5 className={classes.texto2} style={{marginTop:'10px'}}>2008</h5>
-                  <h3 className={classes.texto3} style={{fontSize:'26px'}}>{user?.marca}</h3>
-                  <h5 className={classes.texto4} style={{marginBottom:'20px'}}>210.000Km</h5>
-                </div>
-              
-                </div> 
+              {visibleCar && 
+              <div className={classes.container6}>
+              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/>
+              <div style={{marginLeft:'10px'}}>
+              <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/>
+                <h5 className={classes.texto2} style={{marginTop:'10px'}}>2008</h5>
+                <h3 className={classes.texto3} style={{fontSize:'26px'}}>{user?.marca}</h3>
+                <h5 className={classes.texto4} style={{marginBottom:'20px'}}>210.000Km</h5>
+              </div>
+            
+              </div> 
+              }
+                
                 <div className={classes.container3}>
                 <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/>
                 

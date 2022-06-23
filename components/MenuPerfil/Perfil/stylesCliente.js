@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
   container1: {
     width: "100%",
     maxWidth: "400px",
-    marginTop:'50px',
+    marginTop:'20px',
     [theme.breakpoints.down("sm")]: {
       width: "100vw",
       margin:0,
@@ -37,8 +37,13 @@ export default makeStyles((theme) => ({
     borderRadius: "10px",
     padding: "10px",
     marginTop: "10px",
-    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px"
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft:'auto',
+      width:'80vw',
+      marginRight:'auto',
 
+    }
   },
   container4:{
     backgroundColor:'#464646',

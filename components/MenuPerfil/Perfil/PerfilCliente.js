@@ -75,7 +75,10 @@ export default function PerfilCliente({user}){
                 </div> 
                 <div className={classes.container3}>
                 <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/>
-                <div style={{marginLeft:'10px'}}>
+                
+                <div style={{marginLeft:'10px', height:'100px'}}>
+                <FavoriteOutlined fontSize='medium' style={{display:'block',color:'#f50057',backgrounColor:'#f50057', marginLeft:'48vw'}}/>
+
                   <h5 className={classes.texto2}>2008</h5>
                   <h3 className={classes.texto3}>{user?.marca}</h3>
                   <h5 className={classes.texto4}>210.000Km</h5>

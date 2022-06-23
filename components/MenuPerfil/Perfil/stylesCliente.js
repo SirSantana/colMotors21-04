@@ -50,7 +50,7 @@ export default makeStyles((theme) => ({
     marginTop:'20px',
     height:'fit-content',
     width:'90%',
-    marginBottom:'20px',
+    marginBottom:'30px',
     marginLeft:'auto', marginRight:'auto',
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px"
   },

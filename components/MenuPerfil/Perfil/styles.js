@@ -72,7 +72,7 @@ export default makeStyles((theme)=>({
         fontFamily: ' -apple-system, Segoe UI,',
         fontWeight:'600',
         paddingRight:'10px',
-        fontSize:'35px',
+        fontSize:'22px',
         lineHeight:'18px',
         color:'#f1f1f1',
         textAlign:'center'

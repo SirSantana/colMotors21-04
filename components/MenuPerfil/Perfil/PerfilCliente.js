@@ -48,7 +48,6 @@ export default function PerfilCliente({user}){
             </div>
           </div>
             <h2 className={classes.texto1}>Vehiculos</h2>
-        <Link href="#" >
               <a onClick={()=> visibleCar ? setVisibleCar(false): setVisibleCar(true)}>
               <div className={classes.container3}>
                 <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/>
@@ -60,8 +59,6 @@ export default function PerfilCliente({user}){
                 </div>
                 </div> 
               </a>
-              </Link>
-              <Link href="#">
               <a>
               
               {visibleCar && 
@@ -90,7 +87,6 @@ export default function PerfilCliente({user}){
                 </div>
                 </div> 
               </a>
-              </Link>
         </div>
          
          {/* {messageAdd &&

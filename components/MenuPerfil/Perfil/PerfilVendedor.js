@@ -43,7 +43,7 @@ export default function PerfilVendedor({user}){
               title={user?.name}
               subheader={ 'Vendedor'}
               classes={{ subheader: classes.subheader2, title: classes.title2 }}
-              subheaderTypographyProps={{ variant: "body1", color:'#f1f1f1', textAlign:'center' }}
+              subheaderTypographyProps={{textAlign:'center', variant: "body1", color:'#f1f1f1', }}
             />
             <Divider style={{width:'90%', marginLeft:'auto', marginRight:'auto'}}/>
             <CardContent style={{ width:'100%', display:'flex', flexDirection:'column',padding:'0px',  }}>

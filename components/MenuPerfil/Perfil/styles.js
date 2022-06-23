@@ -3,10 +3,7 @@ import { textAlign } from "@material-ui/system";
 
 
 export default makeStyles((theme)=>({
-  starss:{
-    maxWidth:'20px',
-    maxHeight:'20px'
-  },
+  
     card: {
         display: 'flex',
         flexDirection: 'column',
@@ -85,8 +82,7 @@ export default makeStyles((theme)=>({
         height:'50px',
         width:'50px',
         padding:0,
-        margin:'30px',
-        marginLeft:'20px'
+        marginBottom:'10px',
     
       },
       iconAdd:{
@@ -119,9 +115,8 @@ export default makeStyles((theme)=>({
         subheader2:{
           color:'#f1f1f1',
           fontFamily: '-apple-system, Segoe UI,',
-          fontWeight:'500',
-          backgroundColor:'red',
           display:'flex',
+          textAlign:'center', variant: "body1", color:'#f1f1f1'
         },
 },
         

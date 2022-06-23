@@ -55,6 +55,8 @@ export default makeStyles((theme) => ({
     width:'200px',
     [theme.breakpoints.down("sm")]: {
         marginLeft:'10px',
+        width:'45vw',
+
       }
   },
   container6:{

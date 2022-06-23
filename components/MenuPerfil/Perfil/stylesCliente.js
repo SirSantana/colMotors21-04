@@ -15,7 +15,6 @@ export default makeStyles((theme) => ({
   },
   container2: {
     width: "100%",
-    maxWidth: "600px",
     height: "100px",
     display:'flex',
     alignItems:'center',
@@ -46,14 +45,14 @@ export default makeStyles((theme) => ({
     }
   },
   container4:{
-    backgroundColor:'#464646',
+    backgroundColor:'#1b333d',
     borderRadius:'10px',
     marginLeft:'60px', 
     display:'flex',
     padding:'10px', 
     textAlign:'center',flexDirection:'row',
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
-
+    width:'200px',
     [theme.breakpoints.down("sm")]: {
         marginLeft:'10px',
       }
@@ -106,7 +105,7 @@ export default makeStyles((theme) => ({
     margin:'0px 10px 0px 10px', color:'#black', fontSize:'18px', fontWeight:'600'
   },
   texto5:{
-    margin:0,marginLeft:'10px', color:'#f1f1f1', fontSize:'12px', 
+    margin:0,marginLeft:'10px', color:'#f1f1f1', fontSize:'16px', 
 
   },
   texto6:{

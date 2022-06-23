@@ -58,7 +58,7 @@ export default makeStyles((theme) => ({
     borderRadius:'10px', height:'80px', width:'100px'
   },
   img2:{
-    borderRadius:'30px', height:'25vh', width:'100%', marginLeft:'auto', marginRight:'auto'
+    borderRadius:'30px', height:'35vh', width:'100%', marginLeft:'auto', marginRight:'auto'
 
   },
   avatar: {

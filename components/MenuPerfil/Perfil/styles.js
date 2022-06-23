@@ -3,6 +3,10 @@ import { textAlign } from "@material-ui/system";
 
 
 export default makeStyles((theme)=>({
+  starss:{
+    maxWidth:'20px',
+    maxHeight:'20px'
+  },
     card: {
         display: 'flex',
         flexDirection: 'column',
@@ -120,4 +124,5 @@ export default makeStyles((theme)=>({
           display:'flex',
         },
 },
+        
 }))

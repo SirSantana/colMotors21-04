@@ -13,9 +13,9 @@ export default function UserPerfil({ user }) {
 //     setUserr(JSON.parse(localStorage.getItem("profile")));
 //   }, []);
   return (
-    // <Layout title={"Mi perfil | colMotors"}>
+    <Layout title={"Mi perfil | colMotors"}>
       <Perfil user={user} />
-    // </Layout>
+    </Layout>
   );
 }
 

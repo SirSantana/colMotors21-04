@@ -3,6 +3,8 @@ import useStyles from "./styles";
 import { useRouter } from "next/router";
 import { BarChart, Person, RateReview, Stars } from "@material-ui/icons";
 import Image from 'next/image'
+import StarsDoradas from "../../../utils/starsDorada";
+import StarsGray from "../../../utils/starsGray";
 
 
 export default function PerfilVendedor({user}){
@@ -20,13 +22,11 @@ export default function PerfilVendedor({user}){
         <div className={classes.container}>
           <Card sx={{ width: "345px" }} className={classes.card} elevation={8}>
                 <section  style={{display:'flex', flexDirection:'row', alignItems:'center', backgroundColor:'gray', padding:'10px', paddingBottom:0}}>
-                {result === 1 &&  <><Stars className={classes.iconStar}/>  <Stars style={{color:'white'}}/>  <Stars style={{color:'white'}}/><Stars style={{color:'white'}}/> <Stars style={{color:'white'}} /></>}
-                {result === 2 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/>   <Stars style={{color:'white'}}/><Stars style={{color:'white'}}/> <Stars style={{color:'white'}} /></>}
-                {result === 3 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars style={{color:'white'}}/> <Stars style={{color:'white'}} /></>}
-                {result === 4 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/>  <Stars className={classes.iconStar}/><Stars className={classes.iconStar}/> <Stars style={{color:'white'}} /></>}
-                {result === 5 &&  <><Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/> <Stars className={classes.iconStar}/></>}
-                
-                
+                {result === 1 &&  <><StarsDoradas/> <StarsGray/><StarsGray/><StarsGray/><StarsGray/></>}
+                {result === 2 &&  <><StarsDoradas/><StarsDoradas/> <StarsGray/><StarsGray/><StarsGray/></>}
+                {result === 3 &&  <><StarsDoradas/><StarsDoradas/><StarsDoradas/> <StarsGray/><StarsGray/></>}
+                {result === 4 &&  <><StarsDoradas/><StarsDoradas/><StarsDoradas/><StarsDoradas/><StarsGray/> </>}
+                {result === 5 &&  <><StarsDoradas/><StarsDoradas/><StarsDoradas/><StarsDoradas/><StarsDoradas/></>}
                 </section>
           <CardHeader
               style={{padding:'4px'}}

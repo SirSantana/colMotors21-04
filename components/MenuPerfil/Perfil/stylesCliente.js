@@ -50,13 +50,15 @@ export default makeStyles((theme) => ({
     marginTop:'20px',
     height:'fit-content',
     width:'90%',
-    marginLeft:'auto', marginRight:'auto'
+    marginBottom:'20px',
+    marginLeft:'auto', marginRight:'auto',
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px"
   },
   img:{
     borderRadius:'10px', height:'80px', width:'100px'
   },
   img2:{
-    borderRadius:'30px', height:'40vh', width:'100%', marginLeft:'auto', marginRight:'auto'
+    borderRadius:'30px', height:'25vh', width:'100%', marginLeft:'auto', marginRight:'auto'
 
   },
   avatar: {

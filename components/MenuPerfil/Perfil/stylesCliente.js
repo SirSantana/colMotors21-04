@@ -105,7 +105,7 @@ export default makeStyles((theme) => ({
     margin:'0px 10px 0px 10px', color:'#black', fontSize:'18px', fontWeight:'600'
   },
   texto5:{
-    margin:0,marginLeft:'10px', color:'#f1f1f1', fontSize:'16px', 
+    margin:0,marginLeft:'10px', color:'#f1f1f1', fontSize:'14px', 
 
   },
   texto6:{

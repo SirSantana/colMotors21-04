@@ -28,7 +28,7 @@ export default makeStyles((theme) => ({
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
 
     [theme.breakpoints.down("sm")]: {
-      width: "90%",
+      width: "95%",
       marginLeft:'auto',
       marginRight:'auto'
 
@@ -61,6 +61,13 @@ export default makeStyles((theme) => ({
 
       }
   },
+  div1:{
+    marginLeft:'10px',
+    [theme.breakpoints.down("sm")]: {
+      margin:'0'
+
+    }
+  },
   container5:{
     color:'#f1f1f1',
     borderRadius:'10px',
@@ -69,7 +76,7 @@ export default makeStyles((theme) => ({
     backgroundColor:'#464646',
     width:'30%',
     padding:'10px',
-    margin:'20px 10px',
+    margin:'20px 10px 10px 10px',
     [theme.breakpoints.down("sm")]: {
       marginLeft:'5%',
       padding:'7px',
@@ -107,13 +114,14 @@ export default makeStyles((theme) => ({
     backgroundColor:'#464646',
     borderRadius:'10px',
     height:'100px',
-    width:'60%',
+    width:'70%',
     maxWidth:'100px',
     marginLeft:'auto',
     marginRight:'auto',
     marginBottom:'30px',
+    textAlign:'center',
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
-
+    
   },
   img:{
     borderRadius:'10px', height:'80px', width:'100px'

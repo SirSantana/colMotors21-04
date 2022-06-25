@@ -53,7 +53,7 @@ export default function PerfilCliente({user}){
           <div className={classes.container7}>
               <div className={classes.container6}>
               <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/>
-              <div style={{marginLeft:'10px'}}>
+              <div className={classes.div1}>
               {/* <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/> */}
                 <h3 className={classes.texto2} style={{marginTop:'10px'}}>2008</h3>
                 <h4 className={classes.texto3} style={{fontSize:'26px'}}>{user?.marca}</h4>
@@ -67,7 +67,7 @@ export default function PerfilCliente({user}){
               <div className={classes.container8}>
               <div className={classes.container9}>
                   <img src={'/images/editData.png'} alt={'/images/editData'} style={{height:'30%', width:'30%', margin:'25px 35px 5px 35px'}}/>
-                  <h5 className={classes.texto5} style={{}}>Editar Auto</h5>
+                  <h5 className={classes.texto5} style={{margin:'0'}}>Editar Auto</h5>
 
 
                 </div>
@@ -78,7 +78,7 @@ export default function PerfilCliente({user}){
                 </div>
                 <div className={classes.container9}>
                 <Add fontSize="large" style={{heigth:'90px', color:'#f1f1f1', margin:'25px 32px 5px 32px'}}/>
-                <h5 className={classes.texto5}>Nuevo Auto</h5>
+                <h5 className={classes.texto5} style={{margin:0}}>Nuevo Auto</h5>
 
                 </div>
                 

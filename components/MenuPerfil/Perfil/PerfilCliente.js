@@ -1,7 +1,7 @@
 import { Avatar, Button, Card, CardContent, CardHeader, Divider, Paper, Typography,} from "@material-ui/core";
 import useStyles from "./stylesCliente";
 import { useRouter } from "next/router";
-import { Add, BarChart, Check, Favorite, FavoriteBorderOutlined, FavoriteBorderRounded, FavoriteBorderSharp, FavoriteBorderTwoTone, FavoriteOutlined, FavoriteRounded, FavoriteSharp, FavoriteTwoTone, Person, RateReview, Stars } from "@material-ui/icons";
+import { Add, AddCircle, BarChart, Check, Favorite, FavoriteBorderOutlined, FavoriteBorderRounded, FavoriteBorderSharp, FavoriteBorderTwoTone, FavoriteOutlined, FavoriteRounded, FavoriteSharp, FavoriteTwoTone, Person, RateReview, Stars } from "@material-ui/icons";
 import Link from 'next/link'
 import { useEffect, useState } from "react";
 
@@ -27,7 +27,7 @@ export default function PerfilCliente({user}){
         <>
         <div className={classes.container1}>
           <div className={classes.container2}>
-            <div style={{marginLeft:'10px' }}>
+            <div  className={classes.container3}>
             <Avatar src={user?.name?.charAt(0)}
                 className={classes.avatar}
                 alt={user?.name?.charAt(0)}/>
@@ -47,46 +47,77 @@ export default function PerfilCliente({user}){
             </div>
             </div>
           </div>
+          <div className={classes.container5}>
+            <h3 className={classes.texto5} style={{fontSize:'20px'}}>Vehiculos</h3>
+          </div>
+          <div className={classes.container7}>
+              <div className={classes.container6}>
+              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/>
+              <div style={{marginLeft:'10px'}}>
+              {/* <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/> */}
+                <h3 className={classes.texto2} style={{marginTop:'10px'}}>2008</h3>
+                <h4 className={classes.texto3} style={{fontSize:'26px'}}>{user?.marca}</h4>
+                <h5 className={classes.texto4} >210.000Km</h5>
+            <Divider style={{backgroundColor:'gray', height:'3px', width:'95%', marginLeft:'auto', marginRight:'auto'}}/>
+            <h3 className={classes.texto2} style={{marginTop:'10px'}}>Velocidad Maxima:</h3>
+                <h4 className={classes.texto3} style={{fontSize:'26px'}}>Mejoras:</h4>
+                <h5 className={classes.texto4} >Repuestos Cambiados:</h5>
+              </div>
+              </div>
+              <div className={classes.container8}>
+              <div className={classes.container9}>
+                  <img src={'/images/editData.png'} alt={'/images/editData'} style={{height:'30%', width:'30%', margin:'25px 35px 5px 35px'}}/>
+                  <h5 className={classes.texto5} style={{}}>Editar Auto</h5>
+
+
+                </div>
+                <div className={classes.container9}>
+                <Add fontSize="large" style={{heigth:'90px', color:'#f1f1f1', margin:'25px 32px 5px 32px'}}/>
+                <h5 className={classes.texto5} style={{margin:'0', textAlign:'center', lineHeight:'12px'}}>Nuevos Repuestos</h5>
+
+                </div>
+                <div className={classes.container9}>
+                <Add fontSize="large" style={{heigth:'90px', color:'#f1f1f1', margin:'25px 32px 5px 32px'}}/>
+                <h5 className={classes.texto5}>Nuevo Auto</h5>
+
+                </div>
+                
+              </div>
+              </div> 
             {/* <h2 className={classes.texto1}>Vehiculos</h2> */}
-              <a onClick={()=> visibleCar ? setVisibleCar(false): setVisibleCar(true)}>
-              <div className={classes.container3}>
+              {/* <a onClick={()=> visibleCar ? setVisibleCar(false): setVisibleCar(true)}>
+              <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
+
+              <div className={classes.container3} style={{width:'80%'}}>
                 <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/>
                 <div style={{marginLeft:'10px'}}>
                   <h5 className={classes.texto2}>2008</h5>
                   <h3 className={classes.texto3}>{user?.marca}</h3>
                   <h5 className={classes.texto4}>210.000Km</h5>
-
+                </div>
+                </div>
+              <div className={classes.container3} style={{width:'20%'}}>
+                <div style={{marginLeft:'10px', width:'50%'}}>
+                  <AddCircle/>
                 </div>
                 </div> 
-              </a>
-              <a>
-              
-              {visibleCar && 
-              <div className={classes.container6}>
-              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/>
-              <div style={{marginLeft:'10px'}}>
-              <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/>
-                <h5 className={classes.texto2} style={{marginTop:'10px'}}>2008</h5>
-                <h3 className={classes.texto3} style={{fontSize:'26px'}}>{user?.marca}</h3>
-                <h5 className={classes.texto4} style={{marginBottom:'20px'}}>210.000Km</h5>
               </div>
-            
-              </div> 
-              }
-                
-                <div className={classes.container3}>
-                <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/>
-                
-                <div style={{marginLeft:'10px', height:'100px'}}>
-                <FavoriteOutlined fontSize='medium' style={{display:'block',color:'#f50057',backgrounColor:'#f50057', marginLeft:'48vw'}}/>
 
-                  <h5 className={classes.texto2}>2008</h5>
+              </a> */}
+           
+                
+                {/* <div className={classes.container3}> */}
+                {/* <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img}/> */}
+                
+                {/* <div style={{marginLeft:'10px', height:'100px'}}> */}
+                {/* <FavoriteOutlined fontSize='medium' style={{display:'block',color:'#f50057',backgrounColor:'#f50057', marginLeft:'48vw'}}/> */}
+
+                  {/* <h5 className={classes.texto2}>2008</h5>
                   <h3 className={classes.texto3}>{user?.marca}</h3>
                   <h5 className={classes.texto4}>210.000Km</h5>
 
                 </div>
-                </div> 
-              </a>
+                </div>  */}
         </div>
          
          {/* {messageAdd &&

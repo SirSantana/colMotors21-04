@@ -2,15 +2,21 @@ import { makeStyles } from "@material-ui/core";
 
 export default makeStyles((theme) => ({
   container1: {
-    width: "800px",
+    width: "50vw",
     marginTop:'20px',
+   
+    display:'flex',
+    flexDirection:'column',
+      marginLeft:'auto',
+    marginRight:'auto',
     [theme.breakpoints.down("sm")]: {
-      width: "100vw",
-      margin:0,
-      marginTop:'20px',
+      width:'96vw',
+
+     
 
     }
   },
+  
   container2: {
     width: "100%",
     height: "100px",

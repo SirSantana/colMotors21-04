@@ -16,7 +16,7 @@ import { Refresh, Error } from "@material-ui/icons";
 import PrevPosts from "../Posts/Post/PrevPosts";
 
 
-export default function HomeCliente({user,  createPosts}){
+export default function HomeCliente({user, posts, createPosts}){
   const classes = useStyles();
   const router = useRouter();
 
@@ -42,9 +42,9 @@ export default function HomeCliente({user,  createPosts}){
                  </Link>
                </Paper>
                {id ? (
-                 <PrevPosts  />
+                 <PrevPosts posts={posts} />
                ) : (
-                 <Posts  user={user} />
+                 <Posts posts={posts} user={user} />
                )}
  
                {id && (

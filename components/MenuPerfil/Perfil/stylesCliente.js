@@ -81,7 +81,7 @@ export default makeStyles((theme) => ({
     backgroundColor: "#f1f1f1",
     borderRadius: "10px",
     height: "100%",
-    width: "60%",
+    width: "70%",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
   },
   container7: {
@@ -179,6 +179,7 @@ export default makeStyles((theme) => ({
     fontSize: "14px",
     [theme.breakpoints.down("sm")]: {
     marginLeft: "5px",
+    
     },
   },
   texto6: {

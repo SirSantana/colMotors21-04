@@ -1,9 +1,10 @@
-import { Avatar, Button, Card, CardContent, CardHeader, Divider, Paper, Typography,} from "@material-ui/core";
+import { Avatar,Divider} from "@material-ui/core";
 import useStyles from "./stylesCliente";
 import { useRouter } from "next/router";
-import { Add, AddCircle, BarChart, Check, Favorite, FavoriteBorderOutlined, FavoriteBorderRounded, FavoriteBorderSharp, FavoriteBorderTwoTone, FavoriteOutlined, FavoriteRounded, FavoriteSharp, FavoriteTwoTone, Person, RateReview, Stars } from "@material-ui/icons";
+import { Add } from "@material-ui/icons";
 import Link from 'next/link'
 import { useEffect, useState } from "react";
+import AssestsUser from "../../../utils/assetsUserPerfil";
 
 
 export default function PerfilCliente({user}){
@@ -61,23 +62,15 @@ export default function PerfilCliente({user}){
                 <h5 className={classes.texto4} >Repuestos Cambiados:</h5>
               </div>
               </div>
+
+
               <div className={classes.container8}>
-              <div className={classes.container9}>
-                  <img src={'/images/editData.png'} alt={'/images/editData'} style={{height:'30%', width:'30%', margin:'25px 35px 5px 35px'}}/>
-                  <h5 className={classes.texto5} style={{margin:'0'}}>Editar Auto</h5>
+              <AssestsUser image={'/images/editData'} text={'Editar Auto'}/>
+              <AssestsUser text={'Nuevos Repuestos'}/>
+              <AssestsUser text={'Nuevo Auto'}/>
 
-
-                </div>
-                <div className={classes.container9}>
-                <Add fontSize="large" style={{heigth:'90px', color:'#f1f1f1', margin:'25px 32px 5px 32px'}}/>
-                <h5 className={classes.texto5} style={{margin:'0', textAlign:'center', lineHeight:'12px'}}>Nuevos Repuestos</h5>
-
-                </div>
-                <div className={classes.container9}>
-                <Add fontSize="large" style={{heigth:'90px', color:'#f1f1f1', margin:'25px 32px 5px 32px'}}/>
-                <h5 className={classes.texto5} style={{margin:0}}>Nuevo Auto</h5>
-
-                </div>
+                
+                
                 
               </div>
               </div> 

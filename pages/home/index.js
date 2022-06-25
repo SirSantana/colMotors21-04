@@ -7,7 +7,7 @@ import postModel from '../../models/postModel'
 import DBConnect from "../../libs/dbConnect";
 
 
-export default function Home() {
+export default function Home({Postss}) {
     const dispatch = useDispatch()
   const router = useRouter();
 
@@ -38,31 +38,31 @@ export default function Home() {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent createPosts={createPosts} />
+        <HomeComponent createPosts={createPosts} posts={Postss}/>
       </Layout>
     </>
   );
 }
-// export async function getServerSideProps() {
-//   try {
-//     await DBConnect();
-//     const res = await postModel.find().sort([['date', -1]]).limit(6);
-//     const Postss = res.map((el) => {
-//       const Post = el.toObject();
+export async function getServerSideProps() {
+  try {
+    await DBConnect();
+    const res = await postModel.find().sort([['date', -1]]).limit(6);
+    const Postss = res.map((el) => {
+      const Post = el.toObject();
 
-//       Post._id = Post._id.toString();
-//       Post.creator = Post.creator.toString();
-//       Post.cotizaciones = Post.cotizaciones.toString();
-//       Post.date = Post.date.toString();
+      Post._id = Post._id.toString();
+      Post.creator = Post.creator.toString();
+      Post.cotizaciones = Post.cotizaciones.toString();
+      Post.date = Post.date.toString();
 
-//       return Post;
-//     });
-//     return {
-//       props: { Postss,
+      return Post;
+    });
+    return {
+      props: { Postss,
         
-//       }
-//     };
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+      }
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}

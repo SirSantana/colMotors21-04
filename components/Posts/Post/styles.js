@@ -234,15 +234,14 @@ export default makeStyles((theme)=>({
     padding: '0',
     margin:'0',
     fontSize: '18px',
-    fontWeight:'500'
-
   },
   typography1:{
     paddingTop: '4px',
     margin:'0',
     fontSize: '16px',
     lineHeight:'1rem',
-    fontWeight:'400'
+    fontWeight:'400',
+    color:'black'
   },
   cotizarr:{
     marginLeft:'90px',

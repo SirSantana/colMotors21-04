@@ -32,7 +32,7 @@ export default function PostContent({OnePost}){
             <PersonSharp fontSize='large' style={{color:'gray', marginLeft:'3px'}}/>
             
             <Typography
-              style={{ marginLeft: "5px", fontSize:'18px', fontWeight:'600' }}
+              style={{ marginLeft: "5px", color:'black' }}
               className={classes.typography}
             >
               {nombreCreador}

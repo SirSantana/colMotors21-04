@@ -18,7 +18,7 @@ export default function PostActions({OnePost, user, setVisibleDelete}){
           <div style={{ display: "flex", flexDirecction: "row",alignItems:'center',}}>
             <Place style={{color: 'gray', width:'30px', height:'30px'}}/>
             <Typography
-              style={{ marginLeft: "5px" }}
+              style={{ marginLeft: "5px", color:'gray' }}
               variant="body1"
             >
               {OnePost?.lugar}

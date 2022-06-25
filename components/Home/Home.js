@@ -8,7 +8,7 @@ import { handleLogout } from "../../utils/handleLogout";
 import HomeVendedor from "./HomeVendedor";
 import HomeCliente from "./HomeCliente";
 
-export default function HomeComponent({ createPosts}) {
+export default function HomeComponent({ createPosts, posts}) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -52,7 +52,7 @@ export default function HomeComponent({ createPosts}) {
         
       </>}
       <div className={classes.contenedor}>
-    <HomeCliente user={user}  createPosts={createPosts}/>
+    <HomeCliente user={user} posts={posts} createPosts={createPosts}/>
 
     </div>
     </>

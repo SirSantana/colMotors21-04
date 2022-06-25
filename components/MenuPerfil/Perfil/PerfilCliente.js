@@ -9,10 +9,7 @@ import { useEffect, useState } from "react";
 export default function PerfilCliente({user}){
   const classes = useStyles();
   const [userNow, setUserNow] = useState(null)
-  const [messageAdd, setMessageAdd] = useState('')
-  const [visible, setVisible] = useState(true)
 
-  const [visibleCar, setVisibleCar] = useState(false)
 
   const handleAdd =()=>{
     setVisible(false)
@@ -36,12 +33,12 @@ export default function PerfilCliente({user}){
             </div>
 
             <div className={classes.container4}>
-            <div style={{width:'45%'}}>
+            <div style={{width:'55%'}}>
               <h3 style={{marginLeft:0}}className={classes.texto5}>Cotizaciones</h3>
               <h5 className={classes.texto5}>{user?.numeroCotizaciones}</h5>
             </div>
-            <Divider style={{marginLeft:'10px',backgroundColor:'white', height:'45px', width:'2px'}}/>
-            <div style={{width:'45%'}}>
+            <Divider style={{backgroundColor:'white', height:'45px', width:'2px'}}/>
+            <div style={{width:'40%'}}>
               <h3 className={classes.texto5}>Compras</h3>
               <h5 className={classes.texto5}>3</h5>
             </div>

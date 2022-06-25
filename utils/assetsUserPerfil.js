@@ -6,9 +6,9 @@ export default function AssestsUser({ image, text }) {
   return (
     <>
       <div className={classes.container9}>
-        {image === null ? (
+        {image !== "icono" ? (
           <img
-            src={`${image}?.png`}
+            src={`${image}.png`}
             alt={image}
             style={{
               height: "30%",

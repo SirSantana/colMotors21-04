@@ -49,9 +49,8 @@ export default makeStyles((theme) => ({
     textAlign: "center",
     flexDirection: "row",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
-    width: "40%",
+    width: "30%",
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "10px",
       width: "50%",
     },
   },
@@ -83,6 +82,11 @@ export default makeStyles((theme) => ({
     height: "100%",
     width: "70%",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+      margin:'0 auto'
+      
+      },
   },
   container7: {
     display: "flex",
@@ -91,6 +95,11 @@ export default makeStyles((theme) => ({
     width: "100%",
     marginLeft: "10px",
     background: "none",
+    [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    margin:0
+
+    },
   },
   container8: {
     display: "flex",
@@ -98,6 +107,12 @@ export default makeStyles((theme) => ({
     borderRadius: "10px",
     height: "100%",
     width: "40%",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "row",
+      marginTop:'20px',
+      width: "100%",
+  
+      },
   },
   container9: {
     display: "flex",
@@ -169,7 +184,7 @@ export default makeStyles((theme) => ({
     textAlign: "center",
     lineHeight:'14px',
     [theme.breakpoints.down("sm")]: {
-      margin: "0",
+      marginTop: "5px",
       },
   },
   texto5: {

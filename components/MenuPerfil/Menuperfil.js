@@ -57,12 +57,12 @@ export default function MenuPerfil({user, logout}){
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <Link href={`/users/${User}`}>
+                <Link href={`/users/${user?.result?._id}`}>
                 <a>
                 <MenuItem onClick={handleClose}>Perfil</MenuItem>
                 </a>
                 </Link>
-                <Link href={`/users/micuenta/${User}`}>
+                <Link href={`/users/micuenta/${user?.result?._id}`}>
                 <a>
                 <MenuItem onClick={handleClose}>Mis Preguntas</MenuItem>
 

@@ -1,8 +1,5 @@
 import { Avatar,Divider} from "@material-ui/core";
 import useStyles from "./stylesCliente";
-import { useRouter } from "next/router";
-import { Add } from "@material-ui/icons";
-import Link from 'next/link'
 import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 
@@ -34,12 +31,12 @@ export default function PerfilCliente({user}){
             </div>
 
             <div className={classes.container4}>
-            <div style={{width:'55%'}}>
+            <div style={{width:'55%', margin:'auto'}}>
               <h3 style={{marginLeft:0}}className={classes.texto5}>Cotizaciones</h3>
               <h5 className={classes.texto5}>{user?.numeroCotizaciones}</h5>
             </div>
-            <Divider style={{backgroundColor:'white', height:'45px', width:'2px'}}/>
-            <div style={{width:'40%'}}>
+            <Divider style={{backgroundColor:'white', height:'50px',width:'2px'}}/>
+            <div style={{width:'40%',margin:'auto'}}>
               <h3 className={classes.texto5}>Compras</h3>
               <h5 className={classes.texto5}>3</h5>
             </div>
@@ -66,12 +63,9 @@ export default function PerfilCliente({user}){
 
               <div className={classes.container8}>
               <AssestsUser image={'/images/editData'} text={'Editar Auto'}/>
-              <AssestsUser text={'Nuevos Repuestos'}/>
-              <AssestsUser text={'Nuevo Auto'}/>
+              <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
+              <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 
-                
-                
-                
               </div>
               </div> 
             {/* <h2 className={classes.texto1}>Vehiculos</h2> */}

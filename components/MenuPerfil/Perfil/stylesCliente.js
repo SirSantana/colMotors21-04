@@ -11,6 +11,7 @@ export default makeStyles((theme) => ({
     marginRight: "auto",
     [theme.breakpoints.down("sm")]: {
       width: "96vw",
+      height:'100vh'
     },
   },
 
@@ -84,8 +85,8 @@ export default makeStyles((theme) => ({
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
     [theme.breakpoints.down("sm")]: {
       width: "90%",
-      margin:'0 auto'
-      
+      margin:'0 auto',
+
       },
   },
   container7: {
@@ -140,7 +141,7 @@ export default makeStyles((theme) => ({
     marginLeft: "auto",
     marginRight: "auto",
     [theme.breakpoints.down("sm")]: {
-      height: "35%",
+      height: "55%",
     },
   },
   avatar: {

@@ -1,5 +1,6 @@
 import useStyles from "./styles";
 import PerfilCliente from "./PerfilCliente";
+import PerfilVendedor from "./PerfilVendedor";
 
 export default function Perfil({ user }) {
   const classes = useStyles();

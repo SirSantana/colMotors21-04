@@ -10,10 +10,10 @@ export default function PostsActions({Lugar, PostId, userId, PostIdCreator, setV
   const classes = useStyles();
   const router = useRouter()
   const {id} = router.query
-  console.log(userId, PostIdCreator);
     return(
         <>
         <CardActions style={{width:'90%', paddingLeft:'16px', paddingBottom:'5px'}}>
+      
           <div style={{ display: "flex", flexDirecction: "row",alignItems:'center',}}>
             <Place style={{color: 'gray', width:'30px', height:'30px'}}/>
             <Typography

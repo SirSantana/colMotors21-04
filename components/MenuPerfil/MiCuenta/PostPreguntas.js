@@ -48,7 +48,7 @@ export default function PostPreguntas({post, User}){
     return(
         <>
         {visibleDelete === true && <VisibleDelete message={message} handleDelete={handleDelete}/>}
-        <PostCard Post={post} User={User} setVisibleDelete={setVisibleDelete} />
+        <PostCard Post={post} User={User} setVisibleDelete={setVisibleDelete} espaciado={true}/>
 
         {/* {messageCotizar!== null &&
             <Paper className={classes.paper2} style={{width:'250px'}} elevation={3}>

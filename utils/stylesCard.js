@@ -6,15 +6,19 @@ export default makeStyles((theme)=>({
         height:'fit-content',
         display:'flex',
         flexDirection:'column',
-        marginBottom:'10px',
         width:'100%',
-        maxWidth:'400px',
+        maxWidth:'300px',
         marginLeft:'auto',
         marginRight:'auto',
+        marginBottom:'10px',
+        [theme.breakpoints.down('xs')]: {
+          maxWidth:'90vw',
+          
+          },
     },
     container:{
-        marginBottom:'20px',
         backgroundColor:'none',
+        
     },
     title:{
         fontSize:'20px',

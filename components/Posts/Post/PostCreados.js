@@ -14,30 +14,30 @@ import moment from "moment";
 
 
 export default function PostCreador({ OnePost }) {
-  const classes = useStyles();
-  const [visibleDelete, setVisibleDelete] = useState(false);
-  const [cotizar, setCotizar] = useState(false);
-  const router = useRouter();
-  const [user, setUser] = useState(null);
-  const nombreCreador = OnePost?.nombreCreador?.toString();
+  // const classes = useStyles();
+  // const [visibleDelete, setVisibleDelete] = useState(false);
+  // const [cotizar, setCotizar] = useState(false);
+  // const router = useRouter();
+  // const [user, setUser] = useState(null);
+  // const nombreCreador = OnePost?.nombreCreador?.toString();
 
 
-  const handleCotizar = (e) => {
-    setCotizar(cotizar ? false : true);
-    if (user?.result) {
-      router.push(`/posts/${OnePost._id}`);
-    } else {
-      router.push("/auth");
-    }
-  };
+  // const handleCotizar = (e) => {
+  //   setCotizar(cotizar ? false : true);
+  //   if (user?.result) {
+  //     router.push(`/posts/${OnePost._id}`);
+  //   } else {
+  //     router.push("/auth");
+  //   }
+  // };
 
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+  // useEffect(() => {
+  //   setUser(JSON.parse(localStorage.getItem("profile")));
+  // }, []);
 
   return (
     <>
-      <div className={classes.container}>
+      {/* <div className={classes.container}>
         <div className={classes.card}>
           <Card sx={{ width: "345px" }} className={classes.card} elevation={2}>
             <CardHeader
@@ -77,7 +77,7 @@ export default function PostCreador({ OnePost }) {
             </Button>
           </Card>
         </div>
-      </div>
+      </div> */}
 
     </>
   );

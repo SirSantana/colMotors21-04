@@ -12,7 +12,6 @@ import Modal from "./Modal";
 export default function CotizacionVista({Cotizacion,Post,user}) {
   const classes = useStyles();
   const router = useRouter();
-  console.log(Cotizacion);
   return (
     <>
       
@@ -187,7 +186,7 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
 
               <Comentarios user={user} post={Post} Cotizacion={Cotizacion} />
               
-              {Cotizacion.comentarios.length > 0&& Cotizacion?.calificado !== true &&<Modal creator={Cotizacion.creator} cotizacionId={Cotizacion._id}/>}
+              {Cotizacion.comentarios.length > 0 && Cotizacion?.calificado !== true && <Modal creator={Cotizacion.creator} cotizacionId={Cotizacion._id}/>}
               
                 
               

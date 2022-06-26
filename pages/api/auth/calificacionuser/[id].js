@@ -20,10 +20,14 @@ export default async function handler(req, res) {
         const user = await userModel.findById(id)
         user.calificacion.push(form.calificacion)
         await user.save()
+
         const cotizacion = await cotizacionModel.findById(cotizacionId)
+        
         cotizacion.calificado = true
+        console.log(cotizacion);
+
         await cotizacion.save()
-        res.status(200).json(user)
+        res.status(200).json({success:true})
     } catch (error) {
         res.status(403).json(error)
     }

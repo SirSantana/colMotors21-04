@@ -17,7 +17,6 @@ export default (state={authData: null ,users:[]}, action)=>{
             return {...state, user: action.payload}
         case FORGOTPASSWORD:
             localStorage.setItem('email', JSON.stringify({...action?.data}))
-        case UPDATEPASSWORD:
             
         default:
          return state

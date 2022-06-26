@@ -20,7 +20,7 @@ export default function PostsContent({Post}) {
       indice = letter + name[letter];
     }
   }
-  let secondLetter = name.slice(indice, parseInt(indice) + 2);
+  let secondLetter = name?.slice(indice, parseInt(indice) + 2);
   let twoLetters = name[0] + secondLetter;
   let two = twoLetters.replace(/ /g, "");
   return (
@@ -31,7 +31,6 @@ export default function PostsContent({Post}) {
           display: "flex",
           paddingLeft: "10px",
           flexDirection: "column",
-          gap: "10px",
         }}
       >
         <Link href={`/users/${Post.creator}`}>
@@ -62,6 +61,7 @@ export default function PostsContent({Post}) {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            
           }}
         >
           {/* <Image

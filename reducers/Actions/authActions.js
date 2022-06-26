@@ -46,8 +46,8 @@ export const forgotPassword=(form)=> async(dispatch)=>{
 export const calificacionUser=(id, form, cotizacionId)=> async(dispatch)=>{
     try {
         const {data} = await api.calificacionUser(id, form, cotizacionId)
-
-        dispatch({type:CALIFICACIONUSER, payload:data})
+        console.log(data);
+        dispatch({type:CALIFICACIONUSER})
 
     } catch (error) {
         console.log(error);

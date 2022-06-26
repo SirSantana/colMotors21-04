@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 export default function PostButton({user, setMessageCotizar, idCreator, handleCotizar, cotizacionCreada, numeroCotizaciones }){
 const classes = useStyles();
 const router = useRouter(); 
-
 const { id } = router.query;
     return(
         <>

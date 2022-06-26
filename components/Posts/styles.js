@@ -6,7 +6,8 @@ export default makeStyles((theme) => ({
   container: {
     display: 'flex',
     maxWidth:'1000px',
-
+    height:'fit-content',
+    padding:'0',
     // flexDirection: 'row-reverse',
     // flexWrap: 'wrap-reverse',
     // justifyContent: 'flex-end',

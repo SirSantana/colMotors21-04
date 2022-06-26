@@ -88,7 +88,7 @@ const handleIr=()=>{
             </div>
           )}
 
-          <PostCard Post={OnePost} User={user}/>
+          <PostCard Post={OnePost} User={user} setVisibleDelete={setVisibleDelete}/>
 
         </div>
 

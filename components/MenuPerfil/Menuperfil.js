@@ -17,7 +17,6 @@ export default function MenuPerfil({user, logout}){
     const classes = useStyles()
     const dispatch = useDispatch()
     const router = useRouter()    
-    const User = user?.result?._id
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -38,9 +37,7 @@ export default function MenuPerfil({user, logout}){
                 color="inherit"
                 className={classes.menu}
               >
-                <Avatar src={user?.result.imageUrl} className={classes.purple} alt={user?.result.name}>
-              {user?.result?.name?.charAt(0)}
-            </Avatar>
+                <Avatar  className={classes.purple} alt={user?.result.name}>{user?.result?.name?.charAt(0)}</Avatar>
               </IconButton>
               <Menu
                 id="menu-appbar"

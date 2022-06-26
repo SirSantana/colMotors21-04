@@ -33,7 +33,7 @@ export default function PerfilVendedor({user}){
               className={classes.header}
               avatar={
                 <Avatar
-                src={user?.name?.charAt(0)}
+                
                 className={classes.purple}
                 alt={user?.name?.charAt(0)}
               >

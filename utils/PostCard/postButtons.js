@@ -8,7 +8,6 @@ const classes = useStyles();
 const router = useRouter(); 
 
 const { id } = router.query;
-console.log(user);
     return(
         <>
         {user?.result?._id === idCreator ? (

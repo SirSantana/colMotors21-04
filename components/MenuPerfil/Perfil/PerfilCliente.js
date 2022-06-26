@@ -23,9 +23,9 @@ export default function PerfilCliente({user}){
         <div className={classes.container1}>
           <div className={classes.container2}>
             <div  className={classes.container3}>
-            <Avatar src={user?.name?.charAt(0)}
+            <Avatar 
                 className={classes.avatar}
-                alt={user?.name?.charAt(0)}/>
+                alt={user?.name?.charAt(0)}>{user?.name?.charAt(0)}</Avatar>
               <h3 className={classes.nombre1}>{user?.name}</h3>
               <h5 className={classes.texto6}>Cliente</h5>
             </div>

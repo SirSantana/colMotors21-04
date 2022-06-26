@@ -46,7 +46,7 @@ export default function Home({Postss}) {
 export async function getServerSideProps() {
   try {
     await DBConnect();
-    const res = await postModel.find().sort([['date', -1]]).limit(6);
+    const res = await postModel.find().sort([['date', -1]]).limit(3);
     const Postss = res.map((el) => {
       const Post = el.toObject();
 

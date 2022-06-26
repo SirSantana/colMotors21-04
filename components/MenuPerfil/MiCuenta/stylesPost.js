@@ -16,6 +16,14 @@ export default makeStyles((theme)=>({
       margin:0,
       justifyContent:'center'
     },
-  }
+  },
+  cotizar:{
+    width:'90%',
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginBottom: '15px',
+    color:'white',
+    marginTop:'10px'
+  },
   
 }));

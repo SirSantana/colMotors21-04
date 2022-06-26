@@ -3,23 +3,21 @@ import { useEffect, useState } from "react";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
 import FormCotizacion from "../../FormCotizacion/FormCotizacion";
-import PostContent from "./PostContent";
-import PostActions from "./PostActions";
-import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Check, Close, Error } from "@material-ui/icons";
 import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfied from '@material-ui/icons/SentimentVerySatisfied';
 import deletePost from "../../../utils/deletePost";
+import VisibleDelete from "../../../utils/PostCard/visibleDelete";
+import PostCard from "../../../utils/PostCard/postCard";
 
 export default function PostCo({ OnePost, visibleCoti}) {
   const classes = useStyles();
   const [visibleDelete, setVisibleDelete] = useState(false);
   const [message, setMessage] = useState(null);
   const [cotizar, setCotizar] = useState(false);
-  const router = useRouter();
+  const router = useRouter(); 
   const [user, setUser] = useState(null);
-  const nombreCreador = OnePost?.nombreCreador?.toString();
   const dispatch = useDispatch();
   const { id } = router.query;
   const idCreator = OnePost?.creator;
@@ -30,14 +28,6 @@ export default function PostCo({ OnePost, visibleCoti}) {
     deletePost(OnePost._id, router, setMessage);
   };
 
-  const handleCotizar = (e) => {
-    setCotizar(cotizar ? false : true);
-    if (user?.result) {
-      router.push(`/posts/${OnePost._id}`);
-    } else {
-      router.push("/auth");
-    }
-  };
 
   let cotiza = OnePost?.cotizaciones;
   let arrayCotizaciones = [];
@@ -81,41 +71,7 @@ const handleIr=()=>{
 
   return (
     <>
-      {visibleDelete === true && (
-        <>
-          <Paper className={classes.paper2} elevation={3}>
-            <Error style={{ paddingRight: "10px" }} />
-            <Typography
-              className={classes.typo}
-              style={{ fontSize: "14px", color: "white" }}
-            >
-              {message
-                ? message
-                : "Esta seguro que quiere eliminar esta cotizacion?"}{" "}
-            </Typography>
-
-            <br />
-            {message ? null : (
-              <>
-                <Button
-                  variant="contained"
-                  style={{ marginRight: "10px" }}
-                  onClick={() => setVisibleDelete(false)}
-                >
-                  <Close fontSize="medium" />
-                </Button>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  onClick={handleDelete}
-                >
-                  <Check fontSize="medium" />
-                </Button>
-              </>
-            )}
-          </Paper>
-        </>
-      )}
+        {visibleDelete === true && <VisibleDelete  message={message} handleDelete={handleDelete} setVisibleDelete={setVisibleDelete}/>}
       
       
       <div className={classes.container}>
@@ -132,84 +88,8 @@ const handleIr=()=>{
             </div>
           )}
 
-          <Card sx={{ width: "345px" }} className={classes.card} elevation={2}>
-            <CardHeader
-            style={{padding:'4px'}}
-              className={classes.header}
-              avatar={
-                <Avatar
-                  src={`/images/${OnePost?.marca}.png`}
-                  className={classes.purple}
-                  alt={OnePost?.marca}
-                >
-                  {nombreCreador?.substr(0, 1)}
-                </Avatar>
-              }
-              title={OnePost?.referencia}
-              classes={{ subheader: classes.subheader2, title: classes.title2 }}
-              subheaderTypographyProps={{ variant: "body2" }}
-              subheader={moment(OnePost?.date).fromNow()}
-            />
+          <PostCard Post={OnePost} User={user}/>
 
-            <Divider></Divider>
-
-            <PostContent OnePost={OnePost} />
-
-            <PostActions
-              user={user}
-              OnePost={OnePost}
-              setVisibleDelete={setVisibleDelete}
-            />
-          {messageCotizar!== null &&
-            <Paper className={classes.paper2} style={{width:'250px'}} elevation={3}>
-            <Typography
-            className={classes.typo}
-            style={{ fontSize: "14px", color: "white" }}
-              >
-              {messageCotizar}
-            </Typography>
-            </Paper>
-            }
-            {user?.result?._id === idCreator ? (
-              <Button
-                color="primary"
-                variant="contained"
-                className={classes.cotizar}
-                onClick={handleCotizar}
-              >
-                Mira las Cotizaciones
-              </Button>
-            ) : id !== undefined ? (
-              <Button
-                color="primary"
-                variant="contained"
-                fullWidth
-                className={classes.cotizar}
-              >
-                {Math.round(OnePost.cotizaciones.length / 24)+ ' Cotizaciones'}
-              </Button>
-            ) : (
-              user?.result.role.length >1 ? <Button
-              color={cotizacionCreada ? 'primary': 'secondary'}
-              variant="contained"
-              fullWidth
-              className={classes.cotizar}
-              onClick={handleCotizar}
-            >
-              {cotizacionCreada ? "Ya Cotizaste" : "Cotiza ya!"}
-            </Button>
-            :
-            <Button
-              color={cotizacionCreada ? 'primary': 'secondary'}
-              fullWidth
-              variant="outlined"
-              className={classes.cotizar}
-              onClick={()=>setMessageCotizar('Si estas en Movil, en la parte superior encontraras el formulario, si estas en computador, al lado derecho superior')}
-            >
-              Crea tu cotizacion
-            </Button>
-            )}
-          </Card>
         </div>
 
         {user?.result._id !== OnePost.creator && !cotizacionCreada ? (

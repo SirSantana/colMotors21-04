@@ -30,16 +30,11 @@ export default function MiCuenta({ Posts}) {
 
       {findPosts?.length > 0 
       ? 
-      <Paper className={classes.container} sx={{ p: 2, margin: 'auto', maxWidth: 900, flexGrow: 1 }}>
-      <Grid container spacing={2} className={classes.grid}>
-        
-            <Grid item xs>
+      <div className={classes.container}>
               {findPosts.map((post) => (
-                <PostPreguntas post={post} key={post._id} />
+                <PostPreguntas post={post} User={user} key={post._id} />
               ))}
-        </Grid>
-      </Grid>
-    </Paper>
+      </div>
       
       :<Paper style={{maxWidth: 430, display: 'flex'}} sx={{ p: 2, margin: 'auto', maxWidth: 300, flexGrow: 1 }} elevation={6}>
         <Typography style={{marginRight: '22px'}} gutterBottom variant="subtitle1" component="div">

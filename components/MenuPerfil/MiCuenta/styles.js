@@ -57,11 +57,13 @@ export default makeStyles((theme) => ({
   container: {
     borderRadius: 5,
     display: 'flex',
-    width: '600px',
+    width: '1000px',
     padding:'20px',
+    flexDirection:'column',
+    backgroundColor:'none',
     [theme.breakpoints.down("sm")]: {
       margin:0,
-      width: "75%",
+      width: "100%",
     },
   },
 

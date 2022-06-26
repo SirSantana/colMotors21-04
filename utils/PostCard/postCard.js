@@ -37,6 +37,7 @@ export default function PostCard({ Post, User,setVisibleDelete, espaciado }) {
 
   const handleCotizar = (e) => {
     setCotizar(cotizar ? false : true);
+    console.log(User);
     if (User?.result) {
       router.push(`/posts/${Post._id}`);
     } else {

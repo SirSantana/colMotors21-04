@@ -24,6 +24,7 @@ const { id } = router.query;
                 variant="contained"
                 fullWidth
                 className={classes.cotizar}
+                onClick={handleCotizar}
               >
                 {numeroCotizaciones+ ' Cotizaciones'}
               </Button>

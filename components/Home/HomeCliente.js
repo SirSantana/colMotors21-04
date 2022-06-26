@@ -41,11 +41,7 @@ export default function HomeCliente({user, posts, createPosts}){
                    </a>
                  </Link>
                </Paper>
-               {id ? (
-                 <PrevPosts posts={posts} />
-               ) : (
                  <Posts posts={posts} user={user} />
-               )}
  
                {id && (
                  <Button

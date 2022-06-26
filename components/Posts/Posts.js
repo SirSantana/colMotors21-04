@@ -22,7 +22,6 @@ export default function Posts({posts, user}) {
               )
           )}
           <div style={{marginRight:'auto', marginLeft:'auto', marginTop:'20px', }}>
-          <Button variant="contained" color="secondary" style={{marginRight:"20px"}}>Ver mas cotizaciones</Button>
           {user && <Button variant="contained" color="secondary" onClick={()=> router.push(`/home/${user?.result._id}`)}>Ver mis cotizaciones</Button>}
 
           </div>

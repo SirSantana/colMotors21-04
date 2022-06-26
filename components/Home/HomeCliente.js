@@ -13,7 +13,6 @@ import Link from "next/link";
 import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import { Refresh, Error } from "@material-ui/icons";
-import PrevPosts from "../Posts/Post/PrevPosts";
 
 
 export default function HomeCliente({user, posts, createPosts}){

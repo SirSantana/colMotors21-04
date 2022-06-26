@@ -17,7 +17,7 @@ export default async function handler(req, res){
             await createPost(req, res)
     
         default:
-            res.status(403).json({success:false, error: 'Ha ocurrido un error'})
+            res.status(403).json({success:false, error: 'Ha ocurrido un error, cierra la sesion y regresa'})
     }
 }
 export const getPosts = async (req, res) => {

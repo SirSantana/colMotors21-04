@@ -10,6 +10,7 @@ export default function PostsActions({Lugar, PostId, userId, PostIdCreator, setV
   const classes = useStyles();
   const router = useRouter()
   const {id} = router.query
+  
     return(
         <>
         <CardActions style={{width:'90%', paddingLeft:'16px', paddingBottom:'5px'}}>
@@ -34,7 +35,8 @@ export default function PostsActions({Lugar, PostId, userId, PostIdCreator, setV
             <Share />
           </IconButton> */}
 
-          {userId === PostIdCreator && (
+          {setVisibleDelete !== undefined ? 
+          userId === PostIdCreator && (
             <Link href={`/posts/${PostId}`}>
             <a>
             {id !== undefined ?
@@ -48,7 +50,10 @@ export default function PostsActions({Lugar, PostId, userId, PostIdCreator, setV
           }
             </a>
             </Link>
-          )}
+          )
+          
+          :null}
+          
         </CardActions>
         </>
     )

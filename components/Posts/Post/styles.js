@@ -2,13 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 import { maxWidth } from '@material-ui/system';
 export default makeStyles((theme)=>({
-  media: {
-    height: 0,
-    paddingTop: '86.25%',
-    backgroundColor: 'rgb(0, 0, 0, )',
-    backgroundBlendMode: 'darken',
-    justifyContent: 'space-between'
-  },
+  
   border: {
     border: 'solid',
   },

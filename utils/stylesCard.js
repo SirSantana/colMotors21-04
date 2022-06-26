@@ -16,6 +16,13 @@ export default makeStyles((theme)=>({
           
           },
     },
+    media: {
+      height: 0,
+      paddingTop: '86.25%',
+      backgroundColor: 'rgb(0, 0, 0, )',
+      backgroundBlendMode: 'darken',
+      justifyContent: 'space-between'
+    },
     container:{
         backgroundColor:'none',
         

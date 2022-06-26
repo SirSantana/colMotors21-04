@@ -19,7 +19,7 @@ export default function MiCuentaa({Postss}){
 export async function getServerSideProps() {
     try {
       await DBConnect();
-      const res = await postModel.find();
+      const res = await postModel.find().sort([['date', -1]]);
       const Postss = res.map((el) => {
         const Post = el.toObject();
   

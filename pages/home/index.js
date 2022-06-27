@@ -18,7 +18,7 @@ export default function Home({Postss}) {
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(postData),
       }).then((response)=> response.json())
-        .then((data)=> router.push(`/posts/${data?.newPost?._id}`))
+        .then((data)=> router.push(`/posts/${data.newPost._id}`))
         .catch(err=> console.log(err))
       
     } catch (error) {
@@ -30,7 +30,7 @@ export default function Home({Postss}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent createPosts={createPosts} posts={Postss}/>
+        <HomeComponent  createPosts={createPosts} posts={Postss}/>
       </Layout>
     </>
   );

@@ -7,7 +7,7 @@ import { createPost } from "../../reducers/Actions/postActions";
 import MenuLogos from "../MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import Link from 'next/link'
-import Image from 'next/image'
+import {useSelector} from 'react-redux'
 import { Check } from "@material-ui/icons";
 import Buscador from "../Navbar/Buscador";
 // import {useDispatch} from 'react-redux'
@@ -29,7 +29,9 @@ export default function Form({ user}) {
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
   const router = useRouter();
+  const {posts, isLoading} = useSelector(state=> state.posts)
 
+  console.log(isLoading);
 
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
@@ -40,8 +42,11 @@ export default function Form({ user}) {
       setChange(change ? false: true)
       dispatch(createPost({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais }, router))
       // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
+      if(isLoading === true){
+       router.push(`/users/micuenta/${user?.result?._id}`);
+
+      }
       setPostData(initial);
-      // router.reload();
   };
   return (
     <>

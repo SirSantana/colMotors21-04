@@ -26,7 +26,6 @@ export const getPost = (id) => async (dispatch) => {
 export const getPosts = () => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-    console.log("Hola1");
     const { data } = await api.getAllPosts();
     dispatch({ type: GET_ALL, payload: data });
     dispatch({ type: END_LOADING });
@@ -37,10 +36,13 @@ export const getPosts = () => async (dispatch) => {
 
 export const createPost = (post, router) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
 
-    const res = await api.createPost(post, router);
-   
-    dispatch({ type: CREATE_POST, payload: res });
+    const { data } = await api.createPost(post);
+    
+    dispatch({ type: CREATE_POST, payload: data.newPost });
+    dispatch({ type: END_LOADING });
+
   } catch (error) {
     console.log(error.message);
   }

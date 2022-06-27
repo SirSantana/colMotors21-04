@@ -15,7 +15,7 @@ API.interceptors.request.use((req) => {
 
 export const getAllPosts =()=> API.get("api/posts")
 export const createComment=(body, id)=> API.post(`api/comentario/${id}`, body)
-export const createPost = (post, router)=> API.post("api/posts", post).then((({data})=> router.push(`/posts/${data.newPost._id}`)))
+export const createPost = (post)=> API.post("api/posts", post)
 //  export const favoritePost = (id)=> API.patch(`/api/posts/${id}/favoritePost`)
 // export const deletePost = (id)=> API.delete(`api/posts/${id}`)
 

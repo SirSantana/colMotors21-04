@@ -41,7 +41,7 @@ console.log(router);
 
     const { data } = await api.createPost(post);
     dispatch({ type: CREATE_POST, payload: data });
-    router.reload()
+    router.push('/')
   } catch (error) {
     console.log(error.message);
   }

@@ -38,7 +38,8 @@ export const getPosts = () => async (dispatch) => {
 export const createPost = (post, router) => async (dispatch) => {
   try {
 
-    const { data } = await api.createPost(post);
+    const { data } = await api.createPost(post)
+    .then(data=>  router.push(`/posts/${data.newPost._id}`));
     // console.log(data);
     // if(data){
     //   router.push(`/posts/${data.newPost._id}`)

@@ -40,8 +40,11 @@ console.log(router);
   try {
 
     const { data } = await api.createPost(post);
+    if(data){
+      router.push(`/posts/${data.newPost._id}`)
+    }
     dispatch({ type: CREATE_POST, payload: data });
-    router.push('/')
+    
   } catch (error) {
     console.log(error.message);
   }

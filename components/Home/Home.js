@@ -27,7 +27,8 @@ export default function HomeComponent({posts}) {
         method: "POST",
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(postData),
-      }).then((res)=> router.reload())
+      }).then(res=> res.json())
+        .then((data)=> router.push(`/posts/${data?.newPost?._id}`))
         .catch(err=> console.log(err))
       
     } catch (error) {

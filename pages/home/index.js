@@ -21,9 +21,12 @@ export default function Home({Postss}) {
         body: JSON.stringify(postData),
         
       });
+      if(res.ok){
+        return router.push("/home")
+      }
       if(!res.ok){
         throw new Error("HTTP error " + res.status);
-      }
+      }else{}
     } catch (error) {
       console.log(error);
     }

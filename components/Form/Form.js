@@ -37,8 +37,8 @@ export default function Form({ user}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setChange(change ? false: true)
-      dispatch(createPost({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais }, router))
+      setChange(change ? false: true)
+      dispatch(createPost({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais }))
       // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
       setPostData(initial);
       // router.reload();

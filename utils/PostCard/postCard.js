@@ -16,8 +16,6 @@ export default function PostCard({ Post, User,setVisibleDelete, espaciado }) {
   const classes = useStyles();
   const [cotizar, setCotizar] = useState(false);
   const router = useRouter(); 
-  const [user, setUser] = useState(null);
-  const { id } = router.query;
   const idCreator = Post?.creator;
   const [messageCotizar, setMessageCotizar] = useState(null)
   const numeroCotizaciones = Math.round(Post?.cotizaciones?.length / 24)

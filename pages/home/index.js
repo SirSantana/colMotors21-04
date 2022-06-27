@@ -24,10 +24,6 @@ export default function Home({Postss}) {
       if(!res.ok){
         throw new Error("HTTP error " + res.status);
       }
-      const data = res;
-      if (data.ok) {
-        router.push('/home')
-      }
     } catch (error) {
       console.log(error);
     }

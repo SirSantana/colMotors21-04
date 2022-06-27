@@ -38,13 +38,9 @@ export const getPosts = () => async (dispatch) => {
 export const createPost = (post, router) => async (dispatch) => {
   try {
 
-    const { data } = await api.createPost(post)
-    .then(data=>  router.push(`/posts/${data.newPost._id}`));
-    // console.log(data);
-    // if(data){
-    //   router.push(`/posts/${data.newPost._id}`)
-    // }
-    dispatch({ type: CREATE_POST, payload: data.newPost });
+    const res = await api.createPost(post, router);
+   
+    dispatch({ type: CREATE_POST, payload: res });
   } catch (error) {
     console.log(error.message);
   }

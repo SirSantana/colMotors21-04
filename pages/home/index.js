@@ -11,13 +11,26 @@ export default function Home({Postss}) {
     const dispatch = useDispatch()
   const router = useRouter();
 
-  
+  const createPosts = async (postData) => {
+    try {
+      await fetch("/api/posts/", {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(postData),
+      }).then((response)=> response.json())
+        .then((data)=> router.push(`/posts/${data?.newPost?._id}`))
+        .catch(err=> console.log(err))
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
   
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent  posts={Postss}/>
+        <HomeComponent createPosts={createPosts} posts={Postss}/>
       </Layout>
     </>
   );

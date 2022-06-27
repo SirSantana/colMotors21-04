@@ -8,7 +8,7 @@ import { handleLogout } from "../../utils/handleLogout";
 import HomeVendedor from "./HomeVendedor";
 import HomeCliente from "./HomeCliente";
 
-export default function HomeComponent({posts}) {
+export default function HomeComponent({posts, createPosts}) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -21,20 +21,7 @@ export default function HomeComponent({posts}) {
   if(user=== null){
     router.replace('/auth')
   }
-  const createPosts = async (postData) => {
-    try {
-      await fetch("/api/posts/", {
-        method: "POST",
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify(postData),
-      }).then((response)=> response.json())
-        .then((data)=> router.push(`/posts/${data?.newPost?._id}`))
-        .catch(err=> console.log(err))
-      
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));

@@ -41,7 +41,7 @@ export default function Form({createPosts, user}) {
       // dispatch(createPost({ ...postData, marca: marcaa }, router))
       createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
       setPostData(initial);
-      router.push('/home');
+      router.push(`/users/micuenta/${user?.result?._id}`);
   };
   return (
     <>

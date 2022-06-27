@@ -13,20 +13,17 @@ export default function Home({Postss}) {
 
   const createPosts = async (postData) => {
     try {
-      const res = await fetch("/api/posts/" 
+       await fetch("/api/posts/" 
       // https://col-motors21-04.vercel.app/api/posts",
       , {
         method: "POST",
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(postData),
         
-      });
-      if(res.ok){
-        return router.push("/home")
-      }
-      if(!res.ok){
-        throw new Error("HTTP error " + res.status);
-      }else{}
+      }).then((res)=> router.push("/home"))
+        .catch((err)=> console.log(err))
+      
+      
     } catch (error) {
       console.log(error);
     }

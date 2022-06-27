@@ -39,12 +39,12 @@ export const createPost = (post, router) => async (dispatch) => {
   try {
 
     const { data } = await api.createPost(post);
-console.log(data);
+    console.log(data);
     
     dispatch({ type: CREATE_POST, payload: data });
-    if(data){
-      router.push(`/posts/${data?.newPost?._id}`)
-    }
+    // if(data){
+    //   router.push(`/posts/${data?.newPost?._id}`)
+    // }
   } catch (error) {
     console.log(error.message);
   }

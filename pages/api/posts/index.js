@@ -33,8 +33,6 @@ export const createPost=async(req, res)=>{
     const {body} = req;
     try {
         const newPost = new postModel(body)
-        console.log(newPost);
-        await newPost.save()
         const user = await userModel.findById(body.creator)
         await user.posts.push(newPost)
         user.save()

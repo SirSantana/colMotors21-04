@@ -36,13 +36,12 @@ export const getPosts = () => async (dispatch) => {
 };
 
 export const createPost = (post, router) => async (dispatch) => {
-
+console.log(router);
   try {
-    dispatch({ type: START_LOADING });
 
     const { data } = await api.createPost(post);
     dispatch({ type: CREATE_POST, payload: data });
-    dispatch({ type: END_LOADING });
+    router.reload()
   } catch (error) {
     console.log(error.message);
   }

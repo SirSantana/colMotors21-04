@@ -41,7 +41,7 @@ export default function Form({ user}) {
       dispatch(createPost({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais }, router))
       // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
       setPostData(initial);
-      router.reload();
+      // router.reload();
   };
   return (
     <>

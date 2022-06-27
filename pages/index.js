@@ -177,7 +177,7 @@ export default function Home() {
         </div>
 
         <a
-          href="https://github.com/vercel/next.js/tree/canary/examples"
+          href="#"
           className={styles.card}
         >
           <h2>¿Eres Vendedor? &rarr;</h2>

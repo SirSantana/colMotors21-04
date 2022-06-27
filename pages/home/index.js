@@ -13,16 +13,14 @@ export default function Home({Postss}) {
 
   const createPosts = async (postData) => {
     try {
-       await fetch("/api/posts/" 
-      // https://col-motors21-04.vercel.app/api/posts",
-      , {
+      await fetch("/api/posts/", {
         method: "POST",
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(postData),
         
-      }).then((res)=> router.push("/home"))
-        .catch((err)=> console.log(err))
-      
+      }).then(res => res.json())
+        .then(data=> data.success? router.reload(): null)
+        .catch(err=> console.log(err))
       
     } catch (error) {
       console.log(error);

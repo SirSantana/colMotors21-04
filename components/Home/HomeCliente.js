@@ -15,7 +15,7 @@ import Posts from "../Posts/Posts";
 import { Refresh, Error } from "@material-ui/icons";
 
 
-export default function HomeCliente({user, posts, createPosts}){
+export default function HomeCliente({user, posts}){
   const classes = useStyles();
   const router = useRouter();
 
@@ -54,7 +54,7 @@ export default function HomeCliente({user, posts, createPosts}){
                )}
              </Grid>
              <Grid item xs={12} sm={6} md={3} style={{ paddingTop: "10px" }}>
-               <Form createPosts={createPosts} user={user} />
+               <Form  user={user} />
              </Grid>
            </Grid>
          </Container>

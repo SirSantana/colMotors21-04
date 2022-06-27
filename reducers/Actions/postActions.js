@@ -1,6 +1,7 @@
 import * as api from "../Api/index";
 import {
   CREATE_COMMENT,
+  CREATE_POST,
   // CREATE_POST,
   // DELETE_POST,
   // CREATE_POST,
@@ -34,18 +35,20 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
-// export const createPost = (post, router) => async (dispatch) => {
+export const createPost = (post, router) => async (dispatch) => {
 
-//   try {
-//     dispatch({ type: START_LOADING });
+  try {
+    console.log(post);
+    dispatch({ type: START_LOADING });
 
-//     const { data } = await api.createPost(post);
-//     dispatch({ type: CREATE_POST, payload: data });
-//     dispatch({ type: END_LOADING });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
+    const { data } = await api.createPost(post);
+    dispatch({ type: CREATE_POST, payload: data });
+    router.push(`/posts/${data.newPost._id}`)
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 // export const favoritePost = (id) => async (dispatch) => {
 //   try {
 //     const { data } = await api.favoritePost(id);

@@ -47,7 +47,7 @@ export default function PerfilCliente({user}){
 
         <Vehiculos userMarca={user?.marca}/>
         
-            <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>
+            {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>
             <div style={{borderRadius:'5px', border:'2px solid lightGray', padding:'30px', width:'100px'}}>
             <AddAPhoto/>
             </div>
@@ -58,7 +58,7 @@ export default function PerfilCliente({user}){
             </Button>
             </div>
             
-            </div>
+            </div> */}
         </div>
        
         </div>

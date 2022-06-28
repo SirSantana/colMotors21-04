@@ -27,7 +27,6 @@ export default function Modal({creator, cotizacionId}) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  console.log(creator);
   const handleClose = () => {
     setOpen(false);
   };

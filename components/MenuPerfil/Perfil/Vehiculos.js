@@ -1,11 +1,14 @@
 import { Button, Divider } from "@material-ui/core";
 import { AddAPhoto } from "@material-ui/icons";
+import { useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
+import Modal from "./Modal";
 import useStyles from "./stylesCliente";
 
 
 export default function Vehiculos({userMarca}){
   const classes = useStyles();
+  const [visibleEdit, setVisibleEdit] = useState(false)
 
     return(
         <>
@@ -18,7 +21,7 @@ export default function Vehiculos({userMarca}){
               {/* <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/> */}
            <div className={classes.div2}>
            <AddAPhoto className={classes.icon}/>
-           <Button style={{margin:'0 auto 15% auto',  width:'180px'}} variant="contained">
+           <Button onClick={()=> setVisibleEdit(true)} style={{margin:'0 auto 15% auto',  width:'180px'}} variant="contained">
               Agregar Imagen
             </Button>
            </div>
@@ -38,12 +41,14 @@ export default function Vehiculos({userMarca}){
 
 
               <div className={classes.container8}>
+              <a onClick={()=> setVisibleEdit(true)} style={{cursor:'pointer'}}>
               <AssestsUser image={'/images/editData'} text={'Editar Auto'}/>
+              </a>
               <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
               <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 
               </div>
-            
+              {visibleEdit && <Modal visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit}/>}
               </div> 
         </>
     )

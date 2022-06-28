@@ -13,7 +13,7 @@ const UserModel = new mongoose.Schema({
     },
     pais:{type:String},
     marca:{type:String, required:true},
-    vehiculos:[{type:Object}],
+    cotizaciones: [{type: mongoose.Schema.Types.ObjectId, ref: 'Vehiculo'}],
     id: {type: String},
     posts:[{
       type: mongoose.Schema.Types.ObjectId,

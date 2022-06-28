@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
     marginRight: "auto",
     [theme.breakpoints.down("sm")]: {
       width: "96vw",
-      height:'100vh'
+      height: "100vh",
     },
   },
 
@@ -61,6 +61,21 @@ export default makeStyles((theme) => ({
       margin: "0",
     },
   },
+  div2: {
+    margin: "20px",
+    border: "3px solid lightGray",
+    borderRadius: "10px",
+    width: "90%",
+    height: "90%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent:'center',
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 auto",
+      padding:0,
+
+    },
+  },
   container5: {
     color: "#f1f1f1",
     borderRadius: "10px",
@@ -85,9 +100,8 @@ export default makeStyles((theme) => ({
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
     [theme.breakpoints.down("sm")]: {
       width: "90%",
-      margin:'0 auto',
-
-      },
+      margin: "0 auto",
+    },
   },
   container7: {
     display: "flex",
@@ -97,9 +111,8 @@ export default makeStyles((theme) => ({
     marginLeft: "10px",
     background: "none",
     [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    margin:0
-
+      flexDirection: "column",
+      margin: 0,
     },
   },
   container8: {
@@ -110,10 +123,9 @@ export default makeStyles((theme) => ({
     width: "40%",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "row",
-      marginTop:'20px',
+      marginTop: "20px",
       width: "100%",
-  
-      },
+    },
   },
   container9: {
     display: "flex",
@@ -144,6 +156,20 @@ export default makeStyles((theme) => ({
       height: "55%",
     },
   },
+  icon: {
+    borderRadius: "10px",
+    height: "15%",
+    width: "20%",
+    color: "gray",
+    fontSize: "20px",
+    margin: "0 auto",
+    padding: "20%",
+    paddingBottom: "10px",
+    [theme.breakpoints.down("sm")]: {
+      height: "15%",
+    },
+  },
+
   avatar: {
     textAlign: "center",
     marginLeft: "auto",
@@ -168,8 +194,7 @@ export default makeStyles((theme) => ({
   texto3: {
     margin: 0,
     marginLeft: "10px",
-    lineHeight:'24px',
-
+    lineHeight: "24px",
   },
   texto4: {
     marginLeft: "10px",
@@ -183,10 +208,10 @@ export default makeStyles((theme) => ({
     fontSize: "18px",
     fontWeight: "600",
     textAlign: "center",
-    lineHeight:'14px',
+    lineHeight: "14px",
     [theme.breakpoints.down("sm")]: {
       marginTop: "5px",
-      },
+    },
   },
   texto5: {
     margin: 0,
@@ -194,8 +219,7 @@ export default makeStyles((theme) => ({
     color: "#f1f1f1",
     fontSize: "14px",
     [theme.breakpoints.down("sm")]: {
-    marginLeft: "5px",
-    
+      marginLeft: "5px",
     },
   },
   texto6: {

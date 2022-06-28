@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import FileBase64 from "react-file-base64";
 import { useDispatch } from "react-redux";
 import { createPost } from "../../reducers/Actions/postActions";
-import MenuLogos from "../MenuLogos/MenuLogos";
+import MenuLogos from "../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import Link from 'next/link'
 import {useSelector} from 'react-redux'
@@ -29,9 +29,8 @@ export default function Form({ user}) {
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
   const router = useRouter();
-  const {posts, isLoading} = useSelector(state=> state.posts)
 
-  console.log(isLoading);
+  console.log(user);
 
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
@@ -42,10 +41,7 @@ export default function Form({ user}) {
       setChange(change ? false: true)
       dispatch(createPost({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais }, router))
       // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
-      if(isLoading === true){
-       router.push(`/users/micuenta/${user?.result?._id}`);
-
-      }
+     
       setPostData(initial);
   };
   return (
@@ -75,6 +71,7 @@ export default function Form({ user}) {
 
     
         <MenuLogos marca={marcaa} setMarca={setMarca} />
+
         <form
           autoComplete="off"
           noValidate

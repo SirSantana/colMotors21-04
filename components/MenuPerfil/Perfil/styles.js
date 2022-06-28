@@ -118,6 +118,7 @@ export default makeStyles((theme)=>({
           display:'flex',
           textAlign:'center', variant: "body1", color:'#f1f1f1'
         },
+       
 },
         
 }))

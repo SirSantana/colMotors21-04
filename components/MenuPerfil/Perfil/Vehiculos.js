@@ -41,9 +41,7 @@ export default function Vehiculos({userMarca}){
 
 
               <div className={classes.container8}>
-              <a onClick={()=> setVisibleEdit(true)} style={{cursor:'pointer'}}>
-              <AssestsUser image={'/images/editData'} text={'Editar Auto'}/>
-              </a>
+              <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
               <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
               <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 

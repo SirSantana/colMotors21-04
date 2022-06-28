@@ -1,15 +1,17 @@
 import { TextField } from "@material-ui/core";
 import { useState } from "react";
 import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
+import useStyles from "./styles";
 
 
 
 export default function FormAddVehiculos(){
   const [marcaa, setMarca] = useState(null);
+  const classes = useStyles()
 
     return(
         <>
-        <form>
+        <form style={{display:'flex',flexDirection:'column',  gap:'20px'}}>
         <MenuLogos marca={marcaa} setMarca={setMarca}/>
         <TextField
               name="referencia"
@@ -19,7 +21,6 @@ export default function FormAddVehiculos(){
               // value={postData.referencia}
             //   onChange={handleChange}
               minRows={1}
-            //   className={classes.card}
         />
         <TextField
               name="referencia"
@@ -29,7 +30,7 @@ export default function FormAddVehiculos(){
               // value={postData.referencia}
             //   onChange={handleChange}
               minRows={1}
-            //   className={classes.card}
+
         />
         <TextField
               name="referencia"
@@ -39,7 +40,7 @@ export default function FormAddVehiculos(){
               // value={postData.referencia}
             //   onChange={handleChange}
               minRows={1}
-            //   className={classes.card}
+
         />
         <TextField
               name="referencia"
@@ -49,7 +50,7 @@ export default function FormAddVehiculos(){
               // value={postData.referencia}
             //   onChange={handleChange}
               minRows={1}
-            //   className={classes.card}
+
         />
 
         </form>

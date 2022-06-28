@@ -7,10 +7,10 @@ import { createPost } from "../../reducers/Actions/postActions";
 import MenuLogos from "../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import Link from 'next/link'
-import {useSelector} from 'react-redux'
 import { Check } from "@material-ui/icons";
-import Buscador from "../Navbar/Buscador";
-// import {useDispatch} from 'react-redux'
+import { convertidor } from "../../libs/convertidorFileBase64";
+
+
 const initial = {
   marca: "",
   referencia: "",
@@ -28,9 +28,9 @@ export default function Form({ user}) {
   // const dispatch = useDispatch()
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
+  const [image, setImage] = useState(null)
   const router = useRouter();
 
-  console.log(user);
 
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
@@ -39,10 +39,11 @@ export default function Form({ user}) {
   const handleSubmit = (e) => {
     e.preventDefault();
       setChange(change ? false: true)
-      dispatch(createPost({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais }, router))
+      dispatch(createPost({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais, selectedFile: image }, router))
       // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais });
      
       setPostData(initial);
+      router.push(`/users/micuenta/${user?.result._id}`)
   };
   return (
     <>
@@ -102,15 +103,16 @@ export default function Form({ user}) {
               className={classes.card}
             />
 
-            
-
-            <FileBase64
+            {/* <FileBase64
+            style={{color:'black'}}
               type="file"
               multiply={false}
               onDone={({ base64 }) =>
                 setPostData({ ...postData, selectedFile: base64 })
               }
-            />
+            /> */}
+        <input style={{color:'black'}} type="file" onChange={(e)=>convertidor(e.target.files, setImage)} />
+
           </div>
           <Button
             type="submit"

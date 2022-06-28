@@ -5,47 +5,116 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  TextField,
 } from "@material-ui/core";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import FormAddVehiculos from "./FormAddVehiculos";
+import { convertidor } from "../../../libs/convertidorFileBase64";
+import { createVehiculo } from "../../../reducers/Actions/vehiculoActions";
+import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
+import useStyles from "./styles";
 
-const initial={
-    calificacion:''
+const initialForm={
+  referencia:'',
+  modelo:'',
+  cilindraje:'',
+  marca:'',
+  owner:'',
+  image:''
 }
 
-export default function Modal({visibleEdit, setVisibleEdit}) {
+export default function Modal({ visibleEdit, setVisibleEdit, owner }) {
+  const [marcaa, setMarca] = useState(null);
+  const classes = useStyles()
+  const [image, setImage] = useState(null)
+  const [form,setForm] = useState(initialForm)  
+  const dispatch = useDispatch()
+  console.log(owner);
 
+  const handleChange=(e)=>{
+    setForm({...form, [e.target.name]: e.target.value})
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    dispatch(createVehiculo({...form, owner:owner, imagen:image}))
+    console.log(form);
+
+  }
   const handleClickOpen = () => {
-    setVisibleEdit(true)
-
+    setVisibleEdit(true);
   };
 
   const handleClose = () => {
-    setVisibleEdit(false)
+    setVisibleEdit(false);
   };
 
   return (
     <div>
-      
       <Dialog
-        open={open|| visibleEdit}
+        open={open || visibleEdit}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          Edita tu Auto
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">Edita tu Auto</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Agrega una foto de tu vehiculo, lleva la contabilidad de los gastos, repuestos, y mejoras que le hagas a tu carro.
+            Agrega una foto de tu vehiculo, lleva la contabilidad de los gastos,
+            repuestos, y mejoras que le hagas a tu carro.
           </DialogContentText>
-          <FormAddVehiculos/>
+
+          <form >
+            <MenuLogos marca={marcaa} setMarca={setMarca} />
+            <TextField
+              name="referencia"
+              label="Referencia (Aveo)"
+              variant="outlined"
+              fullWidth
+              value={form.referencia}
+              onChange={handleChange}
+              minRows={1}
+              style={{ marginBottom: "10px" }}
+            />
+            <TextField
+              name="cilindraje"
+              label="Cilindraje (1400)"
+              variant="outlined"
+              fullWidth
+              value={form.cilindraje}
+              onChange={handleChange}
+              minRows={1}
+              style={{ marginBottom: "10px" }}
+            />
+            <TextField
+              name="modelo"
+              label="Modelo (2008)"
+              variant="outlined"
+              fullWidth
+              value={form.modelo}
+              onChange={handleChange}
+              minRows={1}
+              style={{ marginBottom: "10px" }}
+            />
+
+            <input
+              type="file"
+              multiple
+              onChange={(e) => convertidor(e.target.files, setImage)}
+            />
+
+           
+          </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} variant='contained' autoFocus color='secondary'>Confirmar Cambios</Button>
-          <Button onClick={handleClose}  variant='contained' >
+          <Button
+            onClick={handleClose && handleSubmit}
+            variant="contained"
+            autoFocus
+            color="secondary"
+          >
+            Confirmar Cambios
+          </Button>
+          <Button onClick={handleClose} variant="contained">
             No Guardar
           </Button>
         </DialogActions>

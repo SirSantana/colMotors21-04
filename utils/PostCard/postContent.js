@@ -10,7 +10,7 @@ import useStyles from '../stylesCard.js'
 export default function PostsContent({Post}) {
   const classes = useStyles();
   const [imagen, setImagen] = useState(false);
-
+  
   const nombreCreador = Post?.nombreCreador?.toString();
 
   let name = Post?.nombreCreador?.toString();

@@ -6,7 +6,7 @@ import Modal from "./Modal";
 import useStyles from "./stylesCliente";
 
 
-export default function Vehiculos({userMarca}){
+export default function Vehiculos({userMarca, owner}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
 
@@ -46,7 +46,7 @@ export default function Vehiculos({userMarca}){
               <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 
               </div>
-              {visibleEdit && <Modal visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit}/>}
+              {visibleEdit && <Modal visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit} owner={owner}/>}
               </div> 
         </>
     )

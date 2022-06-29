@@ -135,7 +135,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                     ))
                   : coments?.map((el) => (
                       <>
-                        <div  key={el._id} style={{borderRadius:'10px',backgroundColor:'#464646', }}>
+                        <div  key={el._id} style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px'}}>
                         <Typography
                          
                           className={classes.typo}
@@ -153,7 +153,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                         
                       </>
                     ))}
-                <div style={{borderRadius:'10px',backgroundColor:'#464646', }}>
+                    {commentsCache.length >0 &&  <div style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px'}}>
                 <Typography
                   className={classes.typo}
                   style={{
@@ -166,7 +166,8 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                 >
                   {commentsCache}
                 </Typography>
-                </div>
+                </div>}
+               
                 {error !== null && (
                   <h5 style={{ color: "#f50057" }}>{error}</h5>
                 )}

@@ -97,7 +97,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
             >
               {/* {two} */}
             </Avatar>
-            <h3 style={{marginLeft:'20px'}}>{Cotizacion?.nombreVendedor}</h3>
+            <h3 style={{marginLeft:'20px', width:'300px'}}>{Cotizacion?.nombreVendedor}</h3>
                 
                 {/* <a onClick={() => router.reload()}>
                   <Refresh
@@ -191,7 +191,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                     justifyContent: "center",
                     alignItems: "center",
                     width: "95%",
-                  }}
+                   }}
                 >
                   <TextField
                     value={message.message}

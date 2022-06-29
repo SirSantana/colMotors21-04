@@ -279,14 +279,20 @@ export default makeStyles((theme)=>({
   },
   containerComents:{
     width:"90%", 
-    maxHeight: '200px',
+    maxHeight:'200px',
     overflowY: 'auto',
     background:'#949494', 
     display:'flex', 
     marginLeft:'auto', 
     marginRight:'auto', 
     marginTop:'5px',
-    flexDirection:'column'
+    flexDirection:'column',
+    [theme.breakpoints.down('xs')]: {
+      height:'65vh',
+      maxHeight:'none',
+
+    },
+
   },
   card2: {
     width:'97%',

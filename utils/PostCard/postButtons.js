@@ -3,13 +3,13 @@ import useStyles from "../stylesCard.js";
 import { useRouter } from "next/router";
 
 
-export default function PostButton({user, setMessageCotizar, idCreator, handleCotizar, cotizacionCreada, numeroCotizaciones }){
+export default function PostButton({userId, setMessageCotizar, idCreator, handleCotizar, cotizacionCreada, numeroCotizaciones }){
 const classes = useStyles();
 const router = useRouter(); 
 const { id } = router.query;
     return(
         <>
-        {user?.result?._id === idCreator ? (
+        {userId === idCreator ? (
               <Button
                 color="primary"
                 variant="contained"

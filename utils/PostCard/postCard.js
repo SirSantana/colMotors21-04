@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import PostButton from "./postButtons.js";
 
-export default function PostCard({ Post, User,setVisibleDelete, espaciado }) {
+export default function PostCard({ Post, User,setVisibleDelete }) {
   const classes = useStyles();
   const [cotizar, setCotizar] = useState(false);
   const router = useRouter(); 
@@ -35,25 +35,37 @@ export default function PostCard({ Post, User,setVisibleDelete, espaciado }) {
 
   const handleCotizar = (e) => {
     setCotizar(cotizar ? false : true);
-    console.log(User);
     if (User?.result) {
       router.push(`/posts/${Post._id}`);
     } else {
       router.push("/auth");
     }
   };
+
+  const postHeader ={
+      marca:Post?.marca,
+      referencia:Post?.referencia,
+      date:Post?.date
+  }
+  const postActions={
+    lugar:Post?.lugar,
+    postId:Post?._id,
+    userId:User?.result._id,
+    postIdCreator:Post?.creator,
+    setVisibleDelete:setVisibleDelete
+  }
   return (
     <>
       <div className={classes.container}>
           <Card className={classes.card} elevation={2}>
             {/* <PostHeader OnePost={OnePost} /> */}
-            <PostHeader Post={Post}/>
+            <PostHeader PostHeader={postHeader}/>
 
             <Divider></Divider>
 
             <PostsContent Post={Post}/> 
             
-            <PostsActions Lugar={Post?.lugar} PostId={Post?._id} userId={User?.result._id} PostIdCreator={Post?.creator} setVisibleDelete={setVisibleDelete}/> 
+            <PostsActions postData={postActions}/> 
             
             {messageCotizar!== null &&
             <Paper className={classes.paper2} style={{width:'250px'}} elevation={3}>
@@ -65,20 +77,9 @@ export default function PostCard({ Post, User,setVisibleDelete, espaciado }) {
             </Typography>
             </Paper>
             }
-            <PostButton user={User} setMessageCotizar={setMessageCotizar} idCreator={idCreator} handleCotizar={handleCotizar} cotizacionCreada={cotizacionCreada} numeroCotizaciones={numeroCotizaciones}/>
+            <PostButton userId={User?.result._id} setMessageCotizar={setMessageCotizar} idCreator={idCreator} handleCotizar={handleCotizar} cotizacionCreada={cotizacionCreada} numeroCotizaciones={numeroCotizaciones}/>
             
             
-            {/* <Link href={`/posts/${Post?._id}`}>
-              <a className={classes.cotizar}>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  className={classes.cotizar1}
-                >
-                  Ver Cotizacion
-                </Button>
-              </a>
-            </Link> */}
           </Card>
       </div>
     </>

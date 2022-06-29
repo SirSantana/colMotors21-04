@@ -1,5 +1,5 @@
-import {Avatar,Button,Card,CardActions,CardContent,CardHeader,Dialog,DialogActions,DialogContentText,DialogTitle,Divider,FormControl,FormHelperText,InputLabel,MenuItem,Select,Typography,} from "@material-ui/core";
-import { AttachMoney, Build, Delete, Menu, Money, Place } from "@material-ui/icons";
+import {Avatar,Button,Card,CardActions,CardContent,CardHeader,Divider,Typography,} from "@material-ui/core";
+import {AttachMoney,Place} from "@material-ui/icons";
 import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -7,19 +7,18 @@ import Comentarios from "./Comentarios";
 import Image from "next/image";
 import Modal from "./Modal";
 
-
-export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
+export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
   const classes = useStyles();
   const router = useRouter();
-  const {userId} = dataUser
+  const { userId } = dataUser;
 
-  const [visibleEdit, setVisibleEdit] = useState(false)
+  const [visibleEdit, setVisibleEdit] = useState(false);
+
+  console.log(Cotizacion);
 
   return (
     <>
-      
-      {userId === Cotizacion.creator ||
-      userId === PostCreator ? (
+      {userId === Cotizacion.creator || userId === PostCreator ? (
         <div className={classes.container} style={{ gap: "30px" }}>
           <div className={classes.card}>
             <div className={classes.header1}>
@@ -31,9 +30,7 @@ export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
                 )}
               </Typography>
             </div>
-            <Card
-              className={classes.card1}
-            >
+            <Card className={classes.card1}>
               <div
                 style={{
                   display: "flex",
@@ -68,11 +65,16 @@ export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
                   }}
                 >
                   <Typography
-                      style={{ marginBottom:'10px', backgroundColor:'#f50057', padding:'10px', color:'#f1f1f1' }}
-                      className={classes.typography1}
-                    >
-                      {Cotizacion?.estado}
-                    </Typography>
+                    style={{
+                      marginBottom: "10px",
+                      backgroundColor: "#f50057",
+                      padding: "10px",
+                      color: "#f1f1f1",
+                    }}
+                    className={classes.typography1}
+                  >
+                    {Cotizacion?.estado}
+                  </Typography>
                 </section>
               </div>
 
@@ -103,19 +105,14 @@ export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
                       marginBottom: "8px",
                     }}
                   >
-                    {/* <Image
-                  src={'/images/precio.png'}
-                  alt={'/images/precio.png'}
-                  width={40}
-                  height={40}
-                  style={{color:'white'}}
-                 /> */}
-                 <AttachMoney fontSize="large" style={{color:'gray', marginLeft:'3px'}}/>
-    
+                    <AttachMoney
+                      fontSize="large"
+                      style={{ color: "gray", marginLeft: "3px" }}
+                    />
+
                     <Typography className={classes.title}>
                       {Cotizacion?.precio}
                     </Typography>
-
                   </div>
                   <div
                     style={{
@@ -124,22 +121,23 @@ export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
                     }}
                   >
                     <Image
-                     src={'/images/iconoPiston.png'}
-                     alt={'/images/iconoPiston.png'}
-                     width={40}
-                     height={40}
+                      src={"/images/iconoPiston.png"}
+                      alt={"/images/iconoPiston.png"}
+                      width={40}
+                      height={40}
                     />
                     <Typography
-                      style={{ marginTop:'10px',color:'#f1f1f1'  }}
+                      style={{ marginTop: "10px", color: "#f1f1f1" }}
                       className={classes.typography1}
                     >
                       {Cotizacion?.repuestos}
-                      <Typography className={classes.typography1} style={{color:'#f1f1f1'}}>
-                      Marca: {Cotizacion?.marca}
+                      <Typography
+                        className={classes.typography1}
+                        style={{ color: "#f1f1f1" }}
+                      >
+                        Marca: {Cotizacion?.marca}
                       </Typography>
                     </Typography>
-                    
-                    
                   </div>
                 </div>
               </CardContent>
@@ -152,12 +150,12 @@ export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
                     display: "flex",
                     flexDirecction: "row",
                     alignItems: "center",
-                    marginLeft:'3px',
-                    marginBottom:'5px'
+                    marginLeft: "3px",
+                    marginBottom: "5px",
                   }}
                 >
                   <Place
-                    style={{color:'gray', width: "30px", height: "30px" }}
+                    style={{ color: "gray", width: "30px", height: "30px" }}
                   />
                   <Typography style={{ marginLeft: "5px" }} variant="body1">
                     {Cotizacion?.pais}
@@ -196,16 +194,21 @@ export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
                 </Button>
               )}
 
-              {visibleEdit && 
-              <Comentarios dataUser={dataUser} PostCreator={PostCreator} 
-              Cotizacion={Cotizacion} />
-              }
-              
-              
-              {Cotizacion.comentarios.length > 0 && Cotizacion?.calificado !== true && <Modal creator={Cotizacion.creator} cotizacionId={Cotizacion._id}/>}
-              
-                
-              
+              {visibleEdit && (
+                <Comentarios
+                  dataUser={dataUser}
+                  PostCreator={PostCreator}
+                  Cotizacion={Cotizacion}
+                />
+              )}
+
+              {Cotizacion.comentarios.length > 0 &&
+                Cotizacion?.calificado !== true && (
+                  <Modal
+                    creator={Cotizacion.creator}
+                    cotizacionId={Cotizacion._id}
+                  />
+                )}
             </Card>
           </div>
         </div>

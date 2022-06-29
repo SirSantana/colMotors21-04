@@ -3,7 +3,8 @@ import { Avatar, CardHeader } from "@material-ui/core";
 import moment from "moment";
 import useStyles from '../stylesCard.js'
 
-export default function PostHeader({Post}){
+export default function PostHeader({PostHeader}){
+    const {marca, referencia, date} = PostHeader
     const classes = useStyles()
     return(
         <>
@@ -11,15 +12,15 @@ export default function PostHeader({Post}){
               className={classes.header}
               avatar={
                 <Avatar
-                  src={`/images/${Post?.marca}.png`}
+                  src={`/images/${marca}.png`}
                   className={classes.purple}
-                  alt={Post?.marca}
+                  alt={marca}
                 ></Avatar>
               }
-              title={Post?.referencia}
+              title={referencia}
               classes={{ subheader: classes.subheader2, title: classes.title }}
               subheaderTypographyProps={{ variant: "body2" }}
-              subheader={moment(Post?.date).fromNow()}
+              subheader={moment(date).fromNow()}
             />
         </>
     )

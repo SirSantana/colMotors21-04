@@ -1,20 +1,11 @@
-import {
-  Avatar,
-  Dialog,
-  Paper,
-  Slide,
-  TextField,
-  Typography,
-  useMediaQuery,
-} from "@material-ui/core";
+import {Avatar,Dialog,Paper,Slide,TextField,Typography,useMediaQuery,} from "@material-ui/core";
 import { AddAlert, ArrowBackIos, Refresh, Send } from "@material-ui/icons";
-import {  forwardRef, useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { createComment } from "../../../reducers/Actions/cotizacionesActions";
 import { useTheme } from "@material-ui/styles";
-import useStyles2 from './styles.js'
+import useStyles2 from "./styles.js";
 
 const messageInitial = {
   message: "",
@@ -24,9 +15,8 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
-  const classes = useStyles();
-  const classes1 = useStyles2()
+export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
+  const classes1 = useStyles2();
   const [message, setMessage] = useState(messageInitial);
   const dispatch = useDispatch();
   const [comentarios, setComentarios] = useState(Cotizacion?.comentarios);
@@ -35,24 +25,23 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
   const [commentsCache, setCommentsCache] = useState([]);
   const radioGroupRef = useRef(null);
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  
-  const {userId, userName} = dataUser
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+
+
+  const { userId, userName } = dataUser;
 
   const coments = Cotizacion?.comentarios;
 
   const handleComment = async (e) => {
-    if (
-      userId !== Cotizacion.creator &&
-      userId !== PostCreator
-    ) {
+    if (userId !== Cotizacion.creator && userId !== PostCreator) {
       return setError("No puedes cotizar");
     }
 
     const newComentarios = await dispatch(
       createComment(
         { ...message, message: `${userName} : ${message.toString()}` },
-        Cotizacion?._id,
+        Cotizacion?._id
       )
     );
 
@@ -69,6 +58,7 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
     }
   };
 
+
   return (
     <>
       <div>
@@ -76,91 +66,81 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
           TransitionProps={{ onEntering: handleEntering }}
           open={open}
           fullScreen={fullScreen}
-          style={{width:'100vw'}}
+          style={{ width: "100vw" }}
           TransitionComponent={Transition}
-        keepMounted
->
-          
-          {userId=== PostCreator||
-          userId === Cotizacion.creator ? (
-            <Paper className={classes.comentarios} style={{height:'100%'}} elevation={3}>
-              <section
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  width: "100%",
-                  backgroundColor: "#1b333d",
-                }}
-              >
-                <ArrowBackIos  onClick={()=> router.reload()} style={{marginLeft:'10px', cursor:'pointer'}}/>
-              <Avatar
-              className={classes.purple2}
-              alt={Cotizacion?.nombreVendedor[0]}
-            >
-              {/* {two} */}
-            </Avatar>
-            <h3 style={{marginLeft:'20px', width:'300px'}}>{Cotizacion?.nombreVendedor}</h3>
+          keepMounted
+        >
+          {userId === PostCreator || userId === Cotizacion.creator ? (
+            <Paper className={classes1.comentarios} elevation={3}>
+              <section className={classes1.sectionContainer}>
+                <ArrowBackIos
+                  onClick={() => router.reload()}
+                  style={{ marginLeft: "10px", cursor: "pointer" }}
+                />
+                <Avatar
+                  className={classes1.purple2}
+                  alt={Cotizacion?.nombreVendedor[0][0]}
+                >
+                  {Cotizacion?.nombreVendedor[0][0]}
+                </Avatar>
+                <h3 style={{ marginLeft: "20px", width: "300px" }}>
+                  {Cotizacion?.nombreVendedor}
+                </h3>
               </section>
-              <div className={classes.containerComents}>
+              <div className={classes1.containerComents}>
                 {comentarios?.length > 0
                   ? comentarios?.map((el) => (
                       <>
-                        {/* <div ref={comentarioRef}/> */}
-                        <div style={{borderRadius:'10px',backgroundColor:'#464646', marginBottom:'10px', padding:'5px'}}>
-                        <Typography
-                          key={el._id}
-                          className={classes.typo}
-                          style={{
-                            fontSize: "16px",
-                            color: "white",
-                            textAlign: "left",
-                            width: "100%", 
-                            marginBottom: "5px",
-                          }}
-                        >
-                          {el}
-                        </Typography>
+                        <div className={classes1.container3}>
+                          <Typography key={el._id} className={classes1.typo}>
+                            {el}
+                          </Typography>
                         </div>
                       </>
                     ))
                   : coments?.map((el) => (
                       <>
-                        <div  key={el._id} style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px',padding:'5px'}}>
-                        <Typography
-                         
-                          className={classes.typo}
+                        <div
+                          key={el._id}
                           style={{
-                            fontSize: "16px",
-                            color: "white",
-                            textAlign: "left",
-                            width: "100%",
-                            marginBottom: "5px",
+                            borderRadius: "10px",
+                            backgroundColor: "#464646",
+                            marginBottom: "10px",
+                            padding: "5px",
                           }}
                         >
-                          {el}
-                        </Typography>
+                          <Typography
+                            className={classes.typo}
+                            style={{
+                              fontSize: "16px",
+                              color: "white",
+                              textAlign: "left",
+                              width: "100%",
+                              marginBottom: "5px",
+                            }}
+                          >
+                            {el}
+                          </Typography>
                         </div>
-                        
                       </>
                     ))}
-                    {commentsCache.length >0 &&  <div style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px',padding:'5px'}}>
-                <Typography
-                  className={classes.typo}
-                  style={{
-                    fontSize: "16px",
-                    color: "white",
-                    textAlign: "left",
-                    width: "100%",
-                    marginBottom: "5px",
-                  }}
-                >
-                  {commentsCache}
-                </Typography>
-                </div>}
-               
+                {commentsCache.length > 0 && (
+                  <div
+                    style={{
+                      borderRadius: "10px",
+                      backgroundColor: "#464646",
+                      marginBottom: "10px",
+                      padding: "5px",
+                    }}
+                  >
+                    <Typography className={classes1.typo}>
+                      {commentsCache}
+                    </Typography>
+                  </div>
+                )}
+
                 {error !== null && (
-                  <h5 style={{ color: "#f50057" }}>{error}</h5>
+                  <h5 style={{ color: "#f50057"}}>{error}</h5>
                 )}
               </div>
               <div className={classes1.divContainer}>
@@ -169,7 +149,7 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
                     value={message.message}
                     onChange={(e) => setMessage(e.target.value)}
                     fullWidth
-                    className={classes.card2}
+                    className={classes1.card1}
                     variant="outlined"
                     label="Escribele"
                     name="message"
@@ -186,19 +166,11 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
                     </span>
                   )}
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "30px",
-                    lineHeight: "15px",
-                  }}
-                >
+                <div className={classes1.container5}>
                   <AddAlert fontSize="small" style={{ color: "#1b333d" }} />
-                  <p style={{margin:0, marginLeft:'5px', width:"85%"}}>Solo puedes enviar un mensaje, se concreto</p>
-                 
+                  <h4 style={{ margin: 0, marginLeft: "5px", width: "85%" }}>
+                    Solo puedes enviar un mensaje, se concreto
+                  </h4>
                 </div>
               </div>
             </Paper>

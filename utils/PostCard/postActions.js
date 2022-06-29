@@ -6,7 +6,9 @@ import {useRouter} from 'next/router'
 
 import useStyles from '../stylesCard.js'
 
-export default function PostsActions({Lugar, PostId, userId, PostIdCreator, setVisibleDelete}){
+export default function PostsActions({postData}){
+  console.log(postData);
+  const {lugar, postId, userId, postIdCreator, setVisibleDelete} = postData
   const classes = useStyles();
   const router = useRouter()
   const {id} = router.query
@@ -21,7 +23,7 @@ export default function PostsActions({Lugar, PostId, userId, PostIdCreator, setV
               style={{ marginLeft: "5px", color:'gray' }}
               variant="body1"
             >
-              {Lugar}
+              {lugar}
             </Typography>
           </div>
           {/* <Button
@@ -36,8 +38,8 @@ export default function PostsActions({Lugar, PostId, userId, PostIdCreator, setV
           </IconButton> */}
 
           {setVisibleDelete !== undefined ? 
-          userId === PostIdCreator && (
-            <Link href={`/posts/${PostId}`}>
+          userId === postIdCreator && (
+            <Link href={`/posts/${postId}`}>
             <a>
             {id !== undefined ?
             <Button size="small" onClick={()=> setVisibleDelete(true)}>

@@ -268,32 +268,8 @@ export default makeStyles((theme)=>({
     color:'white',
     marginTop:'10px'
   },
-  comentarios:{
-    width:'90%',
-    marginLeft:'auto',
-    marginRight:'auto',
-    marginBottom: '15px',
-    backgroundColor: "#949494",
-    color:'white',
-    marginTop:'10px',
-  },
-  containerComents:{
-    width:"90%", 
-    maxHeight:'300px',
-    overflowY: 'auto',
-    background:'#949494', 
-    display:'flex', 
-    marginLeft:'auto', 
-    marginRight:'auto', 
-    marginTop:'5px',
-    flexDirection:'column',
-    [theme.breakpoints.down('xs')]: {
-    maxHeight:'none',
-      height:'70vh',
-
-    },
-
-  },
+ 
+ 
   card2: {
     width:'97%',
     margin: "0",

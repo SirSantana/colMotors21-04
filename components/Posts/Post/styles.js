@@ -279,7 +279,7 @@ export default makeStyles((theme)=>({
   },
   containerComents:{
     width:"90%", 
-    maxHeight:'200px',
+    maxHeight:'300px',
     overflowY: 'auto',
     background:'#949494', 
     display:'flex', 
@@ -288,7 +288,7 @@ export default makeStyles((theme)=>({
     marginTop:'5px',
     flexDirection:'column',
     [theme.breakpoints.down('xs')]: {
-      height:'65vh',
+      height:'60vh',
       maxHeight:'none',
 
     },

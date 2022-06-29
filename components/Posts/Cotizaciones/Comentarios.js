@@ -115,11 +115,12 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                   ? comentarios?.map((el) => (
                       <>
                         {/* <div ref={comentarioRef}/> */}
+                        <div style={{borderRadius:'10px',backgroundColor:'#464646', marginBottom:'5px', padding:'5px'}}>
                         <Typography
                           key={el._id}
                           className={classes.typo}
                           style={{
-                            fontSize: "14px",
+                            fontSize: "16px",
                             color: "white",
                             textAlign: "left",
                             width: "100%",
@@ -128,6 +129,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                         >
                           {el}
                         </Typography>
+                        </div>
                       </>
                     ))
                   : coments?.map((el) => (
@@ -137,7 +139,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                           key={el._id}
                           className={classes.typo}
                           style={{
-                            fontSize: "14px",
+                            fontSize: "18px",
                             color: "white",
                             textAlign: "left",
                             width: "100%",
@@ -151,7 +153,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                 <Typography
                   className={classes.typo}
                   style={{
-                    fontSize: "14px",
+                    fontSize: "18px",
                     color: "white",
                     textAlign: "left",
                     width: "100%",

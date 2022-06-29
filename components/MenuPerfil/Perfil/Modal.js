@@ -40,19 +40,12 @@ export default function Modal({ visibleEdit, setVisibleEdit, owner }) {
     console.log(form);
 
   }
-  const handleClickOpen = () => {
-    setVisibleEdit(true);
-  };
-
-  const handleClose = () => {
-    setVisibleEdit(false);
-  };
 
   return (
     <div>
       <Dialog
         open={open || visibleEdit}
-        onClose={handleClose}
+        onClose={()=> setVisibleEdit(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -107,14 +100,14 @@ export default function Modal({ visibleEdit, setVisibleEdit, owner }) {
         </DialogContent>
         <DialogActions>
           <Button
-            onClick={handleClose && handleSubmit}
+            onClick={()=> setVisibleEdit(false) && handleSubmit}
             variant="contained"
             autoFocus
             color="secondary"
           >
             Confirmar Cambios
           </Button>
-          <Button onClick={handleClose} variant="contained">
+          <Button onClick={()=> setVisibleEdit(false)} variant="contained">
             No Guardar
           </Button>
         </DialogActions>

@@ -1,4 +1,4 @@
-import { Button, Paper, TextField, Typography } from "@material-ui/core";
+import { Button, Dialog, Paper, TextField, Typography } from "@material-ui/core";
 import { AddAlert, Refresh, Send } from "@material-ui/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ import Link from 'next/link'
 const messageInitial = {
   message: "",
 };
-export default function Comentarios({ user, post, Cotizacion }) {
+export default function Comentarios({ user, post, Cotizacion, setVisibleEdit, visibleEdit }) {
   const classes = useStyles();
   const [message, setMessage] = useState(messageInitial);
   const dispatch = useDispatch();
@@ -49,7 +49,12 @@ export default function Comentarios({ user, post, Cotizacion }) {
 
   return (
     <>
-      
+      <Dialog
+        open={open || visibleEdit}
+        onClose={()=> setVisibleEdit(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
       {user?.result._id === post?.creator ||
       user?.result._id === Cotizacion.creator ? (
         <Paper className={classes.comentarios} elevation={3}>
@@ -161,11 +166,20 @@ export default function Comentarios({ user, post, Cotizacion }) {
             </div>
             <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', height:'30px', lineHeight:'15px'}}>
             <AddAlert fontSize="small" style={{color:'#1b333d'}}/>
-            <p style={{margin:0, marginLeft:'5px', width:"85%"}}>Solo puedes enviar un mensaje, se concreto</p>
+            {/* <p style={{margin:0, marginLeft:'5px', width:"85%"}}>Solo puedes enviar un mensaje, se concreto</p> */}
+            <Button
+                    variant="contained"
+                    fullWidth
+                    onClick={()=> router.reload()}
+                    color="secondary"
+                  >
+                    Regresar
+                  </Button>
             </div>
           </div>
         </Paper>
       ) : null}
+      </Dialog>
     </>
   );
 }

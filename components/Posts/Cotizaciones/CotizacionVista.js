@@ -11,6 +11,9 @@ import Modal from "./Modal";
 export default function CotizacionVista({Cotizacion,Post,user}) {
   const classes = useStyles();
   const router = useRouter();
+
+  const [visibleEdit, setVisibleEdit] = useState(false)
+
   return (
     <>
       
@@ -64,7 +67,7 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
                   }}
                 >
                   <Typography
-                      style={{ marginBottom:'10px', backgroundColor:'#f50057', padding:'10px' }}
+                      style={{ marginBottom:'10px', backgroundColor:'#f50057', padding:'10px', color:'#f1f1f1' }}
                       className={classes.typography1}
                     >
                       {Cotizacion?.estado}
@@ -126,11 +129,11 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
                      height={40}
                     />
                     <Typography
-                      style={{ marginTop:'10px',  }}
+                      style={{ marginTop:'10px',color:'#f1f1f1'  }}
                       className={classes.typography1}
                     >
                       {Cotizacion?.repuestos}
-                      <Typography className={classes.typography1}>
+                      <Typography className={classes.typography1} style={{color:'#f1f1f1'}}>
                       Marca: {Cotizacion?.marca}
                       </Typography>
                     </Typography>
@@ -162,7 +165,7 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
               </CardActions>
               {user?.result?._id === Post.creator ? (
                 <>
-                  <Button
+                  {/* <Button
                     variant="contained"
                     fullWidth
                     className={classes.cotizar1}
@@ -170,6 +173,15 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
                     color="secondary"
                   >
                     Ver Pefil Vendedor
+                  </Button> */}
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    className={classes.cotizar1}
+                    onClick={() => setVisibleEdit(true)}
+                    color="secondary"
+                  >
+                    Enviar Mensaje
                   </Button>
                 </>
               ) : (
@@ -183,7 +195,12 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
                 </Button>
               )}
 
-              <Comentarios user={user} post={Post} Cotizacion={Cotizacion} />
+              {visibleEdit && 
+              <Comentarios user={user} post={Post} 
+              Cotizacion={Cotizacion} setVisibleEdit={setVisibleEdit} 
+              visibleEdit={visibleEdit} />
+              }
+              
               
               {Cotizacion.comentarios.length > 0 && Cotizacion?.calificado !== true && <Modal creator={Cotizacion.creator} cotizacionId={Cotizacion._id}/>}
               

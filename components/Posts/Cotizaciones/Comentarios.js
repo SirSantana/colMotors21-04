@@ -13,6 +13,7 @@ import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { createComment } from "../../../reducers/Actions/cotizacionesActions";
 import { useTheme } from "@material-ui/styles";
+import useStyles2 from './styles.js'
 
 const messageInitial = {
   message: "",
@@ -20,6 +21,7 @@ const messageInitial = {
 
 export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
   const classes = useStyles();
+  const classes1 = useStyles2()
   const [message, setMessage] = useState(messageInitial);
   const dispatch = useDispatch();
   const [comentarios, setComentarios] = useState(Cotizacion?.comentarios);
@@ -121,7 +123,7 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
                          
                           className={classes.typo}
                           style={{
-                            fontSize: "18px",
+                            fontSize: "16px",
                             color: "white",
                             textAlign: "left",
                             width: "100%",
@@ -138,7 +140,7 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
                 <Typography
                   className={classes.typo}
                   style={{
-                    fontSize: "18px",
+                    fontSize: "16px",
                     color: "white",
                     textAlign: "left",
                     width: "100%",
@@ -153,29 +155,8 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
                   <h5 style={{ color: "#f50057" }}>{error}</h5>
                 )}
               </div>
-              <div
-                style={{
-                  marginBottom: "10px",
-                  display: "flex",
-                  gap: "10px",
-                  width: "95%",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "95%",
-                   }}
-                >
+              <div className={classes1.divContainer}>
+                <div className={classes1.divContainer2}>
                   <TextField
                     value={message.message}
                     onChange={(e) => setMessage(e.target.value)}

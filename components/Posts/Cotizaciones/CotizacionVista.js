@@ -8,22 +8,23 @@ import Image from "next/image";
 import Modal from "./Modal";
 
 
-export default function CotizacionVista({Cotizacion,Post,user}) {
+export default function CotizacionVista({Cotizacion,PostCreator,dataUser}) {
   const classes = useStyles();
   const router = useRouter();
+  const {userId} = dataUser
 
   const [visibleEdit, setVisibleEdit] = useState(false)
 
   return (
     <>
       
-      {user?.result._id === Cotizacion.creator ||
-      user?.result._id === Post.creator ? (
+      {userId === Cotizacion.creator ||
+      userId === PostCreator ? (
         <div className={classes.container} style={{ gap: "30px" }}>
           <div className={classes.card}>
             <div className={classes.header1}>
               <Typography gutterBottom className={classes.typo}>
-                {user?.result._id === Post.creator ? (
+                {userId === PostCreator ? (
                   <b>Cotizacion Vendedor</b>
                 ) : (
                   <b>Tu Cotización</b>
@@ -163,7 +164,7 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
                   </Typography>
                 </div>
               </CardActions>
-              {user?.result?._id === Post.creator ? (
+              {userId === PostCreator ? (
                 <>
                   {/* <Button
                     variant="contained"
@@ -196,9 +197,8 @@ export default function CotizacionVista({Cotizacion,Post,user}) {
               )}
 
               {visibleEdit && 
-              <Comentarios user={user} post={Post} 
-              Cotizacion={Cotizacion} setVisibleEdit={setVisibleEdit} 
-              visibleEdit={visibleEdit} />
+              <Comentarios dataUser={dataUser} PostCreator={PostCreator} 
+              Cotizacion={Cotizacion} />
               }
               
               

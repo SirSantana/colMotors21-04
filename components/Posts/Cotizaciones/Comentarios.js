@@ -1,68 +1,61 @@
 import {
   Avatar,
-  Button,
   Dialog,
-  DialogContentText,
-  DialogTitle,
   Paper,
   TextField,
   Typography,
   useMediaQuery,
 } from "@material-ui/core";
 import { AddAlert, ArrowBackIos, Refresh, Send } from "@material-ui/icons";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
 import { createComment } from "../../../reducers/Actions/cotizacionesActions";
-import Link from "next/link";
 import { useTheme } from "@material-ui/styles";
 
 const messageInitial = {
   message: "",
 };
 
-export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visibleEdit,}) {
+export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
   const classes = useStyles();
   const [message, setMessage] = useState(messageInitial);
   const dispatch = useDispatch();
   const [comentarios, setComentarios] = useState(Cotizacion?.comentarios);
   const [error, setError] = useState(null);
   const router = useRouter();
-  const [carga, setCarga] = useState(null);
-  const [cargado, setCargado] = useState("");
   const [commentsCache, setCommentsCache] = useState([]);
   const radioGroupRef = useRef(null);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  
+  const {userId, userName} = dataUser
 
   const coments = Cotizacion?.comentarios;
 
   const handleComment = async (e) => {
     if (
-      user.result._id !== Cotizacion.creator &&
-      user.result._id !== post.creator
+      userId !== Cotizacion.creator &&
+      userId !== PostCreator
     ) {
       return setError("No puedes cotizar");
     }
 
     const newComentarios = await dispatch(
       createComment(
-        { ...message, message: `${user?.result.name} : ${message.toString()}` },
+        { ...message, message: `${userName} : ${message.toString()}` },
         Cotizacion?._id,
-        setCarga,
-        setCargado
       )
     );
-    //  comentarioRef.current.scrollIntoView({behavior:'smooth'})
 
-    //  router.reload()
     setMessage(messageInitial);
     setComentarios(newComentarios);
 
     setError(null);
-    setCommentsCache(`${user?.result.name}:${message.toString()}`);
+    setCommentsCache(`${userName}:${message.toString()}`);
   };
+
   const handleEntering = () => {
     if (radioGroupRef.current != null) {
       radioGroupRef.current.focus();
@@ -78,8 +71,8 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
           fullScreen={fullScreen}
         >
           
-          {user?.result._id === post?.creator ||
-          user?.result._id === Cotizacion.creator ? (
+          {userId=== PostCreator||
+          userId === Cotizacion.creator ? (
             <Paper className={classes.comentarios} style={{height:'100%'}} elevation={3}>
               <section
                 style={{
@@ -90,26 +83,14 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                   backgroundColor: "#1b333d",
                 }}
               >
-                <ArrowBackIos style={{marginLeft:'10px'}}/>
+                <ArrowBackIos onClick={()=> router.reload()} style={{marginLeft:'10px', cursor:'pointer'}}/>
               <Avatar
               className={classes.purple2}
               alt={Cotizacion?.nombreVendedor[0]}
-              style={{marginLeft:'20px'}}
             >
               {/* {two} */}
             </Avatar>
             <h3 style={{marginLeft:'20px', width:'300px'}}>{Cotizacion?.nombreVendedor}</h3>
-                
-                {/* <a onClick={() => router.reload()}>
-                  <Refresh
-                    fontSize="medium"
-                    style={{
-                      cursor: "pointer",
-                      marginLeft: "8px",
-                      marginTop: "3px",
-                    }}
-                  />
-                </a> */}
               </section>
               <div className={classes.containerComents}>
                 {comentarios?.length > 0
@@ -124,7 +105,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                             fontSize: "16px",
                             color: "white",
                             textAlign: "left",
-                            width: "100%",
+                            width: "100%", 
                             marginBottom: "5px",
                           }}
                         >
@@ -135,7 +116,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                     ))
                   : coments?.map((el) => (
                       <>
-                        <div  key={el._id} style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px'}}>
+                        <div  key={el._id} style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px',padding:'5px'}}>
                         <Typography
                          
                           className={classes.typo}
@@ -153,7 +134,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                         
                       </>
                     ))}
-                    {commentsCache.length >0 &&  <div style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px'}}>
+                    {commentsCache.length >0 &&  <div style={{borderRadius:'10px',backgroundColor:'#464646',  marginBottom:'10px',padding:'5px'}}>
                 <Typography
                   className={classes.typo}
                   style={{
@@ -171,12 +152,6 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                 {error !== null && (
                   <h5 style={{ color: "#f50057" }}>{error}</h5>
                 )}
-                <div style={{ margin: 0, padding: 0 }}>
-                  <p style={{ margin: 0, padding: 0 }}>{carga}</p>
-                  <p style={{ margin: 0, padding: 0 }}>{cargado}</p>
-                </div>
-
-                <br />
               </div>
               <div
                 style={{
@@ -233,15 +208,8 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                   }}
                 >
                   <AddAlert fontSize="small" style={{ color: "#1b333d" }} />
-                  {/* <p style={{margin:0, marginLeft:'5px', width:"85%"}}>Solo puedes enviar un mensaje, se concreto</p> */}
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => router.reload()}
-                    color="secondary"
-                  >
-                    Regresar
-                  </Button>
+                  <p style={{margin:0, marginLeft:'5px', width:"85%"}}>Solo puedes enviar un mensaje, se concreto</p>
+                 
                 </div>
               </div>
             </Paper>

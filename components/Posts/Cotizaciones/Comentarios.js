@@ -9,7 +9,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@material-ui/core";
-import { AddAlert, Refresh, Send } from "@material-ui/icons";
+import { AddAlert, ArrowBackIos, Refresh, Send } from "@material-ui/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "../Post/styles";
@@ -90,6 +90,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                   backgroundColor: "#1b333d",
                 }}
               >
+                <ArrowBackIos style={{marginLeft:'10px'}}/>
               <Avatar
               className={classes.purple2}
               alt={Cotizacion?.nombreVendedor[0]}
@@ -115,7 +116,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                   ? comentarios?.map((el) => (
                       <>
                         {/* <div ref={comentarioRef}/> */}
-                        <div style={{borderRadius:'10px',backgroundColor:'#464646', marginBottom:'5px', padding:'5px'}}>
+                        <div style={{borderRadius:'10px',backgroundColor:'#464646', marginBottom:'10px', padding:'5px'}}>
                         <Typography
                           key={el._id}
                           className={classes.typo}
@@ -134,9 +135,9 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                     ))
                   : coments?.map((el) => (
                       <>
-                        {/* <div ref={comentarioRef}/> */}
+                        <div  key={el._id} style={{borderRadius:'10px',backgroundColor:'#464646', }}>
                         <Typography
-                          key={el._id}
+                         
                           className={classes.typo}
                           style={{
                             fontSize: "18px",
@@ -148,8 +149,11 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                         >
                           {el}
                         </Typography>
+                        </div>
+                        
                       </>
                     ))}
+                <div style={{borderRadius:'10px',backgroundColor:'#464646', }}>
                 <Typography
                   className={classes.typo}
                   style={{
@@ -162,6 +166,7 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                 >
                   {commentsCache}
                 </Typography>
+                </div>
                 {error !== null && (
                   <h5 style={{ color: "#f50057" }}>{error}</h5>
                 )}
@@ -204,8 +209,6 @@ export default function Comentarios({user,post,Cotizacion,setVisibleEdit,visible
                     label="Escribele"
                     name="message"
                     disabled={commentsCache.length > 0}
-                    multiline
-                    minRows={3}
                   />
 
                   {message?.message?.length === 0 ? (

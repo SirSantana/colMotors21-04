@@ -303,6 +303,7 @@ export default makeStyles((theme)=>({
     textDecoration: "none",
     borderRadius: "10px",
     backgroundColor:'#f1f1f1',
+    marginRight:'5px'
   },
   modal: {
     display: "block", /* Hidden by default */

@@ -2,12 +2,13 @@ import {
   Avatar,
   Dialog,
   Paper,
+  Slide,
   TextField,
   Typography,
   useMediaQuery,
 } from "@material-ui/core";
 import { AddAlert, ArrowBackIos, Refresh, Send } from "@material-ui/icons";
-import {  useRef, useState } from "react";
+import {  forwardRef, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "../Post/styles";
 import { useRouter } from "next/router";
@@ -18,6 +19,10 @@ import useStyles2 from './styles.js'
 const messageInitial = {
   message: "",
 };
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
   const classes = useStyles();
@@ -71,7 +76,10 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
           TransitionProps={{ onEntering: handleEntering }}
           open={open}
           fullScreen={fullScreen}
-        >
+          style={{width:'100vw'}}
+          TransitionComponent={Transition}
+        keepMounted
+>
           
           {userId=== PostCreator||
           userId === Cotizacion.creator ? (
@@ -85,7 +93,7 @@ export default function Comentarios({dataUser,PostCreator,Cotizacion}) {
                   backgroundColor: "#1b333d",
                 }}
               >
-                <ArrowBackIos onClick={()=> router.reload()} style={{marginLeft:'10px', cursor:'pointer'}}/>
+                <ArrowBackIos  onClick={()=> router.reload()} style={{marginLeft:'10px', cursor:'pointer'}}/>
               <Avatar
               className={classes.purple2}
               alt={Cotizacion?.nombreVendedor[0]}

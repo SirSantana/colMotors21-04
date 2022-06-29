@@ -287,6 +287,11 @@ export default makeStyles((theme)=>({
     marginRight:'auto', 
     marginTop:'5px',
     flexDirection:'column',
+    [theme.breakpoints.down('xs')]: {
+    maxHeight:'none',
+      height:'70vh',
+
+    },
 
   },
   card2: {

@@ -2,7 +2,9 @@ import '../styles/globals.css'
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Provider } from 'react-redux';
 import store from '../reducers/store';
+import dynamic from 'next/dynamic';
 
+const ProgressBar = dynamic(() => import('../components/atoms/ProgressBar.js'), { ssr: false });
 const theme = createTheme({ 
   palette: {
     primary: {
@@ -25,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-
+      <ProgressBar />
   <Component {...pageProps} />
   </Provider>
 

@@ -23,4 +23,8 @@ margin:0;
 padding:0;
   }
 }
+#nprogress .bar {
+  background: #f50057 !important;
+  height: 5px !important;
+}
 

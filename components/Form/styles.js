@@ -16,6 +16,7 @@ export default makeStyles((theme) => ({
     justifyContent:'center',
     alignItems:'center',
     width:'100%',
+    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
     [theme.breakpoints.down('xs')]: {
     width:'90%',
 
@@ -51,7 +52,6 @@ export default makeStyles((theme) => ({
     width:'100%',
     [theme.breakpoints.down('xs')]: {
       width:'90%',
-  
       },
 
   },
@@ -91,6 +91,7 @@ export default makeStyles((theme) => ({
     alignItems:'center',
     justifyContent:'center',
     flexDirection:'column',
+    width:'100%'
   },
 
 

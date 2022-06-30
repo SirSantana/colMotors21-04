@@ -16,7 +16,7 @@ import { Refresh, Error } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 
 
-export default function HomeCliente({user}){
+export default function HomeCliente({user, posts}){
   const classes = useStyles();
   const router = useRouter();
   const { id } = router.query;
@@ -42,7 +42,7 @@ export default function HomeCliente({user}){
                    </a>
                  </Link>
                </Paper>
-                 <Posts user={user}/>
+                 <Posts user={user} posts={posts}/>
  
                {id && (
                  <Button

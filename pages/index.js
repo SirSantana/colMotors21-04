@@ -35,7 +35,7 @@ export default function Home() {
               Cotiza los repuestos de tu auto en{" "}
             </h4>
             <h1 className={styles.description1}>30 Minutos</h1>
-            <Link href={ user?.result.posts.length >=1 ? `/home/${user?.result._id}`: '/home'}>
+            <Link href={ user?.result.posts.length >=1 ? `/form`: '/home'}>
               <a>
                 <Button
                   className={styles.button}

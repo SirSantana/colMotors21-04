@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
     marginBottom: "10px",
     display: "flex",
     gap: "10px",
-    width: "95%",
+    width: "90%",
     marginLeft: "auto",
     marginRight: "auto",
     flexDirection: "row",
@@ -55,7 +55,7 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     [theme.breakpoints.down("xs")]: {
       maxHeight: "none",
-      height: "70vh",
+      height: "68vh",
     },
   },
   container3: {

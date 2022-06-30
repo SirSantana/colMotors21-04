@@ -61,7 +61,6 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
 
   return (
     <>
-      <div>
         <Dialog
           TransitionProps={{ onEntering: handleEntering }}
           open={open}
@@ -176,7 +175,6 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
             </Paper>
           ) : null}
         </Dialog>
-      </div>
     </>
   );
 }

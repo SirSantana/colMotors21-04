@@ -30,11 +30,9 @@ function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const start = () => {
-      console.log("start");
       setLoading(true);
     };
     const end = () => {
-      console.log("findished");
       setLoading(false);
     };
     Router.events.on("routeChangeStart", start);
@@ -52,7 +50,7 @@ function MyApp({ Component, pageProps }) {
       <ProgressBar />
       {loading ? (
         <Layout>
-          <h2>Cargando</h2>
+          <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
         </Layout>
       ) : (
         <Component {...pageProps} />

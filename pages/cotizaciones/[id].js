@@ -14,6 +14,7 @@ export default function Prubea({ PostCreator, Cotizaciones }) {
     userId : user?.result._id,
     userName : user?.result.name
   }
+    console.log(Cotizaciones);
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));

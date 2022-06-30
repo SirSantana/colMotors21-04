@@ -10,7 +10,6 @@ export default function HomeVendedor({posts, user}){
   const classes = useStyles();
   const router = useRouter();
 
-  console.log(user);
 
     return(
         <>

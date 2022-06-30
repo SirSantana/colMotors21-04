@@ -6,6 +6,7 @@ import { useState } from "react";
 import Comentarios from "./Comentarios";
 import Image from "next/image";
 import Modal from "./Modal";
+import Link from 'next/link'
 
 export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
   const classes = useStyles();
@@ -14,7 +15,7 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
 
   const [visibleEdit, setVisibleEdit] = useState(false);
 
-  console.log(Cotizacion);
+  console.log(PostCreator);
 
   return (
     <>
@@ -39,6 +40,8 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                   alignItems: "center",
                 }}
               >
+                <Link href={`/users/${Cotizacion.creator}`}>
+                <a>
                 <CardHeader
                   className={classes.header}
                   avatar={
@@ -57,6 +60,8 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                   subheaderTypographyProps={{ variant: "body2" }}
                   subheader="Vendedor"
                 />
+                </a>
+                </Link>
                 <section
                   style={{
                     marginRight: "10px",
@@ -215,7 +220,7 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
               )}
 
               {Cotizacion.comentarios.length > 0 &&
-                Cotizacion?.calificado !== true && (
+                Cotizacion?.calificado !== true && userId !== Cotizacion.creator && (
                   <Modal
                     creator={Cotizacion.creator}
                     cotizacionId={Cotizacion._id}

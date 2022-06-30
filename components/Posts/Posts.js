@@ -6,11 +6,12 @@ import { useRouter } from "next/router";
 import PostCard from "../../utils/PostCard/postCard";
 
 
-export default function Posts({posts, user}) {
+export default function Posts({user, posts}) {
   const classes = useStyles();
   const router = useRouter()
   
 
+  
 
   return (
     <>

@@ -13,6 +13,7 @@ import Link from "next/link";
 import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import { Refresh, Error } from "@material-ui/icons";
+import { useEffect, useState } from "react";
 
 
 export default function HomeCliente({user, posts}){
@@ -20,6 +21,7 @@ export default function HomeCliente({user, posts}){
   const router = useRouter();
 
   const { id } = router.query;
+  
     return(
         <>
          {user?.result?.role?.length===1 &&
@@ -40,7 +42,7 @@ export default function HomeCliente({user, posts}){
                    </a>
                  </Link>
                </Paper>
-                 <Posts posts={posts} user={user} />
+                 <Posts user={user} posts={posts}/>
  
                {id && (
                  <Button

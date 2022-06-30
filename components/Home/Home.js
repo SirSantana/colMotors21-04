@@ -8,7 +8,7 @@ import { handleLogout } from "../../utils/handleLogout";
 import HomeVendedor from "./HomeVendedor";
 import HomeCliente from "./HomeCliente";
 
-export default function HomeComponent({ posts}) {
+export default function HomeComponent({posts}) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const router = useRouter();

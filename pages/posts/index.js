@@ -9,8 +9,8 @@ export default function Prueba({posts}) {
 
   return (
     <>
-      <Layout title={'Posts | colMotors'}>
-        <Posts posts={posts}/>
+      <Layout title={"Posts | colMotors"}>
+        <Posts  posts={posts}/>
       </Layout>
     </>
   );

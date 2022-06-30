@@ -184,6 +184,7 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                   </Button>
                 </>
               ) : (
+                <>
                 <Button
                   color="secondary"
                   variant="contained"
@@ -192,6 +193,17 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                 >
                   Eliminar cotizacion
                 </Button>
+                <Button
+                variant="contained"
+                fullWidth
+                className={classes.cotizar}
+                onClick={() => setVisibleEdit(true)}
+                color="secondary"
+              >
+                Enviar Mensaje
+              </Button>
+                </>
+                
               )}
 
               {visibleEdit && (

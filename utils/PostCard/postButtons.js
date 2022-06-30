@@ -3,7 +3,7 @@ import useStyles from "../stylesCard.js";
 import { useRouter } from "next/router";
 
 
-export default function PostButton({userId, setMessageCotizar, idCreator, handleCotizar, cotizacionCreada, numeroCotizaciones }){
+export default function PostButton({userId, userRole,setMessageCotizar, idCreator, handleCotizar, cotizacionCreada, numeroCotizaciones }){
 const classes = useStyles();
 const router = useRouter(); 
 const { id } = router.query;
@@ -29,7 +29,7 @@ const { id } = router.query;
                 {numeroCotizaciones+ ' Cotizaciones'}
               </Button>
             ) : (
-              user?.result.role.length >1 ? <Button
+              userRole >1 ? <Button
               color={cotizacionCreada ? 'primary': 'secondary'}
               variant="contained"
               fullWidth

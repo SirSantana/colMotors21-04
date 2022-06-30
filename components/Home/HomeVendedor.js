@@ -6,16 +6,11 @@ import Posts from "../Posts/Posts";
 import { useEffect, useState } from "react";
 
 
-export default function HomeVendedor({posts}){
+export default function HomeVendedor({posts, user}){
   const classes = useStyles();
   const router = useRouter();
-  const [user, setUser] = useState(null);
 
-
-
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+  console.log(user);
 
     return(
         <>
@@ -32,7 +27,7 @@ export default function HomeVendedor({posts}){
           </div>
         </Paper>
         <div style={{display:'flex', width:'84vw',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
-        <Posts posts={posts} user={user}/>
+        <Posts  user={user} posts={posts}/>
 
         </div>
 

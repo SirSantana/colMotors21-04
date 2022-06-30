@@ -20,6 +20,8 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
   const [messageCotizar, setMessageCotizar] = useState(null)
   const numeroCotizaciones = Math.round(Post?.cotizaciones?.length / 24)
 
+  console.log(User);
+
 
   let cotiza = Post?.cotizaciones;
   let arrayCotizaciones = [];
@@ -78,7 +80,7 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
             </Typography>
             </Paper>
             }
-            <PostButton userId={User?.result._id} setMessageCotizar={setMessageCotizar} idCreator={idCreator} handleCotizar={handleCotizar} cotizacionCreada={cotizacionCreada} numeroCotizaciones={numeroCotizaciones}/>
+            <PostButton userId={User?.result._id} userRole={User?.result.role.length} setMessageCotizar={setMessageCotizar} idCreator={idCreator} handleCotizar={handleCotizar} cotizacionCreada={cotizacionCreada} numeroCotizaciones={numeroCotizaciones}/>
             
             
           </Card>

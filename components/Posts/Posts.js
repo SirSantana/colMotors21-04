@@ -11,15 +11,17 @@ export default function Posts({user, posts}) {
   const router = useRouter()
   
 
+
+
   return (
     <>
             <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
-              {posts ? posts?.map((Post)=>(
+               {posts?.map((Post)=>(
                 <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
                 <PostCard Post={Post} User={user}/>
                 </Grid>
               )
-          ): <h2>Loading</h2>}
+          )}
 
           <div style={{marginRight:'auto', marginLeft:'auto', marginTop:'20px', }}>
           {user && <Button variant="contained" color="secondary" onClick={()=> router.push(`/home/${user?.result._id}`)}>Ver mis cotizaciones</Button>}

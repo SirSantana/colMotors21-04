@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import HomeComponent from "../../components/Home/Home";
 import { useDispatch, useSelector } from "react-redux";
-import postModel from '../../models/postModel'
-import DBConnect from "../../libs/dbConnect";
 
 
 

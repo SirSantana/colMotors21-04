@@ -15,7 +15,7 @@ export default function HomeSeller({Postss}){
   const data =  Postss.filter(el=> el.marca === user?.result.marcasComercializadas.find(ele=> ele === el.marca))
     return(
         <Layout title={"Home Vendedor | colMotors"}>
-         <HomeVendedor posts={data} />
+         <HomeVendedor posts={data} user={user}/>
         </Layout>
     )
 }

@@ -11,8 +11,6 @@ export default function Posts({user, posts}) {
   const router = useRouter()
   
 
-  
-
   return (
     <>
             <Grid className={classes.container} container  alignItems='stretch' spacing={3} >

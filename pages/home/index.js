@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import postModel from '../../models/postModel'
 import DBConnect from "../../libs/dbConnect";
 
-
 export default function Home({Postss}) {
-  const router = useRouter();
+
+  
 
   // const createPosts = async (postData) => {
   //   try {
@@ -27,7 +27,12 @@ export default function Home({Postss}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
         <HomeComponent posts={Postss}/>
+      )}
+        
       </Layout>
     </>
   );

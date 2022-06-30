@@ -20,6 +20,7 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
   const [messageCotizar, setMessageCotizar] = useState(null)
   const numeroCotizaciones = Math.round(Post?.cotizaciones?.length / 24)
 
+
   let cotiza = Post?.cotizaciones;
   let arrayCotizaciones = [];
   let cotizacionCreada;

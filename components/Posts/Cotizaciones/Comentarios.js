@@ -110,7 +110,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                           }}
                         >
                           <Typography
-                            className={classes.typo}
+                            className={classes1.typo}
                             style={{
                               fontSize: "16px",
                               color: "white",

@@ -27,12 +27,7 @@ export default function Home({Postss}) {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
         <HomeComponent posts={Postss}/>
-      )}
-        
       </Layout>
     </>
   );

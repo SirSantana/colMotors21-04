@@ -18,7 +18,7 @@ import Vehiculos from "../MenuPerfil/Perfil/Vehiculos";
 import PostCard from "../../utils/PostCard/postCard";
 
 
-export default function HomeCliente({user, posts}){
+export default function HomeCliente({user, posts, createPosts}){
   const classes = useStyles();
   const router = useRouter();
   const { id } = router.query;
@@ -75,7 +75,7 @@ export default function HomeCliente({user, posts}){
                )}
              </Grid>
              <Grid item xs={12} sm={6} md={3} style={{ paddingTop: "10px" }}>
-               <Form  user={user} />
+               <Form  user={user} createPosts={createPosts}/>
              </Grid>
            </Grid>
          </Container>

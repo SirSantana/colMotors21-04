@@ -10,24 +10,24 @@ export default function Home({Postss}) {
 
   
 
-  // const createPosts = async (postData) => {
-  //   try {
-  //     await fetch("/api/posts/", {
-  //       method: "POST",
-  //       headers: {"Content-type": "application/json"},
-  //       body: JSON.stringify(postData),
-  //     })
+  const createPosts = async (postData) => {
+    try {
+      await fetch("/api/posts/", {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(postData),
+      })
       
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
   console.log(Postss);
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent posts={Postss}/>
+        <HomeComponent posts={Postss} createPosts={createPosts}/>
       </Layout>
     </>
   );

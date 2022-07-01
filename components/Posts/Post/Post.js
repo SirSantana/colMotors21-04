@@ -69,6 +69,7 @@ const handleIr=()=>{
     setUser(JSON.parse(localStorage.getItem("profile")));
   },[]);
 
+  
   return (
     <>
         {visibleDelete === true && <VisibleDelete  message={message} handleDelete={handleDelete} setVisibleDelete={setVisibleDelete}/>}

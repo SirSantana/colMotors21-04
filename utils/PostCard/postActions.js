@@ -7,7 +7,6 @@ import {useRouter} from 'next/router'
 import useStyles from '../stylesCard.js'
 
 export default function PostsActions({postData}){
-  console.log(postData);
   const {lugar, postId, userId, postIdCreator, setVisibleDelete} = postData
   const classes = useStyles();
   const router = useRouter()
@@ -38,10 +37,8 @@ export default function PostsActions({postData}){
           </IconButton> */}
 
           {setVisibleDelete !== undefined ? 
-          userId === postIdCreator && (
-            <Link href={`/posts/${postId}`}>
-            <a>
-            {id !== undefined ?
+          userId === postIdCreator && 
+            id !== undefined ?
             <Button size="small" onClick={()=> setVisibleDelete(true)}>
             <Delete fontSize="small" />
           </Button>
@@ -49,10 +46,6 @@ export default function PostsActions({postData}){
           <Button size="small">
               <Delete fontSize="small" />
             </Button>  
-          }
-            </a>
-            </Link>
-          )
           
           :null}
           

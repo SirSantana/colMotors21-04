@@ -27,7 +27,6 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const comentss = useRef(Cotizacion?.comentarios)
 
   const { userId, userName } = dataUser;
 
@@ -37,7 +36,6 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
     if (userId !== Cotizacion.creator && userId !== PostCreator) {
       return setError("No puedes cotizar");
     }
-    comentss.current = {currentNew:`${userName} : ${message.toString()}`}
     const newComentarios = await dispatch(
       
       createComment(
@@ -127,7 +125,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                         </div>
                       </>
                     ))}
-                {/* {commentsCache.length > 0 && (
+                {commentsCache.length > 0 && (
                   <div
                     style={{
                       borderRadius: "10px",
@@ -140,22 +138,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                       {commentsCache}
                     </Typography>
                   </div>
-                )} */}
-                {comentss?.current?.currentNew > 0 &&
-                <div
-                style={{
-                  borderRadius: "10px",
-                  backgroundColor: "#464646",
-                  marginBottom: "10px",
-                  padding: "5px",
-                }}
-              >
-                <Typography className={classes1.typo}>
-                  {comentss.current.currentNew}
-                </Typography>
-                
-              </div>
-                }
+                )}
                 {error !== null && (
                   <h5 style={{ color: "#f50057"}}>{error}</h5>
                 )}

@@ -76,17 +76,17 @@ export default makeStyles((theme) => ({
     marginBottom: "5px",
   },
   card1: {
-    width:'97%',
+    width: "97%",
     margin: "0",
     textAlign: "left",
     color: "#f1f1f1",
     justifyContent: "center",
     textDecoration: "none",
     borderRadius: "10px",
-    backgroundColor:'#f1f1f1',
-    marginRight:'5px'
+    backgroundColor: "#f1f1f1",
+    marginRight: "5px",
   },
-  container4:{
+  container4: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
@@ -95,14 +95,24 @@ export default makeStyles((theme) => ({
     lineHeight: "15px",
   },
   purple2: {
-    margin:0,
-    backgroundColor: '#949494',
-    color:'white',
-    fontSize:'22px'
-
+    margin: 0,
+    backgroundColor: "#949494",
+    color: "white",
+    fontSize: "22px",
   },
-  container5:{
-      display:'flex',
-      fledDirection:'row'
-  }
+  container5: {
+    display: "flex",
+    fledDirection: "row",
+  },
+  divNewMessage: {
+    borderRadius: "10px",
+    marginBottom: "10px",
+    padding: "8px",
+    fontFamily: " -apple-system, BlinkMacSystemFont, Segoe UI,",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "left",
+    fontSize: "18px",
+    fontWeight:'600'
+  },
 }));

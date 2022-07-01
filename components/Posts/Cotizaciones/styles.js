@@ -12,9 +12,11 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
-    bottom: "3vh",
+    
     [theme.breakpoints.down("xs")]: {
       position: "absolute",
+    bottom: "3vh",
+
     },
   },
   divContainer2: {

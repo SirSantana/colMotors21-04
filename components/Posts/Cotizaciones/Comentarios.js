@@ -36,7 +36,6 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
 
   const allComments = useRef(Cotizacion?.comentarios);
   const newComment = useRef(null);
-  const messageEndRef = useRef(null)
 
   const { userId, userName } = dataUser;
 
@@ -94,6 +93,12 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
               </h3>
             </section>
             <div className={classes1.containerComents}>
+            <div className={classes1.container5}>
+                <AddAlert fontSize="small" style={{ color: "#1b333d" }} />
+                <h4 style={{ margin: '0 0 5px 5px', width: "85%" }}>
+                  Solo puedes enviar un mensaje, se concreto
+                </h4>
+              </div>
               {allComments.current.map((el) => (
                 <>
                   <div className={classes1.divNewMessage} style={{backgroundColor:'#464646'}}>
@@ -189,12 +194,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                   </span>
                 )}
               </div>
-              <div className={classes1.container5}>
-                <AddAlert fontSize="small" style={{ color: "#1b333d" }} />
-                <h4 style={{ margin: 0, marginLeft: "5px", width: "85%" }}>
-                  Solo puedes enviar un mensaje, se concreto
-                </h4>
-              </div>
+              
             </div>
           </Paper>
         ) : null}

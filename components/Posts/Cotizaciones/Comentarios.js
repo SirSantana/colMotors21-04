@@ -36,7 +36,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
 
   const allComments = useRef(Cotizacion?.comentarios);
   const newComment = useRef(null);
-
+  const messageEndRef = useRef(null)
 
   const { userId, userName } = dataUser;
 
@@ -47,9 +47,10 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
     }
     newComment.current.innerHTML = `${userName} : ${message.toString()}`;
     newComment.current.setAttribute('style', 'background-color:#464646')
+    newComment.current.scrollIntoView()
     setCommentsCache(`${userName} : ${message.toString()}`);
 
-    const newComentarios = await dispatch(
+    await dispatch(
       createComment(
         { ...message, message: `${userName} : ${message.toString()}` },
         Cotizacion?._id

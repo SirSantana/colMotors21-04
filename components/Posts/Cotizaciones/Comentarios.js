@@ -1,6 +1,6 @@
 import {Avatar,Dialog,Paper,Slide,TextField,Typography,useMediaQuery,} from "@material-ui/core";
 import { AddAlert, ArrowBackIos, Refresh, Send } from "@material-ui/icons";
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { createComment } from "../../../reducers/Actions/cotizacionesActions";
@@ -12,7 +12,7 @@ const messageInitial = {
 };
 
 const Transition = forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide  direction="up" ref={ref} {...props} />;
 });
 
 export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
@@ -27,18 +27,19 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-
+  const comentss = useRef(Cotizacion?.comentarios)
 
   const { userId, userName } = dataUser;
 
   const coments = Cotizacion?.comentarios;
 
-  const handleComment = async (e) => {
+  const handleComment = async (e, messageEnd) => {
     if (userId !== Cotizacion.creator && userId !== PostCreator) {
       return setError("No puedes cotizar");
     }
-
+    comentss.current = {currentNew:`${userName} : ${message.toString()}`}
     const newComentarios = await dispatch(
+      
       createComment(
         { ...message, message: `${userName} : ${message.toString()}` },
         Cotizacion?._id
@@ -57,6 +58,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
       radioGroupRef.current.focus();
     }
   };
+
 
 
   return (
@@ -87,6 +89,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                 </h3>
               </section>
               <div className={classes1.containerComents}>
+
                 {comentarios?.length > 0
                   ? comentarios?.map((el) => (
                       <>
@@ -120,10 +123,11 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                           >
                             {el}
                           </Typography>
+
                         </div>
                       </>
                     ))}
-                {commentsCache.length > 0 && (
+                {/* {commentsCache.length > 0 && (
                   <div
                     style={{
                       borderRadius: "10px",
@@ -136,11 +140,26 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                       {commentsCache}
                     </Typography>
                   </div>
-                )}
-
+                )} */}
+                {comentss?.current?.currentNew > 0 &&
+                <div
+                style={{
+                  borderRadius: "10px",
+                  backgroundColor: "#464646",
+                  marginBottom: "10px",
+                  padding: "5px",
+                }}
+              >
+                <Typography className={classes1.typo}>
+                  {comentss.current.currentNew}
+                </Typography>
+                
+              </div>
+                }
                 {error !== null && (
                   <h5 style={{ color: "#f50057"}}>{error}</h5>
                 )}
+
               </div>
               <div className={classes1.divContainer}>
                 <div className={classes1.divContainer2}>
@@ -172,6 +191,7 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
                   </h4>
                 </div>
               </div>
+
             </Paper>
           ) : null}
         </Dialog>

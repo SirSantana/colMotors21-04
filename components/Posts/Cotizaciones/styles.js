@@ -55,7 +55,7 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     [theme.breakpoints.down("xs")]: {
       maxHeight: "none",
-      height: "68vh",
+      height: "68%",
     },
   },
   container3: {

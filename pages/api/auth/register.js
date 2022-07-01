@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 }
 
 async function register(req, res) {
-  const { email, password, role, marca, firstName, lastName, confirmPassword, pais } =
+  const { email, password, role, marca, firstName, lastName, confirmPassword, pais, ciudad } =
     req.body;
   try {
     // const errMsg = valid(email, password, confirmPassword);
@@ -43,7 +43,8 @@ async function register(req, res) {
       marca,
       role,
       pais,
-      code
+      code,
+      ciudad
     });
     if (!role) result.role.push("Cliente");
 

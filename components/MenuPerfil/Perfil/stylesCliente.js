@@ -70,6 +70,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent:'center',
+    // backgroundImage:"url('https://www.1zoom.me/es/wallpaper/560376/z1933.9/')",
     [theme.breakpoints.down("sm")]: {
       margin: "0 auto",
       padding:0,

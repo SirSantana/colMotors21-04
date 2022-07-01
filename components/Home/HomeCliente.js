@@ -14,6 +14,8 @@ import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import { Refresh, Error } from "@material-ui/icons";
 import { useEffect, useState } from "react";
+import Vehiculos from "../MenuPerfil/Perfil/Vehiculos";
+import PostCard from "../../utils/PostCard/postCard";
 
 
 export default function HomeCliente({user, posts}){
@@ -24,6 +26,23 @@ export default function HomeCliente({user, posts}){
  
     return(
         <>
+        {/* <div className={classes.divv1}>
+          <div className={classes.divv2}>
+          <Vehiculos userMarca={user?.result.marca} owner={user?.result._id}/>
+          </div>
+          <div className={classes.divv3} style={{}}>
+            {posts?.map((Post)=>(
+                <PostCard Post={Post} User={user}/>
+              )
+          )}
+          </div>
+          <div className={classes.divv4}>
+          <Form  user={user} />
+          </div>
+
+
+        </div> */}
+
          {user?.result?.role?.length===1 &&
          <Container className={classes.container2} maxWidth="lg">
            <Grid

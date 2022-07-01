@@ -14,7 +14,7 @@ import Image from "next/image";
 import { useState } from "react";
 import useStyles from "./styles";
 
-export default function MenuLogos({ marca, setMarca }) {
+export default function Menus({ marca, setMarca }) {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -52,7 +52,7 @@ export default function MenuLogos({ marca, setMarca }) {
           }}
         >
           <Avatar
-            src={ marcaAuto ?`/images/${marcaAuto}.png` : '/images/logoChevrolet.png'}
+            src={ marcaAuto ?`/images/${marcaAuto}.png` : '/images/Chevrolet.png'}
             className={classes.purple}
             alt={"Hola"}
           >
@@ -82,7 +82,7 @@ export default function MenuLogos({ marca, setMarca }) {
       >
         <ButtonBase
           onClick={() => {
-            setMarca("logoChevrolet"), setMarcaAuto("logoChevrolet");
+            setMarca("Chevrolet"), setMarcaAuto("Chevrolet");
           }}
         >
           <MenuItem
@@ -97,7 +97,7 @@ export default function MenuLogos({ marca, setMarca }) {
           >
             <Image
               style={{ margin: 0, padding: 0 }}
-              src={"/images/logoChevrolet.png"}
+              src={"/images/Chevrolet.png"}
               width="40px"
               height="40px"
             />
@@ -106,7 +106,7 @@ export default function MenuLogos({ marca, setMarca }) {
 
         <ButtonBase
           onClick={() => {
-            setMarca("mazdaLogo"), setMarcaAuto("mazdaLogo");
+            setMarca("Mazda"), setMarcaAuto("Mazda");
           }}
         >
           <MenuItem
@@ -117,13 +117,13 @@ export default function MenuLogos({ marca, setMarca }) {
             }}
             onClick={handleClose}
           >
-            <Image src={"/images/mazdaLogo.png"} width="40px" height="40px" />
+            <Image src={"/images/Mazda.png"} width="40px" height="40px" />
           </MenuItem>
         </ButtonBase>
 
         <ButtonBase
           onClick={() => {
-            setMarca("logoRenault"), setMarcaAuto("logoRenault");
+            setMarca("Renault"), setMarcaAuto("Renault");
           }}
         >
           <MenuItem
@@ -135,7 +135,7 @@ export default function MenuLogos({ marca, setMarca }) {
             onClick={handleClose}
           >
             <Image
-              src={"/images/logoRenault.png"}
+              src={"/images/Renault.png"}
               style={{ margin: "1px" }}
               width="40px"
               height="40px"
@@ -145,7 +145,7 @@ export default function MenuLogos({ marca, setMarca }) {
 
         <ButtonBase
           onClick={() => {
-            setMarca("logoKia"), setMarcaAuto("logoKia");
+            setMarca("Kia"), setMarcaAuto("Kia");
           }}
         >
           <MenuItem
@@ -156,13 +156,13 @@ export default function MenuLogos({ marca, setMarca }) {
             }}
             onClick={handleClose}
           >
-            <Image src={"/images/logoKia.png"} width="40px" height="40px" />
+            <Image src={"/images/Kia.png"} width="40px" height="40px" />
           </MenuItem>
         </ButtonBase>
 
         <ButtonBase
           onClick={() => {
-            setMarca("logoNissan"), setMarcaAuto("logoNissan");
+            setMarca("Nissan"), setMarcaAuto("Nissan");
           }}
         >
           <MenuItem
@@ -173,13 +173,13 @@ export default function MenuLogos({ marca, setMarca }) {
             }}
             onClick={handleClose}
           >
-            <Image src={"/images/logoNissan.png"} width="40px" height="40px" />
+            <Image src={"/images/Nissan.png"} width="40px" height="40px" />
           </MenuItem>
         </ButtonBase>
 
         <ButtonBase
           onClick={() => {
-            setMarca("logoFord1"), setMarcaAuto("logoFord1");
+            setMarca("Ford"), setMarcaAuto("Ford");
           }}
         >
           <MenuItem
@@ -190,13 +190,13 @@ export default function MenuLogos({ marca, setMarca }) {
             }}
             onClick={handleClose}
           >
-            <Image src={"/images/logoFord1.png"} width="40px" height="40px" />
+            <Image src={"/images/Ford.png"} width="40px" height="40px" />
           </MenuItem>
         </ButtonBase>
 
         <ButtonBase
           onClick={() => {
-            setMarca("logoVolkswagen1"), setMarcaAuto("logoVolkswagen1");
+            setMarca("Volkswagen"), setMarcaAuto("Volkswagen");
           }}
         >
           <MenuItem
@@ -208,7 +208,7 @@ export default function MenuLogos({ marca, setMarca }) {
             onClick={handleClose}
           >
             <Image
-              src={"/images/logoVolkswagen1.png"}
+              src={"/images/Volkswagen.png"}
               width="40px"
               height="40px"
             />
@@ -217,7 +217,7 @@ export default function MenuLogos({ marca, setMarca }) {
 
         <ButtonBase
           onClick={() => {
-            setMarca("logoToyota1"), setMarcaAuto("logoToyota1");
+            setMarca("Toyota"), setMarcaAuto("Toyota");
           }}
         >
           <MenuItem
@@ -228,7 +228,7 @@ export default function MenuLogos({ marca, setMarca }) {
             }}
             onClick={handleClose}
           >
-            <Image src={"/images/logoToyota1.png"} width="40px" height="40px" />
+            <Image src={"/images/Toyota.png"} width="40px" height="40px" />
           </MenuItem>
         </ButtonBase>
 

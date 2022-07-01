@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { Error } from "@material-ui/icons";
 import { handleLogout } from "../../utils/handleLogout";
 import Link from 'next/link'
+import MenuLogos from "../../utils/MenuLogos/MenuLogos";
 
 const initialState = {
   firstName: "",
@@ -16,8 +17,9 @@ const initialState = {
   email: "",
   password: "",
   confirmPassword: "",
-  pais: "",
+  pais: "Colombia",
   marca: "",
+  ciudad:''
 };
 
 const SignUp = () => {
@@ -28,6 +30,9 @@ const SignUp = () => {
   const [message, setMessage] = useState(null);
   const [messageError, setMessageError] = useState(null);
   const [messageLoad, setMessageLoad] = useState(null);
+  const [marca, setMarca] = useState(null)
+
+  console.log(form);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -40,21 +45,27 @@ const SignUp = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
   };
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
-      dispatch(
-        signup(form, router, setMessage, setMessageError, setMessageLoad)
-      );
+        if(marca !== null){
+        dispatch(
+        signup({...form, marca:marca}, router, setMessage, setMessageError, setMessageLoad)
+        )
+      }
+        else{
+          setMessageError('Debe elegir la marca de su carro')
+        }
+        
     } else {
-      dispatch(
-        signin(form, router, setMessage, setMessageError, setMessageLoad)
-      );
+        dispatch(
+          signin(form, router, setMessage, setMessageError, setMessageLoad)
+        );
+      
+     
     }
   };
 
@@ -145,6 +156,8 @@ const SignUp = () => {
                         handleChange={handleChange}
                         autoFocus
                         half='true'
+                        
+
                       />
                       <Input
                         name="lastName"
@@ -152,21 +165,25 @@ const SignUp = () => {
                         placeholder="Rodriguez"
                         handleChange={handleChange}
                         half='true'
+
                       />
-                      <Input
-                        name="marca"
-                        label="Marca de Auto"
-                        placeholder="Chevrolet Captiva"
-                        handleChange={handleChange}
-                        half='true'
-                      />
+                      <MenuLogos marca={marca} setMarca={setMarca}/>
                       <Input
                         name="pais"
-                        label="Ciudad y País"
-                        placeholder="Bogota, Colombia"
+                        label="Colombia"
+                        placeholder="Colombia"
+                        half='true'
+                        value={form.pais}
+                        disabled='true'
+                      />
+                      <Input
+                        name="ciudad"
+                        label="Ciudad"
+                        placeholder="Bogotá"
                         handleChange={handleChange}
                         half='true'
                       />
+                     
                     </>
                   )}
 
@@ -176,6 +193,7 @@ const SignUp = () => {
                     placeholder="james10@gmail.com"
                     handleChange={handleChange}
                     type="email"
+
                   />
                   <Input
                     name="password"
@@ -183,6 +201,7 @@ const SignUp = () => {
                     handleChange={handleChange}
                     type={showPassword ? "text" : "password"}
                     handleShowPassword={handleShowPassword}
+
                   />
 
                   {isSignup && (
@@ -191,6 +210,7 @@ const SignUp = () => {
                       label="Repite la contraseña"
                       handleChange={handleChange}
                       type="password"
+
                     />
                   )}
                 </Grid>

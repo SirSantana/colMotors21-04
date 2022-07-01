@@ -111,7 +111,7 @@ export default function Home() {
           <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
           <section className={styles.card} style={{ margin:'10px',idth:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
           <Image
-          src={"/images/logoChevrolet.png"}
+          src={"/images/Chevrolet.png"}
           width='60px'
           height='60px'
           />
@@ -119,7 +119,7 @@ export default function Home() {
           <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
 
           <Image
-          src={"/images/mazdaLogo.png"}
+          src={"/images/Mazda.png"}
           width='60px'
           height='60px'
           />
@@ -127,7 +127,7 @@ export default function Home() {
           <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
 
           <Image
-          src={"/images/logoRenault.png"}
+          src={"/images/Renault.png"}
           width='60px'
           height='60px'
           />
@@ -135,7 +135,7 @@ export default function Home() {
           <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
 
           <Image
-          src={"/images/logoKia.png"}
+          src={"/images/Kia.png"}
           width='60px'
           height='60px'
           />
@@ -143,7 +143,7 @@ export default function Home() {
           <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
 
           <Image
-          src={"/images/logoNissan.png"}
+          src={"/images/Nissan.png"}
           width='60px'
           height='60px'
           />
@@ -151,7 +151,7 @@ export default function Home() {
 
           <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
           <Image
-          src={"/images/logoFord1.png"}
+          src={"/images/Ford.png"}
           width='60px'
           height='60px'
           />
@@ -159,7 +159,7 @@ export default function Home() {
           <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
 
           <Image
-          src={"/images/logoVolkswagen1.png"}
+          src={"/images/Volkswagen.png"}
           width='60px'
           height='60px'
           />
@@ -167,7 +167,7 @@ export default function Home() {
 
           <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
           <Image
-          src={"/images/logoToyota1.png"}
+          src={"/images/Toyota.png"}
           width='60px'
           height='60px'
           />

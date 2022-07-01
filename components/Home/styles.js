@@ -123,5 +123,39 @@ export default makeStyles((theme) => ({
     cursor:'pointer'
   },
   
+
+
+
+
+  // divv1:{
+  //   width:'80vw', display:'flex', flexDirection:'row', margin:'0 auto',
+  //   [theme.breakpoints.down('xs')]: {
+  //     width:'100vw',
+  //     flexDirection: 'column-reverse',
+      
+      
+  //   },
+  // },
+  // divv2:{
+  //   width:'30%',
+  //   [theme.breakpoints.down('xs')]: {
+  //     width:'100vw',
+      
+  //   },
+  // },
+  // divv3:{
+  //   display:'flex', flexDirection:'column', width: '40%',
+  //   [theme.breakpoints.down('xs')]: {
+  //     width:'100vw',
+      
+  //   },
+  // },
+  // divv4:{
+  //   display:'flex', flexDirection:'column', width: '20%', margin:'0 auto',
+  //   [theme.breakpoints.down('xs')]: {
+  //     width:'90vw',
+      
+  //   },
+  // },
   
 }));

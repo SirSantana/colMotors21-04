@@ -13,6 +13,7 @@ const UserModel = new mongoose.Schema(
       avatar: String,
     },
     pais: { type: String },
+    ciudad:{type:String},
     marca: { type: String, required: true },
     vehiculos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Vehiculo" }],
 

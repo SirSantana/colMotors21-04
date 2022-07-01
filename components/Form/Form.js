@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import FileBase64 from "react-file-base64";
 import { useDispatch } from "react-redux";
+import { createPost } from "../../reducers/Actions/postActions";
 import MenuLogos from "../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import Link from 'next/link'
@@ -20,7 +21,7 @@ const initial = {
   lugar:''
 };
 
-export default function Form({ user, createPosts}) {
+export default function Form({ user}) {
   const classes = useStyles();
   const dispatch = useDispatch()
   const [change, setChange] = useState(false)
@@ -38,9 +39,11 @@ export default function Form({ user, createPosts}) {
   const handleSubmit = (e) => {
     e.preventDefault();
       setChange(change ? false: true)
-      createPosts({...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais })
-      
+      dispatch(createPost({...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais, selectedFile: image }, router))
+      // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais })
+     
       setPostData(initial);
+      // router.push(`/users/micuenta/${user?.result._id}`)
   };
   return (
     <>

@@ -10,34 +10,34 @@ export default function Home({ Postss }) {
   const [user, setUser] = useState();
   const router = useRouter();
 
-  const createPosts = async (postData) => {
-    try {
-      const res = await fetch(
-        "/api/posts/",
-        // https://col-motors21-04.vercel.app/api/posts",
-        {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(postData),
-        }
-      );
-      if (!res.ok) {
-        throw new Error("HTTP error " + res.status);
-      }
-      const data = await res.json();
-      console.log(data);
-      if (data) {
-        router.push(`/posts/${data.newPost._id}`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const createPosts = async (postData) => {
+  //   try {
+  //     const res = await fetch(
+  //       "/api/posts/",
+  //       // https://col-motors21-04.vercel.app/api/posts",
+  //       {
+  //         method: "POST",
+  //         headers: { "Content-type": "application/json" },
+  //         body: JSON.stringify(postData),
+  //       }
+  //     );
+  //     if (!res.ok) {
+  //       throw new Error("HTTP error " + res.status);
+  //     }
+  //     const data = await res.json();
+  //     console.log(data);
+  //     if (data) {
+  //       router.push(`/posts/${data.newPost._id}`);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent createPosts={createPosts} posts={Postss} />
+        <HomeComponent posts={Postss} />
       </Layout>
     </>
   );

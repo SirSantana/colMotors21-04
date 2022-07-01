@@ -24,9 +24,10 @@ export default function Home({ Postss }) {
       if (!res.ok) {
         throw new Error("HTTP error " + res.status);
       }
-      const data = res;
+      const data = await res.json();
+      console.log(data);
       if (data) {
-        router.push(`/users/micuenta/${user?.result?._id}`);
+        router.push(`/posts/${data.newPost._id}`);
       }
     } catch (error) {
       console.log(error);

@@ -34,20 +34,20 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
-export const createPost = (post, router) => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
+// export const createPost = (post, router) => async (dispatch) => {
+//   try {
+//     dispatch({ type: START_LOADING });
 
-    const { data } = await api.createPost(post);
+//     const { data } = await api.createPost(post);
     
-    dispatch({ type: CREATE_POST, payload: data.newPost });
-    // router.push(`/posts/${data.newPost._id}`)
-    dispatch({ type: END_LOADING });
+//     dispatch({ type: CREATE_POST, payload: data.newPost });
+//     // router.push(`/posts/${data.newPost._id}`)
+//     dispatch({ type: END_LOADING });
 
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 // export const favoritePost = (id) => async (dispatch) => {
 //   try {
 //     const { data } = await api.favoritePost(id);

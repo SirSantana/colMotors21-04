@@ -39,9 +39,9 @@ export const createPost = (post, router) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     const { data } = await api.createPost(post);
+    await router.push(`/posts/${data.newPost._id}`)
     
     dispatch({ type: CREATE_POST, payload: data.newPost });
-    router.push(`/posts/${data.newPost._id}`)
     dispatch({ type: END_LOADING });
 
   } catch (error) {

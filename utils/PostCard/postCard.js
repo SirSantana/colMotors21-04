@@ -26,10 +26,10 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
   let cotiza = Post?.cotizaciones;
   let arrayCotizaciones = [];
   let cotizacionCreada;
-  if(cotiza?.length>0){
-  arrayCotizaciones.push(cotiza?.split(","));
+  // if(cotiza?.length>0){
+  // arrayCotizaciones.push(cotiza?.split(","));
 
-  }
+  // }
   if (Post?.cotizaciones?.length > 0) {
     cotizacionCreada = User?.result?.cotizaciones?.find(
       (ele) => ele == arrayCotizaciones[0]?.find((item) => item == ele)

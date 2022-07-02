@@ -18,7 +18,7 @@ import Vehiculos from "../MenuPerfil/Perfil/Vehiculos";
 import PostCard from "../../utils/PostCard/postCard";
 
 
-export default function HomeCliente({user, posts}){
+export default function HomeCliente({user}){
   const classes = useStyles();
   const router = useRouter();
   const { id } = router.query;
@@ -61,7 +61,7 @@ export default function HomeCliente({user, posts}){
                    </a>
                  </Link>
                </Paper>
-                 <Posts user={user} posts={posts}/>
+                 <Posts user={user}/>
  
                {id && (
                  <Button

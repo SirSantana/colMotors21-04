@@ -29,7 +29,7 @@ export default function Home() {
     <Layout title="Lobby | colMotors">
       
       <div className={styles.grid}>
-        <section className={styles.card1}>
+        <section className={styles.card1} >
           <div className={styles.containerText}>
             <h4 className={styles.description2}>
               Cotiza los repuestos de tu auto en{" "}
@@ -49,65 +49,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.card}>
-          {user ? (
-            <>
-              <div className={styles.containerButtons}>
-                <Link href={user?.result.posts.length >=1 ? `/home/${user?.result._id}`: '/home'}>
-                  <a>
-                    <Button
-                      className={styles.btn}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Ve a cotizar!
-                    </Button>
-                  </a>
-                </Link>
-                <Button onClick={logout} variant="outlined" color="secondary">
-                  Cerrar Sesion
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div>
-                <h2> Registrate o Inicia Sesion &rarr;</h2>
-                <Link href={"/home"}>
-                <a>
-                  <button>Ver Posts</button>
-                </a>
-                </Link>
-              </div>
-              <div className={styles.containerButtons}>
-                <Link href={user ? '/home':"/auth"}>
-                  <a>
-                    <Button
-                      className={styles.btn}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Iniciar Sesion
-                    </Button>
-                  </a>
-                </Link>
-                <Link href={"/auth"}>
-                  <a>
-                    <Button variant="contained" color="secondary">
-                      Registrarse
-                    </Button>
-                  </a>
-                </Link>
-              </div>
-            </>
-          )}
-        </section>
-
-
+       
+        <section className={styles.card} style={{display:'flex', flexDirection:'row', margin:'10px',idth:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+          <Image
+          src={"/images/iconTime.png"}
+          width='60px'
+          height='60px'
+          />
+         <div style={{display:'flex', flexDirection:'column'}}>
+         <h2 style={{margin:0}}>Ahorra Tiempo</h2>
+          <h4 style={{margin:0}}>Cotiza con distintos vendedores sin salir de casa</h4>
+         </div>
+          </section>
         
+
         <div className={styles.card}>
-        <h2 style={{marginLeft:'8px'}}>Marcas</h2>
-        <p></p>
           <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
           <section className={styles.card} style={{ margin:'10px',idth:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
           <Image
@@ -175,6 +131,64 @@ export default function Home() {
 
           </div>
         </div>
+
+        <section className={styles.card}>
+          {user ? (
+            <>
+              <div className={styles.containerButtons}>
+                <Link href={user?.result.posts.length >=1 ? `/home/${user?.result._id}`: '/home'}>
+                  <a>
+                    <Button
+                      className={styles.btn}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Ve a cotizar!
+                    </Button>
+                  </a>
+                </Link>
+                <Button onClick={logout} variant="outlined" color="secondary">
+                  Cerrar Sesion
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <h2> Registrate o Inicia Sesion &rarr;</h2>
+                <Link href={"/home"}>
+                <a>
+                  <button>Ver Posts</button>
+                </a>
+                </Link>
+              </div>
+              <div className={styles.containerButtons}>
+                <Link href={user ? '/home':"/auth"}>
+                  <a>
+                    <Button
+                      className={styles.btn}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Iniciar Sesion
+                    </Button>
+                  </a>
+                </Link>
+                <Link href={"/auth"}>
+                  <a>
+                    <Button variant="contained" color="secondary">
+                      Registrarse
+                    </Button>
+                  </a>
+                </Link>
+              </div>
+            </>
+          )}
+        </section>
+
+
+        
+      
 
         <a
           href="#"

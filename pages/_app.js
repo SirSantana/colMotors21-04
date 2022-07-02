@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import Router from 'next/router'
 import Layout from '../components/Layout/Layout';
+import Image from 'next/image'
 
 const ProgressBar = dynamic(() => import('../components/atoms/ProgressBar.js'), { ssr: false });
 const theme = createTheme({ 
@@ -51,6 +52,7 @@ function MyApp({ Component, pageProps }) {
       {loading ? (
         <Layout>
           <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+          <Image src='/images/logo_colmotors.jpg' alt='logo' width={50} height={50}/>
         </Layout>
       ) : (
         <Component {...pageProps} />

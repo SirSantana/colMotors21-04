@@ -16,7 +16,7 @@ const { id } = router.query;
                 className={classes.cotizar}
                 onClick={handleCotizar}
               >
-                Mira las Cotizaciones
+                Ver cotizaciones
               </Button>
             ) : id !== undefined ? (
               <Button

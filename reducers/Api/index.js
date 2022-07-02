@@ -3,6 +3,7 @@ import axios from 'axios'
 const API = axios.create({ baseURL: 
   'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
     'Access-Control-Allow-Origin': '*'
+    //AVERIGUAR ACCESS CORS ORIGINI
   } });
 
 API.interceptors.request.use((req) => {

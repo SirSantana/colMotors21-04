@@ -37,12 +37,10 @@ export default function Navbar() {
         <div style={{display:'flex', flexDirection:'row'}}>
         <Link href={"/"} className={classes.brandContainer}>
           <a className={classes.a}>
-            <Image
+            <img
               className={classes.img}
-              src={"/images/logo_colmotors.jpg"}
+              src={"/images/LogoQuarks1PNG.png"}
               alt="icon"
-              height={"40"}
-              width={"60"}
             />
             <Typography
               className={classes.heading}

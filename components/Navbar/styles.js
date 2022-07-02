@@ -22,8 +22,9 @@ export default makeStyles((theme) => ({
     }
   },
   img:{
-    height:'30px',
-    width:'35px'
+    height:'50px',
+    width:'50px',
+    margin:'0 auto'
   },
   heading: {
     marginLeft:'15px',
@@ -41,7 +42,8 @@ export default makeStyles((theme) => ({
     display:'flex',
     flexDirection: 'row',
     fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
-    
+    alignItems:'center',
+    justifyContent:'center'
   },
   
   brandContainer: {

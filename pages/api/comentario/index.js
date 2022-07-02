@@ -7,10 +7,7 @@ export default async function handler(req, res){
     switch (req.method) {
         case 'POST':
             await createComment(req, res)
-            break;
-    
-        default:
-            break;
+
     }
 }
 

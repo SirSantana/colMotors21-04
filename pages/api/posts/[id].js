@@ -13,8 +13,7 @@ export default async function handler(req, res){
             await getPost(req, res)
         // case 'POST':
         //     await createCotizacion(req, res)
-        default:
-            break;
+        
     }
 }
 export const getPost = async (req, res) => {

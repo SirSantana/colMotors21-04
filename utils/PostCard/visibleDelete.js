@@ -5,7 +5,7 @@ import useStyles from '../stylesCard.js'
 
 export default function VisibleDelete({message, handleDelete, setVisibleDelete}){
     const classes = useStyles()
-
+   
     return(
         <>
         <Paper className={classes.paper2} elevation={3}>
@@ -15,7 +15,7 @@ export default function VisibleDelete({message, handleDelete, setVisibleDelete})
               style={{ fontSize: "14px", color: "white" }}
             >
               {message
-                ? message
+                ? 'Se ha eliminado correctamente'
                 : "Esta seguro que quiere eliminar esta cotizacion?"}{" "}
             </Typography>
 

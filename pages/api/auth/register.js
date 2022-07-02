@@ -17,7 +17,6 @@ export default async function handler(req, res) {
     case "POST":
       await register(req, res);
     
-    break;
   }
 }
 

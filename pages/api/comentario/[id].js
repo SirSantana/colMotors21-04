@@ -8,9 +8,7 @@ export default async function handler(req, res){
     switch (req.method) {
         case 'POST':
             await createComment(req, res)
-    
-        default:
-            res.status(403).json({success:false, error: 'Ha ocurrido un error'})
+
     }
 }
 

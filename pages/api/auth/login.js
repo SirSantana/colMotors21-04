@@ -9,7 +9,6 @@ export default async (req, res) => {
     switch(req.method){
         case "POST":
             await login(req, res)
-            break;
     }
 }
 

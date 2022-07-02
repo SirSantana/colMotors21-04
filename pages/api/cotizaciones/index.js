@@ -8,10 +8,7 @@ export default async  (req, res)=>{
             await getCotizaciones(req, res)
         case 'POST':
             await createCotizacion(req, res)
-        
-    
-        default:
-            break;
+   
     }
 }
 

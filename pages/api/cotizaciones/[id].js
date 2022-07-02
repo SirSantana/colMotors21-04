@@ -5,10 +5,7 @@ export default async (req, res)=>{
     switch (req.method) {
         case 'GET':
                 await getCotizacion(req, res)
-            break;
-    
-        default:
-            break;
+      
     }
 }
 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-export default function Home() {
+export default function Home({Postss}) {
   const router = useRouter()
   
 
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Layout title={"Home | colMotors"}>
-        <HomeComponent/>
+        <HomeComponent posts={Postss}/>
       </Layout>
     </>
   );

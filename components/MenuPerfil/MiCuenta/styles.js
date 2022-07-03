@@ -31,6 +31,8 @@ export default makeStyles((theme) => ({
     background:"#1b333d",
     marginBottom:'10px',
     borderRadius: 5,
+    marginTop:'10px'
+
 
   },
   imageSection: {
@@ -52,13 +54,11 @@ export default makeStyles((theme) => ({
     padding: "5px",
     fontWeight:'600',
 
-
   },
   container: {
     borderRadius: 5,
     display: 'flex',
     width: '1000px',
-    padding:'20px',
     flexDirection:'column',
     backgroundColor:'none',
     [theme.breakpoints.down("sm")]: {

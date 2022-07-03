@@ -47,7 +47,7 @@ export default function Navbar() {
               align="center"
               outlined="none"
             >
-              colMotors
+              quarks
             </Typography>
           </a>
         </Link>
@@ -58,9 +58,9 @@ export default function Navbar() {
         )}
         </div>
 
-              <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', marginLeft:'0px', marginRight:0}}>
+              {/* <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', marginLeft:'0px', marginRight:0}}>
               <Buscador/>
-              </div>
+              </div> */}
 
         
         

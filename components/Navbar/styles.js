@@ -16,9 +16,10 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       justifyContent: 'space-between',
-      padding:'10px, 20px',
-      width:'85vw',
-
+      padding:'0',
+      width:'100vw',
+    borderRadius: 0,
+    margin:0,
     }
   },
   img:{
@@ -35,7 +36,6 @@ export default makeStyles((theme) => ({
     color:'white',
     [theme.breakpoints.down('sm')]: {
       fontSize: '2.0em',
-      marginTop:"8px"
     }
   },
   a:{

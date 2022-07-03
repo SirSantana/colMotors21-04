@@ -53,10 +53,10 @@ export default function Home() {
         <section className={styles.card} style={{display:'flex', flexDirection:'row', margin:'10px',idth:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
           <Image
           src={"/images/iconTime.png"}
-          width='60px'
-          height='60px'
+          width='40px'
+          height='40px'
           />
-         <div style={{display:'flex', flexDirection:'column'}}>
+         <div style={{display:'flex', marginLeft:'10px', flexDirection:'column'}}>
          <h2 style={{margin:0}}>Ahorra Tiempo</h2>
           <h4 style={{margin:0}}>Cotiza con distintos vendedores sin salir de casa</h4>
          </div>

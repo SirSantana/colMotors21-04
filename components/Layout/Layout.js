@@ -19,9 +19,9 @@ export default function Layout({children, title, description}){
           target="_blank"
           rel="noopener noreferrer"
         >
-          colMotors | Colombia
+          quarks | Colombia
           <span className={styles.logo}>
-            <Image src="/images/logo_colmotors.jpg" alt="colMotors Logo" width={62} height={66} />
+            <Image src="/images/LogoQuarks1PNG.png" alt="colMotors Logo" width={60} height={60} />
           </span>
         </a>
       </footer>

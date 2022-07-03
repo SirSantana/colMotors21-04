@@ -15,8 +15,6 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
 
   const [visibleEdit, setVisibleEdit] = useState(false);
 
-  console.log(PostCreator);
-
   return (
     <>
       {userId === Cotizacion.creator || userId === PostCreator ? (

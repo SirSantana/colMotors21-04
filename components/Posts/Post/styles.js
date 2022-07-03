@@ -43,7 +43,7 @@ export default makeStyles((theme)=>({
     justifyContent: 'center',
     margin:0,
     [theme.breakpoints.down('sm')]: {
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     marginBottom:'20px',
       width:'100%',
     }
@@ -95,9 +95,8 @@ export default makeStyles((theme)=>({
     marginLeft:'40px',
     height:'180px',
     [theme.breakpoints.down('xs')]: {
-      width:'90%',
-      marginLeft:0,
-      marginTop:'20px'
+      width:'80vw',
+      margin:'10px auto 0 auto'
       },
 
   },

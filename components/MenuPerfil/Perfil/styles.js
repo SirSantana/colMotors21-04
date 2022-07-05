@@ -20,6 +20,13 @@ export default makeStyles((theme)=>({
 
         },
       },
+      imgVehicule:{
+        width:'90%', height:'600px',
+        [theme.breakpoints.down("sm")]: {
+          width: "100%",
+          height:'500px',
+        },
+      },
       heading: {
         marginTop:'8px',
         textDecoration: 'none',

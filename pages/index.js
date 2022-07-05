@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux'
 import Image from 'next/image'
 
 
-
 export default function Home() {
   const [user, setUser] = useState(null);
   const dispatch = useDispatch()

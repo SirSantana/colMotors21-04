@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { createTheme, ThemeProvider } from "@material-ui/core";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Provider } from 'react-redux';
 import store from '../reducers/store';
 import dynamic from 'next/dynamic';
@@ -24,6 +24,7 @@ const theme = createTheme({
       contrastText: '#f1f1f1',
     },
   },
+  typography: { fontFamily: ["Mingzat"].join(",") }
 });
 
 

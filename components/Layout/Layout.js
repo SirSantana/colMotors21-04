@@ -10,7 +10,8 @@ export default function Layout({children, title, description}){
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+        <link href="https://fonts.googleapis.com/css2?family=Mingzat&display=swap" rel="stylesheet"/>
+        </Head>
         
         <main className={styles.main}><Navbar/>{children}</main>
       <footer className={styles.footer}>

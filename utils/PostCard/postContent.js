@@ -48,7 +48,7 @@ export default function PostsContent({Post}) {
               />
 
               <Typography
-                style={{ marginLeft: "5px", color: "black" }}
+                style={{ marginLeft: "5px", color: "black", fontWeight:'600', fontSize:'18px' }}
                 className={classes.typography}
               >
                 {nombreCreador}

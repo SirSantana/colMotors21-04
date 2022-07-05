@@ -1,5 +1,5 @@
-import { Button, Divider,  } from "@material-ui/core";
-import { AddAPhoto, ArrowBackIos,Menu} from "@material-ui/icons";
+import { Button, Divider } from "@material-ui/core";
+import { AddAPhoto } from "@material-ui/icons";
 import { useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
@@ -13,14 +13,9 @@ export default function Vehiculos({vehicule, owner}){
 
     return(
         <>
-        <div className={classes.containerVehiculos}>
-
         <div className={classes.container5}>
-          <ArrowBackIos fontSize='large'/>
-          <img style={{marginLeft:'10px', width:'50px', height:'50px'}} src={`/images/Mazda.png`} alt={vehicule?.marca} />
-          <Menu style={{marginRight:'20px'}} fontSize='large'/>
+            <h3 className={classes.texto5} style={{fontSize:'20px'}}>Vehiculos</h3>
           </div>
-          <h2 className={classes.texto3} style={{marginLeft:'20px', marginBottom:'20px', color:'white', fontSize:'28px'}}>Vehiculos</h2>
           
           <div className={classes.container7}>
               <div className={classes.container6}>
@@ -35,8 +30,9 @@ export default function Vehiculos({vehicule, owner}){
 
               <div className={classes.div1}>
                 <section style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-              <h3 className={classes.texto} style={{marginTop:'10px', marginLeft:'20px',color:'#464646', fontSize:'28px'}}>Mazda 2</h3>
-              {/* <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Referencia</Button> */}
+                <img style={{marginLeft:'10px', width:'50px', height:'50px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
+              {/* <h3 className={classes.texto2} style={{marginTop:'10px'}}>Agregar Referencia</h3> */}
+              <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Referencia</Button>
 
                 </section>
 
@@ -46,10 +42,10 @@ export default function Vehiculos({vehicule, owner}){
                 <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', margin:'10px 0 10px 10px'}}>Agregar Cilindraje</Button>
                 
                 {/* <h5 className={classes.texto4} >210.000Km</h5> */}
-            {/* <Divider style={{backgroundColor:'gray', height:'3px', width:'95%', marginLeft:'auto', marginRight:'auto'}}/> */}
-            {/* <h3 className={classes.texto2} style={{marginTop:'10px'}}>Velocidad Maxima:</h3>
+            <Divider style={{backgroundColor:'gray', height:'3px', width:'95%', marginLeft:'auto', marginRight:'auto'}}/>
+            <h3 className={classes.texto2} style={{marginTop:'10px'}}>Velocidad Maxima:</h3>
                 <h4 className={classes.texto3} style={{fontSize:'26px'}}>Mejoras:</h4>
-                <h5 className={classes.texto4} >Repuestos Cambiados:</h5> */}
+                <h5 className={classes.texto4} >Repuestos Cambiados:</h5>
               </div>
               </div>
 
@@ -62,8 +58,6 @@ export default function Vehiculos({vehicule, owner}){
               </div>
               {visibleEdit && <Modal visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit} owner={owner}/>}
               </div> 
-        </div>
-
         </>
     )
 }

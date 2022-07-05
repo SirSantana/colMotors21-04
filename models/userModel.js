@@ -14,7 +14,7 @@ const UserModel = new mongoose.Schema(
     },
     pais: { type: String },
     ciudad:{type:String},
-    marca: { type: String, required: true },
+    marca: { type: String },
     vehiculos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Vehiculo" }],
 
     id: { type: String },

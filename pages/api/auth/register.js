@@ -7,6 +7,7 @@ import { createAccessToken, getToken } from "../../../libs/createToken";
 import { getTemplate } from "../../../libs/mail";
 import { v4 as uuidv4 } from 'uuid';
 import nodemailer from 'nodemailer'
+import vehiculoModel from "../../../models/vehiculoModel";
 
 DBConnect();
 
@@ -39,7 +40,6 @@ async function register(req, res) {
       email,
       password: pass,
       name: `${firstName} ${lastName}`,
-      marca,
       role,
       pais,
       code,
@@ -47,6 +47,8 @@ async function register(req, res) {
     });
     if (!role) result.role.push("Cliente");
 
+    const vehiculo = await vehiculoModel.create({marca, nameOwner:result.name, owner:result._id})
+    await result.vehiculos.push(vehiculo._id)
     const token = createAccessToken({result,code})
 
     const template = getTemplate(result.name, token)
@@ -61,7 +63,7 @@ async function register(req, res) {
 
     // await sendMail(mailOptions, template)
 
-
+    await vehiculo.save()
     await result.save();
 
   res.status(200).json({result, token})

@@ -43,7 +43,7 @@ export default makeStyles((theme) => ({
     },
   },
   container4: {
-    backgroundColor: "#464646",
+    backgroundColor: "#1b333d",
     borderRadius: "10px",
     display: "flex",
     padding: "10px",
@@ -82,7 +82,7 @@ export default makeStyles((theme) => ({
     borderRadius: "10px",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
 
-    backgroundColor: "#464646",
+    backgroundColor: "#1b333d",
     width: "30%",
     padding: "10px",
     margin: "20px 10px 10px 10px",
@@ -131,7 +131,7 @@ export default makeStyles((theme) => ({
   container9: {
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "#464646",
+    backgroundColor: "#1b333d",
     borderRadius: "10px",
     height: "100px",
     width: "70%",

@@ -6,7 +6,7 @@ import Vehiculos from "./Vehiculos";
 import { AddAPhoto } from "@material-ui/icons";
 
 
-export default function PerfilCliente({user}){
+export default function PerfilCliente({user, vehicule}){
   const classes = useStyles();
   const [userNow, setUserNow] = useState(null)
 
@@ -15,6 +15,9 @@ export default function PerfilCliente({user}){
     setMessageAdd('Solicitud de amistad Enviada')
     
   }
+  console.log(user);
+  console.log(vehicule);
+
 
   // useEffect(()=>{
   //   setUserNow(JSON.parse(localStorage.getItem('profile')))
@@ -45,7 +48,7 @@ export default function PerfilCliente({user}){
             </div>
           </div>
 
-        <Vehiculos userMarca={user?.marca} owner={user?._id}/>
+        <Vehiculos vehicule={vehicule} owner={user?._id} />
         
             {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>
             <div style={{borderRadius:'5px', border:'2px solid lightGray', padding:'30px', width:'100px'}}>

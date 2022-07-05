@@ -22,7 +22,7 @@ export default function Posts({user, posts}) {
                
 
           <div style={{marginRight:'auto', marginLeft:'auto', marginTop:'20px', }}>
-          {user && <Button variant="contained" color="secondary" onClick={()=> router.push(`/home/${user?.result._id}`)}>Ver mis cotizaciones</Button>}
+          {user && <Button variant="contained" color="secondary" onClick={()=> router.push(`/users/micuenta/${user?.result._id}`)}>Ver mis cotizaciones</Button>}
 
           </div>
         </Grid>

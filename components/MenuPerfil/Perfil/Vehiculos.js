@@ -4,11 +4,12 @@ import { useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
 import useStyles from "./stylesCliente";
+import Image from 'next/image'
 
-
-export default function Vehiculos({userMarca, owner}){
+export default function Vehiculos({vehicule, owner}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
+  console.log(vehicule);
 
     return(
         <>
@@ -28,10 +29,19 @@ export default function Vehiculos({userMarca, owner}){
 
 
               <div className={classes.div1}>
+                <section style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+                <img style={{marginLeft:'10px', width:'50px', height:'50px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
+              {/* <h3 className={classes.texto2} style={{marginTop:'10px'}}>Agregar Referencia</h3> */}
+              <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Referencia</Button>
+
+                </section>
+
               {/* <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/> */}
-                <h3 className={classes.texto2} style={{marginTop:'10px'}}>2008</h3>
-                <h4 className={classes.texto3} style={{fontSize:'26px'}}>{userMarca}</h4>
-                <h5 className={classes.texto4} >210.000Km</h5>
+                {/* <h3 className={classes.texto2} style={{marginTop:'0px'}}>Agregar Modelo</h3> */}
+                <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Modelo</Button><br/> 
+                <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', margin:'10px 0 10px 10px'}}>Agregar Cilindraje</Button>
+                
+                {/* <h5 className={classes.texto4} >210.000Km</h5> */}
             <Divider style={{backgroundColor:'gray', height:'3px', width:'95%', marginLeft:'auto', marginRight:'auto'}}/>
             <h3 className={classes.texto2} style={{marginTop:'10px'}}>Velocidad Maxima:</h3>
                 <h4 className={classes.texto3} style={{fontSize:'26px'}}>Mejoras:</h4>

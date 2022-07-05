@@ -23,7 +23,7 @@ const initialForm={
   image:''
 }
 
-export default function Modal({ visibleEdit, setVisibleEdit, owner }) {
+export default function Modal({ visibleEdit1, setVisibleEdit1, owner }) {
   const [marcaa, setMarca] = useState(null);
   const classes = useStyles()
   const [image, setImage] = useState(null)
@@ -45,7 +45,7 @@ export default function Modal({ visibleEdit, setVisibleEdit, owner }) {
     <div>
       <Dialog
         open={open || visibleEdit}
-        onClose={()=> setVisibleEdit(false)}
+        onClose={()=> setVisibleEdit1(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -100,14 +100,14 @@ export default function Modal({ visibleEdit, setVisibleEdit, owner }) {
         </DialogContent>
         <DialogActions>
           <Button
-            onClick={()=> setVisibleEdit(false) && handleSubmit}
+            onClick={()=> setVisibleEdit1(false) && handleSubmit}
             variant="contained"
             autoFocus
             color="secondary"
           >
             Confirmar Cambios
           </Button>
-          <Button onClick={()=> setVisibleEdit(false)} variant="contained">
+          <Button onClick={()=> setVisibleEdit1(false)} variant="contained">
             No Guardar
           </Button>
         </DialogActions>

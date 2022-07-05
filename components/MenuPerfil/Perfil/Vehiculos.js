@@ -5,10 +5,13 @@ import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
 import useStyles from "./stylesCliente";
 import Image from 'next/image'
+import ModalViewVehicule from "./ModalViewVehicule";
 
 export default function Vehiculos({vehicule, owner}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
+  const [visibleEdit1, setVisibleEdit1] = useState(false)
+
   console.log(vehicule);
 
     return(
@@ -19,13 +22,13 @@ export default function Vehiculos({vehicule, owner}){
           
           <div className={classes.container7}>
               <div className={classes.container6}>
-              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/>
-           {/* <div className={classes.div2}>
+              {/* <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2}/> */}
+           <div className={classes.div2}>
            <AddAPhoto className={classes.icon}/>
            <Button onClick={()=> setVisibleEdit(true)} style={{margin:'0 auto 15% auto',  width:'180px'}} variant="contained">
               Agregar Imagen
             </Button>
-           </div> */}
+           </div>
 
 
               <div className={classes.div1}>
@@ -56,7 +59,8 @@ export default function Vehiculos({vehicule, owner}){
               <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 
               </div>
-              {visibleEdit && <Modal visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit} owner={owner}/>}
+              {visibleEdit && <ModalViewVehicule visibleEdit={visibleEdit} setVisibleEdit1={setVisibleEdit1} setVisibleEdit={setVisibleEdit} owner={owner}/>}
+              {visibleEdit1 && <Modal visibleEdit1={visibleEdit1} setVisibleEdit1={setVisibleEdit1} owner={owner}/>}
               </div> 
         </>
     )

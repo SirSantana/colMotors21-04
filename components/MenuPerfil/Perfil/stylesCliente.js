@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
     marginLeft: "auto",
     marginRight: "auto",
     [theme.breakpoints.down("sm")]: {
-      width: "96vw",
+      width: "100vw",
       height: "100vh",
     },
   },
@@ -29,6 +29,15 @@ export default makeStyles((theme) => ({
       width: "95%",
       marginLeft: "auto",
       marginRight: "auto",
+    },
+  },
+  containerVehiculos:{
+    borderRadius:'10px',
+    backgroundColor:'#464646',
+    marginTop:'10px',
+    [theme.breakpoints.down("sm")]: {
+    height:'100vh',
+
     },
   },
 
@@ -81,14 +90,17 @@ export default makeStyles((theme) => ({
     color: "#f1f1f1",
     borderRadius: "10px",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
-
-    backgroundColor: "#1b333d",
-    width: "30%",
     padding: "10px",
-    margin: "20px 10px 10px 10px",
+    margin: "0",
+    display:'flex',
+    justifyContent:'space-around',
+    alignItems:'center',
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "2%",
+      marginLeft: "4%",
       padding: "7px",
+    justifyContent:'space-between',
+
+
     },
   },
   container6: {
@@ -108,12 +120,13 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     height: "fit-content",
-    width: "100%",
-    marginLeft: "10px",
+    width: "95%",
+    marginLeft: "30px",
     background: "none",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
-      margin: 0,
+      margin: '0 auto',
+      width:'95%'
     },
   },
   container8: {
@@ -131,7 +144,7 @@ export default makeStyles((theme) => ({
   container9: {
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "#1b333d",
+    backgroundColor: "none",
     borderRadius: "10px",
     height: "100px",
     width: "70%",

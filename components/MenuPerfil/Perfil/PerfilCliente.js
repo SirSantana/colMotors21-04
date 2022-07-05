@@ -23,7 +23,6 @@ export default function PerfilCliente({user, vehicule}){
   //   setUserNow(JSON.parse(localStorage.getItem('profile')))
   // },[])
     return(
-        <div>
         <div className={classes.container1}>
           <div className={classes.container2}>
             <div  className={classes.container3}>
@@ -64,6 +63,5 @@ export default function PerfilCliente({user, vehicule}){
             </div> */}
         </div>
        
-        </div>
     )
 }

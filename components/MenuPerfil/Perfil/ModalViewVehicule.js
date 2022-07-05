@@ -25,16 +25,16 @@ export default function ModalViewVehicule({ visibleEdit, setVisibleEdit1, setVis
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">Trabajamos dia a dia para ofrecerte una experiencia unica</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Para ello hemos creado la posibilidad que puedas agregar imagen de tu carro, y mas detalles.
-            En la imagen veras como quedara tu perfil editando los datos, adelante!
+        <DialogTitle id="alert-dialog-title">Vistazo previo a la edicion</DialogTitle>
+        <DialogContent >
+          <DialogContentText style={{lineHeight:'18px'}} id="alert-dialog-description">
+            Hemos creado la posibilidad que puedas agregar la imagen de tu carro, y mas detalles. Adelante!
+            
           </DialogContentText>
          <img
           src={'/images/CardVehicule.png'}
           alt={'Imagen de prueba'}
-          style={{width:'100%', height:'500px'}}
+          style={{width:'90%', height:'450px'}}
          /> 
           
         </DialogContent>

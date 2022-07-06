@@ -7,10 +7,11 @@ import {
   DialogTitle,
   TextField,
 } from "@material-ui/core";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { convertidor } from "../../../libs/convertidorFileBase64";
-import { createVehiculo } from "../../../reducers/Actions/vehiculoActions";
+import {  editVehiculo } from "../../../reducers/Actions/vehiculoActions";
 import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
 
@@ -19,25 +20,28 @@ const initialForm={
   modelo:'',
   cilindraje:'',
   marca:'',
-  owner:'',
-  image:''
+  imagen:''
 }
 
-export default function Modal({ visibleEdit1, setVisibleEdit1, owner }) {
+export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner }) {
   const [marcaa, setMarca] = useState(null);
   const classes = useStyles()
-  const [image, setImage] = useState(null)
-  const [form,setForm] = useState(initialForm)  
+  const [imagen, setImagen] = useState(null)
+  const [form,setForm] = useState(initialForm) 
+  const router = useRouter() 
   const dispatch = useDispatch()
-  console.log(owner);
+  console.log(idVehicule);
 
   const handleChange=(e)=>{
     setForm({...form, [e.target.name]: e.target.value})
+    console.log(form);
+
   }
   const handleSubmit=(e)=>{
     e.preventDefault()
-    dispatch(createVehiculo({...form, owner:owner, imagen:image}))
     console.log(form);
+
+    dispatch(editVehiculo({...form, imagen:imagen, marca:marcaa}, idVehicule, router, owner))
 
   }
 
@@ -92,7 +96,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, owner }) {
             <input
               type="file"
               multiple
-              onChange={(e) => convertidor(e.target.files, setImage)}
+              onChange={(e) => convertidor(e.target.files, setImagen)}
             />
 
            
@@ -100,7 +104,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, owner }) {
         </DialogContent>
         <DialogActions>
           <Button
-            onClick={()=> setVisibleEdit1(false) && handleSubmit}
+            onClick={handleSubmit}
             variant="contained"
             autoFocus
             color="secondary"

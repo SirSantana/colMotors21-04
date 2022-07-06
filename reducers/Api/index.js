@@ -33,4 +33,4 @@ export const createCotizacion=(cotizacion)=> API.post('api/cotizaciones', cotiza
 export const getCotizacion=(id)=> API.get(`api/cotizaciones/${id}`)
 // export const deleteCotizacion= (id)=> API.delete(`/posts/cotizacion/${id}`)
 
-export const createVehiculo=(form)=> API.post('api/vehiculo', form)
+export const editVehiculo=(form, id)=> API.post(`api/vehiculo/${id}`, form)

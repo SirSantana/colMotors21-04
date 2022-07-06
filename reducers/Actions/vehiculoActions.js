@@ -1,12 +1,17 @@
 
 import * as api from '../Api/index'
-import { CREATE_VEHICULO } from '../type'
+import { EDIT_VEHICULO } from '../type'
 
-export const createVehiculo=(form)=>async(dispatch)=>{
+export const editVehiculo=(form, id, router, owner)=>async(dispatch)=>{
     try {
-        const res = await api.createVehiculo(form)
-        console.log(res);
-        // dispatch({type:CREATE_VEHICULO, payload:data})
+         const res = await api.editVehiculo(form, id)
+         console.log(router);
+         console.log(res);
+
+        if(res.status === 200){
+            router.reload()
+        } 
+        dispatch({type:EDIT_VEHICULO})
     } catch (error) {
         console.log(error);
     }

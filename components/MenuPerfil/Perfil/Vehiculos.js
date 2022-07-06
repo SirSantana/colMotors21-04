@@ -30,8 +30,8 @@ export default function Vehiculos({vehicule, owner}){
               <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px 0 0 0'}}/>
 
             <div style={{padding:'10px'}}>
-            <h2 style={{margin:0, fontSize:'30px', color:'#464646',}}>{vehicule.referencia}</h2>
-            <h4 style={{margin:0, fontSize:'18px', color:'#464646',}}>{vehicule.modelo}</h4>
+            <h2 style={{margin:0, fontSize:'30px', color:'#464646',}}>Mazda 2</h2>
+            <h4 style={{margin:0, fontSize:'18px', color:'#464646',}}>2010</h4>
             </div>
             <div style={{display:'flex', flexDirection:'row', padding:'20px', gap:'20px', alignItems:'center'}}>
               <div style={{backgroundColor:'#464646',borderRadius:'10px', color:'white', width:'30%', height:'80px'}}>

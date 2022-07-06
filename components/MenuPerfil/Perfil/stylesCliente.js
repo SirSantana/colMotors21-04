@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 
 export default makeStyles((theme) => ({
   container1: {
-    width: "50vw",
+    width: "40vw",
     marginTop: "20px",
 
     display: "flex",
@@ -150,12 +150,14 @@ export default makeStyles((theme) => ({
   },
   img2: {
     borderRadius: "10px",
-    height: "100%",
+    height: "350px",
     width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
+    margin:'0',
     [theme.breakpoints.down("sm")]: {
-      height: "100%",
+    width: "100%",
+    height: "300px",
+
+
     },
   },
   icon: {

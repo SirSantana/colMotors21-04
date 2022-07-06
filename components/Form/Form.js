@@ -103,15 +103,15 @@ export default function Form({ user}) {
               className={classes.card}
             />
 
-            {/* <FileBase64
+            <FileBase64
             style={{color:'black'}}
               type="file"
               multiply={false}
               onDone={({ base64 }) =>
                 setPostData({ ...postData, selectedFile: base64 })
               }
-            /> */}
-        <input style={{color:'black'}} type="file" onChange={(e)=>convertidor(e.target.files, setImage)} />
+            />
+        {/* <input style={{color:'black'}} type="file" onChange={(e)=>convertidor(e.target.files, setImage)} /> */}
 
           </div>
           <Button

@@ -100,7 +100,7 @@ export default makeStyles((theme) => ({
     width: "70%",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
     [theme.breakpoints.down("sm")]: {
-      width: "90%",
+      width: "95%",
       margin: "0 auto",
     },
   },
@@ -150,12 +150,12 @@ export default makeStyles((theme) => ({
   },
   img2: {
     borderRadius: "10px",
-    height: "35%",
+    height: "100%",
     width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
     [theme.breakpoints.down("sm")]: {
-      height: "55%",
+      height: "100%",
     },
   },
   icon: {

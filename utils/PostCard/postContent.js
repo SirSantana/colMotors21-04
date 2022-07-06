@@ -95,9 +95,9 @@ export default function PostsContent({Post}) {
         ) : null}
         {imagen ? (
           <>
-            <CardMedia
+            <img
               className={classes.media}
-              image={Post?.selectedFile}
+              src={Post?.selectedFile}
             />
           </>
         ) : null}

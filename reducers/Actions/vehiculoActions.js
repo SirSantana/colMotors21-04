@@ -4,6 +4,7 @@ import { EDIT_VEHICULO } from '../type'
 
 export const editVehiculo=(form, id, router, owner)=>async(dispatch)=>{
     try {
+        console.log(form);
          const res = await api.editVehiculo(form, id)
          console.log(router);
          console.log(res);

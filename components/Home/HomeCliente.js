@@ -23,7 +23,7 @@ export default function HomeCliente({user, posts}){
   const router = useRouter();
   const { id } = router.query;
 
- 
+ console.log(posts);
     return(
         <>
         {/* <div className={classes.divv1}>

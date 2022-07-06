@@ -44,7 +44,7 @@ const { id } = router.query;
               fullWidth
               variant="outlined"
               className={classes.cotizar}
-              onClick={()=>setMessageCotizar('Si estas en Movil, en la parte superior encontraras el formulario, si estas en computador, al lado derecho superior')}
+              onClick={()=>router.push("/form")}
             >
               Crea tu cotizacion
             </Button>

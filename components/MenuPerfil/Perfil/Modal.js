@@ -14,6 +14,7 @@ import { convertidor } from "../../../libs/convertidorFileBase64";
 import {  editVehiculo } from "../../../reducers/Actions/vehiculoActions";
 import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
+import FileBase64 from "react-file-base64";
 
 const initialForm={
   referencia:'',
@@ -40,8 +41,8 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
   const handleSubmit=(e)=>{
     e.preventDefault()
     console.log(form);
-
-    dispatch(editVehiculo({...form, imagen:imagen, marca:marcaa}, idVehicule, router, owner))
+    
+    dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, owner))
 
   }
 
@@ -93,10 +94,20 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               style={{ marginBottom: "10px" }}
             />
 
-            <input
+            {/* <input
               type="file"
               multiple
               onChange={(e) => convertidor(e.target.files, setImagen)}
+            /> */}
+            <label >Imagen de tu Auto</label>
+            <FileBase64
+            style={{color:'black'}}
+              type="file"
+              multiply={false}
+
+              onDone={({ base64 }) =>
+                setForm({ ...form, imagen: base64 })
+              }
             />
 
            

@@ -17,12 +17,12 @@ export const updateVehiculo = async (req, res) => {
   try {
     const vehicule = await vehiculoModel.findById(query.id);
 
+    console.log(body);
     let claves = Object.keys(body);
     
     for (let i = 0; i < claves.length; i++) {
       let clave = claves[i];
       if (body[clave] !== "" && body[clave] !== null) {
-         console.log(body[clave])
         vehicule[clave] = body[clave];
       }
     }

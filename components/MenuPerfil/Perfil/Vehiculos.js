@@ -33,7 +33,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
           <div>
           <div style={{ borderRadius:'10px', }}>
 
-              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px 10px 0 0'}}/>
+              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px'}}/>
 
             <div style={{paddingTop:0, marginTop:'20px'}}>
             <h4 style={{margin:0, fontSize:'18px', color:'gray',fontSize:'18px', fontWeight:'400'}}>2010
@@ -55,15 +55,14 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               <h3 style={{margin:0,fontWeight:'400'}}>1500</h3>
               </div>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 2px  2px 2px"}}>
+              <div style={{display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column',marginRight:'10px', width:'30%'}}>
               {/* <img
               src={'/images/odometro.png'}
               alt='engine'
               style={{width:'30px', height:'30px',}}
               /> */}
-              <Avatar style={{width:'30px', height:'30px'}} alt={'name'}>{initialLetter}</Avatar>
+              <Avatar style={{width:'40px', height:'40px'}} alt={'name'}>{initialLetter}</Avatar>
               <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Dueño</h4>
-              <h3 style={{margin:0,fontWeight:'400', textAlign:'center', lineHeight:'18px'}}>{namee[0]}</h3>
               </div>
               
               <div style={{display:'flex',  boxShadow: "lightgray 0px 2px 2px 2px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>

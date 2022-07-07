@@ -1,5 +1,5 @@
 import { Avatar, Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider } from "@material-ui/core";
-import { AddAPhoto, ArrowBackIos, Favorite, LocationCity, Menu, Place } from "@material-ui/icons";
+import { AddAPhoto, ArrowBackIos, Favorite, LocationCity, Menu, Place, Share } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
@@ -55,7 +55,8 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
            </div>
             <div>
             <Favorite fontSize='large' style={{color:'#f50057',}}/>
-            <h4 style={{margin:0, textAlign:'center'}}>55</h4>
+            <Share fontSize='large'/>
+            {/* <h4 style={{margin:0, textAlign:'center'}}>55</h4> */}
             </div>
 
             </div>

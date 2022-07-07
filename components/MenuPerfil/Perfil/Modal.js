@@ -15,6 +15,8 @@ import {  editVehiculo } from "../../../reducers/Actions/vehiculoActions";
 import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import FileBase64 from "react-file-base64";
+import Image from 'next/image'
+import { CalendarToday } from "@material-ui/icons";
 
 const initialForm={
   referencia:'',
@@ -56,13 +58,24 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
       >
         <DialogTitle id="alert-dialog-title">Edita tu Auto</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          {/* <DialogContentText id="alert-dialog-description">
             Agrega una foto de tu vehiculo, lleva la contabilidad de los gastos,
             repuestos, y mejoras que le hagas a tu carro.
-          </DialogContentText>
+          </DialogContentText> */}
 
           <form >
             <MenuLogos marca={marcaa} setMarca={setMarca} />
+            <section style={{
+              display: "flex",
+              margin: "0",
+              flexDirection: "row",
+              alignItems: "center",
+            }}>
+            <img
+              src={"/images/iconCAR.png"}
+              alt={"/images/iconCAR.png"}
+              style={{marginRight:'10px', width:'30px', height:'30px'}}
+            />
             <TextField
               name="referencia"
               label="Referencia (Aveo)"
@@ -73,6 +86,19 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               minRows={1}
               style={{ marginBottom: "10px" }}
             />
+
+            </section>
+            <section style={{
+              display: "flex",
+              margin: "0",
+              flexDirection: "row",
+              alignItems: "center",
+            }}>
+              <img
+              src={'/images/engine.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',marginRight:'13px'}}
+              />
             <TextField
               name="cilindraje"
               label="Cilindraje (1400)"
@@ -83,6 +109,15 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               minRows={1}
               style={{ marginBottom: "10px" }}
             />
+            </section>
+            
+            <section style={{
+              display: "flex",
+              margin: "0",
+              flexDirection: "row",
+              alignItems: "center",
+            }}>
+               <CalendarToday fontSize='large' style={{marginRight:'10px'}}/>
             <TextField
               name="modelo"
               label="Modelo (2008)"
@@ -93,6 +128,8 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               minRows={1}
               style={{ marginBottom: "10px" }}
             />
+            </section>
+            
 
             {/* <input
               type="file"

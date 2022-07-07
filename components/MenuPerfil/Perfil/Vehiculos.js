@@ -105,7 +105,7 @@ export default function Vehiculos({vehicule, owner}){
               
               }
 
-              {vehicule.cilindraje ?
+              {vehicule?.cilindraje ?
               
               <h4 style={{margin:'0 0 0 10px'}}>{vehicule?.cilindraje}</h4>
               :

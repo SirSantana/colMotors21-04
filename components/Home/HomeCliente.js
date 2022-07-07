@@ -14,8 +14,6 @@ import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
 import { Refresh, Error } from "@material-ui/icons";
 import { useEffect, useState } from "react";
-import Vehiculos from "../MenuPerfil/Perfil/Vehiculos";
-import PostCard from "../../utils/PostCard/postCard";
 
 
 export default function HomeCliente({user, posts}){

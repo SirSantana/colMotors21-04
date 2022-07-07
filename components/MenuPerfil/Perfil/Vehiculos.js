@@ -17,50 +17,65 @@ export default function Vehiculos({vehicule, owner}){
     return(
         <>
 
-        {/* <div style={{backgroundColor:'#464646',marginTop:'20px',borderRadius:'10px', width:'80%', color:'white', padding:'30px',height:'90vh', paddingTop:'0px'}}>
+        <div className={classes.conta1}>
           <div style={{display:'flex',justifyContent:'space-between', alignItems:'center'}}>
               <ArrowBackIos fontSize='large'/>
               <img style={{marginLeft:'10px', width:'80px', height:'80px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
               <Menu fontSize='large'/>
           </div>
-          <h2 style={{margin:0, fontSize:'30px', marginBottom:'20px'}}>Vehiculos</h2>
           <div>
-          <div style={{backgroundColor:'white', borderRadius:'10px', }}>
+          <div style={{ borderRadius:'10px', }}>
 
               <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px 0 0 0'}}/>
 
-            <div style={{padding:'10px'}}>
-            <h2 style={{margin:0, fontSize:'30px', color:'#464646',}}>Mazda 2</h2>
-            <h4 style={{margin:0, fontSize:'18px', color:'#464646',}}>2010</h4>
+            <div style={{padding:'10px', paddingTop:0, }}>
+            <h4 style={{margin:0, fontSize:'18px', color:'gray',fontSize:'18px', fontWeight:'400'}}>2010
+            
+            <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0, lineHeight:'20px'}}>Mazda 2</h2>
+            </h4>
+            
             </div>
-            <div style={{display:'flex', flexDirection:'row', padding:'20px', gap:'20px', alignItems:'center'}}>
-              <div style={{backgroundColor:'#464646',borderRadius:'10px', color:'white', width:'30%', height:'80px'}}>
-                CC
+            <div style={{display:'flex', flexDirection:'row', padding:'20px', gap:'20px', justifyContent:'center'}}>
+              
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column', width:'30%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <img
+              src={'/images/engine.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',}}
+              />
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Motor</h4>
+              <h3 style={{margin:0,fontWeight:'600'}}>1500</h3>
               </div>
               <Avatar 
-              style={{width:'20%', height:'60px'}}
+              style={{width:'40px', height:'40px'}}
                 className={classes.avatar}
                 alt='Inicial'>M</Avatar>
-              <div style={{backgroundColor:'#464646',borderRadius:'10px', color:'white',width:'30%', height:'80px'}}>
-                CC
+              <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
+              <img
+              src={'/images/yearIcon.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',}}
+              />
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'400'}}>Modelo</h4>
+              <h3 style={{margin:0, color:'#464646',fontWeight:'600'}}>2020</h3>
               </div>
             </div>
            
             </div>
           </div>
          <div>
-         <div className={classes.container8} style={{width:'90%', color:'white', padding:'0px', margin:'auto', display:'flex', flexDirection:'row'}}>
-              <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
+         <div className={classes.container8} style={{width:'100%', color:'white', padding:'0px', margin:'auto', display:'flex', flexDirection:'row'}}>
               <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
+              <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
               <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 
               </div>
         </div>
-          </div>  */}
+          </div> 
        
 
 
-        <div className={classes.container5}>
+        {/* <div className={classes.container5}>
             <h3 className={classes.texto5} style={{fontSize:'20px'}}>Vehiculos</h3>
           </div>
           
@@ -83,10 +98,10 @@ export default function Vehiculos({vehicule, owner}){
              </Button>
              </div>
             </>
-          }
+          } */}
 
 
-              <div className={classes.div1}>
+              {/* <div className={classes.div1}>
                 <section style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
                 <img style={{marginLeft:'10px', width:'50px', height:'50px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
               
@@ -95,10 +110,10 @@ export default function Vehiculos({vehicule, owner}){
               :<Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Referencia</Button>}
               
 
-                </section>
+                </section> */}
 
               {/* <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/> */}
-                {vehicule?.modelo ?
+                {/* {vehicule?.modelo ?
                 <h4 style={{margin:'0 0 0 10px'}}>{vehicule?.modelo}</h4>
               :
               <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Modelo</Button> 
@@ -112,12 +127,12 @@ export default function Vehiculos({vehicule, owner}){
             <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', margin:'10px 0 10px 10px'}}>Agregar Cilindraje</Button>
             
             }                
-                <h5 className={classes.texto4} >210.000Km</h5>
+                <h5 className={classes.texto4} >210.000Km</h5> */}
             {/* <Divider style={{backgroundColor:'gray', height:'3px', width:'95%', marginLeft:'auto', marginRight:'auto'}}/>
             <h3 className={classes.texto2} style={{marginTop:'10px'}}>Velocidad Maxima:</h3>
                 <h4 className={classes.texto3} style={{fontSize:'26px'}}>Mejoras:</h4>
                 <h5 className={classes.texto4} >Repuestos Cambiados:</h5> */}
-              </div>
+              {/* </div>
               </div>
 
 
@@ -127,9 +142,10 @@ export default function Vehiculos({vehicule, owner}){
               <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 
               </div>
+              
+              </div>  */}
               {visibleEdit && <ModalViewVehicule visibleEdit={visibleEdit} setVisibleEdit1={setVisibleEdit1} setVisibleEdit={setVisibleEdit} owner={owner}/>}
               {visibleEdit1 && <Modal visibleEdit1={visibleEdit1} setVisibleEdit1={setVisibleEdit1} idVehicule={vehicule._id} owner={owner}/>}
-              </div> 
         </>
     )
 }

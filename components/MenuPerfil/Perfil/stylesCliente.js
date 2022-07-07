@@ -69,12 +69,11 @@ export default makeStyles((theme) => ({
     height: "90%",
     display: "flex",
     flexDirection: "column",
-    justifyContent:'center',
+    justifyContent: "center",
     // backgroundImage:"url('https://www.1zoom.me/es/wallpaper/560376/z1933.9/')",
     [theme.breakpoints.down("sm")]: {
       margin: "0 auto",
-      padding:0,
-
+      padding: 0,
     },
   },
   container5: {
@@ -104,7 +103,7 @@ export default makeStyles((theme) => ({
       margin: "0 auto",
     },
   },
- 
+
   container7: {
     display: "flex",
     flexDirection: "row",
@@ -150,14 +149,25 @@ export default makeStyles((theme) => ({
   },
   img2: {
     borderRadius: "10px",
-    height: "350px",
+    height: "250px",
     width: "100%",
-    margin:'0',
+    margin: "0",
     [theme.breakpoints.down("sm")]: {
-    width: "100%",
-    height: "300px",
-
-
+      width: "100%",
+      height: "200px",
+    },
+  },
+  conta1: {
+    backgroundColor: "#f1f1f1",
+    marginTop: "20px",
+    borderRadius: "10px",
+    width: "40%",
+    color: "#464646",
+    padding: "30px",
+    height: "fit-content",
+    paddingTop: "0px",
+    [theme.breakpoints.down("sm")]: {
+      width: "80vw",
     },
   },
   icon: {

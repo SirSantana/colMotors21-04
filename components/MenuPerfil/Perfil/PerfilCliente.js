@@ -15,6 +15,7 @@ export default function PerfilCliente({user, vehicule}){
     setMessageAdd('Solicitud de amistad Enviada')
     
   }
+  console.log(user);
 
 
   // useEffect(()=>{
@@ -34,7 +35,7 @@ export default function PerfilCliente({user, vehicule}){
             <Edit style={{marginLeft:'15px', cursor:'pointer'}}/>
           </div>
 
-        <Vehiculos vehicule={vehicule} owner={user?._id} name={user?.name} initialLetter={user?.name?.charAt(0)}/>
+        <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)}/>
         
             {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>
             <div style={{borderRadius:'5px', border:'2px solid lightGray', padding:'30px', width:'100px'}}>

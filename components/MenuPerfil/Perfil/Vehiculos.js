@@ -26,13 +26,23 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
         <div className={classes.conta1}>
           <div style={{display:'flex',justifyContent:'space-between', alignItems:'center'}}>
               <ArrowBackIos fontSize='large'/>
-            <img style={{marginLeft:'10px', width:'80px', height:'80px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
+            <img style={{marginLeft:'10px', width:'60px', height:'60px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
               <Menu fontSize='large'/>
           </div>
           <div>
           <div style={{ borderRadius:'10px', }}>
-
-              <img src={vehicule?.imagen} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px'}}/>
+          
+            {vehicule?.imagen 
+            ? <img src={vehicule?.imagen} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px'}}/>
+            :
+            <div className={classes.div2}>
+            <AddAPhoto className={classes.icon}/>
+            <Button onClick={()=> setVisibleEdit(true)} style={{margin:'0 auto 15% auto',  width:'180px'}} variant="contained">
+                Agregar Imagen
+              </Button>
+             </div>
+            }
+             
 
 
             <div style={{paddingTop:0, marginTop:'15px', display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
@@ -40,7 +50,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
            <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0,fontWeight:'600'}}>{vehicule?.referencia}</h2>
             <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
             
-            <h4 style={{margin:'0', color:'gray'}}>{vehicule.modelo}</h4>
+            <h4 style={{margin:'0', color:'gray'}}>{vehicule?.modelo}</h4>
             </div>
            </div>
             <div>
@@ -59,7 +69,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
               style={{width:'30px', height:'30px',}}
               />
               <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Motor</h4>
-              <h3 style={{margin:0,fontWeight:'400'}}>{vehicule.cilindraje}</h3>
+              <h3 style={{margin:0,fontWeight:'400'}}>{vehicule?.cilindraje}</h3>
               </div>
               
               <div style={{display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 1px  1px 1px"}}>

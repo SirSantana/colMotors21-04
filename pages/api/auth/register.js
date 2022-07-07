@@ -61,7 +61,7 @@ async function register(req, res) {
       htmL:null
     };
 
-    // await sendMail(mailOptions, template)
+    await sendMail(mailOptions, template)
 
     await vehiculo.save()
     await result.save();

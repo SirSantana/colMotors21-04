@@ -166,8 +166,11 @@ export default makeStyles((theme) => ({
     padding: "30px",
     height: "fit-content",
     paddingTop: "0px",
+    margin:'0 auto',
     [theme.breakpoints.down("sm")]: {
-      width: "80vw",
+      width: "90vw",
+    padding: "10px",
+
     },
   },
   icon: {

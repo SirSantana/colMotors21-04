@@ -34,6 +34,7 @@ export default function Vehiculos({vehicule, owner}){
             <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0, lineHeight:'20px',fontWeight:'600'}}>Mazda 2</h2>
             </h4>
             
+
             </div>
             <div style={{display:'flex', flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
               
@@ -48,13 +49,14 @@ export default function Vehiculos({vehicule, owner}){
               </div>
               
               <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
-              <img
+              {/* <img
               src={'/images/odometro.png'}
               alt='engine'
               style={{width:'30px', height:'30px',}}
-              />
-              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Kilometraje</h4>
-              <h3 style={{margin:0,fontWeight:'600'}}>15000</h3>
+              /> */}
+              <Avatar alt={'name'}>M</Avatar>
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Dueño</h4>
+              <h3 style={{margin:0,fontWeight:'600', textAlign:'center', lineHeight:'18px'}}>Miguel Salazar</h3>
               </div>
               
               <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>

@@ -5,7 +5,7 @@ export default function AssestsUser({ image, text, setVisibleEdit }) {
   const classes = useStyles();
   return (
     <>
-      <div className={classes.container9}>
+      <div className={classes.container9} >
         {image !== "icono" ? (
 
           <img

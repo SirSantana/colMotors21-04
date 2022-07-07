@@ -28,16 +28,16 @@ export default function Vehiculos({vehicule, owner}){
 
               <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px 0 0 0'}}/>
 
-            <div style={{padding:'10px', paddingTop:0, }}>
+            <div style={{paddingTop:0, }}>
             <h4 style={{margin:0, fontSize:'18px', color:'gray',fontSize:'18px', fontWeight:'400'}}>2010
             
-            <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0, lineHeight:'20px'}}>Mazda 2</h2>
+            <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0, lineHeight:'20px',fontWeight:'600'}}>Mazda 2</h2>
             </h4>
             
             </div>
-            <div style={{display:'flex', flexDirection:'row', padding:'20px', gap:'20px', justifyContent:'center'}}>
+            <div style={{display:'flex', flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center', flexWrap:'wrap'}}>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column', width:'30%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column', width:'28%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
               <img
               src={'/images/engine.png'}
               alt='engine'
@@ -46,10 +46,46 @@ export default function Vehiculos({vehicule, owner}){
               <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Motor</h4>
               <h3 style={{margin:0,fontWeight:'600'}}>1500</h3>
               </div>
-              <Avatar 
-              style={{width:'40px', height:'40px'}}
-                className={classes.avatar}
-                alt='Inicial'>M</Avatar>
+              
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column', width:'29%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <img
+              src={'/images/odometro.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',}}
+              />
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Kilometraje</h4>
+              <h3 style={{margin:0,fontWeight:'600'}}>15000</h3>
+              </div>
+              
+              <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
+              <img
+              src={'/images/yearIcon.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',}}
+              />
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'400'}}>Modelo</h4>
+              <h3 style={{margin:0, color:'#464646',fontWeight:'600'}}>2020</h3>
+              </div>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column', width:'29%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <img
+              src={'/images/engine.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',}}
+              />
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Motor</h4>
+              <h3 style={{margin:0,fontWeight:'600'}}>1500</h3>
+              </div>
+              
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column', width:'28%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <img
+              src={'/images/odometro.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',}}
+              />
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Kilometraje</h4>
+              <h3 style={{margin:0,fontWeight:'600'}}>15000</h3>
+              </div>
+              
               <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
               <img
               src={'/images/yearIcon.png'}

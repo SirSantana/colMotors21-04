@@ -35,7 +35,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
 
               <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px 10px 0 0'}}/>
 
-            <div style={{paddingTop:0, }}>
+            <div style={{paddingTop:0, marginTop:'20px'}}>
             <h4 style={{margin:0, fontSize:'18px', color:'gray',fontSize:'18px', fontWeight:'400'}}>2010
             
             <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0, lineHeight:'20px',fontWeight:'600'}}>Mazda 2</h2>
@@ -43,7 +43,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
             
 
             </div>
-            <div style={{display:'flex',margin:'30px 0',  flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
+            <div style={{display:'flex',margin:'20px 0',  flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
               
               <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 2px 2px 2px"}}>
               <img

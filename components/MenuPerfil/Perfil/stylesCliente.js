@@ -16,17 +16,20 @@ export default makeStyles((theme) => ({
   },
 
   container2: {
-    width: "80%",
-    height: "100px",
+    width: "30%",
+    height: "70px",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     borderRadius: "10px",
     backgroundColor: "#f1f1f1",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
     margin:'0 auto',
+    justifyContent:'center',
+    paddingLeft:'20px',
     [theme.breakpoints.down("sm")]: {
-      width: "95%",
+      width: "70%",
+    justifyContent:'left',
+
     },
   },
 
@@ -190,9 +193,9 @@ export default makeStyles((theme) => ({
 
   avatar: {
     textAlign: "center",
-    marginLeft: "auto",
-    marginRight: "auto",
     background: "gray",
+    width:'50px',
+    height:'50px'
   },
   texto1: {
     borderRadius: "10px",
@@ -241,9 +244,9 @@ export default makeStyles((theme) => ({
     },
   },
   texto6: {
-    margin: 0,
+    margin: '0 0 0 10px',
     color: "gray",
-    fontSize: "12px",
-    textAlign: "center",
+    fontSize: "16px",
+    textAlign: "left",
   },
 }));

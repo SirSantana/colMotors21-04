@@ -3,7 +3,7 @@ import useStyles from "./stylesCliente";
 import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Vehiculos from "./Vehiculos";
-import { AddAPhoto } from "@material-ui/icons";
+import { AddAPhoto, Edit } from "@material-ui/icons";
 
 
 export default function PerfilCliente({user, vehicule}){
@@ -23,26 +23,15 @@ export default function PerfilCliente({user, vehicule}){
     return(
         <div className={classes.container1}>
           <div className={classes.container2}>
-            <div  className={classes.container3}>
             <Avatar 
                 className={classes.avatar}
                 alt={user?.name?.charAt(0)}>{user?.name?.charAt(0)}</Avatar>
-              <h3 className={classes.nombre1}>{user?.name}</h3>
+              
+            <div style={{display:'flex', flexDirection:'column'}}>
+            <h3 className={classes.nombre1}>{user?.name}</h3>
               <h5 className={classes.texto6}>Cliente</h5>
             </div>
-
-            <div className={classes.container4}>
-            <div style={{width:'55%', margin:'auto'}}>
-              <h3 style={{marginLeft:0}}className={classes.texto5}>Vehiculos</h3>
-              <h5 className={classes.texto5}>{user?.vehiculos.length / 24}</h5>
-            </div>
-
-            <Divider style={{backgroundColor:'white', height:'50px',width:'2px'}}/>
-            <div style={{width:'40%',margin:'auto'}}>
-              <h3 className={classes.texto5}>Compras</h3>
-              <h5 className={classes.texto5}>3</h5>
-            </div>
-            </div>
+            <Edit style={{marginLeft:'15px', cursor:'pointer'}}/>
           </div>
 
         <Vehiculos vehicule={vehicule} owner={user?._id} name={user?.name} initialLetter={user?.name?.charAt(0)}/>

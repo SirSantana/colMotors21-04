@@ -150,16 +150,18 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
            
           </form>
         </DialogContent>
-        <DialogActions>
+        <DialogActions style={{display:'flex', flexDirection:'column', padding:'5px 20px 20px 20px'}}>
           <Button
             onClick={handleSubmit}
             variant="contained"
             autoFocus
             color="secondary"
+            fullWidth
           >
             Confirmar Cambios
           </Button>
-          <Button onClick={()=> setVisibleEdit1(false)} variant="contained">
+            
+          <Button style={{margin:'10px 0 0 0 '}} fullWidth onClick={()=> setVisibleEdit1(false)} variant="outlined" >
             No Guardar
           </Button>
         </DialogActions>

@@ -19,7 +19,6 @@ export default function ModalViewVehicule({ visibleEdit, setVisibleEdit1, setVis
   const [image, setImage] = useState(null)
   const theme = useTheme();
 
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <div>
@@ -28,7 +27,6 @@ export default function ModalViewVehicule({ visibleEdit, setVisibleEdit1, setVis
         onClose={()=> setVisibleEdit1(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        fullScreen={fullScreen}
       >
         <DialogTitle style={{lineHeight:'18px'}} id="alert-dialog-title">Para nosotros es muy importante mejorar</DialogTitle>
         <DialogContent >

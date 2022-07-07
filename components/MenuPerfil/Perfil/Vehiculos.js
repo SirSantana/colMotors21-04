@@ -1,4 +1,4 @@
-import { Avatar, Button, CardMedia, Divider } from "@material-ui/core";
+import { Avatar, Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider } from "@material-ui/core";
 import { AddAPhoto, ArrowBackIos, Menu } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
@@ -11,6 +11,8 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [visibleEdit1, setVisibleEdit1] = useState(false)
+  const [visibleEdit2, setVisibleEdit2] = useState(false)
+
   const [user, setUser] = useState(null)
 
   let namee = name.split(" ")
@@ -41,37 +43,37 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
             
 
             </div>
-            <div style={{display:'flex', flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
+            <div style={{display:'flex',margin:'30px 0',  flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 2px 2px 2px"}}>
               <img
               src={'/images/engine.png'}
               alt='engine'
               style={{width:'30px', height:'30px',}}
               />
-              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Motor</h4>
-              <h3 style={{margin:0,fontWeight:'600'}}>1500</h3>
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Motor</h4>
+              <h3 style={{margin:0,fontWeight:'400'}}>1500</h3>
               </div>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 2px  2px 2px"}}>
               {/* <img
               src={'/images/odometro.png'}
               alt='engine'
               style={{width:'30px', height:'30px',}}
               /> */}
               <Avatar style={{width:'30px', height:'30px'}} alt={'name'}>{initialLetter}</Avatar>
-              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Dueño</h4>
-              <h3 style={{margin:0,fontWeight:'600', textAlign:'center', lineHeight:'18px'}}>{namee[0]}</h3>
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Dueño</h4>
+              <h3 style={{margin:0,fontWeight:'400', textAlign:'center', lineHeight:'18px'}}>{namee[0]}</h3>
               </div>
               
-              <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
+              <div style={{display:'flex',  boxShadow: "lightgray 0px 2px 2px 2px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
               <img
               src={'/images/yearIcon.png'}
               alt='engine'
               style={{width:'30px', height:'30px',}}
               />
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'400'}}>Modelo</h4>
-              <h3 style={{margin:0, color:'#464646',fontWeight:'600'}}>2020</h3>
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200'}}>Modelo</h4>
+              <h3 style={{margin:0, color:'#464646',fontWeight:'400'}}>2020</h3>
               </div>
               
               
@@ -81,7 +83,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
           </div>
          <div>
 
-           {user?.result._id === vehicule?.owner ? 
+           {/* {user?.result._id === vehicule?.owner ? 
           <div className={classes.container8} style={{width:'100%', color:'white', padding:'0px', margin:'auto', display:'flex', flexDirection:'row'}}>
           <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
           <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
@@ -89,11 +91,43 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
 
           </div>
           : <Button>Crear mi Auto</Button> 
-          }
-         
+          } */}
+         <Button fullWidth variant='contained' color='secondary' style={{marginBottom:'10px'}}>Crear mi Auto</Button> 
+         <Button  fullWidth variant='outlined' color='secondary' onClick={()=> setVisibleEdit2(true)}>Detalle</Button> 
+
 
         </div>
           </div> 
+
+          <Dialog
+        open={ visibleEdit2}
+        onClose={()=> setVisibleEdit2(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle style={{lineHeight:'18px'}} id="alert-dialog-title">Vistazo previo a la edicion</DialogTitle>
+        <DialogContent >
+          <DialogContentText style={{lineHeight:'18px'}} id="alert-dialog-description">
+            Hemos creado la posibilidad que puedas agregar la imagen de tu carro, y mas detalles. Adelante!
+            
+          </DialogContentText>
+         
+          
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={()=> setVisibleEdit2(true)}
+            variant="contained"
+            autoFocus
+            color="secondary"
+          >
+            Editar 
+          </Button>
+          <Button onClick={()=> setVisibleEdit2(false)} variant="contained">
+            Editar Mas Tarde
+          </Button>
+        </DialogActions>
+      </Dialog>
        
 
 

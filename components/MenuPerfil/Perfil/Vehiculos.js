@@ -45,7 +45,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
             </div>
             <div style={{display:'flex',margin:'20px 0',  flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 2px 2px 2px"}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 1px  1px 1px"}}>
               <img
               src={'/images/engine.png'}
               alt='engine'
@@ -55,7 +55,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               <h3 style={{margin:0,fontWeight:'400'}}>1500</h3>
               </div>
               
-              <div style={{display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column',marginRight:'10px', width:'30%'}}>
+              <div style={{display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 1px  1px 1px"}}>
               {/* <img
               src={'/images/odometro.png'}
               alt='engine'
@@ -65,7 +65,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Dueño</h4>
               </div>
               
-              <div style={{display:'flex',  boxShadow: "lightgray 0px 2px 2px 2px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
+              <div style={{display:'flex',  boxShadow: "lightgray 0px 1px  1px 1px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
               <img
               src={'/images/yearIcon.png'}
               alt='engine'

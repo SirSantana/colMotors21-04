@@ -27,7 +27,7 @@ export default makeStyles((theme) => ({
     justifyContent:'center',
     paddingLeft:'20px',
     [theme.breakpoints.down("sm")]: {
-      width: "70%",
+      width: "80%",
     justifyContent:'left',
 
     },

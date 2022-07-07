@@ -91,7 +91,7 @@ export default function Vehiculos({vehicule, owner}){
                 <img style={{marginLeft:'10px', width:'50px', height:'50px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
               
               {vehicule?.referencia
-              ? <h2 style={{margin:'0 0 0 10px'}}>{vehicule.referencia}</h2>
+              ? <h2 style={{margin:'0 0 0 10px'}}>{vehicule?.referencia}</h2>
               :<Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Referencia</Button>}
               
 
@@ -99,7 +99,7 @@ export default function Vehiculos({vehicule, owner}){
 
               {/* <FavoriteOutlined fontSize='large' style={{color:'#f50057',backgrounColor:'#f50057', marginLeft:'85%', marginTop:'-20px'}}/> */}
                 {vehicule?.modelo ?
-                <h4 style={{margin:'0 0 0 10px'}}>{vehicule.modelo}</h4>
+                <h4 style={{margin:'0 0 0 10px'}}>{vehicule?.modelo}</h4>
               :
               <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', marginLeft:'10px'}}>Agregar Modelo</Button> 
               
@@ -107,7 +107,7 @@ export default function Vehiculos({vehicule, owner}){
 
               {vehicule.cilindraje ?
               
-              <h4 style={{margin:'0 0 0 10px'}}>{vehicule.cilindraje}</h4>
+              <h4 style={{margin:'0 0 0 10px'}}>{vehicule?.cilindraje}</h4>
               :
             <Button onClick={()=> setVisibleEdit(true)} variant='outlined' color='secondary' style={{height:'30px', margin:'10px 0 10px 10px'}}>Agregar Cilindraje</Button>
             

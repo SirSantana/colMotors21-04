@@ -32,6 +32,11 @@ export default makeStyles((theme) => ({
 
     },
   },
+  iconFav:{
+    color:'red', position:'absolute', top:'60vh', left:'56vw',
+    [theme.breakpoints.down("sm")]: {
+    },
+  },
 
   container3: {
     display: "flex",

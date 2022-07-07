@@ -1,5 +1,5 @@
 import { Avatar, Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider } from "@material-ui/core";
-import { AddAPhoto, ArrowBackIos, Menu } from "@material-ui/icons";
+import { AddAPhoto, ArrowBackIos, Favorite, LocationCity, Menu, Place } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
@@ -35,15 +35,23 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
 
               <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px'}}/>
 
-            <div style={{paddingTop:0, marginTop:'20px'}}>
-            <h4 style={{margin:0, fontSize:'18px', color:'gray',fontSize:'18px', fontWeight:'400'}}>2010
+
+            <div style={{paddingTop:0, marginTop:'15px', display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
+           <div>
+           <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0,fontWeight:'600'}}>Mazda 2</h2>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
             
-            <h2 style={{margin:0, fontSize:'30px', color:'#464646',padding:0, lineHeight:'20px',fontWeight:'600'}}>Mazda 2</h2>
-            </h4>
-            
+            <h4 style={{margin:'0', color:'gray'}}>2020</h4>
+            </div>
+           </div>
+            <div>
+            <Favorite fontSize='large' style={{color:'#f50057'}}/>
+            <h4 style={{margin:0, textAlign:'center'}}>55</h4>
+            </div>
 
             </div>
-            <div style={{display:'flex',margin:'20px 0',  flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
+
+            <div style={{display:'flex',margin:'0 0 20px 0',  flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
               
               <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 1px  1px 1px"}}>
               <img
@@ -66,13 +74,9 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               </div>
               
               <div style={{display:'flex',  boxShadow: "lightgray 0px 1px  1px 1px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
-              <img
-              src={'/images/yearIcon.png'}
-              alt='engine'
-              style={{width:'30px', height:'30px',}}
-              />
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200'}}>Modelo</h4>
-              <h3 style={{margin:0, color:'#464646',fontWeight:'400'}}>2020</h3>
+              <Place fontSize='large' style={{color:'gray'}}/>
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200'}}>Lugar</h4>
+              <h3 style={{margin:0, color:'#464646',fontSize:'18px',fontWeight:'400'}}>Bogota</h3>
               </div>
               
               

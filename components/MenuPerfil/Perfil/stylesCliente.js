@@ -155,7 +155,7 @@ export default makeStyles((theme) => ({
     objectFit:'cover',
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-    height: "200px",
+    height: "180px",
 
     },
   },

@@ -170,7 +170,7 @@ export default makeStyles((theme) => ({
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
     [theme.breakpoints.down("sm")]: {
       width: "80vw",
-    padding: "20px",
+    padding:'0 20px 20px 20px'
 
     },
   },

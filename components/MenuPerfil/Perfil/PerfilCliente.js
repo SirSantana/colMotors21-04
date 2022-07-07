@@ -15,8 +15,6 @@ export default function PerfilCliente({user, vehicule}){
     setMessageAdd('Solicitud de amistad Enviada')
     
   }
-  console.log(user);
-  console.log(vehicule);
 
 
   // useEffect(()=>{

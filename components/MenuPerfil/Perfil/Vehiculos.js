@@ -1,6 +1,6 @@
 import { Avatar, Button, CardMedia, Divider } from "@material-ui/core";
 import { AddAPhoto, ArrowBackIos, Menu } from "@material-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
 import useStyles from "./stylesCliente";
@@ -11,24 +11,27 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [visibleEdit1, setVisibleEdit1] = useState(false)
+  const [user, setUser] = useState(null)
 
-  console.log(vehicule);
   let namee = name.split(" ")
-  console.log(namee);
-
-    return(
+  console.log(owner);
+  console.log(vehicule);
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  },[])
+  return(
         <>
 
         <div className={classes.conta1}>
           <div style={{display:'flex',justifyContent:'space-between', alignItems:'center'}}>
               <ArrowBackIos fontSize='large'/>
-              <img style={{marginLeft:'10px', width:'80px', height:'80px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
+            <img style={{marginLeft:'10px', width:'80px', height:'80px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
               <Menu fontSize='large'/>
           </div>
           <div>
           <div style={{ borderRadius:'10px', }}>
 
-              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px 0 0 0'}}/>
+              <img src={'/images/carro2.jpg'} alt='/images/carro2.jpg' className={classes.img2} style={{borderRadius:'10px 10px 0 0'}}/>
 
             <div style={{paddingTop:0, }}>
             <h4 style={{margin:0, fontSize:'18px', color:'gray',fontSize:'18px', fontWeight:'400'}}>2010
@@ -40,7 +43,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
             </div>
             <div style={{display:'flex', flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
               <img
               src={'/images/engine.png'}
               alt='engine'
@@ -50,7 +53,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               <h3 style={{margin:0,fontWeight:'600'}}>1500</h3>
               </div>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
               {/* <img
               src={'/images/odometro.png'}
               alt='engine'
@@ -61,7 +64,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               <h3 style={{margin:0,fontWeight:'600', textAlign:'center', lineHeight:'18px'}}>{namee[0]}</h3>
               </div>
               
-              <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
+              <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
               <img
               src={'/images/yearIcon.png'}
               alt='engine'
@@ -77,12 +80,17 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
             </div>
           </div>
          <div>
-         <div className={classes.container8} style={{width:'100%', color:'white', padding:'0px', margin:'auto', display:'flex', flexDirection:'row'}}>
-              <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
-              <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
-              <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
 
-              </div>
+           {user?.result._id === vehicule?.owner ? 
+          <div className={classes.container8} style={{width:'100%', color:'white', padding:'0px', margin:'auto', display:'flex', flexDirection:'row'}}>
+          <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
+          <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
+          <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
+
+          </div>
+          : <Button>Crear mi Auto</Button> 
+          }
+         
 
         </div>
           </div> 

@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
   },
 
   container2: {
-    width: "100%",
+    width: "80%",
     height: "100px",
     display: "flex",
     alignItems: "center",
@@ -24,11 +24,9 @@ export default makeStyles((theme) => ({
     borderRadius: "10px",
     backgroundColor: "#f1f1f1",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
-
+    margin:'0 auto',
     [theme.breakpoints.down("sm")]: {
       width: "95%",
-      marginLeft: "auto",
-      marginRight: "auto",
     },
   },
 
@@ -169,9 +167,10 @@ export default makeStyles((theme) => ({
     height: "fit-content",
     paddingTop: "0px",
     margin:'0 auto',
+    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
     [theme.breakpoints.down("sm")]: {
-      width: "90vw",
-    padding: "10px",
+      width: "80vw",
+    padding: "20px",
 
     },
   },

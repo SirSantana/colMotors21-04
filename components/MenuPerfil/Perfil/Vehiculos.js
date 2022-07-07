@@ -40,7 +40,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
             </div>
             <div style={{display:'flex', flexDirection:'row', padding:'20px 0', gap:'20px', justifyContent:'center'}}>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%'}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
               <img
               src={'/images/engine.png'}
               alt='engine'
@@ -50,7 +50,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               <h3 style={{margin:0,fontWeight:'600'}}>1500</h3>
               </div>
               
-              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%',}}>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'column',marginRight:'10px', width:'30%', boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
               {/* <img
               src={'/images/odometro.png'}
               alt='engine'
@@ -61,7 +61,7 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
               <h3 style={{margin:0,fontWeight:'600', textAlign:'center', lineHeight:'18px'}}>{namee[0]}</h3>
               </div>
               
-              <div style={{display:'flex', flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
+              <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
               <img
               src={'/images/yearIcon.png'}
               alt='engine'
@@ -78,36 +78,10 @@ export default function Vehiculos({vehicule, owner, name, initialLetter}){
           </div>
          <div>
          <div className={classes.container8} style={{width:'100%', color:'white', padding:'0px', margin:'auto', display:'flex', flexDirection:'row'}}>
-              {/* <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
+              <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
               <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
-              <AssestsUser image={"icono"} text={'Nuevo Auto'}/> */}
- <div style={{display:'flex', marginRight:'20px',flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
-              <img
-              src={'/images/yearIcon.png'}
-              alt='engine'
-              style={{width:'30px', height:'30px',}}
-              />
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'400'}}>Modelo</h4>
-              <h3 style={{margin:0, color:'#464646',fontWeight:'600'}}>2020</h3>
-              </div>
-              <div style={{display:'flex',marginRight:'20px',flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
-              <img
-              src={'/images/yearIcon.png'}
-              alt='engine'
-              style={{width:'30px', height:'30px',}}
-              />
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'400'}}>Modelo</h4>
-              <h3 style={{margin:0, color:'#464646',fontWeight:'600'}}>2020</h3>
-              </div>
-              <div style={{display:'flex',flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
-              <img
-              src={'/images/yearIcon.png'}
-              alt='engine'
-              style={{width:'30px', height:'30px',}}
-              />
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'400'}}>Modelo</h4>
-              <h3 style={{margin:0, color:'#464646',fontWeight:'600'}}>2020</h3>
-              </div>
+              <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
+
               </div>
 
         </div>

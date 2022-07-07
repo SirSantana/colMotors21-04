@@ -7,7 +7,7 @@ import useStyles from "./stylesCliente";
 import Image from 'next/image'
 import ModalViewVehicule from "./ModalViewVehicule";
 
-export default function Vehiculos({vehicule, owner}){
+export default function Vehiculos({vehicule, owner, name, initialLetter}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [visibleEdit1, setVisibleEdit1] = useState(false)
@@ -54,9 +54,9 @@ export default function Vehiculos({vehicule, owner}){
               alt='engine'
               style={{width:'30px', height:'30px',}}
               /> */}
-              <Avatar alt={'name'}>M</Avatar>
+              <Avatar alt={'name'}>{initialLetter}</Avatar>
               <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>Dueño</h4>
-              <h3 style={{margin:0,fontWeight:'600', textAlign:'center', lineHeight:'18px'}}>Miguel Salazar</h3>
+              <h3 style={{margin:0,fontWeight:'600', textAlign:'center', lineHeight:'18px'}}>{name}</h3>
               </div>
               
               <div style={{display:'flex',  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",flexDirection:'column', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>

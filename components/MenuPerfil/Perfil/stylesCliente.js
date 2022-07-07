@@ -152,9 +152,11 @@ export default makeStyles((theme) => ({
     height: "250px",
     width: "100%",
     margin: "0",
+    objectFit:'cover',
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      height: "200px",
+    height: "200px",
+
     },
   },
   conta1: {

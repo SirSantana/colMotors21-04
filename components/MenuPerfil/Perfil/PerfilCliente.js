@@ -35,8 +35,8 @@ export default function PerfilCliente({user, vehicule}){
 
             <div className={classes.container4}>
             <div style={{width:'55%', margin:'auto'}}>
-              <h3 style={{marginLeft:0}}className={classes.texto5}>Cotizaciones</h3>
-              <h5 className={classes.texto5}>{user?.numeroCotizaciones}</h5>
+              <h3 style={{marginLeft:0}}className={classes.texto5}>Vehiculos</h3>
+              <h5 className={classes.texto5}>{user?.vehiculos.length / 24}</h5>
             </div>
 
             <Divider style={{backgroundColor:'white', height:'50px',width:'2px'}}/>
@@ -47,7 +47,7 @@ export default function PerfilCliente({user, vehicule}){
             </div>
           </div>
 
-        <Vehiculos vehicule={vehicule} owner={user?._id} />
+        <Vehiculos vehicule={vehicule} owner={user?._id} name={user?.name} initialLetter={user?.name?.charAt(0)}/>
         
             {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>
             <div style={{borderRadius:'5px', border:'2px solid lightGray', padding:'30px', width:'100px'}}>

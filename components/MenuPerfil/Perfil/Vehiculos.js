@@ -38,7 +38,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
             <div className={classes.div2}>
             <AddAPhoto className={classes.icon}/>
             <Button onClick={()=> setVisibleEdit(true)} style={{margin:'0 auto 15% auto',  width:'180px'}} variant="contained">
-                Agregar Imagen
+                Agregar Auto
               </Button>
              </div>
             }

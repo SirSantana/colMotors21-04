@@ -1,5 +1,6 @@
+
 import { Avatar, Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Slide } from "@material-ui/core";
-import { AddAPhoto, ArrowBackIos, Favorite, LocationCity, Menu, Place, PlaceOutlined, Share } from "@material-ui/icons";
+import { AddAPhoto, ArrowBackIos, BarChart, BarChartOutlined, Favorite, LocalGasStationOutlined, LocationCity, Menu, Opacity, OpacityOutlined, Place, PlaceOutlined, Share } from "@material-ui/icons";
 import { forwardRef, useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
@@ -27,6 +28,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[])
+  
   return(
         <>
 
@@ -63,7 +65,6 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
             <div>
             <Favorite fontSize='large' style={{color:'#f50057',}}/>
             <Share fontSize='large'/>
-            {/* <h4 style={{margin:0, textAlign:'center'}}>55</h4> */}
             </div>
 
             </div>
@@ -86,7 +87,6 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
               alt='engine'
               style={{width:'30px', height:'30px',}}
               />
-              {/* <Avatar style={{width:'40px', height:'40px'}} alt={'name'}>{initialLetter}</Avatar> */}
               <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Km</h4>
               <h4 style={{margin:0,fontSize:'18px', fontWeight:'400'}}>14.000</h4>
 
@@ -105,15 +105,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
           </div>
          <div>
 
-           {/* {user?.result._id === vehicule?.owner ? 
-          <div className={classes.container8} style={{width:'100%', color:'white', padding:'0px', margin:'auto', display:'flex', flexDirection:'row'}}>
-          <AssestsUser image={"icono"} text={'Nuevos Repuestos'}/>
-          <AssestsUser setVisibleEdit={setVisibleEdit} image={'/images/editData'} text={'Editar Auto'}/>
-          <AssestsUser image={"icono"} text={'Nuevo Auto'}/>
-
-          </div>
-          : <Button>Crear mi Auto</Button> 
-          } */}
+           
          {user?.result._id === vehicule?.owner 
          ? <Button fullWidth variant='contained' color='secondary' onClick={()=>setVisibleEdit(true)} style={{marginBottom:'10px'}}>Editar mi auto</Button> 
           :
@@ -194,29 +186,24 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
               <h4 style={{margin:0,fontSize:'18px', fontWeight:'600'}}>14.000</h4>
 
               </div>
+              <div style={{display:'flex',flexDirection:'row',borderRadius:'10px', alignItems:'center',margin:'0 10px 10px 0'}}>
+              <LocalGasStationOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px', marginRight:'10px'}}/>
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'58px'}}>Gasolina</h4>
+              <h3 style={{margin:0, color:'#464646',fontWeight:'600',}}>$110.000</h3>
+              </div>
               <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0'}}>
-              <img
-              src={'/images/engine.png'}
-              alt='engine'
-              style={{width:'30px', height:'30px',marginRight:'10px'}}
-              />
-              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200',marginRight:'76px'}}>Motor</h4>
-              <h3 style={{margin:0,fontWeight:'600'}}>{vehicule?.cilindraje}</h3>
+              <BarChartOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px', marginRight:'10px'}}/>
+              
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200',marginRight:'30px'}}>Rendimiento</h4>
+              <h3 style={{margin:0,fontWeight:'600'}}>90Km</h3>
               </div>
-        <div style={{display:'flex',flexDirection:'row',borderRadius:'10px', alignItems:'center',margin:'0 10px 10px 0'}}>
-              <PlaceOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px', marginRight:'10px'}}/>
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'80px'}}>Lugar</h4>
-              <h3 style={{margin:0, color:'#464646',fontWeight:'600',}}>{lugar}</h3>
-              </div>
+        
               
               <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0' }}>
-              <img
-              src={'/images/odometro.png'}
-              alt='engine'
-              style={{width:'30px', height:'30px',marginRight:'10px'}}
-              />
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Kilometraje</h4>
-              <h4 style={{margin:0,fontSize:'18px', fontWeight:'600'}}>14.000</h4>
+              <OpacityOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px', marginRight:'10px'}}/>
+              
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>C.Aceite</h4>
+              <h4 style={{margin:0,fontSize:'18px', fontWeight:'600'}}>En 1000Km</h4>
 
               </div>
               

@@ -1,5 +1,5 @@
 import { Avatar, Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider } from "@material-ui/core";
-import { AddAPhoto, ArrowBackIos, Favorite, LocationCity, Menu, Place, Share } from "@material-ui/icons";
+import { AddAPhoto, ArrowBackIos, Favorite, LocationCity, Menu, Place, PlaceOutlined, Share } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
@@ -74,19 +74,21 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
               </div>
               
               <div style={{display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column',marginRight:'10px', width:'30%',borderRadius:'10px', boxShadow: "lightgray 0px 1px  1px 1px"}}>
-              {/* <img
+              <img
               src={'/images/odometro.png'}
               alt='engine'
               style={{width:'30px', height:'30px',}}
-              /> */}
-              <Avatar style={{width:'40px', height:'40px'}} alt={'name'}>{initialLetter}</Avatar>
-              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Dueño</h4>
+              />
+              {/* <Avatar style={{width:'40px', height:'40px'}} alt={'name'}>{initialLetter}</Avatar> */}
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Km</h4>
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>14.000</h4>
+
               </div>
               
               <div style={{display:'flex',  boxShadow: "lightgray 0px 1px  1px 1px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
-              <Place fontSize='large' style={{color:'gray', width:'30px', heigth:'30px'}}/>
-              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200'}}>Lugar</h4>
-              <h3 style={{margin:0, color:'#464646',fontSize:'18px',fontWeight:'400'}}>{lugar}</h3>
+              <PlaceOutlined fontSize='large' style={{color:'gray', width:'30px', heigth:'30px'}}/>
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px'}}>Lugar</h4>
+              <h3 style={{margin:0, color:'#464646',fontWeight:'400'}}>{lugar}</h3>
               </div>
               
               

@@ -28,7 +28,7 @@ export default function ModalViewVehicule({ visibleEdit, setVisibleEdit1, setVis
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle style={{lineHeight:'18px'}} id="alert-dialog-title">Para nosotros es muy importante mejorar</DialogTitle>
+        <DialogTitle  id="alert-dialog-title">Para nosotros es muy importante mejorar</DialogTitle>
         <DialogContent >
           <DialogContentText style={{lineHeight:'18px'}} id="alert-dialog-description">
             Hemos creado la posibilidad que puedas agregar la imagen de tu carro, y mas detalles. Adelante!
@@ -37,16 +37,18 @@ export default function ModalViewVehicule({ visibleEdit, setVisibleEdit1, setVis
          
           
         </DialogContent>
-        <DialogActions>
+        <DialogActions style={{display:'flex', flexDirection:'column'}}>
           <Button
             onClick={()=> setVisibleEdit1(true)}
             variant="contained"
             autoFocus
             color="secondary"
+            fullWidth
+            style={{marginBottom:'10px'}}
           >
             Editar 
           </Button>
-          <Button onClick={()=> setVisibleEdit(false)} variant="contained">
+          <Button style={{margin:'0px'}} onClick={()=> setVisibleEdit(false)} variant="outlined" color='secondary' fullWidth>
             Editar Mas Tarde
           </Button>
         </DialogActions>

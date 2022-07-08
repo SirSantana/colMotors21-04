@@ -161,7 +161,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
             Confirmar Cambios
           </Button>
             
-          <Button style={{margin:'10px 0 0 0 '}} fullWidth onClick={()=> setVisibleEdit1(false)} variant="outlined" >
+          <Button style={{margin:'10px 0 0 0 '}} fullWidth onClick={()=> setVisibleEdit1(false)} variant="outlined" color='secondary'>
             No Guardar
           </Button>
         </DialogActions>

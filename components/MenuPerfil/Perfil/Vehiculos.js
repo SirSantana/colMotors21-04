@@ -1,17 +1,24 @@
-import { Avatar, Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider } from "@material-ui/core";
+import { Avatar, Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Slide } from "@material-ui/core";
 import { AddAPhoto, ArrowBackIos, Favorite, LocationCity, Menu, Place, PlaceOutlined, Share } from "@material-ui/icons";
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
 import useStyles from "./stylesCliente";
 import Image from 'next/image'
 import ModalViewVehicule from "./ModalViewVehicule";
 
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+
 export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [visibleEdit1, setVisibleEdit1] = useState(false)
   const [visibleEdit2, setVisibleEdit2] = useState(false)
+  const [visibleEdit3, setVisibleEdit3] = useState(false)
+
 
   const [user, setUser] = useState(null)
 
@@ -81,12 +88,12 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
               />
               {/* <Avatar style={{width:'40px', height:'40px'}} alt={'name'}>{initialLetter}</Avatar> */}
               <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200'}}>Km</h4>
-              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'400'}}>14.000</h4>
+              <h4 style={{margin:0,fontSize:'18px', fontWeight:'400'}}>14.000</h4>
 
               </div>
               
               <div style={{display:'flex',  boxShadow: "lightgray 0px 1px  1px 1px",flexDirection:'column',borderRadius:'10px', alignItems:'center',borderRadius:'10px',width:'30%', color:'white',width:'30%', height:'80px'}}>
-              <PlaceOutlined fontSize='large' style={{color:'gray', width:'30px', heigth:'30px'}}/>
+              <PlaceOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px'}}/>
               <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px'}}>Lugar</h4>
               <h3 style={{margin:0, color:'#464646',fontWeight:'400'}}>{lugar}</h3>
               </div>
@@ -113,7 +120,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
           <Button fullWidth variant='contained' color='secondary' onClick={()=> setVisibleEdit2(true)} style={{marginBottom:'10px'}}>Crear mi auto</Button> 
 
           }
-         <Button  fullWidth variant='outlined' color='secondary' onClick={()=> setVisibleEdit2(true)}>Detalle</Button> 
+         <Button  fullWidth variant='outlined' color='secondary' onClick={()=> setVisibleEdit3(true)}>Detalle</Button> 
 
 
         </div>
@@ -148,6 +155,87 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
           </Button>
         </DialogActions>
       </Dialog>
+
+      <Dialog
+        open={ visibleEdit3}
+        onClose={()=> setVisibleEdit3(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        TransitionComponent={Transition}
+        keepMounted
+      >
+        <DialogTitle style={{display:'flex', flexDirection:'row', justifyContent:'center', padding:0}} id="alert-dialog-title">
+        <img style={{margin:'0 auto',width:'60px', height:'60px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
+        
+        </DialogTitle>
+        <DialogContent >
+        <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0'}}>
+              <img
+              src={'/images/engine.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',marginRight:'10px'}}
+              />
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200',marginRight:'76px'}}>Motor</h4>
+              <h3 style={{margin:0,fontWeight:'600'}}>{vehicule?.cilindraje}</h3>
+              </div>
+        <div style={{display:'flex',flexDirection:'row',borderRadius:'10px', alignItems:'center',margin:'0 10px 10px 0'}}>
+              <PlaceOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px', marginRight:'10px'}}/>
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'80px'}}>Lugar</h4>
+              <h3 style={{margin:0, color:'#464646',fontWeight:'600',}}>{lugar}</h3>
+              </div>
+              
+              <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0' }}>
+              <img
+              src={'/images/odometro.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',marginRight:'10px'}}
+              />
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Kilometraje</h4>
+              <h4 style={{margin:0,fontSize:'18px', fontWeight:'600'}}>14.000</h4>
+
+              </div>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0'}}>
+              <img
+              src={'/images/engine.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',marginRight:'10px'}}
+              />
+              <h4 style={{margin:0, color:'gray', fontSize:'18px', fontWeight:'200',marginRight:'76px'}}>Motor</h4>
+              <h3 style={{margin:0,fontWeight:'600'}}>{vehicule?.cilindraje}</h3>
+              </div>
+        <div style={{display:'flex',flexDirection:'row',borderRadius:'10px', alignItems:'center',margin:'0 10px 10px 0'}}>
+              <PlaceOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px', marginRight:'10px'}}/>
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'80px'}}>Lugar</h4>
+              <h3 style={{margin:0, color:'#464646',fontWeight:'600',}}>{lugar}</h3>
+              </div>
+              
+              <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0' }}>
+              <img
+              src={'/images/odometro.png'}
+              alt='engine'
+              style={{width:'30px', height:'30px',marginRight:'10px'}}
+              />
+              <h4 style={{margin:0, color:'gray',fontSize:'18px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Kilometraje</h4>
+              <h4 style={{margin:0,fontSize:'18px', fontWeight:'600'}}>14.000</h4>
+
+              </div>
+              
+          
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={()=> setVisibleEdit3(false)}
+            variant="contained"
+            autoFocus
+            color="secondary"
+            fullWidth
+          >
+            Regresar
+          </Button>
+          
+        </DialogActions>
+        </Dialog>
+
               {visibleEdit && <ModalViewVehicule visibleEdit={visibleEdit} setVisibleEdit1={setVisibleEdit1} setVisibleEdit={setVisibleEdit} owner={owner}/>}
               {visibleEdit1 && <Modal visibleEdit1={visibleEdit1} setVisibleEdit1={setVisibleEdit1} idVehicule={vehicule._id} owner={owner}/>}
         </>

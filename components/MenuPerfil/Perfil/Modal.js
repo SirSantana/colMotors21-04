@@ -16,7 +16,8 @@ import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import FileBase64 from "react-file-base64";
 import Image from 'next/image'
-import { CalendarToday } from "@material-ui/icons";
+import { CalendarToday, Check } from "@material-ui/icons";
+import ModalCargando from "../../../utils/modalCargando";
 
 const initialForm={
   referencia:'',
@@ -31,8 +32,11 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
   const classes = useStyles()
   const [imagen, setImagen] = useState(null)
   const [form,setForm] = useState(initialForm) 
+  const [cotizando, setCotizando]= useState(null)
+  const [visibleModal, setVisibleModal] = useState(false)
   const router = useRouter() 
   const dispatch = useDispatch()
+
   console.log(idVehicule);
 
   const handleChange=(e)=>{
@@ -41,21 +45,28 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
 
   }
   const handleSubmit=(e)=>{
+   
+    setVisibleModal(true)
+    console.log(visibleModal);
     e.preventDefault()
     console.log(form);
     
     dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, owner))
-
+    
   }
 
   return (
     <div>
+      
       <Dialog
-        open={open || visibleEdit}
+        open={open || visibleEdit1}
         onClose={()=> setVisibleEdit1(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+         
+         {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} visibleModal={visibleModal} texto={'Guardando datos...'}/>}
+
         <DialogTitle id="alert-dialog-title">Edita tu Auto</DialogTitle>
         <DialogContent>
           {/* <DialogContentText id="alert-dialog-description">

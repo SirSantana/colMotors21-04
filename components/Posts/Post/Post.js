@@ -140,7 +140,7 @@ const handleIr=()=>{
               <SentimentVeryDissatisfied fontSize="large" style={{paddingRight:'10px', color:'#f50057', }}/>
             <Typography className={classes.typo} style={{fontSize:'18px', color:'white',marginBottom:'20px'}}>¡Espera!</Typography>
       
-              <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Aún no has recibido Cotizaciones!</Typography>
+              <Typography className={classes.typo} style={{fontSize:'14px', color:'white'}}>Los vendedores ya estan buscando tu repuesto</Typography>
               <br/>
                    <Button  color='secondary' style={{width:'98%'}}  variant='contained'>Vuelve Pronto</Button>
               </Paper>  

@@ -9,6 +9,7 @@ import useStyles from "./styles";
 import Link from 'next/link'
 import { Check } from "@material-ui/icons";
 import { convertidor } from "../../libs/convertidorFileBase64";
+import ModalCargando from "../../utils/modalCargando";
 
 
 const initial = {
@@ -30,6 +31,7 @@ export default function Form({ user}) {
   const [marcaa, setMarca] = useState(null);
   const [image, setImage] = useState(null)
   const router = useRouter();
+  const [visibleModal, setVisibleModal] = useState(false)
 
 
   const handleChange = (e) => {
@@ -39,6 +41,7 @@ export default function Form({ user}) {
   const handleSubmit = (e) => {
     e.preventDefault();
       setChange(change ? false: true)
+      setVisibleModal(true)
       dispatch(createPost({...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais, selectedFile: image }, router))
       // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais })
      
@@ -52,11 +55,8 @@ export default function Form({ user}) {
       </Paper>
 
 
-      {change && 
-      <Paper className={classes.paper2} elevation={3} >
-      <Check style={{paddingRight:'10px'}}/>
-    <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>Cotizando...</Typography>
-    </Paper>}
+      {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} visibleModal={visibleModal} texto={'Cotizando...'}/>}
+      
 
       {user === null &&
       <Paper className={classes.paper2} elevation={3}>

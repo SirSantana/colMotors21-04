@@ -12,11 +12,14 @@ export default function ModalCargando({setVisibleModal, visibleModal, texto}){
         aria-describedby="alert-dialog-description"
        
       >
-        
-        <DialogTitle  style={{backgroundColor:'#f50057', color:'white', alignItems:'center'}}  id="alert-dialog-title"> 
-        <Check/>
+        <div  style={{display:'flex',  backgroundColor:'#f50057',flexDirection:'column', color:'white', alignItems:'center', justifyContent:'center'}} >
+        <Check fontSize='large' style={{marginTop:'20px'}} />
+        <DialogTitle  id="alert-dialog-title"> 
         {texto}
         </DialogTitle>
+        </div>
+
+        
       </Dialog>
         </>
     )

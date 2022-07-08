@@ -53,7 +53,6 @@ function MyApp({ Component, pageProps }) {
       {loading ? (
         <Layout>
           <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-          <Image src='/images/logo_colmotors.jpg' alt='logo' width={50} height={50}/>
         </Layout>
       ) : (
         <Component {...pageProps} />

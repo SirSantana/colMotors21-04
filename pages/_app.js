@@ -52,7 +52,12 @@ function MyApp({ Component, pageProps }) {
       <ProgressBar />
       {loading ? (
         <Layout>
-          <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+          <div className="lds-ring"><img
+              style={{margin:'0 auto', height:'50px', width:'50px'}}
+              src={"/images/LogoQuarks1PNG.png"}
+              alt="icon"
+              className="spinner"
+            /></div>
         </Layout>
       ) : (
         <Component {...pageProps} />

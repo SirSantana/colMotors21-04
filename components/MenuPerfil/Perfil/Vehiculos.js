@@ -23,8 +23,6 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
 
   const [user, setUser] = useState(null)
 
-  console.log(owner);
-  console.log(vehicule);
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[])

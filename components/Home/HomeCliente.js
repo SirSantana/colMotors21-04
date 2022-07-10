@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Form from "../Form/Form";
 import Posts from "../Posts/Posts";
-import { Refresh, Error } from "@material-ui/icons";
+import { Refresh, Error, Search } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 
 
@@ -24,6 +24,21 @@ export default function HomeCliente({user, posts}){
  console.log(posts);
     return(
         <>
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center', alignItems:'center', height:'50vh'}}>
+        <img
+             style={{width:'50px', height:'50px', marginBottom:'20px'}}
+              src={"/images/LogoQuarks1PNG.png"}
+              alt="icon"
+            />
+            <input  className={classes.inputSearch} type='text' placeholder="Buscar..."/>
+            <Search className={classes.icon} fontSize="medium"/>
+            <div style={{marginTop:'20px', width:'96%', display:'flex', margin:'20px auto 0 auto', alignItems:'center', justifyContent:'center' }}>
+              <Button className={classes.button} variant="contained" color='secondary'>Cotiza Manualmente</Button>
+              <Button  className={classes.button} style={{margin:0}}variant="outlined" color='secondary'>¿Cómo Funciona?</Button>
+
+            </div>
+        </div>
+
         {/* <div className={classes.divv1}>
           <div className={classes.divv2}>
           <Vehiculos userMarca={user?.result.marca} owner={user?.result._id}/>
@@ -41,7 +56,7 @@ export default function HomeCliente({user, posts}){
 
         </div> */}
 
-         {user?.result?.role?.length===1 &&
+         {/* {user?.result?.role?.length===1 &&
          <Container className={classes.container2} maxWidth="lg">
            <Grid
            spacing={2}
@@ -77,7 +92,7 @@ export default function HomeCliente({user, posts}){
              </Grid>
            </Grid>
          </Container>
-         }
+         } */}
         </>
     )
 }

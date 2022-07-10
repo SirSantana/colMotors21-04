@@ -44,10 +44,31 @@ export default makeStyles((theme) => ({
       
     },
   },
+  Buscador: {
+    background: "url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px",
+    backgroundSize: "40px",
+    backgroundColor:'white',
+    width: "500px",
+    border:" transparent",
+    borderRadius:'10px',
+    borderBottom: "solid 1px #ccc",
+    height:'50px',
+    alignItems:'center',
+    justifyContent:'center',
+    padding: "10px 10px 10px 40px",
+    outline: "none",
+    fontSize:'18px',
+    [theme.breakpoints.down("xs")]: {
+      width: "90vw",
+    backgroundSize: "36px",
+    fontSize:'16px',
+        
+      },
+  },
   icon:{
     cursor:'pointer',position:'absolute', top:'37%', left:'36%', marginTop:'20px', zIndex:1,
     [theme.breakpoints.down("xs")]: {
-      top:'30.5vh', left:'5vw',
+      marginTop:'10px',
       },
   },
   button:{

@@ -30,8 +30,7 @@ export default function HomeCliente({user, posts}){
               src={"/images/LogoQuarks1PNG.png"}
               alt="icon"
             />
-            <input  className={classes.inputSearch} type='text' placeholder="Buscar..."/>
-            <Search className={classes.icon} fontSize="medium"/>
+            <input type="search" placeholder="Busca tu Archivo" className={classes.Buscador} />
             <div style={{marginTop:'20px', width:'96%', display:'flex', margin:'20px auto 0 auto', alignItems:'center', justifyContent:'center' }}>
               <Button className={classes.button} variant="contained" color='secondary'>Cotiza Manualmente</Button>
               <Button  className={classes.button} style={{margin:0}}variant="outlined" color='secondary'>¿Cómo Funciona?</Button>

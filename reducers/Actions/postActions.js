@@ -7,6 +7,7 @@ import {
   // CREATE_POST,
   // DELETE_POST,
   END_LOADING,
+  FETCH_BY_SEARCH,
   //   FAVORITE_POST,
   GET_ALL,
   GET_ONE_POST,
@@ -48,6 +49,7 @@ export const createPost = (post, router) => async (dispatch) => {
     console.log(error.message);
   }
 };
+;
 // export const favoritePost = (id) => async (dispatch) => {
 //   try {
 //     const { data } = await api.favoritePost(id);

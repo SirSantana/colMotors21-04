@@ -26,6 +26,7 @@ export const getPost = async (req, res) => {
       res.status(403).json(error);
     }
   };
+
 export const deletePost = async(req, res)=>{
     const {query:{id}} = req;
     try {

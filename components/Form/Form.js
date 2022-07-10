@@ -22,9 +22,10 @@ const initial = {
   lugar:''
 };
 
-export default function Form({ user}) {
+export default function Form() {
   const classes = useStyles();
   const dispatch = useDispatch()
+  const [user, setUser] = useState(null)
   const [change, setChange] = useState(false)
   // const dispatch = useDispatch()
   const [postData, setPostData] = useState(initial);
@@ -37,7 +38,6 @@ export default function Form({ user}) {
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
       setChange(change ? false: true)
@@ -48,6 +48,9 @@ export default function Form({ user}) {
       setPostData(initial);
       // router.push(`/users/micuenta/${user?.result._id}`)
   };
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  },[])
   return (
     <>
       <Paper className={classes.paper1} raised="true" elevation={6}>

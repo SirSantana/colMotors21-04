@@ -12,6 +12,7 @@ export default function HomeSeller({Postss}){
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[])
+  console.log(Postss);
   const data =  Postss.filter(el=> el.marca === user?.result.marcasComercializadas.find(ele=> ele === el.marca))
     return(
         <Layout title={"Home Vendedor | colMotors"}>

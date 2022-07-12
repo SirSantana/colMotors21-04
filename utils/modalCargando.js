@@ -1,4 +1,4 @@
-import {Dialog,DialogTitle } from "@material-ui/core";
+import {Dialog,DialogTitle, Button } from "@material-ui/core";
 import { Check } from "@material-ui/icons";
 
 
@@ -10,13 +10,16 @@ export default function ModalCargando({setVisibleModal, visibleModal, texto}){
         onClose={()=> setVisibleModal(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-       
+        
       >
-        <div  style={{display:'flex',  backgroundColor:'#f50057',flexDirection:'column', color:'white', alignItems:'center', justifyContent:'center'}} >
+        <div  style={{display:'flex', padding:'20px', backgroundColor:'#f50057',flexDirection:'column', color:'white', alignItems:'center', justifyContent:'center'}} >
         <Check fontSize='large' style={{marginTop:'20px'}} />
-        <DialogTitle  id="alert-dialog-title"> 
+        <h3 id="alert-dialog-title" style={{fontSize:'16px', fontWeight:'500', textAlign:'center'}}> 
         {texto}
-        </DialogTitle>
+        </h3>
+        <Button onClick={()=>setVisibleModal(false)} variant='contained' style={{backgroundColor:'white', color:'#f50057'}}>
+          Cotizar
+        </Button>
         </div>
 
         

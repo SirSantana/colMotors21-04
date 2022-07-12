@@ -46,8 +46,8 @@ export async function getServerSideProps({ query }) {
           },
         }
       : {};
-  console.log(queryFilter);
-  const productDocs = await postModel.find({ ...queryFilter });
+  
+  const productDocs = await postModel.find({...queryFilter });
 
   const products = productDocs.map((el) => {
     const Post = el.toObject();

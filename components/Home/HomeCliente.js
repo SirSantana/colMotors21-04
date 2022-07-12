@@ -20,16 +20,10 @@ export default function HomeCliente({ user, posts }) {
   return (
     <>
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "50vh",
-        }}
+        className={classes.div1}
       >
         <img
-          style={{ width: "50px", height: "50px", marginBottom: "20px" }}
+        className={classes.img1}
           src={"/images/LogoQuarks1PNG.png"}
           alt="icon"
         />
@@ -43,14 +37,7 @@ export default function HomeCliente({ user, posts }) {
           onKeyDown={handleKeyPress}
         />
         <div
-          style={{
-            marginTop: "20px",
-            width: "96%",
-            display: "flex",
-            margin: "20px auto 0 auto",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className={classes.div2}
         >
           <Button
             onClick={() => router.push("/form")}

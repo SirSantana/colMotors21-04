@@ -2,7 +2,7 @@ import {Dialog,DialogTitle, Button } from "@material-ui/core";
 import { Check } from "@material-ui/icons";
 
 
-export default function ModalCargando({setVisibleModal, visibleModal, texto}){
+export default function ModalCargando({setVisibleModal,active, visibleModal, texto}){
     return(
         <>
          <Dialog
@@ -17,9 +17,11 @@ export default function ModalCargando({setVisibleModal, visibleModal, texto}){
         <h3 id="alert-dialog-title" style={{fontSize:'16px', fontWeight:'500', textAlign:'center'}}> 
         {texto}
         </h3>
+       {active && 
         <Button onClick={()=>setVisibleModal(false)} variant='contained' style={{backgroundColor:'white', color:'#f50057'}}>
-          Cotizar
-        </Button>
+        Cotizar
+      </Button>
+      }
         </div>
 
         

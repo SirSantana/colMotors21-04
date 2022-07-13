@@ -55,7 +55,7 @@ export const calificacionUser=(id, form, cotizacionId)=> async(dispatch)=>{
 }
 export const updatePassword =(form, email, setMessage, setError, router)=> async(dispatch)=>{
     try {
-        console.log(email);
+        setMessage('Actualizando Contraseña...')
         const {data} = await api.updatePassword(form, email)
             setMessage('Contraseña actualizada')
         dispatch({type:UPDATEPASSWORD, payload:data})

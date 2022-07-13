@@ -12,7 +12,7 @@ export default function DeletePost() {
 
       <Typography
         className={classes.typo}
-        style={{ fontSize: "14px", color: "white" }}
+        style={{ fontSize: "16px", color: "white" }}
       >
         Se ha eliminado correctamente
       </Typography>

@@ -58,7 +58,7 @@ export default function Form() {
       </Paper>
 
 
-      {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} visibleModal={visibleModal} texto={'Cotizando...'}/>}
+      {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active='false' visibleModal={visibleModal} texto={'Cotizando...'}/>}
       
 
       {user === null &&

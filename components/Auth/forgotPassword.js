@@ -1,9 +1,11 @@
-import { Button, ButtonBase, Input, Paper, TextField, Typography } from "@material-ui/core";
+import { Button, ButtonBase, Paper, TextField, Typography } from "@material-ui/core";
 import { Check, Close, Error, ErrorOutlineRounded, ErrorTwoTone } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { forgotPassword } from "../../reducers/Actions/authActions";
 import useStyles from "./styles";
+import Input from "./Input";
+import ModalCargando from "../../utils/modalCargando";
 
 const initial = {
     email: "",
@@ -15,6 +17,7 @@ export default function ForgotPasswordComponent({sendMessage}) {
   const dispatch = useDispatch()
   const [error, setError] = useState(null)
   const [message, setMessage] = useState(null)
+  const [visibleModal, setVisibleModal] = useState(false)
 
   const handleChange=(e)=>{
 
@@ -26,13 +29,15 @@ export default function ForgotPasswordComponent({sendMessage}) {
       // dispatch(forgotPassword({...form, setError, setMessage}))
      
       sendMessage(form)
+      setVisibleModal(true)
       setForm(initial)
       setMessage('Mensaje Enviado')
     }
    
   return (
     <>
-     {message !== null && (
+    <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={'El mensaje fue enviado a tu correo'}/>
+     {/* {message !== null && (
         <Paper className={classes.paper2} elevation={3}>
           <Check style={{ paddingRight: "10px" }} />
           <Typography
@@ -41,37 +46,31 @@ export default function ForgotPasswordComponent({sendMessage}) {
           >
             {message}
           </Typography>
-          <ButtonBase
-            onClick={() => setMessage(message ? null : true)}
-          >
-            <Close />
-          </ButtonBase>
+          
         </Paper>
-      )}
+      )} */}
       <Paper
         className={classes.paper}
         style={{
           marginTop: "0",
-          backgroundColor: "gray",
-          color: "white",
+          backgroundColor: 'white',
           width: "300px",
           textAlign: "center",
         }}
         elevation={3}
       >
         <Error fontSize="large" style={{color:'#f50057'}} />
-        <h4>Ingresa el correo que tienes registrado en la pagina. Te enviaremos un email para que puedas restaurar tu contraseña</h4>
+        <h4 style={{fontWeight:'400'}}>Ingresa el correo que tienes registrado en la pagina. Te enviaremos un email para que puedas restaurar tu contraseña</h4>
         <form onSubmit={handleSubmit}>
-        <TextField
+        <Input
               name="email"
               label="Email"
               variant="filled"
-              fullWidth
-              onChange={handleChange}
-              multiline
-              className={classes.card}
-              style={{backgroundColor:'white'}}
               value={form.email}
+              fullWidth
+              handleChange={handleChange}
+              type='email'
+              style={{backgroundColor:'white'}}
               required
             />
           <Button
@@ -79,7 +78,7 @@ export default function ForgotPasswordComponent({sendMessage}) {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.submit}
           >
            Enviar

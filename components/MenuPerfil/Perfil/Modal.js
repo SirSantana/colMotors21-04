@@ -65,7 +65,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
         aria-describedby="alert-dialog-description"
       >
          
-         {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} visibleModal={visibleModal} texto={'Guardando datos...'}/>}
+         {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active={'false'} visibleModal={visibleModal} texto={'Guardando datos...'}/>}
 
         <DialogTitle id="alert-dialog-title">Edita tu Auto</DialogTitle>
         <DialogContent>

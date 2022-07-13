@@ -8,6 +8,8 @@ import { LOGOUT } from '../reducers/type'
 import { useDispatch } from 'react-redux'
 import Image from 'next/image'
 import ImageMarca from '../components/Home/Image'
+import ButtonLink from '../components/Button'
+import { handleLogout } from '../utils/handleLogout'
 
 const marcas=['Chevrolet', 'Mazda', 'Ford', 'Toyota', 'Renault', 'Nissan', 'Volkswagen','Kia']
 
@@ -16,11 +18,7 @@ export default function Home() {
   const dispatch = useDispatch()
   const router = useRouter()
   
-  const logout = () => {
-    dispatch({ type: LOGOUT });
-    setUser(null);
-    router.push("/");
-  };
+  console.log(user);
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
@@ -36,17 +34,7 @@ export default function Home() {
               Cotiza los repuestos de tu auto en{" "}
             </h4>
             <h1 className={styles.description1}>30 Minutos</h1>
-            <Link href={ user?.result.posts.length >=1 ? `/form`: '/home'}>
-              <a>
-                <Button
-                  className={styles.button}
-                  color="secondary"
-                  variant="contained"
-                >
-                  COTIZA YA!
-                </Button>
-              </a>
-            </Link>
+            <ButtonLink text={'Cotiza Aquí'} variant={'contained'} color='secondary' to={ user?.result.posts.length >=1 ? `/form`: '/home'}/>
           </div>
         </section>
 
@@ -74,51 +62,20 @@ export default function Home() {
           {user ? (
             <>
               <div className={styles.containerButtons}>
-                <Link href={'/home'}>
-                  <a>
-                    <Button
-                      className={styles.btn}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Ve a cotizar!
-                    </Button>
-                  </a>
-                </Link>
-                <Button onClick={logout} variant="outlined" color="secondary">
+                
+                <ButtonLink text={'Ve a cotizar!'} to={'/home'} variant={'contained'} color='primary'/>
+                <Button onClick={()=>handleLogout(setUser, router, dispatch)} variant="outlined" color="secondary">
                   Cerrar Sesion
                 </Button>
               </div>
             </>
           ) : (
             <>
-              <div>
-                <h2> Registrate o Inicia Sesion &rarr;</h2>
-                <Link href={"/home"}>
-                <a>
-                  <button>Ver Posts</button>
-                </a>
-                </Link>
-              </div>
               <div className={styles.containerButtons}>
-                <Link href={user ? '/home':"/auth"}>
-                  <a>
-                    <Button
-                      className={styles.btn}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Iniciar Sesion
-                    </Button>
-                  </a>
-                </Link>
-                <Link href={"/auth"}>
-                  <a>
-                    <Button variant="contained" color="secondary">
-                      Registrarse
-                    </Button>
-                  </a>
-                </Link>
+                
+                <ButtonLink text={'Iniciar Sesion'} to={user ? '/home':"/auth"} color={'primary'} variant='contained'/>
+                <ButtonLink text={'Registrarse'} to={"/auth"} color={'secondary'} variant='contained'/>
+               
               </div>
             </>
           )}

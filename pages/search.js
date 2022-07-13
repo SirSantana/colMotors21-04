@@ -38,7 +38,7 @@ export async function getServerSideProps({ query }) {
   const search = query.query;
 
   const queryFilter =
-    search && search !== "all"
+    search
       ? {
           repuesto: {
             $regex: search,

@@ -6,7 +6,7 @@ export default function ModalCargando({setVisibleModal, visibleModal, texto}){
     return(
         <>
          <Dialog
-        open={open || visibleModal}
+        open={ visibleModal}
         onClose={()=> setVisibleModal(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"

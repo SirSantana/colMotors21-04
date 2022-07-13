@@ -14,7 +14,7 @@ export default function HomeComponent({ posts }) {
   const [user, setUser] = useState();
 
   if (user?.result.role.length > 1) {
-    router.push("/home/vendedor");
+    router.push(`/home/${user?.result._id}`);
   }
 
   if (user === null) {

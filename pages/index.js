@@ -74,7 +74,7 @@ export default function Home() {
           {user ? (
             <>
               <div className={styles.containerButtons}>
-                <Link href={user?.result.posts.length >=1 ? `/home/${user?.result._id}`: '/home'}>
+                <Link href={'/home'}>
                   <a>
                     <Button
                       className={styles.btn}

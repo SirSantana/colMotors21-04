@@ -7,7 +7,9 @@ import { Button } from"@material-ui/core";
 import { LOGOUT } from '../reducers/type'
 import { useDispatch } from 'react-redux'
 import Image from 'next/image'
+import ImageMarca from '../components/Home/Image'
 
+const marcas=['Chevrolet', 'Mazda', 'Ford', 'Toyota', 'Renault', 'Nissan', 'Volkswagen','Kia']
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -64,70 +66,7 @@ export default function Home() {
 
         <div className={styles.card}>
           <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
-          <section className={styles.card} style={{ margin:'10px',idth:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-          <Image
-          src={"/images/Chevrolet.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-
-          <Image
-          src={"/images/Mazda.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-
-          <Image
-          src={"/images/Renault.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-
-          <Image
-          src={"/images/Kia.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-
-          <Image
-          src={"/images/Nissan.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-
-          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-          <Image
-          src={"/images/Ford.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-
-          <Image
-          src={"/images/Volkswagen.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-
-          <section className={styles.card} style={{margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-          <Image
-          src={"/images/Toyota.png"}
-          width='60px'
-          height='60px'
-          />
-          </section>
-
+          {marcas.map(marca=> <ImageMarca marca={marca}/>)}
           </div>
         </div>
 

@@ -7,6 +7,7 @@ export default function PostButton({userId, userRole,setMessageCotizar, idCreato
 const classes = useStyles();
 const router = useRouter(); 
 const { id } = router.query;
+console.log(cotizacionCreada);
     return(
         <>
         {userId === idCreator ? (
@@ -18,17 +19,7 @@ const { id } = router.query;
               >
                 Ver cotizaciones
               </Button>
-            ) : id !== undefined ? (
-              <Button
-                color="primary"
-                variant="contained"
-                fullWidth
-                className={classes.cotizar}
-                onClick={handleCotizar}
-              >
-                {numeroCotizaciones+ ' Cotizaciones'}
-              </Button>
-            ) : (
+            ) : 
               userRole >1 ? <Button
               color={cotizacionCreada ? 'primary': 'secondary'}
               variant="contained"
@@ -48,7 +39,7 @@ const { id } = router.query;
             >
               Crea tu cotizacion
             </Button>
-            )}
+            }
         </>
     )
 }

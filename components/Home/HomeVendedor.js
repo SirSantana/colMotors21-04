@@ -5,12 +5,15 @@ import { useRouter } from "next/router";
 import Posts from "../Posts/Posts";
 import { useEffect, useState } from "react";
 import ModalCargando from "../../utils/modalCargando.js";
-export default function HomeVendedor({ posts, user }) {
+export default function HomeVendedor({ posts }) {
   const classes = useStyles();
   const router = useRouter();
   const [visibleModal, setVisibleModal] = useState(true);
+  const [user, setUser] = useState();
 
- 
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, []);
 
   return (
     <>

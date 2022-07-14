@@ -34,7 +34,7 @@ export default function Home() {
               Cotiza los repuestos de tu auto en{" "}
             </h4>
             <h1 className={styles.description1}>30 Minutos</h1>
-            <ButtonLink text={'Cotiza Aquí'} variant={'contained'} color='secondary' to={ user?.result.posts.length >=1 ? `/form`: '/home'}/>
+            <ButtonLink text={'Cotiza Aquí'} variant={'contained'} color='secondary' to={'/home'}/>
           </div>
         </section>
 

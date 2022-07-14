@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 const API = axios.create({ baseURL: 
-  'https://col-motors21-04.vercel.app/' ,timeout:'1000' });
+  'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
+    'Content-Type': 'application/json',
+  } });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {

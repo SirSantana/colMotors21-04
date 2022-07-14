@@ -17,7 +17,7 @@ export default function Home({ Postss }) {
   );
 }
 export async function getServerSideProps({query}) {
-  console.log(query);
+  
   const {id} = query
     try {
     await DBConnect();

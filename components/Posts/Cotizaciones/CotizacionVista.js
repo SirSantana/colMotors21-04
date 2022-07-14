@@ -110,7 +110,7 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                   >
                     <AttachMoney
                       fontSize="large"
-                      style={{ color: "gray", marginLeft: "3px" }}
+                      style={{ color: "lightGray", marginLeft: "3px" }}
                     />
 
                     <Typography className={classes.title}>
@@ -158,7 +158,7 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                   }}
                 >
                   <Place
-                    style={{ color: "gray", width: "30px", height: "30px" }}
+                    style={{ color: "lightGray", width: "30px", height: "30px" }}
                   />
                   <Typography style={{ marginLeft: "5px" }} variant="body1">
                     {Cotizacion?.pais}

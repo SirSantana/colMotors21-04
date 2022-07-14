@@ -10,7 +10,8 @@ import Link from 'next/link'
 import { Check } from "@material-ui/icons";
 import { convertidor } from "../../libs/convertidorFileBase64";
 import ModalCargando from "../../utils/modalCargando";
-
+import Input from '../Auth/Input'
+import ButtonLink from "../Button";
 
 const initial = {
   marca: "",
@@ -65,11 +66,7 @@ export default function Form() {
       <Paper className={classes.paper2} elevation={3}>
       <Typography className={classes.typo} style={{fontSize:'14px', color:'white', marginRight:'8px'}}>Inicia Sesion o Registrate para poder Cotizar!</Typography>
       <br/>
-      <Link href="/auth">
-          <a>
-          <Button  variant='contained' style={{fontSize:'15px', lineHeight:'18px', color:'black' ,backgroundColor:'white'}}>Aquí</Button>
-          </a>
-          </Link>
+      <ButtonLink to={'/auth'} variant='contained'  text={'Ingresar'}/>
       </Paper>}
       <div className={classes.paper}>
 
@@ -87,7 +84,6 @@ export default function Form() {
               name="referencia"
               label="Coloca aquí la Referencia/Modelo.(Corsa 1.3 Modelo 96)"
               variant="outlined"
-              fullWidth
               value={postData.referencia}
               onChange={handleChange}
               multiline
@@ -98,7 +94,6 @@ export default function Form() {
               name="repuesto"
               label="Coloca aquí el Repuesto.(Kit de Clutch, ...)"
               variant="outlined"
-              fullWidth
               multiline
               minRows={4}
               value={postData.repuesto}
@@ -143,11 +138,7 @@ export default function Form() {
                 *Recuerda llenar todos los campos, la foto es opcional
               </Typography>
             )}
-          {/* {user === null && 
-          <>
-          <Typography color="secondary" style={{fontSize:'14px'}}>¡Inicia Sesion o Registrate para poder cotizar!</Typography>
           
-          </>} */}
         </form>
       </div>
     </>

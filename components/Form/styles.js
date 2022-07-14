@@ -50,6 +50,7 @@ export default makeStyles((theme) => ({
     justifyContent:'center',
     alignItems:'center',
     width:'100%',
+    flexDirection:'column',
     [theme.breakpoints.down('xs')]: {
       width:'90%',
       },
@@ -64,7 +65,7 @@ export default makeStyles((theme) => ({
     fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
     fontSize: '22px',
     fontWeight:'600',
-
+    textAlign:'center'
   },
   form: {
     display: "flex",

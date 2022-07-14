@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 
-  'https://col-motors21-04.vercel.app/' , mode:'cors',headers: {
+const API = axios.create({ baseURL:
+  'https://col-motors21-04.vercel.app/' ,headers: {
     'Content-Type': 'application/json',
-  } });
+    "Access-Control-Allow-Origin": 'https://col-motors21-04.vercel.app'
+  }});
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {

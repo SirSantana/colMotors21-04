@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Divider, Toolbar, Typography } from "@material-ui/core";
 import Image from "next/image";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
@@ -9,6 +9,7 @@ import { LOGOUT } from "../../reducers/type";
 import { useDispatch } from "react-redux";
 import Buscador from "./Buscador";
 import { handleLogout } from "../../utils/handleLogout";
+import ButtonLink from "../Button";
 // import decode from "jwt-decode";
 
 
@@ -18,8 +19,11 @@ export default function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  
-  
+ let width;
+  if (typeof window !== "undefined") {
+     width = window.innerWidth
+    console.log(width);
+  }
 
   useEffect(() => {
     // const token = user?.token;
@@ -31,10 +35,10 @@ export default function Navbar() {
     // }
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [router]);
+
   return (
     <>
-      <AppBar position="static" className={classes.appBar}>
-        <div style={{display:'flex', flexDirection:'row'}}>
+        <div style={{display:'flex', flexDirection:'row', margin:'20px',marginBottom:'5px',width:'100%', justifyContent:'space-around'}}>
         <Link href={"/"} className={classes.brandContainer}>
           <a className={classes.a}>
             <img
@@ -47,16 +51,25 @@ export default function Navbar() {
               align="center"
               outlined="none"
             >
-              quarks
+              Quarks
             </Typography>
           </a>
         </Link>
-        {user?.result && (
+        {user?.result  ?
               <div style={{display:'flex', flexDirection:'row', justifyContent:'center',}}>
                 <MenuPerfil user={user} logout={()=>handleLogout(setUser, router, dispatch)} />
               </div>
-        )}
+              :
+              width > 600 && 
+                <div className={classes.divButton}>
+                <ButtonLink text={'Iniciar Sesion'} to={user ? '/home':"/auth"} color={'primary'} variant='contained'/>
+                <ButtonLink text={'Registrarse'} to={"/auth"} color={'secondary'} variant='contained'/>
+              </div>
+             
+              
+        }
         </div>
+        <Divider style={{width:'90%', marginLeft:'auto', marginRight:'auto', height:'2px', color:'#1b333d'}}/>
 
               {/* <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', marginLeft:'0px', marginRight:0}}>
               <Buscador/>
@@ -64,7 +77,6 @@ export default function Navbar() {
 
         
         
-      </AppBar>
     </>
   );
 }

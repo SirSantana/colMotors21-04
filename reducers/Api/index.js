@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 
+const API = axios.create({ baseURL:
   'https://col-motors21-04.vercel.app/' ,headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'https://col-motors21-04.vercel.app'
@@ -8,7 +8,7 @@ const API = axios.create({ baseURL:
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
-    req.headers.Authorization = `Bearer ${token}`;
+    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
   }
   return req;
 });

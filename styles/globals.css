@@ -1,8 +1,8 @@
 html,
 body {
   height: max-content;
-  background: #7a7a7a;  /* fallback for old browsers */
-background: linear-gradient(to bottom, #ededed, #ececec);
+  background: #d3d3d3;  /* fallback for old browsers */
+background: linear-gradient(to bottom, #ffffff, #939393);
 margin:0;
 padding:0;
   display:flex;

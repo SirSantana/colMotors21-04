@@ -61,12 +61,15 @@ export default makeStyles((theme) => ({
   navBar: {
     display: "flex",
     flexDirection: "row",
-    margin: "20px",
+    margin: "10px",
     marginBottom: "5px",
     width: "100%",
+    height:'100px',
     justifyContent: "space-around",
     [theme.breakpoints.down("sm")]: {
-      marginTop:0
+      marginTop:0,
+    height:'60px',
+
     },
   },
 }));

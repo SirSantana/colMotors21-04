@@ -10,6 +10,7 @@ import Image from 'next/image'
 import ImageMarca from '../components/Home/Image'
 import ButtonLink from '../components/Button'
 import { handleLogout } from '../utils/handleLogout'
+import { AccessTime } from '@material-ui/icons'
 
 const marcas=['Chevrolet', 'Mazda', 'Ford', 'Toyota', 'Renault', 'Nissan', 'Volkswagen','Kia']
 
@@ -28,31 +29,40 @@ export default function Home() {
     <Layout title="Lobby | colMotors">
       
       <div className={styles.grid}>
-        <section className={styles.card1} >
+        <section className={styles.card1}>
           <div className={styles.containerText}>
-            <h4 className={styles.description2}>
+            <h3 className={styles.description2}>
               Cotiza los repuestos de tu auto en{" "}
-            </h4>
-            <h1 className={styles.description1}>30 Minutos</h1>
+            </h3>
+            <h4 className={styles.description1}>30 Minutos</h4>
             <ButtonLink text={'Cotiza Aquí'} variant={'contained'} color='secondary' to={'/home'}/>
           </div>
         </section>
 
        
-        <section className={styles.card} style={{display:'flex', flexDirection:'row', margin:'10px',idth:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-          <Image
-          src={"/images/iconTime.png"}
-          width='40px'
-          height='40px'
-          />
-         <div style={{display:'flex', marginLeft:'10px', flexDirection:'column'}}>
-         <h2 style={{margin:0}}>Ahorra Tiempo</h2>
-          <h4 style={{margin:0}}>Cotiza con distintos vendedores sin salir de casa</h4>
+        <section className={styles.card} style={{display:'flex', flexDirection:'column', margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
+          <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginBottom:'20px'}}>
+          <AccessTime fontSize='large'/>
+         <div style={{display:'flex', marginLeft:'10px', flexDirection:'column', textAlign:'left' }}>
+         <h2 style={{margin:0, color:'#1b333d', fontWeight:'700'}}>Ahorra Tiempo</h2>
+          <h4 style={{margin:0, color:'#1b333d', fontWeight:'500'}}>Cotiza con distintos vendedores sin salir de casa</h4>
+          </div>
          </div>
+         <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+         <AccessTime fontSize='large'/>
+         <div style={{display:'flex', marginLeft:'10px', flexDirection:'column', textAlign:'left' }}>
+         <h2 style={{margin:0, color:'#1b333d', fontWeight:'700'}}>Ahorra Tiempo</h2>
+          <h4 style={{margin:0, color:'#1b333d', fontWeight:'500'}}>Cotiza con distintos vendedores sin salir de casa</h4>
+         </div>
+         </div>
+         
           </section>
         
 
         <div className={styles.card}>
+          <h3  className={styles.subtitle}>Marcas Comercializadas</h3>
+          <h3 className={styles.subtitle2}>Podras cotizar por estas 10 marcas, pronto añadiremos mas!</h3>
+          
           <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
           {marcas.map(marca=> <ImageMarca marca={marca}/>)}
           </div>

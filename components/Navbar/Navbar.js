@@ -47,13 +47,13 @@ export default function Navbar() {
               src={"/images/LogoQuarks1PNG.png"}
               alt="icon"
             />
-            <Typography
+            <h2
               className={classes.heading}
               align="center"
               outlined="none"
             >
               Quarks
-            </Typography>
+            </h2>
           </a>
         </Link>
         {user?.result  ?

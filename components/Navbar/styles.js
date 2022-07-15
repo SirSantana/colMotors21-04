@@ -49,11 +49,24 @@ export default makeStyles((theme) => ({
     display: "flex",
     textDecoration: "none",
   },
-  divButton:{
-    display:'flex', alignItems:'center', gap:'20px',
+  divButton: {
+    display: "flex",
+    alignItems: "center",
+    gap: "20px",
     [theme.breakpoints.down("sm")]: {
-      flexDirection:'column',
-      gap:'5px',
+      flexDirection: "column",
+      gap: "5px",
     },
-  }
+  },
+  navBar: {
+    display: "flex",
+    flexDirection: "row",
+    margin: "20px",
+    marginBottom: "5px",
+    width: "100%",
+    justifyContent: "space-around",
+    [theme.breakpoints.down("sm")]: {
+      marginTop:0
+    },
+  },
 }));

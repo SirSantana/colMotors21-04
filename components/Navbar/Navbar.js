@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <>
-        <div style={{display:'flex', flexDirection:'row', margin:'20px',marginBottom:'5px',width:'100%', justifyContent:'space-around'}}>
+        <div className={classes.navBar}>
         <Link href={"/"} className={classes.brandContainer}>
           <a className={classes.a}>
             <img

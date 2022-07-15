@@ -99,7 +99,6 @@
 .card1 {
   display: flex;
   margin: 1rem;
-  margin-top: 3rem;
   justify-content: center;
   align-items: center;
   padding-top: auto;
@@ -113,7 +112,7 @@
   border-radius: 5px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 1000px;
-  min-height: 300px;
+  min-height: 250px;
 box-shadow: 0 0 30px rgb(255, 255, 255);
 }
 
@@ -169,8 +168,7 @@ box-shadow: 0 0 30px rgb(255, 255, 255);
   .card1{
     justify-content: center;
     align-items: center;
-
-
+    margin-top: 1px;
   }
   .description1{
     font-size: 30px;

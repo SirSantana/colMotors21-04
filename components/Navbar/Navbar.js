@@ -62,8 +62,8 @@ export default function Navbar() {
               :
               width > 600 && 
                 <div className={classes.divButton}>
-                <ButtonLink text={'Iniciar Sesion'} to={user ? '/home':"/auth"} color={'primary'} variant='contained'/>
-                <ButtonLink text={'Registrarse'} to={"/auth"} color={'secondary'} variant='contained'/>
+                <ButtonLink text={'Iniciar Sesion'} to={user ? '/home':"/auth"} color={'secondary'} variant='outlined'/>
+                <ButtonLink text={'Registrarse'} to={"/auth"} color={'secondary'} variant='contained' />
               </div>
              
               

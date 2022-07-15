@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { AppBar, Divider, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Divider,Toolbar, Typography } from "@material-ui/core";
+import { Menu } from "@material-ui/icons";
 import Image from "next/image";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
@@ -60,11 +61,15 @@ export default function Navbar() {
                 <MenuPerfil user={user} logout={()=>handleLogout(setUser, router, dispatch)} />
               </div>
               :
-              width > 600 && 
+              width > 600 ?
                 <div className={classes.divButton}>
                 <ButtonLink text={'Iniciar Sesion'} to={user ? '/home':"/auth"} color={'secondary'} variant='outlined'/>
                 <ButtonLink text={'Registrarse'} to={"/auth"} color={'secondary'} variant='contained' />
-              </div>
+                
+              </div>:
+              <div style={{color:'#1b333d',display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <Menu  fontSize="large" />
+                </div> 
              
               
         }

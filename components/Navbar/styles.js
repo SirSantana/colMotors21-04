@@ -5,13 +5,13 @@ export default makeStyles((theme) => ({
   appBar: {
     fontFamily: "-apple-system, Segoe UI,",
     borderRadius: 5,
-    margin: "30px 0",
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     padding: "10px 10px",
     maxWidth: "800px",
+    height:'60px',
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       justifyContent: "space-between",
@@ -27,6 +27,7 @@ export default makeStyles((theme) => ({
     margin: "0 auto",
   },
   heading: {
+    margin:0,
     marginLeft: "15px",
     textDecoration: "none",
     fontSize: "3em",

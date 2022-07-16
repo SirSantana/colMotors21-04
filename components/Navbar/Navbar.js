@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <>
-        <div className={classes.navBar}>
+        <div className={classes.navBar} style={{height:"60px"}}>
         <Link href={"/"} className={classes.brandContainer}>
           <a className={classes.a}>
             <img

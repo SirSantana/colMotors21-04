@@ -6,16 +6,12 @@ export default function Gasolina({vehicule}) {
     const [toogle,setToogle] = useState(false)
   return (
     <div className={classes.conta1} style={{height:'300px'}}>
-      <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-      <img
-        style={{ marginLeft: "10px", width: "60px", height: "60px" }}
-        src={`/images/${vehicule?.marca}.png`}
-        alt={vehicule?.marca}
-      />
+      <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
+      <LocalGasStationOutlined fontSize='large' style={{fontSize:'46px'}}/>
+
       </div>
       <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-          <div style={{display:'flex', flexDirection:'row', alignSelf:'baseline'}}>
-          <LocalGasStationOutlined fontSize='large' style={{fontSize:'46px'}}/>
+          <div style={{display:'flex', flexDirection:'row', alignSelf:'center'}}>
           <h2 style={{margin:0, fontSize:'30px', color:'#f50057',marginLeft:'5px',fontWeight:'700'}}>Gasolina</h2>
           </div>
          <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px'}}>

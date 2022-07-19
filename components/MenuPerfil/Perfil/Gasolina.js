@@ -1,8 +1,9 @@
 import { LocalGasStationOutlined } from "@material-ui/icons";
 import useStyles from "./stylesCliente";
-
+import { useState } from "react";
 export default function Gasolina({vehicule}) {
   const classes = useStyles();
+    const [toogle,setToogle] = useState(false)
   return (
     <div className={classes.conta1}>
       <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
@@ -20,7 +21,7 @@ export default function Gasolina({vehicule}) {
          <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px'}}>
              <img
         style={{ marginLeft: "10px", width: "40px", height: "40px" }}
-        src={`/images/combustible.png`}
+        src={`/images/Combustible.png`}
         alt={vehicule?.marca}
       />
       <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
@@ -29,6 +30,10 @@ export default function Gasolina({vehicule}) {
       <h5 style={{margin:0, fontSize:'18px', color:'#f50057',marginLeft:'10px',fontWeight:'400'}}>+$38</h5>
       </div>
          </div>
+      </div>
+      <div style={{display:'flex',alignItems:'center', flexDirection:'row',justifyContent:'center', width:'100%',height:'40px', backgroundColor:'lightGray', margin:'0 auto', borderRadius:'10px'}}>
+          <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'600'}}>Esta Semana</h4>
+          <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'600'}}>Este Mes</h4>
       </div>
     </div>
   );

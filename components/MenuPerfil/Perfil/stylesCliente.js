@@ -4,7 +4,6 @@ export default makeStyles((theme) => ({
   container1: {
     width: "50vw",
     marginTop: "20px",
-
     display: "flex",
     flexDirection: "column",
     marginLeft: "auto",
@@ -14,7 +13,14 @@ export default makeStyles((theme) => ({
       height: "100vh",
     },
   },
+  divVehiculos:{
+    display:'flex',
+    flexDirection:'row',
+    [theme.breakpoints.down("sm")]: {
+    flexDirection:'column',
 
+    },
+  },
   container2: {
     width: "30%",
     height: "70px",
@@ -178,7 +184,9 @@ export default makeStyles((theme) => ({
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
     [theme.breakpoints.down("sm")]: {
       width: "80vw",
-    padding:'0 20px 20px 20px'
+    padding:'0 20px 20px 20px',
+    height: "70vh",
+
 
     },
   },

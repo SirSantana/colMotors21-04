@@ -2,7 +2,7 @@ html,
 body {
   height: max-content;
   background: #d3d3d3;  /* fallback for old browsers */
-background: linear-gradient(to bottom, #ffffff, #939393);
+background: linear-gradient(to bottom, #f1f1f1, #ebebeb);
 margin:0;
 padding:0;
   display:flex;

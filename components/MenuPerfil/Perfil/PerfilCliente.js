@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Vehiculos from "./Vehiculos";
 import { AddAPhoto, Edit } from "@material-ui/icons";
+import Gasolina from "./Gasolina";
 
 
 export default function PerfilCliente({user, vehicule}){
@@ -35,8 +36,11 @@ export default function PerfilCliente({user, vehicule}){
             <Edit style={{marginLeft:'15px', cursor:'pointer'}}/>
           </div>
 
-        <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)}/>
-        
+       <div className={classes.divVehiculos}>
+       <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)}/>
+        <Gasolina vehicule={vehicule}/>
+       </div>
+
             {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>
             <div style={{borderRadius:'5px', border:'2px solid lightGray', padding:'30px', width:'100px'}}>
             <AddAPhoto/>

@@ -9,7 +9,7 @@ const vehiculoSchema = new mongoose.Schema({
     marca:{type:String},
     kilometraje:{type:String},
     owner:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-    gasolina:[{type:Object}],
+    gasolina:[{type: mongoose.Schema.Types.ObjectId, ref: 'Gasolina'}],
     imagen:{type:String},
     nameOwner:{type:String},
 

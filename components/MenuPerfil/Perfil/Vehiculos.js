@@ -129,6 +129,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
             
           </DialogContentText>
          
+
           
         </DialogContent>
         <DialogActions>

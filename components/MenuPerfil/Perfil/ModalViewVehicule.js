@@ -11,6 +11,7 @@ import { useState } from "react";
 import Image from 'next/image'
 import useStyles from "./styles";
 import { useTheme } from "@material-ui/styles";
+import { LocalGasStationOutlined } from "@material-ui/icons";
 
 
 export default function ModalViewVehicule({ visibleEdit, setVisibleEdit1, setVisibleEdit, owner }) {
@@ -35,6 +36,12 @@ export default function ModalViewVehicule({ visibleEdit, setVisibleEdit1, setVis
             
           </DialogContentText>
          
+          <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+            
+          <LocalGasStationOutlined fontSize='large' style={{color:'#464646', width:'30px', heigth:'30px', marginRight:'10px'}}/>
+          <h4 style={{fontWeight:'400'}}>Gasolina</h4>
+          </div>
+
           
         </DialogContent>
         <DialogActions style={{display:'flex', flexDirection:'column'}}>

@@ -15,8 +15,8 @@ export default function Gasolina({vehicule}) {
       </div>
       <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
           <div style={{display:'flex', flexDirection:'row', alignSelf:'baseline'}}>
-          <LocalGasStationOutlined fontSize='large'/>
-          <h2 style={{margin:0, fontSize:'26px', color:'#f50057',marginLeft:'5px',fontWeight:'700'}}>Gasolina</h2>
+          <LocalGasStationOutlined fontSize='large' style={{fontSize:'46px'}}/>
+          <h2 style={{margin:0, fontSize:'30px', color:'#f50057',marginLeft:'5px',fontWeight:'700'}}>Gasolina</h2>
           </div>
          <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px'}}>
              <img

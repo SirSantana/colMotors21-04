@@ -2,7 +2,7 @@
     margin-left: 10px;
   }
   .footer {
-    position:fixed;
+    position:static;
     bottom: 0;
 
   }

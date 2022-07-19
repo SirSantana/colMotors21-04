@@ -185,7 +185,6 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "80vw",
     padding:'0 20px 20px 20px',
-    height: "70vh",
 
 
     },

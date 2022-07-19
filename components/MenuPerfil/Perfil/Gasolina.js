@@ -5,7 +5,7 @@ export default function Gasolina({vehicule}) {
   const classes = useStyles();
     const [toogle,setToogle] = useState(false)
   return (
-    <div className={classes.conta1}>
+    <div className={classes.conta1} style={{height:'300px'}}>
       <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
       <img
         style={{ marginLeft: "10px", width: "60px", height: "60px" }}
@@ -32,8 +32,8 @@ export default function Gasolina({vehicule}) {
          </div>
       </div>
       <div style={{display:'flex',alignItems:'center', flexDirection:'row',justifyContent:'center', width:'100%',height:'40px', backgroundColor:'lightGray', margin:'0 auto', borderRadius:'10px'}}>
-          <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'600'}}>Esta Semana</h4>
-          <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'600'}}>Este Mes</h4>
+          <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Esta Semana</h4>
+          <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Mes</h4>
       </div>
     </div>
   );

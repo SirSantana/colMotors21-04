@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
     marginRight: "auto",
     [theme.breakpoints.down("sm")]: {
       width: "96vw",
-      height: "100vh",
+      height: "fit-content",
     },
   },
   divVehiculos:{

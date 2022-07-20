@@ -2,9 +2,12 @@ import { Error, AttachMoney, LocalGasStationOutlined } from "@material-ui/icons"
 import {Button} from '@material-ui/core'
 import useStyles from "./stylesCliente";
 import { useState } from "react";
+import ModalGasolina from "./ModalGasolina";
 export default function Gasolina({vehicule}) {
   const classes = useStyles();
     const [toogle,setToogle] = useState(false)
+  const [visibleEdit, setVisibleEdit] = useState(false)
+
   return (
     <div className={classes.conta1} >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
@@ -39,8 +42,9 @@ export default function Gasolina({vehicule}) {
       <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
       <div >
             <h3 style={{margin:'10px',marginBottom:'10px', fontWeight:'400'}}>Aun no hay datos para mostrar, añade informacion para llevar la contabilidad del consumo de tu auto</h3>
-            <Button variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
+            <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
         </div>
+        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit}/>}
     </div>
   );
 }

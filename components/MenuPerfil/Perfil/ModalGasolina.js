@@ -84,7 +84,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
             <Grid container spacing={1}>
               <Input
                 name="dineroGastado"
-                label="Dinero Tanqueado"
+                label="$ Gastado"
                 placeholder="90.000"
                 handleChange={handleChange}
                 autoFocus
@@ -93,7 +93,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
               />
               <Input
                 name="kilometraje"
-                label="Kilometraje Inicial"
+                label="Kilometraje"
                 placeholder="13.870"
                 handleChange={handleChange}
                 autoFocus 
@@ -115,13 +115,13 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
             variant="standard"
           >
             <InputLabel id="demo-simple-select-label">
-                Tipo de Gasolina
+                Tipo
             </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={form.tipoGasolina}
-              label="Tipo Gasolina"
+              label="Tipo"
               onChange={handleChange}
               name="tipoGasolina"
             >

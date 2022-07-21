@@ -62,12 +62,11 @@ export default makeStyles((theme) => ({
     color: "#EABE3F",
   },
   formControl: {
-    width: "49%",
+    width: "48%",
     backgroundColor: "white",
     marginLeft: "4px",
     marginTop: "4px",
     [theme.breakpoints.down("sm")]: {
-      width: "95%",
     },
   },
   header: {

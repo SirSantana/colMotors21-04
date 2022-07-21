@@ -71,6 +71,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
                 handleChange={handleChange}
                 autoFocus
                 half="true"
+                
               />
               <Input
                 name="kilometraje"

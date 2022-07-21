@@ -85,10 +85,8 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
               />
               <Input
                 name="fecha"
-                variant='standard'
                 label="Fecha"
                 handleChange={handleChange}
-                autoFocus
                 half="true"
                 type='date'
 

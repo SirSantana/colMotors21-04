@@ -11,14 +11,12 @@ export default function Gasolina({vehicule, gasolina}) {
     const [toogle,setToogle] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
   const dispatch = useDispatch()
-  console.log(gasolina);
 
-  let kilometrosAndados = gasolina[1].kilometraje - gasolina[0].kilometraje
-  console.log(kilometrosAndados);
+  if(gasolina !== undefined && gasolina.length >1){
+    let kilometrosAndados = gasolina[1].kilometraje - gasolina[0].kilometraje
   let precioKilometro = gasolina[0].dineroGastado / kilometrosAndados
-  console.log(precioKilometro);
+  }
 
-  let fecha = gasolina[0].fecha
   
   return (
     <div className={classes.conta1} >
@@ -57,11 +55,12 @@ export default function Gasolina({vehicule, gasolina}) {
          </div>
         {gasolina.map(el=>{
         let myDate = new Date(el.fecha)
+
         return(
           <>
           <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', marginLeft:'30px',justifyContent:'space-between',alignItems:'center'}}>
             <h4 className={classes.texto7}>{myDate.toLocaleDateString()}</h4>
-            <h4 className={classes.texto7} style={{fontWeight:'500', color:'black'}}>$ {el.dineroGastado.toString()}</h4>
+            <h4 className={classes.texto7} style={{fontWeight:'500', color:'black'}}>${el.dineroGastado}.000</h4>
             <h4 className={classes.texto7} style={{color:'#f50057',fontWeight:'600'}}>{el.tipoGasolina}</h4>
             <Delete/>
           </div>

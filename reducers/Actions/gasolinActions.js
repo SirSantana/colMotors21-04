@@ -4,6 +4,7 @@ import { ADD_GASOLINA } from '../type';
 export const addGasolina=(form, id, router)=>async(dispatch)=>{
     try {
         const res = await api.addGasolina(form, id)
+        console.log(res);
         if(res.status === 200){
             router.reload()
         } 

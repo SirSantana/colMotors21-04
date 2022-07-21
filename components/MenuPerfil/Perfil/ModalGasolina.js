@@ -45,7 +45,6 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
-    console.log(form);
     dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo},id, router ))
   };
   const handleEntering = () => {
@@ -109,7 +108,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
                 half="true"
                 type='date'
                 variant="standard"
-
+                
               />
                <FormControl
             className={classes.formControl}
@@ -146,6 +145,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
             autoFocus
             color="secondary"
             fullWidth
+            disabled={form.dineroGastado !== '' && form.kilometraje!== '' && form.fecha!== '' && form.tipoGasolina!== '' ? false: true}
           >
             Confirmar Cambioss
           </Button>

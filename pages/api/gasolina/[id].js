@@ -15,13 +15,13 @@ export default async (req, res)=>{
 export const createGasolina= async(req, res)=>{
     const {body, query} = req;
     try {
-        const res = new gasolinaModel(body)
+        const gasolina =await gasolinaModel.create(body)
         const vehiculo = await vehiculoModel.findById(body.vehiculo)
-        await vehiculo.gasolina.push(res)
-        await vehiculo.save()
-        await res.save()
-        res.status(200).json({success: true, res})
+        await vehiculo.gasolina.push(gasolina)
+        vehiculo.save()
+        gasolina.save()
+        res.status(200).json({gasolina})
     } catch (error) {
-        
+        res.status(403).json(error)
     }
 }

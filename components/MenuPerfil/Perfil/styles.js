@@ -64,11 +64,11 @@ export default makeStyles((theme) => ({
   formControl: {
     width: "48%",
     backgroundColor: "white",
-    marginLeft: "4px",
-    marginTop: "4px",
-    [theme.breakpoints.down("sm")]: {
-    },
+    marginLeft: "6px",
+    marginTop: "6px",
+    
   },
+  
   header: {
     color: "#f1f1f1",
     fontFamily: "--apple-system, Segoe UI",

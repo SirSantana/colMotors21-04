@@ -71,7 +71,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
                 handleChange={handleChange}
                 autoFocus
                 half="true"
-                
+            variant="standard"
               />
               <Input
                 name="kilometraje"
@@ -80,18 +80,22 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
                 handleChange={handleChange}
                 autoFocus
                 half="true"
+            variant="standard"
+
               />
               <Input
                 name="fecha"
+                variant='standard'
                 label="Fecha"
                 handleChange={handleChange}
                 autoFocus
                 half="true"
                 type='date'
+
               />
                <FormControl
             className={classes.formControl}
-            variant="outlined"
+            variant="standard"
           >
             <InputLabel id="demo-simple-select-label">
                 Tipo de Gasolina

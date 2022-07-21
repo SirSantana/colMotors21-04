@@ -6,7 +6,7 @@ import Vehiculos from "./Vehiculos";
 import { AddAPhoto, Edit, LocalGasStationOutlined } from "@material-ui/icons";
 import Link from 'next/link'
 
-export default function PerfilCliente({user, vehicule, gasolina}){
+export default function PerfilCliente({user, vehicule}){
   const classes = useStyles();
   const [userNow, setUserNow] = useState(null)
 
@@ -15,7 +15,6 @@ export default function PerfilCliente({user, vehicule, gasolina}){
     setMessageAdd('Solicitud de amistad Enviada')
     
   }
-  console.log(vehicule);
 
 
   // useEffect(()=>{
@@ -38,8 +37,8 @@ export default function PerfilCliente({user, vehicule, gasolina}){
        <div className={classes.divVehiculos}>
        <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)}/>
        <div className={classes.container8} >
-            <Link href={`/users/${user._id}/gasolina`}>
-            <a >
+            <Link href={`/users/${vehicule._id}/gasolina`}>
+            <a>
             <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
            <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
            </section>

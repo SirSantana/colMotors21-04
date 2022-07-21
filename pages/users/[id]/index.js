@@ -4,23 +4,20 @@ import userModel from "../../../models/userModel";
 import PerfilVendedor from "../../../components/MenuPerfil/Perfil/PerfilVendedor";
 import PerfilCliente from "../../../components/MenuPerfil/Perfil/PerfilCliente";
 import vehiculoModel from "../../../models/vehiculoModel";
-import gasolinaModel from "../../../models/gasolinaModel";
 
-export default function UserPerfil({ user, vehicule, Gasolina }) {
-  console.log( Gasolina);
+export default function UserPerfil({ user, vehicule }) {
 
   return (
     <Layout title={"Mi perfil | colMotors"}>
       {user.role.length > 1 
         ?<PerfilVendedor user={user}/>
-      : <PerfilCliente user={user} vehicule={vehicule} gasolina={Gasolina}/>
+      : <PerfilCliente user={user} vehicule={vehicule} />
       }
     </Layout>
   );
 }
 
 export async function getServerSideProps({ params }) {
-  const {id} = params
     try {
       await DBConnect();
   
@@ -37,36 +34,10 @@ export async function getServerSideProps({ params }) {
         vehicule._id = vehicule._id.toString()
         vehicule.owner = vehicule.owner.toString()
         vehicule.gasolina = vehicule.gasolina.toString()
-
-
-        if(vehicule.gasolina.length>0){
-          
-          const resGasolina = await gasolinaModel.find({vehiculo:vehicule._id})
-
-          const Gasolina =resGasolina.map((el)=>{
-            const gasolina = el.toObject()
-            gasolina._id = gasolina._id.toString()
-            gasolina.owner = gasolina.owner.toString()
-            gasolina.vehiculo = gasolina.vehiculo.toString()
-            gasolina.fecha = gasolina.fecha.toString()
-            
-            return gasolina
-          })
-          return {
-            props: {user, vehicule, Gasolina},
-            }
-          }
-          else{
             return {
               props: {user, vehicule},
-      
               }
           }
-          
-        
-        
-      }
-      
       return {
         props: {user},
       };

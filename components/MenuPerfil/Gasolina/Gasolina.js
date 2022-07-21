@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import ModalGasolina from "./ModalGasolina";
 import { useDispatch } from "react-redux";
 import { getGasolina } from "../../../reducers/Actions/gasolinActions";
+import {useRouter} from 'next/router'
 
-export default function Gasolina({vehicule, gasolina}) {
+export default function Gasolina({ gasolina}) {
   const classes = useStyles();
     const [toogle,setToogle] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
   const dispatch = useDispatch()
+  const router = useRouter()
+  const idVehicule = router.query
 
   if(gasolina !== undefined && gasolina.length >1){
     let totalKm =gasolina[gasolina.length - 1].kilometraje - gasolina[0].kilometraje  
@@ -34,7 +37,7 @@ export default function Gasolina({vehicule, gasolina}) {
              <img
         style={{ marginLeft: "10px", width: "40px", height: "40px" }}
         src={`/images/Combustible.png`}
-        alt={vehicule?.marca}
+        alt={'combustible'}
       />
       <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
       <h2 style={{margin:0, fontSize:'20px', color:'black',marginLeft:'10px',fontWeight:'600'}}>Promedio</h2>
@@ -72,7 +75,7 @@ export default function Gasolina({vehicule, gasolina}) {
         <img
         style={{ width: "30px", height: "35px" }}
         src={`/images/distance.png`}
-        alt={vehicule?.marca}
+        alt={'distancia'}
       />
         <h3 style={{margin:0, fontWeight:'500'}}>Distancia Recorrida</h3>
          </div>
@@ -87,7 +90,7 @@ export default function Gasolina({vehicule, gasolina}) {
           <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
       </div>
     </>}
-        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit} idVehiculo={vehicule._id}/>}
+        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit} idVehiculo={idVehicule}/>}
     </div>
   );
 }

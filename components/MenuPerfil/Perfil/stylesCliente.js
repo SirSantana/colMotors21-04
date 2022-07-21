@@ -172,7 +172,7 @@ export default makeStyles((theme) => ({
     },
   },
   conta1: {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "white",
     marginTop: "20px",
     borderRadius: "10px",
     width: "40%",

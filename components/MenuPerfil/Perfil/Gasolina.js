@@ -1,4 +1,4 @@
-import { Error, AttachMoney, LocalGasStationOutlined, Delete } from "@material-ui/icons";
+import { Error, AttachMoney, LocalGasStationOutlined, Delete, Router } from "@material-ui/icons";
 import {Button} from '@material-ui/core'
 import useStyles from "./stylesCliente";
 import { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ export default function Gasolina({vehicule, gasolina}) {
 
   
   return (
-    <div className={classes.conta1} >
+    <div className={classes.conta1}  >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
       <LocalGasStationOutlined fontSize='large' style={{fontSize:'46px', color:'#f50057'}}/>
 
@@ -63,11 +63,18 @@ export default function Gasolina({vehicule, gasolina}) {
             <h4 className={classes.texto7} style={{color:'#f50057',fontWeight:'600'}}>{el.tipoGasolina}</h4>
             <Delete/>
           </div>
-
           </>
-          
         )
 })}
+        <div style={{display:'flex', flexDirection:'row', marginBottom:'10px'}}>
+        <img
+        style={{ width: "30px", height: "35px" }}
+        src={`/images/distance.png`}
+        alt={vehicule?.marca}
+      />
+        <h3 style={{margin:0, fontWeight:'500'}}>Distancia Recorrida</h3>
+         </div>
+
           <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Editar</Button>
 
       </div> 

@@ -61,7 +61,7 @@ export default function Gasolina({vehicule, gasolina}) {
           <>
           <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', marginLeft:'30px',justifyContent:'space-between',alignItems:'center'}}>
             <h4 className={classes.texto7}>{myDate.toLocaleDateString()}</h4>
-            <h4 className={classes.texto7} style={{fontWeight:'500', color:'black'}}>$ {el.dineroGastado}</h4>
+            <h4 className={classes.texto7} style={{fontWeight:'500', color:'black'}}>$ {el.dineroGastado.toString()}</h4>
             <h4 className={classes.texto7} style={{color:'#f50057',fontWeight:'600'}}>{el.tipoGasolina}</h4>
             <Delete/>
           </div>

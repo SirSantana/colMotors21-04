@@ -38,9 +38,12 @@ export async function getServerSideProps({ params }) {
               props: {user, vehicule},
               }
           }
-      return {
-        props: {user},
-      };
+          else{
+            return {
+              props: {user},
+            };
+          }
+      
     } catch (error) {
       console.log(error.data)
   }

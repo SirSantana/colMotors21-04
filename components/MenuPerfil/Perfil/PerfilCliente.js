@@ -39,8 +39,9 @@ export default function PerfilCliente({user, vehicule}){
        <div className={classes.container8} >
             <Link href={`/users/${vehicule._id}/gasolina`}>
             <a>
-            <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
+            <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
            <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
+           <h4 style={{margin:'0', color:'white', fontWeight:'500'}}>Gasolina</h4>
            </section>
             </a>
             </Link>

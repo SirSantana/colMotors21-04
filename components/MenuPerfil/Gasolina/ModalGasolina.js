@@ -87,7 +87,6 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
                 label="$ Gastado"
                 placeholder="90.000"
                 handleChange={handleChange}
-                autoFocus
                 half="true"
             variant="standard"
               />

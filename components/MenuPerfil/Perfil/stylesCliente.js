@@ -261,4 +261,14 @@ export default makeStyles((theme) => ({
     fontSize: "16px",
     textAlign: "left",
   },
+  texto7: {
+    color: "gray",
+    fontSize: "20px",
+    fontWeight:'400',
+    margin:0,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
+
+    },
+  },
 }));

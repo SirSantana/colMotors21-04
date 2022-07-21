@@ -51,18 +51,18 @@ export default function Gasolina({vehicule, gasolina}) {
       {gasolina !== undefined 
       ?
        <div style={{marginTop:'20px', display:'flex', flexDirection:'column', alignContent:'center'}}>
-         <div style={{display:'flex', flexDirection:'row'}}>
-         <AttachMoney fontSize='large'/>
+         <div style={{display:'flex', flexDirection:'row', marginBottom:'10px'}}>
+         <AttachMoney fontSize='medium'/>
         <h3 style={{margin:0, fontWeight:'500'}}>Total Gastado</h3>
          </div>
         {gasolina.map(el=>{
         let myDate = new Date(el.fecha)
         return(
           <>
-          <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', marginLeft:'40px',justifyContent:'center', gap:'20px',alignItems:'center',alignSelf:'flex-start'}}>
-            <h4 style={{margin:0, color:'gray', fontWeight:'400', }}>{myDate.toLocaleDateString()}</h4>
-            <h4 style={{margin:0,fontWeight:'500'}}>$ {el.dineroGastado}</h4>
-            <h4 style={{margin:0, textAlign:'center', color:'#f50057',fontWeight:'600'}}>{el.tipoGasolina}</h4>
+          <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', marginLeft:'30px',justifyContent:'space-between',alignItems:'center'}}>
+            <h4 className={classes.texto7}>{myDate.toLocaleDateString()}</h4>
+            <h4 className={classes.texto7} style={{fontWeight:'500', color:'black'}}>$ {el.dineroGastado}</h4>
+            <h4 className={classes.texto7} style={{color:'#f50057',fontWeight:'600'}}>{el.tipoGasolina}</h4>
             <Delete/>
           </div>
 

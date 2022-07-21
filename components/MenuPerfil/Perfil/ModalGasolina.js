@@ -1,131 +1,143 @@
 import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    TextField,
-  } from "@material-ui/core";
-  import { useRouter } from "next/router";
-  import { useState } from "react";
-  import { useDispatch } from "react-redux";
-  import { convertidor } from "../../../libs/convertidorFileBase64";
-  import {  editVehiculo } from "../../../reducers/Actions/vehiculoActions";
-  import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
-  import useStyles from "./styles";
-  import FileBase64 from "react-file-base64";
-  import Image from 'next/image'
-  import { AttachMoneyOutlined, CalendarToday, Check, LocalGasStationOutlined } from "@material-ui/icons";
-  import ModalCargando from "../../../utils/modalCargando";
-  
-  const initialForm={
-    referencia:'',
-    modelo:'',
-    tipoGasolina:'',
-    marca:'',
-    imagen:'',
-    dinero:''
-  }
-  
-  export default function ModalGasolina({ visibleEdit, setVisibleEdit, }) {
-    const [marcaa, setMarca] = useState(null);
-    const classes = useStyles()
-    const [imagen, setImagen] = useState(null)
-    const [form,setForm] = useState(initialForm) 
-    const [cotizando, setCotizando]= useState(null)
-    const [visibleModal, setVisibleModal] = useState(false)
-    const router = useRouter() 
-    const dispatch = useDispatch()
-  
-  
-    const handleChange=(e)=>{
-      setForm({...form, [e.target.name]: e.target.value})
-      console.log(form);
-  
-    }
-    const handleSubmit=(e)=>{
-     
-      setVisibleModal(true)
-      e.preventDefault()
-      
-      
-    }
-  
-    return (
-      <div>
-        
-        <Dialog
-          open={open || visibleEdit}
-          onClose={()=> setVisibleEdit(false)}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-      <LocalGasStationOutlined fontSize='large' style={{fontSize:'46px', color:'#f50057', alignItems:'center', margin:'20px auto 0 auto'}}/>
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Grid,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControl
+} from "@material-ui/core";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import useStyles from "./styles";
+import { LocalGasStationOutlined } from "@material-ui/icons";
+import Input from "../../Auth/Input";
 
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Empieza a manejar tus gastos, añade tus gastos en combustible cada vez que tanquees
-            </DialogContentText>
-  
-            <form >
-              <section style={{
-              }}>
-              <TextField
-                name="dinero"
+const initialForm = {
+  tipoGasolina: "",
+  dinero: "",
+  kilometraje: "",
+  fecha: "",
+};
+
+export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
+  const classes = useStyles();
+  const [form, setForm] = useState(initialForm);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(form);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div>
+      <Dialog
+        open={open || visibleEdit}
+        onClose={() => setVisibleEdit(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <LocalGasStationOutlined
+          fontSize="large"
+          style={{
+            fontSize: "46px",
+            color: "#f50057",
+            alignItems: "center",
+            margin: "20px auto 0 auto",
+          }}
+        />
+
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description" style={{lineHeight:'20px'}}>
+            1.Coloca el dinero tanqueado.<br/> 2.Coloca el kilometraje de tu auto apenas tanquees.<br/>
+            3.Elige la fecha de la tanqueada en el calendario.<br/> 4.Elige el tipo de gasolina
+          </DialogContentText>
+
+          <form >
+            <Grid container spacing={1}>
+              <Input
+                name="gastado"
                 label="Dinero Tanqueado"
-                variant="outlined"
-                value={form.dinero}
-                onChange={handleChange}
-                minRows={1}
-                style={{ marginBottom: "10px" }}
-                type='number'
-                half='true'
+                placeholder="90.000"
+                handleChange={handleChange}
+                autoFocus
+                half="true"
               />
-  
-              
-               
-              <TextField
-                name="tipoGasolina"
-                label="Tipo de Gasolina"
-                variant="outlined"
-                value={form.tipoGasolina}
-                onChange={handleChange}
-                minRows={1}
-                style={{ marginBottom: "10px" }}
-                half='true'
+              <Input
+                name="kilometraje"
+                label="Kilometraje Inicial"
+                placeholder="13.870"
+                handleChange={handleChange}
+                autoFocus
+                half="true"
               />
-              
-              <TextField
-                name="modelo"
-                variant="outlined"
-                fullWidth
-                value={form.modelo}
-                onChange={handleChange}
-                minRows={1}
-                style={{ marginBottom: "10px" }}
+              <Input
+                name="fecha"
+                label="Fecha"
+                handleChange={handleChange}
+                autoFocus
+                half="true"
                 type='date'
               />
-              </section>
-            </form>
-          </DialogContent>
-          <DialogActions style={{display:'flex', flexDirection:'column', padding:'5px 20px 20px 20px'}}>
-            <Button
-              onClick={handleSubmit}
-              variant="contained"
-              autoFocus
-              color="secondary"
-              fullWidth
+               <FormControl
+            className={classes.formControl}
+            variant="outlined"
+          >
+            <InputLabel id="demo-simple-select-label">
+                Tipo de Gasolina
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={form.estado}
+              label="Estado"
+              onChange={handleChange}
+              name="estado"
             >
-              Confirmar Cambioss
-            </Button>
-              
-            <Button style={{margin:'10px 0 0 0 '}} fullWidth onClick={()=> setVisibleEdit(false)} variant="outlined" color='secondary'>
-              No Guardar
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
-    );
-  }
-  
+              <MenuItem value={"Nuevo"}>Extra</MenuItem>
+              <MenuItem value={"Segunda"}>Corriente</MenuItem>
+            </Select>
+          </FormControl>
+            </Grid>
+          </form>
+        </DialogContent>
+        <DialogActions
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "5px 20px 20px 20px",
+          }}
+        >
+          <Button
+            onClick={handleSubmit}
+            variant="contained"
+            autoFocus
+            color="secondary"
+            fullWidth
+          >
+            Confirmar Cambioss
+          </Button>
+
+          <Button
+            style={{ margin: "10px 0 0 0 " }}
+            fullWidth
+            onClick={() => setVisibleEdit(false)}
+            variant="outlined"
+            color="secondary"
+          >
+            No Guardar
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}

@@ -1,6 +1,6 @@
 import { Error, AttachMoney, LocalGasStationOutlined, Delete, Router } from "@material-ui/icons";
 import {Button} from '@material-ui/core'
-import useStyles from "./stylesCliente";
+import useStyles from "../Perfil/stylesCliente";
 import { useEffect, useState } from "react";
 import ModalGasolina from "./ModalGasolina";
 import { useDispatch } from "react-redux";
@@ -13,8 +13,10 @@ export default function Gasolina({vehicule, gasolina}) {
   const dispatch = useDispatch()
 
   if(gasolina !== undefined && gasolina.length >1){
+    let totalKm =gasolina[gasolina.length - 1].kilometraje - gasolina[0].kilometraje  
     let kilometrosAndados = gasolina[1].kilometraje - gasolina[0].kilometraje
   let precioKilometro = gasolina[0].dineroGastado / kilometrosAndados
+  console.log(totalKm);
   }
 
   

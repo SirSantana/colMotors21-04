@@ -3,9 +3,8 @@ import useStyles from "./stylesCliente";
 import { useEffect, useState } from "react";
 import AssestsUser from "../../../utils/assetsUserPerfil";
 import Vehiculos from "./Vehiculos";
-import { AddAPhoto, Edit } from "@material-ui/icons";
-import Gasolina from "./Gasolina";
-
+import { AddAPhoto, Edit, LocalGasStationOutlined } from "@material-ui/icons";
+import Link from 'next/link'
 
 export default function PerfilCliente({user, vehicule, gasolina}){
   const classes = useStyles();
@@ -38,7 +37,21 @@ export default function PerfilCliente({user, vehicule, gasolina}){
 
        <div className={classes.divVehiculos}>
        <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)}/>
-        <Gasolina vehicule={vehicule} gasolina={gasolina}/>
+       <div className={classes.container8} >
+            <Link href={`/users/${user._id}/gasolina`}>
+            <a >
+            <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
+           <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
+           </section>
+            </a>
+            </Link>
+           <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
+           <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
+           </section>
+           <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
+           <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
+           </section>
+       </div>
        </div>
 
             {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>

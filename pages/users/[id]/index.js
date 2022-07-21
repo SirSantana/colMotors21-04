@@ -1,10 +1,10 @@
-import Layout from "../../components/Layout/Layout";
-import DBConnect from "../../libs/dbConnect";
-import userModel from "../../models/userModel";
-import PerfilVendedor from "../../components/MenuPerfil/Perfil/PerfilVendedor";
-import PerfilCliente from "../../components/MenuPerfil/Perfil/PerfilCliente";
-import vehiculoModel from "../../models/vehiculoModel";
-import gasolinaModel from "../../models/gasolinaModel";
+import Layout from "../../../components/Layout/Layout";
+import DBConnect from "../../../libs/dbConnect";
+import userModel from "../../../models/userModel";
+import PerfilVendedor from "../../../components/MenuPerfil/Perfil/PerfilVendedor";
+import PerfilCliente from "../../../components/MenuPerfil/Perfil/PerfilCliente";
+import vehiculoModel from "../../../models/vehiculoModel";
+import gasolinaModel from "../../../models/gasolinaModel";
 
 export default function UserPerfil({ user, vehicule, Gasolina }) {
   console.log( Gasolina);

@@ -132,8 +132,8 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     borderRadius: "10px",
-    height: "100%",
     width: "40%",
+    justifyContent:'space-evenly',
     [theme.breakpoints.down("sm")]: {
       flexDirection: "row",
       marginTop: "20px",

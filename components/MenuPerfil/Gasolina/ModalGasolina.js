@@ -13,7 +13,7 @@ import {
 import { useRouter } from "next/router";
 import {useRef, useState, forwardRef } from "react";
 import { useDispatch } from "react-redux";
-import useStyles from "./styles";
+import useStyles from "../Perfil/styles";
 import { LocalGasStationOutlined } from "@material-ui/icons";
 import Input from "../../Auth/Input";
 import ModalCargando from "../../../utils/modalCargando";
@@ -45,7 +45,8 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
-    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo},id, router ))
+    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo},id, router, setVisibleModal ))
+
   };
   const handleEntering = () => {
     if (radioGroupRef.current != null) {
@@ -96,7 +97,6 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
                 label="Kilometraje"
                 placeholder="13.870"
                 handleChange={handleChange}
-                autoFocus 
                 half="true"
             variant="standard"
 

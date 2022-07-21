@@ -7,45 +7,64 @@ import {
   Grid,
   InputLabel,
   Select,
-  MenuItem,
+  MenuItem,Slide,
   FormControl
 } from "@material-ui/core";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import {useRef, useState, forwardRef } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import { LocalGasStationOutlined } from "@material-ui/icons";
 import Input from "../../Auth/Input";
+import ModalCargando from "../../../utils/modalCargando";
+import { addGasolina } from "../../../reducers/Actions/gasolinActions";
 
 const initialForm = {
   tipoGasolina: "",
-  dinero: "",
+  dineroGastado: "",
   kilometraje: "",
   fecha: "",
+  owner:''
 };
-
-export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
+const Transition = forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo }) {
   const classes = useStyles();
   const [form, setForm] = useState(initialForm);
   const router = useRouter();
   const dispatch = useDispatch();
+  const radioGroupRef = useRef(null);
+  const [visibleModal, setVisibleModal] = useState(false)
 
+  const {id} = router.query
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     console.log(form);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    setVisibleModal(true)
+    console.log(form);
+    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo},id, router ))
+  };
+  const handleEntering = () => {
+    if (radioGroupRef.current != null) {
+      radioGroupRef.current.focus();
+    }
   };
 
   return (
     <div>
       <Dialog
-        open={open || visibleEdit}
-        onClose={() => setVisibleEdit(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        open={open}
+        keepMounted
+        TransitionProps={{ onEntering: handleEntering }}
+        TransitionComponent={Transition}
+
       >
+         {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={'Guardando datos...'}/>}
+
         <LocalGasStationOutlined
           fontSize="large"
           style={{
@@ -65,7 +84,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
           <form >
             <Grid container spacing={1}>
               <Input
-                name="gastado"
+                name="dineroGastado"
                 label="Dinero Tanqueado"
                 placeholder="90.000"
                 handleChange={handleChange}
@@ -78,7 +97,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
                 label="Kilometraje Inicial"
                 placeholder="13.870"
                 handleChange={handleChange}
-                autoFocus
+                autoFocus 
                 half="true"
             variant="standard"
 
@@ -89,6 +108,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
                 handleChange={handleChange}
                 half="true"
                 type='date'
+                variant="standard"
 
               />
                <FormControl
@@ -101,13 +121,13 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit }) {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={form.estado}
-              label="Estado"
+              value={form.tipoGasolina}
+              label="Tipo Gasolina"
               onChange={handleChange}
-              name="estado"
+              name="tipoGasolina"
             >
-              <MenuItem value={"Nuevo"}>Extra</MenuItem>
-              <MenuItem value={"Segunda"}>Corriente</MenuItem>
+              <MenuItem value={"Extra"}>Extra</MenuItem>
+              <MenuItem value={"Corriente"}>Corriente</MenuItem>
             </Select>
           </FormControl>
             </Grid>

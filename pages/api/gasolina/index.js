@@ -1,29 +1,19 @@
 import DBConnect from "../../../libs/dbConnect"
+import gasolinaModel from "../../../models/gasolinaModel"
 
 
 DBConnect()
-export async function handler(req, res){
+export default async (req, res)=>{
     switch (req.method) {
         case 'GET':
-            await getGasolina(req,res)
-        case 'POST':
-            await createGasolina(req, res)
+            await getGasolina(req, res)
     
     }
 }
 
-async function getGasolina(req, res){
-    try {
-        
-    } catch (error) {
-        
-    }
 
-}
-async function createGasolina(req, res){
-    try {
-        
-    } catch (error) {
-        
-    }
+export const getGasolina= async(req, res)=>{
+    const {body, query} = req;
+    console.log(body, query);
+
 }

@@ -5,9 +5,11 @@ const gasolinaSchema = new mongoose.Schema({
     tipoGasolina:{type:String},
     promedio:{type:String},
     kilometraje:{type:String},
-    gasto:{type:String},
+    dineroGastado:{type:Number},
+    fecha:{type:Date},
     owner:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    vehiculo:[{type: mongoose.Schema.Types.ObjectId, ref: 'Vehiculo'}]
 
-}, {versionKey:'false', timestamps:'true'})
+}, {versionKey:'false'})
 
 export default mongoose.models.Gasolina || mongoose.model('Gasolina', gasolinaSchema)

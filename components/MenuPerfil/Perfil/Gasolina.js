@@ -1,13 +1,25 @@
-import { Error, AttachMoney, LocalGasStationOutlined } from "@material-ui/icons";
+import { Error, AttachMoney, LocalGasStationOutlined, Delete } from "@material-ui/icons";
 import {Button} from '@material-ui/core'
 import useStyles from "./stylesCliente";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalGasolina from "./ModalGasolina";
-export default function Gasolina({vehicule}) {
+import { useDispatch } from "react-redux";
+import { getGasolina } from "../../../reducers/Actions/gasolinActions";
+
+export default function Gasolina({vehicule, gasolina}) {
   const classes = useStyles();
     const [toogle,setToogle] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
+  const dispatch = useDispatch()
+  console.log(gasolina);
 
+  let kilometrosAndados = gasolina[1].kilometraje - gasolina[0].kilometraje
+  console.log(kilometrosAndados);
+  let precioKilometro = gasolina[0].dineroGastado / kilometrosAndados
+  console.log(precioKilometro);
+
+  let fecha = gasolina[0].fecha
+  
   return (
     <div className={classes.conta1} >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
@@ -35,16 +47,40 @@ export default function Gasolina({vehicule}) {
           <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Esta Semana</h4>
           <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Mes</h4>
       </div>
-      {/* <div style={{marginTop:'20px', display:'flex', flexDirection:'row', alignContent:'center'}}>
-        <AttachMoney fontSize='large'/>
+      
+      {gasolina !== undefined 
+      ?
+       <div style={{marginTop:'20px', display:'flex', flexDirection:'column', alignContent:'center'}}>
+         <div style={{display:'flex', flexDirection:'row'}}>
+         <AttachMoney fontSize='large'/>
         <h3 style={{margin:0, fontWeight:'500'}}>Total Gastado</h3>
-      </div> */}
-      <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
-      <div >
-            <h3 style={{margin:'10px',marginBottom:'10px', fontWeight:'400'}}>Aun no hay datos para mostrar, añade informacion para llevar la contabilidad del consumo de tu auto</h3>
-            <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
-        </div>
-        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit}/>}
+         </div>
+        {gasolina.map(el=>{
+        let myDate = new Date(el.fecha)
+        return(
+          <>
+          <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', marginLeft:'40px',justifyContent:'center', gap:'20px',alignItems:'center',alignSelf:'flex-start'}}>
+            <h4 style={{margin:0, color:'gray', fontWeight:'400', }}>{myDate.toLocaleDateString()}</h4>
+            <h4 style={{margin:0,fontWeight:'500'}}>$ {el.dineroGastado}</h4>
+            <h4 style={{margin:0, textAlign:'center', color:'#f50057',fontWeight:'600'}}>{el.tipoGasolina}</h4>
+            <Delete/>
+          </div>
+
+          </>
+          
+        )
+})}
+          <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Editar</Button>
+
+      </div> 
+    : <>
+    <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
+    <div >
+          <h3 style={{margin:'10px',marginBottom:'10px', fontWeight:'400'}}>Aun no hay datos para mostrar, añade informacion para llevar la contabilidad del consumo de tu auto</h3>
+          <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
+      </div>
+    </>}
+        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit} idVehiculo={vehicule._id}/>}
     </div>
   );
 }

@@ -31,10 +31,8 @@ export const deletePost = async(req, res)=>{
     const {query:{id}} = req;
     try {
             const post = await postModel.findByIdAndDelete(id);
-            console.log('post', post);
 
             const user = await userModel.findById(post.creator);
-            console.log('user', user);
 
             const index = user.posts.indexOf(id);
             user.posts.splice(index, 1);

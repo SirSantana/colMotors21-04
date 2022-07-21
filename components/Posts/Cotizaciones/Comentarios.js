@@ -114,62 +114,6 @@ export default function Comentarios({ dataUser, PostCreator, Cotizacion }) {
               >
                 <h2></h2>
               </div>
-              
-
-              {/* {comentarios?.length > 0
-                  ? comentarios?.map((el) => (
-                      <>
-                        <div className={classes1.container3}>
-                          <Typography key={el._id} className={classes1.typo}>
-                            {el}
-                          </Typography>
-                        </div>
-                      </>
-                    ))
-                  : coments?.map((el) => (
-                      <>
-                        <div
-                          key={el._id}
-                          style={{
-                            borderRadius: "10px",
-                            backgroundColor: "#464646",
-                            marginBottom: "10px",
-                            padding: "5px",
-                          }}
-                        >
-                          <Typography
-                            className={classes1.typo}
-                            style={{
-                              fontSize: "16px",
-                              color: "white",
-                              textAlign: "left",
-                              width: "100%",
-                              marginBottom: "5px",
-                            }}
-                          >
-                            {el}
-                          </Typography>
-
-                        </div>
-                      </>
-                    ))}
-                {commentsCache.length > 0 && (
-                  <div
-                    style={{
-                      borderRadius: "10px",
-                      backgroundColor: "#464646",
-                      marginBottom: "10px",
-                      padding: "5px",
-                    }}
-                  >
-                    <Typography className={classes1.typo}>
-                      {commentsCache}
-                    </Typography>
-                  </div>
-                )}
-                {error !== null && (
-                  <h5 style={{ color: "#f50057"}}>{error}</h5>
-                )} */}
             </div>
             <div className={classes1.divContainer}>
               <div className={classes1.divContainer2}>

@@ -7,7 +7,7 @@ import { AddAPhoto, Edit } from "@material-ui/icons";
 import Gasolina from "./Gasolina";
 
 
-export default function PerfilCliente({user, vehicule}){
+export default function PerfilCliente({user, vehicule, gasolina}){
   const classes = useStyles();
   const [userNow, setUserNow] = useState(null)
 
@@ -16,7 +16,7 @@ export default function PerfilCliente({user, vehicule}){
     setMessageAdd('Solicitud de amistad Enviada')
     
   }
-  console.log(user);
+  console.log(vehicule);
 
 
   // useEffect(()=>{
@@ -38,7 +38,7 @@ export default function PerfilCliente({user, vehicule}){
 
        <div className={classes.divVehiculos}>
        <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)}/>
-        <Gasolina vehicule={vehicule}/>
+        <Gasolina vehicule={vehicule} gasolina={gasolina}/>
        </div>
 
             {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>

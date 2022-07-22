@@ -30,7 +30,7 @@
     }
     
   }
-  @media(max-width:1500px){
+  @media(max-width:800px){
     .main{
       display: flex;
     flex-direction: column;

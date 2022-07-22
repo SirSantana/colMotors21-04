@@ -1,9 +1,9 @@
 import axios from 'axios'
-
-const API = axios.create({ baseURL: 
+//OFRECER CONTRAENTREGA!!
+const API = axios.create({ baseURL:
   'https://col-motors21-04.vercel.app/' ,headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://col-motors21-04.vercel.app'
+    'Access-Control-Allow-Origin': '*'
   }});
 
 API.interceptors.request.use((req) => {

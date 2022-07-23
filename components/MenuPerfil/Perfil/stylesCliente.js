@@ -27,7 +27,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     borderRadius: "10px",
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "white",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
     margin:'0 auto',
     justifyContent:'center',
@@ -260,6 +260,7 @@ export default makeStyles((theme) => ({
     color: "gray",
     fontSize: "16px",
     textAlign: "left",
+    fontWeight:'500'
   },
   texto7: {
     color: "gray",

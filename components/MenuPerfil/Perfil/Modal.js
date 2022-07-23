@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { convertidor } from "../../../libs/convertidorFileBase64";
 import {  editVehiculo } from "../../../reducers/Actions/vehiculoActions";
@@ -26,7 +26,9 @@ const initialForm={
   marca:'',
   imagen:''
 }
-
+const initialText ={
+  description:'', error:false
+}
 export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner }) {
   const [marcaa, setMarca] = useState(null);
   const classes = useStyles()
@@ -34,6 +36,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
   const [form,setForm] = useState(initialForm) 
   const [cotizando, setCotizando]= useState(null)
   const [visibleModal, setVisibleModal] = useState(false)
+  const [texto, setTexto] = useState(initialText)
   const router = useRouter() 
   const dispatch = useDispatch()
 
@@ -48,8 +51,8 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
    
     setVisibleModal(true)
     e.preventDefault()
-    
-    dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, owner))
+    setTexto({description:'Guardando...'})
+    dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, setTexto))
     
   }
 
@@ -62,8 +65,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-         
-         {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={'Guardando datos...'}/>}
+         {visibleModal  && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={texto.description} error={texto.error !== false && texto.error}/>}
 
         <DialogTitle id="alert-dialog-title">Edita tu Auto</DialogTitle>
         <DialogContent>

@@ -1,16 +1,24 @@
 import {Dialog,DialogTitle, Button } from "@material-ui/core";
 import { AddAlert, AddAlertOutlined, Check, CheckBoxOutlined, Error} from "@material-ui/icons";
+import { useRef } from "react";
 
 
 export default function ModalCargando({setVisibleModal,active, visibleModal, texto,error}){
-    return(
+  const radioGroupRef = useRef(null);
+
+  const handleEntering = () => {
+    if (radioGroupRef.current != null) {
+      radioGroupRef.current.focus();
+    }
+  };  
+  
+  return(
         <>
          <Dialog
         open={ visibleModal}
-        onClose={()=> setVisibleModal(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        
+        // onClose={()=> setVisibleModal(false)}
+        TransitionProps={{ onEntering: handleEntering }}
+
       >
         <div  style={{display:'flex', padding:'20px', backgroundColor:'#f50057',flexDirection:'column', color:'white', alignItems:'center', justifyContent:'center'}} >
                 

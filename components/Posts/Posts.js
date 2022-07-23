@@ -9,7 +9,6 @@ import PostCard from "../../utils/PostCard/postCard";
 export default function Posts({user, posts}) {
   const classes = useStyles();
   const router = useRouter()
-  
   return (
     <>
             <Grid className={classes.container} container  alignItems='stretch' spacing={3} >
@@ -22,7 +21,7 @@ export default function Posts({user, posts}) {
                
 
           <div style={{marginRight:'auto', marginLeft:'auto', marginTop:'20px', }}>
-          {user && <Button variant="contained" color="secondary" onClick={()=> router.push(`/users/micuenta/${user?.result._id}`)}>Ver mis cotizaciones</Button>}
+          {user  && <Button variant="contained" color="secondary" onClick={()=> router.push(`/users/micuenta/${user?.result._id}`)}>Ver mis cotizaciones</Button>}
 
           </div>
         </Grid>

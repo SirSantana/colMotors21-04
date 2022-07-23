@@ -9,7 +9,7 @@ import useStyles from '../stylesCard.js'
 
 export default function PostsContent({Post}) {
   const classes = useStyles();
-  const [imagen, setImagen] = useState(false);
+  const [imagen, setImagen] = useState(Post.selectedFile ? true: false);
   
   console.log(Post.selectedFile);
   const nombreCreador = Post?.nombreCreador?.toString();

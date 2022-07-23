@@ -53,19 +53,6 @@ export default function PerfilCliente({user, vehicule}){
            </section>
        </div>
        </div>
-
-            {/* <div className={classes.container4} style={{margin:'20px auto 0 auto', backgroundColor:'#f1f1f1', alignItems:'center', width:'330px'}}>
-            <div style={{borderRadius:'5px', border:'2px solid lightGray', padding:'30px', width:'100px'}}>
-            <AddAPhoto/>
-            </div>
-            <div style={{margin:'0 auto'}}>
-              <h2 className={classes.nombre1} style={{marginBottom:'10px'}}>{user?.marca}</h2>
-              <Button variant="contained" color='secondary'>
-              Edita tu Auto
-            </Button>
-            </div>
-            
-            </div> */}
         </div>
        
     )

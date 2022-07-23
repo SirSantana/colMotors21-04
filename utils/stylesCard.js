@@ -23,7 +23,7 @@ export default makeStyles((theme)=>({
       margin: "0",
       objectFit:'cover',
       marginTop:'10px',
-      
+      cursor:'pointer'
     },
     container:{
         backgroundColor:'none',

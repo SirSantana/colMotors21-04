@@ -7,11 +7,10 @@ import { useState } from "react";
 import useStyles from '../stylesCard.js'
 
 
-export default function PostsContent({Post}) {
+export default function PostsContent({Post, setCompleteImage}) {
   const classes = useStyles();
   const [imagen, setImagen] = useState(Post.selectedFile ? true: false);
   
-  console.log(Post.selectedFile);
   const nombreCreador = Post?.nombreCreador?.toString();
 
   let name = Post?.nombreCreador?.toString();
@@ -102,7 +101,8 @@ export default function PostsContent({Post}) {
         ) : null}
         {imagen ? (
           <>
-            <img src={Post?.selectedFile} alt='Imagen repuesto' className={classes.img} style={{borderRadius:'10px'}}/>
+            
+            <img onClick={()=> setCompleteImage(true)} src={Post?.selectedFile} alt='Imagen repuesto' className={classes.img}/>
           </>
         ) : null}
       </CardContent>

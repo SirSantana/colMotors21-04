@@ -165,6 +165,7 @@ export default makeStyles((theme) => ({
     width: "100%",
     margin: "0",
     objectFit:'cover',
+    cursor:'pointer',
     [theme.breakpoints.down("sm")]: {
       width: "100%",
     height: "180px",

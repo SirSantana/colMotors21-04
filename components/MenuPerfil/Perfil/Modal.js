@@ -32,9 +32,7 @@ const initialText ={
 export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner }) {
   const [marcaa, setMarca] = useState(null);
   const classes = useStyles()
-  const [imagen, setImagen] = useState(null)
   const [form,setForm] = useState(initialForm) 
-  const [cotizando, setCotizando]= useState(null)
   const [visibleModal, setVisibleModal] = useState(false)
   const [texto, setTexto] = useState(initialText)
   const router = useRouter() 

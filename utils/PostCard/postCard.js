@@ -1,5 +1,7 @@
 import {
   Card,
+  Dialog,
+  DialogTitle,
   Divider,
   Paper,
   Typography,
@@ -11,6 +13,7 @@ import PostsActions from "./postActions.js";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import PostButton from "./postButtons.js";
+import { Close } from "@material-ui/icons";
 
 export default function PostCard({ Post, User,setVisibleDelete }) {
   const classes = useStyles();
@@ -18,6 +21,7 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
   const router = useRouter(); 
   const idCreator = Post?.creator;
   const [messageCotizar, setMessageCotizar] = useState(null)
+  const [completeImage, setCompleteImage] = useState(false)
   const numeroCotizaciones = Math.round(Post?.cotizaciones?.length / 24)
 
   console.log(User);
@@ -44,6 +48,9 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
     }
   };
 
+  const handleClose = () => {
+    setCompleteImage(false);
+  };
   const postHeader ={
       marca:Post?.marca,
       referencia:Post?.referencia,
@@ -54,7 +61,8 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
     postId:Post?._id,
     userId:User?.result._id,
     postIdCreator:Post?.creator,
-    setVisibleDelete:setVisibleDelete
+    setVisibleDelete:setVisibleDelete,
+    
   }
   return (
     <>
@@ -65,7 +73,7 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
 
             <Divider></Divider>
 
-            <PostsContent Post={Post}/> 
+            <PostsContent Post={Post} setCompleteImage={setCompleteImage}/> 
             
             <PostsActions postData={postActions}/> 
             
@@ -81,7 +89,13 @@ export default function PostCard({ Post, User,setVisibleDelete }) {
             }
             <PostButton userId={User?.result._id} userRole={User?.result.role.length} setMessageCotizar={setMessageCotizar} idCreator={idCreator} handleCotizar={handleCotizar} cotizacionCreada={cotizacionCreada} numeroCotizaciones={numeroCotizaciones}/>
             
-            
+
+
+
+            <Dialog open={completeImage} onClose={handleClose} >
+            <img src={Post?.selectedFile} alt='Imagen repuesto' className={classes.img} style={{width:'100%', height:'100%', margin:'0'}} />
+
+              </Dialog>
           </Card>
       </div>
     </>

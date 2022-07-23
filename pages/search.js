@@ -24,7 +24,7 @@ export default function Search({ products }) {
         spacing={3}
       >
         {products?.map((Post) => (
-          <Grid key={Post._id} item xs={12} sm={12} lg={4} md={6}>
+          <Grid style={{width:'100vw'}} key={Post._id} item xs={12} sm={8} lg={4} md={6}>
             <PostCard Post={Post} User={user} />
           </Grid>
         ))}

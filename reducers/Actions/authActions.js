@@ -1,34 +1,27 @@
 import * as api from '../Api/index'
 import { AUTH, CALIFICACIONUSER, FORGOTPASSWORD, GETUSER, GETUSERS, UPDATEPASSWORD } from '../type'
 
-export const signin = (form, router, setMessage, setMessageError, setMessageLoad)=> async(dispatch)=>{
+export const signin = (form, router, setMessage)=> async(dispatch)=>{
     
     try {
-        setMessageLoad('Espera un momento...')
         const {data} = await api.signin(form)
+        setMessage({description:'Ingresando Correctamente!'})
         router.push(`/home`)
         dispatch({type: AUTH, data})
-        
-        setMessage('Ingresando Correctamente...')
 
     } catch (error) {
-        console.log(error.response);
-        setMessageLoad(null)
-        setMessageError(error.response.data)
+        setMessage({description:error.response.data, error:true})
     }
 }
-export const signup = (form, router,setMessage, setMessageError, setMessageLoad)=> async(dispatch)=>{
+export const signup = (form, router,setMessage)=> async(dispatch)=>{
     try {
-        setMessageLoad('Espera un momento...')
         const {data} = await api.signup(form)
-        dispatch({type: AUTH, data})
-        setMessage('Registro Correcto')
+        
+        setMessage({description:'Registro Correcto!'})
         router.push("/home")
-
+        dispatch({type: AUTH, data})
     } catch (error) {
-        console.log(error);
-        setMessageLoad(null)
-        setMessageError(error.response.data)
+        setMessage({description:error.response.data, error:true})
 
     }
 }

@@ -6,11 +6,7 @@ import { useDispatch } from "react-redux";
 import { createPost } from "../../reducers/Actions/postActions";
 import MenuLogos from "../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
-import Link from 'next/link'
-import { Check } from "@material-ui/icons";
-import { convertidor } from "../../libs/convertidorFileBase64";
 import ModalCargando from "../../utils/modalCargando";
-import Input from '../Auth/Input'
 import ButtonLink from "../Button";
 
 const initial = {

@@ -10,6 +10,7 @@ import { Error } from "@material-ui/icons";
 import { handleLogout } from "../../utils/handleLogout";
 import Link from 'next/link'
 import MenuLogos from "../../utils/MenuLogos/MenuLogos";
+import ModalCargando from "../../utils/modalCargando";
 
 const initialState = {
   firstName: "",
@@ -21,18 +22,18 @@ const initialState = {
   marca: "",
   ciudad:''
 };
+const initialText ={
+  description:'', error:false
+}
 
 const SignUp = () => {
   const classes = useStyles();
   const [user, setUser] = useState("");
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
-  const [message, setMessage] = useState(null);
-  const [messageError, setMessageError] = useState(null);
-  const [messageLoad, setMessageLoad] = useState(null);
+  const [message, setMessage] = useState(initialText);
   const [marca, setMarca] = useState(null)
-
-  console.log(form);
+  const [visibleModal,setVisibleModal] = useState(false)
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -50,19 +51,21 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setVisibleModal(true)
+    setMessage({description:'Espera un momento...'})
     if (isSignup) {
         if(marca !== null){
         dispatch(
-        signup({...form, marca:marca}, router, setMessage, setMessageError, setMessageLoad)
+        signup({...form, marca:marca}, router, setMessage)
         )
-      }
+        }
         else{
-          setMessageError('Debe elegir la marca de su carro')
+          setMessage({description:'Debe elegir la marca de su carro'})
         }
         
     } else {
         dispatch(
-          signin(form, router, setMessage, setMessageError, setMessageLoad)
+          signin(form, router, setMessage)
         );
       
      
@@ -75,60 +78,14 @@ const SignUp = () => {
 
   return (
     <>
-      {messageError !== null && (
-        <Paper className={classes.paper2} elevation={3}>
-          <Error style={{ paddingRight: "10px" }} />
-          <Typography
-            className={classes.typo}
-            style={{ fontSize: "14px", color: "white", marginRight: "8px" }}
-          >
-            {messageError}
-          </Typography>
-          <ButtonBase
-            onClick={() => setMessageError(messageError ? null : true)}
-          >
-            <Close />
-          </ButtonBase>
-        </Paper>
-      )}
-
-      {message !== null && (
-        <Paper
-          className={classes.paper2}
-          style={{ backgroundColor: "#1b333d" }}
-          elevation={3}
-        >
-          <Check style={{ paddingRight: "10px" }} />
-          <Typography
-            className={classes.typo}
-            style={{ fontSize: "14px", color: "white", marginRight: "8px" }}
-          >
-            {message}
-          </Typography>
-        </Paper>
-      )}
-
-      {messageLoad !== null && (
-        <Paper
-          className={classes.paper2}
-          style={{ backgroundColor: "#1b333d" }}
-          elevation={3}
-        >
-          <Check style={{ paddingRight: "10px" }} />
-          <Typography
-            className={classes.typo}
-            style={{ fontSize: "14px", color: "white", marginRight: "8px" }}
-          >
-            {messageLoad}
-          </Typography>
-        </Paper>
-      )}
 
       <Container component="main" maxWidth="xs">
         <Paper className={classes.paper} elevation={3}>
           <Avatar className={classes.avatar}>
             <LockOutlined />
           </Avatar>
+         {visibleModal  && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={message.description} error={message.error !== false && message.error}/>}
+          
           {user ? (
             <>
               <Typography>Ya tienes una sesion iniciada</Typography>

@@ -40,11 +40,9 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
   const router = useRouter() 
   const dispatch = useDispatch()
 
-  console.log(idVehicule);
 
   const handleChange=(e)=>{
     setForm({...form, [e.target.name]: e.target.value})
-    console.log(form);
 
   }
   const handleSubmit=(e)=>{
@@ -69,11 +67,6 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
 
         <DialogTitle id="alert-dialog-title">Edita tu Auto</DialogTitle>
         <DialogContent>
-          {/* <DialogContentText id="alert-dialog-description">
-            Agrega una foto de tu vehiculo, lleva la contabilidad de los gastos,
-            repuestos, y mejoras que le hagas a tu carro.
-          </DialogContentText> */}
-
           <form >
             <MenuLogos marca={marcaa} setMarca={setMarca} />
             <section style={{

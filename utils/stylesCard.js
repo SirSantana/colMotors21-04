@@ -16,12 +16,14 @@ export default makeStyles((theme)=>({
           
           },
     },
-    media: {
-      height: 0,
-      paddingTop: '86.25%',
-      backgroundColor: 'rgb(0, 0, 0, )',
-      backgroundBlendMode: 'darken',
-      justifyContent: 'space-between'
+    img: {
+      borderRadius: "10px",
+      height: "250px",
+      width: "100%",
+      margin: "0",
+      objectFit:'cover',
+      marginTop:'10px',
+      
     },
     container:{
         backgroundColor:'none',

@@ -9,23 +9,19 @@ import {
   CREATE_COMMENT
 } from "../type";
 
-export const postCotizacion = (cotizacion, router,setMessage, setMessageError, setMessageLoad) => async (dispatch) => {
+export const postCotizacion = (cotizacion, router,setMessage) => async (dispatch) => {
   try {
     // dispatch({ type: START_LOADING });
-    setMessageLoad('Enviando Cotizacion...')
-
     const { data } = await api.createCotizacion(cotizacion);
-    console.log('data', data);
+    
+    setMessage({description:'¡Cotizacion realizada!'})
     dispatch({ type: CREATE_COTIZACION, payload: data });
-    setMessage('¡Cotizacion realizada!...')
     router.push('/home')
 
     // dispatch({ type: END_LOADING });
 
   } catch (error) {
-    console.log(error);
-    setMessageLoad(null)
-    setMessageError(error)
+    setMessage({description:'Ha ocurrido un error', error:true})
   }
 };
 export const getCotizacion = (id) => async (dispatch) => {

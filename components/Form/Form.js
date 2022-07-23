@@ -39,7 +39,8 @@ export default function Form() {
     e.preventDefault();
       setChange(change ? false: true)
       setVisibleModal(true)
-      dispatch(createPost({...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais, selectedFile: image }, router))
+      console.log(postData);
+      dispatch(createPost({...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:`${user?.result?.pais}, ${user?.result.ciudad}` }, router))
       // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais })
      
       setPostData(initial);
@@ -55,7 +56,7 @@ export default function Form() {
       </Paper>
 
 
-      {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active='false' visibleModal={visibleModal} texto={'Cotizando...'}/>}
+      {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={'Cotizando...'}/>}
       
 
       {user === null &&
@@ -64,7 +65,7 @@ export default function Form() {
       <br/>
       <ButtonLink to={'/auth'} variant='contained'  text={'Ingresar'}/>
       </Paper>}
-      <div className={classes.paper}>
+      <div className={classes.paper} >
 
     
         <MenuLogos marca={marcaa} setMarca={setMarca} />

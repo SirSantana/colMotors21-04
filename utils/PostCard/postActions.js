@@ -38,15 +38,10 @@ export default function PostsActions({postData}){
 
           {setVisibleDelete !== undefined ? 
           userId === postIdCreator && 
-            id !== undefined ?
+            id !== undefined &&
             <Button size="small" onClick={()=> setVisibleDelete(true)}>
             <Delete fontSize="small" />
           </Button>
-          :
-          <Button size="small">
-              <Delete fontSize="small" />
-            </Button>  
-          
           :null}
           
         </CardActions>

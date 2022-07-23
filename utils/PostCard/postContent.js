@@ -1,5 +1,5 @@
 import { Button, CardContent, CardMedia, Typography } from "@material-ui/core";
-import { PersonSharp } from "@material-ui/icons";
+import { PersonSharp,   Photo } from "@material-ui/icons";
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -11,6 +11,7 @@ export default function PostsContent({Post}) {
   const classes = useStyles();
   const [imagen, setImagen] = useState(false);
   
+  console.log(Post.selectedFile);
   const nombreCreador = Post?.nombreCreador?.toString();
 
   let name = Post?.nombreCreador?.toString();
@@ -46,13 +47,16 @@ export default function PostsContent({Post}) {
                 fontSize="large"
                 style={{ color: "gray", marginLeft: "3px" }}
               />
-
+              <div>
+              <h3 style={{margin:0, fontWeight:'500', lineHeight:'16px'}}>Cliente:</h3>
               <Typography
-                style={{ marginLeft: "5px", color: "black", fontWeight:'600', fontSize:'18px' }}
+                style={{color: "gray", fontWeight:'400', fontSize:'18px' }}
                 className={classes.typography}
               >
                 {nombreCreador}
               </Typography>
+              </div>
+              
             </div>
           </a>
         </Link>
@@ -61,44 +65,44 @@ export default function PostsContent({Post}) {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            
+            margin:'10px 0px'
           }}
         >
-          {/* <Image
-            src={'/images/repuestosIcon.png'}
-            width={'30px'}
-            height={'30px'}
-            /> */}
-          {/* <Build/> */}
           <Image
             src={"/images/iconoPiston.png"}
             alt={"/images/iconoPiston.png"}
             width={40}
             height={40}
           />
+          <div>
+            <h3 style={{margin:0, fontWeight:'500', lineHeight:'16px'}}>Repuestos:</h3>
           <Typography
-            style={{ marginLeft: "5px", fontSize: "20px" }}
+            style={{ fontSize: "18px", color:'gray' }}
             className={classes.typography1}
           >
             {Post?.repuesto}
           </Typography>
+          </div>
         </div>
         {Post?.selectedFile ? (
+          <>
+          <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+          <Photo fontSize='large' style={{ color: "gray", marginLeft: "3px" }}/>
           <Button
-            className={classes.button}
-            color={imagen ? "secondary" : "primary"}
-            variant="contained"
+            style={{width:'200px',fontSize:'16px', height:'30px', padding:'10px'}}
+            color='secondary'
+            variant={imagen ? 'outlined'  : "contained"}
             onClick={() => (imagen ? setImagen(false) : setImagen(true))}
           >
-            {imagen ? "X" : "Revisa la foto"}
+            {imagen ? "Cerrar Foto" : "Ver Foto"}
           </Button>
+          </div>
+          </>
+          
         ) : null}
         {imagen ? (
           <>
-            <img
-              className={classes.media}
-              src={Post?.selectedFile}
-            />
+            <img src={Post?.selectedFile} alt='Imagen repuesto' className={classes.img} style={{borderRadius:'10px'}}/>
           </>
         ) : null}
       </CardContent>

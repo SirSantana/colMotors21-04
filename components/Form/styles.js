@@ -87,7 +87,6 @@ export default makeStyles((theme) => ({
     transition: "color 0.15s ease, border-color 0.15s ease",
   },
   fileInput:{
-    color:'#f1f1f1',
     display:'flex',
     alignItems:'center',
     justifyContent:'center',

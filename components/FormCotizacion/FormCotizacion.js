@@ -3,7 +3,6 @@ import {
   Typography,
   Paper,
   Button,
-  ButtonBase,
   Select,
   MenuItem,
   InputLabel,
@@ -12,10 +11,10 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
-import { BrandingWatermark, Build, Check, Close } from "@material-ui/icons";
 import { postCotizacion } from "../../reducers/Actions/cotizacionesActions";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import ModalCargando from "../../utils/modalCargando";
 
 const initial = {
   repuestos: "",
@@ -27,14 +26,17 @@ const initial = {
   marca: "",
   estado: "",
 };
+const initialText = {
+  description: "",
+  error: false,
+};
 export default function FormCotizacion({ OnePost, user }) {
   const classes = useStyles();
   const [form, setForm] = useState(initial);
   const dispatch = useDispatch();
   const router = useRouter();
-  const [message, setMessage] = useState(null);
-  const [messageError, setMessageError] = useState(null);
-  const [messageLoad, setMessageLoad] = useState(null);
+  const [message, setMessage] = useState(initialText);
+  const [visibleModal, setVisibleModal] = useState(false);
 
   const handleChange = (e) => {
     setForm({
@@ -46,6 +48,8 @@ export default function FormCotizacion({ OnePost, user }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setVisibleModal(true);
+    setMessage({ description: "Cotizando..." });
     dispatch(
       postCotizacion(
         {
@@ -56,9 +60,7 @@ export default function FormCotizacion({ OnePost, user }) {
           pais: user?.result.pais,
         },
         router,
-        setMessage,
-        setMessageError,
-        setMessageLoad
+        setMessage
       )
     );
     setForm(initial);
@@ -66,53 +68,14 @@ export default function FormCotizacion({ OnePost, user }) {
   };
   return (
     <>
-      {messageError !== null && (
-        <Paper className={classes.paper2} elevation={3}>
-          <Error style={{ paddingRight: "10px" }} />
-          <Typography
-            className={classes.typo2}
-            style={{ fontSize: "14px", color: "white", marginRight: "8px" }}
-          >
-            {messageError}
-          </Typography>
-          <ButtonBase
-            onClick={() => setMessageError(messageError ? null : true)}
-          >
-            <Close />
-          </ButtonBase>
-        </Paper>
-      )}
-
-      {message !== null && (
-        <Paper
-          className={classes.paper2}
-          style={{ backgroundColor: "#1b333d" }}
-          elevation={3}
-        >
-          <Check style={{ paddingRight: "10px" }} />
-          <Typography
-            className={classes.typo2}
-            style={{ fontSize: "14px", color: "white", marginRight: "8px" }}
-          >
-            {message}
-          </Typography>
-        </Paper>
-      )}
-
-      {messageLoad !== null && (
-        <Paper
-          className={classes.paper2}
-          style={{ backgroundColor: "#1b333d" }}
-          elevation={3}
-        >
-          <Check style={{ paddingRight: "10px" }} />
-          <Typography
-            className={classes.typo2}
-            style={{ fontSize: "14px", color: "white", marginRight: "8px" }}
-          >
-            {messageLoad}
-          </Typography>
-        </Paper>
+      {visibleModal && (
+        <ModalCargando
+          setVisibleModal={setVisibleModal}
+          active={false}
+          visibleModal={visibleModal}
+          texto={message.description}
+          error={message.error !== false && message.error}
+        />
       )}
 
       <div className={classes.header}>

@@ -7,7 +7,7 @@ import {VisibilityOff} from '@material-ui/icons';
 const Input = ({name,variant, handleChange, label, half, autoFocus, type, handleShowPassword, value,placeholder, disabled }) => (
   
   
-  <Grid item xs={6} sm={half ? 6 : 12}>
+  <Grid item xs={12} sm={half ? 6 : 12}>
     <TextField
       name={name}
       onChange={handleChange}

@@ -64,7 +64,8 @@ export default function PostsContent({Post, setCompleteImage}) {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            margin:'10px 0px'
+            margin:'10px 0px',
+            wordWrap:'break-word'
           }}
         >
           <Image
@@ -73,14 +74,13 @@ export default function PostsContent({Post, setCompleteImage}) {
             width={40}
             height={40}
           />
-          <div>
+          <div style={{width:'80%'}}>
             <h3 style={{margin:0, fontWeight:'500', lineHeight:'16px'}}>Repuestos:</h3>
-          <Typography
-            style={{ fontSize: "18px", color:'gray' }}
-            className={classes.typography1}
+          <h4
+            style={{ fontSize: "18px", color:'gray', fontWeight:'400', margin:0 }}
           >
             {Post?.repuesto}
-          </Typography>
+          </h4>
           </div>
         </div>
         {Post?.selectedFile ? (

@@ -33,7 +33,6 @@ export default makeStyles((theme)=>({
         fontSize:'20px',
         fontWeight:'600',
         lineHeight:'18px',
-        
     },
     purple: {
         color: 'black',

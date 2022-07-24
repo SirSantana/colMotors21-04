@@ -35,7 +35,9 @@ export default function Home() {
               Cotiza los repuestos de tu auto en{" "}
             </h3>
             <h4 className={styles.description1}>30 Minutos</h4>
-            <ButtonLink text={'Cotiza Aquí'} variant={'contained'} color='secondary' to={'/home'}/>
+            <Link href='/home'>
+            <Button style={{width:'250px'}} variant='contained' color='secondary'>Cotiza Aquí</Button>
+            </Link>
           </div>
         </section>
 

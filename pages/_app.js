@@ -24,7 +24,6 @@ const theme = createTheme({
       contrastText: '#f1f1f1',
     },
   },
-  typography: { fontFamily: ["Mingzat"].join(",") },
 });
 
 

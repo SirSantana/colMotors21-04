@@ -24,10 +24,8 @@ export default function Form() {
   const dispatch = useDispatch()
   const [user, setUser] = useState(null)
   const [change, setChange] = useState(false)
-  // const dispatch = useDispatch()
   const [postData, setPostData] = useState(initial);
   const [marcaa, setMarca] = useState(null);
-  const [image, setImage] = useState(null)
   const router = useRouter();
   const [visibleModal, setVisibleModal] = useState(false)
 
@@ -39,12 +37,14 @@ export default function Form() {
     e.preventDefault();
       setChange(change ? false: true)
       setVisibleModal(true)
-      console.log(postData);
-      dispatch(createPost({...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:`${user?.result?.pais}, ${user?.result.ciudad}` }, router))
-      // createPosts({ ...postData, marca: marcaa, nombreCreador: user?.result?.name, creator:user?.result?._id, lugar:user?.result?.pais })
+      dispatch(createPost(
+        {...postData, marca: marcaa, 
+          nombreCreador: user?.result?.name, 
+          creator:user?.result?._id, 
+          lugar:`${user?.result?.ciudad}, ${user?.result.pais}` }
+          , router))
      
       setPostData(initial);
-      // router.push(`/users/micuenta/${user?.result._id}`)
   };
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))

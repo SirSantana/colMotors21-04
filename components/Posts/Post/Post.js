@@ -79,7 +79,7 @@ const handleIr=()=>{
         <div className={classes.card} >
           {id !== undefined && (
             <div className={classes.header1}>
-              <Typography gutterBottom className={classes.typo}>
+              <Typography  className={classes.typo}>
                 {user?.result._id === idCreator ? (
                   <b>Tu Cotización</b>
                 ) : (

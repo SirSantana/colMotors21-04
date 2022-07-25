@@ -79,8 +79,8 @@ export default function FormCotizacion({ OnePost, user }) {
       )}
 
       <div className={classes.header}>
-        <Typography gutterBottom className={classes.typo}>
-          <b>Tu Cotización</b>
+        <Typography  className={classes.typo}>
+          Tu Cotización
         </Typography>
       </div>
       <Paper className={classes.paper} raised="true" elevation={6}>

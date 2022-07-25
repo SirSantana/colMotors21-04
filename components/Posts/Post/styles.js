@@ -11,20 +11,19 @@ export default makeStyles((theme)=>({
   },
   typo:{
     fontSize: '20px',
-    fontFamily: 'Helvetica',
     paddingRight:'20px',
-      margin:0
+    margin:'0 auto'
 
 },
   header1:{
     display:'flex',
      color:'white',
       marginBottom:'10px',
-      padding:'10px 20px',
       alignItems:'center',
       flexDirection:'row', 
       justifyContent:'center', 
       backgroundColor:"#1b333d",
+      height:'50px',
     borderRadius: "5px",
     [theme.breakpoints.down('sm')]: {
       marginTop:'20px',
@@ -78,7 +77,8 @@ export default makeStyles((theme)=>({
     fontWeight:'600',
     justifyContent:'center',
     alignItems:'center',
-    textAlign:'center'
+    textAlign:'center',
+    fontSize:'18px'
   },
   paper3: {
     padding: theme.spacing(2),
@@ -109,7 +109,6 @@ export default makeStyles((theme)=>({
     padding: '0',
     position: 'relative',
     minWidth:'280px',
-
     [theme.breakpoints.down('sm')]: {
         width:'84vw',
         marginLeft:'auto',

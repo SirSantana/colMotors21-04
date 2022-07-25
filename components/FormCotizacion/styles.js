@@ -13,7 +13,7 @@ export default makeStyles((theme) => ({
     width:'90%',
     [theme.breakpoints.down('sm')]: {
         paddingLeft:'8px',
-        width:'90%'
+        width:'92%'
       }
   },
   header:{
@@ -21,11 +21,11 @@ export default makeStyles((theme) => ({
      color:'white',
      borderRadius:'5px',
       marginBottom:'10px',
-      padding:'10px 20px',
       alignItems:'center',
-      width:'88%',
+      width:'100%',
       justifyContent:'center', 
       backgroundColor:"#1b333d",
+      height:'50px',
       [theme.breakpoints.down('sm')]: {
   
         marginTop:'20px'
@@ -49,10 +49,10 @@ export default makeStyles((theme) => ({
 
   },
   typo:{
-      fontSize: '20px',
+      fontSize: '18px',
       fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
-      paddingRight:'20px',
-      margin:0
+      margin:0,
+      fontWeight:'600'
   },
   typo2:{
     fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',

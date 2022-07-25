@@ -1,11 +1,11 @@
-import { Button, ButtonBase, Paper, TextField, Typography } from "@material-ui/core";
-import { Check, Close, Error, ErrorOutlineRounded, ErrorTwoTone } from "@material-ui/icons";
+import { Button, Paper,  } from "@material-ui/core";
+import {  Error } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { forgotPassword } from "../../reducers/Actions/authActions";
 import useStyles from "./styles";
 import Input from "./Input";
 import ModalCargando from "../../utils/modalCargando";
+import { theme } from "../../utils/theme";
 
 const initial = {
     email: "",
@@ -14,8 +14,6 @@ const initial = {
 export default function ForgotPasswordComponent({sendMessage}) {
   const [form, setForm] = useState(initial);
   const classes = useStyles();
-  const dispatch = useDispatch()
-  const [error, setError] = useState(null)
   const [message, setMessage] = useState(null)
   const [visibleModal, setVisibleModal] = useState(false)
 
@@ -37,18 +35,7 @@ export default function ForgotPasswordComponent({sendMessage}) {
   return (
     <>
     <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={'El mensaje fue enviado a tu correo'}/>
-     {/* {message !== null && (
-        <Paper className={classes.paper2} elevation={3}>
-          <Check style={{ paddingRight: "10px" }} />
-          <Typography
-            className={classes.typo}
-            style={{ fontSize: "14px", color: "white", marginRight: "8px" }}
-          >
-            {message}
-          </Typography>
-          
-        </Paper>
-      )} */}
+     
       <Paper
         className={classes.paper}
         style={{
@@ -60,17 +47,15 @@ export default function ForgotPasswordComponent({sendMessage}) {
         elevation={3}
       >
         <Error fontSize="large" style={{color:'#f50057'}} />
-        <h4 style={{fontWeight:'400'}}>Ingresa el correo que tienes registrado en la pagina. Te enviaremos un email para que puedas restaurar tu contraseña</h4>
-        <form onSubmit={handleSubmit}>
+        <h4 style={theme.font.subtitle}>Ingresa el correo que tienes registrado en la pagina. Te enviaremos un email para que puedas restaurar tu contraseña</h4>
+        <form style={{marginTop:'10px'}} onSubmit={handleSubmit}>
         <Input
               name="email"
               label="Email"
-              variant="filled"
               value={form.email}
               fullWidth
               handleChange={handleChange}
               type='email'
-              style={{backgroundColor:'white'}}
               required
             />
           <Button

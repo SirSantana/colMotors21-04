@@ -75,7 +75,7 @@ const handleIr=()=>{
         {visibleDelete === true && <VisibleDelete  message={message} handleDelete={handleDelete} setVisibleDelete={setVisibleDelete}/>}
       
       
-      <div className={classes.container}>
+      <div className={classes.container} >
         <div className={classes.card} >
           {id !== undefined && (
             <div className={classes.header1}>

@@ -7,7 +7,7 @@ export default makeStyles((theme)=>({
         display:'flex',
         flexDirection:'column',
         width:'100%',
-        maxWidth:'300px',
+        maxWidth:'400px',
         marginLeft:'auto',
         marginRight:'auto',
         marginBottom:'10px',

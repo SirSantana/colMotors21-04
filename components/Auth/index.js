@@ -52,7 +52,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
-    setMessage({description:'Espera un momento...'})
+    setMessage({description:'Ingresando...'})
     if (isSignup) {
         if(marca !== null){
         dispatch(

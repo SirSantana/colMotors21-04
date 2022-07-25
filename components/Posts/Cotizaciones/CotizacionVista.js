@@ -110,12 +110,17 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                   >
                     <AttachMoney
                       fontSize="large"
-                      style={{ color: "lightGray", marginLeft: "3px" }}
+                      style={{ color: "gray", marginLeft: "3px" }}
                     />
 
+                    <section>
                     <Typography className={classes.title}>
+                      Precio:
+                    </Typography>
+                    <Typography style={{color:'white', fontWeight:'400'}}>
                       {Cotizacion?.precio}
                     </Typography>
+                    </section>
                   </div>
                   <div
                     style={{
@@ -129,8 +134,12 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                       width={40}
                       height={40}
                     />
+                    <section>
+                    <Typography className={classes.title}>
+                      Descripcion:
+                    </Typography>
                     <Typography
-                      style={{ marginTop: "10px", color: "#f1f1f1" }}
+                      style={{ color: "#f1f1f1" }}
                       className={classes.typography1}
                     >
                       {Cotizacion?.repuestos}
@@ -141,6 +150,7 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                         Marca: {Cotizacion?.marca}
                       </Typography>
                     </Typography>
+                    </section>
                   </div>
                 </div>
               </CardContent>
@@ -158,7 +168,7 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                   }}
                 >
                   <Place
-                    style={{ color: "lightGray", width: "30px", height: "30px" }}
+                    style={{ color: "gray", width: "30px", height: "30px" }}
                   />
                   <Typography style={{ marginLeft: "5px" }} variant="body1">
                     {Cotizacion?.pais}

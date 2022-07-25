@@ -4,13 +4,11 @@ import Link from 'next/link'
 import Layout from '../components/Layout/Layout'
 import {useRouter} from 'next/router'
 import { Button } from"@material-ui/core";
-import { LOGOUT } from '../reducers/type'
 import { useDispatch } from 'react-redux'
-import Image from 'next/image'
 import ImageMarca from '../components/Home/Image'
 import ButtonLink from '../components/Button'
 import { handleLogout } from '../utils/handleLogout'
-import { AccessTime } from '@material-ui/icons'
+import { AccessTime, CompareArrows } from '@material-ui/icons'
 
 const marcas=['Chevrolet', 'Mazda', 'Ford', 'Toyota', 'Renault', 'Nissan', 'Volkswagen','Kia']
 
@@ -42,19 +40,26 @@ export default function Home() {
         </section>
 
        
-        <section className={styles.card} style={{display:'flex', flexDirection:'column', margin:'10px',width:'fit-content',padding:'10px',height:'fit-content', alignItems:'center'}}>
-          <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginBottom:'20px'}}>
-          <AccessTime fontSize='large'/>
-         <div style={{display:'flex', marginLeft:'10px', flexDirection:'column', textAlign:'left' }}>
-         <h2 style={{margin:0, color:'#1b333d', fontWeight:'700'}}>Ahorra Tiempo</h2>
-          <h4 style={{margin:0, color:'#1b333d', fontWeight:'500'}}>Cotiza con distintos vendedores sin salir de casa</h4>
+        <section className={styles.sectionAtributos}>
+          <div className={styles.divAtributo}>
+          <CompareArrows fontSize='medium'/>
+         <div className={styles.divTexto}>
+         <h3 className={styles.texto}>Cotiza y Compara</h3>
+          <h4 className={styles.texto1}>Cotiza y compara tu repuesto con distintos vendedores </h4>
           </div>
          </div>
-         <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-         <AccessTime fontSize='large'/>
-         <div style={{display:'flex', marginLeft:'10px', flexDirection:'column', textAlign:'left' }}>
-         <h2 style={{margin:0, color:'#1b333d', fontWeight:'700'}}>Ahorra Tiempo</h2>
-          <h4 style={{margin:0, color:'#1b333d', fontWeight:'500'}}>Cotiza con distintos vendedores sin salir de casa</h4>
+         <div className={styles.divAtributo}>
+         <AccessTime fontSize='medium'/>
+         <div className={styles.divTexto}>
+         <h3 className={styles.texto}>Ahorra Tiempo</h3>
+          <h4 className={styles.texto1}>Cotiza con distintos vendedores sin salir de casa</h4>
+         </div>
+         </div>
+         <div className={styles.divAtributo}>
+         <AccessTime fontSize='medium'/>
+         <div className={styles.divTexto}>
+         <h3 className={styles.texto}>Ahorra Tiempo</h3>
+          <h4 className={styles.texto1}>Cotiza con distintos vendedores sin salir de casa</h4>
          </div>
          </div>
          

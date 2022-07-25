@@ -126,13 +126,14 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                     style={{
                       display: "flex",
                       flexDirection: "row",
+                      justifyContent:'center',
+                      alignItems:'center'
                     }}
                   >
-                    <Image
+                    <img
                       src={"/images/iconoPiston.png"}
                       alt={"/images/iconoPiston.png"}
-                      width={40}
-                      height={40}
+                      style={{height:'40px', width:'30px', marginLeft:'5px'}}
                     />
                     <section>
                     <Typography className={classes.title}>
@@ -177,15 +178,6 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
               </CardActions>
               {userId === PostCreator ? (
                 <>
-                  {/* <Button
-                    variant="contained"
-                    fullWidth
-                    className={classes.cotizar1}
-                    onClick={() => router.push(`/users/${Cotizacion.creator}`)}
-                    color="secondary"
-                  >
-                    Ver Pefil Vendedor
-                  </Button> */}
                   <Button
                     variant="contained"
                     fullWidth

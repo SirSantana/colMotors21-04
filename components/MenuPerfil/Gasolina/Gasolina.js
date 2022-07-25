@@ -16,7 +16,7 @@ export default function Gasolina({ gasolina}) {
   const router = useRouter()
   const idVehicule = router.query
 
-  
+  console.log(gasolina);
   return (
     <div className={classes.conta1}  >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
@@ -45,9 +45,9 @@ export default function Gasolina({ gasolina}) {
           <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Año</h4>
       </div>
       
-      {gasolina !== undefined 
+      {gasolina.length >=1
       ?
-       <EsteMes gasolina={gasolina}/>
+       <EsteMes gasolina={gasolina} setVisibleEdit={setVisibleEdit}/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >

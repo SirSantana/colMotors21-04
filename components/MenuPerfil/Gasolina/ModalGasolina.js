@@ -45,7 +45,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
-    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo},id, router, setVisibleModal ))
+    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo.id},id, router, setVisibleModal ))
 
   };
   const handleEntering = () => {

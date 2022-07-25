@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import useStyles from "../Perfil/stylesCliente";
 import { theme } from "../../../utils/theme";
 
-export default function EsteMes({ gasolina }) {
+export default function EsteMes({ gasolina, setVisibleEdit }) {
   const classes = useStyles();
 
   let galon = [];
@@ -63,7 +63,7 @@ export default function EsteMes({ gasolina }) {
                   className={classes.texto7}
                   style={{ fontWeight: "500", color: "black" }}
                 >
-                  $.{el.dineroGastado.toString().length <= 3
+                  $. {el.dineroGastado.toString().length <= 3
                     ? el.dineroGastado + ".000"
                     : el.dineroGastado}
                 </h4>
@@ -190,9 +190,9 @@ export default function EsteMes({ gasolina }) {
                   <>
                     <h4
                       className={classes.texto7}
-                      style={{ fontWeight: "500", color: "black" }}
+                      style={{ fontWeight: "500", color: "black", marginBottom:'10px' }}
                     >
-                      1Km/$.{el}
+                      1Km/$. {el}
                     </h4>
                   </>
                 );
@@ -204,7 +204,7 @@ export default function EsteMes({ gasolina }) {
                   <>
                     <h4
                       className={classes.texto7}
-                      style={{ fontWeight: "500", color: "black" }}
+                      style={{ fontWeight: "500", color: "black", marginBottom:'10px' }}
                     >
                       1gl/{el} Kms
                     </h4>
@@ -239,7 +239,6 @@ export default function EsteMes({ gasolina }) {
               flexDirection: "column",
               justifyContent: "space-between",
               marginLeft:'30px',
-              width:'50%'
             }}
           >
               <section style={{display:'flex', flexDirection:'row',justifyContent: "space-between",}}>

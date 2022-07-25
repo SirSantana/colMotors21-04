@@ -242,23 +242,23 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
             }}
           >
               <section style={{display:'flex', flexDirection:'row',justifyContent: "space-between",}}>
-            <h3 style={{ margin:0, fontWeight: "500" }}>Kilometros Recorridos</h3>
-            <h3 style={{ margin: 0, fontWeight: "400", marginBottom:'10px', color:'gray' }}>1000 Kms</h3>
+            <h4 style={{ margin:0, fontWeight: "400" }}>Kilometros Recorridos</h4>
+            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>1000 Kms</h4>
               </section>
 
               <section style={{display:'flex', flexDirection:'row', justifyContent: "space-between",}}>
-            <h3 style={{ margin:0, fontWeight: "500" }}>Dinero Gastado</h3>
-            <h3 style={{ margin: 0, fontWeight: "400", marginBottom:'10px', color:'gray' }}>$.340.000</h3>
+            <h4 style={{ margin:0, fontWeight: "500" }}>Dinero Gastado</h4>
+            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>$.340.000</h4>
               </section>
 
               <section style={{display:'flex', flexDirection:'row', justifyContent: "space-between",}}>
-            <h3 style={{ margin:0, fontWeight: "500" }}>Precio por Km</h3>
-            <h3 style={{ margin: 0, fontWeight: "400", marginBottom:'10px', color:'gray' }}>$.180</h3>
+            <h4 style={{ margin:0, fontWeight: "500" }}>Precio por Km</h4>
+            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>$.180</h4>
               </section>
 
               <section style={{display:'flex', flexDirection:'row', justifyContent: "space-between",}}>
-            <h3 style={{ margin:0, fontWeight: "500" }}>Kilometros por Galon</h3>
-            <h3 style={{ margin: 0, fontWeight: "400", marginBottom:'10px', color:'gray' }}>2.02 Kms</h3>
+            <h4 style={{ margin:0, fontWeight: "500" }}>Kilometros por Galon</h4>
+            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>2.02 Kms</h4>
               </section>
           </div>
         </div>

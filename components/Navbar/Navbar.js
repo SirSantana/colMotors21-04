@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { AppBar, Divider,Toolbar, Typography } from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
+import { AppBar, Divider,MenuItem,Toolbar, Typography, Menu } from "@material-ui/core";
+import { MenuOpen } from "@material-ui/icons";
 import Image from "next/image";
 import useStyles from "./styles";
 import { useRouter } from "next/router";
@@ -25,6 +25,15 @@ export default function Navbar() {
      width = window.innerWidth
     console.log(width);
   }
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     // const token = user?.token;
@@ -68,7 +77,20 @@ export default function Navbar() {
                 
               </div>:
               <div style={{color:'#1b333d',display:'flex', justifyContent:'center', alignItems:'center'}}>
-                <Menu  fontSize="large" />
+                <a onClick={handleClick}><MenuOpen  fontSize="large" /></a>
+                <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={()=> router.push("/auth")}>Iniciar Sesion</MenuItem>
+        <MenuItem onClick={()=> router.push("/auth")}>Registrarse</MenuItem>
+        <MenuItem onClick={handleClose}>¿Quieres ser vendedor?</MenuItem>
+        <MenuItem onClick={handleClose}>¿Quienes somos?</MenuItem>
+
+      </Menu>
                 </div> 
              
               

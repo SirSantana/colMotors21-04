@@ -3,14 +3,14 @@
 export const theme ={
     font:{
         title:{
-            fontSize:'18px',
+            fontSize:'20px',
             fontWeight:'500',
             color:'black',
             margin:0,
             lineHeigth:'16px',
         },
         subtitle:{
-            fontSize:'16px',
+            fontSize:'18px',
             fontWeight:'400',
             color:'gray',
             margin:0,

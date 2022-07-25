@@ -242,18 +242,18 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
             }}
           >
               <section style={{display:'flex', flexDirection:'row',justifyContent: "space-between",}}>
-            <h4 style={{ margin:0, fontWeight: "400" }}>Kilometros Recorridos</h4>
+            <h4 style={{ margin:0, fontWeight: "500" }}>Kilometros Recorridos</h4>
             <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>1000 Kms</h4>
               </section>
 
               <section style={{display:'flex', flexDirection:'row', justifyContent: "space-between",}}>
             <h4 style={{ margin:0, fontWeight: "500" }}>Dinero Gastado</h4>
-            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>$.340.000</h4>
+            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>$ 340.000</h4>
               </section>
 
               <section style={{display:'flex', flexDirection:'row', justifyContent: "space-between",}}>
             <h4 style={{ margin:0, fontWeight: "500" }}>Precio por Km</h4>
-            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>$.180</h4>
+            <h4 style={{ margin: 0, fontWeight: "500", marginBottom:'10px', color:'gray' }}>$ 180</h4>
               </section>
 
               <section style={{display:'flex', flexDirection:'row', justifyContent: "space-between",}}>

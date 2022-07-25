@@ -74,34 +74,6 @@ export default function Home() {
           {marcas.map(marca=> <ImageMarca marca={marca}/>)}
           </div>
         </div>
-
-        <section className={styles.card}>
-          {user ? (
-            <>
-              <div className={styles.containerButtons}>
-                
-                <ButtonLink text={'Ve a cotizar!'} to={'/home'} variant={'contained'} color='primary'/>
-                <Button onClick={()=>handleLogout(setUser, router, dispatch)} variant="outlined" color="secondary">
-                  Cerrar Sesion
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className={styles.containerButtons}>
-                
-                <ButtonLink text={'Iniciar Sesion'} to={user ? '/home':"/auth"} color={'primary'} variant='contained'/>
-                <ButtonLink text={'Registrarse'} to={"/auth"} color={'secondary'} variant='contained'/>
-               
-              </div>
-            </>
-          )}
-        </section>
-
-
-        
-      
-
         <a
           href="#"
           className={styles.card}

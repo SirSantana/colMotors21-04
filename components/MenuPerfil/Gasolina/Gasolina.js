@@ -6,6 +6,7 @@ import ModalGasolina from "./ModalGasolina";
 import { useDispatch } from "react-redux";
 import { getGasolina } from "../../../reducers/Actions/gasolinActions";
 import {useRouter} from 'next/router'
+import EsteMes from "./EsteMes";
 
 export default function Gasolina({ gasolina}) {
   const classes = useStyles();
@@ -14,13 +15,6 @@ export default function Gasolina({ gasolina}) {
   const dispatch = useDispatch()
   const router = useRouter()
   const idVehicule = router.query
-
-  if(gasolina !== undefined && gasolina.length >1){
-    let totalKm =gasolina[gasolina.length - 1].kilometraje - gasolina[0].kilometraje  
-    let kilometrosAndados = gasolina[1].kilometraje - gasolina[0].kilometraje
-  let precioKilometro = gasolina[0].dineroGastado / kilometrosAndados
-  console.log(totalKm);
-  }
 
   
   return (
@@ -47,42 +41,13 @@ export default function Gasolina({ gasolina}) {
          </div>
       </div>
       <div style={{display:'flex',alignItems:'center', flexDirection:'row',justifyContent:'center', width:'100%',height:'40px', backgroundColor:'lightGray', margin:'0 auto', borderRadius:'10px'}}>
-          <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Esta Semana</h4>
-          <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Mes</h4>
+          <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Mes</h4>
+          <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Año</h4>
       </div>
       
       {gasolina !== undefined 
       ?
-       <div style={{marginTop:'20px', display:'flex', flexDirection:'column', alignContent:'center'}}>
-         <div style={{display:'flex', flexDirection:'row', marginBottom:'10px'}}>
-         <AttachMoney fontSize='medium'/>
-        <h3 style={{margin:0, fontWeight:'500'}}>Total Gastado</h3>
-         </div>
-        {gasolina.map(el=>{
-        let myDate = new Date(el.fecha)
-        return(
-          <>
-          <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', marginLeft:'30px',justifyContent:'space-between',alignItems:'center'}}>
-            <h4 className={classes.texto7}>{myDate.toLocaleDateString()}</h4>
-            <h4 className={classes.texto7} style={{fontWeight:'500', color:'black'}}>{el.dineroGastado.toString().length <=3? el.dineroGastado + '.000': el.dineroGastado }</h4>
-            <h4 className={classes.texto7} style={{color:'#f50057',fontWeight:'600'}}>{el.tipoGasolina}</h4>
-            <Delete/>
-          </div>
-          </>
-        )
-})}
-        <div style={{display:'flex', flexDirection:'row', marginBottom:'10px'}}>
-        <img
-        style={{ width: "30px", height: "35px" }}
-        src={`/images/distance.png`}
-        alt={'distancia'}
-      />
-        <h3 style={{margin:0, fontWeight:'500'}}>Distancia Recorrida</h3>
-         </div>
-
-          <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Editar</Button>
-
-      </div> 
+       <EsteMes gasolina={gasolina}/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >

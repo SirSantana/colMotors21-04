@@ -20,7 +20,7 @@ export const theme ={
     },
     divs:{
         divBasic:{
-            display:'flex', flexDirection:'row', alignItems:'center',wordWrap:'break-word'
+            display:'flex', flexDirection:'row', alignItems:'center',wordWrap:'break-word',
         }
     }
     

@@ -210,6 +210,7 @@ export default function FormCotizacion({ OnePost, user }) {
             color="secondary"
             variant="contained"
             type="submit"
+            fullWidth
           >
             Envia tu Cotizacion
           </Button>

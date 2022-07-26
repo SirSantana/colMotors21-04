@@ -83,7 +83,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 </h4>
                 <h4
                   className={classes.texto7}
-                  style={{ fontWeight: "500", color: "black" }}
+                  style={{ fontWeight: "500", color: "#f50057" }}
                 >
                   ${" "}
                   {el.dineroGastado.toString().length <= 3
@@ -92,7 +92,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 </h4>
                 <h4
                   className={classes.texto7}
-                  style={{ color: "#f50057", fontWeight: "500" }}
+                  style={{ color: "black", fontWeight: "500" }}
                 >
                   {el.tipoGasolina}
                 </h4>
@@ -139,7 +139,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                       className={classes.texto7}
                       style={{
                         fontWeight: "500",
-                        color: "black",
+                        color: "#f50057",
                         marginBottom: "10px",
                       }}
                     >
@@ -192,7 +192,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                       className={classes.texto7}
                       style={{
                         fontWeight: "500",
-                        color: "black",
+                        color: "#f50057",
                         marginBottom: "10px",
                       }}
                     >
@@ -211,7 +211,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                       className={classes.texto7}
                       style={{
                         fontWeight: "500",
-                        color: "black",
+                        color: "#f50057",
                         marginBottom: "10px",
                       }}
                     >
@@ -253,7 +253,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 style={{
                   fontWeight: "500",
                   marginBottom: "10px",
-                  color: "black",
+                  color: "#f50057",
                 }}
               >
                 {totales.kilometrosRecorridos} Kms
@@ -275,7 +275,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 style={{
                   fontWeight: "500",
                   marginBottom: "10px",
-                  color: "black",
+                  color: "#f50057",
                 }}
               >
                 $ {totales.dineroGastado}
@@ -298,7 +298,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                   fontWeight: "500",
                   marginBottom: "10px",
 
-                  color: "black",
+                  color: "#f50057",
                 }}
               >
                 ${" "}
@@ -322,7 +322,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                   margin: 0,
                   fontWeight: "500",
                   marginBottom: "10px",
-                  color: "black",
+                  color: "#f50057",
                 }}
               >
                 {parseFloat(

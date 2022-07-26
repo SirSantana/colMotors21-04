@@ -60,7 +60,7 @@ export default makeStyles((theme) => ({
     backgroundColor:'white', color:'#f50057', padding:'10px 20px', borderRadius:'10px',
     [theme.breakpoints.down("sm")]: {
     fontSize:'14px',
-    padding:'5px 15px'
+    padding:'5px 12px'
     },
   }
 }));

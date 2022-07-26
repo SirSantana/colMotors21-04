@@ -75,7 +75,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'white'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px'}}>$ 90.000</h3>
-                <h6 className={classes.texto} style={{color:'#f1f1f1'}}>+ 23.000</h6>
+                <h6 className={classes.texto} style={{color:'#f1f1f1',fontSize:'18px'}}>+ 23.000</h6>
                 </div>
                 <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>

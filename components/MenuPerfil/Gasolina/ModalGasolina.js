@@ -88,7 +88,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
         <DialogContent style={{overflow:'hidden'}}>
           <DialogContentText id="alert-dialog-description" style={{lineHeight:'20px', }}>
             1.Coloca el dinero tanqueado.<br/> 2.Coloca el kilometraje de tu auto apenas tanquees.<br/>
-            3.Elige la fecha de la tanqueada en el calendario
+            3.Elige la fecha de la tanqueada en el calendario.<br/> 4.Elige el tipo de gasolina
           </DialogContentText>
 
           <form >
@@ -110,14 +110,13 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             variant="standard"
 
               />
-              <Input
+              <input
                 name="fecha"
                 label="Fecha"
                 handleChange={handleChange}
-                half="true"
                 type='date'
                 variant="standard"
-                
+                style={{width:'48%'}}
               />
                <FormControl
             className={classes.formControl}

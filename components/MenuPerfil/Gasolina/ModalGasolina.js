@@ -115,8 +115,8 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
                 label="Fecha"
                 handleChange={handleChange}
                 type='date'
-                variant="standard"
-                style={{width:'48%'}}
+                variant="outlined"
+                style={{width:'48%', color:'white'}}
               />
                <FormControl
             className={classes.formControl}

@@ -29,6 +29,9 @@ const initialForm = {
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
+  const initialText ={
+    description:'', error:false
+  }
 export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo }) {
   const classes = useStyles();
   const [form, setForm] = useState(initialForm);
@@ -36,6 +39,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
   const dispatch = useDispatch();
   const radioGroupRef = useRef(null);
   const [visibleModal, setVisibleModal] = useState(false)
+  const [message, setMessage] = useState(initialText)
 
   const {id} = router.query
   const handleChange = (e) => {
@@ -45,7 +49,8 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
-    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo.id},id, router, setVisibleModal ))
+    setMessage({description:'Agregando Tanqueada...'})
+    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo.id},id, router, setMessage ))
 
   };
   const handleEntering = () => {
@@ -62,7 +67,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
         TransitionProps={{ onEntering: handleEntering }}
         TransitionComponent={Transition}
       >
-         {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={'Guardando datos...'}/>}
+         {visibleModal && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={message.description} error={message.error}/>}
 
         <LocalGasStationOutlined
           fontSize="large"

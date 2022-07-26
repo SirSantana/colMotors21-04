@@ -6,9 +6,10 @@ import {
   DialogContentText,
   DialogTitle,
   TextField,
+  Slide
 } from "@material-ui/core";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect,useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { convertidor } from "../../../libs/convertidorFileBase64";
 import {  editVehiculo } from "../../../reducers/Actions/vehiculoActions";
@@ -29,6 +30,9 @@ const initialForm={
 const initialText ={
   description:'', error:false
 }
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner }) {
   const [marcaa, setMarca] = useState(null);
   const classes = useStyles()
@@ -37,6 +41,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
   const [texto, setTexto] = useState(initialText)
   const router = useRouter() 
   const dispatch = useDispatch()
+  const radioGroupRef = useRef(null);
 
 
   const handleChange=(e)=>{
@@ -51,15 +56,18 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
     dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, setTexto))
     
   }
-
+  const handleEntering = () => {
+    if (radioGroupRef.current != null) {
+      radioGroupRef.current.focus();
+    }
+  };
   return (
     <div>
       
       <Dialog
-        open={open || visibleEdit1}
-        onClose={()=> setVisibleEdit1(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        open={visibleEdit1}
+        TransitionProps={{ onEntering: handleEntering }}
+        TransitionComponent={Transition}
       >
          {visibleModal  && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={texto.description} error={texto.error !== false && texto.error}/>}
 

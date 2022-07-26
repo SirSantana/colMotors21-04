@@ -21,7 +21,7 @@ export const postCotizacion = (cotizacion, router,setMessage) => async (dispatch
     // dispatch({ type: END_LOADING });
 
   } catch (error) {
-    setMessage({description:'Ha ocurrido un error', error:true})
+    setMessage({description:'Error, revise su conexion', error:true})
   }
 };
 export const getCotizacion = (id) => async (dispatch) => {

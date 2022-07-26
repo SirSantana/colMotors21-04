@@ -269,7 +269,7 @@ export default makeStyles((theme) => ({
     fontWeight:'400',
     margin:0,
     [theme.breakpoints.down("sm")]: {
-      fontSize: "14px",
+      fontSize: "16px",
 
     },
   },

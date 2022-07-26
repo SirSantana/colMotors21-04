@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { getGasolina } from "../../../reducers/Actions/gasolinActions";
 import {useRouter} from 'next/router'
 import EsteMes from "./EsteMes";
+import EsteAño from "./EsteAño";
 
 export default function Gasolina({ gasolina}) {
   const classes = useStyles();
@@ -46,8 +47,7 @@ export default function Gasolina({ gasolina}) {
       </div>
       
       {gasolina.length >=1
-      ?
-       <EsteMes gasolina={gasolina} setVisibleEdit={setVisibleEdit}/>
+      ? !toogle ? <EsteMes gasolina={gasolina} setVisibleEdit={setVisibleEdit}/>:<EsteAño/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >

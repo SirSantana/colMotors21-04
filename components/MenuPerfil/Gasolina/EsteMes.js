@@ -67,11 +67,11 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           alignContent: "center",
         }}
       >
-          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'250px',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
             <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
               <h3 className={classes.texto}>17 JULIO 2022</h3>
             </div>
-            <div style={{display:'flex', flexDirection:'row', marginTop:'20px'}}>
+            <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
                 <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'white'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px'}}>$ 90.000</h3>

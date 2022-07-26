@@ -67,12 +67,11 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           alignContent: "center",
         }}
       >
-          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'100%',height:'250px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center', margin:'20px', justifyContent:'space-between'}}>
+          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'250px',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
               <h3 className={classes.texto}>17 JULIO 2022</h3>
-              <h3 className={classes.texto1}>CORRIENTE</h3>
             </div>
-            <div style={{display:'flex', flexDirection:'row'}}>
+            <div style={{display:'flex', flexDirection:'row', marginTop:'20px'}}>
                 <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'white'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px'}}>$ 90.000</h3>
@@ -85,8 +84,8 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
 
 
           </div>
-          <div style={{backgroundColor:'#f50057', width:'100%',height:'250px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center', margin:'20px', justifyContent:'space-between'}}>
+          <div style={{backgroundColor:'#f50057', width:'90%',height:'250px', display:'flex',padding:'20px', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
               <h3 className={classes.texto}>17 JULIO 2022</h3>
               <h3 className={classes.texto1}>CORRIENTE</h3>
             </div>

@@ -45,7 +45,7 @@ export default makeStyles((theme) => ({
     alignContent:'center'
   },
   texto:{
-    fontWeight: 700,
+    fontWeight: 600,
     fontSize:'24px',
     margin:0, color:'white',
     [theme.breakpoints.down("sm")]: {
@@ -54,12 +54,12 @@ export default makeStyles((theme) => ({
     },
   },
   texto1:{
-    fontWeight: 700,
+    fontWeight: 600,
     fontSize:'20px',
     margin:0,
     backgroundColor:'white', color:'#f50057', padding:'10px 20px', borderRadius:'10px',
     [theme.breakpoints.down("sm")]: {
-    fontSize:'16px',
+    fontSize:'14px',
     padding:'5px 15px'
     },
   }

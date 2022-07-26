@@ -3,9 +3,8 @@ import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
 
-export default function EsteMes({ gasolina, setVisibleEdit }) {
+export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
   const classes = useStyles();
-
   let galon = [];
   let kmRecorridos = [];
   let kmPrecio = [];
@@ -18,18 +17,20 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
     precioKm: 0,
     kmGalones: 0,
   };
+  let fechaString = date.toLocaleString("en-US", { month: "short" })
+  let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
 
   if (gasolina !== undefined && gasolina.length > 1) {
     fechaPosts = gasolina.filter(
       (el) =>
         el.fecha.split(" ", 2)[1] ===
-        date.toLocaleString("en-US", { month: "short" })
+        fechaString
     );
 
     for (let i = 0; i < gasolina.length - 1; i++) {
       if (
         gasolina[i].fecha.split(" ", 2)[1] ===
-        date.toLocaleString("en-US", { month: "short" })
+        fechaString
       ) {
         gasolinaMes.push(gasolina[i]);
         let kilometrosRec =
@@ -50,11 +51,12 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
           gasolina[i].dineroGastado.replace(/\./g, "")
         );
         totales.precioKm += precioKm;
+        setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
         totales.kmGalones += parseFloat(galon);
       }
     }
   }
-
+  console.log(gasolina);
   return (
     <>
       <div
@@ -71,7 +73,7 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
           <AttachMoney fontSize="medium" />
           <h3 style={{ margin: 0, fontWeight: "700" }}>Total Gastado</h3>
         </div>
-        {gasolinaMes.map((el) => {
+        {gasolinaMensual.map((el) => {
           let myDate = new Date(el.fecha);
           return (
             <>

@@ -32,7 +32,7 @@ const Transition = forwardRef(function Transition(props, ref) {
   const initialText ={
     description:'', error:false
   }
-export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo }) {
+export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule }) {
   const classes = useStyles();
   const [form, setForm] = useState(initialForm);
   const router = useRouter();
@@ -40,6 +40,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
   const radioGroupRef = useRef(null);
   const [visibleModal, setVisibleModal] = useState(false)
   const [message, setMessage] = useState(initialText)
+
 
   const {id} = router.query
   const handleChange = (e) => {
@@ -50,7 +51,12 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, idVehiculo 
     e.preventDefault();
     setVisibleModal(true)
     setMessage({description:'Agregando Tanqueada...'})
-    dispatch(addGasolina({...form, owner:id, vehiculo:idVehiculo.id},id, router, setMessage ))
+    if(form.kilometraje > vehicule.kilometraje){
+      console.log(vehicule?.idVehiculo?.id);
+      dispatch(addGasolina({...form, owner:id, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
+    }else{
+    setMessage({description:`El kilometraje debe ser mayor a tu anterior tanqueada ${vehicule.kilometraje}`, error:true})
+    }
 
   };
   const handleEntering = () => {

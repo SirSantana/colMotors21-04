@@ -9,15 +9,21 @@ import {useRouter} from 'next/router'
 import EsteMes from "./EsteMes";
 import EsteAño from "./EsteAño";
 
-export default function Gasolina({ gasolina}) {
+export default function Gasolina({gasolina}) {
   const classes = useStyles();
-    const [toogle,setToogle] = useState(false)
+  const [toogle,setToogle] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
   const dispatch = useDispatch()
   const router = useRouter()
-  const idVehicule = router.query
+  const [promedio, setPromedio] = useState(null)
+
+  let length = gasolina.length
 
   console.log(gasolina);
+  let vehicule ={
+    idVehicule:router.query,
+    kilometraje: gasolina[length-1].kilometraje
+  }
   return (
     <div className={classes.conta1}  >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
@@ -36,7 +42,7 @@ export default function Gasolina({ gasolina}) {
       />
       <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
       <h2 style={{margin:0, fontSize:'20px', color:'black',marginLeft:'10px',fontWeight:'600'}}>Promedio</h2>
-      <h4 style={{margin:0, fontSize:'18px', color:'gray',marginLeft:'10px',fontWeight:'400'}}>1Km/$430</h4>
+      <h4 style={{margin:0, fontSize:'18px', color:'gray',marginLeft:'10px',fontWeight:'400'}}>1Km/{promedio}</h4>
       <h5 style={{margin:0, fontSize:'18px', color:'#f50057',marginLeft:'10px',fontWeight:'400'}}>+$38</h5>
       </div>
          </div>
@@ -47,7 +53,7 @@ export default function Gasolina({ gasolina}) {
       </div>
       
       {gasolina.length >=1
-      ? !toogle ? <EsteMes gasolina={gasolina} setVisibleEdit={setVisibleEdit}/>:<EsteAño/>
+      ? !toogle ? <EsteMes gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio}/> :<EsteAño/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >
@@ -55,7 +61,7 @@ export default function Gasolina({ gasolina}) {
           <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
       </div>
     </>}
-        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit} setVisibleEdit={setVisibleEdit} idVehiculo={idVehicule}/>}
+        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit}  setVisibleEdit={setVisibleEdit} vehicule={vehicule} />}
     </div>
   );
 }

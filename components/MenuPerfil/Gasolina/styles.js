@@ -43,5 +43,24 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     marginBottom: "10px",
     alignContent:'center'
+  },
+  texto:{
+    fontWeight: 700,
+    fontSize:'24px',
+    margin:0, color:'white',
+    [theme.breakpoints.down("sm")]: {
+    fontSize:'16px',
+
+    },
+  },
+  texto1:{
+    fontWeight: 700,
+    fontSize:'20px',
+    margin:0,
+    backgroundColor:'white', color:'#f50057', padding:'10px 20px', borderRadius:'10px',
+    [theme.breakpoints.down("sm")]: {
+    fontSize:'16px',
+    padding:'5px 15px'
+    },
   }
 }));

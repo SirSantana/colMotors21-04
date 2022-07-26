@@ -1,4 +1,4 @@
-import { AttachMoney, Delete } from "@material-ui/icons";
+import { AttachMoney, Delete, LocalGasStationOutlined } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
@@ -17,6 +17,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
     precioKm: 0,
     kmGalones: 0,
   };
+  console.log(date.toLocaleString("en-US", { month: "short" }));
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
 
@@ -56,7 +57,6 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
       }
     }
   }
-  console.log(gasolina);
   return (
     <>
       <div
@@ -67,7 +67,47 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           alignContent: "center",
         }}
       >
-        <div
+          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'100%',height:'250px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', margin:'20px', justifyContent:'space-between'}}>
+              <h3 className={classes.texto}>17 JULIO 2022</h3>
+              <h3 className={classes.texto1}>CORRIENTE</h3>
+            </div>
+            <div style={{display:'flex', flexDirection:'row'}}>
+                <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center'}}>
+                <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'white'}}/>
+                <h3 className={classes.texto} style={{fontSize:'24px'}}>$ 90.000</h3>
+                <h6 className={classes.texto} style={{color:'#f1f1f1'}}>+ 23.000</h6>
+                </div>
+                <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center', justifyContent:'center'}}>
+                    <h3 className={classes.texto1}>EN PROGRESO</h3>
+                </div>
+            </div>
+
+
+          </div>
+          <div style={{backgroundColor:'#f50057', width:'100%',height:'250px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', margin:'20px', justifyContent:'space-between'}}>
+              <h3 className={classes.texto}>17 JULIO 2022</h3>
+              <h3 className={classes.texto1}>CORRIENTE</h3>
+            </div>
+            <div style={{display:'flex', flexDirection:'row'}}>
+                <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center'}}>
+                <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'white'}}/>
+                <h3 className={classes.texto} style={{fontSize:'24px'}}>$ 90.000</h3>
+                <h6 className={classes.texto} style={{color:'#f1f1f1'}}>+ 23.000</h6>
+                </div>
+                <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center', justifyContent:'center'}}>
+                    <h3 className={classes.texto1}>EN PROGRESO</h3>
+                </div>
+            </div>
+
+
+          </div>
+
+
+
+
+        {/* <div
           className={classes.div1}
         >
           <AttachMoney fontSize="medium" />
@@ -341,7 +381,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           fullWidth
         >
           Editar
-        </Button>
+        </Button> */}
       </div>
     </>
   );

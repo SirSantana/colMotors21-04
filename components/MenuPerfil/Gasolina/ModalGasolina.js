@@ -41,7 +41,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
   const [visibleModal, setVisibleModal] = useState(false)
   const [message, setMessage] = useState(initialText)
 
-
+  console.log(vehicule);
   const {id} = router.query
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -51,7 +51,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
     e.preventDefault();
     setVisibleModal(true)
     setMessage({description:'Agregando Tanqueada...'})
-    if(form.kilometraje > vehicule.kilometraje){
+    if(Number(form.kilometraje) > vehicule.kilometraje){
       console.log(vehicule?.idVehiculo?.id);
       dispatch(addGasolina({...form, owner:id, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
     }else{
@@ -100,14 +100,17 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
                 handleChange={handleChange}
                 half="true"
             variant="standard"
+            type='number'
+
               />
               <Input
                 name="kilometraje"
                 label="Kilometraje Actual"
-                placeholder="13.870"
+                placeholder={vehicule.kilometraje}
                 handleChange={handleChange}
                 half="true"
             variant="standard"
+            type='number'
 
               />
               <Input

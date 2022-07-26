@@ -1,6 +1,6 @@
 import {AttachMoney,Delete,} from "@material-ui/icons";
 import { Button } from "@material-ui/core";
-import useStyles from "../Perfil/stylesCliente";
+import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
 
 export default function EsteMes({ gasolina, setVisibleEdit }) {
@@ -28,7 +28,6 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
 
       if(gasolina[i].fecha.split(" ", 2)[1] === date.toLocaleString("en-US", { month: "short" })){
         gasolinaMes.push(gasolina[i])
-        console.log(gasolina[i]);
         let kilometrosRec = gasolina[i + 1].kilometraje.replace(/\./g,'') - gasolina[i].kilometraje.replace(/\./g,'');
         kmRecorridos.push(kilometrosRec);
        
@@ -42,10 +41,7 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
         totales.dineroGastado +=  Number(gasolina[i].dineroGastado.replace(/\./g,''))
         totales.precioKm += precioKm
         totales.kmGalones += parseFloat(galon)
-
       }
-      console.log(totales);
-      
     }
   }
 
@@ -75,14 +71,7 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
             <>
               <div
               key={el._id}
-                style={{
-                  display: "flex",
-                  marginBottom: "10px",
-                  flexDirection: "row",
-                  marginLeft: "30px",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
+                className={classes.divs}
               >
                 <h4 className={classes.texto7}>
                   {myDate.toLocaleDateString()}
@@ -126,11 +115,7 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
           </div>
 
           <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginLeft: "30px",
-            }}
+            className={classes.divs}
           >
             <section style={{ width: "33%" }}>
               {gasolinaMes.map((el) => {
@@ -198,15 +183,7 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
                   <>
                     <div
               key={el._id}
-
-                      style={{
-                        display: "flex",
-                        marginBottom: "10px",
-                        flexDirection: "row",
-                        marginLeft: "30px",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
+className={classes.divs}
                     >
                       <h4 className={classes.texto7}>
                         {myDate.toLocaleDateString()}
@@ -270,12 +247,7 @@ export default function EsteMes({ gasolina, setVisibleEdit }) {
             <h3 style={{ margin: 0, fontWeight: "700", marginBottom:'10px' }}>Promedio Mensual</h3>
           </div>
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              marginLeft:'30px',
-            }}
+            className={classes.div2}
           >
               <section style={{display:'flex', flexDirection:'row',justifyContent: "space-between",}}>
             <h4 className={classes.texto7}style={{ margin:0, fontWeight: "500" }}>Kilometros Recorridos</h4>

@@ -31,8 +31,17 @@ export default makeStyles((theme) => ({
     marginLeft:'30px',
     [theme.breakpoints.down("sm")]: {
         marginLeft:'10px',
-
-  
       },
+  },
+  div1:{
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: "10px",
+  },
+  divColumn:{
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: "10px",
+    alignContent:'center'
   }
 }));

@@ -88,9 +88,13 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           
 
           <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+              <section style={{display:'flex', flexDirection:'row'}}>
               <CalendarToday style={{ marginRight:'10px'}}/>
               <h3 className={classes.texto} style={{color:'black', fontWeight:'700'}}>17 JULIO 2022</h3>
+              </section>
+              <h3 className={classes.texto1} style={{color:'white', fontWeight:'600', backgroundColor:'#f50057',borderRadius:'10px', padding:'5px 12px'}}>CORRIENTE</h3>
+              
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
                 <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'#f50057', width:'40%', alignItems:'center', padding:'10px 0'}}>

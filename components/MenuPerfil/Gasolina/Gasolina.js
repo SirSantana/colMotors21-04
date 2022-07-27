@@ -25,7 +25,7 @@ export default function Gasolina({gasolina}) {
     kilometraje: gasolina[length-1].kilometraje
   }
   return (
-    <div className={classes.conta1}  >
+    <div className={classes.conta2}   >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
       <LocalGasStationOutlined fontSize='large' style={{fontSize:'46px', color:'#f50057'}}/>
 

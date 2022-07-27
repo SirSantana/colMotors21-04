@@ -186,8 +186,22 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "80vw",
     padding:'0 20px 20px 20px',
-
-
+    },
+  },
+  conta2: {
+    backgroundColor: "white",
+    marginTop: "20px",
+    borderRadius: "10px",
+    width: "30%",
+    color: "#464646",
+    padding: "30px",
+    height: "fit-content",
+    paddingTop: "0px",
+    margin:'0 auto',
+    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+    [theme.breakpoints.down("sm")]: {
+      width: "90vw",
+    padding:'0 20px 20px 20px',
     },
   },
   icon: {

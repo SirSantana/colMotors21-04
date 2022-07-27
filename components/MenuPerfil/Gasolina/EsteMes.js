@@ -72,8 +72,8 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
               <h3 className={classes.texto}>17 JULIO 2022</h3>
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
-                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'48%', alignItems:'center', padding:'10px 0'}}>
-                <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'#f50057'}}/>
+                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
+                <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ 90.000</h3>
                 <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>+ 23.000</h6>
                 </div>

@@ -41,7 +41,6 @@ export default makeStyles((theme) => ({
   },
   paper2: {
     padding: theme.spacing(2),
-    background:"#f50057",
     color: 'white',
     fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
     justifyContent: 'center',

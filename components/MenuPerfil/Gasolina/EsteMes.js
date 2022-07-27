@@ -70,7 +70,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
             <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
             <CalendarToday style={{color:'white', marginRight:'10px'}}/>
-              <h3 className={classes.texto}>17 JULIO 2022</h3>
+              <h3 className={classes.texto} style={{fontSize:'16px'}}>17 JULIO 2022</h3>
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
                 <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
@@ -78,9 +78,24 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ 90.000</h3>
                 <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>+ 23.000</h6>
                 </div>
-                <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
+                {/* <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>
+                </div> */}
+            <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'normal', marginLeft:'20px'}}>
+                    <section style={{marginBottom:'10px'}}>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}> Distancia Recorrida</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}> 160 Kms</h3>
+                    </section>
+                    <section style={{ marginBottom:'10px'}}>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}> 1gl/20.08Kms</h3>
+                    </section>
+                    <section>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Tiempo</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>7 Dias</h3>
+                    </section>
                 </div>
+            
             </div>
 
 
@@ -124,7 +139,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
 
 
 
-        {/* <div
+        <div
           className={classes.div1}
         >
           <AttachMoney fontSize="medium" />
@@ -398,7 +413,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           fullWidth
         >
           Editar
-        </Button> */}
+        </Button>
       </div>
     </>
   );

@@ -74,7 +74,14 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           alignContent: "center",
         }}
       >
-         <h2></h2>
+        <Button
+          onClick={() => setVisibleEdit(true)}
+          variant="outlined"
+          color="secondary"
+          style={{marginBottom:'20px'}}
+        >
+          Añadir
+        </Button>
          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
             <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
             <CalendarToday style={{ color:'white', marginRight:'10px'}}/>
@@ -103,13 +110,13 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
             console.log('hola',el);
              let myDate = new Date(el.fecha);
            return(
-<div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+<div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
             <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
-            <CalendarToday style={{color:'white', marginRight:'10px'}}/>
-              <h3 className={classes.texto} style={{fontSize:'16px'}}>{myDate.toLocaleDateString()}</h3>
+            <CalendarToday style={{color:'white', marginRight:'10px',color:'black'}}/>
+              <h3 className={classes.texto} style={{fontSize:'16px',color:'black'}}>{myDate.toLocaleDateString()}</h3>
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
-                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
+                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',border:'1px solid #f50057',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>{el.gasolina}</h3>
                 <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>{totales.dineroGastado}</h6>
@@ -119,16 +126,16 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 </div> */}
             <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'normal', marginLeft:'20px'}}>
                     <section style={{marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}> Distancia Recorrida</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>{el.kilometrosRec} Kilometros</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600',color:'black'}}> Distancia Recorrida</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}>{el.kilometrosRec} Kilometros</h3>
                     </section>
                     <section style={{ marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>1gl/{parseFloat(el.galonDi.toFixed(2))} Kms</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600',color:'black'}}>Promedio Gasolina</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}>1gl/{parseFloat(el.galonDi.toFixed(2))} Kms</h3>
                     </section>
                     <section>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Tiempo</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>7 Dias</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600',color:'black'}}>Tiempo</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}>7 Dias</h3>
                     </section>
                 </div>
             

@@ -112,7 +112,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                       <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}> 1gl/20.08Kms</h3>
                     </section>
                     <section>
-                      <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}>Duracion Tanqueada</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}>Tiempo</h3>
                       <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}>7 Dias</h3>
                     </section>
                 </div>

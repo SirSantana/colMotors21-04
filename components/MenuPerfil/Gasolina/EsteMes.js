@@ -71,8 +71,8 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           alignContent: "center",
         }}
       >
-     {parciales.length >1 && parciales.map(el=>{
-            console.log(el);
+     {parciales.length >0 && parciales.map(el=>{
+            console.log('hola',el);
              let myDate = new Date(el.fecha);
            return(
 <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
@@ -113,7 +113,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           })}
     
          
-          {parciales.length>0 && parciales.map(el=>{
+          {/* {parciales.length>0 && parciales.map(el=>{
              let myDate = new Date(el.fecha);
 
             return(
@@ -151,7 +151,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
 
           </div>
             )
-          })}
+          })} */}
 
           
 

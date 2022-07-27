@@ -20,10 +20,10 @@ export default function Gasolina({gasolina}) {
   let length = gasolina.length
 
   console.log(gasolina);
-  let vehicule ={
-    idVehicule:router.query,
-    kilometraje: gasolina[length-1].kilometraje
-  }
+    let vehicule ={
+      idVehicule:router.query,
+      kilometraje: gasolina.length > 0 ?  gasolina[length-1].kilometraje: null
+    }
   return (
     <div className={classes.conta2}   >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>

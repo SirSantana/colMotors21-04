@@ -67,15 +67,15 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           alignContent: "center",
         }}
       >
-          <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
             <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
               <h3 className={classes.texto}>17 JULIO 2022</h3>
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
-                <div style={{borderRadius:'10px',display:'flex',backgroundColor:'#f50057', flexDirection:'column', width:'48%', alignItems:'center', padding:'10px 0'}}>
-                <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'white'}}/>
-                <h3 className={classes.texto} style={{fontSize:'24px'}}>$ 90.000</h3>
-                <h6 className={classes.texto} style={{color:'#f1f1f1',fontSize:'18px'}}>+ 23.000</h6>
+                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'48%', alignItems:'center', padding:'10px 0'}}>
+                <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'#f50057'}}/>
+                <h3 className={classes.texto} style={{fontSize:'24px', color:'#f50057'}}>$ 90.000</h3>
+                <h6 className={classes.texto} style={{color:'#f50057',fontSize:'18px'}}>+ 23.000</h6>
                 </div>
                 <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>

@@ -55,9 +55,9 @@ export default makeStyles((theme) => ({
   },
   texto1:{
     fontWeight: 600,
-    fontSize:'20px',
+    fontSize:'16px',
     margin:0,
-    backgroundColor:'white', color:'#f50057', padding:'10px 20px', borderRadius:'10px',
+    backgroundColor:'white', color:'#f50057', padding:'8px 16px', borderRadius:'10px',
     [theme.breakpoints.down("sm")]: {
     fontSize:'14px',
     padding:'5px 12px'

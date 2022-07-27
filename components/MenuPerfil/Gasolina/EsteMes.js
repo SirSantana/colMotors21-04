@@ -1,4 +1,4 @@
-import { AttachMoney, CalendarToday, Delete, LocalGasStationOutlined } from "@material-ui/icons";
+import { AttachMoney, Cached, CalendarToday, Delete, LocalGasStationOutlined } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
@@ -20,7 +20,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
   };
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
-
+  console.log(gasolinaMensual);
   if (gasolina !== undefined && gasolina.length > 1) {
     fechaPosts = gasolina.filter(
       (el) =>
@@ -38,7 +38,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           gasolina[i + 1].kilometraje.replace(/\./g, "") -
           gasolina[i].kilometraje.replace(/\./g, "");
         kmRecorridos.push(kilometrosRec);
-
+      
         let precioKm =
           gasolina[i].dineroGastado.replace(/\./g, "") / kilometrosRec;
         kmPrecio.push(parseFloat(precioKm.toFixed(2)));
@@ -57,10 +57,13 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
         parciales.push({kilometrosRec, precioKm, galonDi, gasolina:gasolina[i].dineroGastado, fecha:gasolina[i].fecha })
       }
     }
-
   }
-  console.log(gasolinaMes);
-  console.log(parciales);
+  console.log(gasolinaMensual);
+  let longitud = gasolinaMensual.length
+  console.log(gasolinaMensual[1]);
+  console.log(longitud);
+  let myDateee = new Date(gasolinaMensual[longitud - 1].fecha);
+
   return (
     <>
       <div
@@ -71,6 +74,31 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           alignContent: "center",
         }}
       >
+         <h2></h2>
+         <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+            <CalendarToday style={{ color:'white', marginRight:'10px'}}/>
+            <h3 className={classes.texto} style={{fontSize:'16px', color:'white'}}>{myDateee.toLocaleDateString()}</h3>
+            
+            </div>
+            <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
+                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
+                <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
+                <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {gasolinaMensual[longitud - 1].dineroGastado}</h3>
+                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}></h6>
+                </div>
+                {/* <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
+                    <h3 className={classes.texto1}>EN PROGRESO</h3>
+                </div> */}
+            <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'center',alignItems:'center', marginLeft:'20px'}}>
+                  <Cached style={{color:'white', fontSize:'32px'}}/>
+                    <h3 style={{marginTop:'5px',  borderRadius:'10px', width:'fit-content', padding:'4px 16px', backgroundColor:'white', textAlign:'center', color:'#f50057', fontSize:'18px'}}>EN PROGRESO</h3>
+                </div>
+            
+            </div>
+
+
+          </div>
      {parciales.length >0 && parciales.map(el=>{
             console.log('hola',el);
              let myDate = new Date(el.fecha);
@@ -84,7 +112,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>{el.gasolina}</h3>
-                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>+ 23.000</h6>
+                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>{totales.dineroGastado}</h6>
                 </div>
                 {/* <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>
@@ -96,7 +124,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                     </section>
                     <section style={{ marginBottom:'10px'}}>
                       <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>1gl/{el.galonDi} Kms</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>1gl/{parseFloat(el.galonDi.toFixed(2))} Kms</h3>
                     </section>
                     <section>
                       <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Tiempo</h3>
@@ -158,7 +186,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
 
 
 
-        <div
+        {/* <div
           className={classes.div1}
         >
           <AttachMoney fontSize="medium" />
@@ -432,7 +460,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           fullWidth
         >
           Editar
-        </Button>
+        </Button> */}
       </div>
     </>
   );

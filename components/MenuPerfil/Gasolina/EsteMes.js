@@ -92,7 +92,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
             <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'normal', marginLeft:'20px'}}>
                     <section style={{marginBottom:'10px'}}>
                       <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}> Distancia Recorrida</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>{el.kilometrosRec}</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>{el.kilometrosRec} Kilometros</h3>
                     </section>
                     <section style={{ marginBottom:'10px'}}>
                       <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
@@ -113,13 +113,15 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           })}
     
          
-          
-{/* 
-          <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+          {parciales.length>0 && parciales.map(el=>{
+             let myDate = new Date(el.fecha);
+
+            return(
+<div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
             <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
               <section style={{display:'flex', flexDirection:'row'}}>
               <CalendarToday style={{ marginRight:'10px'}}/>
-              <h3 className={classes.texto} style={{color:'black', fontWeight:'700'}}>17 JULIO 2022</h3>
+              <h3 className={classes.texto} style={{color:'black', fontWeight:'700'}}>{myDate.toLocaleDateString()}</h3>
               </section>
               <h3 className={classes.texto1} style={{color:'white', fontWeight:'600', backgroundColor:'#f50057',borderRadius:'10px', padding:'5px 12px'}}>CORRIENTE</h3>
               
@@ -133,11 +135,11 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'normal', marginLeft:'20px'}}>
                     <section style={{marginBottom:'10px'}}>
                       <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}> Distancia Recorrida</h3>
-                      <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}> 160 Kms</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}>{el.kilometrosRec} Kilometros</h3>
                     </section>
                     <section style={{ marginBottom:'10px'}}>
                       <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
-                      <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}> 1gl/20.08Kms</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}>1gl/{el.galonDi} Kms</h3>
                     </section>
                     <section>
                       <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}>Tiempo</h3>
@@ -147,7 +149,11 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
             </div>
 
 
-          </div> */}
+          </div>
+            )
+          })}
+
+          
 
 
 

@@ -1,4 +1,4 @@
-import { AttachMoney, Delete, LocalGasStationOutlined } from "@material-ui/icons";
+import { AttachMoney, CalendarToday, Delete, LocalGasStationOutlined } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
@@ -68,7 +68,8 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
         }}
       >
           <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+            <CalendarToday style={{color:'white', marginRight:'10px'}}/>
               <h3 className={classes.texto}>17 JULIO 2022</h3>
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
@@ -77,25 +78,27 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ 90.000</h3>
                 <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>+ 23.000</h6>
                 </div>
-                <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center', justifyContent:'center'}}>
+                <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>
                 </div>
             </div>
 
 
           </div>
-          <div style={{backgroundColor:'#f50057', width:'90%',height:'250px', display:'flex',padding:'20px', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-              <h3 className={classes.texto}>17 JULIO 2022</h3>
-              <h3 className={classes.texto1}>CORRIENTE</h3>
+          
+
+          <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+              <CalendarToday style={{color:'#f50057', marginRight:'10px'}}/>
+              <h3 className={classes.texto} style={{color:'#f50057'}}>17 JULIO 2022</h3>
             </div>
-            <div style={{display:'flex', flexDirection:'row'}}>
-                <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center'}}>
-                <LocalGasStationOutlined fontSize='large' style={{fontSize:'80px', color:'white'}}/>
+            <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
+                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'#f50057', width:'40%', alignItems:'center', padding:'10px 0'}}>
+                <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'white' }}/>
                 <h3 className={classes.texto} style={{fontSize:'24px'}}>$ 90.000</h3>
-                <h6 className={classes.texto} style={{color:'#f1f1f1'}}>+ 23.000</h6>
+                <h6 className={classes.texto} style={{fontSize:'18px'}}>+ 23.000</h6>
                 </div>
-                <div style={{display:'flex', flexDirection:'column', width:'48%', alignItems:'center', justifyContent:'center'}}>
+                <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>
                 </div>
             </div>

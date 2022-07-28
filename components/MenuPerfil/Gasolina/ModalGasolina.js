@@ -138,7 +138,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             variant="standard"
             type='number'
               />
-              <Box sx={{ width: 250 }}>
+              <Box sx={{ width: 260 }}>
                 <label>Selecciona el rango de tu tanque antes y despues</label>
             <Slider
         getAriaLabel={() => 'Temperature range'}

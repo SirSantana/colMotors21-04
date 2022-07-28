@@ -8,7 +8,9 @@ import {
   InputLabel,
   Select,
   MenuItem,Slide,
-  FormControl
+  FormControl,
+  Slider,
+  Box
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import {useRef, useState, forwardRef } from "react";
@@ -23,8 +25,8 @@ const initialForm = {
   tipoGasolina: "",
   dineroGastado: "",
   kilometraje: "",
-  // fecha: "",
-  owner:''
+  owner:'',
+  fuelFinal:[25,75]
 };
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -40,11 +42,35 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
   const radioGroupRef = useRef(null);
   const [visibleModal, setVisibleModal] = useState(false)
   const [message, setMessage] = useState(initialText)
+  const marks = [
+    {
+      value: 0,
+      label: '0%',
+    },
+    {
+      value: 25,
+      label: '25%',
+    },
+    {
+      value: 50,
+      label: '50%',
+    },
+    {
+      value: 75,
+      label: '75%',
+    },
+    {
+      value: 100,
+      label: '100%',
+    },
+  ];
+  
+  
 
-  console.log(vehicule);
   const {id} = router.query
-  const handleChange = (e) => {
+  const handleChange = (e, newValue) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({...form, fuelFinal: newValue})
     console.log(form);
   };
   const handleSubmit = (e) => {
@@ -111,8 +137,19 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
                 half="true"
             variant="standard"
             type='number'
-
               />
+              <Box sx={{ width: 250 }}>
+                <label>Selecciona el rango de tu tanque antes y despues</label>
+            <Slider
+        getAriaLabel={() => 'Temperature range'}
+        value={form.fuelFinal}
+        marks={marks}
+        step={5}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+      />
+    </Box>
+      
               {/* <Input
                 name="fecha"
                 label="Fecha Tanqueada"

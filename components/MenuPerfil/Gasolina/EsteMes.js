@@ -18,8 +18,6 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
     precioKm: 0,
     kmGalones: 0,
   };
-
-  console.log(parciales);
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
 

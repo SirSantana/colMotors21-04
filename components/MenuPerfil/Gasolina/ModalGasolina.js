@@ -138,6 +138,18 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             variant="standard"
             type='number'
               />
+              <Box sx={{ width: 260 }}>
+                <label>Selecciona el rango de tu tanque antes y despues</label>
+            <Slider
+        getAriaLabel={() => 'Temperature range'}
+        value={form.fuelFinal}
+        marks={marks}
+        step={5}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+      />
+    </Box>
+      
               {/* <Input
                 name="fecha"
                 label="Fecha Tanqueada"

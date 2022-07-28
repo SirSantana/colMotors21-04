@@ -6,7 +6,7 @@ const gasolinaSchema = new mongoose.Schema({
     promedio:{type:String},
     kilometraje:{type:String},
     dineroGastado:{type:String},
-    fecha:{type:Date},
+    fecha:{type:Date, default:Date.now},
     owner:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     vehiculo:[{type: mongoose.Schema.Types.ObjectId, ref: 'Vehiculo'}]
 

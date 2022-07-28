@@ -20,14 +20,13 @@ export async function getServerSideProps({params}){
         await DBConnect()
         const resGasolina = await gasolinaModel.find({vehiculo:params.id})
           const Gasolinaa = resGasolina.map((el)=>{
-
+            
             const gasolina = el.toObject()
-
+            console.log('hol',gasolina);
             gasolina._id = gasolina._id.toString()
             gasolina.owner = gasolina.owner.toString()
             gasolina.vehiculo = gasolina.vehiculo.toString()
             gasolina.fecha = gasolina.fecha.toString()
-
             return gasolina
           })
           return {

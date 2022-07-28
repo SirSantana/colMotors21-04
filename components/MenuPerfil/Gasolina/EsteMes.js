@@ -18,16 +18,17 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
     precioKm: 0,
     kmGalones: 0,
   };
+
+  console.log(parciales);
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
-  console.log(gasolinaMensual);
+
   if (gasolina !== undefined && gasolina.length > 1) {
     fechaPosts = gasolina.filter(
       (el) =>
         el.fecha.split(" ", 2)[1] ===
         fechaString
     );
-
     for (let i = 0; i < gasolina.length - 1; i++) {
       if (
         gasolina[i].fecha.split(" ", 2)[1] ===
@@ -38,9 +39,9 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           gasolina[i + 1].kilometraje.replace(/\./g, "") -
           gasolina[i].kilometraje.replace(/\./g, "");
         kmRecorridos.push(kilometrosRec);
-      
+        // let difDias = gasolinaMensual[i+1].fecha.split(" ", 3)[2] - gasolinaMensual[i].fecha.split(" ", 3)[2]
         let precioKm =
-          gasolina[i].dineroGastado.replace(/\./g, "") / kilometrosRec;
+          gasolinaMensual[i].dineroGastado.replace(/\./g, "") / kilometrosRec;
         kmPrecio.push(parseFloat(precioKm.toFixed(2)));
 
         let galonKm = gasolina[i].dineroGastado.replace(/\./g, "") / 9000;
@@ -58,12 +59,10 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
       }
     }
   }
-  console.log(gasolinaMensual);
   let longitud = gasolinaMensual.length
-  console.log(gasolinaMensual[1]);
-  console.log(longitud);
-  let myDateee = new Date(gasolinaMensual[longitud - 1].fecha);
-
+  console.log(gasolina);
+  let myDateee = new Date(gasolina[longitud-1].fecha);
+  console.log(myDateee);
   return (
     <>
       <div
@@ -118,8 +117,8 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
                 <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',border:'1px solid #f50057',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
-                <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>{el.gasolina}</h3>
-                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>{totales.dineroGastado}</h6>
+                <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {el.gasolina}</h3>
+                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>$ {totales.dineroGastado}</h6>
                 </div>
                 {/* <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>
@@ -135,7 +134,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                     </section>
                     <section>
                       <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600',color:'black'}}>Tiempo</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}>7 Dias</h3>
+                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}> Dia/s</h3>
                     </section>
                 </div>
             
@@ -193,7 +192,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
 
 
 
-        {/* <div
+        <div
           className={classes.div1}
         >
           <AttachMoney fontSize="medium" />
@@ -467,7 +466,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           fullWidth
         >
           Editar
-        </Button> */}
+        </Button>
       </div>
     </>
   );

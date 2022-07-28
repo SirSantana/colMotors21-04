@@ -23,7 +23,7 @@ const initialForm = {
   tipoGasolina: "",
   dineroGastado: "",
   kilometraje: "",
-  fecha: "",
+  // fecha: "",
   owner:''
 };
 const Transition = forwardRef(function Transition(props, ref) {
@@ -113,13 +113,13 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             type='number'
 
               />
-              <Input
+              {/* <Input
                 name="fecha"
                 label="Fecha Tanqueada"
                 handleChange={handleChange}
                 type='date'
                 half="true"
-              />
+              /> */}
                <FormControl
             className={classes.formControl}
             variant="standard"
@@ -155,7 +155,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             autoFocus
             color="secondary"
             fullWidth
-            disabled={form.dineroGastado !== '' && form.kilometraje!== '' && form.fecha!== '' && form.tipoGasolina!== '' ? false: true}
+            disabled={form.dineroGastado !== '' && form.kilometraje!== '' && form.tipoGasolina!== '' ? false: true}
           >
             Confirmar Cambioss
           </Button>

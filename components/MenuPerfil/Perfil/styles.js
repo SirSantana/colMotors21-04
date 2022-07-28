@@ -61,13 +61,7 @@ export default makeStyles((theme) => ({
   iconStar: {
     color: "#EABE3F",
   },
-  formControl: {
-    width: "48%",
-    backgroundColor: "white",
-    marginLeft: "6px",
-    marginTop: "6px",
-    
-  },
+ 
   
   header: {
     color: "#f1f1f1",

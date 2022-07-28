@@ -15,7 +15,7 @@ import {
 import { useRouter } from "next/router";
 import {useRef, useState, forwardRef } from "react";
 import { useDispatch } from "react-redux";
-import useStyles from "../Perfil/styles";
+import useStyles from "./styles";
 import { LocalGasStationOutlined } from "@material-ui/icons";
 import Input from "../../Auth/Input";
 import ModalCargando from "../../../utils/modalCargando";
@@ -26,7 +26,8 @@ const initialForm = {
   dineroGastado: "",
   kilometraje: "",
   owner:'',
-  fuelFinal:[25,75]
+  fuelInitial:25,
+  precioGalon:''
 };
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -112,10 +113,10 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
         />
 
         <DialogContent style={{overflow:'hidden'}}>
-          <DialogContentText id="alert-dialog-description" style={{lineHeight:'16px',fontSize:'14px' }}>
+          {/* <DialogContentText id="alert-dialog-description" style={{lineHeight:'16px',fontSize:'14px' }}>
             1.Coloca el dinero tanqueado.<br/> 2.Coloca el kilometraje de tu auto apenas tanquees.<br/>
             3.Elige la fecha de la tanqueada en el calendario.<br/> 4.Elige el tipo de gasolina
-          </DialogContentText>
+          </DialogContentText> */}
 
           <form >
             <Grid container spacing={1}>
@@ -138,25 +139,15 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             variant="standard"
             type='number'
               />
-              <Box sx={{ width: 260 }}>
-                <label>Selecciona el rango de tu tanque antes y despues</label>
-            <Slider
-        getAriaLabel={() => 'Temperature range'}
-        value={form.fuelFinal}
-        marks={marks}
-        step={5}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-      />
-    </Box>
-      
-              {/* <Input
-                name="fecha"
-                label="Fecha Tanqueada"
+              <Input
+                name='precioGalon'
+                label="Precio Galon"
+                placeholder={vehicule.precioGalon}
                 handleChange={handleChange}
-                type='date'
                 half="true"
-              /> */}
+            variant="standard"
+            type='number'
+              />
                <FormControl
             className={classes.formControl}
             variant="standard"
@@ -174,8 +165,24 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             >
               <MenuItem value={"Extra"}>Extra</MenuItem>
               <MenuItem value={"Corriente"}>Corriente</MenuItem>
+              <MenuItem value={"Diesel"}>Diesel</MenuItem>
             </Select>
           </FormControl>
+          
+          <Box sx={{ width: "80%", margin:'0 auto', marginTop:'20px' }}>
+          <InputLabel id="demo-simple-select-label">
+          Selecciona el rango de tu tanque antes y despues
+            </InputLabel>
+            <Slider
+        getAriaLabel={() => 'Temperature range'}
+        value={form.fuelFinal}
+        marks={marks}
+        step={5}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        defaultValue={25}
+      />
+    </Box>
             </Grid>
           </form>
         </DialogContent>

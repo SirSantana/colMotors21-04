@@ -14,6 +14,16 @@ export default makeStyles((theme) => ({
   
       },
   },
+  formControl: {
+    width: "48%",
+    backgroundColor: "white",
+    marginLeft: "6px",
+    marginTop: "6px",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+
+    },
+  },
   texto7: {
     color: "gray",
     fontSize: "20px",

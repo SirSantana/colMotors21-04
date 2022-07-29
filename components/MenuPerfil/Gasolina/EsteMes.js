@@ -3,11 +3,11 @@ import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
 
-export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
+export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque }) {
   const classes = useStyles();
-  let galon = [];
-  let kmRecorridos = [];
-  let kmPrecio = [];
+
+
+
   let date = new Date();
   let gasolinaMes = [];
   let fechaPosts;
@@ -28,9 +28,16 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
     for (let i = 0; i < gasolina.length - 1; i++) {
       if (gasolina[i].fecha.split(" ", 2)[1] ===fechaString) {
         gasolinaMes.push(gasolina[i]);
-        console.log(gasolina);
 
-        
+        let kilometrosRec = gasolina[i+1].kilometraje -gasolina[i].kilometraje 
+        let porcentaje1 = tanque/100
+        let precioKm=0;
+        let galones = parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / gasolina[i].precioGalon).toFixed(3))
+
+
+        // let fuelInicialLitros = parseFloat((porcentaje1 * gasolinaData[i].fuelInicio).toFixed(2))
+        // let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
+        console.log(kilometrosRec, porcentaje1, galones);
         // let kilometrosRec =
         //   gasolina[i + 1].kilometraje.replace(/\./g, "") -gasolina[i].kilometraje.replace(/\./g, "");
         //   kmRecorridos.push(kilometrosRec);

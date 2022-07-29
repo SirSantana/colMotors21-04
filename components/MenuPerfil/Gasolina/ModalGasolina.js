@@ -25,7 +25,7 @@ const initialForm = {
   dineroGastado: "",
   kilometraje: "",
   owner:'',
-  fuelInitial:'',
+  gasolinaInicial:'',
 };
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -70,7 +70,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
   const handleChange = (e, newValue) => {
 
     if(newValue){
-    setForm({ ...form, fuelInitial: newValue });
+    setForm({ ...form, gasolinaInicial: newValue });
     }else{
       setForm({ ...form, [e.target.name]: e.target.value});
     }
@@ -142,7 +142,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             type='number'
               />
           
-          <Box name='fuelInitial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>
+          <Box name='gasolinaInicial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>
           <InputLabel >
           Selecciona un aproximado de cuanto combustible tienes en el tanque. (antes de tanquear)
             </InputLabel>

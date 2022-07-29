@@ -17,7 +17,6 @@ export default function Gasolina({gasolina, tanque}) {
   const router = useRouter()
   const [promedio, setPromedio] = useState(null)
 
-  console.log(tanque);
   let length = gasolina.length
 
     let vehicule ={
@@ -54,7 +53,7 @@ export default function Gasolina({gasolina, tanque}) {
       </div>
       
       {gasolina.length >=1
-      ? !toogle ? <EsteMes gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio}/> :<EsteAño/>
+      ? !toogle ? <EsteMes gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >

@@ -3,12 +3,13 @@ import { Button, Menu, MenuItem } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import ModalDetalles from "./ModalDetalle";
 export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque }) {
   const classes = useStyles();
   const [visibleDetails, setVisibleDetails] =useState(false)
   const [anchorEl, setAnchorEl] = useState(null);
-
+  const router = useRouter()
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -16,6 +17,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
   const handleClose = () => {
     setAnchorEl(null);
   };
+  console.log(tanque);
 
   let date = new Date();
   let gasolinaMes = [];
@@ -29,7 +31,6 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
   };
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
-  console.log(gasolina);
 
   if (gasolina !== undefined && gasolina.length >= 1) {
     fechaPosts = gasolina.filter((el) =>el.fecha.split(" ", 2)[1] ===fechaString);
@@ -49,6 +50,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
         let precioGastado = parseFloat((fuelFinalPercentaje - gasolina[i+1].gasolinaInicial).toFixed(2))
         let precioPer =  gasolina[i].dineroGastado.replace(/\./g, "") / fuelComprado
         let dineroUsado = Math.trunc((fuelFinalPercentaje -gasolina[i +1].gasolinaInicial) * precioPer)
+        console.log(fuelFinalPercentaje -gasolina[i +1].gasolinaInicial);
         console.log(fuelComprado);
         console.log(precioGastado);
         console.log(precioPer);
@@ -79,12 +81,13 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
         parciales.push({
           kilometrosRec, precioKm, galonDi, 
           gasolina:gasolina[i].dineroGastado, fecha:gasolina[i].fecha, 
-          galones,fuelFinalPercentaje,fuelComprado,dineroUsado
-
+          galones,fuelFinalPercentaje,fuelComprado,dineroUsado,
+          fuelInicial:gasolina[i].gasolinaInicial
         })
       }
     }
   }
+  console.log(gasolina);
   let longitud = gasolinaMensual.length
   let myDateee = new Date(gasolina[longitud-1].fecha);
   return (
@@ -97,14 +100,15 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
           alignContent: "center",
         }}
       >
-        <Button
-          onClick={() => setVisibleEdit(true)}
-          variant="outlined"
-          color="secondary"
-          style={{marginBottom:'20px'}}
-        >
-          Añadir
-        </Button>
+       <Button
+      onClick={() => setVisibleEdit(true)}
+      variant="outlined"
+      color="secondary"
+      style={{marginBottom:'20px'}}
+    >
+      Añadir
+    </Button>
+        
          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
             <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
             <section style={{display:'flex', flexDirection:'row'}}>
@@ -144,7 +148,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
                 <CalendarToday style={{color:'white', marginRight:'10px',color:'black'}}/>
               <h3 className={classes.texto} style={{fontSize:'16px',color:'black'}}>{myDate.toLocaleDateString()}</h3>
                 </section>
-                <a onClick={handleClick}><MoreVert style={{color:'black',fontSize:'30px'}}/></a>
+                <a onClick={handleClick}><MoreVert style={{color:'black',cursor:'pointer',fontSize:'30px'}}/></a>
               <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
@@ -153,16 +157,16 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
                 onClose={handleClose}
               >
                 <MenuItem onClick={()=> setVisibleDetails(true)}>Detalle</MenuItem>
-                <MenuItem onClick={handleClose}>Editar</MenuItem>
-                <MenuItem onClick={handleClose}>Eliminar</MenuItem>
+                <MenuItem onClick={handleClose}>Editar Tanqueada</MenuItem>
+                <MenuItem onClick={handleClose}>Eliminar Tanqueada</MenuItem>
               </Menu>
-              {visibleDetails && <ModalDetalles setVisibleDetails={setVisibleDetails} visibleDetails={visibleDetails}/>}
+              {visibleDetails && <ModalDetalles setVisibleDetails={setVisibleDetails} visibleDetails={visibleDetails} parciales={parciales}/>}
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
                 <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',border:'1px solid #f50057',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {el.gasolina}</h3>
-                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>$ {el.dineroUsado}</h6>
+                <h6 className={classes.texto} style={{color:'green',fontSize:'18px'}}>+${el.gasolina.replace(/\./g, "") - el.dineroUsado}</h6>
                 </div>
                 {/* <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>

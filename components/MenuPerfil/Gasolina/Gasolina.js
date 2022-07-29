@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 import EsteMes from "./EsteMes";
 import EsteAño from "./EsteAño";
 
-export default function Gasolina({gasolina, tanque}) {
+export default function Gasolina({gasolina, tanque, ownerVehicule}) {
   const classes = useStyles();
   const [toogle,setToogle] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
@@ -18,12 +18,11 @@ export default function Gasolina({gasolina, tanque}) {
   const [promedio, setPromedio] = useState(null)
 
   let length = gasolina.length
-
     let vehicule ={
       idVehicule:router.query,
-      kilometraje: gasolina.length > 0 ?  gasolina[length-1].kilometraje: null
+      kilometraje: gasolina.length > 0 ?  gasolina[length-1].kilometraje: null,
+      owner:ownerVehicule
     }
-    
   return (
     <div className={classes.conta2}   >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
@@ -58,10 +57,21 @@ export default function Gasolina({gasolina, tanque}) {
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >
           <h3 style={{margin:'10px',marginBottom:'10px', fontWeight:'400'}}>Aun no hay datos para mostrar, añade informacion para llevar la contabilidad del consumo de tu auto</h3>
-          <Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
+          
+          {tanque !== undefined 
+          ?<Button onClick={()=> setVisibleEdit(true)} variant="contained" color='secondary' fullWidth>Empieza aqui!</Button>
+        :
+          <Button variant="outlined"
+          color="secondary"
+          style={{marginBottom:'20px'}}
+          onClick={()=> router.push(`/users/${ownerVehicule}`)}
+          fullWidth
+          >Agrega el tamaño del tanque de tu auto 
+          </Button>
+          }
       </div>
     </>}
-        {visibleEdit &&<ModalGasolina visibleEdit={visibleEdit}  setVisibleEdit={setVisibleEdit} vehicule={vehicule} />}
+        {visibleEdit&&<ModalGasolina visibleEdit={visibleEdit}  setVisibleEdit={setVisibleEdit} vehicule={vehicule} />}
     </div>
   );
 }

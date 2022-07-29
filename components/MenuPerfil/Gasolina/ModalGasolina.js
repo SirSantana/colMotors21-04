@@ -82,7 +82,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
     setMessage({description:'Agregando Tanqueada...'})
 
     if(Number(form.kilometraje) > vehicule.kilometraje){
-      dispatch(addGasolina({...form, owner:id, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
+      dispatch(addGasolina({...form, owner:vehicule?.owner, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
     }else{
     setMessage({description:`El kilometraje debe ser mayor a tu anterior tanqueada ${vehicule.kilometraje}`, error:true})
     }

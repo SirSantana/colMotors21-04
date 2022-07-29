@@ -5,10 +5,11 @@ import DBConnect from "../../../libs/dbConnect";
 import gasolinaModel from "../../../models/gasolinaModel";
 import vehiculoModel from "../../../models/vehiculoModel";
 
-export default function GasolinaRoute({ Gasolinaa, tanqueGasolina }) {
+export default function GasolinaRoute({ Gasolinaa, tanqueGasolina, ownerVehicule }) {
+
   return (
     <Layout title={"Consumo | Quarks"}>
-      <Gasolina gasolina={Gasolinaa} tanque={tanqueGasolina} />
+      <Gasolina gasolina={Gasolinaa} tanque={tanqueGasolina} ownerVehicule={ownerVehicule}/>
     </Layout>
   );
 }
@@ -27,16 +28,17 @@ export async function getServerSideProps({ params }) {
 
       return gasolina;
     });
+    let ownerVehicule =vehicule.owner.toString()
 
     let tanqueGasolina;
     if (vehicule.tanqueGasolina !== undefined) {
       tanqueGasolina = vehicule.tanqueGasolina;
       return {
-        props: { Gasolinaa, tanqueGasolina },
+        props: { Gasolinaa, tanqueGasolina, ownerVehicule },
       };
     }
     return {
-      props: { Gasolinaa },
+      props: { Gasolinaa, ownerVehicule},
     };
   } catch (error) {
     console.log(error);

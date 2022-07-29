@@ -20,45 +20,40 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
   };
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
-
   if (gasolina !== undefined && gasolina.length > 1) {
-    fechaPosts = gasolina.filter(
-      (el) =>
-        el.fecha.split(" ", 2)[1] ===
-        fechaString
-    );
-    for (let i = 0; i < gasolina.length - 1; i++) {
-      if (
-        gasolina[i].fecha.split(" ", 2)[1] ===
-        fechaString
-      ) {
-        gasolinaMes.push(gasolina[i]);
-        let kilometrosRec =
-          gasolina[i + 1].kilometraje.replace(/\./g, "") -
-          gasolina[i].kilometraje.replace(/\./g, "");
-        kmRecorridos.push(kilometrosRec);
-        // let difDias = gasolinaMensual[i+1].fecha.split(" ", 3)[2] - gasolinaMensual[i].fecha.split(" ", 3)[2]
-        let precioKm =
-          gasolinaMensual[i].dineroGastado.replace(/\./g, "") / kilometrosRec;
-        kmPrecio.push(parseFloat(precioKm.toFixed(2)));
+    fechaPosts = gasolina.filter((el) =>el.fecha.split(" ", 2)[1] ===fechaString);
 
-        let galonKm = gasolina[i].dineroGastado.replace(/\./g, "") / 9000;
-        let galonDi = kilometrosRec / galonKm;
-        gasolina[i].dineroGastado.replace(/\./g, "");
-        galon.push(parseFloat(galonDi.toFixed(2)));
-        totales.kilometrosRecorridos += kilometrosRec;
-        totales.dineroGastado += Number(
-          gasolina[i].dineroGastado.replace(/\./g, "")
-        );
-        totales.precioKm += precioKm;
-        setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
-        totales.kmGalones += parseFloat(galon);
-        parciales.push({kilometrosRec, precioKm, galonDi, gasolina:gasolina[i].dineroGastado, fecha:gasolina[i].fecha })
+    for (let i = 0; i < gasolina.length - 1; i++) {
+      if (gasolina[i].fecha.split(" ", 2)[1] ===fechaString) {
+        gasolinaMes.push(gasolina[i]);
+
+        // let kilometrosRec =
+        //   gasolina[i + 1].kilometraje.replace(/\./g, "") -gasolina[i].kilometraje.replace(/\./g, "");
+        //   kmRecorridos.push(kilometrosRec);
+        // let difDias = gasolinaMensual[i+1].fecha.split(" ", 3)[2] - gasolinaMensual[i].fecha.split(" ", 3)[2]
+        
+        // let precioKm =
+        //   gasolinaMensual[i].dineroGastado.replace(/\./g, "") / kilometrosRec;
+        //   kmPrecio.push(parseFloat(precioKm.toFixed(2)));
+
+        // let galonKm = gasolina[i].dineroGastado.replace(/\./g, "") / 9000;
+
+        // let galonDi = kilometrosRec / galonKm;
+        
+        // gasolina[i].dineroGastado.replace(/\./g, "");
+        // galon.push(parseFloat(galonDi.toFixed(2)));
+        // totales.kilometrosRecorridos += kilometrosRec;
+        // totales.dineroGastado += Number(
+        //   gasolina[i].dineroGastado.replace(/\./g, "")
+        // );
+        // totales.precioKm += precioKm;
+        // setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
+        // totales.kmGalones += parseFloat(galon);
+        // parciales.push({kilometrosRec, precioKm, galonDi, gasolina:gasolina[i].dineroGastado, fecha:gasolina[i].fecha })
       }
     }
   }
   let longitud = gasolinaMensual.length
-  console.log(gasolina);
   let myDateee = new Date(gasolina[longitud-1].fecha);
   console.log(myDateee);
   return (
@@ -96,7 +91,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
                 </div> */}
             <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'center',alignItems:'center', marginLeft:'20px'}}>
                   <Cached style={{color:'white', fontSize:'32px'}}/>
-                    <h3 style={{marginTop:'5px',  borderRadius:'10px', width:'fit-content', padding:'4px 16px', backgroundColor:'white', textAlign:'center', color:'#f50057', fontSize:'18px'}}>EN PROGRESO</h3>
+                    <h3 style={{marginTop:'5px',  borderRadius:'10px', width:'fit-content', padding:'4px 16px', backgroundColor:'white', textAlign:'center', color:'#f50057', fontSize:'14px'}}>EN PROGRESO</h3>
                 </div>
             
             </div>

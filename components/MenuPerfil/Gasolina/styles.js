@@ -19,6 +19,7 @@ export default makeStyles((theme) => ({
     backgroundColor: "white",
     marginLeft: "6px",
     marginTop: "6px",
+    color:'red',
     [theme.breakpoints.down("sm")]: {
       width: "100%",
 

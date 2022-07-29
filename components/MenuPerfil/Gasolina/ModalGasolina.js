@@ -22,12 +22,10 @@ import ModalCargando from "../../../utils/modalCargando";
 import { addGasolina } from "../../../reducers/Actions/gasolinActions";
 
 const initialForm = {
-  tipoGasolina: "",
   dineroGastado: "",
   kilometraje: "",
   owner:'',
-  fuelInitial:25,
-  precioGalon:''
+  fuelInitial:'',
 };
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -70,16 +68,20 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
 
   const {id} = router.query
   const handleChange = (e, newValue) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setForm({...form, fuelFinal: newValue})
-    console.log(form);
+
+    if(newValue){
+    setForm({ ...form, fuelInitial: newValue });
+    }else{
+      setForm({ ...form, [e.target.name]: e.target.value});
+    }
+    console.log(newValue, form);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
     setMessage({description:'Agregando Tanqueada...'})
+
     if(Number(form.kilometraje) > vehicule.kilometraje){
-      console.log(vehicule?.idVehiculo?.id);
       dispatch(addGasolina({...form, owner:id, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
     }else{
     setMessage({description:`El kilometraje debe ser mayor a tu anterior tanqueada ${vehicule.kilometraje}`, error:true})
@@ -139,48 +141,18 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             variant="standard"
             type='number'
               />
-              <Input
-                name='precioGalon'
-                label="Precio Galon"
-                placeholder={vehicule.precioGalon}
-                handleChange={handleChange}
-                half="true"
-            variant="standard"
-            type='number'
-              />
-               <FormControl
-            className={classes.formControl}
-            variant="standard"
-          >
-            <InputLabel id="demo-simple-select-label">
-                Tipo
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={form.tipoGasolina}
-              label="Tipo"
-              onChange={handleChange}
-              name="tipoGasolina"
-            >
-              <MenuItem value={"Extra"}>Extra</MenuItem>
-              <MenuItem value={"Corriente"}>Corriente</MenuItem>
-              <MenuItem value={"Diesel"}>Diesel</MenuItem>
-            </Select>
-          </FormControl>
           
-          <Box sx={{ width: "80%", margin:'0 auto', marginTop:'20px' }}>
-          <InputLabel id="demo-simple-select-label">
-          Selecciona el rango de tu tanque antes y despues
+          <Box name='fuelInitial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>
+          <InputLabel >
+          Selecciona un aproximado de cuanto combustible tienes en el tanque. (antes de tanquear)
             </InputLabel>
             <Slider
-        getAriaLabel={() => 'Temperature range'}
-        value={form.fuelFinal}
         marks={marks}
         step={5}
         onChange={handleChange}
         valueLabelDisplay="auto"
         defaultValue={25}
+        
       />
     </Box>
             </Grid>
@@ -199,7 +171,7 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             autoFocus
             color="secondary"
             fullWidth
-            disabled={form.dineroGastado !== '' && form.kilometraje!== '' && form.tipoGasolina!== '' ? false: true}
+            disabled={form.dineroGastado !== '' && form.kilometraje!== '' && form.fuelInitial !== ''  ? false: true}
           >
             Confirmar Cambioss
           </Button>

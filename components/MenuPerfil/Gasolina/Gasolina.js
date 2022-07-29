@@ -19,7 +19,6 @@ export default function Gasolina({gasolina}) {
 
   let length = gasolina.length
 
-  console.log(gasolina);
     let vehicule ={
       idVehicule:router.query,
       kilometraje: gasolina.length > 0 ?  gasolina[length-1].kilometraje: null

@@ -1,12 +1,21 @@
 import { AttachMoney, Cached, CalendarToday, Delete, Edit, LocalGasStationOutlined, MoreVert } from "@material-ui/icons";
-import { Button } from "@material-ui/core";
+import { Button, Menu, MenuItem } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
-
+import { useState } from "react";
+import ModalDetalles from "./ModalDetalle";
 export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque }) {
   const classes = useStyles();
+  const [visibleDetails, setVisibleDetails] =useState(false)
+  const [anchorEl, setAnchorEl] = useState(null);
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   let date = new Date();
   let gasolinaMes = [];
@@ -20,47 +29,59 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
   };
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
-
+  console.log(gasolina);
 
   if (gasolina !== undefined && gasolina.length >= 1) {
     fechaPosts = gasolina.filter((el) =>el.fecha.split(" ", 2)[1] ===fechaString);
-    console.log(gasolina.length);
     for (let i = 0; i < gasolina.length - 1; i++) {
       if (gasolina[i].fecha.split(" ", 2)[1] ===fechaString) {
         gasolinaMes.push(gasolina[i]);
 
-        let kilometrosRec = gasolina[i+1].kilometraje -gasolina[i].kilometraje 
         let porcentaje1 = tanque/100
-        let precioKm=0;
-        let galones = parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / gasolina[i].precioGalon).toFixed(3))
+        let galones = parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
 
-
-        // let fuelInicialLitros = parseFloat((porcentaje1 * gasolinaData[i].fuelInicio).toFixed(2))
-        // let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
-        console.log(kilometrosRec, porcentaje1, galones);
-        // let kilometrosRec =
-        //   gasolina[i + 1].kilometraje.replace(/\./g, "") -gasolina[i].kilometraje.replace(/\./g, "");
-        //   kmRecorridos.push(kilometrosRec);
-        // let difDias = gasolinaMensual[i+1].fecha.split(" ", 3)[2] - gasolinaMensual[i].fecha.split(" ", 3)[2]
+        let fuelInicialLitros = parseFloat((porcentaje1 * gasolina[i].gasolinaInicial).toFixed(2))
+        let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
         
-        // let precioKm =
-        //   gasolinaMensual[i].dineroGastado.replace(/\./g, "") / kilometrosRec;
-        //   kmPrecio.push(parseFloat(precioKm.toFixed(2)));
+        let fuelFinalPercentaje = parseFloat((fuelFinalLitros / porcentaje1).toFixed(2))
 
-        // let galonKm = gasolina[i].dineroGastado.replace(/\./g, "") / 9000;
+        let fuelComprado = parseFloat((fuelFinalPercentaje - gasolina[i].gasolinaInicial).toFixed(2))
+        let precioGastado = parseFloat((fuelFinalPercentaje - gasolina[i+1].gasolinaInicial).toFixed(2))
+        let precioPer =  gasolina[i].dineroGastado.replace(/\./g, "") / fuelComprado
+        let dineroUsado = Math.trunc((fuelFinalPercentaje -gasolina[i +1].gasolinaInicial) * precioPer)
+        console.log(fuelComprado);
+        console.log(precioGastado);
+        console.log(precioPer);
+        console.log(dineroUsado);
 
-        // let galonDi = kilometrosRec / galonKm;
+
+        let kilometrosRec =
+          gasolina[i + 1].kilometraje.replace(/\./g, "") -gasolina[i].kilometraje.replace(/\./g, "");
+        let difDias = gasolinaMensual[i+1].fecha.split(" ", 3)[2] - gasolinaMensual[i].fecha.split(" ", 3)[2]
         
-        // gasolina[i].dineroGastado.replace(/\./g, "");
+        let precioKm =
+          dineroUsado / kilometrosRec;
+          // kmPrecio.push(parseFloat(precioKm.toFixed(2)));
+
+        let galonKm = dineroUsado /  gasolina[i].precioGalon.replace(/\./g, "") ;
+        let galonDi = kilometrosRec / galonKm;
+        
+        gasolina[i].dineroGastado.replace(/\./g, "");
         // galon.push(parseFloat(galonDi.toFixed(2)));
-        // totales.kilometrosRecorridos += kilometrosRec;
-        // totales.dineroGastado += Number(
-        //   gasolina[i].dineroGastado.replace(/\./g, "")
-        // );
-        // totales.precioKm += precioKm;
-        // setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
-        // totales.kmGalones += parseFloat(galon);
-        // parciales.push({kilometrosRec, precioKm, galonDi, gasolina:gasolina[i].dineroGastado, fecha:gasolina[i].fecha })
+        totales.kilometrosRecorridos += kilometrosRec;
+        totales.dineroGastado += Number(
+          gasolina[i].dineroGastado.replace(/\./g, "")
+        );
+        totales.precioKm += precioKm;
+        setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
+        totales.kmGalones += parseFloat(galonDi);
+
+        parciales.push({
+          kilometrosRec, precioKm, galonDi, 
+          gasolina:gasolina[i].dineroGastado, fecha:gasolina[i].fecha, 
+          galones,fuelFinalPercentaje,fuelComprado,dineroUsado
+
+        })
       }
     }
   }
@@ -92,7 +113,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
             </section>
             <section style={{display:'flex', flexDirection:'row'}}>
             <h5 className={classes.texto} style={{fontSize:'18px', color:'white'}}>{gasolinaMensual[longitud - 1].tipoGasolina}</h5>
-            <MoreVert style={{color:'white',fontSize:'30px'}}/>
+            <MoreVert  style={{color:'white',fontSize:'30px'}}/> 
             </section>
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
@@ -117,16 +138,31 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
             console.log('hola',el);
              let myDate = new Date(el.fecha);
            return(
-<div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
-            <CalendarToday style={{color:'white', marginRight:'10px',color:'black'}}/>
+          <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                <section style={{display:'flex', flexDirection:'row'}}>
+                <CalendarToday style={{color:'white', marginRight:'10px',color:'black'}}/>
               <h3 className={classes.texto} style={{fontSize:'16px',color:'black'}}>{myDate.toLocaleDateString()}</h3>
+                </section>
+                <a onClick={handleClick}><MoreVert style={{color:'black',fontSize:'30px'}}/></a>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={()=> setVisibleDetails(true)}>Detalle</MenuItem>
+                <MenuItem onClick={handleClose}>Editar</MenuItem>
+                <MenuItem onClick={handleClose}>Eliminar</MenuItem>
+              </Menu>
+              {visibleDetails && <ModalDetalles setVisibleDetails={setVisibleDetails} visibleDetails={visibleDetails}/>}
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
                 <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',border:'1px solid #f50057',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {el.gasolina}</h3>
-                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>$ {totales.dineroGastado}</h6>
+                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}>$ {el.dineroUsado}</h6>
                 </div>
                 {/* <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>

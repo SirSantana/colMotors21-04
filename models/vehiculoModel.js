@@ -12,7 +12,8 @@ const vehiculoSchema = new mongoose.Schema({
     gasolina:[{type: mongoose.Schema.Types.ObjectId, ref: 'Gasolina'}],
     imagen:{type:String},
     nameOwner:{type:String},
+    tanqueGasolina:{type:String}
 
-}, {versionKey:'false'})
+}, {versionKey:false})
 
 export default mongoose.models.Vehiculo || mongoose.model('Vehiculo', vehiculoSchema)

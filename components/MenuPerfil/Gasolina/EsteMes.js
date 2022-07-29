@@ -1,4 +1,4 @@
-import { AttachMoney, Cached, CalendarToday, Delete, LocalGasStationOutlined } from "@material-ui/icons";
+import { AttachMoney, Cached, CalendarToday, Delete, Edit, LocalGasStationOutlined, MoreVert } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { theme } from "../../../utils/theme";
@@ -20,13 +20,17 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
   };
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
-  if (gasolina !== undefined && gasolina.length > 1) {
-    fechaPosts = gasolina.filter((el) =>el.fecha.split(" ", 2)[1] ===fechaString);
 
+
+  if (gasolina !== undefined && gasolina.length >= 1) {
+    fechaPosts = gasolina.filter((el) =>el.fecha.split(" ", 2)[1] ===fechaString);
+    console.log(gasolina.length);
     for (let i = 0; i < gasolina.length - 1; i++) {
       if (gasolina[i].fecha.split(" ", 2)[1] ===fechaString) {
         gasolinaMes.push(gasolina[i]);
+        console.log(gasolina);
 
+        
         // let kilometrosRec =
         //   gasolina[i + 1].kilometraje.replace(/\./g, "") -gasolina[i].kilometraje.replace(/\./g, "");
         //   kmRecorridos.push(kilometrosRec);
@@ -55,7 +59,6 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
   }
   let longitud = gasolinaMensual.length
   let myDateee = new Date(gasolina[longitud-1].fecha);
-  console.log(myDateee);
   return (
     <>
       <div
@@ -75,16 +78,21 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           Añadir
         </Button>
          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+            <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+            <section style={{display:'flex', flexDirection:'row'}}>
             <CalendarToday style={{ color:'white', marginRight:'10px'}}/>
             <h3 className={classes.texto} style={{fontSize:'16px', color:'white'}}>{myDateee.toLocaleDateString()}</h3>
-            
+            </section>
+            <section style={{display:'flex', flexDirection:'row'}}>
+            <h5 className={classes.texto} style={{fontSize:'18px', color:'white'}}>{gasolinaMensual[longitud - 1].tipoGasolina}</h5>
+            <MoreVert style={{color:'white',fontSize:'30px'}}/>
+            </section>
             </div>
             <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
                 <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
                 <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
                 <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {gasolinaMensual[longitud - 1].dineroGastado}</h3>
-                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}></h6>
+                <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}> 1gl /$ {gasolinaMensual[longitud - 1].precioGalon}<Edit fontSize='small'/></h6>
                 </div>
                 {/* <div style={{display:'flex', flexDirection:'column', width:'60%', alignItems:'center', justifyContent:'center'}}>
                     <h3 className={classes.texto1}>EN PROGRESO</h3>
@@ -185,7 +193,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
 
 
 
-        <div
+        {/* <div
           className={classes.div1}
         >
           <AttachMoney fontSize="medium" />
@@ -459,7 +467,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio }) {
           fullWidth
         >
           Editar
-        </Button>
+        </Button> */}
       </div>
     </>
   );

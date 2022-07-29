@@ -6,7 +6,11 @@ import {
   DialogContentText,
   DialogTitle,
   TextField,
-  Slide
+  Slide,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { forwardRef, useEffect,useRef, useState } from "react";
@@ -25,7 +29,8 @@ const initialForm={
   modelo:'',
   cilindraje:'',
   marca:'',
-  imagen:''
+  imagen:'',
+  tanqueGasolina:''
 }
 const initialText ={
   description:'', error:false
@@ -34,6 +39,7 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner }) {
+  const [medidas, setMedidas] = useState(null)
   const [marcaa, setMarca] = useState(null);
   const classes = useStyles()
   const [form,setForm] = useState(initialForm) 
@@ -43,17 +49,23 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
   const dispatch = useDispatch()
   const radioGroupRef = useRef(null);
 
-
   const handleChange=(e)=>{
     setForm({...form, [e.target.name]: e.target.value})
 
   }
+  console.log(form, initialForm);
   const handleSubmit=(e)=>{
    
     setVisibleModal(true)
     e.preventDefault()
     setTexto({description:'Guardando...'})
-    dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, setTexto))
+    if(medidas === 'galones'){
+      let litros = parseFloat((form.tanqueGasolina * 3.7).toFixed(2))
+      dispatch(editVehiculo({...form, marca:marcaa, tanqueGasolina:litros}, idVehicule, router, setTexto))
+    }else{
+      dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, setTexto))
+
+    }
     
   }
   const handleEntering = () => {
@@ -75,17 +87,6 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
         <DialogContent>
           <form >
             <MenuLogos marca={marcaa} setMarca={setMarca} />
-            <section style={{
-              display: "flex",
-              margin: "0",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
-            <img
-              src={"/images/iconCAR.png"}
-              alt={"/images/iconCAR.png"}
-              style={{marginRight:'10px', width:'30px', height:'30px'}}
-            />
             <TextField
               name="referencia"
               label="Referencia (Aveo)"
@@ -97,18 +98,6 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               style={{ marginBottom: "10px" }}
             />
 
-            </section>
-            <section style={{
-              display: "flex",
-              margin: "0",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
-              <img
-              src={'/images/engine.png'}
-              alt='engine'
-              style={{width:'30px', height:'30px',marginRight:'13px'}}
-              />
             <TextField
               name="cilindraje"
               label="Cilindraje (1400)"
@@ -118,16 +107,9 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               onChange={handleChange}
               minRows={1}
               style={{ marginBottom: "10px" }}
+              type='number'
+
             />
-            </section>
-            
-            <section style={{
-              display: "flex",
-              margin: "0",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
-               <CalendarToday fontSize='large' style={{marginRight:'10px'}}/>
             <TextField
               name="modelo"
               label="Modelo (2008)"
@@ -137,9 +119,35 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               onChange={handleChange}
               minRows={1}
               style={{ marginBottom: "10px" }}
+              type="number"
             />
-            </section>
-            
+            <TextField
+              name="tanqueGasolina"
+              label="Capacidad Tanque Gasolina "
+              variant="outlined"
+              value={form.tanqueGasolina}
+              onChange={handleChange}
+              minRows={1}
+              style={{ marginBottom: "10px",width:'50%' }}
+              type='number'
+              
+            />
+            <FormControl className={classes.formControl}required={form.tanqueGasolina !== '' ? true: false} >
+            <InputLabel id="demo-simple-select-label">Medida</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Age"
+              value={medidas}
+              onChange={(e)=>setMedidas(e.target.value)}
+              variant="outlined"
+              required={form.tanqueGasolina !== '' ? true: false}
+            >
+              <MenuItem value={"galones"}>Galones</MenuItem>
+              <MenuItem value={"litros"}>Litros</MenuItem>
+            </Select>
+          </FormControl>
+            <br/>
 
             {/* <input
               type="file"
@@ -167,6 +175,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
             autoFocus
             color="secondary"
             fullWidth
+            disabled={form !== initialForm ? form.tanqueGasolina !== '' ? medidas !== null ? false:true:null :true }
           >
             Confirmar Cambios
           </Button>

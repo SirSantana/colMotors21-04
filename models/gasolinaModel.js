@@ -12,6 +12,6 @@ const gasolinaSchema = new mongoose.Schema({
     owner:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     vehiculo:[{type: mongoose.Schema.Types.ObjectId, ref: 'Vehiculo'}]
 
-}, {versionKey:'false'})
+}, {versionKey:false})
 
 export default mongoose.models.Gasolina || mongoose.model('Gasolina', gasolinaSchema)

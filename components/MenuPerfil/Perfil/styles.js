@@ -128,4 +128,11 @@ export default makeStyles((theme) => ({
       color: "#f1f1f1",
     },
   },
+  formControl:{
+    width:'40%', marginLeft:'10%',
+    [theme.breakpoints.down("sm")]: {
+      width: "45%",
+      marginLeft:'5%'
+    },
+  }
 }));

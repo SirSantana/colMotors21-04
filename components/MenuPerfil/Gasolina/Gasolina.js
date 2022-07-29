@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 import EsteMes from "./EsteMes";
 import EsteAño from "./EsteAño";
 
-export default function Gasolina({gasolina}) {
+export default function Gasolina({gasolina, tanque}) {
   const classes = useStyles();
   const [toogle,setToogle] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
@@ -17,12 +17,14 @@ export default function Gasolina({gasolina}) {
   const router = useRouter()
   const [promedio, setPromedio] = useState(null)
 
+  console.log(tanque);
   let length = gasolina.length
 
     let vehicule ={
       idVehicule:router.query,
       kilometraje: gasolina.length > 0 ?  gasolina[length-1].kilometraje: null
     }
+    
   return (
     <div className={classes.conta2}   >
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>

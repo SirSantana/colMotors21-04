@@ -5,9 +5,16 @@ import { forwardRef, useState } from "react";
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-export default function ModalDetalles({id, setVisibleDetails, visibleDetails, parciales}){
+export default function ModalDetalles({setEdit,setVisibleEdit,setIdPost, id, setVisibleDetails, visibleDetails, parciales}){
   const [litros, setLitros] = useState(false)
   const res = parciales.find(el=> el.id === id)
+  console.log(id);
+  const handleSend=()=>{
+    console.log(id);
+    setIdPost(id),
+     setVisibleEdit(true),
+      setEdit(true)
+  }
     return(
         <>
         {res!== undefined &&
@@ -92,6 +99,16 @@ export default function ModalDetalles({id, setVisibleDetails, visibleDetails, pa
           >
             Regresar
           </Button>
+          <Button
+            onClick={handleSend}
+            variant="outlined"
+            autoFocus
+            color="secondary"
+            fullWidth
+          >
+            Editar
+          </Button>
+          
           
         </DialogActions>
         </Dialog>}

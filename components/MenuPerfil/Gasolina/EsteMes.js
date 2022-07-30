@@ -5,25 +5,19 @@ import { theme } from "../../../utils/theme";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ModalDetalles from "./ModalDetalle";
-export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio, tanque }) {
+export default function EsteMes({setIdPost,setEdit, gasolina, setVisibleEdit, setPromedio, tanque }) {
   const classes = useStyles();
   const [visibleDetails, setVisibleDetails] =useState({bol:false, id:''})
   const [anchorEl, setAnchorEl] = useState(null);
   const router = useRouter()
-  console.log(visibleDetails);
   const handleClick = (event) => {
     event.stopPropagation()
     setAnchorEl(event.currentTarget);
   };
- 
-
   const handleClose = (event) => {
     setAnchorEl(null);
-    setVisibleEdit(true)
-    setEdit(true)
     event.stopPropagation()
   };
-  console.log(gasolina);
   let date = new Date();
   let gasolinaMes = [];
   let fechaPosts;
@@ -56,12 +50,7 @@ export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio,
         let dineroUsado = Math.trunc((fuelFinalPercentaje -gasolina[i +1].gasolinaInicial) * precioPer)
         let galonesUsados =  parseFloat((dineroUsado / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
         
-        console.log(fuelComprado);
-        console.log(precioGastado);
-        console.log(precioPer);
-        console.log(fuelPercentajeUsado);
-        console.log(galones);
-        console.log(galonesUsados);
+        
 
         let kilometrosRec =
           gasolina[i + 1].kilometraje.replace(/\./g, "") -gasolina[i].kilometraje.replace(/\./g, "");
@@ -83,7 +72,6 @@ export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio,
         totales.precioKm += precioKm;
         setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
         totales.kmGalones += parseFloat(galonDi);
-        console.log(galones);
         
         parciales.push({
           kilometrosRec, precioKm, galonDi, 
@@ -95,7 +83,6 @@ export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio,
       }
     }
   }
-  console.log(parciales);
   let longitud = gasolinaMensual.length
   let myDateee = new Date(gasolina[longitud-1].fecha);
   return (
@@ -149,7 +136,6 @@ export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio,
      {parciales.length >0 && parciales.map(el=>{
              let myDate = new Date(el.fecha);
             let restante =el.gasolina.replace(/\./g, "") - el.dineroUsado
-          console.log(restante);
            return(
             <a onClick={(e)=>setVisibleDetails({bol:true, id:el.id})}>
                <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
@@ -166,7 +152,7 @@ export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio,
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Editar Tanqueada</MenuItem>
+               <MenuItem onClick={handleClose}>Editar Tanqueada</MenuItem>
                 <MenuItem onClick={handleClose}>Eliminar Tanqueada</MenuItem>
               </Menu>
 
@@ -202,7 +188,7 @@ export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio,
            )
            
           })}
-            {visibleDetails.bol &&<ModalDetalles id={visibleDetails.id} setVisibleDetails={setVisibleDetails} visibleDetails={visibleDetails} parciales={parciales}/>}
+            {visibleDetails.bol &&<ModalDetalles setEdit={setEdit} setVisibleEdit={setVisibleEdit} setIdPost={setIdPost} id={visibleDetails.id} setVisibleDetails={setVisibleDetails} visibleDetails={visibleDetails} parciales={parciales}/>}
     
          
           {/* {parciales.length>0 && parciales.map(el=>{

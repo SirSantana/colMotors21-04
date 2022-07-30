@@ -17,6 +17,9 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
   const router = useRouter()
   const [promedio, setPromedio] = useState(null)
   const [edit, setEdit]=useState(false)
+  const [idPost, setIdPost]=useState('')
+  console.log(idPost);
+  
   let length = gasolina.length
     let vehicule ={
       idVehicule:router.query,
@@ -52,7 +55,7 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
       </div>
       
       {gasolina.length >=1
-      ? !toogle ? <EsteMes setEdit={setEdit}  gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
+      ? !toogle ? <EsteMes setIdPost={setIdPost} setEdit={setEdit}  gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >
@@ -71,7 +74,7 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
           }
       </div>
     </>}
-        {visibleEdit&&<ModalGasolina edit={edit} visibleEdit={visibleEdit}  setVisibleEdit={setVisibleEdit} vehicule={vehicule} />}
+        {visibleEdit&&<ModalGasolina idPost={idPost} edit={edit} setEdit={setEdit} visibleEdit={visibleEdit}  setVisibleEdit={setVisibleEdit} vehicule={vehicule} />}
     </div>
   );
 }

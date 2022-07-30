@@ -1,6 +1,6 @@
 import axios from 'axios'
 //OFRECER CONTRAENTREGA!!
-const API = axios.create({ baseURL: 
+const API = axios.create({ baseURL:
   'https://col-motors21-04.vercel.app/' ,headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'https://col-motors21-04.vercel.app'
@@ -36,4 +36,5 @@ export const getCotizacion=(id)=> API.get(`api/cotizaciones/${id}`)
 export const editVehiculo=(form, id)=> API.post(`api/vehiculo/${id}`, form)
 
 export const addGasolina=(form, id)=> API.post(`api/gasolina/${id}`, form)
+export const editGasolina=(form,id)=> API.patch(`api/gasolina/${id}`,form)
 export const getGasolina=(id)=> API.get('api/gasolina', id)

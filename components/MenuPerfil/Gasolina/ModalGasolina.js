@@ -19,7 +19,7 @@ import useStyles from "./styles";
 import { LocalGasStationOutlined } from "@material-ui/icons";
 import Input from "../../Auth/Input";
 import ModalCargando from "../../../utils/modalCargando";
-import { addGasolina } from "../../../reducers/Actions/gasolinActions";
+import { addGasolina, editGasolina } from "../../../reducers/Actions/gasolinActions";
 
 const initialForm = {
   dineroGastado: "",
@@ -33,9 +33,10 @@ const Transition = forwardRef(function Transition(props, ref) {
   const initialText ={
     description:'', error:false
   }
-export default function ModalGasolina({edit, setVisibleEdit, vehicule }) {
+export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, vehicule }) {
   const classes = useStyles();
   const [form, setForm] = useState(initialForm);
+  const [form2, setForm2]=useState({precioGalon:'',tipoGasolina:'', gasolinaInicial:''})
   const router = useRouter();
   const dispatch = useDispatch();
   const radioGroupRef = useRef(null);
@@ -63,22 +64,28 @@ export default function ModalGasolina({edit, setVisibleEdit, vehicule }) {
       label: '100%',
     },
   ];
-  console.log(edit);
+
+
   const {id} = router.query
   const handleChange = (e, newValue) => {
     if(newValue){
-    setForm({ ...form, gasolinaInicial: newValue });
+    setForm({ ...form, gasolinaInicial: newValue});
     }else{
       setForm({ ...form, [e.target.name]: e.target.value});
     }
-  };
+    if(edit){
+    setForm2({...form2, [e.target.name]: e.target.value})
+    }
+  }
+
+  console.log(form, form2);
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
     setMessage({description:'Agregando Tanqueada...'})
-    // if(edit){
-    //   dispatch()
-    // }
+    if(edit){
+      return dispatch(editGasolina({...form2, gasolinaInicial:form.gasolinaInicial},idPost, router, setMessage))
+    }
     if(Number(form.kilometraje) > vehicule.kilometraje){
       dispatch(addGasolina({...form, owner:vehicule?.owner, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
     }else{
@@ -130,7 +137,6 @@ export default function ModalGasolina({edit, setVisibleEdit, vehicule }) {
                 half="true"
             variant="standard"
             type='number'
-
               />
               <Input
                 name="kilometraje"
@@ -141,7 +147,38 @@ export default function ModalGasolina({edit, setVisibleEdit, vehicule }) {
             variant="standard"
             type='number'
               />
-          
+              {edit &&
+              <>
+              <Input
+                name="precioGalon"
+                label="Precio Galon"
+                placeholder={vehicule.precioGalon}
+                handleChange={handleChange}
+                half="true"
+            variant="standard"
+            type='number'
+              />
+               <FormControl
+            className={classes.formControl}
+            variant="standard"
+          >
+            <InputLabel id="demo-simple-select-label">
+                Tipo  Combustible
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={form2.tipoGasolina}
+              label="Tipo"
+              onChange={handleChange}
+              name="tipoGasolina"
+            >
+              <MenuItem value={"Extra"}>Extra</MenuItem>
+              <MenuItem value={"Corriente"}>Corriente</MenuItem>
+              <MenuItem value={"Diesel"}>Diesel</MenuItem>
+            </Select>
+          </FormControl>
+              </>}
           <Box name='gasolinaInicial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>
           <InputLabel >
           Selecciona un aproximado de cuanto combustible tienes en el tanque. (antes de tanquear)
@@ -171,7 +208,7 @@ export default function ModalGasolina({edit, setVisibleEdit, vehicule }) {
             autoFocus
             color="secondary"
             fullWidth
-            disabled={form.dineroGastado !== '' && form.kilometraje!== '' && form.fuelInitial !== ''  ? false: true}
+            disabled={edit ?false: form.dineroGastado !== '' && form.kilometraje!== '' && form.fuelInitial !== ''  ? false: true}
           >
             {edit ? 'Confirmar Cambios': 'Agregar Tanqueada'}
             
@@ -180,7 +217,7 @@ export default function ModalGasolina({edit, setVisibleEdit, vehicule }) {
           <Button
             style={{ margin: "10px 0 0 0 " }}
             fullWidth
-            onClick={() => setVisibleEdit(false)}
+    onClick={() => {setVisibleEdit(false);setEdit(false)}}
             variant="outlined"
             color="secondary"
           >

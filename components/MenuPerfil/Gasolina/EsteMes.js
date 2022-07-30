@@ -5,12 +5,11 @@ import { theme } from "../../../utils/theme";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ModalDetalles from "./ModalDetalle";
-export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque }) {
+export default function EsteMes({setEdit, gasolina, setVisibleEdit, setPromedio, tanque }) {
   const classes = useStyles();
   const [visibleDetails, setVisibleDetails] =useState({bol:false, id:''})
   const [anchorEl, setAnchorEl] = useState(null);
   const router = useRouter()
-  const [data, setData] = useState([])
   console.log(visibleDetails);
   const handleClick = (event) => {
     event.stopPropagation()
@@ -20,6 +19,8 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
 
   const handleClose = (event) => {
     setAnchorEl(null);
+    setVisibleEdit(true)
+    setEdit(true)
     event.stopPropagation()
   };
   console.log(gasolina);
@@ -44,22 +45,23 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
 
         let porcentaje1 = tanque/100
         let galones = parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
-
         let fuelInicialLitros = parseFloat((porcentaje1 * gasolina[i].gasolinaInicial).toFixed(2))
         let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
         
         let fuelFinalPercentaje = parseFloat((fuelFinalLitros / porcentaje1).toFixed(2))
-
+        let fuelPercentajeUsado = fuelFinalPercentaje - gasolina[i+1].gasolinaInicial
         let fuelComprado = parseFloat((fuelFinalPercentaje - gasolina[i].gasolinaInicial).toFixed(2))
         let precioGastado = parseFloat((fuelFinalPercentaje - gasolina[i+1].gasolinaInicial).toFixed(2))
         let precioPer =  gasolina[i].dineroGastado.replace(/\./g, "") / fuelComprado
         let dineroUsado = Math.trunc((fuelFinalPercentaje -gasolina[i +1].gasolinaInicial) * precioPer)
-        console.log(fuelFinalPercentaje -gasolina[i +1].gasolinaInicial);
+        let galonesUsados =  parseFloat((dineroUsado / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
+        
         console.log(fuelComprado);
         console.log(precioGastado);
         console.log(precioPer);
-        console.log(dineroUsado);
-
+        console.log(fuelPercentajeUsado);
+        console.log(galones);
+        console.log(galonesUsados);
 
         let kilometrosRec =
           gasolina[i + 1].kilometraje.replace(/\./g, "") -gasolina[i].kilometraje.replace(/\./g, "");
@@ -81,7 +83,6 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
         totales.precioKm += precioKm;
         setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
         totales.kmGalones += parseFloat(galonDi);
-        console.log(gasolina);
         console.log(galones);
         
         parciales.push({
@@ -89,7 +90,7 @@ export default function EsteMes({ gasolina, setVisibleEdit, setPromedio, tanque 
           gasolina:gasolina[i].dineroGastado, fecha:gasolina[i].fecha, 
           galones,fuelFinalPercentaje,fuelComprado,dineroUsado,
           fuelInicial:gasolina[i].gasolinaInicial, id:gasolina[i]._id,precioGalon:gasolina[i].precioGalon,
-          tipoCombustible:gasolina[i].tipoGasolina
+          tipoCombustible:gasolina[i].tipoGasolina, fuelPercentajeUsado, galonesUsados
         })
       }
     }

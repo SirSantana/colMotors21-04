@@ -33,7 +33,7 @@ const Transition = forwardRef(function Transition(props, ref) {
   const initialText ={
     description:'', error:false
   }
-export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule }) {
+export default function ModalGasolina({edit, setVisibleEdit, vehicule }) {
   const classes = useStyles();
   const [form, setForm] = useState(initialForm);
   const router = useRouter();
@@ -63,24 +63,22 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
       label: '100%',
     },
   ];
-  
-  
-
+  console.log(edit);
   const {id} = router.query
   const handleChange = (e, newValue) => {
-
     if(newValue){
     setForm({ ...form, gasolinaInicial: newValue });
     }else{
       setForm({ ...form, [e.target.name]: e.target.value});
     }
-    console.log(newValue, form);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
     setMessage({description:'Agregando Tanqueada...'})
-
+    // if(edit){
+    //   dispatch()
+    // }
     if(Number(form.kilometraje) > vehicule.kilometraje){
       dispatch(addGasolina({...form, owner:vehicule?.owner, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
     }else{
@@ -119,7 +117,9 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             1.Coloca el dinero tanqueado.<br/> 2.Coloca el kilometraje de tu auto apenas tanquees.<br/>
             3.Elige la fecha de la tanqueada en el calendario.<br/> 4.Elige el tipo de gasolina
           </DialogContentText> */}
-
+          <DialogContentText style={{margin:'0 auto'}}>
+            {edit&& 'Edita tu Tanqueada'}
+          </DialogContentText>
           <form >
             <Grid container spacing={1}>
               <Input
@@ -173,7 +173,8 @@ export default function ModalGasolina({ visibleEdit, setVisibleEdit, vehicule })
             fullWidth
             disabled={form.dineroGastado !== '' && form.kilometraje!== '' && form.fuelInitial !== ''  ? false: true}
           >
-            Confirmar Cambioss
+            {edit ? 'Confirmar Cambios': 'Agregar Tanqueada'}
+            
           </Button>
 
           <Button

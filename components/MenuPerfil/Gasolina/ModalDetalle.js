@@ -62,6 +62,14 @@ export default function ModalDetalles({id, setVisibleDetails, visibleDetails, pa
               <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Galones Tanqueados</h3>
               <h4 style={{margin:0, fontWeight:'600'}}>{res.galones}</h4>
               </div>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
+              <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Precio Galon</h3>
+              <h4 style={{margin:0, fontWeight:'600'}}>${res.precioGalon}</h4>
+              </div>
+              <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
+              <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Tipo Combustible</h3>
+              <h4 style={{margin:0, fontWeight:'600'}}>{res.tipoCombustible}</h4>
+              </div>
           
         </DialogContent>
         <DialogActions>

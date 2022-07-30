@@ -96,7 +96,6 @@ export default function Navbar() {
               
         }
         </div>
-        <Divider style={{width:'90%', marginLeft:'auto', marginRight:'auto', height:'2px', color:'#1b333d'}}/>
 
               {/* <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', marginLeft:'0px', marginRight:0}}>
               <Buscador/>

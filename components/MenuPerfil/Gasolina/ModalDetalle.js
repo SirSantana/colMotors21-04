@@ -29,7 +29,7 @@ export default function ModalDetalles({setEdit,setVisibleEdit,setIdPost, id, set
       >
         <DialogTitle style={{display:'flex', flexDirection:'column',alignItems:'center', justifyContent:'center', padding:10}} id="alert-dialog-title">
       <LocalGasStationOutlined fontSize="large" style={{color:'#f50057',margin:'0 auto'}}/>  
-        <h4 style={{margin:'0'}}>Detalle Consumo  </h4>   
+        <h4 style={{margin:'0'}}>Detalle Consumo </h4>   
         </DialogTitle>
         <DialogContent >
         <div style={{display:'flex',flexDirection:'row',borderRadius:'10px', alignItems:'center',margin:'0 10px 10px 0', justifyContent:'space-between'}}>
@@ -46,11 +46,11 @@ export default function ModalDetalles({setEdit,setVisibleEdit,setIdPost, id, set
               </div>
               <Divider style={{color:'black', height:'2px'}}/>
               <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
-              <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Precio Galon<Edit fontSize='small'/></h3>
+              <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Precio Galon <a onClick={handleSend}><Edit fontSize='small' style={{cursor:'pointer'}}/></a></h3>
               <h4 style={{margin:0, fontWeight:'600'}}>${res.precioGalon}</h4>
               </div>
               <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
-              <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Tipo Combustible<Edit fontSize='small'/></h3>
+              <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>Tipo Combustible <a onClick={handleSend}><Edit fontSize='small' style={{cursor:'pointer'}}/></a></h3>
               <h4 style={{margin:0, fontWeight:'600'}}>{res.tipoCombustible}</h4>
               </div>
               <Divider style={{color:'black', height:'2px'}}/>
@@ -61,15 +61,15 @@ export default function ModalDetalles({setEdit,setVisibleEdit,setIdPost, id, set
               </div>
         <div style={{display:'flex',flexDirection:'row',borderRadius:'10px', alignItems:'center',margin:'0 10px 10px 0', justifyContent:'space-between'}}>
               <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px'}}>Porcentaje Tanque Final</h3>
-              <h4 style={{margin:0, color:'#464646',fontWeight:'600',}}>{Math.trunc(res.fuelFinalPercentaje)}%</h4>
+              <h4 style={{margin:0,fontWeight:'600',}}>{Math.trunc(res.fuelFinalPercentaje)}%</h4>
               </div>
               <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
               <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px'}}>Porcentaje Comprado</h3>
-              <h4 style={{margin:0,fontSize:'18px', fontWeight:'600'}}>{Math.trunc(res.fuelComprado)}%</h4>
+              <h4 style={{margin:0, fontWeight:'600'}}>{Math.trunc(res.fuelComprado)}%</h4>
               </div>
               <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
               <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px'}}>Porcentaje Usado</h3>
-              <h4 style={{margin:0,fontSize:'18px', fontWeight:'600'}}>{Math.trunc(res.fuelPercentajeUsado)}%</h4>
+              <h4 style={{margin:0, fontWeight:'600'}}>{Math.trunc(res.fuelPercentajeUsado)}%</h4>
               </div>
               <Divider style={{color:'black', height:'2px'}}/>
               
@@ -80,11 +80,11 @@ export default function ModalDetalles({setEdit,setVisibleEdit,setIdPost, id, set
 
               <div onClick={()=> setLitros(litros ? false: true)} style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
               <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>{litros ?"Litros Tanqueados" :"Galones Tanqueados"}</h3>
-              <h4 style={{margin:0, fontWeight:'600'}}>{litros ? parseFloat((res.galones * 3.7).toFixed(2))+ " lt": res.galones + " gl"}</h4>
+              <h4 style={{margin:0, fontWeight:'600'}}>{litros ? parseFloat((res.galones * 3.7).toFixed(2))+ " lt": parseFloat((res.galones).toFixed(2)) + " gl"}</h4>
               </div>
               <div onClick={()=> setLitros(litros ? false: true)} style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>
               <h3 style={{margin:0, color:'gray',fontSize:'16px', fontWeight:'200',lineHeight:'18px',marginRight:'40px'}}>{litros ?"Litros Usados" :"Galones Usados"}</h3>
-              <h4 style={{margin:0, fontWeight:'600'}}>{litros ? parseFloat((res.galonesUsados * 3.7).toFixed(2))+ " lt": res.galonesUsados + " gl"}</h4>
+              <h4 style={{margin:0, fontWeight:'600'}}>{litros ? parseFloat((res.galonesUsados * 3.7).toFixed(2))+ " lt": parseFloat((res.galonesUsados).toFixed(2)) + " gl"}</h4>
               </div>
               
           

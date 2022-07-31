@@ -30,7 +30,7 @@ export default function EsteMes({setIdPost,setEdit, gasolina, setVisibleEdit, se
   };
   let fechaString = date.toLocaleString("en-US", { month: "short" })
   let gasolinaMensual = gasolina.filter(el=> el.fecha.split(" ", 2)[1] === fechaString)
-
+  console.log(totales);
   if (gasolina !== undefined && gasolina.length >= 1) {
     fechaPosts = gasolina.filter((el) =>el.fecha.split(" ", 2)[1] ===fechaString);
     for (let i = 0; i < gasolina.length - 1; i++) {

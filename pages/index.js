@@ -28,7 +28,8 @@ export default function Home() {
       
       <div className={styles.grid}>
         <section className={styles.card1}>
-          <div className={styles.containerText}>
+        <img src={'/images/Car accesories.gif'} style={{width:'300px', heigth:'200px'}}/> 
+          {/* <div className={styles.containerText}>
             <h3 className={styles.description2}>
               Cotiza los repuestos de tu auto en{" "}
             </h3>
@@ -36,7 +37,7 @@ export default function Home() {
             <Link href='/home'>
             <Button style={{width:'250px'}} variant='contained' color='secondary'>Cotiza Aquí</Button>
             </Link>
-          </div>
+          </div> */}
         </section>
 
        

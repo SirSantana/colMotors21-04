@@ -136,9 +136,9 @@
   justify-content: center;
   text-align: center;
   color: inherit;
-  background-color: #1b333d;
+  /* background-color: #1b333d; */
   text-decoration: none;
-  border: 2px solid #1b333d;
+  /* border: 2px solid #1b333d; */
   border-radius: 5px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 50%;

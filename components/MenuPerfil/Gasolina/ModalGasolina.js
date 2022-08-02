@@ -33,10 +33,13 @@ const Transition = forwardRef(function Transition(props, ref) {
   const initialText ={
     description:'', error:false
   }
+  const initialText2={
+    precioGalon:'',tipoGasolina:'', gasolinaInicial:''
+  }
 export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, vehicule }) {
   const classes = useStyles();
   const [form, setForm] = useState(initialForm);
-  const [form2, setForm2]=useState({precioGalon:'',tipoGasolina:'', gasolinaInicial:''})
+  const [form2, setForm2]=useState(initialText2)
   const router = useRouter();
   const dispatch = useDispatch();
   const radioGroupRef = useRef(null);
@@ -78,14 +81,21 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
     }
   }
 
-  console.log(form, form2);
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
     setMessage({description:'Agregando Tanqueada...'})
     if(edit){
-      return dispatch(editGasolina({...form2, gasolinaInicial:form.gasolinaInicial},idPost, router, setMessage))
-    }
+      if(form?.gasolinaInicial?.props?.value !== form2.tipoGasolina){
+        console.log('hol');
+        return dispatch(editGasolina({...form2, gasolinaInicial:form.gasolinaInicial},idPost, router, setMessage))
+      }else{
+        console.log('holaaaa');
+
+        return dispatch(editGasolina({...form2},idPost, router, setMessage))
+        
+      }
+        }
     if(Number(form.kilometraje) > vehicule.kilometraje){
       dispatch(addGasolina({...form, owner:vehicule?.owner, vehiculo:vehicule?.idVehicule?.id},id, router, setMessage ))
     }else{
@@ -163,7 +173,7 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
             variant="standard"
           >
             <InputLabel id="demo-simple-select-label">
-                Tipo  Combustible
+                Tipo
             </InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -173,7 +183,7 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
               onChange={handleChange}
               name="tipoGasolina"
             >
-              <MenuItem value={"Extra"}>Extra</MenuItem>
+              <MenuItem  value={"Extra"}>Extra</MenuItem>
               <MenuItem value={"Corriente"}>Corriente</MenuItem>
               <MenuItem value={"Diesel"}>Diesel</MenuItem>
             </Select>
@@ -189,7 +199,7 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
         onChange={handleChange}
         valueLabelDisplay="auto"
         defaultValue={25}
-        
+        name='gasolinaInicial'
       />
     </Box>
             </Grid>

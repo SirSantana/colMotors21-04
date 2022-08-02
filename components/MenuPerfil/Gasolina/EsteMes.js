@@ -5,19 +5,12 @@ import { theme } from "../../../utils/theme";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ModalDetalles from "./ModalDetalle";
+import CardGasolina from "./CardGasolina";
 export default function EsteMes({setIdPost,setEdit, gasolina, setVisibleEdit, setPromedio, tanque }) {
   const classes = useStyles();
   const [visibleDetails, setVisibleDetails] =useState({bol:false, id:''})
-  const [anchorEl, setAnchorEl] = useState(null);
   const router = useRouter()
-  const handleClick = (event) => {
-    event.stopPropagation()
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = (event) => {
-    setAnchorEl(null);
-    event.stopPropagation()
-  };
+  
   let date = new Date();
   let gasolinaMes = [];
   let fechaPosts;
@@ -47,6 +40,7 @@ export default function EsteMes({setIdPost,setEdit, gasolina, setVisibleEdit, se
       )
   })
   }
+  console.log(meses);
 
   let daysMeses = [31,28,31,30,31,30,31,31,30,31,30,31]
   let datosCompartidos =[[],[],[],[],[],[],[],[],[],[],[],[]]
@@ -142,6 +136,7 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
         let galonDi = kilometrosRec / galonKm;
         
         gasolina[i].dineroGastado.replace(/\./g, "");
+        console.log(kilometrosRec);
         // galon.push(parseFloat(galonDi.toFixed(2)));
         totales.kilometrosRecorridos += kilometrosRec;
         totales.dineroGastado += Number(
@@ -150,6 +145,7 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
         totales.precioKm += precioKm;
         setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
         totales.kmGalones += parseFloat(galonDi);
+        console.log(totales);
         
         parciales.push({
           kilometrosRec, precioKm, galonDi, 
@@ -234,128 +230,46 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
             let restante =el.gasolina.replace(/\./g, "") - el.dineroUsado
             
            return(
-            <a onClick={(e)=>setVisibleDetails({bol:true, id:el.id})}>
-               <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-                <section style={{display:'flex', flexDirection:'row'}}>
-                <CalendarToday style={{color:'white', marginRight:'10px',color:'black'}}/>
-              <h3 className={classes.texto} style={{fontSize:'16px',color:'black'}}>{myDate.toLocaleDateString()}</h3>
-                </section>
-                <a onClick={handleClick}><MoreVert style={{color:'black',cursor:'pointer',fontSize:'30px'}}/></a>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-               <MenuItem onClick={handleClose}>Editar Tanqueada</MenuItem>
-                <MenuItem onClick={handleClose}>Eliminar Tanqueada</MenuItem>
-              </Menu>
-
-            </div>
-           
-
-            <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
-                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',border:'1px solid #f50057',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
-                <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
-                <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {el.gasolina}</h3>
-                <h6 className={classes.texto} style={{color:restante >0 ? 'green':'red',fontSize:'18px'}}>{restante >0 ? `+${restante}`:`${restante}`}</h6>
-                </div>
-                
-            <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'normal', marginLeft:'20px'}}>
-                    <section style={{marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600',color:'black'}}> Distancia Recorrida</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}>{el.kilometrosRec} Kilometros</h3>
-                    </section>
-                    <section style={{ marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600',color:'black'}}>Promedio Gasolina</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}>1gl/{parseFloat(el.galonDi.toFixed(2))} Kms</h3>
-                    </section>
-                    <section>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600',color:'black'}}>Tiempo</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400',color:'black'}}> Dia/s</h3>
-                    </section>
-                </div>
-            
-            </div>
-
-          </div>
-            </a>
+            <CardGasolina el={el} myDate={myDate} restante={restante} setVisibleDetails={setVisibleDetails}/>
            )
            
           })}
           {datosCompartidos[month -1].dias !== undefined ?
           dateCompartida2 === fechaString ? 
-          <a onClick={(e)=>setVisibleDetails({bol:true, id:datosCompartidos[month -1].idDatoCompartido})}>
-            <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-        <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-        <section style={{display:'flex', flexDirection:'row'}}>
-        <CalendarToday style={{ color:'white', marginRight:'10px'}}/>
-        <h3 className={classes.texto} style={{fontSize:'16px', color:'white'}}>{datosCompartidos[month - 1].fecha.toLocaleDateString()}</h3>
-        </section>
-        <section style={{display:'flex', flexDirection:'row'}}>
-        <h5 className={classes.texto} style={{fontSize:'18px', color:'white'}}>Tanqueada Compartida</h5>
-        <MoreVert  style={{color:'white',fontSize:'30px'}}/> 
-        </section>
-        </div>
-        <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
-            <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
-            <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
-            <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {datosCompartidos[month-1].dineroCompartido}</h3>
-            <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}> $ {datosCompartidos[month-1].dineroPorDia * datosCompartidos[month-1].dias[0]}<Edit fontSize='small'/></h6>
-            </div>
-            
-            <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'normal', marginLeft:'20px'}}>
-                    <section style={{marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}> Distancia Recorrida</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}> {Math.trunc(((datosCompartidos[month-1].kilometrajeCompartido[0] - datosCompartidos[month-1].kilometrajeCompartido[1])/datosCompartidos[month-1].diasTotales) * datosCompartidos[month-1].dias[0])  } Kilometros</h3>
-                    </section>
-                    <section style={{ marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>1gl/ Kms</h3>
-                    </section>
-                    <section>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Dinero Gastado Este Mes</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>$ {datosCompartidos[month-1].dineroPorDia * datosCompartidos[month-1].dias[0]} </h3>
-                    </section>
-                </div>
-        </div>
-      </div>
-          </a>
+          <CardGasolina el={datosCompartidos[month-1]} myDate={datosCompartidos[month - 1].fecha} restante={null} setVisibleDetails={setVisibleDetails}/>
           :
 
         // <a onClick={(e)=>setVisibleDetails({bol:true, id:datosCompartidos[month -1].idDatoCompartido})}>
-          <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+          <div style={{border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
         <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
         <section style={{display:'flex', flexDirection:'row'}}>
-        <CalendarToday style={{ color:'white', marginRight:'10px'}}/>
-        <h3 className={classes.texto} style={{fontSize:'16px', color:'white'}}>{datosCompartidos[month - 1].fecha.toLocaleDateString()}</h3>
+        <CalendarToday style={{ color:'black', marginRight:'10px'}}/>
+        <h3 className={classes.texto} style={{fontSize:'16px', color:'black'}}>{datosCompartidos[month - 1].fecha.toLocaleDateString()}</h3>
         </section>
         <section style={{display:'flex', flexDirection:'row'}}>
-        <h5 className={classes.texto} style={{fontSize:'18px', color:'white'}}>Saldo Mes Anterior</h5>
-        <MoreVert  style={{color:'white',fontSize:'30px'}}/> 
+        <h5 className={classes.texto} style={{fontSize:'18px', color:'#f50057'}}>Saldo Mes Anterior</h5>
+        <MoreVert  style={{color:'black',fontSize:'30px'}}/> 
         </section>
         </div>
         <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
-            <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
+            <div style={{border:'1px solid #f50057',borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
             <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
             <h3 className={classes.texto} style={{fontSize:'24px', color:'black'}}>$ {datosCompartidos[month-1].dineroCompartido}</h3>
-            <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}> $ {datosCompartidos[month-1].dineroPorDia * datosCompartidos[month-1].dias[1]}<Edit fontSize='small'/></h6>
+            <h6 className={classes.texto} style={{color:'gray',fontSize:'18px'}}> $ {datosCompartidos[month-1].dineroPorDia * datosCompartidos[month-1].dias[1]}</h6>
             </div>
             
             <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'normal', marginLeft:'20px'}}>
                     <section style={{marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}> Distancia Recorrida</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}> {Math.trunc(((datosCompartidos[month-1].kilometrajeCompartido[0] - datosCompartidos[month-1].kilometrajeCompartido[1])/datosCompartidos[month-1].diasTotales) * datosCompartidos[month-1].dias[1])  } Kilometros</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}> Distancia Recorrida</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}> {Math.trunc(((datosCompartidos[month-1].kilometrajeCompartido[0] - datosCompartidos[month-1].kilometrajeCompartido[1])/datosCompartidos[month-1].diasTotales) * datosCompartidos[month-1].dias[1])  } Kilometros</h3>
                     </section>
                     <section style={{ marginBottom:'10px'}}>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>1gl/ Kms</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}>Promedio Gasolina</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}>1gl/ Kms</h3>
                     </section>
                     <section>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'18px', fontWeight:'600'}}>Dinero Gastado Este Mes</h3>
-                      <h3 className={classes.texto} style={{color:'white', fontSize:'16px',fontWeight:'400'}}>$ {datosCompartidos[month-1].dineroPorDia * datosCompartidos[month-1].dias[1]} </h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'18px', fontWeight:'600'}}>Dinero Gastado Este Mes</h3>
+                      <h3 className={classes.texto} style={{color:'black', fontSize:'16px',fontWeight:'400'}}>$ {datosCompartidos[month-1].dineroPorDia * datosCompartidos[month-1].dias[1]} </h3>
                     </section>
                 </div>
         </div>

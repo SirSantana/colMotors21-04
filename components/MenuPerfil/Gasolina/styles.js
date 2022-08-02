@@ -64,6 +64,20 @@ export default makeStyles((theme) => ({
 
     },
   },
+  subtitle:{
+    color:'white', fontSize:'18px', fontWeight:'600',color:'black',margin:0,
+    [theme.breakpoints.down("sm")]: {
+      fontSize:'16px',
+  
+      },
+  },
+  subtitle2:{
+    color:'white', fontSize:'16px',fontWeight:'400',color:'black',margin:0,
+    [theme.breakpoints.down("sm")]: {
+      fontSize:'14px',
+  
+      },
+  },
   texto1:{
     fontWeight: 700,
     fontSize:'16px',
@@ -73,5 +87,11 @@ export default makeStyles((theme) => ({
     fontSize:'14px',
     padding:'5px 12px'
     },
+  },
+  containerCard:{
+    border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'
+  },
+  containerCard2:{
+    display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'
   }
 }));

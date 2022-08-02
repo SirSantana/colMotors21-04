@@ -7,6 +7,12 @@ const Transition = forwardRef(function Transition(props, ref) {
   });
 export default function ModalDetalles({setEdit,setVisibleEdit,setIdPost, id, setVisibleDetails, visibleDetails, parciales, dataCom, month, copiaParciales}){
   const [litros, setLitros] = useState(false)
+  const handleSend=()=>{
+    console.log(id);
+    setIdPost(id),
+     setVisibleEdit(true),
+      setEdit(true)
+  }
   console.log(dataCom);
   console.log(copiaParciales);
   if(dataCom !== undefined && id === dataCom.idDatoCompartido){
@@ -121,12 +127,7 @@ export default function ModalDetalles({setEdit,setVisibleEdit,setIdPost, id, set
   console.log(parciales);
   const res = parciales.find(el=> el.id === id)
   console.log(res);
-  const handleSend=()=>{
-    console.log(id);
-    setIdPost(id),
-     setVisibleEdit(true),
-      setEdit(true)
-  }
+  
     return(
         <>
         {res!== undefined &&

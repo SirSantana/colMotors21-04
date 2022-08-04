@@ -8,6 +8,7 @@ import { getGasolina } from "../../../reducers/Actions/gasolinActions";
 import {useRouter} from 'next/router'
 import EsteMes from "./EsteMes";
 import EsteAño from "./EsteAño";
+import Mes from "./Mes";
 
 export default function Gasolina({gasolina, tanque, ownerVehicule}) {
   const classes = useStyles();
@@ -19,7 +20,7 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
   const [edit, setEdit]=useState(false)
   const [idPost, setIdPost]=useState('')
   console.log(idPost);
-  
+
   let length = gasolina.length
     let vehicule ={
       idVehicule:router.query,
@@ -55,7 +56,7 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
       </div>
       
       {gasolina.length >=1
-      ? !toogle ? <EsteMes setIdPost={setIdPost} setEdit={setEdit}  gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
+      ? !toogle ? <Mes setIdPost={setIdPost} setEdit={setEdit}  gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >

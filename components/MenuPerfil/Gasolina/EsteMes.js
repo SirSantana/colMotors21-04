@@ -26,7 +26,6 @@ export default function EsteMes({setIdPost,setEdit, gasolina, setVisibleEdit, se
 
 
   //CAMBIAR PARA QUE SOLO SE EJECUTE ANUALMENTE ABAJO
-
   let meses =[{},{},{},{},{},{},{},{},{},{},{},{}]
   let dataMen =[{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0},{kilometrosRec:0}]
   let datos=[{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]},{kilometrosRec:[], galones:[],fuelInicialLitros:[]}]
@@ -75,22 +74,22 @@ export default function EsteMes({setIdPost,setEdit, gasolina, setVisibleEdit, se
      datosCompartidos[i].idDatoCompartido  = idDatoCompartido
      let dineroPorDia = datosCompartidos[i].dineroCompartido.replace(/\./g, "") / (datosCompartidos[i].dias[0] + datosCompartidos[i].dias[1] )
      datosCompartidos[i].dineroPorDia  = Math.trunc(parseFloat(dineroPorDia))
-
+     meses[i].push(datosCompartidos[i])
+     console.log(meses[i]);
       }
-    
 
-
-      for(let j = 0; j<meses[i].length - 1; j++){
-        let kilometrosRec = meses[i][j + 1].kilometraje.replace(/\./g, "") -meses[i]				[j].kilometraje.replace(/\./g, "") 
-        let porcentaje1 = tanque/100
-        console.log(porcentaje1)
-        let galones = parseFloat((meses[i][j].dineroGastado.replace(/\./g, "") / meses[i][j].precioGalon.replace(/\./g, "")).toFixed(3))
-        let fuelInicialLitros = parseFloat((porcentaje1 *meses[i][j].gasolinaInicial).toFixed(2))
-let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
-      datos[i].kilometrosRec.push(kilometrosRec)
-    datos[i].galones.push(galones)
-    datos[i].fuelInicialLitros.push(fuelInicialLitros)
-      }}
+//       for(let j = 0; j<meses[i].length - 1; j++){
+//         let kilometrosRec = meses[i][j + 1].kilometraje.replace(/\./g, "") -meses[i]				[j].kilometraje.replace(/\./g, "") 
+//         let porcentaje1 = tanque/100
+//         console.log(porcentaje1)
+//         let galones = parseFloat((meses[i][j].dineroGastado.replace(/\./g, "") / meses[i][j].precioGalon.replace(/\./g, "")).toFixed(3))
+//         let fuelInicialLitros = parseFloat((porcentaje1 *meses[i][j].gasolinaInicial).toFixed(2))
+// let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
+//       datos[i].kilometrosRec.push(kilometrosRec)
+//     datos[i].galones.push(galones)
+//     datos[i].fuelInicialLitros.push(fuelInicialLitros)
+//       }
+    }
   }
 
 
@@ -113,7 +112,7 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
         let galones = parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
         let fuelInicialLitros = parseFloat((porcentaje1 * gasolina[i].gasolinaInicial).toFixed(2))
         let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
-        
+         
         let fuelFinalPercentaje = parseFloat((fuelFinalLitros / porcentaje1).toFixed(2))
         let fuelPercentajeUsado = fuelFinalPercentaje - gasolina[i+1].gasolinaInicial
         let fuelComprado = parseFloat((fuelFinalPercentaje - gasolina[i].gasolinaInicial).toFixed(2))
@@ -136,7 +135,6 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
         let galonDi = kilometrosRec / galonKm;
         
         gasolina[i].dineroGastado.replace(/\./g, "");
-        console.log(kilometrosRec);
         // galon.push(parseFloat(galonDi.toFixed(2)));
         totales.kilometrosRecorridos += kilometrosRec;
         totales.dineroGastado += Number(
@@ -145,7 +143,6 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
         totales.precioKm += precioKm;
         setPromedio(parseFloat((totales.precioKm / gasolinaMes.length).toFixed(2)))
         totales.kmGalones += parseFloat(galonDi);
-        console.log(totales);
         
         parciales.push({
           kilometrosRec, precioKm, galonDi, 
@@ -158,21 +155,18 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
     }
   }
   let copiaParciales = parciales[parciales.length - 1]
-  console.log(copiaParciales);
   let longitud = gasolinaMensual.length
   let mesParciales = parciales.map((el) =>el.fecha.split(" ", 2)[1]);
-
   let myDateee
   if(gasolinaMensual.length>0){
      myDateee = new Date(gasolinaMensual[longitud - 1].fecha);
   }
   let month = new Date().getMonth()
-  console.log(month);
+  console.log(datosCompartidos[month-1]);
 
   parciales.pop()
   let dateCompartida =new Date(datosCompartidos[month-1].fecha) 
   let dateCompartida2 = dateCompartida.toLocaleString("en-US", { month: "short" })
-  console.log(datosCompartidos[month-1]);
   return (
     <>
       <div
@@ -234,6 +228,8 @@ let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
            )
            
           })}
+
+
           {datosCompartidos[month -1].dias !== undefined ?
           dateCompartida2 === fechaString ? 
           <CardGasolina el={datosCompartidos[month-1]} myDate={datosCompartidos[month - 1].fecha} restante={null} setVisibleDetails={setVisibleDetails}/>

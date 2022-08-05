@@ -9,147 +9,159 @@ export default function Mes({
   setEdit,
   gasolina,
   setVisibleEdit,
-  setPromedio,
   tanque,
+  mes
 }) {
     const [visibleDetails, setVisibleDetails] =useState({bol:false, id:''})
+    let tanqueadas =[]
+    let daysMeses = [31,28,31,30,31,30,31,31,30,31,30,31]
+    console.log(mes);
+  let monthActual = new Date().getMonth()
+    // let month =??? asignar mes actual o un mes que busquen numero
 
-    let monthActual = 6
-
-  let meses = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
-  let datosCompartidos = [];
-  let daysMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  let parciales = [[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}],];
-
-  for (let i = 0; i < gasolina.length; i++) {
-    let mes = new Date(gasolina[i].fecha).getMonth();
-    meses[mes] = gasolina.filter((el) => {
-      let fecha = new Date(el.fecha);
-      return fecha.getMonth() === mes;
-    });
-  }
-
-  for (let i = 0; i < 12; i++) {
-    if(meses[i].length > 0){
-
-    if (meses[i].length > 0 && meses[i + 1].length > 0) {
-
-      let longMes = meses[i].length;
-      //FECHA
-      let dias = [];
-      let dineroGastado = meses[i][longMes - 1].dineroGastado;
-      let firstDate = meses[i][longMes - 1];
-      let lastDate = meses[i + 1][0];
-      let dayFirst = new Date(firstDate.fecha);
-      let daySecond = new Date(lastDate.fecha);
-      let diasMonthActual = daysMeses[i] - dayFirst.getDate();
-      dias.push(diasMonthActual, daySecond.getDate());
-      //GASOLINAINICIAL, TIPO, KILOMETRAJE, FECHA
-      let gasolinaInicial = meses[i][longMes - 1].gasolinaInicial;
-      let tipoFuel = meses[i][longMes - 1].tipoGasolina;
-      let kilometraje = meses[i][longMes - 1].kilometraje;
-      let fecha = meses[i][longMes - 1].fecha;
-      let precioGalon = meses[i][longMes - 1].precioGalon;
-      let id = meses[i][longMes - 1]._id
-      datosCompartidos[i] = {fecha,dineroGastado,dias,gasolinaInicial,tipoFuel,kilometraje, precioGalon, id};
-
-      if(meses[i+1].length > 0){
-        meses[i].pop() 
-        meses[i].push(datosCompartidos[i])
+    for(let i = 0; i<gasolina.length; i++){
+      if(gasolina[i+1]!== undefined){
+        
+      let month = new Date(gasolina[i].fecha).getMonth()
+      let nextMonth = new Date(gasolina[i+1]?.fecha).getMonth()
+    let tanqueada ={}
+    let tanqueadaCompartida ={}
+        let porcentaje1 = tanque/100
+        let galones = parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") /gasolina[i].precioGalon.replace(/\./g, "")).toFixed(2))
+        
+      if(month !== nextMonth){
+        let firstDay = new Date(gasolina[i].fecha).getDate()
+        let lastDay = new Date(gasolina[i+1].fecha).getDate()
+        let diasMonthActual = daysMeses[month] - firstDay
+        let dias = diasMonthActual + lastDay
+        let kilometrosRec1 = parseFloat(((gasolina[i+1]?.kilometraje.replace(/\./g, "") -gasolina[i]?.kilometraje.replace(/\./g, "") )/(dias) * diasMonthActual).toFixed(2))
+        let kilometrosRec2 = parseFloat(((gasolina[i+1]?.kilometraje.replace(/\./g, "") -gasolina[i]?.kilometraje.replace(/\./g, "") )/(dias) * lastDay).toFixed(2))
+        let fuelInicialLitros = parseFloat((porcentaje1 *gasolina[i].gasolinaInicial).toFixed(2))
+        let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
+        let fuelFinalPercentaje = parseFloat((fuelFinalLitros / porcentaje1).toFixed(2))
+        let fuelPercentajeUsado = parseFloat(((fuelFinalPercentaje - gasolina[i+1].gasolinaInicial)/(diasMonthActual+lastDay)).toFixed(2))
+        let fuelPerUsado1 = Math.trunc(fuelPercentajeUsado * diasMonthActual)
+        let fuelPerUsado2 = Math.trunc(fuelPercentajeUsado * lastDay)
+        let fuelComprado = parseFloat((fuelFinalPercentaje - gasolina[i].gasolinaInicial).toFixed(2))
+        let precioPer =   parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / fuelComprado).toFixed(2))
+        let dineroUsado1 = Math.trunc(((fuelFinalPercentaje -gasolina[i+1].gasolinaInicial) * precioPer)/dias)*diasMonthActual
+        let dineroUsado2 = Math.trunc(((fuelFinalPercentaje -gasolina[i+1].gasolinaInicial) * precioPer)/dias)*lastDay
+        console.log(fuelFinalPercentaje -gasolina[i+1].gasolinaInicial);
+        let galonesUsados1 =  parseFloat((dineroUsado1 / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
+        let galonesUsados2 =  parseFloat((dineroUsado2 / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
+        let precioKm = dineroUsado1 / kilometrosRec1;
+       let galonKm = dineroUsado1 /  gasolina[i].precioGalon.replace(/\./g, "") ;
+        let galonRecorrido = parseFloat((kilometrosRec1 / galonKm).toFixed(2));
+        
+        
+        tanqueada.gastado = Math.trunc((gasolina[i]?.dineroGastado.replace(/\./g, "") / dias) * diasMonthActual)
+        tanqueada.kilometrosRecorridos = kilometrosRec1
+        tanqueada.fecha = gasolina[i]?.fecha
+        tanqueada.precioGalon = gasolina[i]?.precioGalon
+        tanqueada.mes = month
+        tanqueada.compartida = true
+        tanqueada.fuelInicialLitros = fuelInicialLitros
+        tanqueada.fuelFinalLitros = fuelFinalLitros
+        tanqueada.fuelInicialPercentaje = gasolina[i]?.gasolinaInicial
+        tanqueada.fuelFinalPercentaje = fuelFinalPercentaje
+        tanqueada.fuelPercentajeUsado =fuelPerUsado1
+        tanqueada.dias = dias
+        tanqueada.dineroUsado = dineroUsado1
+        tanqueada.fuelComprado = fuelComprado
+        tanqueada.galones = galones
+        tanqueada.galonesUsados = galonesUsados1
+        tanqueada.precioKm = precioKm
+        tanqueada.galonRecorrido = galonRecorrido
+        tanqueada.tipoGasolina = gasolina[i].tipoGasolina
+        tanqueada._id = gasolina[i]._id
+        tanqueada.estado ="finalizado"
+        
+        tanqueadaCompartida.gastado = Math.trunc(gasolina[i]?.dineroGastado.replace(/\./g, "") / dias) * lastDay
+        tanqueadaCompartida.kilometrosRecorridos = kilometrosRec2
+        tanqueadaCompartida.fecha = gasolina[i]?.fecha
+        tanqueadaCompartida.precioGalon = gasolina[i]?.precioGalon
+        tanqueadaCompartida.mes =nextMonth
+        tanqueadaCompartida.compartida = true
+        tanqueadaCompartida.fuelInicialLitros = fuelInicialLitros
+        tanqueadaCompartida.fuelFinalLitros = fuelFinalLitros
+        tanqueadaCompartida.fuelInicialPercentaje = gasolina[i]?.gasolinaInicial
+        tanqueadaCompartida.fuelFinalPercentaje = fuelFinalPercentaje
+        tanqueadaCompartida.fuelPercentajeUsado =fuelPerUsado2
+        tanqueadaCompartida.dias = dias
+        tanqueadaCompartida.dineroUsado = dineroUsado2
+        tanqueadaCompartida.fuelComprado = fuelComprado
+        tanqueadaCompartida.galones = galones
+        tanqueadaCompartida.galonesUsados = galonesUsados2
+        tanqueadaCompartida.precioKm = precioKm
+        tanqueadaCompartida.galonRecorrido = galonRecorrido
+        tanqueadaCompartida.tipoGasolina = gasolina[i].tipoGasolina
+        tanqueadaCompartida._id = gasolina[i]._id
+        tanqueadaCompartida.estado ="finalizado"
+        
+        tanqueadas.push(tanqueada)
+        tanqueadas.push(tanqueadaCompartida)
+        
+      }else{
+        let kilometrosRec = gasolina[i+1]?.kilometraje.replace(/\./g, "") -gasolina[i]?.kilometraje.replace(/\./g, "")
+        let fuelInicialLitros = parseFloat((porcentaje1 *gasolina[i].gasolinaInicial).toFixed(2))
+        let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
+        
+        let fuelFinalPercentaje = parseFloat((fuelFinalLitros / porcentaje1).toFixed(2))
+   
+        
+        let dias = new Date(gasolina[i+1].fecha).getDate() -new Date(gasolina[i].fecha).getDate()
+        let fuelComprado = parseFloat((fuelFinalPercentaje - gasolina[i].gasolinaInicial).toFixed(2))
+        
+        let fuelPercentajeUsado = parseFloat((fuelFinalPercentaje - gasolina[i+1].gasolinaInicial).toFixed(2))
+        
+        let precioPer =   parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / fuelComprado).toFixed(2))
+        let dineroUsado = Math.trunc(fuelPercentajeUsado * precioPer)
+       
+        let galonesUsados =  parseFloat((dineroUsado / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
+        let precioKm = dineroUsado / kilometrosRec;
+    let galonKm = dineroUsado /  gasolina[i].precioGalon.replace(/\./g, "") ;
+        let galonRecorrido = parseFloat((kilometrosRec / galonKm).toFixed(2));
+        
+        tanqueada.gastado = gasolina[i]?.dineroGastado
+        tanqueada.kilometrosRecorridos = kilometrosRec
+        tanqueada.fecha = gasolina[i]?.fecha
+        tanqueada.precioGalon = gasolina[i]?.precioGalon
+        tanqueada.mes = month
+        tanqueada.compartida = false
+        tanqueada.fuelInicialLitros = fuelInicialLitros
+        tanqueada.fuelFinalLitros = fuelFinalLitros
+        tanqueada.fuelInicialPercentaje = gasolina[i]?.gasolinaInicial
+        tanqueada.fuelFinalPercentaje = fuelFinalPercentaje
+        tanqueada.fuelPercentajeUsado = fuelPercentajeUsado
+        tanqueada.dias = dias
+        tanqueada.dineroUsado = dineroUsado
+        tanqueada.fuelComprado = fuelComprado
+        tanqueada.galones = galones
+        tanqueada.galonesUsados = galonesUsados
+        tanqueada.precioKm = precioKm
+        tanqueada.galonRecorrido = galonRecorrido
+        tanqueada.tipoGasolina = gasolina[i].tipoGasolina
+        tanqueada._id = gasolina[i]._id
+        tanqueada.estado ="finalizado"
+        
+        tanqueadas.push(tanqueada)
       }
+      }else{
+        let mes = new Date(gasolina[i].fecha).getMonth()
+      tanqueadas.push({...gasolina[i],estado:'progreso', mes})
+        
+      }
+      
     }
 
-        for(let j = 0; j <meses[i].length-1; j++){
-          if(meses[i][j+1] !== undefined){
-            console.log(i);
-            console.log(j);
-            let kilometrosRec = meses[i][j + 1].kilometraje.replace(/\./g, "") -meses[i][j].kilometraje.replace(/\./g, "") 
-            let porcentaje1 = tanque/100
-            let precioGalon = meses[i][j].precioGalon
-            let galones = parseFloat((meses[i][j].dineroGastado.replace(/\./g, "") /meses[i][j].precioGalon.replace(/\./g, "")).toFixed(2))
-            let gastado = meses[i][j].dineroGastado
-            let fuelInicialLitros = parseFloat((porcentaje1 *meses[i][j].gasolinaInicial).toFixed(2))
-            let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
-            let fuelFinalPercentaje = parseFloat((fuelFinalLitros / porcentaje1).toFixed(2))
-            let fuelPercentajeUsado = parseFloat((fuelFinalPercentaje - meses[i][j+1].gasolinaInicial).toFixed(2))
-            let fuelComprado = parseFloat((fuelFinalPercentaje - meses[i][j].gasolinaInicial).toFixed(2))
-            let precioPer =   parseFloat((meses[i][j].dineroGastado.replace(/\./g, "") / fuelComprado).toFixed(2))
-            let dineroUsado = Math.trunc((fuelFinalPercentaje -meses[i ][j+1].gasolinaInicial) * precioPer)
-            let galonesUsados =  parseFloat((dineroUsado / meses[i][j].precioGalon.replace(/\./g, "")).toFixed(3))
-            let precioKm = dineroUsado / kilometrosRec;
-            let galonKm = dineroUsado /  meses[i][j].precioGalon.replace(/\./g, "") ;
-            let galonRecorrido = parseFloat((kilometrosRec / galonKm).toFixed(2));
-            let fecha = meses[i][j].fecha
-            let id = meses[i][j]._id
-            let tanqueInicial = meses[i][j].gasolinaInicial
-            let tipoCombustible =  meses[i][j].tipoGasolina
-            let diasTanqueados = new Date(meses[i][j+1].fecha).getDate() - new Date(meses[i][j].fecha).getDate()
-            parciales[i][j] ={galones, fuelInicialLitros, fuelFinalLitros, gastado,  kilometrosRec,fuelFinalPercentaje,fuelPercentajeUsado,fuelComprado,precioPer,dineroUsado,galonesUsados,precioKm,galonRecorrido, precioGalon, fecha, id,tanqueInicial,tipoCombustible,diasTanqueados}
-            
-        if(meses[i].length-2 === j && meses[i+1].length >0){
-			let kilometrosRec = meses[i+1][0].kilometraje.replace(/\./g, "") -meses[i][meses[i].length-1].kilometraje.replace(/\./g, "")  
-            let porcentaje1 = tanque/100
-            let galones = parseFloat((meses[i][meses[i].length - 1].dineroGastado.replace(/\./g, "") / meses[i][meses[i].length - 1].precioGalon).toFixed(2))
-            let gastado = meses[i][meses[i].length - 1].dineroGastado
-            let fuelInicialLitros = parseFloat((porcentaje1 *meses[i][meses[i].length - 1].gasolinaInicial).toFixed(2))
-            let fuelFinalLitros = parseFloat(((galones *3.7)+fuelInicialLitros).toFixed(2))
-            let fuelFinalPercentaje = parseFloat((fuelFinalLitros / porcentaje1).toFixed(2))
-            let fuelPercentajeUsado = parseFloat((fuelFinalPercentaje - meses[i+1][0].gasolinaInicial).toFixed(2))
+    console.log(tanqueadas);
+    let tanqueadasMes = tanqueadas.filter(el=> el.mes === monthActual)
+    tanqueadasMes.reverse()
+    console.log(tanqueadasMes);
 
-            let fuelComprado = parseFloat((fuelFinalPercentaje - meses[i][meses[i].length-1].gasolinaInicial).toFixed(2))
-            let precioPer =   parseFloat((meses[i][meses[i].length -1].dineroGastado.replace(/\./g, "") / fuelComprado).toFixed(2))
-            let dineroUsado = Math.trunc((fuelFinalPercentaje -meses[i+1][0].gasolinaInicial) * precioPer)
-            let galonesUsados =  parseFloat((dineroUsado / meses[i][j].precioGalon.replace(/\./g, "")).toFixed(3))
-            let precioKm = dineroUsado / kilometrosRec;
-            let galonKm = dineroUsado /  meses[i][j].precioGalon.replace(/\./g, "") ;
-            let galonRecorrido = parseFloat((kilometrosRec / galonKm).toFixed(2));
-            let fecha = meses[i][meses[i].length - 1].fecha
-            let precioGalon = meses[i][meses[i].length - 1].precioGalon
-            let id = meses[i][meses[i].length - 1].id
-            let tanqueInicial = meses[i][meses[i].length - 1].gasolinaInicial
-            let tipoCombustible = meses[i][meses[i].length - 1].tipoFuel
-            let compartido = true
-            //SACANDO DATOS COMPARTIDOS POR SEPARADO  
-            let kmXDia = kilometrosRec / (meses[i][meses[i].length - 1].dias[0] + meses[i][meses[i].length - 1].dias[1])
-            let fuelXDia = fuelPercentajeUsado / (meses[i][meses[i].length - 1].dias[0] + meses[i][meses[i].length - 1].dias[1])
-            let dineroXDia = dineroUsado / (meses[i][meses[i].length - 1].dias[0] + meses[i][meses[i].length - 1].dias[1])
-            let galonXDia = galonesUsados / (meses[i][meses[i].length - 1].dias[0] + meses[i][meses[i].length - 1].dias[1])
-            let diasTanqueados = meses[i][meses[i].length - 1].dias[0] + meses[i][meses[i].length - 1].dias[1]
-            let mesInitial = new Date(meses[i][meses[i].length - 1].fecha).getMonth()
-            kilometrosRec =  [parseFloat((kmXDia* (meses[i][meses[i].length - 1].dias[0])).toFixed(2)),parseFloat((kmXDia* (meses[i][meses[i].length - 1].dias[1])).toFixed(2))] 
-            
-            fuelPercentajeUsado =[parseFloat((fuelXDia *meses[i][meses[i].length - 1].dias[0]).toFixed(2)), parseFloat((fuelXDia *meses[i][meses[i].length - 1].dias[1]).toFixed(2))]
-                
-            dineroUsado =[parseFloat((dineroXDia *meses[i][meses[i].length - 1].dias[0]).toFixed(2)), parseFloat((dineroXDia *meses[i][meses[i].length - 1].dias[1]).toFixed(2))]  
-            
-            galonesUsados =[parseFloat((galonXDia *meses[i][meses[i].length - 1].dias[0]).toFixed(2)), parseFloat((galonXDia *meses[i][meses[i].length - 1].dias[1]).toFixed(2))]  
-                
-        parciales[i][j+1]={galones, fuelInicialLitros, fuelFinalLitros, gastado,kilometrosRec,  fuelFinalPercentaje, fuelPercentajeUsado,fuelComprado,precioPer,dineroUsado,galonesUsados,precioKm,galonRecorrido,precioGalon, fecha, id,tanqueInicial,tipoCombustible,diasTanqueados,compartido,mesInitial}
-           
-        if(parciales[i][parciales[i].length - 1].compartido ){
-          parciales[i+1][parciales[i+1].length] = parciales[i][parciales[i].length - 1]
-      }
-      }
-            
-              parciales[i].map(el=>{
-                console.log(el);
-              })
-          }
-            
-            // if(meses[i+1][0] !==undefined && parciales[i+1][j] !=={}){
-            //     parciales[i+1][j] = meses[i+1][j]
-            // }
-        }
-
-  }
-  }
-  console.log(meses);
-  console.log(datosCompartidos);
-  console.log(parciales);
-  let tanqueadaProceso = meses[monthActual][meses[monthActual].length-1]
-  let fechaProceso = tanqueadaProceso !== undefined && new Date(tanqueadaProceso.fecha)
-  console.log(tanqueadaProceso);
-  console.log(parciales);
+    console.log(visibleDetails.id);
+    let detailsTanqueada = tanqueadasMes.find(el=> el._id === visibleDetails.id)
+    console.log(detailsTanqueada);
   return <>
       <div
         style={{
@@ -168,39 +180,11 @@ export default function Mes({
       Añadir
     </Button>
 
-        {tanqueadaProceso !== undefined &&
-       <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-            <section style={{display:'flex', flexDirection:'row'}}>
-            <CalendarToday style={{ color:'white', marginRight:'10px'}}/>
-            <h3  style={{fontSize:'16px', color:'white', margin:0}}>{fechaProceso.toLocaleDateString()}</h3>
-            </section>
-            <section style={{display:'flex', flexDirection:'row'}}>
-            <h5  style={{fontSize:'18px', color:'white', margin:0}}>{tanqueadaProceso.tipoGasolina}</h5>
-            <MoreVert  style={{color:'white',fontSize:'30px', margin:0}}/> 
-            </section>
-            </div>
-            <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
-                <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
-                <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
-                <h3  style={{fontSize:'24px', color:'black', margin:0}}>$ {tanqueadaProceso.dineroGastado}</h3>
-                <h6  style={{color:'gray',fontSize:'18px', margin:0}}> 1gl /$ {tanqueadaProceso.precioGalon}<Edit fontSize='small'/></h6>
-                </div>
-                
-            <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'center',alignItems:'center', marginLeft:'20px'}}>
-                  <Cached style={{color:'white', fontSize:'32px'}}/>
-                    <h3 style={{marginTop:'5px',  borderRadius:'10px', width:'fit-content', padding:'4px 16px', backgroundColor:'white', textAlign:'center', color:'#f50057', fontSize:'14px', margin:0}}>EN PROGRESO</h3>
-                </div>
-            
-            </div>
-   
-   
-          </div>
-        }
 
-        {parciales[monthActual] !== {}&& parciales[monthActual].length >0 &&
-        parciales[6].map(el=>{
+        {tanqueadasMes &&
+        tanqueadasMes.map(el=>{
              let myDate = new Date(el.fecha);
+             console.log(el);
              
             return(
                 <CardGasolina el={el} myDate={myDate} setVisibleDetails={setVisibleDetails} monthActual={monthActual} />
@@ -208,7 +192,7 @@ export default function Mes({
             )
         })
         }
-            {visibleDetails.bol &&<ModalDetalles setEdit={setEdit} setVisibleEdit={setVisibleEdit} setIdPost={setIdPost} id={visibleDetails.id} setVisibleDetails={setVisibleDetails} visibleDetails={visibleDetails} parciales={parciales} month={monthActual}/>}
+            {visibleDetails.bol &&<ModalDetalles setIdPost={setIdPost} detailsTanqueada={detailsTanqueada} setEdit={setEdit} setVisibleEdit={setVisibleEdit} setVisibleDetails={setVisibleDetails} visibleDetails={visibleDetails}/>}
 
 </div>
   </>;

@@ -56,7 +56,7 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
       </div>
       
       {gasolina.length >=1
-      ? !toogle ? <Mes setIdPost={setIdPost} setEdit={setEdit}  gasolina={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
+      ? !toogle ? <Mes setIdPost={setIdPost} setEdit={setEdit}  gasolinas={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >

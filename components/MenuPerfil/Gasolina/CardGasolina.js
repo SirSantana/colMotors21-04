@@ -16,7 +16,8 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
   };
   console.log(el);
   let myDate = new Date(el.fecha).toLocaleDateString()
-  
+  let dineroGastado = typeof el.dineroGastado!== 'number' ? el.dineroGastado.toString().replace(/\./g, ""):el.dineroGastado
+  let sobrante = dineroGastado - el.dineroUsado
   return(
     <>
     {el.estado !== 'finalizado'?
@@ -98,16 +99,16 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                     className={classes.texto}
                     style={{ fontSize: "24px", color: "black" }}
                   >
-                    ${el.gastado || el.dineroGastado} 
+                    $ {el.dineroGastado} 
                   </h3>
                   <h6
                     className={classes.texto}
                     style={{
-                      // color: restante > 0 ? "green" : "red",
+                      color: sobrante > 0 ? "green" : "red",
                       fontSize: "18px",
                     }}
                   >
-                      {/* ${restante} */}
+                      $ {sobrante}
                   </h6>
                 </div>
                 <div

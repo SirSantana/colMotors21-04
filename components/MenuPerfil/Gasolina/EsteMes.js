@@ -78,21 +78,19 @@ export default function EsteMes({setIdPost,setEdit, gasolina, setVisibleEdit, se
      console.log(meses[i]);
       }
 
-//       for(let j = 0; j<meses[i].length - 1; j++){
-//         let kilometrosRec = meses[i][j + 1].kilometraje.replace(/\./g, "") -meses[i]				[j].kilometraje.replace(/\./g, "") 
-//         let porcentaje1 = tanque/100
-//         console.log(porcentaje1)
-//         let galones = parseFloat((meses[i][j].dineroGastado.replace(/\./g, "") / meses[i][j].precioGalon.replace(/\./g, "")).toFixed(3))
-//         let fuelInicialLitros = parseFloat((porcentaje1 *meses[i][j].gasolinaInicial).toFixed(2))
-// let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
-//       datos[i].kilometrosRec.push(kilometrosRec)
-//     datos[i].galones.push(galones)
-//     datos[i].fuelInicialLitros.push(fuelInicialLitros)
-//       }
+      for(let j = 0; j<meses[i].length - 1; j++){
+        let kilometrosRec = meses[i][j + 1].kilometraje.replace(/\./g, "") -meses[i]				[j].kilometraje.replace(/\./g, "") 
+        let porcentaje1 = tanque/100
+        console.log(porcentaje1)
+        let galones = parseFloat((meses[i][j].dineroGastado.replace(/\./g, "") / meses[i][j].precioGalon.replace(/\./g, "")).toFixed(3))
+        let fuelInicialLitros = parseFloat((porcentaje1 *meses[i][j].gasolinaInicial).toFixed(2))
+let fuelFinalLitros = parseFloat(((galones * 3.7)+fuelInicialLitros).toFixed(2))
+      datos[i].kilometrosRec.push(kilometrosRec)
+    datos[i].galones.push(galones)
+    datos[i].fuelInicialLitros.push(fuelInicialLitros)
+      }
     }
   }
-
-
 
   //CAMBIAR PARA QUE SOLO SE EJECUTE ANUALMENTE ARRIBA
 

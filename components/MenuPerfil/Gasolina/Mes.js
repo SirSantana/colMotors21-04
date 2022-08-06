@@ -7,7 +7,7 @@ import ModalDetalles from "./ModalDetalle";
 export default function Mes({
   setIdPost,
   setEdit,
-  gasolina,
+  gasolinas,
   setVisibleEdit,
   tanque,
   mes
@@ -15,11 +15,13 @@ export default function Mes({
     const [visibleDetails, setVisibleDetails] =useState({bol:false, id:''})
     let tanqueadas =[]
     let daysMeses = [31,28,31,30,31,30,31,31,30,31,30,31]
-    console.log(mes);
-  let monthActual = new Date().getMonth()
+    let monthActual = new Date().getMonth()
     // let month =??? asignar mes actual o un mes que busquen numero
-
+    let gasolina = gasolinas.sort((a, b) =>{
+      return new Date(a.fecha) - new Date(b.fecha)
+    })
     for(let i = 0; i<gasolina.length; i++){
+     
       if(gasolina[i+1]!== undefined){
         
       let month = new Date(gasolina[i].fecha).getMonth()
@@ -46,15 +48,14 @@ export default function Mes({
         let precioPer =   parseFloat((gasolina[i].dineroGastado.replace(/\./g, "") / fuelComprado).toFixed(2))
         let dineroUsado1 = Math.trunc(((fuelFinalPercentaje -gasolina[i+1].gasolinaInicial) * precioPer)/dias)*diasMonthActual
         let dineroUsado2 = Math.trunc(((fuelFinalPercentaje -gasolina[i+1].gasolinaInicial) * precioPer)/dias)*lastDay
-        console.log(fuelFinalPercentaje -gasolina[i+1].gasolinaInicial);
         let galonesUsados1 =  parseFloat((dineroUsado1 / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
         let galonesUsados2 =  parseFloat((dineroUsado2 / gasolina[i].precioGalon.replace(/\./g, "")).toFixed(3))
         let precioKm = dineroUsado1 / kilometrosRec1;
        let galonKm = dineroUsado1 /  gasolina[i].precioGalon.replace(/\./g, "") ;
         let galonRecorrido = parseFloat((kilometrosRec1 / galonKm).toFixed(2));
-        
-        
-        tanqueada.gastado = Math.trunc((gasolina[i]?.dineroGastado.replace(/\./g, "") / dias) * diasMonthActual)
+        let kilometraje1 = Number(gasolina[i].kilometraje)
+        let kilometraje2 = Number(gasolina[i].kilometraje) +Number(Math.trunc(kilometrosRec1))
+        tanqueada.dineroGastado = Math.trunc((gasolina[i]?.dineroGastado.replace(/\./g, "") / dias) * diasMonthActual)
         tanqueada.kilometrosRecorridos = kilometrosRec1
         tanqueada.fecha = gasolina[i]?.fecha
         tanqueada.precioGalon = gasolina[i]?.precioGalon
@@ -72,11 +73,12 @@ export default function Mes({
         tanqueada.galonesUsados = galonesUsados1
         tanqueada.precioKm = precioKm
         tanqueada.galonRecorrido = galonRecorrido
+        tanqueada.kilometraje =kilometraje1
         tanqueada.tipoGasolina = gasolina[i].tipoGasolina
         tanqueada._id = gasolina[i]._id
         tanqueada.estado ="finalizado"
         
-        tanqueadaCompartida.gastado = Math.trunc(gasolina[i]?.dineroGastado.replace(/\./g, "") / dias) * lastDay
+        tanqueadaCompartida.dineroGastado = Math.trunc(gasolina[i]?.dineroGastado.replace(/\./g, "") / dias) * lastDay
         tanqueadaCompartida.kilometrosRecorridos = kilometrosRec2
         tanqueadaCompartida.fecha = gasolina[i]?.fecha
         tanqueadaCompartida.precioGalon = gasolina[i]?.precioGalon
@@ -94,6 +96,7 @@ export default function Mes({
         tanqueadaCompartida.galonesUsados = galonesUsados2
         tanqueadaCompartida.precioKm = precioKm
         tanqueadaCompartida.galonRecorrido = galonRecorrido
+        tanqueadaCompartida.kilometraje = kilometraje2
         tanqueadaCompartida.tipoGasolina = gasolina[i].tipoGasolina
         tanqueadaCompartida._id = gasolina[i]._id
         tanqueadaCompartida.estado ="finalizado"
@@ -121,8 +124,9 @@ export default function Mes({
         let precioKm = dineroUsado / kilometrosRec;
     let galonKm = dineroUsado /  gasolina[i].precioGalon.replace(/\./g, "") ;
         let galonRecorrido = parseFloat((kilometrosRec / galonKm).toFixed(2));
-        
-        tanqueada.gastado = gasolina[i]?.dineroGastado
+        let kilometraje = Number(gasolina[i].kilometraje)
+
+        tanqueada.dineroGastado = gasolina[i]?.dineroGastado
         tanqueada.kilometrosRecorridos = kilometrosRec
         tanqueada.fecha = gasolina[i]?.fecha
         tanqueada.precioGalon = gasolina[i]?.precioGalon
@@ -140,6 +144,7 @@ export default function Mes({
         tanqueada.galonesUsados = galonesUsados
         tanqueada.precioKm = precioKm
         tanqueada.galonRecorrido = galonRecorrido
+        tanqueada.kilometraje = kilometraje
         tanqueada.tipoGasolina = gasolina[i].tipoGasolina
         tanqueada._id = gasolina[i]._id
         tanqueada.estado ="finalizado"
@@ -154,14 +159,29 @@ export default function Mes({
       
     }
 
-    console.log(tanqueadas);
     let tanqueadasMes = tanqueadas.filter(el=> el.mes === monthActual)
     tanqueadasMes.reverse()
-    console.log(tanqueadasMes);
-
-    console.log(visibleDetails.id);
     let detailsTanqueada = tanqueadasMes.find(el=> el._id === visibleDetails.id)
-    console.log(detailsTanqueada);
+    console.log(tanqueadasMes);
+    let totales =[]
+    let gastado =0
+    let kilometrosRecorridos=tanqueadasMes[0].kilometraje -tanqueadasMes[tanqueadasMes.length-1].kilometraje
+    for(let i = 0; i<tanqueadasMes.length;i++ ){
+      let dineroGastado = typeof tanqueadasMes[i].dineroGastado!== 'number' ? tanqueadasMes[i].dineroGastado.toString().replace(/\./g, ""):tanqueadasMes[i].dineroGastado
+      
+      
+      gastado+= Number(dineroGastado)
+
+
+
+    }
+    console.log(kilometrosRecorridos);
+    console.log(tanqueadasMes[tanqueadasMes.length-1].kilometraje );
+
+    totales.push(gastado, kilometrosRecorridos)
+      console.log(totales);
+      console.log(tanqueadasMes);
+
   return <>
       <div
         style={{
@@ -184,7 +204,7 @@ export default function Mes({
         {tanqueadasMes &&
         tanqueadasMes.map(el=>{
              let myDate = new Date(el.fecha);
-             console.log(el);
+             
              
             return(
                 <CardGasolina el={el} myDate={myDate} setVisibleDetails={setVisibleDetails} monthActual={monthActual} />

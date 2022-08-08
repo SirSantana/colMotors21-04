@@ -213,36 +213,38 @@ console.log(meses[1]);
       Añadir
     </Button>
 
-    <div style={{backgroundColor:'#464646', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+    <div style={{border:'1px solid #464646', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
     <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-    <h3  style={{fontSize:'16px', color:'white', margin:0}}>Este Mes...</h3>
-    <h5  style={{fontSize:'18px', color:'white', margin:0}}>{meses[monthActual]}</h5>
+    <h3  style={{fontSize:'16px', color:'black', margin:0}}>Este Mes...</h3>
+    <h5  style={{fontSize:'18px', color:'black', margin:0}}>{meses[monthActual]}</h5>
     </div>
         <div style={{margin:'20px 0',display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
             <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
             <img
           src={"/images/recorrido.png"}
           alt="icon"
-          style={{width:'50px', height:'50px'}}
+          style={{width:'40px', height:'40px'}}
         />
-        <h3 style={{fontSize:'16px', color:'white', margin:0, fontWeight:400}}> Recorriste</h3>
-        <h3 style={{fontSize:'20px', color:'white', margin:0, fontWeight:600}}>500Kms</h3>
-            </div>
-            <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
-            <section style={{borderRadius:'10px',width:'50px',height:'50px',display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'center',backgroundColor:"#f50057"}}>
-              <AttachMoney style={{color:'white',fontSize:'40px'}}/>
-            </section> 
-        <h3 style={{fontSize:'16px', color:'white', margin:0, fontWeight:400}}>Gastaste</h3>
-        <h3 style={{fontSize:'20px', color:'white', margin:0, fontWeight:600}}>$ 290.000</h3>
+        <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}> Recorriste</h3>
+        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>500Kms</h3>
             </div>
             <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
             <img
-          src={"/images/combustibleFondo.png"}
+          src={"/images/dinero.png"}
           alt="icon"
-          style={{width:'50px', height:'50px'}}
+          style={{width:'40px', height:'40px'}}
         />
-        <h3 style={{fontSize:'16px', color:'white', margin:0, fontWeight:400}}> Rendimiento</h3>
-        <h3 style={{fontSize:'20px', color:'white', margin:0, fontWeight:600}}>1gl / 21Kms</h3>
+        <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}>Gastaste</h3>
+        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>$290.000</h3>
+            </div>
+            <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
+            <img
+          src={"/images/CombustibleFondo.png"}
+          alt="icon"
+          style={{width:'40px', height:'40px'}}
+        />
+        <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}> Rendimiento</h3>
+        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/21Kms</h3>
             </div>
             
         </div>

@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 import EsteAño from "./EsteAño";
 import Mes from "./Mes";
 
-export default function Gasolina({gasolina, tanque, ownerVehicule}) {
+export default function Gasolina({gasolina, tanque, datosVehicule}) {
   const classes = useStyles();
   const [toogle,setToogle] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
@@ -18,13 +18,13 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
   const [promedio, setPromedio] = useState(null)
   const [edit, setEdit]=useState(false)
   const [idPost, setIdPost]=useState('')
-  console.log(idPost);
+  console.log(datosVehicule);
 
   let length = gasolina.length
     let vehicule ={
       idVehicule:router.query,
       kilometraje: gasolina.length > 0 ?  gasolina[length-1].kilometraje: null,
-      owner:ownerVehicule
+      owner:datosVehicule.ownerVehicule
     }
   return (
     <div className={classes.conta2}   >
@@ -38,14 +38,13 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
           </div>
          <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px'}}>
              <img
-        style={{ marginLeft: "10px", width: "40px", height: "40px" }}
-        src={`/images/Combustible.png`}
+        style={{ marginLeft: "10px", width: "60px", height: "60px" }}
+        src={`/images/${datosVehicule.marca}.png`}
         alt={'combustible'}
       />
       <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-      <h2 style={{margin:0, fontSize:'20px', color:'black',marginLeft:'10px',fontWeight:'600'}}>Promedio</h2>
-      <h4 style={{margin:0, fontSize:'18px', color:'gray',marginLeft:'10px',fontWeight:'400'}}>1Km/{promedio}</h4>
-      <h5 style={{margin:0, fontSize:'18px', color:'#f50057',marginLeft:'10px',fontWeight:'400'}}>+$38</h5>
+      <h2 style={{margin:0, fontSize:'20px', color:'black',marginLeft:'10px',fontWeight:'600'}}>Vehiculo</h2>
+      <h4 style={{margin:0, fontSize:'20px', color:'gray',marginLeft:'10px',fontWeight:'500'}}>{datosVehicule.referencia}</h4>
       </div>
          </div>
       </div>
@@ -67,7 +66,7 @@ export default function Gasolina({gasolina, tanque, ownerVehicule}) {
           <Button variant="outlined"
           color="secondary"
           style={{marginBottom:'20px'}}
-          onClick={()=> router.push(`/users/${ownerVehicule}`)}
+          onClick={()=> router.push(`/users/${datosVehicule.ownerVehicule}`)}
           fullWidth
           >Agrega el tamaño del tanque de tu auto 
           </Button>

@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import { Cached, CalendarToday, Edit, LocalGasStationOutlined, MoreVert } from "@material-ui/icons";
+import { AttachMoney, Cached, CalendarToday, Edit, LocalGasStationOutlined, MoreVert } from "@material-ui/icons";
 import CardGasolina from "./CardGasolina";
 import{useState} from 'react'
 import ModalDetalles from "./ModalDetalle";
@@ -15,6 +15,7 @@ export default function Mes({
     const [visibleDetails, setVisibleDetails] =useState({bol:false, id:''})
     let tanqueadas =[]
     let daysMeses = [31,28,31,30,31,30,31,31,30,31,30,31]
+    let meses = {1:'Enero', 2:'Febrero', 3:'Marzo', 4:'Abril', 5:'Mayo', 6:'Junio', 7:'Julio', 8:'Agosto', 9:'Septiembre', 10:'Octubre',11:'Noviembre', 12:'Diciembre'}
     let monthActual = new Date().getMonth()
     // let month =??? asignar mes actual o un mes que busquen numero
     let gasolina = gasolinas.sort((a, b) =>{
@@ -163,25 +164,37 @@ export default function Mes({
     tanqueadasMes.reverse()
     let detailsTanqueada = tanqueadasMes.find(el=> el._id === visibleDetails.id)
     console.log(tanqueadasMes);
-    let totales =[]
+    let totales ={}
     let gastado =0
     let kilometrosRecorridos=tanqueadasMes[0].kilometraje -tanqueadasMes[tanqueadasMes.length-1].kilometraje
+    let galonesComprados=0
+    let dineroUsado = 0
+    let galonesUsados =0
+    let numeroTanqueadas = 0
+    let precioCombustible = 0;
     for(let i = 0; i<tanqueadasMes.length;i++ ){
       let dineroGastado = typeof tanqueadasMes[i].dineroGastado!== 'number' ? tanqueadasMes[i].dineroGastado.toString().replace(/\./g, ""):tanqueadasMes[i].dineroGastado
-      
-      
+      numeroTanqueadas +=1
+      precioCombustible += Number(tanqueadasMes[i].precioGalon.replace(/\./g, ""))
       gastado+= Number(dineroGastado)
-
-
-
     }
-    console.log(kilometrosRecorridos);
-    console.log(tanqueadasMes[tanqueadasMes.length-1].kilometraje );
 
-    totales.push(gastado, kilometrosRecorridos)
-      console.log(totales);
-      console.log(tanqueadasMes);
-
+    for(let datos of tanqueadasMes){
+      if(datos.galones !== undefined){
+        galonesComprados += datos.galones
+        galonesUsados+= datos.galonesUsados
+        dineroUsado += datos.dineroUsado
+      }
+    }
+    console.log(precioCombustible);
+    totales.dineroGastado = gastado
+    totales.kilometrosRecorridos = kilometrosRecorridos
+    totales.galonesComprados = galonesComprados
+    totales.dineroUsado = dineroUsado
+    totales.numeroTanqueadas = numeroTanqueadas
+    totales.precioCombustible = precioCombustible / numeroTanqueadas
+console.log(totales);
+console.log(meses[1]);
   return <>
       <div
         style={{
@@ -199,6 +212,42 @@ export default function Mes({
     >
       Añadir
     </Button>
+
+    <div style={{backgroundColor:'#464646', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+    <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+    <h3  style={{fontSize:'16px', color:'white', margin:0}}>Este Mes...</h3>
+    <h5  style={{fontSize:'18px', color:'white', margin:0}}>{meses[monthActual]}</h5>
+    </div>
+        <div style={{margin:'20px 0',display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+            <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
+            <img
+          src={"/images/recorrido.png"}
+          alt="icon"
+          style={{width:'50px', height:'50px'}}
+        />
+        <h3 style={{fontSize:'16px', color:'white', margin:0, fontWeight:400}}> Recorriste</h3>
+        <h3 style={{fontSize:'20px', color:'white', margin:0, fontWeight:600}}>500Kms</h3>
+            </div>
+            <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
+            <section style={{borderRadius:'10px',width:'50px',height:'50px',display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'center',backgroundColor:"#f50057"}}>
+              <AttachMoney style={{color:'white',fontSize:'40px'}}/>
+            </section> 
+        <h3 style={{fontSize:'16px', color:'white', margin:0, fontWeight:400}}>Gastaste</h3>
+        <h3 style={{fontSize:'20px', color:'white', margin:0, fontWeight:600}}>$ 290.000</h3>
+            </div>
+            <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
+            <img
+          src={"/images/combustibleFondo.png"}
+          alt="icon"
+          style={{width:'50px', height:'50px'}}
+        />
+        <h3 style={{fontSize:'16px', color:'white', margin:0, fontWeight:400}}> Rendimiento</h3>
+        <h3 style={{fontSize:'20px', color:'white', margin:0, fontWeight:600}}>1gl / 21Kms</h3>
+            </div>
+            
+        </div>
+        
+    </div>
 
 
         {tanqueadasMes &&

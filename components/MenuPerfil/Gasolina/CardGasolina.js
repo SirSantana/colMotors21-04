@@ -29,7 +29,6 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
     </section>
     <section style={{display:'flex', flexDirection:'row'}}>
     <h5  style={{fontSize:'18px', color:'white', margin:0}}>{el.tipoGasolina}</h5>
-    <MoreVert  style={{color:'white',fontSize:'30px', margin:0}}/> 
     </section>
     </div>
     <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
@@ -63,21 +62,8 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                    </h3>
                  </section>
                  {el.compartida && <h5 className={classes.subtitle}>{el.mes=== monthActual ?"Saldo Mes Anterior":"Tanqueada Compartida"}</h5>}
-                 <a onClick={handleClick}>
-                  <MoreVert
-                     style={{ color: "black", cursor: "pointer", fontSize: "30px" }}
-                   />
-                 </a>
-                <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                   open={Boolean(anchorEl)}
-                   onClose={handleClose}
-                 >
-                   <MenuItem onClick={handleClose}>Editar Tanqueada</MenuItem>
-                   <MenuItem onClick={handleClose}>Eliminar Tanqueada</MenuItem>
-                 </Menu>
+                  <h5 style={{fontSize:'18px', color:'black', margin:0}}>{el.tipoGasolina}</h5>
+                 
                 </div>
                  <div
                 style={{ display: "flex", flexDirection: "row", margin: "20px 0" }}

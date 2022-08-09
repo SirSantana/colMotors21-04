@@ -62,7 +62,8 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                    </h3>
                  </section>
                  {el.compartida && <h5 className={classes.subtitle}>{el.mes=== monthActual ?"Saldo Mes Anterior":"Tanqueada Compartida"}</h5>}
-                  <h5 style={{fontSize:'18px', color:'black', margin:0}}>{el.tipoGasolina}</h5>
+                  {!el.compartida &&<h5 style={{fontSize:'18px', color:'black', margin:0}}>{el.tipoGasolina}</h5> }
+                  
                  
                 </div>
                  <div

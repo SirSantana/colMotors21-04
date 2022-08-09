@@ -15,9 +15,11 @@ export default function Gasolina({gasolina, tanque, datosVehicule}) {
   const [visibleEdit, setVisibleEdit] = useState(false)
   const dispatch = useDispatch()
   const router = useRouter()
-  const [promedio, setPromedio] = useState(null)
+  const [mes, setMes] = useState(null)
   const [edit, setEdit]=useState(false)
   const [idPost, setIdPost]=useState('')
+  let tanqueadasGlobal;
+  console.log(tanqueadasGlobal);
   console.log(datosVehicule);
 
   let length = gasolina.length
@@ -54,7 +56,7 @@ export default function Gasolina({gasolina, tanque, datosVehicule}) {
       </div>
       
       {gasolina.length >=1
-      ? !toogle ? <Mes setIdPost={setIdPost} setEdit={setEdit}  gasolinas={gasolina} setVisibleEdit={setVisibleEdit} setPromedio={setPromedio} tanque={tanque}/> :<EsteAño/>
+      ? !toogle ? <Mes setIdPost={setIdPost} setEdit={setEdit} gasolinas={gasolina} setVisibleEdit={setVisibleEdit} tanque={tanque}/> :<EsteAño setIdPost={setIdPost} setEdit={setEdit} gasolinas={gasolina} setVisibleEdit={setVisibleEdit} tanque={tanque}  setMes={setMes} mes={mes}/>
     : <>
     <Error fontSize='large' style={{margin:'20px auto 0 auto',alignItems:'center',display:'flex', flexDirection:'row', color:'#f50057'}}/>
     <div >

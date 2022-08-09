@@ -35,8 +35,8 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
     <div style={{display:'flex', flexDirection:'row', margin:'20px 0'}}>
         <div style={{borderRadius:'10px',display:'flex', flexDirection:'column',backgroundColor:'white', width:'40%', alignItems:'center', padding:'10px 0'}}>
         <LocalGasStationOutlined fontSize='large' style={{fontSize:'60px', color:'#f50057'}}/>
-        <h3  style={{fontSize:'24px', color:'black', margin:0}}>$ {el.dineroGastado}</h3>
-        <h6  style={{color:'gray',fontSize:'18px', margin:0}}> 1gl /$ {el.precioGalon}</h6>
+        <h3  style={{fontSize:'24px', color:'black', margin:0}}>${el.dineroGastado}</h3>
+        <h6  style={{color:'gray',fontSize:'18px', margin:0}}> 1gl /${el.precioGalon.toLocaleString()}</h6>
         </div>
         
     <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'center',alignItems:'center', marginLeft:'20px'}}>
@@ -108,7 +108,7 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                       fontSize: "18px",
                     }}
                   >
-                      $ {sobrante}
+                      ${sobrante.toLocaleString()}
                   </h6>
                 </div>
                 <div

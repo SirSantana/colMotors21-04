@@ -37,7 +37,7 @@ export default function ModalDetalles({setIdPost,detailsTanqueada,setEdit, setVi
              </div>
              <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between'}}>
              <h3 style={{margin:0, color:'gray', fontSize:'16px', fontWeight:'200'}}>Valor Usado Total</h3>
-             <h4 style={{margin:0,fontWeight:'600'}}>$ {detailsTanqueada.dineroUsado}</h4>
+             <h4 style={{margin:0,fontWeight:'600'}}>$ {detailsTanqueada.dineroUsado.toLocaleString()}</h4>
              </div>
              
           <div style={{display:'flex', alignItems:'center',flexDirection:'row',margin:'0 10px 10px 0', justifyContent:'space-between' }}>

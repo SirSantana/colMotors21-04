@@ -1,4 +1,5 @@
 import { Button, Divider } from "@material-ui/core"
+import { LocalGasStation } from "@material-ui/icons"
 import { loadGetInitialProps } from "next/dist/shared/lib/utils"
 import { useRef, useState } from "react"
 import AlgoritmoGasolina from "../../../libs/algoritmoGasolina"
@@ -18,6 +19,7 @@ export default function EsteAño({setIdPost,
     const view = useRef(visibleMes)
     let meses =[[],[],[],[],[],[],[],[],[],[],[],[]]
     let totales =[[],[],[],[],[],[],[],[],[],[],[],[]]
+    let dias =[" Domingo","Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
     let numeroTanqueadas=0
     for(let j= 0; j<12; j++){
         for(let i = 0; i<tanqueadas.length; i++){
@@ -30,6 +32,7 @@ export default function EsteAño({setIdPost,
         let kilometrosRecorridos =0
         let numeroTanqueadas=0
         let galonesComprados=0
+        let diasTanqueados =[]
         for(let data of meses[j]){
             let dineroGastado = typeof data.dineroGastado!== 'number' ? data.dineroGastado.toString().replace(/\./g, ""):data.dineroGastado
             gastado += Number(dineroGastado)
@@ -38,11 +41,14 @@ export default function EsteAño({setIdPost,
                 kilometrosRecorridos += data.kilometrosRecorridos
                 galonesComprados += data.galones
             }
+            let numero = new Date(data.fecha).getDate()
+            let dia = new Date(data.fecha).getDay()
+            diasTanqueados.push({numero, dia})
         }
-        totales[j].push({gastado, mes:j, kilometrosRecorridos, galonesComprados})
+        totales[j].push({gastado, mes:j, kilometrosRecorridos, galonesComprados, diasTanqueados})
       }
       }
-      console.log(view.current.scroll);
+      console.log(totales);
       const handleScroll = (ref) => {
         window.scrollTo({
           top: ref.offsetTop,
@@ -50,23 +56,75 @@ export default function EsteAño({setIdPost,
           behavior: "smooth",
         });
       };
+      console.log(totales.flat().map(el=> el.diasTanqueados.map(el=> el.numero)));
     return(
         <>
         {totales.flat().map(el=> 
             <div style={{backgroundColor:'#f1f1f1',boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px", margin:'20px 0', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-            <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+            <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'normal'}}>
     <img
           src={"/images/carro.png"}
           alt="icon"
           style={{width:'40px', height:'40px'}}
         />
-    <Divider style={{height:'30px', width:'2px', backgroundColor:'#f50057', margin:'0 10px'}}/>
-    <div>
+    <Divider style={{height:'36px', width:'2px', backgroundColor:'#f50057', margin:'0 10px'}}/>
+    <div style={{marginRight:'20px'}}>
     <h3  style={{fontSize:'18px', color:'#1b333d', margin:0, lineHeight:'10px',fontWeight:'700'}}>Promedio</h3>
     <h5  style={{fontSize:'16px', color:'#1b333d', margin:0, fontWeight:'500'}}>{mesesNumeros[el.mes]}</h5>
     </div>
+    <Button onClick={()=> {setMes(el.mes), setVisibleMes(true),handleScroll(view.current)}} variant='outlined' color='secondary' fullWidth>Ver Tanqueadas</Button>
+
     </div>
-            <div style={{margin:'20px 0',display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
+                    <div style={{display:'flex', flexDirection:'row', marginTop:'20px',flexWrap:'wrap'}}>
+                       <div style={{display:'flex', flexDirection:'row', alignItems:'center', textAlign:'center'}}>
+                           <LocalGasStation style={{width:'40px', height:'40px',color:'#f50057', boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}/>
+                           <h3 style={{fontSize:'16px', color:'#1b333d', fontWeight:"500", marginLeft:'10px'}}>Dias Tanqueados</h3>
+                        </div> 
+                        <div style={{display:'flex', marginLeft:'10px', flexDirection:'row',width:'50%', justifyContent:'left', flexWrap:'wrap'}}>
+                        {el.diasTanqueados.map(el=> 
+                        <div style={{width:'50px', height:'50px', backgroundColor:'#f50057',margin:'0 0 10px 10px', alignItems:'center',textAlign:'center', justifyContent:'center', borderRadius:'10px'}}>
+                            <h2 style={{fontSize:'18px',textAlign:'center', color:'white', margin:'0', fontWeight:"500"}}>{el.numero}</h2>
+                          <h3 style={{fontSize:'12px', textAlign:'center',color:'white', margin:'0', fontWeight:"400"}}>{dias[el.dia]}</h3> 
+                        </div>
+                            )}
+                        </div>
+                    </div>
+                    <div style={{display:'flex', marginBottom:'10px', flexDirection:'row', width:'100%',alignItems:'center', textAlign:'center', justifyContent:'space-between'}}>
+                    <div style={{display:'flex', flexDirection:'row', textAlign:'center',alignItems:'center'}}>
+                    <img
+                        src={"/images/recorrido.png"}
+                        alt="icon"
+                        style={{width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}
+                        />
+                        <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Kilometros Recorridos</h3>
+                    </div>
+                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>{el.kilometrosRecorridos} Kilometros</h3>
+                    </div>
+                    <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', width:'100%',alignItems:'center', textAlign:'center', justifyContent:'space-between'}}>
+                    <div style={{display:'flex', flexDirection:'row', textAlign:'center',alignItems:'center'}}>
+                    <img
+              src={"/images/CombustibleFondo.png"}
+              alt="icon"
+              style={{width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px",backgroundColor:'white', borderRadius:'10px'}}
+            />
+                        <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Rendimiento por Galon</h3>
+                    </div>
+                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/21Kms</h3>
+                    </div>
+                    <div style={{display:'flex', flexDirection:'row', width:'100%',alignItems:'center', textAlign:'center', justifyContent:'space-between'}}>
+                    <div style={{display:'flex', flexDirection:'row', textAlign:'center',alignItems:'center'}}>
+                    <h1 style={{margin:0,color:'#f50057',paddingBottom:'5px',textAlign:'center', width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}>$</h1>
+
+                        <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Dinero Gastado</h3>
+                    </div>
+                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>${el.gastado.toLocaleString()}</h3>
+                    </div>
+                </div>
+
+
+
+            {/* <div style={{margin:'20px 0',display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
                 <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
                 <img
               src={"/images/recorrido.png"}
@@ -91,8 +149,7 @@ export default function EsteAño({setIdPost,
             <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/21Kms</h3>
                 </div>
             </div>
-            <Button onClick={()=> {setMes(el.mes), setVisibleMes(true),handleScroll(view.current)}} variant='contained' color='secondary' fullWidth>Ver Tanqueadas</Button>
-            
+             */}
         </div>
         )
         }      

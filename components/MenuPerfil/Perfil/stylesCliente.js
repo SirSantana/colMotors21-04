@@ -182,7 +182,8 @@ export default makeStyles((theme) => ({
     height: "fit-content",
     paddingTop: "0px",
     margin:'0 auto',
-    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+    boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px",
+
     [theme.breakpoints.down("sm")]: {
       width: "80vw",
     padding:'0 20px 20px 20px',

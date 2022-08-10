@@ -12,11 +12,11 @@ export default makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
-    background:'#f1f1f1',
+    background:'#white',
     justifyContent:'center',
     alignItems:'center',
     width:'100%',
-    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+    boxShadow: "rgba(149, 157, 165, 0.6) 0px 8px 10px",
     [theme.breakpoints.down('xs')]: {
     width:'90%',
 

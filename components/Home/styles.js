@@ -60,7 +60,7 @@ export default makeStyles((theme) => ({
     width: "500px",
     border: " transparent",
     borderRadius: "10px",
-    borderBottom: "solid 1px #ccc",
+    boxShadow: "rgba(149, 157, 165, 0.6) 0px 8px 5px",
     height: "50px",
     alignItems: "center",
     justifyContent: "center",

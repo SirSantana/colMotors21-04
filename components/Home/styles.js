@@ -68,6 +68,7 @@ export default makeStyles((theme) => ({
     outline: "none",
     fontSize: "18px",
     [theme.breakpoints.down("xs")]: {
+      boxShadow: "rgba(149, 157, 165, 0.6) 0px 8px 5px",
       width: "90vw",
       backgroundSize: "36px",
       fontSize: "16px",

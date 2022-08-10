@@ -40,10 +40,12 @@ export default function EsteAño({setIdPost,
             if(data.kilometrosRecorridos !== undefined){
                 kilometrosRecorridos += data.kilometrosRecorridos
                 galonesComprados += data.galones
+                console.log(compartido);
             }
             let numero = new Date(data.fecha).getDate()
             let dia = new Date(data.fecha).getDay()
-            diasTanqueados.push({numero, dia})
+            let compartido = data.compartida === true
+            diasTanqueados.push({numero, dia, compartido})
         }
         totales[j].push({gastado, mes:j, kilometrosRecorridos, galonesComprados, diasTanqueados})
       }
@@ -56,7 +58,7 @@ export default function EsteAño({setIdPost,
           behavior: "smooth",
         });
       };
-      console.log(totales.flat().map(el=> el.diasTanqueados.map(el=> el.numero)));
+      console.log(totales.flat().map(el=> el));
     return(
         <>
         {totales.flat().map(el=> 
@@ -82,10 +84,12 @@ export default function EsteAño({setIdPost,
                            <h3 style={{fontSize:'16px', color:'#1b333d', fontWeight:"500", marginLeft:'10px'}}>Dias Tanque.</h3>
                         </div> 
                         <div style={{display:'flex', marginLeft:'10px', flexDirection:'row', justifyContent:'left', flexWrap:'wrap'}}>
-                        {el.diasTanqueados.map(el=> 
-                        <div style={{width:'50px', height:'50px', backgroundColor:'#f50057',margin:'0 0 10px 10px', alignItems:'center',textAlign:'center', justifyContent:'center', borderRadius:'10px'}}>
-                            <h2 style={{fontSize:'18px',textAlign:'center', color:'white', margin:'0', fontWeight:"500"}}>{el.numero}</h2>
-                          <h3 style={{fontSize:'12px', textAlign:'center',color:'white', margin:'0', fontWeight:"400"}}>{dias[el.dia]}</h3> 
+                        {el.diasTanqueados.map(ele=> 
+                        <div style={{width:'50px', height:'50px', backgroundColor: ele.compartido ?'#f50057':'#1b333d',margin:'0 0 10px 10px', alignItems:'center',textAlign:'center', justifyContent:'center', borderRadius:'10px'}}>
+                            <h2 style={{fontSize:'18px',textAlign:'center', color:'white', margin:'0', fontWeight:"500"}}>{ele.numero}</h2>
+                          <h3 style={{fontSize:'12px', textAlign:'center',color:'white', margin:'0', fontWeight:"400"}}>{dias[ele.dia]}</h3> 
+                          <h3 style={{fontSize:'12px', textAlign:'center',color:'white', margin:'0', fontWeight:"400"}}>{el.compartido}</h3> 
+
                         </div>
                             )}
                         </div>

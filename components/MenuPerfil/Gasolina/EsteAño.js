@@ -79,7 +79,7 @@ export default function EsteAño({setIdPost,
                     <div style={{display:'flex', flexDirection:'row', marginTop:'20px',flexWrap:'wrap'}}>
                        <div style={{display:'flex', flexDirection:'row', alignItems:'center', textAlign:'center'}}>
                            <LocalGasStation style={{width:'40px', height:'40px',color:'#f50057', boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}/>
-                           <h3 style={{fontSize:'16px', color:'#1b333d', fontWeight:"500", marginLeft:'10px'}}>Dias Tanqueados</h3>
+                           <h3 style={{fontSize:'16px', color:'#1b333d', fontWeight:"500", marginLeft:'10px'}}>Dias Tanque.</h3>
                         </div> 
                         <div style={{display:'flex', marginLeft:'10px', flexDirection:'row',width:'50%', justifyContent:'left', flexWrap:'wrap'}}>
                         {el.diasTanqueados.map(el=> 
@@ -97,9 +97,9 @@ export default function EsteAño({setIdPost,
                         alt="icon"
                         style={{width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}
                         />
-                        <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Kilometros Recorridos</h3>
+                        <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Kilometros Rec.</h3>
                     </div>
-                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>{el.kilometrosRecorridos} Kilometros</h3>
+                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>{el.kilometrosRecorridos} Kms</h3>
                     </div>
                     <div style={{display:'flex',marginBottom:'10px', flexDirection:'row', width:'100%',alignItems:'center', textAlign:'center', justifyContent:'space-between'}}>
                     <div style={{display:'flex', flexDirection:'row', textAlign:'center',alignItems:'center'}}>
@@ -108,7 +108,7 @@ export default function EsteAño({setIdPost,
               alt="icon"
               style={{width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px",backgroundColor:'white', borderRadius:'10px'}}
             />
-                        <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Rendimiento por Galon</h3>
+                        <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Rendimiento</h3>
                     </div>
                         <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/21Kms</h3>
                     </div>

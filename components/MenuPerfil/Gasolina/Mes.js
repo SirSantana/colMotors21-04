@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button, Divider } from "@material-ui/core";
 import { AttachMoney, Cached, CalendarToday, Edit, LocalGasStationOutlined, MoreVert } from "@material-ui/icons";
 import CardGasolina from "./CardGasolina";
 import{useState} from 'react'
@@ -67,9 +67,17 @@ export default function Mes({
        
     {mes === undefined &&
     <div style={{backgroundColor:'#f1f1f1',boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px", marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-    <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-    <h3  style={{fontSize:'16px', color:'black', margin:0}}>Este Mes...</h3>
-    <h5  style={{fontSize:'18px', color:'black', margin:0}}>{meses[monthActual]}</h5>
+    <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+    <img
+          src={"/images/carro.png"}
+          alt="icon"
+          style={{width:'40px', height:'40px'}}
+        />
+    <Divider style={{height:'30px', width:'2px', backgroundColor:'#f50057', margin:'0 10px'}}/>
+    <div>
+    <h3  style={{fontSize:'18px', color:'#1b333d', margin:0, lineHeight:'10px',fontWeight:'700'}}>Promedio</h3>
+    <h5  style={{fontSize:'16px', color:'#1b333d', margin:0, fontWeight:'500'}}>{meses[monthActual]}</h5>
+    </div>
     </div>
         <div style={{margin:'20px 0',display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
             <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>

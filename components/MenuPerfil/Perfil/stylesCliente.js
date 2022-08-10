@@ -198,10 +198,11 @@ export default makeStyles((theme) => ({
     height: "fit-content",
     paddingTop: "0px",
     margin:'0 auto',
-    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+    boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 24px",
     [theme.breakpoints.down("sm")]: {
       width: "90vw",
-    padding:'0 20px 20px 20px',
+    boxShadow: "rgba(149, 157, 165, 1) 0px 8px 24px",
+
     },
   },
   icon: {
@@ -249,6 +250,12 @@ export default makeStyles((theme) => ({
     color: "gray",
     marginBottom: "5px",
     marginTop: 0,
+  },
+  titulo1:{
+    margin:0, fontSize:'30px', color:'#1b333d',marginLeft:'5px',fontWeight:'700',
+    [theme.breakpoints.down("sm")]: {
+      fontSize:'20px'
+    },
   },
   nombre1: {
     margin: "0px 10px 0px 10px",

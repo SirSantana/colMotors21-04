@@ -28,17 +28,17 @@ export async function getServerSideProps({ params }) {
 
       return gasolina;
     });
-    console.log(vehicule);
+    console.log('re',vehicule.nameOwner);
     let owner = vehicule.owner.toString(),
         marca=vehicule.marca,
-        referencia= vehicule.referencia
-
+        referencia= vehicule.referencia,
+        nombre = vehicule.nameOwner
     let datosVehicule = {
       owner,
       marca,
       referencia,
+      nombre
     }
-    console.log(datosVehicule);
     let tanqueGasolina;
     if (vehicule.tanqueGasolina !== undefined) {
       tanqueGasolina = vehicule.tanqueGasolina;

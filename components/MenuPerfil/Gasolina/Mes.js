@@ -15,7 +15,7 @@ export default function Mes({
 }) {
     const [visibleDetails, setVisibleDetails] =useState({bol:false, id:''})
     let meses = {0:'Enero', 1:'Febrero', 2:'Marzo', 3:'Abril', 4:'Mayo', 5:'Junio', 6:'Julio', 7:'Agosto', 8:'Septiembre', 9:'Octubre',10:'Noviembre', 11:'Diciembre'}
-    let monthActual = mes || new Date().getMonth()
+    let monthActual = mes !== undefined ? mes : new Date().getMonth()
   console.log(mes);
 
     const tanqueadas = AlgoritmoGasolina({gasolinas, tanque})
@@ -64,14 +64,7 @@ export default function Mes({
           alignContent: "center",
         }}
       >
-       <Button
-      onClick={() => setVisibleEdit(true)}
-      variant="outlined"
-      color="secondary"
-      style={{marginBottom:'20px'}}
-    >
-      Añadir
-    </Button>
+       
     {mes === undefined &&
     <div style={{border:'1px solid #464646', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
     <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>

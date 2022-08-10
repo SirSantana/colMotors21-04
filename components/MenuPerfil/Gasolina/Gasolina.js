@@ -1,4 +1,4 @@
-import { Error, AttachMoney, LocalGasStationOutlined, Delete, Router } from "@material-ui/icons";
+import { Error,AddBox } from "@material-ui/icons";
 import {Button} from '@material-ui/core'
 import useStyles from "../Perfil/stylesCliente";
 import { useEffect, useState } from "react";
@@ -30,27 +30,25 @@ export default function Gasolina({gasolina, tanque, datosVehicule}) {
     }
   return (
     <div className={classes.conta2}   >
-      <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'10px'}}>
-      <LocalGasStationOutlined fontSize='large' style={{fontSize:'46px', color:'#f50057'}}/>
-
-      </div>
-      <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-          <div style={{display:'flex', flexDirection:'row', alignSelf:'center'}}>
-          <h2 style={{margin:0, fontSize:'30px', color:'#f50057',marginLeft:'5px',fontWeight:'700'}}>Gasolina</h2>
-          </div>
-         <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px'}}>
-             <img
-        style={{ marginLeft: "10px", width: "60px", height: "60px" }}
+      <div style={{display:'flex', alignItems:'center', flexDirection:'column', justifyContent:'center'}}>
+      <img
+        style={{ margin: "0", width: "60px", height: "60px" }}
         src={`/images/${datosVehicule.marca}.png`}
         alt={'combustible'}
       />
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-      <h2 style={{margin:0, fontSize:'20px', color:'black',marginLeft:'10px',fontWeight:'600'}}>Vehiculo</h2>
-      <h4 style={{margin:0, fontSize:'20px', color:'gray',marginLeft:'10px',fontWeight:'500'}}>{datosVehicule.referencia}</h4>
+      <h4 style={{margin:0, fontSize:'22px', color:'#1b333d',fontWeight:'600'}}>{datosVehicule.referencia}</h4>
+
       </div>
+      <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', margin:'20px 0'}}>
+          <div style={{display:'flex', flexDirection:'row', alignSelf:'center'}}>
+          <h2 className={classes.titulo1}>Hola {datosVehicule.nombre.split(" ",1)}! </h2>
+          </div>
+         <div onClick={()=> setVisibleEdit(true)} style={{display:'flex', cursor:'pointer', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+             <AddBox style={{color:"#f50057", fontSize:'30px'}}/>
+      <h2 style={{margin:'0 0 5px 5px', fontSize:'18px', color:'#f50057',fontWeight:'400'}}>Agregar Tanqueada</h2>
          </div>
       </div>
-      <div style={{display:'flex',alignItems:'center', flexDirection:'row',justifyContent:'center', width:'100%',height:'40px', backgroundColor:'lightGray', margin:'0 auto', borderRadius:'10px'}}>
+      <div  style={{display:'flex',alignItems:'center', flexDirection:'row',justifyContent:'center', width:'100%',height:'40px', backgroundColor:'#f1f1f1', margin:'0 auto', borderRadius:'10px'}}>
           <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Mes</h4>
           <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Año</h4>
       </div>

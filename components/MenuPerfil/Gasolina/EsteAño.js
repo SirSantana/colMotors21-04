@@ -1,3 +1,4 @@
+import { Button, Divider } from "@material-ui/core"
 import { loadGetInitialProps } from "next/dist/shared/lib/utils"
 import { useRef, useState } from "react"
 import AlgoritmoGasolina from "../../../libs/algoritmoGasolina"
@@ -52,27 +53,31 @@ export default function EsteAño({setIdPost,
     return(
         <>
         {totales.flat().map(el=> 
-        <a onClick={()=> {setMes(el.mes), setVisibleMes(true),handleScroll(view.current)}}>
-            <div style={{border:'1px solid #f50057', margin:'20px 0', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-        <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-        <h5  style={{fontSize:'18px', color:'black', margin:0}}>{mesesNumeros[el.mes]}</h5>
-        </div>
+            <div style={{backgroundColor:'#f1f1f1',boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px", margin:'20px 0', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+            <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'left'}}>
+    <img
+          src={"/images/carro.png"}
+          alt="icon"
+          style={{width:'40px', height:'40px'}}
+        />
+    <Divider style={{height:'30px', width:'2px', backgroundColor:'#f50057', margin:'0 10px'}}/>
+    <div>
+    <h3  style={{fontSize:'18px', color:'#1b333d', margin:0, lineHeight:'10px',fontWeight:'700'}}>Promedio</h3>
+    <h5  style={{fontSize:'16px', color:'#1b333d', margin:0, fontWeight:'500'}}>{mesesNumeros[el.mes]}</h5>
+    </div>
+    </div>
             <div style={{margin:'20px 0',display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
                 <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
                 <img
               src={"/images/recorrido.png"}
               alt="icon"
-              style={{width:'40px', height:'40px',border:'1px solid #f50057', borderRadius:'10px'}}
+              style={{width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}
             />
             <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}> Recorriste</h3>
             <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>{el.kilometrosRecorridos}</h3>
                 </div>
                 <div style={{display:'flex', flexDirection:'column',alignItems:'center',}}>
-                <img
-              src={"/images/dinero.png"}
-              alt="icon"
-              style={{width:'40px', height:'40px',border:'1px solid #f50057', borderRadius:'10px'}}
-            />
+                <h1 style={{margin:0,color:'#f50057',paddingBottom:'5px',textAlign:'center', width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}>$</h1>
             <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}>Gastaste</h3>
             <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>${el.gastado.toLocaleString()}</h3>
                 </div>
@@ -80,16 +85,15 @@ export default function EsteAño({setIdPost,
                 <img
               src={"/images/CombustibleFondo.png"}
               alt="icon"
-              style={{width:'40px', height:'40px',border:'1px solid #f50057', borderRadius:'10px'}}
+              style={{width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px",backgroundColor:'white', borderRadius:'10px'}}
             />
             <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}> Rendimiento</h3>
             <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/21Kms</h3>
                 </div>
-                
             </div>
+            <Button onClick={()=> {setMes(el.mes), setVisibleMes(true),handleScroll(view.current)}} variant='contained' color='secondary' fullWidth>Ver Tanqueadas</Button>
             
         </div>
-        </a>
         )
         }      
         {visibleMes && <div ref={view}><Mes  setIdPost={setIdPost} setEdit={setEdit} gasolinas={gasolinas} setVisibleEdit={setVisibleEdit} tanque={tanque} mes={mes}/></div>  }

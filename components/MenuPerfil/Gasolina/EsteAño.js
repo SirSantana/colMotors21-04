@@ -81,7 +81,7 @@ export default function EsteAño({setIdPost,
                            <LocalGasStation style={{width:'40px', height:'40px',color:'#f50057', boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}/>
                            <h3 style={{fontSize:'16px', color:'#1b333d', fontWeight:"500", marginLeft:'10px'}}>Dias Tanque.</h3>
                         </div> 
-                        <div style={{display:'flex', marginLeft:'10px', flexDirection:'row',width:'50%', justifyContent:'left', flexWrap:'wrap'}}>
+                        <div style={{display:'flex', marginLeft:'10px', flexDirection:'row', justifyContent:'left', flexWrap:'wrap'}}>
                         {el.diasTanqueados.map(el=> 
                         <div style={{width:'50px', height:'50px', backgroundColor:'#f50057',margin:'0 0 10px 10px', alignItems:'center',textAlign:'center', justifyContent:'center', borderRadius:'10px'}}>
                             <h2 style={{fontSize:'18px',textAlign:'center', color:'white', margin:'0', fontWeight:"500"}}>{el.numero}</h2>
@@ -115,7 +115,6 @@ export default function EsteAño({setIdPost,
                     <div style={{display:'flex', flexDirection:'row', width:'100%',alignItems:'center', textAlign:'center', justifyContent:'space-between'}}>
                     <div style={{display:'flex', flexDirection:'row', textAlign:'center',alignItems:'center'}}>
                     <h1 style={{margin:0,color:'#f50057',paddingBottom:'5px',textAlign:'center', width:'40px', height:'40px',boxShadow: "rgba(149, 157, 165, 0.6) 2px 2px 2px", backgroundColor:'white', borderRadius:'10px'}}>$</h1>
-
                         <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Dinero Gastado</h3>
                     </div>
                         <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>${el.gastado.toLocaleString()}</h3>

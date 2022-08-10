@@ -22,7 +22,7 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
   return(
     <>
     {el.estado !== 'finalizado'?
-    <div style={{backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+    <div style={{boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px",backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
     <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
     <section style={{display:'flex', flexDirection:'row'}}>
     <CalendarToday style={{ color:'white', marginRight:'10px'}}/>

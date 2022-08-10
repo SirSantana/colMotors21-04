@@ -26,6 +26,7 @@ const initialForm = {
   kilometraje: "",
   owner:'',
   gasolinaInicial:'',
+  fecha:''
 };
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -67,12 +68,11 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
       label: '100%',
     },
   ];
-
-
   const {id} = router.query
   const handleChange = (e, newValue) => {
+    console.log(form);
     if(newValue){
-    setForm({ ...form, gasolinaInicial: newValue});
+    setForm({ ...form, gasolinaInicial: newValue, fecha:form.fecha.replace(/-/g, '\/').replace(/T.+/, '')});
     }else{
       setForm({ ...form, [e.target.name]: e.target.value});
     }
@@ -156,6 +156,17 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
                 half="true"
             variant="standard"
             type='number'
+              />
+              <label style={{margin:'20px 20px 0 0'}}>Agrega la Fecha</label>
+              <input 
+              style={{marginTop:'10px'}}
+              type='date'
+              min={new Date(vehicule.fecha).toISOString().split('T')[0]}
+              variant='standard'
+              fullWidth
+              name="fecha"
+              half="true"
+              onChange={handleChange}
               />
               {edit &&
               <>

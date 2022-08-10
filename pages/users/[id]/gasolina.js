@@ -6,7 +6,7 @@ import gasolinaModel from "../../../models/gasolinaModel";
 import vehiculoModel from "../../../models/vehiculoModel";
 
 export default function GasolinaRoute({ Gasolinaa, tanqueGasolina, datosVehicule }) {
-  console.log(datosVehicule);
+  console.log(Gasolinaa);
   return (
     <Layout title={"Consumo | Quarks"}>
       <Gasolina gasolina={Gasolinaa} tanque={tanqueGasolina} datosVehicule={datosVehicule}/>
@@ -24,7 +24,8 @@ export async function getServerSideProps({ params }) {
       gasolina._id = gasolina._id.toString();
       gasolina.owner = gasolina.owner.toString();
       gasolina.vehiculo = gasolina.vehiculo.toString();
-      gasolina.fecha = gasolina.fecha.toString();
+      
+      gasolina.fecha = new Date(gasolina.fecha.getTime() - gasolina.fecha.getTimezoneOffset() * -60000 ).toString()
 
       return gasolina;
     });

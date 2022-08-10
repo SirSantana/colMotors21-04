@@ -19,14 +19,13 @@ export default function Gasolina({gasolina, tanque, datosVehicule}) {
   const [edit, setEdit]=useState(false)
   const [idPost, setIdPost]=useState('')
   let tanqueadasGlobal;
-  console.log(tanqueadasGlobal);
-  console.log(datosVehicule);
-
+  console.log(gasolina);
   let length = gasolina.length
     let vehicule ={
       idVehicule:router.query,
       kilometraje: gasolina.length > 0 ?  gasolina[length-1].kilometraje: null,
-      owner:datosVehicule.ownerVehicule
+      owner:datosVehicule.owner,
+      fecha:gasolina.length > 0 ?  gasolina[length-1].fecha: null,
     }
   return (
     <div className={classes.conta2}   >
@@ -66,7 +65,7 @@ export default function Gasolina({gasolina, tanque, datosVehicule}) {
           <Button variant="outlined"
           color="secondary"
           style={{marginBottom:'20px'}}
-          onClick={()=> router.push(`/users/${datosVehicule.ownerVehicule}`)}
+          onClick={()=> router.push(`/users/${datosVehicule.owner}`)}
           fullWidth
           >Agrega el tamaño del tanque de tu auto 
           </Button>

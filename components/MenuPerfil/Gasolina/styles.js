@@ -89,7 +89,8 @@ export default makeStyles((theme) => ({
     },
   },
   containerCard:{
-    border:'1px solid #f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'
+    backgroundColor:'#f1f1f1', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px',
+    boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px"
   },
   containerCard2:{
     display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'

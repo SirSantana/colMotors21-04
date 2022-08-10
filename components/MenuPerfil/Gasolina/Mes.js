@@ -66,7 +66,7 @@ export default function Mes({
       >
        
     {mes === undefined &&
-    <div style={{border:'1px solid #464646', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
+    <div style={{backgroundColor:'#f1f1f1',boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px", marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
     <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
     <h3  style={{fontSize:'16px', color:'black', margin:0}}>Este Mes...</h3>
     <h5  style={{fontSize:'18px', color:'black', margin:0}}>{meses[monthActual]}</h5>

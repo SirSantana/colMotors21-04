@@ -48,9 +48,9 @@ export default function Gasolina({gasolina, tanque, datosVehicule}) {
       <h2 style={{margin:'0 0 5px 5px', fontSize:'18px', color:'#f50057',fontWeight:'400'}}>Agregar Tanqueada</h2>
          </div>
       </div>
-      <div  style={{display:'flex',alignItems:'center', flexDirection:'row',justifyContent:'center', width:'100%',height:'40px', backgroundColor:'#f1f1f1', margin:'0 auto', borderRadius:'10px'}}>
-          <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Mes</h4>
-          <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Año</h4>
+      <div  style={{display:'flex',boxShadow: "rgba(149, 157, 165, 0.6) 0px 5px 10px",alignItems:'center', flexDirection:'row',justifyContent:'center', width:'100%',height:'40px', backgroundColor:'#f50057', margin:'0 auto', borderRadius:'10px'}}>
+          <h4 onClick={()=>setToogle(false)}  style={{cursor:'pointer', backgroundColor:!toogle && 'white',color:!toogle ? '#f50057':'white',borderRadius:!toogle && '10px',textAlign:'center', width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Mes</h4>
+          <h4 onClick={()=>setToogle(true)} style={{cursor:'pointer', backgroundColor:toogle && 'white',borderRadius:toogle && '10px',color:!toogle ? 'white':'#f50057',textAlign:'center',width:'48%',margin:0, fontSize:'22px',fontWeight:'400'}}>Este Año</h4>
       </div>
       
       {gasolina.length >=1

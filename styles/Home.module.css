@@ -140,11 +140,9 @@
   text-decoration: none;
   /* border: 2px solid #1b333d; */
   border-radius: 5px;
-  transition: color 0.15s ease, border-color 0.15s ease;
   width: 50%;
   height: 400px;
   min-height: 250px;
-box-shadow: 0 0 30px rgb(255, 255, 255);
 }
 
 .card:hover,
@@ -154,11 +152,7 @@ box-shadow: 0 0 30px rgb(255, 255, 255);
   border-color: #1b333d;
   
 }
-.card1:hover,
-.card1:focus,
-.card1:active {
-  border: 2px solid #ffffff;
-}
+
 
 .card h2 {
   margin: 0 0 1rem 0;

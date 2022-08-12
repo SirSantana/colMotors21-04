@@ -87,11 +87,8 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
     setMessage({description:'Agregando Tanqueada...'})
     if(edit){
       if(form?.gasolinaInicial?.props?.value !== form2.tipoGasolina){
-        console.log('hol');
         return dispatch(editGasolina({...form2, gasolinaInicial:form.gasolinaInicial},idPost, router, setMessage))
       }else{
-        console.log('holaaaa');
-
         return dispatch(editGasolina({...form2},idPost, router, setMessage))
         
       }

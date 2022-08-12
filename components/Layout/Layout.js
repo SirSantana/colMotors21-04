@@ -22,7 +22,7 @@ export default function Layout({children, title, description}){
         >
           quarks | Colombia
           <span className={styles.logo}>
-            <Image src="/images/LogoQuarks1PNG.png" alt="colMotors Logo" width={60} height={60} />
+            <img src="/images/LogoQuarks1PNG.png" alt="colMotors Logo" style={{width:"60px" ,height:"60px"}} />
           </span>
         </a>
       </footer>

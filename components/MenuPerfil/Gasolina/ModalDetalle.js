@@ -27,7 +27,7 @@ export default function ModalDetalles({setIdPost,detailsTanqueada,setEdit, setVi
     >
            <DialogTitle style={{display:'flex', flexDirection:'column',alignItems:'center', justifyContent:'center', padding:10}} id="alert-dialog-title">
      <LocalGasStationOutlined fontSize="large" style={{color:'#f50057',margin:'0 auto'}}/>  
-       <h4 style={{margin:'0'}}>{detailsTanqueada.compartida !== undefined ?" Detalle Consumo Compartido":"Detalle Consumo" }</h4>   
+       <h4 style={{margin:'0'}}>{!detailsTanqueada.compartida ?" Detalle Consumo ":"Detalle Consumo Compartido" }</h4>   
        </DialogTitle>
             <DialogContent >
        

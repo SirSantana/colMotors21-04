@@ -39,9 +39,7 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
     setAnchorEl(null);
     event.stopPropagation();
   };
-  console.log(el);
   let myDate = new Date(el.fecha).toLocaleDateString()
-  console.log(el.fecha);
   let dineroGastado = typeof el.dineroGastado!== 'number' ? el.dineroGastado.toString().replace(/\./g, ""):el.dineroGastado
   let sobrante = dineroGastado - el.dineroUsado
   return(
@@ -82,13 +80,13 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
               <div className={classes.containerCard2}>
               <section style={{ display: "flex", flexDirection: "row" }}>
                    <CalendarToday
-                    style={{ color: "white", marginRight: "10px", color: "black" }}/>
+                    style={{ color: "#1b333d", marginRight: "10px", color: "black" }}/>
                    <h3 className={classes.subtitle}>
                      {myDate}
                    </h3>
                  </section>
-                 {el.compartida && <h5 className={classes.subtitle}>{el.mes=== monthActual ?"Saldo Mes Anterior":"Tanqueada Compartida"}</h5>}
-                  {!el.compartida &&<h5 style={{fontSize:'18px', color:'black', margin:0}}>{el.tipoGasolina}</h5> }
+                 {el.compartida &&<h5 className={classes.subtitle}>Tanqueada Compartida</h5>}
+                  {!el.compartida &&<h5 style={{fontSize:'18px', color:'#1b333d', margin:0}}>{el.tipoGasolina}</h5> }
                   
                  
                 </div>
@@ -159,8 +157,8 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                     </h3>
                   </section>
                   <section>
-                    <h3 className={classes.subtitle}>Tiempo</h3>
-                    <h3 className={classes.subtitle2}> {el.dias} Dia/s</h3>
+                    <h3 className={classes.subtitle}>Valor Tanqueada</h3>
+                    <h3 className={classes.subtitle2}> $ {el.dineroGastado.toLocaleString()} </h3>
                   </section>
                 </div>
                 </div>

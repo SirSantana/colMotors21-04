@@ -65,14 +65,14 @@ export default makeStyles((theme) => ({
     },
   },
   subtitle:{
-    color:'white', fontSize:'18px', fontWeight:'600',color:'black',margin:0,
+     fontSize:'18px', fontWeight:'600',color:'#1b333d',margin:0,
     [theme.breakpoints.down("sm")]: {
       fontSize:'16px',
   
       },
   },
   subtitle2:{
-    color:'white', fontSize:'16px',fontWeight:'400',color:'black',margin:0,
+     fontSize:'16px',fontWeight:'400',color:'#1b333d',margin:0,
     [theme.breakpoints.down("sm")]: {
       fontSize:'14px',
   

@@ -1,4 +1,4 @@
-import { Menu, MenuItem } from "@material-ui/core";
+import { Box, Menu, MenuItem, Slider} from "@material-ui/core";
 import {CalendarToday,LocalGasStationOutlined,MoreVert,} from "@material-ui/icons";
 import { useState } from "react";
 import useStyles from "./styles";
@@ -6,6 +6,31 @@ import useStyles from "./styles";
 export default function CardGasolina({el,setVisibleDetails,monthActual}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const marks = [
+    {
+      value: 0,
+      label: 'E',
+    },
+    {
+      value: el.fuelInicialPercentaje,
+      label:Math.trunc(el.fuelInicialPercentaje)+ "%",
+    },
+    {
+      value:"50",
+      label: el.fuelFinalPercentaje > 40 && el.fuelFinalPercentaje <60 ? null: <LocalGasStationOutlined/>,
+    },
+    {
+      value: el.fuelFinalPercentaje,
+      label: Math.trunc(el.fuelFinalPercentaje)+ "%",
+    },
+    {
+      value: 100,
+      label: 'F',
+    },
+  ];
+  function valuetext(value) {
+    return `${value}°C`;
+  }
   const handleClick = (event) => {
     event.stopPropagation();
     setAnchorEl(event.currentTarget);
@@ -70,7 +95,7 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                  <div
                 style={{ display: "flex", flexDirection: "row", margin: "20px 0" }}
               >
-                <div
+                {/* <div
                   className={classes.containerCard}
                   style={{
                     borderRadius: "10px",
@@ -78,8 +103,20 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                     alignItems: "center",
                     padding: "10px 0",
                   }}
-                >
-                  <LocalGasStationOutlined
+                > */}
+                <Box  spacing={1} direction="row">
+                  <Slider
+                  style={{color:"#f50057"}}
+                  disabled
+                    orientation="vertical"
+                    getAriaValueText={valuetext}
+                    defaultValue={[el.fuelInicialPercentaje, el.fuelFinalPercentaje]}
+                    marks={marks}
+                  />
+                  
+                  </Box>
+
+                  {/* <LocalGasStationOutlined
                     fontSize="large"
                     style={{ fontSize: "60px", color: "#f50057" }}
                   />
@@ -97,8 +134,8 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                     }}
                   >
                       ${sobrante.toLocaleString()}
-                  </h6>
-                </div>
+                  </h6> */}
+                {/* </div> */}
                 <div
                   style={{
                     display: "flex",

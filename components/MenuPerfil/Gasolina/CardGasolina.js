@@ -13,15 +13,15 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
     },
     {
       value: el.fuelInicialPercentaje,
-      label:Math.trunc(el.fuelInicialPercentaje)+ "%",
+      label:"(T.I) " +Math.trunc(el.fuelInicialPercentaje)+ "%",
     },
     {
       value:"50",
-      label: el.fuelFinalPercentaje > 40 && el.fuelFinalPercentaje <60 ? null: <LocalGasStationOutlined/>,
+      label: el.fuelInicialPercentaje > 40 && el.fuelInicialPercentaje <60 || el.fuelFinalPercentaje > 40 && el.fuelFinalPercentaje <60? null: <LocalGasStationOutlined style={{color:'#f50057'}}/>,
     },
     {
       value: el.fuelFinalPercentaje,
-      label: Math.trunc(el.fuelFinalPercentaje)+ "%",
+      label: "(T.F) " + Math.trunc(el.fuelFinalPercentaje)+ "%",
     },
     {
       value: 100,
@@ -102,7 +102,7 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
                     padding: "10px 0",
                   }}
                 > */}
-                <Box  spacing={1} direction="row">
+                <Box  spacing={1} direction="row" width={100}>
                   <Slider
                   style={{color:"#f50057"}}
                   disabled

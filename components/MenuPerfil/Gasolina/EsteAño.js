@@ -114,7 +114,7 @@ export default function EsteAño({setIdPost,
             />
                         <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Rendimiento</h3>
                     </div>
-                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/21Kms</h3>
+                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/{Math.trunc(el.kilometrosRecorridos / el.galonesComprados)}kms</h3>
                     </div>
                     <div style={{display:'flex', flexDirection:'row', width:'100%',alignItems:'center', textAlign:'center', justifyContent:'space-between'}}>
                     <div style={{display:'flex', flexDirection:'row', textAlign:'center',alignItems:'center'}}>

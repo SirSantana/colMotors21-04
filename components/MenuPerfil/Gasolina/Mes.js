@@ -111,7 +111,7 @@ export default function Mes({
           style={{width:'40px', height:'40px'}}
         />
         <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}> Rendimiento</h3>
-        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>{totales.galonRecorrido!== false ? `1gl/${totales.galonRecorrido}kms` : 'Sin datos'}</h3>
+        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>{totales.galonRecorrido!== false ? `1gl/${Math.trunc(totales.galonRecorrido)}kms` : 'Sin datos'}</h3>
 
             </div>
             

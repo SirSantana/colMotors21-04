@@ -115,7 +115,6 @@ console.log(form2);
     let mes = fecha.getMonth()
     let dia = fecha.getDate()
     mes+=1
-console.log(new Date(vehicule.fecha).toISOString().split('T')[0]);
   return (
     <div>
       <Dialog

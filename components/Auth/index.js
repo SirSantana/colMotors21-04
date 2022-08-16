@@ -150,7 +150,7 @@ const SignUp = () => {
                     placeholder="james10@gmail.com"
                     handleChange={handleChange}
                     type="email"
-
+                    fullWidth
                   />
                   <Input
                     name="password"
@@ -158,7 +158,7 @@ const SignUp = () => {
                     handleChange={handleChange}
                     type={showPassword ? "text" : "password"}
                     handleShowPassword={handleShowPassword}
-
+                    fullWidth
                   />
 
                   {isSignup && (
@@ -167,7 +167,7 @@ const SignUp = () => {
                       label="Repite la contraseña"
                       handleChange={handleChange}
                       type="password"
-
+                      fullWidth
                     />
                   )}
                 </Grid>

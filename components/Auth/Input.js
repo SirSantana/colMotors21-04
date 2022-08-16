@@ -4,21 +4,21 @@ import useStyles from './styles'
 import {Visibility} from '@material-ui/icons';
 import {VisibilityOff} from '@material-ui/icons';
 
-const Input = ({name,variant, handleChange, label, half, autoFocus, type, handleShowPassword, value,placeholder, disabled }) => (
+const Input = ({name,variant, handleChange, label, half, autoFocus, type, handleShowPassword, value,placeholder, disabled, fullWidth}) => (
   
   
-  <Grid item xs={12} sm={half ? 6 : 12}>
+  <Grid item xs={half ? 6 : 12} sm={half ? 6 : 12}>
     <TextField
       name={name}
       onChange={handleChange}
       variant={variant ? variant : 'outlined'}
       required
-      fullWidth
+      fullWidth={fullWidth ? true: false}
       label={label}
       autoFocus={autoFocus}
       type={type}
       disabled={disabled}
-      InputLabelProps={{ style: {display:'flex', flexWrap:'true', fontSize: 14 } }}
+      InputLabelProps={{ style: {display:'flex', flexWrap:'true', fontSize: 14, } }}
       value={value}
       placeholder={placeholder}
       InputProps={name === 'password' ? {

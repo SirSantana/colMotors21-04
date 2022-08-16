@@ -10,7 +10,8 @@ import {
   MenuItem,Slide,
   FormControl,
   Slider,
-  Box
+  Box,
+  TextField
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import {useRef, useState, forwardRef } from "react";
@@ -142,7 +143,6 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
                 placeholder="90.000"
                 handleChange={handleChange}
                 half="true"
-            variant="standard"
             type='number'
               />
               <Input
@@ -151,20 +151,9 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
                 placeholder={vehicule.kilometraje}
                 handleChange={handleChange}
                 half="true"
-            variant="standard"
             type='number'
               />
-              <label style={{margin:'20px 20px 0 0'}}>Agrega la Fecha</label>
-              <input 
-              style={{marginTop:'10px'}}
-              type='date'
-              min={new Date(vehicule.fecha).toISOString().split('T')[0]}
-              variant='standard'
-              fullWidth
-              name="fecha"
-              half="true"
-              onChange={handleChange}
-              />
+              
               {edit &&
               <>
               <Input
@@ -173,12 +162,12 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
                 placeholder={vehicule.precioGalon}
                 handleChange={handleChange}
                 half="true"
-            variant="standard"
             type='number'
               />
                <FormControl
             className={classes.formControl}
-            variant="standard"
+            variant="outlined"
+            style={{width:'45%'}}
           >
             <InputLabel id="demo-simple-select-label">
                 Tipo
@@ -190,6 +179,7 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
               label="Tipo"
               onChange={handleChange}
               name="tipoGasolina"
+
             >
               <MenuItem  value={"Extra"}>Extra</MenuItem>
               <MenuItem value={"Corriente"}>Corriente</MenuItem>
@@ -197,6 +187,17 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
             </Select>
           </FormControl>
               </>}
+              <div>
+              <label>{!edit ? "Agrega la Fecha": "Cambia la Fecha" }</label>
+              <Input 
+              type='date'
+              min={new Date(vehicule.fecha).toISOString().split('T')[0]}
+              name="fecha"
+              half="true"
+              onChange={handleChange}
+              // helperText={!edit ? "Agrega la Fecha": "Cambia la Fecha" }
+              />
+              </div>
           <Box name='gasolinaInicial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>
           <InputLabel >
           Selecciona un aproximado de cuanto combustible tienes en el tanque. (antes de tanquear)

@@ -25,7 +25,7 @@ export async function getServerSideProps({ params }) {
       gasolina.owner = gasolina.owner.toString();
       gasolina.vehiculo = gasolina.vehiculo.toString();
       
-      gasolina.fecha = new Date(gasolina.fecha.getTime() - gasolina.fecha.getTimezoneOffset() * -30000 ).toString()
+      gasolina.fecha = new Date(gasolina.fecha.getTime() - gasolina.fecha.getTimezoneOffset() * -60000 ).toString()
 
       return gasolina;
     });

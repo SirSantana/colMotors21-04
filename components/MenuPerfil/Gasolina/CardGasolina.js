@@ -42,8 +42,9 @@ export default function CardGasolina({el,setVisibleDetails,monthActual, setIdPos
   //   setVisibleEdit(true),
   //   setEdit(true)
   // }
-  console.log(el);
   let myDate = new Date(el.fecha).toLocaleDateString()
+  console.log('fecha',el.fecha);
+  console.log('myDate',myDate);
   let dineroGastado = typeof el.dineroGastado!== 'number' ? el.dineroGastado.toString().replace(/\./g, ""):el.dineroGastado
   let sobrante = dineroGastado - el.dineroUsado
 

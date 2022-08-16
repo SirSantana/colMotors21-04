@@ -187,17 +187,15 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
             </Select>
           </FormControl>
               </>}
-              <div>
-              <label>{!edit ? "Agrega la Fecha": "Cambia la Fecha" }</label>
               <Input 
               type='date'
               min={new Date(vehicule.fecha).toISOString().split('T')[0]}
               name="fecha"
               half="true"
               onChange={handleChange}
+              fullWidth
               // helperText={!edit ? "Agrega la Fecha": "Cambia la Fecha" }
               />
-              </div>
           <Box name='gasolinaInicial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>
           <InputLabel >
           Selecciona un aproximado de cuanto combustible tienes en el tanque. (antes de tanquear)

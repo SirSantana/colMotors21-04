@@ -1,22 +1,38 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Slide } from "@material-ui/core";
 import { BarChartOutlined, Edit, LocalGasStationOutlined, OpacityOutlined, PhotoSizeSelectLargeTwoTone, PlaceOutlined } from "@material-ui/icons";
 import { forwardRef, useState } from "react";
+import {useDispatch} from 'react-redux'
+import { deleteGasolina } from "../../../reducers/Actions/gasolinActions";
+import VisibleDelete from "../../../utils/PostCard/visibleDelete";
+import {useRouter} from 'next/router'
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 export default function ModalDetalles({setIdPost,detailsTanqueada,setEdit, setVisibleEdit, setVisibleDetails, visibleDetails}){
   const [litros, setLitros] = useState(false)
+  const dispatch = useDispatch()
+  const router = useRouter();
+
   const handleSend=()=>{
     setIdPost(detailsTanqueada._id),
-     setVisibleEdit(true),
-      setEdit(true)
+    setVisibleEdit(true),
+    setEdit(true)
   }
+  const [visibleDelete, setVisibleDelete]= useState(false)
+  const [message, setMessage] = useState(null);
+
   console.log(detailsTanqueada);
+
+  
+  const handleDelete=()=>{
+    console.log();
+    dispatch(deleteGasolina(detailsTanqueada._id, router, setMessage))
+  }
   
   return(
     <>
-    
+    {visibleDelete && <VisibleDelete message={message} handleDelete={handleDelete} setVisibleDelete={setVisibleDelete} visibleDelete={visibleDelete}/>}
     <Dialog
       open={visibleDetails.bol}
       onClose={()=> setVisibleDetails({bol:false, id:detailsTanqueada._id})}
@@ -89,17 +105,17 @@ export default function ModalDetalles({setIdPost,detailsTanqueada,setEdit, setVi
              </div>
            <DialogActions>
          <Button
-           onClick={()=> setVisibleDetails({bol:false,id:detailsTanqueada._id})}
-           variant="contained"
+           onClick={()=> setVisibleDelete(true)}
            autoFocus
+           variant="outlined"
            color="secondary"
            fullWidth
          >
-           Regresar
+           Eliminar
          </Button>
          <Button
            onClick={handleSend}
-           variant="outlined"
+           variant="contained"
            autoFocus
            color="secondary"
          fullWidth

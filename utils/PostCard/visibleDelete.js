@@ -1,14 +1,24 @@
-import { Button,Divider,Paper,Typography } from "@material-ui/core";
+import { Button,Dialog,Divider,Paper,Typography } from "@material-ui/core";
 import { Close, Error, Check } from "@material-ui/icons";
 
 import useStyles from '../stylesCard.js'
 
-export default function VisibleDelete({message, handleDelete, setVisibleDelete}){
+export default function VisibleDelete({message, handleDelete, setVisibleDelete,visibleDelete}){
     const classes = useStyles()
-   
+    console.log('holas');
     return(
         <>
-        <Paper className={classes.paper2} elevation={3}>
+        <Dialog
+      open={visibleDelete}
+      onClose={()=> setVisibleDelete()}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+      // TransitionComponent={Transition}
+      keepMounted
+      
+    >
+      <div className={classes.paper2}>
+
             <Error style={{ paddingRight: "10px" }} />
             <Typography
               className={classes.typo}
@@ -16,12 +26,13 @@ export default function VisibleDelete({message, handleDelete, setVisibleDelete})
             >
               {message
                 ? 'Se ha eliminado correctamente'
-                : "Esta seguro que quiere eliminar esta cotizacion?"}{" "}
+                : "Esta seguro que quiere eliminarla?"}{" "}
             </Typography>
 
             <br />
             {message ? null : (
               <>
+                <div style={{display:'flex'}}>
                 <Button
                   variant="contained"
                   style={{ marginRight: "10px" }}
@@ -36,9 +47,12 @@ export default function VisibleDelete({message, handleDelete, setVisibleDelete})
                 >
                   <Check fontSize="medium" />
                 </Button>
+                </div>
               </>
             )}
-          </Paper>
+      </div>
+
+          </Dialog>
         </>
     )
 }

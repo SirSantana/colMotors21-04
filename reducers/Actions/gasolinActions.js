@@ -15,7 +15,7 @@ export const addGasolina=(form, id, router, setMessage)=>async(dispatch)=>{
 }
 export const editGasolina=(form, idPost, router, setMessage)=>async(dispatch)=>{
     try {
-        console.log(form, idPost);
+        console.log(form, idPost)
         const res = await api.editGasolina(form, idPost)
         setMessage({description:'Datos Actualizados!'})
         if(res.status === 200) router.reload()
@@ -29,6 +29,18 @@ export const getGasolina=(id)=>async(dispatch)=>{
     try {
         const res = await api.getGasolina(id)
     } catch (error) {
+        
+    }
+}
+
+export const deleteGasolina = (id, router, setMessage)=> async(dispatch)=>{
+    try {
+        setMessage('Eliminando Tanqueada...')
+        const res = await api.deleteGasolina(id)
+        setMessage('Tanqueada Eliminada!')
+        router.reload()
+    } catch (error) {
+        setMessage('No se pudo Eliminar')
         
     }
 }

@@ -55,7 +55,7 @@ export default makeStyles((theme)=>({
         alignItems:'center'
       },
       paper2: {
-        padding: theme.spacing(2),
+        padding:'20px',
         background:"#f50057",
         color: 'white',
         fontFamily: ' -apple-system, BlinkMacSystemFont, Segoe UI,',
@@ -64,12 +64,7 @@ export default makeStyles((theme)=>({
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
-        width:'400px',
-        [theme.breakpoints.down('xs')]: {
-          width:'300px',
-          
-          },
-    
+        flexDirection:'column'
       },
       header:{
         color:'#1b333d',

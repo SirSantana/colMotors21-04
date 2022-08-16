@@ -33,6 +33,7 @@ export default function EsteAño({setIdPost,
         let numeroTanqueadas=0
         let galonesComprados=0
         let diasTanqueados =[]
+        let galonRecorrido = 0
         for(let data of meses[j]){
             let dineroGastado = typeof data.dineroGastado!== 'number' ? data.dineroGastado.toString().replace(/\./g, ""):data.dineroGastado
             gastado += Number(dineroGastado)
@@ -40,6 +41,7 @@ export default function EsteAño({setIdPost,
             if(data.kilometrosRecorridos !== undefined){
                 kilometrosRecorridos += data.kilometrosRecorridos
                 galonesComprados += data.galones
+        galonRecorrido += data.galonRecorrido
                 console.log(compartido);
             }
             let numero = new Date(data.fecha).getDate()
@@ -47,7 +49,7 @@ export default function EsteAño({setIdPost,
             let compartido = data.compartida === true
             diasTanqueados.push({numero, dia, compartido})
         }
-        totales[j].push({gastado, mes:j, kilometrosRecorridos, galonesComprados, diasTanqueados})
+        totales[j].push({gastado, mes:j, kilometrosRecorridos, galonesComprados, diasTanqueados, galonRecorrido})
       }
       }
       console.log(totales);
@@ -114,7 +116,7 @@ export default function EsteAño({setIdPost,
             />
                         <h3 style={{fontSize:'16px', color:'#1b333d', margin:'0 0 0 10px', fontWeight:500}}>Rendimiento</h3>
                     </div>
-                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/{Math.trunc(el.kilometrosRecorridos / el.galonesComprados)}kms</h3>
+                        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/{Math.trunc(el.galonRecorrido /( el.diasTanqueados.length-1))}kms</h3>
                     </div>
                     <div style={{display:'flex', flexDirection:'row', width:'100%',alignItems:'center', textAlign:'center', justifyContent:'space-between'}}>
                     <div style={{display:'flex', flexDirection:'row', textAlign:'center',alignItems:'center'}}>

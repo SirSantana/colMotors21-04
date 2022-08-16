@@ -19,25 +19,31 @@ export default function Mes({
   console.log(mes);
 
     const tanqueadas = AlgoritmoGasolina({gasolinas, tanque})
-
     let tanqueadasMes = tanqueadas.tanqueadas.filter(el=> el.mes === monthActual)
     tanqueadasMes.reverse()
     let detailsTanqueada = tanqueadasMes.find(el=> el._id === visibleDetails.id)
+    console.log(tanqueadasMes);
     
     
     let totales ={}
     let gastado =0
-    let kilometrosRecorridos=tanqueadasMes[0].kilometraje -tanqueadasMes[tanqueadasMes.length-1].kilometraje
+    let kilometrosRecorridos;
     let galonesComprados=0
     let dineroUsado = 0
     let galonesUsados =0
     let numeroTanqueadas = 0
     let precioCombustible = 0;
+    let galonRecorrido = 0
     for(let i = 0; i<tanqueadasMes.length;i++ ){
+      kilometrosRecorridos=tanqueadasMes[0].kilometraje -tanqueadasMes[tanqueadasMes.length-1].kilometraje
       let dineroGastado = typeof tanqueadasMes[i].dineroGastado!== 'number' ? tanqueadasMes[i].dineroGastado.toString().replace(/\./g, ""):tanqueadasMes[i].dineroGastado
       numeroTanqueadas +=1
       precioCombustible += Number(tanqueadasMes[i].precioGalon.replace(/\./g, ""))
       gastado+= Number(dineroGastado)
+      console.log(tanqueadasMes[i].galonRecorrido);
+      if(tanqueadasMes[i].galonRecorrido !== undefined){
+        galonRecorrido += tanqueadasMes[i].galonRecorrido
+      }
     }
 
     for(let datos of tanqueadasMes){
@@ -53,8 +59,8 @@ export default function Mes({
     totales.dineroUsado = dineroUsado
     totales.numeroTanqueadas = numeroTanqueadas
     totales.precioCombustible = precioCombustible / numeroTanqueadas
-
-
+    totales.galonRecorrido = galonRecorrido !== 0 && galonRecorrido / (numeroTanqueadas-1)
+    console.log(totales);
   return <>
       <div
         style={{
@@ -105,7 +111,8 @@ export default function Mes({
           style={{width:'40px', height:'40px'}}
         />
         <h3 style={{fontSize:'16px', color:'gray', margin:0, fontWeight:400}}> Rendimiento</h3>
-        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>1gl/21Kms</h3>
+        <h3 style={{fontSize:'18px', color:'black', margin:0, fontWeight:600}}>{totales.galonRecorrido!== false ? `1gl/${totales.galonRecorrido}kms` : 'Sin datos'}</h3>
+
             </div>
             
         </div>
@@ -119,7 +126,7 @@ export default function Mes({
              
              
             return(
-                <CardGasolina el={el} myDate={myDate} setVisibleDetails={setVisibleDetails} monthActual={monthActual} />
+                <CardGasolina el={el} myDate={myDate} setVisibleDetails={setVisibleDetails} monthActual={monthActual} setIdPost={setIdPost}setVisibleEdit={setVisibleEdit}setEdit={setEdit}/>
 
             )
         })

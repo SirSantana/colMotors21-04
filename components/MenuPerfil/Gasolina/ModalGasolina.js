@@ -72,8 +72,9 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
   const {id} = router.query
   const handleChange = (e, newValue) => {
     console.log(form);
+    console.log(newValue);
     if(newValue){
-    setForm({ ...form, gasolinaInicial: newValue, fecha:form.fecha.replace(/-/g, '\/').replace(/T.+/, '')});
+    setForm({ ...form, gasolinaInicial: newValue,fecha:form.fecha.replace(/-/g, '\/').replace(/T.+/, '')});
     }else{
       setForm({ ...form, [e.target.name]: e.target.value});
     }
@@ -81,7 +82,10 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
     setForm2({...form2, [e.target.name]: e.target.value})
     }
   }
-
+console.log(edit);
+console.log(form?.gasolinaInicial?.props?.value);
+console.log(form2.tipoGasolina);
+console.log(form2);
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
@@ -106,7 +110,12 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
       radioGroupRef.current.focus();
     }
   };
-
+  let fecha = new Date();
+    let anio = fecha.getFullYear();
+    let mes = fecha.getMonth()
+    let dia = fecha.getDate()
+    mes+=1
+console.log(new Date(vehicule.fecha).toISOString().split('T')[0]);
   return (
     <div>
       <Dialog
@@ -187,13 +196,13 @@ export default function ModalGasolina({idPost, edit,setEdit, setVisibleEdit, veh
             </Select>
           </FormControl>
               </>}
-              <Input 
+              <input 
               type='date'
-              min={new Date(vehicule.fecha).toISOString().split('T')[0]}
+              min={vehicule.fecha !== null ? new Date(vehicule.fecha).toISOString().split('T')[0]: anio+'-'+0+mes+'-'+(dia-dia)+1}
               name="fecha"
-              half="true"
               onChange={handleChange}
-              fullWidth
+              style={{padding:'10px', marginLeft:'10px'}}
+              
               // helperText={!edit ? "Agrega la Fecha": "Cambia la Fecha" }
               />
           <Box name='gasolinaInicial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>

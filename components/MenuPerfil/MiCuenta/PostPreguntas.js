@@ -9,15 +9,16 @@ export default function PostPreguntas({post, User}){
     const [visibleDelete, setVisibleDelete] = useState(false);
     const [message, setMessage] = useState(null);
     const router = useRouter();
-    
+    console.log(visibleDelete);
     console.log(post?._id);
     const handleDelete=()=>{
         deletePost(post?._id,router, setMessage)
     }
 
+
     return(
         <>
-        {visibleDelete === true && <VisibleDelete message={message} handleDelete={handleDelete}/>}
+        {visibleDelete === true && <VisibleDelete message={message} handleDelete={handleDelete} setVisibleDelete={setVisibleDelete} visibleDelete={visibleDelete}/>}
         <PostCard Post={post} User={User} setVisibleDelete={setVisibleDelete} espaciado={true}/>
         </>
     )

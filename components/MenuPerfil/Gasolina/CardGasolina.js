@@ -1,11 +1,17 @@
-import { Box, Menu, MenuItem, Slider} from "@material-ui/core";
-import {CalendarToday,LocalGasStationOutlined,MoreVert,} from "@material-ui/icons";
+import { Box, Button, Menu, MenuItem, Slider} from "@material-ui/core";
+import {CalendarToday,Delete,LocalGasStationOutlined,MoreVert,Edit} from "@material-ui/icons";
 import { useState } from "react";
+import VisibleDelete from "../../../utils/PostCard/visibleDelete";
 import useStyles from "./styles";
+import {useDispatch} from 'react-redux'
+import {useRouter} from 'next/router'
+import { deleteGasolina } from "../../../reducers/Actions/gasolinActions";
 
-export default function CardGasolina({el,setVisibleDetails,monthActual}) {
+export default function CardGasolina({el,setVisibleDetails,monthActual, setIdPost, setVisibleEdit,setEdit}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const dispatch = useDispatch()
+  const router = useRouter();
   const marks = [
     {
       value: 0,
@@ -31,19 +37,25 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
   function valuetext(value) {
     return `${value}°C`;
   }
-  const handleClick = (event) => {
-    event.stopPropagation();
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = (event) => {
-    setAnchorEl(null);
-    event.stopPropagation();
-  };
+  // const handleSend=()=>{
+  //   setIdPost(detailsTanqueada._id),
+  //   setVisibleEdit(true),
+  //   setEdit(true)
+  // }
+  console.log(el);
   let myDate = new Date(el.fecha).toLocaleDateString()
   let dineroGastado = typeof el.dineroGastado!== 'number' ? el.dineroGastado.toString().replace(/\./g, ""):el.dineroGastado
   let sobrante = dineroGastado - el.dineroUsado
+
+  const [visibleDelete, setVisibleDelete]= useState(false)
+  const [message, setMessage] = useState(null);
+  const [idDelete, setIdDelete] =useState(null)
+  const handleDelete=()=>{
+    dispatch(deleteGasolina(idDelete, router, setMessage))
+  }
   return(
     <>
+    {visibleDelete && <VisibleDelete message={message} handleDelete={handleDelete} setVisibleDelete={setVisibleDelete} visibleDelete={visibleDelete}/>}
     {el.estado !== 'finalizado'?
     <div style={{boxShadow: "rgba(149, 157, 165, 0.8) 0px 8px 10px",backgroundColor:'#f50057', marginBottom:'20px', width:'90%',height:'fit-content',padding:'20px', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
     <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
@@ -64,8 +76,12 @@ export default function CardGasolina({el,setVisibleDetails,monthActual}) {
         
     <div style={{display:'flex', flexDirection:'column', width:'60%', justifyContent:'center',alignItems:'center', marginLeft:'20px'}}>
             <h3 style={{marginTop:'5px',  borderRadius:'10px', width:'fit-content', padding:'4px 16px', backgroundColor:'white', textAlign:'center', color:'#f50057', fontSize:'14px', margin:0}}>EN PROGRESO</h3>
+   <div style={{display:'flex', flexDirection:'row'}}>
+   <a onClick={()=> {setVisibleDelete(true), setIdDelete(el._id)}}><Delete style={{fontSize:'30px', color:'white', cursor:'pointer'}} /></a>
+    <a onClick={()=> {setIdPost(el._id), setVisibleEdit(true), setEdit(true)}}><Edit style={{fontSize:'30px', color:'white', cursor:'pointer'}} /></a>
+   </div>
+
         </div>
-    
     </div>
 
 

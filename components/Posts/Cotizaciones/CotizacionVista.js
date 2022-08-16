@@ -126,7 +126,6 @@ export default function CotizacionVista({ Cotizacion, PostCreator, dataUser }) {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent:'center',
                       alignItems:'center'
                     }}
                   >

@@ -10,13 +10,14 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  Grid
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { forwardRef, useEffect,useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { convertidor } from "../../../libs/convertidorFileBase64";
-import {  editVehiculo } from "../../../reducers/Actions/vehiculoActions";
+import {  createVehiculo, editVehiculo } from "../../../reducers/Actions/vehiculoActions";
 import MenuLogos from "../../../utils/MenuLogos/MenuLogos";
 import useStyles from "./styles";
 import FileBase64 from "react-file-base64";
@@ -38,7 +39,7 @@ const initialText ={
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner }) {
+export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner, tipo }) {
   const [medidas, setMedidas] = useState(null)
   const [marcaa, setMarca] = useState(null);
   const classes = useStyles()
@@ -53,12 +54,23 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
     setForm({...form, [e.target.name]: e.target.value})
 
   }
-  console.log(form, initialForm);
+  console.log(owner);
+  console.log(idVehicule);
   const handleSubmit=(e)=>{
-   
     setVisibleModal(true)
     e.preventDefault()
     setTexto({description:'Guardando...'})
+
+
+   if(idVehicule === undefined){
+    if(medidas === 'galones'){
+      let litros = parseFloat((form.tanqueGasolina * 3.7).toFixed(2))
+      dispatch(createVehiculo({...form, marca:marcaa, tanqueGasolina:litros,tipo, nameOwner:owner.name, owner:owner.owner}, router, setTexto))
+    }else{
+      dispatch(createVehiculo({...form, marca:marcaa,tipo,nameOwner:owner.name, owner:owner.owner},router, setTexto))
+      console.log({...form, marca:marcaa, tipo:tipo});
+    }
+   }else{
     if(medidas === 'galones'){
       let litros = parseFloat((form.tanqueGasolina * 3.7).toFixed(2))
       dispatch(editVehiculo({...form, marca:marcaa, tanqueGasolina:litros}, idVehicule, router, setTexto))
@@ -66,7 +78,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
       dispatch(editVehiculo({...form, marca:marcaa}, idVehicule, router, setTexto))
 
     }
-    
+   }
   }
   const handleEntering = () => {
     if (radioGroupRef.current != null) {
@@ -83,61 +95,53 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
       >
          {visibleModal  && <ModalCargando setVisibleModal={setVisibleModal} active={false} visibleModal={visibleModal} texto={texto.description} error={texto.error !== false && texto.error}/>}
 
-        <DialogTitle id="alert-dialog-title">Edita tu Auto</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{tipo !== undefined? `Agregar ${tipo}`: 'Edita tu Vehiculo'}</DialogTitle>
         <DialogContent>
           <form >
-            <MenuLogos marca={marcaa} setMarca={setMarca} />
+            <MenuLogos marca={marcaa} setMarca={setMarca} tipo={tipo}/>
+            <div style={{display:'flex', flexDirection:'row'}}>
             <TextField
               name="referencia"
-              label="Referencia (Aveo)"
+              label="Referencia"
               variant="outlined"
-              fullWidth
               value={form.referencia}
               onChange={handleChange}
               minRows={1}
-              style={{ marginBottom: "10px" }}
+              placeholder="Aveo"
+              style={{ marginBottom: "10px", width:'48%' }}
+              
             />
 
             <TextField
               name="cilindraje"
-              label="Cilindraje (1400)"
+              label="Cilindraje"
               variant="outlined"
-              fullWidth
               value={form.cilindraje}
               onChange={handleChange}
               minRows={1}
-              style={{ marginBottom: "10px" }}
+              placeholder="1400"
+              style={{ marginBottom: "10px", width:'48%' }}
               type='number'
 
             />
-            <TextField
-              name="modelo"
-              label="Modelo (2008)"
-              variant="outlined"
-              fullWidth
-              value={form.modelo}
-              onChange={handleChange}
-              minRows={1}
-              style={{ marginBottom: "10px" }}
-              type="number"
-            />
+            </div>
+            <div style={{display:'flex', flexDirection:'row'}}>
             <TextField
               name="tanqueGasolina"
-              label="Capacidad Tanque Gasolina "
+              label="Capacidad T.Gasolina "
               variant="outlined"
               value={form.tanqueGasolina}
               onChange={handleChange}
               minRows={1}
-              style={{ marginBottom: "10px",width:'50%' }}
+              placeholder="14"
+              style={{ marginBottom: "10px", width:'48%' }}
               type='number'
-              
             />
-            <FormControl className={classes.formControl}required={form.tanqueGasolina !== '' ? true: false} >
+             <FormControl className={classes.formControl}required={form.tanqueGasolina !== '' ? true: false} >
             <InputLabel id="demo-simple-select-label">Medida</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              label="Age"
               value={medidas}
               onChange={(e)=>setMedidas(e.target.value)}
               variant="outlined"
@@ -147,7 +151,20 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               <MenuItem value={"litros"}>Litros</MenuItem>
             </Select>
           </FormControl>
-            <br/>
+            
+            </div>
+            <TextField
+              name="modelo"
+              label="Modelo"
+              variant="outlined"
+              value={form.modelo}
+              onChange={handleChange}
+              minRows={1}
+              placeholder="2008"
+              style={{ marginBottom: "10px", width:'48%' }}
+              type="number"
+            />
+           <br/>
 
             {/* <input
               type="file"
@@ -164,7 +181,6 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
                 setForm({ ...form, imagen: base64 })
               }
             />
-
            
           </form>
         </DialogContent>

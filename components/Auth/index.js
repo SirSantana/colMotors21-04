@@ -19,7 +19,7 @@ const initialState = {
   password: "",
   confirmPassword: "",
   pais: "Colombia",
-  marca: "",
+  // marca: "",
   ciudad:''
 };
 const initialText ={
@@ -52,23 +52,13 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
-    setMessage({description:'Ingresando...'})
+    setMessage({description:'Espere un momento...'})
     if (isSignup) {
-        if(marca !== null){
-        dispatch(
-        signup({...form, marca:marca}, router, setMessage)
-        )
-        }
-        else{
-          setMessage({description:'Debe elegir la marca de su carro'})
-        }
-        
+        dispatch(signup({...form}, router, setMessage))
     } else {
         dispatch(
           signin(form, router, setMessage)
         );
-      
-     
     }
   };
 
@@ -124,7 +114,7 @@ const SignUp = () => {
                         half='true'
 
                       />
-                      <MenuLogos marca={marca} setMarca={setMarca}/>
+                      {/* <MenuLogos marca={marca} setMarca={setMarca}/> */}
                       <Input
                         name="pais"
                         label="Colombia"

@@ -93,7 +93,7 @@ export default function EsteAño({setIdPost,
                         {el.diasTanqueados.map(ele=> 
                         <div style={{width:'50px', height:'50px', backgroundColor: ele.compartido ?'#f50057':'#1b333d',margin:'0 0 10px 10px', alignItems:'center',textAlign:'center', justifyContent:'center', borderRadius:'10px'}}>
                             <h2 style={{fontSize:'18px',textAlign:'center', color:'white', margin:'0', fontWeight:"500"}}>{ele.numero}</h2>
-                          <h3 style={{fontSize:'12px', textAlign:'center',color:'white', margin:'0', fontWeight:"400"}}>{dias[ele.dia]}</h3> 
+                          <h3 style={{fontSize:'12px', textAlign:'center',color:'white', margin:'0', fontWeight:"400"}}>{dias[ele.dia].split("",4)}</h3> 
                           <h3 style={{fontSize:'12px', textAlign:'center',color:'white', margin:'0', fontWeight:"400"}}>{el.compartido}</h3> 
 
                         </div>

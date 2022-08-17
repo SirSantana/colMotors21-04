@@ -14,7 +14,7 @@ import Image from "next/image";
 import { useState } from "react";
 import useStyles from "./styles";
 
-export default function Menus({ marca, setMarca }) {
+export default function Menus({ marca, setMarca, tipo }) {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,7 +27,13 @@ export default function Menus({ marca, setMarca }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  let marcasCarros = [
+    "Chevrolet","Mazda", "Renault", "Kia", "Nissan", "Ford", "Volkswagen", "Toyota"
+  ]
+  let marcasMotos=[
+    "tvs","Susuki", "Yamaha", "Honda", "Bajaj", "Akt"
+  ]
+  console.log(tipo);
   return (
     <>
       <IconButton
@@ -59,7 +65,7 @@ export default function Menus({ marca, setMarca }) {
             C
           </Avatar>
           <Typography variant="body1" style={{ lineHeight: "18px" }}>
-            {marca ? 'Cambia la marca de auto': 'Elige la marca de auto'} 
+            {marca ? 'Cambia la marca ': 'Elige la marca '} 
           </Typography>
           <ArrowDropDown style={{ margin: 0, padding: 0 }} />
         </div>
@@ -80,9 +86,12 @@ export default function Menus({ marca, setMarca }) {
         onClose={handleClose}
         className={classes.menuChoose}
       >
-        <ButtonBase
+
+        {tipo === 'Carro'? 
+        marcasCarros.map(el=>(
+          <ButtonBase
           onClick={() => {
-            setMarca("Chevrolet"), setMarcaAuto("Chevrolet");
+            setMarca(el), setMarcaAuto(el);
           }}
         >
           <MenuItem
@@ -97,141 +106,40 @@ export default function Menus({ marca, setMarca }) {
           >
             <Image
               style={{ margin: 0, padding: 0 }}
-              src={"/images/Chevrolet.png"}
+              src={`/images/${el}.png`}
               width="40px"
               height="40px"
             />
           </MenuItem>
         </ButtonBase>
-
+        ))
+      :
+      marcasMotos.map(el=>(
         <ButtonBase
-          onClick={() => {
-            setMarca("Mazda"), setMarcaAuto("Mazda");
-          }}
-        >
-          <MenuItem
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "6px 8px",
-            }}
-            onClick={handleClose}
-          >
-            <Image src={"/images/Mazda.png"} width="40px" height="40px" />
-          </MenuItem>
-        </ButtonBase>
+        onClick={() => {
+          setMarca(el), setMarcaAuto(el);
+        }}
+      >
+        <MenuItem
+            id='prueba-test'
 
-        <ButtonBase
-          onClick={() => {
-            setMarca("Renault"), setMarcaAuto("Renault");
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "6px 8px",
           }}
+          onClick={handleClose}
         >
-          <MenuItem
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "6px 8px",
-            }}
-            onClick={handleClose}
-          >
-            <Image
-              src={"/images/Renault.png"}
-              style={{ margin: "1px" }}
-              width="40px"
-              height="40px"
-            />
-          </MenuItem>
-        </ButtonBase>
-
-        <ButtonBase
-          onClick={() => {
-            setMarca("Kia"), setMarcaAuto("Kia");
-          }}
-        >
-          <MenuItem
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "6px 8px",
-            }}
-            onClick={handleClose}
-          >
-            <Image src={"/images/Kia.png"} width="40px" height="40px" />
-          </MenuItem>
-        </ButtonBase>
-
-        <ButtonBase
-          onClick={() => {
-            setMarca("Nissan"), setMarcaAuto("Nissan");
-          }}
-        >
-          <MenuItem
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "6px 8px",
-            }}
-            onClick={handleClose}
-          >
-            <Image src={"/images/Nissan.png"} width="40px" height="40px" />
-          </MenuItem>
-        </ButtonBase>
-
-        <ButtonBase
-          onClick={() => {
-            setMarca("Ford"), setMarcaAuto("Ford");
-          }}
-        >
-          <MenuItem
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "6px 8px",
-            }}
-            onClick={handleClose}
-          >
-            <Image src={"/images/Ford.png"} width="40px" height="40px" />
-          </MenuItem>
-        </ButtonBase>
-
-        <ButtonBase
-          onClick={() => {
-            setMarca("Volkswagen"), setMarcaAuto("Volkswagen");
-          }}
-        >
-          <MenuItem
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "6px 8px",
-            }}
-            onClick={handleClose}
-          >
-            <Image
-              src={"/images/Volkswagen.png"}
-              width="40px"
-              height="40px"
-            />
-          </MenuItem>
-        </ButtonBase>
-
-        <ButtonBase
-          onClick={() => {
-            setMarca("Toyota"), setMarcaAuto("Toyota");
-          }}
-        >
-          <MenuItem
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "6px 8px",
-            }}
-            onClick={handleClose}
-          >
-            <Image src={"/images/Toyota.png"} width="40px" height="40px" />
-          </MenuItem>
-        </ButtonBase>
-
+          <Image
+            style={{ margin: 0, padding: 0 }}
+            src={`/images/${el}.png`}
+            width="40px"
+            height="40px"
+          />
+        </MenuItem>
+      </ButtonBase>
+      ))}
+        
         <Divider></Divider>
         <MenuItem>Elige Tu Marca</MenuItem>
       </Menu>

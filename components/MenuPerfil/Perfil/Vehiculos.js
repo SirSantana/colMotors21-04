@@ -33,7 +33,7 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
 
         <div className={classes.conta1}>
           <div style={{display:'flex',justifyContent:'center', alignItems:'center'}}>
-            <img style={{marginLeft:'10px', width:'60px', height:'60px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} />
+            {vehicule.marca &&<img style={{marginLeft:'10px', width:'60px', height:'60px'}} src={`/images/${vehicule?.marca}.png`} alt={vehicule?.marca} /> }
           </div>
           <div>
           <div style={{ borderRadius:'10px', }}>

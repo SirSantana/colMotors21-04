@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 }
 
 async function register(req, res) {
-  const { email, password, role, marca, firstName, lastName, confirmPassword, pais, ciudad } =
+  const { email, password, role, firstName, lastName, confirmPassword, pais, ciudad } =
     req.body;
   try {
     // const errMsg = valid(email, password, confirmPassword);
@@ -47,23 +47,23 @@ async function register(req, res) {
     });
     if (!role) result.role.push("Cliente");
 
-    const vehiculo = await vehiculoModel.create({marca, nameOwner:result.name, owner:result._id})
-    await result.vehiculos.push(vehiculo._id)
+    // const vehiculo = await vehiculoModel.create({nameOwner:result.name, owner:result._id})
+    // await result.vehiculos.push(vehiculo._id)
     const token = createAccessToken({result,code})
 
     const template = getTemplate(result.name, token)
 
-    let mailOptions = {
-      from: "salazarmiguelito23@gmail.com",
-      to: result.email,
-      subject:'Quarks',
-      text: 'Acepta para ser miembro de colMotors',
-      htmL:null
-    };
+    // let mailOptions = {
+    //   from: "salazarmiguelito23@gmail.com",
+    //   to: result.email,
+    //   subject:'Quarks',
+    //   text: 'Acepta para ser miembro de colMotors',
+    //   htmL:null
+    // };
 
-    await sendMail(mailOptions, template)
+    // await sendMail(mailOptions, template)
 
-    await vehiculo.save()
+    // await vehiculo.save()
     await result.save();
 
   res.status(200).json({result, token})

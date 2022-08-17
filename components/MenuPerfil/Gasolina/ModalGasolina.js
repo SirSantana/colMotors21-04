@@ -201,7 +201,7 @@ console.log(form2);
               name="fecha"
               onChange={handleChange}
               style={{padding:'10px', marginLeft:'10px'}}
-              
+              required={true}
               // helperText={!edit ? "Agrega la Fecha": "Cambia la Fecha" }
               />
           <Box name='gasolinaInicial' sx={{ width: "90%", margin:'0 auto', marginTop:'20px' }}>
@@ -233,7 +233,7 @@ console.log(form2);
             autoFocus
             color="secondary"
             fullWidth
-            disabled={edit ?false: form.dineroGastado !== '' && form.kilometraje!== '' && form.fuelInitial !== ''  ? false: true}
+            disabled={edit ?false: form.dineroGastado !== '' && form.kilometraje!== '' && form.fuelInitial !== '' && form.fecha !== '' ? false: true}
           >
             {edit ? 'Confirmar Cambios': 'Agregar Tanqueada'}
             

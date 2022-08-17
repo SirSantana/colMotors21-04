@@ -43,15 +43,15 @@ console.log(user);
         <div style={{display:'flex', flexDirection:'column', width:'100%', alignItems:'center', justifyContent:'center', height:'400px'}}>
         <h2 style={{margin:'20px', color:'#1b333d', fontWeight:'700'}}>Agrega un Vehiculo</h2>
 
-        <div  style={{display:'flex', flexDirection:'row', gap:'20px'}}>
-        <section onClick={()=> {setVisibleEdit1(true), setVehiculo('Carro')}} style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+        <div  style={{display:'flex', flexDirection:'row',width:'200px', justifyContent:'space-between'}}>
+        <section onClick={()=> {setVisibleEdit1(true), setVehiculo('Carro')}} style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'46%', height:'100px', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
         <img
           src={"/images/carroBlanco.png"}
           alt="icon"
           style={{width:'80px', height:'80px'}}
         />
            </section>
-        <section onClick={()=> {setVisibleEdit1(true), setVehiculo('Moto')}} style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+        <section onClick={()=> {setVisibleEdit1(true), setVehiculo('Moto')}} style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'46%', height:'100px', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
            <img
           src={"/images/motoBlanca.png"}
           alt="icon"

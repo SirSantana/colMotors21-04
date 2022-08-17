@@ -65,9 +65,10 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
    if(idVehicule === undefined){
     if(medidas === 'galones'){
       let litros = parseFloat((form.tanqueGasolina * 3.7).toFixed(2))
-      dispatch(createVehiculo({...form, marca:marcaa, tanqueGasolina:litros,tipo, nameOwner:owner.name, owner:owner.owner}, router, setTexto))
+      console.log('name',owner.name);
+      dispatch(createVehiculo({...form, marca:marcaa, tanqueGasolina:litros,tipo, nameOwner:owner.nameOwner, owner:owner.owner}, router, setTexto))
     }else{
-      dispatch(createVehiculo({...form, marca:marcaa,tipo,nameOwner:owner.name, owner:owner.owner},router, setTexto))
+      dispatch(createVehiculo({...form, marca:marcaa,tipo,nameOwner:owner.nameOwner, owner:owner.owner},router, setTexto))
       console.log({...form, marca:marcaa, tipo:tipo});
     }
    }else{

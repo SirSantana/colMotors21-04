@@ -29,7 +29,6 @@ export async function getServerSideProps({ params }) {
 
       return gasolina;
     });
-    console.log('re',vehicule.nameOwner);
     let owner = vehicule.owner.toString(),
         marca=vehicule.marca,
         referencia= vehicule.referencia,

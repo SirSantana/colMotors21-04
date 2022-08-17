@@ -52,7 +52,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setVisibleModal(true)
-    setMessage({description:'Espere un momento...'})
+    setMessage({description:'Espera un momento...'})
     if (isSignup) {
         dispatch(signup({...form}, router, setMessage))
     } else {

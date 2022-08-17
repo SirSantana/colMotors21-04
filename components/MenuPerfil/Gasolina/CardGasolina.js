@@ -43,6 +43,8 @@ export default function CardGasolina({el,setVisibleDetails,monthActual, setIdPos
   //   setEdit(true)
   // }
   let myDate = new Date(el.fecha)
+  const numOfHours = 10;
+  myDate.setTime(myDate.getTime() + numOfHours * 60 * 60 * 1000)
   console.log('fecha',el.fecha);
   console.log('myDate',myDate);
   let dineroGastado = typeof el.dineroGastado!== 'number' ? el.dineroGastado.toString().replace(/\./g, ""):el.dineroGastado

@@ -44,8 +44,12 @@ export default function EsteAño({setIdPost,
         galonRecorrido += data.galonRecorrido
                 console.log(compartido);
             }
-            let numero = new Date(data.fecha).getDate()
-            let dia = new Date(data.fecha).getDay()
+            
+            let myDate = new Date(data.fecha)
+            const numOfHours = 10;
+            myDate.setTime(myDate.getTime() + numOfHours * 60 * 60 * 1000)
+            let numero = new Date(myDate).getDate()
+            let dia = new Date(myDate).getDay()
             let compartido = data.compartida === true
             diasTanqueados.push({numero, dia, compartido})
         }

@@ -64,7 +64,7 @@ export default function CardGasolina({el,setVisibleDetails,monthActual, setIdPos
     <div style={{ display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
     <section style={{display:'flex', flexDirection:'row'}}>
     <CalendarToday style={{ color:'white', marginRight:'10px'}}/>
-    <h3  style={{fontSize:'16px', color:'white', margin:0}}>{myDate.toDateString()}</h3>
+    <h3  style={{fontSize:'16px', color:'white', margin:0}}>{myDate.toLocaleDateString()}</h3>
     </section>
     <section style={{display:'flex', flexDirection:'row'}}>
     <h5  style={{fontSize:'18px', color:'white', margin:0}}>{el.tipoGasolina}</h5>
@@ -101,7 +101,7 @@ export default function CardGasolina({el,setVisibleDetails,monthActual, setIdPos
                    <CalendarToday
                     style={{ color: "#1b333d", marginRight: "10px", color: "black" }}/>
                    <h3 className={classes.subtitle}>
-                     {myDate.toLocaleString()}
+                     {myDate.toLocaleDateString()}
                    </h3>
                  </section>
                  {el.compartida &&<h5 className={classes.subtitle}>Tanqueada Compartida</h5>}

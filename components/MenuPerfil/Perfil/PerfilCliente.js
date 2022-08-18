@@ -6,22 +6,22 @@ import Vehiculos from "./Vehiculos";
 import { AddAPhoto, Edit, LocalGasStationOutlined } from "@material-ui/icons";
 import Link from 'next/link'
 import Modal from "./Modal";
+import { useRouter } from "next/router";
 
 export default function PerfilCliente({user, vehicule}){
   const classes = useStyles();
   const [userNow, setUserNow] = useState(null)
   const [visibleEdit1, setVisibleEdit1] = useState(false)
   const [vehiculo, setVehiculo]= useState(null)
+  const router = useRouter()
   // const handleAdd =()=>{
   //   setVisible(false)
   //   setMessageAdd('Solicitud de amistad Enviada')
     
   // }
-
-console.log(user);
-  // useEffect(()=>{
-  //   setUserNow(JSON.parse(localStorage.getItem('profile')))
-  // },[])
+  useEffect(()=>{
+    setUserNow(JSON.parse(localStorage.getItem('profile')))
+  },[])
   let owner = {nameOwner: user.name, owner:user._id}
     return(
         <div className={classes.container1}>
@@ -38,7 +38,7 @@ console.log(user);
           </div>
 
 
-        {vehicule === undefined 
+        {vehicule === undefined && user._id ===userNow?.result._id 
         ?
         <div style={{display:'flex', flexDirection:'column', width:'100%', alignItems:'center', justifyContent:'center', height:'400px'}}>
         <h2 style={{margin:'20px', color:'#1b333d', fontWeight:'700'}}>Agrega un Vehiculo</h2>
@@ -61,23 +61,30 @@ console.log(user);
         </div>
         </div>
         : <div className={classes.divVehiculos}>
-        <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)}/>
-        <div className={classes.container8} >
-             <Link href={`/users/${vehicule._id}/gasolina`}>
-             <a>
-             <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
-            <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
-            <h4 style={{margin:'0', color:'white', fontWeight:'500'}}>Gasolina</h4>
-            </section>
-             </a>
-             </Link>
-            <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
-            <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
-            </section>
-            <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
-            <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
-            </section>
-        </div>
+          {vehicule ?
+        <Vehiculos vehicule={vehicule} owner={user?._id} lugar={user?.ciudad} initialLetter={user?.name?.charAt(0)} userId={userNow?.result?._id}/>
+        :<h2>Sin vehiculo</h2>  
+        }
+          { user._id === userNow?.result._id && 
+          <div className={classes.container8} >
+          <Link href={`/users/${vehicule._id}/gasolina`}>
+          <a>
+          <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+         <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
+         <h4 style={{margin:'0', color:'white', fontWeight:'500'}}>Gasolina</h4>
+         </section>
+          </a>
+          </Link>
+         <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
+         <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
+         </section>
+         <section style={{borderRadius:'10px', display:'flex',backgroundColor:'#f50057', width:'100px', height:'100px', justifyContent:'center', alignItems:'center'}}>
+         <LocalGasStationOutlined fontSize='large' style={{color:'white', fontSize:'50px'}}/>
+         </section>
+     </div>
+          }
+
+        
         </div>
          }
 

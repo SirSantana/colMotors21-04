@@ -195,6 +195,7 @@ console.log(form2);
             </Select>
           </FormControl>
               </>}
+
               <input 
               type='date'
               min={vehicule.fecha !== null ? new Date(vehicule.fecha).toISOString().split('T')[0]: anio+'-'+0+mes+'-'+(dia-dia)+1}

@@ -130,5 +130,9 @@ export default makeStyles((theme) => ({
   },
   formControl:{
     width:'48%',
+    marginLeft:'20px',
+    [theme.breakpoints.down("sm")]: {
+    marginLeft:'10px',
+    },
   }
 }));

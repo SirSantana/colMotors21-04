@@ -6,27 +6,24 @@ import AssestsUser from "../../../utils/assetsUserPerfil";
 import Modal from "./Modal";
 import useStyles from "./stylesCliente";
 import Image from 'next/image'
-import ModalViewVehicule from "./ModalViewVehicule";
 import ModalDetalles from "./ModalDetalle";
+import {useRouter} from 'next/router'
 
 
-
-export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
+export default function Vehiculos({vehicule, owner,lugar, initialLetter, userId}){
   const classes = useStyles();
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [visibleEdit1, setVisibleEdit1] = useState(false)
   const [visibleEdit2, setVisibleEdit2] = useState(false)
   const [visibleEdit3, setVisibleEdit3] = useState(false)
   const [completeImage, setCompleteImage] = useState(false)
+  const router = useRouter()
+  console.log(userId);
 
-
-  const [user, setUser] = useState(null)
   const handleClose = () => {
     setCompleteImage(false);
   };
-  useEffect(()=>{
-    setUser(JSON.parse(localStorage.getItem('profile')))
-  },[])
+  
   
   return(
         <>
@@ -43,8 +40,8 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
             :
             <div className={classes.div2}>
             <AddAPhoto className={classes.icon}/>
-            <Button onClick={()=> setVisibleEdit(true)} style={{margin:'0 auto 15% auto',  width:'180px'}} variant="contained">
-                Agregar Auto
+            <Button onClick={()=> setVisibleEdit1(true)} style={{margin:'0 auto 15% auto',  width:'180px'}} variant="contained">
+                Agregar Foto
               </Button>
              </div>
             }
@@ -103,10 +100,10 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
          <div>
 
            
-         {user?.result._id === vehicule?.owner 
+         {userId === vehicule?.owner 
          ? <Button fullWidth variant='contained' color='secondary' onClick={()=>setVisibleEdit(true)} style={{marginBottom:'10px'}}>Editar mi auto</Button> 
           :
-          <Button fullWidth variant='contained' color='secondary' onClick={()=> setVisibleEdit2(true)} style={{marginBottom:'10px'}}>Crear mi auto</Button> 
+          <Button fullWidth variant='contained' color='secondary' onClick={()=> router.push(`/users/${userId}`)} style={{marginBottom:'10px'}}>Crear mi auto</Button> 
 
           }
          <Button  fullWidth variant='outlined' color='secondary' onClick={()=> setVisibleEdit3(true)}>Detalle</Button> 
@@ -114,46 +111,12 @@ export default function Vehiculos({vehicule, owner,lugar, initialLetter}){
 
         </div>
           </div> 
-
           <Dialog open={completeImage} onClose={handleClose} >
             <img src={vehicule?.imagen} alt='/images/carro2.jpg' className={classes.img2} style={{width:'100%', height:'100%', margin:'0'}} />
-
-              </Dialog>
-
-          <Dialog
-        open={ visibleEdit2}
-        onClose={()=> setVisibleEdit2(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle style={{lineHeight:'18px'}} id="alert-dialog-title">Vistazo previo a la edicion</DialogTitle>
-        <DialogContent >
-          <DialogContentText style={{lineHeight:'18px'}} id="alert-dialog-description">
-            Hemos creado la posibilidad que puedas agregar la imagen de tu carro, y mas detalles. Adelante!
-            
-          </DialogContentText>
-         
-
-          
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={()=> setVisibleEdit2(true)}
-            variant="contained"
-            autoFocus
-            color="secondary"
-          >
-            Editar 
-          </Button>
-          <Button onClick={()=> setVisibleEdit2(false)} variant="contained">
-            Editar Mas Tarde
-          </Button>
-        </DialogActions>
-      </Dialog>
+          </Dialog>
 
           <ModalDetalles setVisibleEdit3={setVisibleEdit3} visibleEdit3={visibleEdit3} vehicule={vehicule} lugar={lugar}/>
 
-              {visibleEdit && <ModalViewVehicule visibleEdit={visibleEdit} setVisibleEdit1={setVisibleEdit1} setVisibleEdit={setVisibleEdit} owner={owner}/>}
               {visibleEdit1 && <Modal visibleEdit1={visibleEdit1} setVisibleEdit1={setVisibleEdit1} idVehicule={vehicule._id} owner={owner}/>}
         </>
     )

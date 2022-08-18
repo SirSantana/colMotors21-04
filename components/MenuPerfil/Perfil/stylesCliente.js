@@ -28,7 +28,7 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     borderRadius: "10px",
     backgroundColor: "white",
-    boxShadow: "rgba(100, 100, 111, 0.2) 0px 37px 29px 0px",
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 10px 10px 0px",
     margin:'0 auto',
     justifyContent:'center',
     paddingLeft:'20px',

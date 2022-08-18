@@ -100,7 +100,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
         <DialogContent>
           <form >
             <MenuLogos marca={marcaa} setMarca={setMarca} tipo={tipo}/>
-            <div style={{display:'flex', flexDirection:'row'}}>
+            <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
             <TextField
               name="referencia"
               label="Referencia"
@@ -139,7 +139,7 @@ export default function Modal({ visibleEdit1, setVisibleEdit1, idVehicule, owner
               type='number'
             />
              <FormControl className={classes.formControl}required={form.tanqueGasolina !== '' ? true: false} >
-            <InputLabel id="demo-simple-select-label">Medida</InputLabel>
+            <InputLabel style={{marginLeft:'10px'}} id="demo-simple-select-label">{medidas ? medidas : 'Lt'}</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
